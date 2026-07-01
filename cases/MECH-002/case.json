@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.2",
+  "case_id": "MECH-002",
+  "workflow_id": "WF-SHAFT-POWER",
+  "title": "Mechanical shaft-power calculation and verification",
+  "task_spec": "specs/tasks/shaft_power_v1.json",
+  "environment_spec": "specs/environments/local_files_v1.json",
+  "evaluator_spec": "specs/evaluators/shaft_power_v1.json",
+  "input_dir": "cases/MECH-002/input",
+  "reference_dir": "cases/MECH-002/reference",
+  "metadata": {
+    "domain": "mechanical_engineering",
+    "difficulty": "introductory",
+    "dataset_split": "development",
+    "synthetic": true,
+    "review_status": "reviewed",
+    "created_date": "2026-06-27",
+    "failure_modes": [
+      "UNIT_ERROR",
+      "WRONG_FORMULA",
+      "NUMERIC_ERROR",
+      "FAILURE_TO_VERIFY"
+    ],
+    "tags": [
+      "rotating-equipment",
+      "power",
+      "units",
+      "verification"
+    ],
+    "lineage": {
+      "kind": "seed",
+      "parent_case_id": null,
+      "change_note": "Initial manually authored development case."
+    }
+  }
+}

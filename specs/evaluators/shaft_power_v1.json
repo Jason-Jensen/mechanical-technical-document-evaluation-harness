@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.2",
+  "evaluator_id": "EVAL-SHAFT-POWER-V1",
+  "workflow_id": "WF-SHAFT-POWER",
+  "mode": "deterministic",
+  "reference_file": "expected.json",
+  "composition": "gate_then_weighted_checks",
+  "pass_threshold": 0.95,
+  "gates": [
+    {
+      "gate_id": "output_exists",
+      "kind": "output_exists",
+      "failure_mode": "INCOMPLETE_DELIVERABLE"
+    },
+    {
+      "gate_id": "valid_json",
+      "kind": "valid_json",
+      "failure_mode": "INVALID_FILE"
+    },
+    {
+      "gate_id": "required_fields",
+      "kind": "required_fields_present",
+      "failure_mode": "INCOMPLETE_DELIVERABLE"
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "angular_velocity",
+      "kind": "numeric_close",
+      "actual_path": "$.angular_velocity_rad_s",
+      "expected_path": "$.angular_velocity_rad_s",
+      "absolute_tolerance": 0.01,
+      "weight": 0.25,
+      "failure_mode": "UNIT_ERROR"
+    },
+    {
+      "check_id": "shaft_power",
+      "kind": "numeric_close",
+      "actual_path": "$.shaft_power_kw",
+      "expected_path": "$.shaft_power_kw",
+      "absolute_tolerance": 0.02,
+      "weight": 0.35,
+      "failure_mode": "WRONG_FORMULA"
+    },
+    {
+      "check_id": "verification_power",
+      "kind": "numeric_close",
+      "actual_path": "$.verification_power_kw",
+      "expected_path": "$.verification_power_kw",
+      "absolute_tolerance": 0.02,
+      "weight": 0.2,
+      "failure_mode": "FAILURE_TO_VERIFY"
+    },
+    {
+      "check_id": "relative_difference",
+      "kind": "numeric_close",
+      "actual_path": "$.relative_difference_percent",
+      "expected_path": "$.relative_difference_percent",
+      "absolute_tolerance": 0.01,
+      "weight": 0.1,
+      "failure_mode": "NUMERIC_ERROR"
+    },
+    {
+      "check_id": "verification",
+      "kind": "boolean_equals",
+      "actual_path": "$.verification",
+      "expected_path": "$.verification",
+      "weight": 0.1,
+      "failure_mode": "FAILURE_TO_VERIFY"
+    }
+  ]
+}

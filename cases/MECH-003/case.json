@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.2",
+  "case_id": "MECH-003",
+  "workflow_id": "WF-REVISION-AUDIT",
+  "title": "Controlled drawing and shop-instruction audit",
+  "task_spec": "specs/tasks/revision_audit_v1.json",
+  "environment_spec": "specs/environments/local_files_v1.json",
+  "evaluator_spec": "specs/evaluators/revision_audit_v1.json",
+  "input_dir": "cases/MECH-003/input",
+  "reference_dir": "cases/MECH-003/reference",
+  "metadata": {
+    "domain": "mechanical_engineering",
+    "difficulty": "intermediate",
+    "dataset_split": "development",
+    "synthetic": true,
+    "review_status": "reviewed",
+    "created_date": "2026-06-27",
+    "failure_modes": [
+      "WRONG_REVISION",
+      "HALLUCINATED_DIMENSION",
+      "UNIT_ERROR",
+      "MISSING_CONSTRAINT",
+      "FAILURE_TO_VERIFY"
+    ],
+    "tags": [
+      "drawing-notes",
+      "revision-control",
+      "surface-finish",
+      "shop-instruction"
+    ],
+    "lineage": {
+      "kind": "seed",
+      "parent_case_id": null,
+      "change_note": "Initial manually authored development case."
+    }
+  }
+}

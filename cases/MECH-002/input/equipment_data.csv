@@ -1,0 +1,3 @@
+parameter,value,unit
+shaft_torque,120,N*m
+shaft_speed,1750,rpm

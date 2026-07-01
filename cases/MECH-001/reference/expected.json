@@ -1,0 +1,8 @@
+{
+  "minimum_clearance_mm": 0.01,
+  "maximum_clearance_mm": 0.046,
+  "fit_type": "clearance",
+  "measured_clearance_mm": 0.022,
+  "inspection_disposition": "acceptable",
+  "verification": true
+}

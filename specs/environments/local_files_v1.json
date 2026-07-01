@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.2",
+  "environment_id": "ENV-LOCAL-FILES-V1",
+  "kind": "local_filesystem",
+  "readable_locations": [
+    "input"
+  ],
+  "writable_locations": [
+    "output"
+  ],
+  "reference_access": "evaluator_only",
+  "external_access": "disabled",
+  "allowed_action_categories": [
+    "read_file",
+    "write_file",
+    "calculate"
+  ]
+}

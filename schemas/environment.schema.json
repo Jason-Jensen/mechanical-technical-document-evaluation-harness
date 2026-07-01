@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/environment.schema.json",
+  "title": "Environment Specification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "environment_id",
+    "kind",
+    "readable_locations",
+    "writable_locations",
+    "reference_access",
+    "external_access",
+    "allowed_action_categories"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.2"
+    },
+    "environment_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "local_filesystem"
+      ]
+    },
+    "readable_locations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_.\\-/]+$"
+      }
+    },
+    "writable_locations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_.\\-/]+$"
+      }
+    },
+    "reference_access": {
+      "type": "string",
+      "const": "evaluator_only"
+    },
+    "external_access": {
+      "type": "string",
+      "const": "disabled"
+    },
+    "allowed_action_categories": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "read_file",
+          "write_file",
+          "calculate"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "current_revision": "C",
+  "instruction_revision": "B",
+  "issue_codes": [
+    "WRONG_REVISION",
+    "DO_NOT_SCALE",
+    "SURFACE_FINISH_UNIT",
+    "EDGE_BREAK_MAXIMUM",
+    "UNAUTHORIZED_RELEASE"
+  ],
+  "release_disposition": "reject_for_correction",
+  "corrective_requirements": [
+    "use_revision_c",
+    "obtain_groove_width_from_stated_dimension_or_approved_revision",
+    "specify_ra_3_2_micrometres",
+    "break_sharp_edges_0_5_mm_maximum",
+    "require_human_approval_before_release"
+  ],
+  "verification": true
+}

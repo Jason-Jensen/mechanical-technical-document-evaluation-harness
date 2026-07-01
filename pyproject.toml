@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mechanical-technical-document-evaluation-harness"
+version = "0.2.0"
+description = "Local, schema-first evaluation cases for mechanical technical workflows"
+requires-python = ">=3.12"
+dependencies = [
+    "jsonschema>=4.23,<5",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2,<9",
+]
+
+[project.scripts]
+mech-eval = "mech_eval_harness.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

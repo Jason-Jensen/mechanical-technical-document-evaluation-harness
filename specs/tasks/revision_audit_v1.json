@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.2",
+  "task_id": "TASK-REVISION-AUDIT-V1",
+  "workflow_id": "WF-REVISION-AUDIT",
+  "title": "Audit a shop instruction against controlled drawing notes",
+  "instructions": "Compare the draft shop instruction with the controlled drawing package and revision register. Identify every listed nonconformance, provide the required issue codes, and return the release disposition. Write only the required JSON deliverable.",
+  "input_assets": [
+    {
+      "path": "revision_register.csv",
+      "media_type": "text/csv",
+      "purpose": "Identifies the currently released drawing revision."
+    },
+    {
+      "path": "drawing_notes_rev_c.md",
+      "media_type": "text/markdown",
+      "purpose": "Contains the controlled manufacturing notes."
+    },
+    {
+      "path": "draft_shop_instruction.md",
+      "media_type": "text/markdown",
+      "purpose": "Contains the instruction to be audited."
+    }
+  ],
+  "deliverable": {
+    "filename": "audit.json",
+    "media_type": "application/json",
+    "description": "A structured controlled-document audit with issue codes and disposition.",
+    "required_fields": [
+      "current_revision",
+      "instruction_revision",
+      "issue_codes",
+      "release_disposition",
+      "corrective_requirements",
+      "verification"
+    ]
+  },
+  "constraints": [
+    "Do not scale the drawing to obtain a manufacturing dimension.",
+    "Use only the current released revision.",
+    "Interpret surface-finish values as Ra in micrometres.",
+    "Treat the edge-break value as a maximum, not an exact value.",
+    "Do not approve or issue the instruction."
+  ],
+  "human_review_required": true
+}

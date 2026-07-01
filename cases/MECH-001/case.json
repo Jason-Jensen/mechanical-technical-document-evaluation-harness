@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.2",
+  "case_id": "MECH-001",
+  "workflow_id": "WF-FIT-CLEARANCE",
+  "title": "Inspection disposition for a shaft and hole pair",
+  "task_spec": "specs/tasks/fit_clearance_v1.json",
+  "environment_spec": "specs/environments/local_files_v1.json",
+  "evaluator_spec": "specs/evaluators/fit_clearance_v1.json",
+  "input_dir": "cases/MECH-001/input",
+  "reference_dir": "cases/MECH-001/reference",
+  "metadata": {
+    "domain": "mechanical_engineering",
+    "difficulty": "introductory",
+    "dataset_split": "development",
+    "synthetic": true,
+    "review_status": "reviewed",
+    "created_date": "2026-06-27",
+    "failure_modes": [
+      "RADIAL_DIAMETRAL_CONFUSION",
+      "TABLE_MISREAD",
+      "NUMERIC_ERROR",
+      "MISSING_CONSTRAINT",
+      "FAILURE_TO_VERIFY"
+    ],
+    "tags": [
+      "fits",
+      "inspection",
+      "tolerances",
+      "qa-qc"
+    ],
+    "lineage": {
+      "kind": "seed",
+      "parent_case_id": null,
+      "change_note": "Initial manually authored development case."
+    }
+  }
+}

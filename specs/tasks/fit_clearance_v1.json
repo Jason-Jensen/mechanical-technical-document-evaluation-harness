@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.2",
+  "task_id": "TASK-FIT-CLEARANCE-V1",
+  "workflow_id": "WF-FIT-CLEARANCE",
+  "title": "Evaluate shaft and hole clearance limits",
+  "instructions": "Read the drawing requirements and inspection table. Calculate minimum and maximum diametral clearance, classify the fit, and state whether the measured shaft and hole pair is acceptable. Write only the required JSON deliverable.",
+  "input_assets": [
+    {
+      "path": "drawing_requirements.md",
+      "media_type": "text/markdown",
+      "purpose": "Defines authorized dimensional limits and terminology."
+    },
+    {
+      "path": "inspection_results.csv",
+      "media_type": "text/csv",
+      "purpose": "Contains the measured shaft and hole diameters."
+    }
+  ],
+  "deliverable": {
+    "filename": "assessment.json",
+    "media_type": "application/json",
+    "description": "A structured dimensional-fit assessment with calculations and disposition.",
+    "required_fields": [
+      "minimum_clearance_mm",
+      "maximum_clearance_mm",
+      "fit_type",
+      "measured_clearance_mm",
+      "inspection_disposition",
+      "verification"
+    ]
+  },
+  "constraints": [
+    "Treat every listed diameter as diametral, not radial.",
+    "Use only the authorized limits in the input files.",
+    "Report dimensions in millimetres.",
+    "Do not make an engineering release or sign-off decision."
+  ],
+  "human_review_required": true
+}

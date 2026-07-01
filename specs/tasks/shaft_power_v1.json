@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.2",
+  "task_id": "TASK-SHAFT-POWER-V1",
+  "workflow_id": "WF-SHAFT-POWER",
+  "title": "Check rotating shaft power from torque and speed",
+  "instructions": "Read the equipment data sheet. Calculate mechanical shaft power from torque and rotational speed, report the intermediate angular velocity, and verify the result using an equivalent rpm-based relationship. Write only the required JSON deliverable.",
+  "input_assets": [
+    {
+      "path": "equipment_data.csv",
+      "media_type": "text/csv",
+      "purpose": "Provides the torque and shaft speed."
+    },
+    {
+      "path": "calculation_requirements.md",
+      "media_type": "text/markdown",
+      "purpose": "Defines required units, formula constraints, and verification."
+    }
+  ],
+  "deliverable": {
+    "filename": "power_check.json",
+    "media_type": "application/json",
+    "description": "A structured shaft-power calculation and independent verification.",
+    "required_fields": [
+      "angular_velocity_rad_s",
+      "shaft_power_kw",
+      "verification_power_kw",
+      "relative_difference_percent",
+      "verification"
+    ]
+  },
+  "constraints": [
+    "Convert revolutions per minute to radians per second before using P = T omega.",
+    "Do not treat rpm as radians per second.",
+    "Report power in kilowatts.",
+    "Include an independent numerical verification."
+  ],
+  "human_review_required": true
+}

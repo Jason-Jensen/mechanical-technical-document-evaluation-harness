@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/case.schema.json",
+  "title": "Mechanical Evaluation Case Instance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "workflow_id",
+    "title",
+    "task_spec",
+    "environment_spec",
+    "evaluator_spec",
+    "input_dir",
+    "reference_dir",
+    "metadata"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.2"
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^MECH-[0-9]{3}$"
+    },
+    "workflow_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 8
+    },
+    "task_spec": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_.\\-/]+$"
+    },
+    "environment_spec": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_.\\-/]+$"
+    },
+    "evaluator_spec": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_.\\-/]+$"
+    },
+    "input_dir": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_.\\-/]+$"
+    },
+    "reference_dir": {
+      "type": "string",
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9_.\\-/]+$"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "domain",
+        "difficulty",
+        "dataset_split",
+        "synthetic",
+        "review_status",
+        "created_date",
+        "failure_modes",
+        "tags"
+      ],
+      "properties": {
+        "domain": {
+          "type": "string",
+          "const": "mechanical_engineering"
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": [
+            "introductory",
+            "intermediate",
+            "advanced"
+          ]
+        },
+        "dataset_split": {
+          "type": "string",
+          "enum": [
+            "development",
+            "held_out"
+          ]
+        },
+        "synthetic": {
+          "type": "boolean",
+          "const": true
+        },
+        "review_status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "reviewed"
+          ]
+        },
+        "created_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "failure_modes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9_-]+$"
+          }
+        },
+        "lineage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind"
+          ],
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "seed",
+                "manual_variant",
+                "future_adapted_variant"
+              ]
+            },
+            "parent_case_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^MECH-[0-9]{3}$"
+            },
+            "change_note": {
+              "type": "string",
+              "minLength": 5
+            }
+          }
+        }
+      }
+    }
+  }
+}
