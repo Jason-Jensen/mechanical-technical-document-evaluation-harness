@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import copy
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -126,3 +128,24 @@ def test_load_json_rejects_invalid_json(tmp_path: Path) -> None:
     path.write_text("{not json}", encoding="utf-8")
     with pytest.raises(RepositoryValidationError, match="Invalid JSON"):
         load_json(path)
+
+def test_cli_inspect_rejects_unknown_case() -> None:
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "mech_eval_harness",
+            "inspect",
+            str(ROOT),
+            "MECH-999",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    output = result.stdout + result.stderr
+
+    assert result.returncode == 1
+    assert "ERROR: Unknown case_id: MECH-999" in output
