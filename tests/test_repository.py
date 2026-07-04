@@ -4,6 +4,7 @@ import copy
 import json
 import subprocess
 import sys
+import shutil
 from pathlib import Path
 
 import pytest
@@ -163,3 +164,41 @@ def test_cli_inspect_rejects_unknown_case() -> None:
 
     assert result.returncode == 1
     assert "ERROR: Unknown case_id: MECH-999" in output
+
+def test_cli_inspect_ignores_invalid_unrelated_case(tmp_path: Path) -> None:
+    temp_root = tmp_path / "repository"
+
+    shutil.copytree(ROOT / "schemas", temp_root / "schemas")
+    shutil.copytree(ROOT / "specs", temp_root / "specs")
+    shutil.copytree(
+        ROOT / "cases" / "MECH-002",
+        temp_root / "cases" / "MECH-002",
+    )
+
+    unrelated_case_dir = temp_root / "cases" / "MECH-003"
+    unrelated_case_dir.mkdir(parents=True)
+    (unrelated_case_dir / "case.json").write_text(
+        "{not valid json}",
+        encoding="utf-8",
+    )
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "mech_eval_harness",
+            "inspect",
+            str(temp_root),
+            "MECH-002",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    output = result.stdout + result.stderr
+
+    assert result.returncode == 0
+    assert "Case:        MECH-002" in output
+    assert "Invalid JSON" not in output
