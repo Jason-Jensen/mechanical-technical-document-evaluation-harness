@@ -234,3 +234,31 @@ def test_load_case_rejects_evaluator_weights_not_summing_to_one(
             temp_root,
             temp_root / "cases" / "MECH-002" / "case.json",
         )
+
+def test_load_case_rejects_missing_input_asset(tmp_path: Path) -> None:
+    temp_root = tmp_path / "repository"
+
+    shutil.copytree(ROOT / "schemas", temp_root / "schemas")
+    shutil.copytree(ROOT / "specs", temp_root / "specs")
+    shutil.copytree(
+        ROOT / "cases" / "MECH-002",
+        temp_root / "cases" / "MECH-002",
+    )
+
+    missing_asset = (
+        temp_root
+        / "cases"
+        / "MECH-002"
+        / "input"
+        / "equipment_data.csv"
+    )
+    missing_asset.unlink()
+
+    with pytest.raises(
+        RepositoryValidationError,
+        match="MECH-002: missing input asset: equipment_data.csv",
+    ):
+        load_case(
+            temp_root,
+            temp_root / "cases" / "MECH-002" / "case.json",
+        )
