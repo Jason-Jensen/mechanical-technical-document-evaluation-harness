@@ -12,6 +12,7 @@ from mech_eval_harness.validator import (
     RepositoryValidationError,
     discover_case_files,
     load_case,
+    load_case_by_id,
     load_json,
     validate_repository,
 )
@@ -36,6 +37,19 @@ def test_each_seed_case_loads(case_id: str) -> None:
     loaded = load_case(ROOT, ROOT / "cases" / case_id / "case.json")
     assert loaded.case["case_id"] == case_id
 
+def test_load_case_by_id_loads_requested_case() -> None:
+    loaded = load_case_by_id(ROOT, "MECH-002")
+
+    assert loaded.case["case_id"] == "MECH-002"
+    assert loaded.case_path == ROOT / "cases" / "MECH-002" / "case.json"
+
+
+def test_load_case_by_id_rejects_unknown_case() -> None:
+    with pytest.raises(
+        RepositoryValidationError,
+        match="Unknown case_id: MECH-999",
+    ):
+        load_case_by_id(ROOT, "MECH-999")
 
 def test_all_cases_are_synthetic() -> None:
     assert all(

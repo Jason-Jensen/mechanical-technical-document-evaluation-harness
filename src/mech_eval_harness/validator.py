@@ -98,6 +98,14 @@ def _validate_evaluator_rules(evaluator: dict[str, Any]) -> None:
 def discover_case_files(root: Path) -> list[Path]:
     return sorted(root.glob("cases/MECH-*/case.json"))
 
+def load_case_by_id(root: Path, case_id: str) -> LoadedCase:
+    root = root.resolve()
+
+    for case_path in discover_case_files(root):
+        if case_path.parent.name == case_id:
+            return load_case(root, case_path)
+
+    raise RepositoryValidationError(f"Unknown case_id: {case_id}")
 
 def load_case(root: Path, case_path: Path) -> LoadedCase:
     schemas = {
