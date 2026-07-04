@@ -202,3 +202,35 @@ def test_cli_inspect_ignores_invalid_unrelated_case(tmp_path: Path) -> None:
     assert result.returncode == 0
     assert "Case:        MECH-002" in output
     assert "Invalid JSON" not in output
+
+def test_load_case_rejects_evaluator_weights_not_summing_to_one(
+    tmp_path: Path,
+) -> None:
+    temp_root = tmp_path / "repository"
+
+    shutil.copytree(ROOT / "schemas", temp_root / "schemas")
+    shutil.copytree(ROOT / "specs", temp_root / "specs")
+    shutil.copytree(
+        ROOT / "cases" / "MECH-002",
+        temp_root / "cases" / "MECH-002",
+    )
+
+    evaluator_path = (
+        temp_root / "specs" / "evaluators" / "shaft_power_v1.json"
+    )
+    evaluator = load_json(evaluator_path)
+    evaluator["checks"][0]["weight"] += 0.1
+
+    evaluator_path.write_text(
+        json.dumps(evaluator, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(
+        RepositoryValidationError,
+        match="evaluator check weights must sum to 1.0",
+    ):
+        load_case(
+            temp_root,
+            temp_root / "cases" / "MECH-002" / "case.json",
+        )
