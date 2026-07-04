@@ -7,6 +7,7 @@ from pathlib import Path
 
 from mech_eval_harness.validator import (
     RepositoryValidationError,
+    load_case_by_id,
     validate_repository,
 )
 
@@ -61,25 +62,22 @@ def _list(root: Path) -> int:
 
 
 def _inspect(root: Path, case_id: str) -> int:
-    cases = validate_repository(root)
-    for loaded in cases:
-        if loaded.case["case_id"] != case_id:
-            continue
+    loaded = load_case_by_id(root, case_id)
 
-        print(f"Case:        {loaded.case['case_id']} — {loaded.case['title']}")
-        print(f"Workflow:    {loaded.case['workflow_id']}")
-        print(f"Task:        {loaded.task['task_id']}")
-        print(f"Environment: {loaded.environment['environment_id']}")
-        print(f"Evaluator:   {loaded.evaluator['evaluator_id']}")
-        print(f"Deliverable: {loaded.task['deliverable']['filename']}")
-        print(f"Inputs:      {len(loaded.task['input_assets'])}")
-        print(f"Gates:       {len(loaded.evaluator['gates'])}")
-        print(f"Checks:      {len(loaded.evaluator['checks'])}")
-        print(
-            "Failures:    "
-            + ", ".join(loaded.case["metadata"]["failure_modes"])
-        )
-        return 0
+    print(f"Case:        {loaded.case['case_id']} - {loaded.case['title']}")
+    print(f"Workflow:    {loaded.case['workflow_id']}")
+    print(f"Task:        {loaded.task['task_id']}")
+    print(f"Environment: {loaded.environment['environment_id']}")
+    print(f"Evaluator:   {loaded.evaluator['evaluator_id']}")
+    print(f"Deliverable: {loaded.task['deliverable']['filename']}")
+    print(f"Inputs:      {len(loaded.task['input_assets'])}")
+    print(f"Gates:       {len(loaded.evaluator['gates'])}")
+    print(f"Checks:      {len(loaded.evaluator['checks'])}")
+    print(
+        "Failures:    "
+        + ", ".join(loaded.case["metadata"]["failure_modes"])
+    )
+    return 0
 
     raise RepositoryValidationError(f"Unknown case_id: {case_id}")
 
