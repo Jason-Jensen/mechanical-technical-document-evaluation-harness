@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.2",
+  "evaluator_id": "EVAL-BOM-RECONCILIATION-V1",
+  "workflow_id": "WF-BOM-RECONCILIATION",
+  "mode": "deterministic",
+  "reference_file": "expected.json",
+  "composition": "gate_then_weighted_checks",
+  "pass_threshold": 1.0,
+  "gates": [
+    {
+      "gate_id": "output_exists",
+      "kind": "output_exists",
+      "failure_mode": "INCOMPLETE_DELIVERABLE"
+    },
+    {
+      "gate_id": "valid_json",
+      "kind": "valid_json",
+      "failure_mode": "INVALID_FILE"
+    },
+    {
+      "gate_id": "required_fields",
+      "kind": "required_fields_present",
+      "failure_mode": "INCOMPLETE_DELIVERABLE"
+    },
+    {
+      "gate_id": "field_types",
+      "kind": "field_types_match",
+      "failure_mode": "INVALID_FILE"
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "missing_parts",
+      "kind": "set_equals",
+      "actual_path": "$.missing_part_numbers",
+      "expected_path": "$.missing_part_numbers",
+      "weight": 0.2,
+      "failure_mode": "MISSING_ITEM"
+    },
+    {
+      "check_id": "extra_parts",
+      "kind": "set_equals",
+      "actual_path": "$.extra_part_numbers",
+      "expected_path": "$.extra_part_numbers",
+      "weight": 0.15,
+      "failure_mode": "EXTRA_ITEM"
+    },
+    {
+      "check_id": "quantity_mismatches",
+      "kind": "set_equals",
+      "actual_path": "$.quantity_mismatch_part_numbers",
+      "expected_path": "$.quantity_mismatch_part_numbers",
+      "weight": 0.2,
+      "failure_mode": "QUANTITY_MISMATCH"
+    },
+    {
+      "check_id": "revision_mismatches",
+      "kind": "set_equals",
+      "actual_path": "$.revision_mismatch_part_numbers",
+      "expected_path": "$.revision_mismatch_part_numbers",
+      "weight": 0.2,
+      "failure_mode": "WRONG_REVISION"
+    },
+    {
+      "check_id": "disposition",
+      "kind": "exact_match",
+      "actual_path": "$.reconciliation_disposition",
+      "expected_path": "$.reconciliation_disposition",
+      "weight": 0.15,
+      "failure_mode": "MISSING_CONSTRAINT"
+    },
+    {
+      "check_id": "verification",
+      "kind": "boolean_equals",
+      "actual_path": "$.verification",
+      "expected_path": "$.verification",
+      "weight": 0.1,
+      "failure_mode": "FAILURE_TO_VERIFY"
+    }
+  ]
+}

@@ -22,19 +22,47 @@ from mech_eval_harness.validator import (
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_repository_has_three_seed_cases() -> None:
-    assert len(discover_case_files(ROOT)) == 3
+
+def test_repository_has_five_cases() -> None:
+    case_files = discover_case_files(ROOT)
+
+    assert [
+        case_file.parent.name
+        for case_file in case_files
+    ] == [
+        "MECH-001",
+        "MECH-002",
+        "MECH-003",
+        "MECH-004",
+        "MECH-005",
+    ]
 
 
 def test_repository_validates() -> None:
     loaded = validate_repository(ROOT)
-    assert [item.case["case_id"] for item in loaded] == [
-        "MECH-001", "MECH-002", "MECH-003"
+
+    assert [
+        item.case["case_id"]
+        for item in loaded
+    ] == [
+        "MECH-001",
+        "MECH-002",
+        "MECH-003",
+        "MECH-004",
+        "MECH-005",
     ]
 
-
-@pytest.mark.parametrize("case_id", ["MECH-001", "MECH-002", "MECH-003"])
-def test_each_seed_case_loads(case_id: str) -> None:
+@pytest.mark.parametrize(
+    "case_id",
+    [
+        "MECH-001",
+        "MECH-002",
+        "MECH-003",
+        "MECH-004",
+        "MECH-005",
+    ],
+)
+def test_each_case_loads(case_id: str) -> None:
     loaded = load_case(ROOT, ROOT / "cases" / case_id / "case.json")
     assert loaded.case["case_id"] == case_id
 

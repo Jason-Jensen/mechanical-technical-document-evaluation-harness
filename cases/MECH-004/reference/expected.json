@@ -1,0 +1,16 @@
+{
+  "missing_part_numbers": [
+    "P-103"
+  ],
+  "extra_part_numbers": [
+    "P-104"
+  ],
+  "quantity_mismatch_part_numbers": [
+    "P-102"
+  ],
+  "revision_mismatch_part_numbers": [
+    "P-101"
+  ],
+  "reconciliation_disposition": "reject_for_correction",
+  "verification": true
+}
