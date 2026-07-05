@@ -54,7 +54,7 @@
       "actual_path": "$.release_disposition",
       "expected_path": "$.release_disposition",
       "weight": 0.15,
-      "failure_mode": "WRONG_REVISION"
+      "failure_mode": "UNAUTHORIZED_RELEASE"
     },
     {
       "check_id": "corrective_requirements",

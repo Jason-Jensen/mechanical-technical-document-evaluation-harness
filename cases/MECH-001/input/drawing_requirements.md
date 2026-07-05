@@ -1,4 +1,4 @@
-# Drawing Requirements — Synthetic
+# Drawing Requirements - Synthetic
 
 All dimensions are in millimetres.
 
