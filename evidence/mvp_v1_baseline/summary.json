@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.0",
+  "benchmark_id": "MECHANICAL-MVP-V1",
+  "baseline_type": "harness_verification",
+  "executed_at_utc": "2026-07-05T23:16:20.198892+00:00",
+  "run_id": "BASELINE-20260705T231620Z",
+  "split_manifest": "benchmarks/mvp_v1/split.json",
+  "raw_runs_root": "runs/baseline-mvp-v1/BASELINE-20260705T231620Z",
+  "claims": {
+    "model_performance_evidence": false,
+    "agent_performance_evidence": false,
+    "oracle_evaluator_integrity_check": true,
+    "curated_fault_detection_check": true
+  },
+  "metrics": {
+    "oracle_development_total": 4,
+    "oracle_development_passed": 4,
+    "oracle_held_out_total": 1,
+    "oracle_held_out_passed": 1,
+    "fault_scenarios_total": 4,
+    "fault_scenarios_detected": 4
+  },
+  "scenarios": [
+    {
+      "scenario_id": "oracle-development-mech-001",
+      "suite": "oracle",
+      "split": "development",
+      "case_id": "MECH-001",
+      "candidate_id": "oracle-mech-001-001",
+      "candidate_source": "cases/MECH-001/reference/expected.json",
+      "candidate_sha256": "76c815a0b2f701ad42d9a8d487b45a06c1c4949e444debff561144097e56deb2",
+      "expected": {
+        "exit_code": 0,
+        "score": 1.0,
+        "failure_modes": []
+      },
+      "actual": {
+        "exit_code": 0,
+        "evaluation_passed": true,
+        "score": 1.0,
+        "gate_passed": true,
+        "failures": []
+      },
+      "expectation_met": true,
+      "raw_result_record": "runs/baseline-mvp-v1/BASELINE-20260705T231620Z/oracle-development-mech-001/RUN-20260705T231620222535Z-6d29074f/result.json"
+    },
+    {
+      "scenario_id": "oracle-development-mech-002",
+      "suite": "oracle",
+      "split": "development",
+      "case_id": "MECH-002",
+      "candidate_id": "oracle-mech-002-001",
+      "candidate_source": "cases/MECH-002/reference/expected.json",
+      "candidate_sha256": "a5f598d9c2870d2bdac62c361a0c2bbe9c75b3f1ffe93a7f8c6cd2f6e458074f",
+      "expected": {
+        "exit_code": 0,
+        "score": 1.0,
+        "failure_modes": []
+      },
+      "actual": {
+        "exit_code": 0,
+        "evaluation_passed": true,
+        "score": 1.0,
+        "gate_passed": true,
+        "failures": []
+      },
+      "expectation_met": true,
+      "raw_result_record": "runs/baseline-mvp-v1/BASELINE-20260705T231620Z/oracle-development-mech-002/RUN-20260705T231620277303Z-d4b3c32f/result.json"
+    },
+    {
+      "scenario_id": "oracle-development-mech-004",
+      "suite": "oracle",
+      "split": "development",
+      "case_id": "MECH-004",
+      "candidate_id": "oracle-mech-004-001",
+      "candidate_source": "cases/MECH-004/reference/expected.json",
+      "candidate_sha256": "65cfcd1f703a508e99ea66da6c71a0385f709fe1e207f421feeec918a2f6765d",
+      "expected": {
+        "exit_code": 0,
+        "score": 1.0,
+        "failure_modes": []
+      },
+      "actual": {
+        "exit_code": 0,
+        "evaluation_passed": true,
+        "score": 1.0,
+        "gate_passed": true,
+        "failures": []
+      },
+      "expectation_met": true,
+      "raw_result_record": "runs/baseline-mvp-v1/BASELINE-20260705T231620Z/oracle-development-mech-004/RUN-20260705T231620334653Z-ae2f5710/result.json"
+    },
+    {
+      "scenario_id": "oracle-development-mech-005",
+      "suite": "oracle",
+      "split": "development",
+      "case_id": "MECH-005",
+      "candidate_id": "oracle-mech-005-001",
+      "candidate_source": "cases/MECH-005/reference/expected.json",
+      "candidate_sha256": "eda7e9d7606ed20b65ebb53bc6acc4a1b42d51e5f860419e44f21efb449a5173",
+      "expected": {
+        "exit_code": 0,
+        "score": 1.0,
+        "failure_modes": []
+      },
+      "actual": {
+        "exit_code": 0,
+        "evaluation_passed": true,
+        "score": 1.0,
+        "gate_passed": true,
+        "failures": []
+      },
+      "expectation_met": true,
+      "raw_result_record": "runs/baseline-mvp-v1/BASELINE-20260705T231620Z/oracle-development-mech-005/RUN-20260705T231620391093Z-5fcc5366/result.json"
+    },
+    {
+      "scenario_id": "oracle-held_out-mech-003",
+      "suite": "oracle",
+      "split": "held_out",
+      "case_id": "MECH-003",
+      "candidate_id": "oracle-mech-003-001",
+      "candidate_source": "cases/MECH-003/reference/expected.json",
+      "candidate_sha256": "f0261f8d9c3270be777913bce327c427d68109637a706d77a8f8a9f23e530bbc",
+      "expected": {
+        "exit_code": 0,
+        "score": 1.0,
+        "failure_modes": []
+      },
+      "actual": {
+        "exit_code": 0,
+        "evaluation_passed": true,
+        "score": 1.0,
+        "gate_passed": true,
+        "failures": []
+      },
+      "expectation_met": true,
+      "raw_result_record": "runs/baseline-mvp-v1/BASELINE-20260705T231620Z/oracle-held_out-mech-003/RUN-20260705T231620443420Z-c3f08ef8/result.json"
+    },
+    {
+      "scenario_id": "mech-002-unit-error",
+      "suite": "fault_injection",
+      "split": "development",
+      "case_id": "MECH-002",
+      "candidate_id": "mech-002-unit-error-001",
+      "candidate_source": "examples/candidates/MECH-002/unit-error.json",
+      "candidate_sha256": "78a99e704bd0276778293ff565ec091d63b204888d713318411c7086a52acb67",
+      "expected": {
+        "exit_code": 1,
+        "score": 0.75,
+        "failure_modes": [
+          "UNIT_ERROR"
+        ]
+      },
+      "actual": {
+        "exit_code": 1,
+        "evaluation_passed": false,
+        "score": 0.75,
+        "gate_passed": true,
+        "failures": [
+          {
+            "source": "check",
+            "item_id": "angular_velocity",
+            "kind": "numeric_close",
+            "failure_mode": "UNIT_ERROR",
+            "evidence": "Actual 1750.0 at '$.angular_velocity_rad_s'; expected 183.2596 from '$.angular_velocity_rad_s'; absolute difference 1566.7404; tolerance 0.01.",
+            "weight": 0.25,
+            "source_reference": null,
+            "evidence_location": null
+          }
+        ]
+      },
+      "expectation_met": true,
+      "raw_result_record": "runs/baseline-mvp-v1/BASELINE-20260705T231620Z/mech-002-unit-error/RUN-20260705T231620491825Z-ba332e9d/result.json"
+    },
+    {
+      "scenario_id": "mech-002-incomplete",
+      "suite": "fault_injection",
+      "split": "development",
+      "case_id": "MECH-002",
+      "candidate_id": null,
+      "candidate_source": "examples/candidates/MECH-002/incomplete.json",
+      "candidate_sha256": "b756674c8638405f889e49139ca04fb27b95ac5c7d62b41483b52f2125e4f93b",
+      "expected": {
+        "exit_code": 1,
+        "score": 0.0,
+        "failure_modes": [
+          "INCOMPLETE_DELIVERABLE"
+        ]
+      },
+      "actual": {
+        "exit_code": 1,
+        "evaluation_passed": false,
+        "score": 0.0,
+        "gate_passed": false,
+        "failures": [
+          {
+            "source": "gate",
+            "item_id": "required_fields",
+            "kind": "required_fields_present",
+            "failure_mode": "INCOMPLETE_DELIVERABLE",
+            "evidence": "Missing required payload fields: verification",
+            "weight": null,
+            "source_reference": null,
+            "evidence_location": null
+          }
+        ]
+      },
+      "expectation_met": true,
+      "raw_result_record": "runs/baseline-mvp-v1/BASELINE-20260705T231620Z/mech-002-incomplete/RUN-20260705T231620535664Z-6250eb85/result.json"
+    },
+    {
+      "scenario_id": "mech-004-revision-error",
+      "suite": "fault_injection",
+      "split": "development",
+      "case_id": "MECH-004",
+      "candidate_id": "mech-004-revision-error-001",
+      "candidate_source": "examples/candidates/MECH-004/revision-error.json",
+      "candidate_sha256": "980d69fbeae1d3f0225ef00b12383fc0fb158bbd431e166065f2deb3f9f0eaed",
+      "expected": {
+        "exit_code": 1,
+        "score": 0.8,
+        "failure_modes": [
+          "WRONG_REVISION"
+        ]
+      },
+      "actual": {
+        "exit_code": 1,
+        "evaluation_passed": false,
+        "score": 0.8,
+        "gate_passed": true,
+        "failures": [
+          {
+            "source": "check",
+            "item_id": "revision_mismatches",
+            "kind": "set_equals",
+            "failure_mode": "WRONG_REVISION",
+            "evidence": "Missing items: [\"P-101\"]; unexpected items: [].",
+            "weight": 0.2,
+            "source_reference": null,
+            "evidence_location": null
+          }
+        ]
+      },
+      "expectation_met": true,
+      "raw_result_record": "runs/baseline-mvp-v1/BASELINE-20260705T231620Z/mech-004-revision-error/RUN-20260705T231620583626Z-c27f9471/result.json"
+    },
+    {
+      "scenario_id": "mech-005-unit-error",
+      "suite": "fault_injection",
+      "split": "development",
+      "case_id": "MECH-005",
+      "candidate_id": "mech-005-unit-error-001",
+      "candidate_source": "examples/candidates/MECH-005/unit-error.json",
+      "candidate_sha256": "42b3393ccd2b610b56dbe47aa8b896b636008f6956e02ab13b46aced1038bc7b",
+      "expected": {
+        "exit_code": 1,
+        "score": 0.65,
+        "failure_modes": [
+          "UNIT_ERROR",
+          "FAILURE_TO_VERIFY"
+        ]
+      },
+      "actual": {
+        "exit_code": 1,
+        "evaluation_passed": false,
+        "score": 0.65,
+        "gate_passed": true,
+        "failures": [
+          {
+            "source": "check",
+            "item_id": "free_expansion",
+            "kind": "numeric_close",
+            "failure_mode": "UNIT_ERROR",
+            "evidence": "Actual 0.02304 at '$.free_expansion_mm'; expected 23.04 from '$.free_expansion_mm'; absolute difference 23.01696; tolerance 0.01.",
+            "weight": 0.25,
+            "source_reference": null,
+            "evidence_location": null
+          },
+          {
+            "source": "check",
+            "item_id": "relative_difference",
+            "kind": "numeric_close",
+            "failure_mode": "FAILURE_TO_VERIFY",
+            "evidence": "Actual 99.9 at '$.relative_difference_percent'; expected 0.0 from '$.relative_difference_percent'; absolute difference 99.9; tolerance 0.01.",
+            "weight": 0.1,
+            "source_reference": null,
+            "evidence_location": null
+          }
+        ]
+      },
+      "expectation_met": true,
+      "raw_result_record": "runs/baseline-mvp-v1/BASELINE-20260705T231620Z/mech-005-unit-error/RUN-20260705T231620628985Z-ff8fc196/result.json"
+    }
+  ]
+}
