@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "case_id": "MECH-002",
+  "candidate_id": "mech-002-unit-error-001",
+  "artifact_type": "structured_engineering_response",
+  "artifacts": [],
+  "payload": {
+    "angular_velocity_rad_s": 1750.0,
+    "shaft_power_kw": 21.9911,
+    "verification_power_kw": 21.9911,
+    "relative_difference_percent": 0.0,
+    "verification": true
+  },
+  "provenance": {
+    "producer_type": "human_authored_example",
+    "failure_intent": "Rotational speed in rpm was reported as rad/s without conversion."
+  }
+}
