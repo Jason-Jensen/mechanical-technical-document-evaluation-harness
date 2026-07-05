@@ -18,6 +18,24 @@ class GateResult:
     failure_mode: str | None
     evidence: str
 
+class CheckConfigurationError(ValueError):
+    """Raised when an evaluator check definition cannot be executed safely."""
+
+
+@dataclass(frozen=True)
+class CheckResult:
+    """Structured result from one deterministic evaluator check."""
+
+    check_id: str
+    kind: str
+    passed: bool
+    weight: float
+    failure_mode: str | None
+    actual_path: str
+    expected_path: str
+    actual: Any
+    expected: Any
+    evidence: str
 
 def run_mandatory_gates(
     candidate_path: Path,
@@ -339,5 +357,347 @@ def _failed(
         kind=kind,
         passed=False,
         failure_mode=failure_mode,
+        evidence=evidence,
+    )
+
+_SUPPORTED_NON_NUMERIC_CHECKS = {
+    "exact_match",
+    "boolean_equals",
+    "set_equals",
+    "contains_all",
+}
+
+_REQUIRED_CHECK_FIELDS = {
+    "check_id",
+    "kind",
+    "actual_path",
+    "expected_path",
+    "weight",
+    "failure_mode",
+}
+
+
+def run_deterministic_checks(
+    candidate_payload: dict[str, Any],
+    reference_payload: dict[str, Any],
+    evaluator: dict[str, Any],
+) -> list[CheckResult]:
+    """Execute evaluator checks in their declared order.
+
+    Candidate and reference files must already have been loaded and validated.
+    This function performs comparison only.
+    """
+
+    checks = evaluator.get("checks")
+
+    if not isinstance(checks, list):
+        raise CheckConfigurationError(
+            "Evaluator 'checks' must be an array."
+        )
+
+    results: list[CheckResult] = []
+
+    for index, check in enumerate(checks):
+        if not isinstance(check, dict):
+            raise CheckConfigurationError(
+                f"Check at index {index} must be an object."
+            )
+
+        results.append(
+            _run_deterministic_check(
+                candidate_payload,
+                reference_payload,
+                check,
+                index=index,
+            )
+        )
+
+    return results
+
+
+def _run_deterministic_check(
+    candidate_payload: dict[str, Any],
+    reference_payload: dict[str, Any],
+    check: dict[str, Any],
+    *,
+    index: int,
+) -> CheckResult:
+    missing_fields = sorted(_REQUIRED_CHECK_FIELDS - check.keys())
+
+    if missing_fields:
+        raise CheckConfigurationError(
+            (
+                f"Check at index {index} is missing required fields: "
+                + ", ".join(missing_fields)
+            )
+        )
+
+    check_id = check["check_id"]
+    kind = check["kind"]
+    actual_path = check["actual_path"]
+    expected_path = check["expected_path"]
+    weight = check["weight"]
+    failure_mode = check["failure_mode"]
+
+    for field_name, value in (
+        ("check_id", check_id),
+        ("kind", kind),
+        ("actual_path", actual_path),
+        ("expected_path", expected_path),
+        ("failure_mode", failure_mode),
+    ):
+        if not isinstance(value, str) or not value:
+            raise CheckConfigurationError(
+                (
+                    f"Check at index {index} has an invalid "
+                    f"'{field_name}' value."
+                )
+            )
+
+    if (
+        not isinstance(weight, (int, float))
+        or isinstance(weight, bool)
+        or weight <= 0
+    ):
+        raise CheckConfigurationError(
+            f"Check '{check_id}' has an invalid weight."
+        )
+
+    if kind not in _SUPPORTED_NON_NUMERIC_CHECKS:
+        raise CheckConfigurationError(
+            (
+                f"Check '{check_id}' uses unsupported kind '{kind}'. "
+                "Numeric checks are implemented in WBS 1.4."
+            )
+        )
+
+    expected_found, expected = _resolve_value_path(
+        reference_payload,
+        expected_path,
+    )
+
+    if not expected_found:
+        raise CheckConfigurationError(
+            (
+                f"Check '{check_id}' expected path "
+                f"'{expected_path}' was not found in the reference."
+            )
+        )
+
+    actual_found, actual = _resolve_value_path(
+        candidate_payload,
+        actual_path,
+    )
+
+    if not actual_found:
+        return _build_check_result(
+            check_id=check_id,
+            kind=kind,
+            passed=False,
+            weight=float(weight),
+            failure_mode=failure_mode,
+            actual_path=actual_path,
+            expected_path=expected_path,
+            actual=None,
+            expected=expected,
+            evidence=(
+                f"Actual path '{actual_path}' was not found "
+                "in the candidate payload."
+            ),
+        )
+
+    if kind == "exact_match":
+        passed = _json_identity(actual) == _json_identity(expected)
+
+        if passed:
+            evidence = "Actual value matches expected value."
+        else:
+            evidence = (
+                f"Expected {_display_json(expected)} from "
+                f"'{expected_path}'; found {_display_json(actual)} "
+                f"at '{actual_path}'."
+            )
+
+    elif kind == "boolean_equals":
+        if not isinstance(expected, bool):
+            raise CheckConfigurationError(
+                (
+                    f"Check '{check_id}' expected value must be "
+                    "a Boolean."
+                )
+            )
+
+        passed = isinstance(actual, bool) and actual == expected
+
+        if passed:
+            evidence = "Actual Boolean matches expected Boolean."
+        elif not isinstance(actual, bool):
+            evidence = (
+                f"Expected a Boolean at '{actual_path}'; "
+                f"found {_json_type_name(actual)}."
+            )
+        else:
+            evidence = (
+                f"Expected {_display_json(expected)}; "
+                f"found {_display_json(actual)}."
+            )
+
+    elif kind == "set_equals":
+        if not isinstance(expected, list):
+            raise CheckConfigurationError(
+                (
+                    f"Check '{check_id}' expected value must be "
+                    "an array."
+                )
+            )
+
+        if not isinstance(actual, list):
+            passed = False
+            evidence = (
+                f"Expected an array at '{actual_path}'; "
+                f"found {_json_type_name(actual)}."
+            )
+        else:
+            missing = _collection_difference(expected, actual)
+            unexpected = _collection_difference(actual, expected)
+            passed = not missing and not unexpected
+
+            if passed:
+                evidence = (
+                    "Actual and expected sets match; "
+                    "order and duplicate count were ignored."
+                )
+            else:
+                evidence = (
+                    f"Missing items: {_display_json(missing)}; "
+                    f"unexpected items: {_display_json(unexpected)}."
+                )
+
+    else:
+        if not isinstance(expected, list):
+            raise CheckConfigurationError(
+                (
+                    f"Check '{check_id}' expected value must be "
+                    "an array."
+                )
+            )
+
+        if not isinstance(actual, list):
+            passed = False
+            evidence = (
+                f"Expected an array at '{actual_path}'; "
+                f"found {_json_type_name(actual)}."
+            )
+        else:
+            missing = _collection_difference(expected, actual)
+            passed = not missing
+
+            if passed:
+                evidence = (
+                    "Actual collection contains every required item."
+                )
+            else:
+                evidence = (
+                    "Candidate collection is missing required items: "
+                    f"{_display_json(missing)}."
+                )
+
+    return _build_check_result(
+        check_id=check_id,
+        kind=kind,
+        passed=passed,
+        weight=float(weight),
+        failure_mode=failure_mode,
+        actual_path=actual_path,
+        expected_path=expected_path,
+        actual=actual,
+        expected=expected,
+        evidence=evidence,
+    )
+
+
+def _resolve_value_path(
+    document: dict[str, Any],
+    path: str,
+) -> tuple[bool, Any]:
+    if not path.startswith("$."):
+        return False, None
+
+    current: Any = document
+
+    for segment in path[2:].split("."):
+        if not isinstance(current, dict) or segment not in current:
+            return False, None
+
+        current = current[segment]
+
+    return True, current
+
+
+def _json_identity(value: Any) -> str:
+    return (
+        f"{_json_type_name(value)}:"
+        + json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+        )
+    )
+
+
+def _collection_difference(
+    left: list[Any],
+    right: list[Any],
+) -> list[Any]:
+    right_identities = {
+        _json_identity(item)
+        for item in right
+    }
+
+    difference: list[Any] = []
+    seen: set[str] = set()
+
+    for item in left:
+        identity = _json_identity(item)
+
+        if identity not in right_identities and identity not in seen:
+            difference.append(item)
+            seen.add(identity)
+
+    return difference
+
+
+def _display_json(value: Any) -> str:
+    return json.dumps(
+        value,
+        sort_keys=True,
+        ensure_ascii=False,
+    )
+
+
+def _build_check_result(
+    *,
+    check_id: str,
+    kind: str,
+    passed: bool,
+    weight: float,
+    failure_mode: str,
+    actual_path: str,
+    expected_path: str,
+    actual: Any,
+    expected: Any,
+    evidence: str,
+) -> CheckResult:
+    return CheckResult(
+        check_id=check_id,
+        kind=kind,
+        passed=passed,
+        weight=weight,
+        failure_mode=None if passed else failure_mode,
+        actual_path=actual_path,
+        expected_path=expected_path,
+        actual=actual,
+        expected=expected,
         evidence=evidence,
     )
