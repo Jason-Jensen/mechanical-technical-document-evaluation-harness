@@ -33,6 +33,3 @@ jobs:
 
       - name: Run test suite
         run: python -m pytest
-
-      - name: Seed intentional failure
-        run: python -c "raise SystemExit('Intentional CI seed failure for WBS 4.2')"
