@@ -1,0 +1,382 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/result.schema.json",
+  "title": "Mechanical Evaluation Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "created_at",
+    "harness_version",
+    "case_id",
+    "workflow_id",
+    "task_id",
+    "environment_id",
+    "evaluator_id",
+    "candidate_id",
+    "component_versions",
+    "artifacts",
+    "passed",
+    "score",
+    "pass_threshold",
+    "gate_passed",
+    "passed_weight",
+    "total_weight",
+    "gates",
+    "checks",
+    "failures"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "harness_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^MECH-[0-9]{3}$"
+    },
+    "workflow_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+    },
+    "environment_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+    },
+    "evaluator_id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+    },
+    "candidate_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "component_versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case",
+        "task",
+        "environment",
+        "evaluator",
+        "candidate"
+      ],
+      "properties": {
+        "case": {
+          "type": "string",
+          "minLength": 1
+        },
+        "task": {
+          "type": "string",
+          "minLength": 1
+        },
+        "environment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evaluator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "candidate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/artifactReference"
+      }
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "pass_threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "gate_passed": {
+      "type": "boolean"
+    },
+    "passed_weight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "total_weight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/gateResult"
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/checkResult"
+      }
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/failureEvidence"
+      }
+    }
+  },
+  "$defs": {
+    "artifactReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "path",
+        "artifact_id",
+        "media_type"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "candidate",
+            "reference"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "media_type": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "evidenceLocation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
+    },
+    "gateResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_id",
+        "kind",
+        "passed",
+        "failure_mode",
+        "evidence",
+        "source_reference",
+        "evidence_location"
+      ],
+      "properties": {
+        "gate_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "passed": {
+          "type": "boolean"
+        },
+        "failure_mode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "evidence_location": {
+          "$ref": "#/$defs/evidenceLocation"
+        }
+      }
+    },
+    "checkResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "check_id",
+        "kind",
+        "passed",
+        "weight",
+        "failure_mode",
+        "actual_path",
+        "expected_path",
+        "actual",
+        "expected",
+        "evidence",
+        "source_reference",
+        "evidence_location"
+      ],
+      "properties": {
+        "check_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "passed": {
+          "type": "boolean"
+        },
+        "weight": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "failure_mode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+        },
+        "actual_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actual": {},
+        "expected": {},
+        "evidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "evidence_location": {
+          "$ref": "#/$defs/evidenceLocation"
+        }
+      }
+    },
+    "failureEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "item_id",
+        "kind",
+        "failure_mode",
+        "evidence",
+        "weight",
+        "source_reference",
+        "evidence_location"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": [
+            "gate",
+            "check"
+          ]
+        },
+        "item_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "failure_mode": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_-]{2,63}$"
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "weight": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "source_reference": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "evidence_location": {
+          "$ref": "#/$defs/evidenceLocation"
+        }
+      }
+    }
+  }
+}
