@@ -11,7 +11,7 @@
   "metadata": {
     "domain": "mechanical_engineering",
     "difficulty": "intermediate",
-    "dataset_split": "development",
+    "dataset_split": "held_out",
     "synthetic": true,
     "review_status": "reviewed",
     "created_date": "2026-06-27",
