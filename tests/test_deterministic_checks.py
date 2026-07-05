@@ -129,18 +129,6 @@ def test_missing_expected_path_is_configuration_error() -> None:
             _evaluator(_check("exact_match")),
         )
 
-
-def test_numeric_close_is_deferred_to_wbs_1_4() -> None:
-    with pytest.raises(
-        CheckConfigurationError,
-        match="WBS 1.4",
-    ):
-        run_deterministic_checks(
-            {"value": 10.0},
-            {"value": 10.0},
-            _evaluator(_check("numeric_close")),
-        )
-
 def test_missing_required_check_field_is_configuration_error() -> None:
     check = _check("exact_match")
     del check["expected_path"]

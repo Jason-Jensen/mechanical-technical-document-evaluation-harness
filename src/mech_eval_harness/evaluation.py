@@ -1,8 +1,9 @@
-"""Mandatory gate execution for candidate artifacts."""
+"""Mandatory gate and deterministic check execution."""
 
 from __future__ import annotations
 
 import json
+import math
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -17,6 +18,7 @@ class GateResult:
     passed: bool
     failure_mode: str | None
     evidence: str
+
 
 class CheckConfigurationError(ValueError):
     """Raised when an evaluator check definition cannot be executed safely."""
@@ -36,6 +38,7 @@ class CheckResult:
     actual: Any
     expected: Any
     evidence: str
+
 
 def run_mandatory_gates(
     candidate_path: Path,
@@ -360,7 +363,9 @@ def _failed(
         evidence=evidence,
     )
 
-_SUPPORTED_NON_NUMERIC_CHECKS = {
+
+_SUPPORTED_CHECKS = {
+    "numeric_close",
     "exact_match",
     "boolean_equals",
     "set_equals",
@@ -463,13 +468,34 @@ def _run_deterministic_check(
             f"Check '{check_id}' has an invalid weight."
         )
 
-    if kind not in _SUPPORTED_NON_NUMERIC_CHECKS:
+    if kind not in _SUPPORTED_CHECKS:
         raise CheckConfigurationError(
-            (
-                f"Check '{check_id}' uses unsupported kind '{kind}'. "
-                "Numeric checks are implemented in WBS 1.4."
-            )
+            f"Check '{check_id}' uses unsupported kind '{kind}'."
         )
+
+    tolerance: Any = None
+
+    if kind == "numeric_close":
+        if "absolute_tolerance" not in check:
+            raise CheckConfigurationError(
+                (
+                    f"Check '{check_id}' of kind 'numeric_close' "
+                    "requires 'absolute_tolerance'."
+                )
+            )
+
+        tolerance = check["absolute_tolerance"]
+
+        if (
+            not _is_finite_number(tolerance)
+            or tolerance < 0
+        ):
+            raise CheckConfigurationError(
+                (
+                    f"Check '{check_id}' absolute_tolerance must be "
+                    "a finite non-negative number."
+                )
+            )
 
     expected_found, expected = _resolve_value_path(
         reference_payload,
@@ -506,7 +532,36 @@ def _run_deterministic_check(
             ),
         )
 
-    if kind == "exact_match":
+    if kind == "numeric_close":
+        if not _is_finite_number(expected):
+            raise CheckConfigurationError(
+                (
+                    f"Check '{check_id}' expected value must be "
+                    "a finite number."
+                )
+            )
+
+        if not _is_finite_number(actual):
+            passed = False
+            evidence = (
+                f"Expected a finite number at '{actual_path}'; "
+                f"found {_display_json(actual)} "
+                f"({_json_type_name(actual)})."
+            )
+        else:
+            difference = abs(float(actual) - float(expected))
+            tolerance_value = float(tolerance)
+            passed = difference <= tolerance_value
+
+            evidence = (
+                f"Actual {_display_json(actual)} at '{actual_path}'; "
+                f"expected {_display_json(expected)} from "
+                f"'{expected_path}'; absolute difference "
+                f"{difference:.12g}; tolerance "
+                f"{tolerance_value:.12g}."
+            )
+
+    elif kind == "exact_match":
         passed = _json_identity(actual) == _json_identity(expected)
 
         if passed:
@@ -632,6 +687,14 @@ def _resolve_value_path(
         current = current[segment]
 
     return True, current
+
+
+def _is_finite_number(value: Any) -> bool:
+    return (
+        isinstance(value, (int, float))
+        and not isinstance(value, bool)
+        and math.isfinite(value)
+    )
 
 
 def _json_identity(value: Any) -> str:
