@@ -21,6 +21,11 @@
       "gate_id": "required_fields",
       "kind": "required_fields_present",
       "failure_mode": "INCOMPLETE_DELIVERABLE"
+    },
+    {
+      "gate_id": "field_types",
+      "kind": "field_types_match",
+      "failure_mode": "INVALID_FILE"
     }
   ],
   "checks": [
