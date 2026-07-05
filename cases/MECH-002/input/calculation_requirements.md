@@ -1,9 +1,9 @@
-# Calculation Requirements — Synthetic
+# Calculation Requirements - Synthetic
 
 Calculate mechanical shaft power using:
 
-- `P = T × omega`
-- `omega = 2 × pi × n / 60`
+- `P = T * omega`
+- `omega = 2 * pi * n / 60`
 
 where:
 
@@ -14,6 +14,6 @@ where:
 
 Verify the result independently using the equivalent relationship:
 
-`P_kW = T_Nm × n_rpm / 9549.2966`
+`P_kW = T_Nm * n_rpm / 9549.2966`
 
 Report the relative difference between the two power values as a percentage.

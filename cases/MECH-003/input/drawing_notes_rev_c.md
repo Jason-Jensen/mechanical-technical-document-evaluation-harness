@@ -1,4 +1,4 @@
-# DWG-1007 — Revision C — Synthetic
+# DWG-1007 - Revision C - Synthetic
 
 1. Unless otherwise specified, dimensions are in millimetres.
 2. Do not scale drawing.
