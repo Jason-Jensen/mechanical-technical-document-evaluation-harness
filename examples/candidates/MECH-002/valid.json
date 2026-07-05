@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "case_id": "MECH-002",
+  "candidate_id": "mech-002-valid-001",
+  "artifact_type": "structured_engineering_response",
+  "artifacts": [],
+  "payload": {
+    "angular_velocity_rad_s": 183.2596,
+    "shaft_power_kw": 21.9911,
+    "verification_power_kw": 21.9911,
+    "relative_difference_percent": 0.0,
+    "verification": true
+  },
+  "provenance": {
+    "producer_type": "human_authored_example"
+  }
+}
