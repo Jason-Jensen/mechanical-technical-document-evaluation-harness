@@ -94,6 +94,42 @@
           "items": {
             "type": "string",
             "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "field_types": {
+            "type": "object",
+            "minProperties": 1,
+            "propertyNames": {
+              "pattern": "^[a-z][a-z0-9_]*$"
+            },
+            "additionalProperties": {
+              "type": "string",
+              "enum": [
+                "number",
+                "integer",
+                "boolean",
+                "string",
+                "array",
+                "object"
+              ]
+            }
+          }
+        },
+        "field_types": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "additionalProperties": {
+            "type": "string",
+            "enum": [
+              "number",
+              "integer",
+              "boolean",
+              "string",
+              "array",
+              "object"
+            ]
           }
         }
       }

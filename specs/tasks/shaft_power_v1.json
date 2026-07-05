@@ -26,7 +26,14 @@
       "verification_power_kw",
       "relative_difference_percent",
       "verification"
-    ]
+    ],
+    "field_types": {
+      "angular_velocity_rad_s": "number",
+      "shaft_power_kw": "number",
+      "verification_power_kw": "number",
+      "relative_difference_percent": "number",
+      "verification": "boolean"
+    }
   },
   "constraints": [
     "Convert revolutions per minute to radians per second before using P = T omega.",
