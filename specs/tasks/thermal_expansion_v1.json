@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.2",
+  "task_id": "TASK-THERMAL-EXPANSION-V1",
+  "workflow_id": "WF-THERMAL-EXPANSION",
+  "title": "Calculate unconstrained linear thermal expansion",
+  "instructions": "Read the component data and calculation requirements. Calculate the temperature change and unconstrained linear thermal expansion, independently verify the expansion using a second unit-consistent route, identify the expansion direction, state the required disposition, and write only the required JSON deliverable.",
+  "input_assets": [
+    {
+      "path": "component_data.csv",
+      "media_type": "text/csv",
+      "purpose": "Defines component length, temperatures, and linear expansion coefficient."
+    },
+    {
+      "path": "calculation_requirements.md",
+      "media_type": "text/markdown",
+      "purpose": "Defines the calculation, verification, reporting, and human-review requirements."
+    }
+  ],
+  "deliverable": {
+    "filename": "thermal_expansion_calculation.json",
+    "media_type": "application/json",
+    "description": "A structured unconstrained thermal-expansion calculation and verification record.",
+    "required_fields": [
+      "temperature_change_c",
+      "free_expansion_mm",
+      "verification_expansion_mm",
+      "relative_difference_percent",
+      "expansion_direction",
+      "calculation_disposition",
+      "verification"
+    ],
+    "field_types": {
+      "temperature_change_c": "number",
+      "free_expansion_mm": "number",
+      "verification_expansion_mm": "number",
+      "relative_difference_percent": "number",
+      "expansion_direction": "string",
+      "calculation_disposition": "string",
+      "verification": "boolean"
+    }
+  },
+  "constraints": [
+    "Calculate temperature change as operating temperature minus installation temperature.",
+    "Use delta_L = alpha * L * delta_T.",
+    "Report free expansion in millimetres.",
+    "Independently verify using the installed length converted to millimetres before applying the equation.",
+    "Report relative difference as a percentage.",
+    "Use requires_expansion_accommodation_review when positive expansion exists.",
+    "Do not approve support, flexibility, stress, restraint, or final engineering design.",
+    "Qualified human review is required."
+  ],
+  "human_review_required": true
+}

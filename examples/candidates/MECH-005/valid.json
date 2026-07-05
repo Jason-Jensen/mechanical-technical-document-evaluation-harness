@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "case_id": "MECH-005",
+  "candidate_id": "mech-005-valid-001",
+  "artifact_type": "structured_engineering_response",
+  "artifacts": [],
+  "payload": {
+    "temperature_change_c": 160.0,
+    "free_expansion_mm": 23.04,
+    "verification_expansion_mm": 23.04,
+    "relative_difference_percent": 0.0,
+    "expansion_direction": "increase",
+    "calculation_disposition": "requires_expansion_accommodation_review",
+    "verification": true
+  },
+  "provenance": {
+    "producer_type": "human_authored_example"
+  }
+}

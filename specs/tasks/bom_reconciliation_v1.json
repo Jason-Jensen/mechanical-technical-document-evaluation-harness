@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.2",
+  "task_id": "TASK-BOM-RECONCILIATION-V1",
+  "workflow_id": "WF-BOM-RECONCILIATION",
+  "title": "Reconcile drawing parts list against procurement BOM",
+  "instructions": "Read the controlled drawing parts list, procurement bill of materials, and reconciliation requirements. Identify missing parts, extra parts, quantity mismatches, and revision mismatches. State the required reconciliation disposition and write only the required JSON deliverable.",
+  "input_assets": [
+    {
+      "path": "drawing_parts_list.csv",
+      "media_type": "text/csv",
+      "purpose": "Defines the controlled drawing parts list."
+    },
+    {
+      "path": "procurement_bom.csv",
+      "media_type": "text/csv",
+      "purpose": "Defines the procurement bill of materials to be reconciled."
+    },
+    {
+      "path": "reconciliation_requirements.md",
+      "media_type": "text/markdown",
+      "purpose": "Defines matching, discrepancy, and disposition requirements."
+    }
+  ],
+  "deliverable": {
+    "filename": "bom_reconciliation.json",
+    "media_type": "application/json",
+    "description": "A structured cross-document BOM reconciliation report.",
+    "required_fields": [
+      "missing_part_numbers",
+      "extra_part_numbers",
+      "quantity_mismatch_part_numbers",
+      "revision_mismatch_part_numbers",
+      "reconciliation_disposition",
+      "verification"
+    ],
+    "field_types": {
+      "missing_part_numbers": "array",
+      "extra_part_numbers": "array",
+      "quantity_mismatch_part_numbers": "array",
+      "revision_mismatch_part_numbers": "array",
+      "reconciliation_disposition": "string",
+      "verification": "boolean"
+    }
+  },
+  "constraints": [
+    "Match records by exact part number.",
+    "Compare quantity and revision only for part numbers present in both documents.",
+    "Do not substitute description similarity for part-number identity.",
+    "Reject the package for correction when any discrepancy exists.",
+    "Do not approve or release procurement or fabrication documents."
+  ],
+  "human_review_required": true
+}

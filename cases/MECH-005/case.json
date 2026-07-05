@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.2",
+  "case_id": "MECH-005",
+  "workflow_id": "WF-THERMAL-EXPANSION",
+  "title": "Unconstrained thermal expansion calculation",
+  "task_spec": "specs/tasks/thermal_expansion_v1.json",
+  "environment_spec": "specs/environments/local_files_v1.json",
+  "evaluator_spec": "specs/evaluators/thermal_expansion_v1.json",
+  "input_dir": "cases/MECH-005/input",
+  "reference_dir": "cases/MECH-005/reference",
+  "metadata": {
+    "domain": "mechanical_engineering",
+    "difficulty": "intermediate",
+    "dataset_split": "development",
+    "synthetic": true,
+    "review_status": "reviewed",
+    "created_date": "2026-07-05",
+    "failure_modes": [
+      "TEMPERATURE_DIFFERENCE_ERROR",
+      "UNIT_ERROR",
+      "WRONG_FORMULA",
+      "SIGN_ERROR",
+      "MISSING_CONSTRAINT",
+      "FAILURE_TO_VERIFY"
+    ],
+    "tags": [
+      "thermal-expansion",
+      "unit-conversion",
+      "calculation",
+      "verification",
+      "mechanical-design"
+    ],
+    "lineage": {
+      "kind": "seed",
+      "parent_case_id": null,
+      "change_note": "Initial manually authored thermal-expansion calculation case."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "temperature_change_c": 160.0,
+  "free_expansion_mm": 23.04,
+  "verification_expansion_mm": 23.04,
+  "relative_difference_percent": 0.0,
+  "expansion_direction": "increase",
+  "calculation_disposition": "requires_expansion_accommodation_review",
+  "verification": true
+}
