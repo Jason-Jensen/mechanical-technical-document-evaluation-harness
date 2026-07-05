@@ -22,6 +22,14 @@ class LoadedCase:
     evaluator: dict[str, Any]
     case_path: Path
 
+@dataclass(frozen=True)
+class LoadedCandidate:
+    candidate: dict[str, Any]
+    candidate_path: Path
+
+    @property
+    def payload(self) -> dict[str, Any]:
+        return self.candidate["payload"]
 
 SCHEMA_FILES = {
     "case": "schemas/case.schema.json",
@@ -30,6 +38,7 @@ SCHEMA_FILES = {
     "evaluator": "schemas/evaluator.schema.json",
 }
 
+CANDIDATE_SCHEMA_FILE = "schemas/candidate.schema.json"
 
 def load_json(path: Path) -> dict[str, Any]:
     try:
@@ -46,6 +55,41 @@ def load_json(path: Path) -> dict[str, Any]:
         raise RepositoryValidationError(f"Top-level JSON value must be an object: {path}")
     return value
 
+def load_candidate(
+    root: Path,
+    candidate_path: Path,
+    *,
+    expected_case_id: str | None = None,
+) -> LoadedCandidate:
+    root = root.resolve()
+    candidate_path = candidate_path.resolve()
+
+    candidate = load_json(candidate_path)
+
+    schema_path = _safe_resolve(root, CANDIDATE_SCHEMA_FILE)
+    schema = load_json(schema_path)
+
+    try:
+        relative_candidate_path = candidate_path.relative_to(root)
+        label = str(relative_candidate_path)
+    except ValueError:
+        label = str(candidate_path)
+
+    _validate_schema(candidate, schema, label)
+
+    if (
+        expected_case_id is not None
+        and candidate["case_id"] != expected_case_id
+    ):
+        raise RepositoryValidationError(
+            f"candidate case_id {candidate['case_id']} does not match "
+            f"expected case_id {expected_case_id}"
+        )
+
+    return LoadedCandidate(
+        candidate=candidate,
+        candidate_path=candidate_path,
+    )
 
 def _validate_schema(data: dict[str, Any], schema: dict[str, Any], label: str) -> None:
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
