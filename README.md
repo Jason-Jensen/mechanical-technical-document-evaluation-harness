@@ -302,6 +302,12 @@ A controlled seeded failure was used during CI acceptance to confirm that the wo
 - Use LLM judges only when no practical deterministic alternative exists.
 - Keep the evaluator independent of any one model or agent runtime.
 
+## Release documentation
+
+- [Release notes — v0.2.0](docs/release_notes_v0.2.0.md)
+- [Limitations and claim boundaries](docs/limitations.md)
+
+
 ## Current limitations
 
 The MVP is intentionally narrow:
