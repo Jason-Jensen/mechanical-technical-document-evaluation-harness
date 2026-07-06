@@ -323,3 +323,15 @@ The MVP is intentionally narrow:
 - no deployment or observability platform.
 
 These are later expansion paths, not requirements for the current evaluation kernel.
+
+## One-click portfolio demo
+
+On Windows, double-click `RUN_DEMO.bat` in the repository root.
+
+The demonstration evaluates two synthetic MECH-002 shaft-power artifacts:
+
+- a valid artifact that should pass with a score of 1.000;
+- an artifact containing an angular-velocity unit error that should fail with `UNIT_ERROR` evidence.
+
+Generated reports and structured result records are written to `demo_output/`.
+The launcher requires the local `.venv` environment created during project setup.

@@ -23,3 +23,5 @@ runs/*
 # Local scratch files
 scratch/
 outputs/
+
+demo_output/
