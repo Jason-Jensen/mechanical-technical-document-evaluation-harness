@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "release": "v0.2.0",
+  "accepted_at_local": "2026-07-05T18:50:00-06:00",
+  "accepted_commit": "45336a21c9c5f4dcd4b3bd009d05183621061b5d",
+  "annotated_tag": "v0.2.0",
+  "tag_object": "8d426d295b883433a68a86f16abe4c4a170a41ee",
+  "tagged_commit": "45336a21c9c5f4dcd4b3bd009d05183621061b5d",
+  "clean_clone_python": "3.12.6",
+  "installed_package_version": "0.2.0",
+  "repository_cases_validated": 5,
+  "automated_tests_passed": 121,
+  "baseline": {
+    "development_oracle_passed": 4,
+    "development_oracle_total": 4,
+    "held_out_oracle_passed": 1,
+    "held_out_oracle_total": 1,
+    "fault_scenarios_detected": 4,
+    "fault_scenarios_total": 4
+  },
+  "portfolio_demo": {
+    "scenarios_verified": 2,
+    "scenarios_total": 2,
+    "passing_score": 1.0,
+    "failing_score": 0.75,
+    "failing_mode": "UNIT_ERROR"
+  },
+  "generated_result_records_checked": 11,
+  "generated_harness_version": "0.2.0",
+  "release_claim_boundaries_present": true,
+  "clean_clone_git_state": "clean",
+  "final_acceptance_matrix": "PASS",
+  "notes": [
+    "The final acceptance run supersedes two earlier wrapper-only failures.",
+    "The wrapper defects affected quoting/parsing in the acceptance script, not the harness, package installation, tests, benchmark, or demo.",
+    "This normalized evidence is recorded after the v0.2.0 tag and is not part of the tagged source tree."
+  ]
+}
