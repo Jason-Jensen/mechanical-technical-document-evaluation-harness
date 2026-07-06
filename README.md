@@ -17,7 +17,7 @@ The repository currently provides:
 - a development and held-out benchmark split;
 - a reproducible harness-verification baseline;
 - a command-line interface;
-- 120 automated tests;
+- 121 automated tests;
 - GitHub Actions CI on pushes and pull requests.
 
 The harness does not call an AI model. Candidate artifacts may be produced by a human, script, model, or agent outside the harness and then submitted for evaluation.
@@ -99,7 +99,16 @@ Run the complete regression suite:
 python -m pytest
 ```
 
-The current accepted baseline is 120 passing tests.
+The current accepted baseline is 121 passing tests.
+
+## Portfolio demo
+
+Run the deterministic portfolio demonstration:
+
+```powershell
+python scripts/run_portfolio_demo.py `
+    --runs-dir runs\portfolio-demo `
+    --report-path evidence\portfolio_demo\report.md
 
 ## CLI usage
 
