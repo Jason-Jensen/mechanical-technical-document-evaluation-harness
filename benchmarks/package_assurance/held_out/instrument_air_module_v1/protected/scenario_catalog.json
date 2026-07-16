@@ -1,0 +1,141 @@
+{
+  "schema_version": "0.3.0-held-out-scenario-catalog",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "split": "held_out",
+  "producer_hidden": true,
+  "scenario_count": 8,
+  "clean_scenario_count": 1,
+  "single_fault_scenario_count": 6,
+  "compound_fault_scenario_count": 1,
+  "scenarios": [
+    {
+      "scenario_slug": "clean",
+      "scenario_id": "SCN-HO-AIR-CLEAN-001",
+      "package_id": "PKG-HO-AIR-CLEAN-001",
+      "scenario_type": "clean",
+      "expected_package_state": "automatic_pass",
+      "expected_cli_exit_code": 0,
+      "package_path": "scenarios/clean/package",
+      "package_content_hash": "da2c5e67d0603eb7883b0502fc5a21c4ebf0ce0676211862ea4223f5232e1761",
+      "benchmark_metadata_sha256": "bbc70593f74e528cba790443ca56bdc65323848fb6881ca598f3f51bbf082555",
+      "fixture_inventory_sha256": "3c8623814578f376b56cbdf5993ac519975b6c551225b50ac4e7c636529e594b",
+      "seeded_fault_ids": [],
+      "producer_visible": false
+    },
+    {
+      "scenario_slug": "missing_drawing_file",
+      "scenario_id": "SCN-HO-AIR-MISSING-DOC-001",
+      "package_id": "PKG-HO-AIR-MISSING-DOC-001",
+      "scenario_type": "single_fault",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "package_path": "scenarios/missing_drawing_file/package",
+      "package_content_hash": "efc49a2c67715a2ca910bd5a9c6fca0689a9f44b7daf373f24efc51faf7bbde6",
+      "benchmark_metadata_sha256": "ede5401e1ea5c5ff4612a1ad35715386ea36b74c0440077b748d64320dc0b50f",
+      "fixture_inventory_sha256": "08480645d8983430b1cf5f6397ff87ff6643e793289495a0e372614bfba42dbd",
+      "seeded_fault_ids": [
+        "FAULT-HO-MISSING-DOC-001"
+      ],
+      "producer_visible": false
+    },
+    {
+      "scenario_slug": "superseded_drawing_revision",
+      "scenario_id": "SCN-HO-AIR-REVISION-001",
+      "package_id": "PKG-HO-AIR-REVISION-001",
+      "scenario_type": "single_fault",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "package_path": "scenarios/superseded_drawing_revision/package",
+      "package_content_hash": "a785681cb496c66446e6e296b566139459c53ae51350cdce30f7f07891e0660e",
+      "benchmark_metadata_sha256": "7c0a8457c8b0a75c206bd5cf83b045d4174ab991fbcc0233caf6bb027f643f14",
+      "fixture_inventory_sha256": "84237f3b83e62e8218b238f4bf793616e6f49735d996acecda3c6bd8b9b24eed",
+      "seeded_fault_ids": [
+        "FAULT-HO-REVISION-001"
+      ],
+      "producer_visible": false
+    },
+    {
+      "scenario_slug": "orphan_equipment_tag",
+      "scenario_id": "SCN-HO-AIR-ORPHAN-TAG-001",
+      "package_id": "PKG-HO-AIR-ORPHAN-TAG-001",
+      "scenario_type": "single_fault",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "package_path": "scenarios/orphan_equipment_tag/package",
+      "package_content_hash": "21c4c659056c724b972ac92c67049bad311653c1492933a509c43cf3df6f3754",
+      "benchmark_metadata_sha256": "dc4a60936b8cf49c0a53d146a57fe8ae9190b7c74cfc7187a09e06e81c6329b6",
+      "fixture_inventory_sha256": "13276f7db00701724f9f3e45c9df0712905498849a7d140a174aec16879ce6a9",
+      "seeded_fault_ids": [
+        "FAULT-HO-ORPHAN-TAG-001"
+      ],
+      "producer_visible": false
+    },
+    {
+      "scenario_slug": "quantity_conflict",
+      "scenario_id": "SCN-HO-AIR-QUANTITY-001",
+      "package_id": "PKG-HO-AIR-QUANTITY-001",
+      "scenario_type": "single_fault",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "package_path": "scenarios/quantity_conflict/package",
+      "package_content_hash": "d989fa79bc7156de41ac469c1e97f689c039c9dd72b186f97b68696842f66de0",
+      "benchmark_metadata_sha256": "17a6e12ced14525233403264fd2faea1346304a716c3db49547c947e1f57e36e",
+      "fixture_inventory_sha256": "81aebc6434a86593d3ac3a88d256552aee474ac40b65bb260d6ab96cf5dfdb86",
+      "seeded_fault_ids": [
+        "FAULT-HO-QUANTITY-001"
+      ],
+      "producer_visible": false
+    },
+    {
+      "scenario_slug": "wrong_datasheet_mapping",
+      "scenario_id": "SCN-HO-AIR-DATASHEET-001",
+      "package_id": "PKG-HO-AIR-DATASHEET-001",
+      "scenario_type": "single_fault",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "package_path": "scenarios/wrong_datasheet_mapping/package",
+      "package_content_hash": "1874ce2f5b1917378127208446b740c41e47b3e846c77881272b8e58ac9311cf",
+      "benchmark_metadata_sha256": "5751792aec35bf2a45ca9079000c30d3788abbbbdb570eee8efe2ba135aaf5fb",
+      "fixture_inventory_sha256": "2dc8b3e5271d8e769822307a8f5f3f5aff3ab9916621b85df056088c1c0db672",
+      "seeded_fault_ids": [
+        "FAULT-HO-DATASHEET-001"
+      ],
+      "producer_visible": false
+    },
+    {
+      "scenario_slug": "ambiguous_tag_normalization",
+      "scenario_id": "SCN-HO-AIR-AMBIGUOUS-ID-001",
+      "package_id": "PKG-HO-AIR-AMBIGUOUS-ID-001",
+      "scenario_type": "single_fault",
+      "expected_package_state": "evaluator_uncertainty",
+      "expected_cli_exit_code": 5,
+      "package_path": "scenarios/ambiguous_tag_normalization/package",
+      "package_content_hash": "69fce07fb6ee666c9d658961360f0b02468c55712e78cd33866f804ed800b492",
+      "benchmark_metadata_sha256": "43338b2ebbfb66e05bcd135b97a02601002325bff3f21c58b2d3d76b2e5c4f95",
+      "fixture_inventory_sha256": "b060ae560cdcb8f116912e06a99bdfdb8f87c5839025f6f3534e9f906d5aa93b",
+      "seeded_fault_ids": [
+        "FAULT-HO-AMBIGUOUS-ID-001"
+      ],
+      "producer_visible": false
+    },
+    {
+      "scenario_slug": "compound_revision_and_title",
+      "scenario_id": "SCN-HO-AIR-COMPOUND-001",
+      "package_id": "PKG-HO-AIR-COMPOUND-001",
+      "scenario_type": "compound_fault",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "package_path": "scenarios/compound_revision_and_title/package",
+      "package_content_hash": "691ef83bc8284051deb84d73dfcec3ddcd5ac4d0f8d46cccfb6c3126a98e6044",
+      "benchmark_metadata_sha256": "6bd84d63a349a27876eedb1373bd54f1b1ba9036925c2b67d212c02d9d6a42fa",
+      "fixture_inventory_sha256": "42edf513a61f6e2e7bd95158c265013fc472349739e9e468363540c13d6f81dd",
+      "seeded_fault_ids": [
+        "FAULT-HO-COMPOUND-REV-001",
+        "FAULT-HO-COMPOUND-TITLE-001"
+      ],
+      "producer_visible": false
+    }
+  ],
+  "review_status": "author_reviewed_pending_user_acceptance",
+  "freeze_status": "freeze_candidate_pending_user_acceptance"
+}

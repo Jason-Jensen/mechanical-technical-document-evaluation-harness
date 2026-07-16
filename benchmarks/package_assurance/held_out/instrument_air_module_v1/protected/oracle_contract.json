@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.3.0-held-out-oracle-contract",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "check_version": "0.3.0",
+  "severity_values": [
+    {
+      "value": "critical",
+      "meaning": "Release-blocking deterministic failure"
+    },
+    {
+      "value": "high",
+      "meaning": "Blocking uncertainty or missing decision evidence"
+    },
+    {
+      "value": "medium",
+      "meaning": "Non-blocking condition requiring qualified review"
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "GATE-CONTROLLED-FILE-EXISTS",
+      "owner_wbs": "P2.1",
+      "purpose": "Required controlled file exists at the declared in-boundary path"
+    },
+    {
+      "check_id": "CHECK-DRAWING-REVISION-CONSISTENCY",
+      "owner_wbs": "P2.1",
+      "purpose": "Drawing register, metadata, and revision history agree on current revision"
+    },
+    {
+      "check_id": "CHECK-DRAWING-EQUIPMENT-RELATIONSHIP",
+      "owner_wbs": "P2.2",
+      "purpose": "Required equipment tags resolve on declared drawings"
+    },
+    {
+      "check_id": "CHECK-BOM-QUANTITY-CONSISTENCY",
+      "owner_wbs": "P2.3",
+      "purpose": "Authoritative BOM quantity agrees with declared package quantity metadata"
+    },
+    {
+      "check_id": "CHECK-EQUIPMENT-DATASHEET-RELATIONSHIP",
+      "owner_wbs": "P2.3",
+      "purpose": "Required equipment resolves to the authoritative datasheet"
+    },
+    {
+      "check_id": "CHECK-CANONICAL-IDENTIFIER-NORMALIZATION",
+      "owner_wbs": "P2.2",
+      "purpose": "Identifier normalization is safe and unambiguous"
+    },
+    {
+      "check_id": "CHECK-DRAWING-TITLE-CONSISTENCY",
+      "owner_wbs": "P2.2",
+      "purpose": "Review-routed drawing titles agree after display normalization"
+    }
+  ],
+  "matching_rule": "Expected findings match exact check ID and version, state, severity, release hold, affected identifiers, authority rule, values or condition, and evidence locators. Wildcards are prohibited.",
+  "implementation_status": "benchmark_expectation_only_no_evaluator_implementation",
+  "review_status": "author_reviewed_pending_user_acceptance"
+}

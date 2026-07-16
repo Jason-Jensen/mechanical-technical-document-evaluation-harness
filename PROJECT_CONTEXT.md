@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P1.2, development synthetic package
-- **Status:** P1.2 fixture and integrity checks are complete; user acceptance pending
-- **Implementation state:** One clean synthetic development package and its protected golden relationships are implemented on `feature/package-fixtures`; no source adapters, gates, consistency rules, result routing, or reports were added
+- **Active WBS:** P1.3, held-out package and fault variants
+- **Status:** P1.3 is complete and integrity-verified on `feature/package-fixtures`; user acceptance and pre-tuning freeze activation are pending
+- **Implementation state:** The accepted development fixture and the new held-out freeze candidate are present; source adapters, gates, consistency rules, result routing, and reports remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -40,7 +40,9 @@ P0.2 is accepted. It freezes the development/held-out split, minimum scenario ma
 
 P1.1 is accepted and locally integrated at commit `42ad037`. It validates package metadata, mandatory source declarations, canonical manifest identifiers, document revisions, relationship declarations, authority-map references, and controlled paths. It resolves source and file declarations without parsing source records or assigning package result states; those behaviors remain in later gated work.
 
-P1.2 provides `SCN-DEV-PUMP-SKID-CLEAN-001`, a clean, fully synthetic pump-skid package with all seven mandatory sources, nine controlled file references, 20 reviewed semantic relationships, exact hidden evidence locators, expected clean results, and a package-tree content hash. Its source layouts are fixture examples rather than accepted general schemas. P1.3 held-out authoring and all evaluator behavior remain blocked pending P1.2 acceptance.
+P1.2 is accepted at commit `f26ed27`. It provides `SCN-DEV-PUMP-SKID-CLEAN-001`, a clean, fully synthetic pump-skid package with all seven mandatory sources, nine controlled file references, 20 reviewed semantic relationships, exact hidden evidence locators, expected clean results, and a package-tree content hash. Its source layouts are fixture examples rather than accepted general schemas.
+
+P1.3 provides `FAM-HO-INSTRUMENT-AIR-001`, a materially distinct synthetic instrument-air family with one clean scenario and seven controlled variants. The family contains 11 documents, 31 reviewed relationships, eight seeded fault records, seven release-blocking variants, an `evaluator_uncertainty` case, and a compound state-precedence case. Exact protected findings, evidence locators, check IDs, package states, per-scenario hashes, material-distinction evidence, contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884` are recorded. Focused verification passed 50 tests with one expected Windows symlink skip; the full suite passed 170 with the same skip. The family is a self-authored pre-tuning freeze candidate, not an independently blind benchmark. P2 evaluator implementation remains blocked until P1.3 is accepted.
 
 ## Intended Outcome
 
@@ -80,7 +82,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review and accept the verified P1.2 development fixture. Do not begin P1.3 held-out authoring, source adapters, mandatory gates, consistency rules, PDF/CAD, agent, API, database, RAG, or frontend implementation until the predecessor gate is accepted.
+Review and accept the verified P1.3 held-out freeze candidate. Acceptance activates the recorded pre-tuning freeze without changing protected fixture content. Do not begin P2 source adapters, mandatory gates, consistency rules, PDF/CAD, agent, API, database, RAG, or frontend implementation until P1.3 is accepted.
 
 ## Engineering Boundary
 

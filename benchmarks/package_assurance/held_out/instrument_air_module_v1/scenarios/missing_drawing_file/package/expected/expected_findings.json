@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.3.0-fixture-oracle",
+  "scenario_id": "SCN-HO-AIR-MISSING-DOC-001",
+  "package_id": "PKG-HO-AIR-MISSING-DOC-001",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "scenario_type": "single_fault",
+  "seeded_fault_ids": [
+    "FAULT-HO-MISSING-DOC-001"
+  ],
+  "expected_findings": [
+    {
+      "finding_id": "FIND-HO-MISSING-DOC-001",
+      "check_id": "GATE-CONTROLLED-FILE-EXISTS",
+      "check_version": "0.3.0",
+      "result_state": "automatic_fail",
+      "severity": "critical",
+      "release_hold": true,
+      "affected_identifiers": [
+        {
+          "identifier_type": "document_id",
+          "identifier": "DOC-AIR-DWG-003"
+        },
+        {
+          "identifier_type": "file_ref_id",
+          "identifier": "FILE-AIR-DWG-003"
+        }
+      ],
+      "authority_rule_id": "AUTH-PKG-002",
+      "condition": "declared_required_file_missing",
+      "expected_value": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+      "actual_value": null,
+      "authoritative_source_ref": {
+        "source_type": "package_manifest",
+        "source_file": "package_manifest.json"
+      },
+      "compared_source_ref": {
+        "source_type": "controlled_file_reference",
+        "source_file": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref"
+      },
+      "evidence_locators": [
+        {
+          "source_type": "package_manifest",
+          "source_file": "package_manifest.json",
+          "format": "json",
+          "json_pointer": "/file_references/2/path",
+          "record_id": "FILE-AIR-DWG-003",
+          "property_name": "path",
+          "original_value": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+          "normalized_value": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref"
+        },
+        {
+          "source_type": "controlled_file_reference",
+          "source_file": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+          "format": "file_reference",
+          "file_ref_id": "FILE-AIR-DWG-003",
+          "declared_relative_path": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+          "resolved_package_relative_path": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+          "boundary_check": "inside_allowed_root",
+          "existence_check": "missing"
+        }
+      ],
+      "review_owner": "document_control"
+    }
+  ],
+  "allowed_incidental_findings": [],
+  "oracle_review_status": "author_reviewed_pending_user_acceptance",
+  "freeze_status": "freeze_candidate_pending_user_acceptance"
+}

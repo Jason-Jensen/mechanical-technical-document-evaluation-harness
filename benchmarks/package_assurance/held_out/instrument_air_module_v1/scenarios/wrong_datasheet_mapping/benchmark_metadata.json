@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.3.0",
+  "benchmark_id": "PACKAGE-ASSURANCE-PILOT-V0.3.0",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "scenario_id": "SCN-HO-AIR-DATASHEET-001",
+  "package_id": "PKG-HO-AIR-DATASHEET-001",
+  "split": "held_out",
+  "scenario_type": "single_fault",
+  "benchmark_revision": "1",
+  "package_root": "package",
+  "package_manifest": "package/package_manifest.json",
+  "synthetic": true,
+  "content_hash": {
+    "algorithm": "sha256",
+    "scope": "package_tree",
+    "canonicalization": "sorted relative path, NUL, lowercase file sha256, LF",
+    "inventory_ref": "fixture_inventory.json",
+    "value": "1874ce2f5b1917378127208446b740c41e47b3e846c77881272b8e58ac9311cf"
+  },
+  "producer_visible_paths": [
+    "package/package_manifest.json",
+    "package/inputs/drawing_register.csv",
+    "package/inputs/drawing_metadata.json",
+    "package/inputs/bom_or_equipment_list.csv",
+    "package/inputs/datasheet_spec_metadata.json",
+    "package/inputs/revision_history.csv",
+    "package/authority/authority_map.json",
+    "package/files/"
+  ],
+  "producer_hidden_paths": [
+    "package/expected/expected_findings.json",
+    "package/expected/expected_release_state.json",
+    "package/expected/expected_relationships_ref.json",
+    "family:protected/scenario_catalog.json",
+    "family:protected/fault_matrix.json",
+    "family:protected/golden_relationships.json",
+    "family:protected/oracle_contract.json"
+  ],
+  "review": {
+    "provenance": "Fully synthetic and newly authored for this held-out family before P2 implementation or tuning.",
+    "authoring_mode": "Agent-assisted fixture authoring under user supervision.",
+    "review_status": "author_reviewed_pending_user_acceptance",
+    "freeze_status": "freeze_candidate_pending_user_acceptance",
+    "held_out_status": "newly_authored_pre_tuning",
+    "blindness_claim": "not_independently_blind",
+    "contamination_status": "self_authored_pre_tuning_unexecuted",
+    "notes_ref": "../../family_review.md"
+  }
+}

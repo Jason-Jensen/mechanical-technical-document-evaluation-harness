@@ -1,0 +1,165 @@
+{
+  "schema_version": "0.3.0-fixture-example",
+  "source_type": "datasheet_spec_metadata",
+  "datasheets": [
+    {
+      "record_id": "DSMETA-AIR-220",
+      "document_id": "DOC-AIR-DS-002",
+      "datasheet_id": "DS-AIR-V220",
+      "equipment_tag": "V-220A",
+      "title": "Air Receiver V-220A Datasheet",
+      "revision_id": "C0",
+      "revision_scheme": "explicit_sequence",
+      "revision_sequence": [
+        "P0",
+        "P1",
+        "C0"
+      ],
+      "document_status": "issued_for_release",
+      "package_quantity": 1,
+      "required_for_release": true,
+      "file_ref_id": "FILE-AIR-DS-002",
+      "controlled_values": {
+        "volume": {
+          "value": 6,
+          "unit": "m3"
+        },
+        "design_pressure": {
+          "value": 1200,
+          "unit": "kPag"
+        },
+        "shell_material": "SA-516-70"
+      }
+    },
+    {
+      "record_id": "DSMETA-AIR-210",
+      "document_id": "DOC-AIR-DS-001",
+      "datasheet_id": "DS-AIR-C210",
+      "equipment_tag": "C-210A",
+      "title": "Air Compressor C-210A Datasheet",
+      "revision_id": "C0",
+      "revision_scheme": "explicit_sequence",
+      "revision_sequence": [
+        "P0",
+        "P1",
+        "C0"
+      ],
+      "document_status": "issued_for_release",
+      "package_quantity": 1,
+      "required_for_release": true,
+      "file_ref_id": "FILE-AIR-DS-001",
+      "controlled_values": {
+        "rated_capacity": {
+          "value": 600,
+          "unit": "Nm3/h"
+        },
+        "discharge_pressure": {
+          "value": 850,
+          "unit": "kPag"
+        },
+        "motor_power": {
+          "value": 110,
+          "unit": "kW"
+        }
+      }
+    },
+    {
+      "record_id": "DSMETA-AIR-230",
+      "document_id": "DOC-AIR-DS-003",
+      "datasheet_id": "DS-AIR-DR230",
+      "equipment_tag": "DR-230A",
+      "title": "Desiccant Dryer DR-230A Datasheet",
+      "revision_id": "C0",
+      "revision_scheme": "explicit_sequence",
+      "revision_sequence": [
+        "P0",
+        "P1",
+        "C0"
+      ],
+      "document_status": "issued_for_release",
+      "package_quantity": 1,
+      "required_for_release": true,
+      "file_ref_id": "FILE-AIR-DS-003",
+      "controlled_values": {
+        "rated_capacity": {
+          "value": 600,
+          "unit": "Nm3/h"
+        },
+        "pressure_dew_point": {
+          "value": -40,
+          "unit": "degC"
+        },
+        "design_pressure": {
+          "value": 1200,
+          "unit": "kPag"
+        }
+      }
+    }
+  ],
+  "specifications": [
+    {
+      "record_id": "SPMETA-AIR-020",
+      "document_id": "DOC-AIR-SPEC-002",
+      "specification_id": "SPEC-AIR-VES-020",
+      "equipment_tags": [
+        "V-220A"
+      ],
+      "title": "Air Receiver Minimum Requirements",
+      "revision_id": "C0",
+      "revision_scheme": "explicit_sequence",
+      "revision_sequence": [
+        "P0",
+        "P1",
+        "C0"
+      ],
+      "document_status": "issued_for_release",
+      "required_for_release": true,
+      "file_ref_id": "FILE-AIR-SPEC-002",
+      "requirement_summary": {
+        "minimum_volume": {
+          "value": 6,
+          "unit": "m3"
+        },
+        "minimum_design_pressure": {
+          "value": 1200,
+          "unit": "kPag"
+        },
+        "required_shell_material": "SA-516-70"
+      }
+    },
+    {
+      "record_id": "SPMETA-AIR-010",
+      "document_id": "DOC-AIR-SPEC-001",
+      "specification_id": "SPEC-AIR-SYS-010",
+      "equipment_tags": [
+        "C-210A",
+        "DR-230A"
+      ],
+      "title": "Instrument Air Package Requirements",
+      "revision_id": "C0",
+      "revision_scheme": "explicit_sequence",
+      "revision_sequence": [
+        "P0",
+        "P1",
+        "C0"
+      ],
+      "document_status": "issued_for_release",
+      "required_for_release": true,
+      "file_ref_id": "FILE-AIR-SPEC-001",
+      "requirement_summary": {
+        "compressor_minimum_capacity": {
+          "value": 600,
+          "unit": "Nm3/h"
+        },
+        "dryer_minimum_capacity": {
+          "value": 600,
+          "unit": "Nm3/h"
+        },
+        "maximum_pressure_dew_point": {
+          "value": -40,
+          "unit": "degC"
+        }
+      }
+    }
+  ]
+}

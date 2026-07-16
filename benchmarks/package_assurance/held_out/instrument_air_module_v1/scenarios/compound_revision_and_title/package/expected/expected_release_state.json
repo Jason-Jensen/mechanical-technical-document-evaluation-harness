@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.3.0-fixture-oracle",
+  "scenario_id": "SCN-HO-AIR-COMPOUND-001",
+  "package_id": "PKG-HO-AIR-COMPOUND-001",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "scenario_type": "compound_fault",
+  "expected_package_state": "automatic_fail",
+  "expected_cli_exit_code": 1,
+  "expected_release_hold": true,
+  "expected_blocking_states": [
+    "automatic_fail",
+    "engineering_review_required"
+  ],
+  "expected_skipped_checks": [],
+  "expected_finding_ids": [
+    "FIND-HO-COMPOUND-REV-001",
+    "FIND-HO-COMPOUND-TITLE-001"
+  ],
+  "human_release_approval_required": true,
+  "oracle_review_status": "author_reviewed_pending_user_acceptance",
+  "freeze_status": "freeze_candidate_pending_user_acceptance"
+}

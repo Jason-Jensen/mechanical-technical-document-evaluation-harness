@@ -1,0 +1,115 @@
+{
+  "schema_version": "0.3.0-fixture-inventory",
+  "algorithm": "sha256",
+  "scope": "package_tree",
+  "canonicalization": "sorted relative path, NUL, lowercase file sha256, LF",
+  "content_hash": "d989fa79bc7156de41ac469c1e97f689c039c9dd72b186f97b68696842f66de0",
+  "file_count": 21,
+  "files": [
+    {
+      "path": "authority/authority_map.json",
+      "size_bytes": 12465,
+      "sha256": "be7bd179605faae6585b3f56ef3eab64f4d3af738a95f2eebd648856eba8e4b5"
+    },
+    {
+      "path": "expected/expected_findings.json",
+      "size_bytes": 2337,
+      "sha256": "f0de791310f061776cac5ef9eff41376a0a17eca6a6cd9c05b1cfaa1c0a1be9e"
+    },
+    {
+      "path": "expected/expected_relationships_ref.json",
+      "size_bytes": 316,
+      "sha256": "d3e0689b49c7e6e8061938f94c4bdefeb52390b2e193d7ed38a1e9ba40cc0e7e"
+    },
+    {
+      "path": "expected/expected_release_state.json",
+      "size_bytes": 657,
+      "sha256": "f9d0347d0101b4e312cfadeac42d4f7358a390efb605ec68e0508ce81e1bd8c9"
+    },
+    {
+      "path": "files/design_requirements/AIR-SYSTEM-010__C0.ref",
+      "size_bytes": 251,
+      "sha256": "8fd7882a9a8a5952f382f137b0f6a4a4bbef431e84c2dfda6e009261af5cb3ad"
+    },
+    {
+      "path": "files/design_requirements/AIR-VESSEL-020__C0.ref",
+      "size_bytes": 251,
+      "sha256": "6461f682b2b6078bc615df29b2ac1fc9ab436d9ebfc4b1a6f64dd368a6d46264"
+    },
+    {
+      "path": "files/issued_drawings/AIR-MOD-2100_GA__r03.ref",
+      "size_bytes": 246,
+      "sha256": "8dfb6b9c7803b2c04a686ff6502813856f7532eb19953b7b47951ad08a3a49f1"
+    },
+    {
+      "path": "files/issued_drawings/AIR-MOD-2200_PID__r05.ref",
+      "size_bytes": 246,
+      "sha256": "40fd9e7472c12bedf727c3fe8e96dd9184aff84533734cbf0950f5c0072ca19b"
+    },
+    {
+      "path": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+      "size_bytes": 246,
+      "sha256": "0f0e67f745d2619e1e8f0d57db8d76948a5f3b2a0fa0908ec85b5dc3d666bfb7"
+    },
+    {
+      "path": "files/package_controls/drawing_index__r2.ref",
+      "size_bytes": 261,
+      "sha256": "b116214188e5a3225c5bac9c0b873e72082fb6a2f23e915a731de6fdcec02e15"
+    },
+    {
+      "path": "files/package_controls/equipment_schedule__r2.ref",
+      "size_bytes": 266,
+      "sha256": "e2fad9bb63c603d24f3eb18da3207499f928522b3bab71a4962328bf006a43c7"
+    },
+    {
+      "path": "files/package_controls/revision_ledger__r2.ref",
+      "size_bytes": 263,
+      "sha256": "8f35deb85bb083478506ddc2eeabe7027e684e88ee62646f2d42e21f240eb7bd"
+    },
+    {
+      "path": "files/technical_schedules/C-210A__C0.ref",
+      "size_bytes": 244,
+      "sha256": "413e9adff03c75b68dfd8bd882a8f6dc7b38c91e9d3da5eb6e0ffb557df8e151"
+    },
+    {
+      "path": "files/technical_schedules/DR-230A__C0.ref",
+      "size_bytes": 245,
+      "sha256": "9e1256789a787f5f6b199e819b117560d6cbec7caaa0b415116e12de8e6ef8f6"
+    },
+    {
+      "path": "files/technical_schedules/V-220A__C0.ref",
+      "size_bytes": 244,
+      "sha256": "2191eb0312cc09c47e6ac651a637c91eaeedc0f87a5c5a6c24f7e1f14120a87a"
+    },
+    {
+      "path": "inputs/bom_or_equipment_list.csv",
+      "size_bytes": 626,
+      "sha256": "224d2a2e57a2d70a42c8068ea7ed813376ac3118953690e89f7878b464f55de7"
+    },
+    {
+      "path": "inputs/datasheet_spec_metadata.json",
+      "size_bytes": 4191,
+      "sha256": "fdbd14f8ac69910d4eca0fbe62cb8e4658ef1291086650e6276360dad74cb224"
+    },
+    {
+      "path": "inputs/drawing_metadata.json",
+      "size_bytes": 1745,
+      "sha256": "187cde4efae78474835c96c75fdd684117262304a1a5d2f1c73572d1e8727a9d"
+    },
+    {
+      "path": "inputs/drawing_register.csv",
+      "size_bytes": 637,
+      "sha256": "4d0080d900abeab530504dc8ab1475a356fa09e4420263c10331b814d1f5172e"
+    },
+    {
+      "path": "inputs/revision_history.csv",
+      "size_bytes": 3794,
+      "sha256": "cda953a91fc1daad276cf71ba0308a0163cd034cdf77ad00e15cdb001e3f2f46"
+    },
+    {
+      "path": "package_manifest.json",
+      "size_bytes": 19281,
+      "sha256": "02dbd2713dc11d7396f8ccba33b1e43d8067808819d1d66d005f06cbc1773da5"
+    }
+  ]
+}

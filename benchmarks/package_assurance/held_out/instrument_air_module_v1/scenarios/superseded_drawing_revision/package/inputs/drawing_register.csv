@@ -1,0 +1,4 @@
+document_id,drawing_number,title,revision_id,revision_scheme,document_status,discipline,owner,required_for_release,file_ref_id
+DOC-AIR-DWG-003,AIR-MOD-2300,Receiver and Dryer Connection Layout,02,numeric_zero_padded,issued_for_release,mechanical,package_engineering,true,FILE-AIR-DWG-003
+DOC-AIR-DWG-001,AIR-MOD-2100,Instrument Air Module General Arrangement,03,numeric_zero_padded,issued_for_release,mechanical,package_engineering,true,FILE-AIR-DWG-001
+DOC-AIR-DWG-002,AIR-MOD-2200,Instrument Air Process and Instrumentation Diagram,05,numeric_zero_padded,issued_for_release,process_mechanical,process_engineering,true,FILE-AIR-DWG-002

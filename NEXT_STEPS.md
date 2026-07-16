@@ -7,21 +7,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P0.1:** Accepted. Workflow contract and authority-map boundary are frozen.
 - **P0.2:** Accepted on 2026-07-16. Benchmark and acceptance policy are frozen.
 - **P1.1:** Accepted and locally integrated at commit `42ad037`.
-- **P1.2:** Clean development fixture implemented and integrity-verified on `feature/package-fixtures`; user acceptance pending.
-- **P1.3 and later:** Blocked pending predecessor acceptance.
+- **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
+- **P1.3:** Complete and integrity-verified on `feature/package-fixtures`; user acceptance and pre-tuning freeze activation are pending.
+- **P2.1 and later:** Blocked pending P1.3 acceptance and held-out freeze.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-The user's instruction to continue after committing and pushing P1.1 accepted that gate and authorized P1.2. This authorization does not extend to P1.3 held-out authoring or evaluator behavior.
+The user explicitly accepted P1.2 and authorized P1.3. That work is complete locally, but the authorization does not extend to P2 evaluator behavior.
 
 ## Active Work Block
 
-- **WBS:** P1.2, development synthetic package
+- **WBS:** P1.3, held-out package and fault variants
 - **Branch:** `feature/package-fixtures`
-- **Definition of done:** Met locally. One realistic clean structured package contains every mandatory source and controlled file reference; canonical identifiers, revisions, and relationships are internally consistent; hidden clean-state and relationship goldens have exact evidence locators; provenance and package-tree hashes are recorded; and fixture-integrity tests pass.
+- **Definition of done:** Met locally. `FAM-HO-INSTRUMENT-AIR-001` contains one clean package and seven controlled variants, including seven release-blocking variants, an `evaluator_uncertainty` case, and a compound precedence case. Exact protected oracles, 31 relationship goldens, per-scenario inventories, material-distinction and contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884` are verified. Focused tests passed 50 with one expected Windows symlink skip; the full suite passed 170 with the same skip.
 
-Next action: review and accept P1.2, then authorize P1.3 as a separate controlled work block. Source adapters, mandatory gates, evaluator behavior, and all deferred capabilities remain outside this work block.
+Next action: review and accept P1.3, which activates the recorded pre-tuning freeze without editing protected content. Then authorize P2.1 as a separate package-gate work block. Source adapters, mandatory gates, evaluator behavior, and all deferred capabilities remain outside this work block until acceptance.
 
 ## Delivery Sequence
 

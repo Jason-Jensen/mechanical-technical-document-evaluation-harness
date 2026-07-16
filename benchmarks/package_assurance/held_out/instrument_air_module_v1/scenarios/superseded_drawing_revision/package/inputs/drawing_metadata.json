@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.3.0-fixture-example",
+  "source_type": "drawing_metadata",
+  "records": [
+    {
+      "record_id": "DWMETA-AIR-220",
+      "document_id": "DOC-AIR-DWG-002",
+      "drawing_number": "AIR-MOD-2200",
+      "title": "Instrument Air Process and Instrumentation Diagram",
+      "revision_id": "04",
+      "revision_scheme": "numeric_zero_padded",
+      "document_status": "issued_for_release",
+      "discipline": "process_mechanical",
+      "owner": "process_engineering",
+      "equipment_tags": [
+        "V-220A",
+        "C-210A",
+        "DR-230A"
+      ],
+      "required_for_release": true,
+      "file_ref_id": "FILE-AIR-DWG-002"
+    },
+    {
+      "record_id": "DWMETA-AIR-230",
+      "document_id": "DOC-AIR-DWG-003",
+      "drawing_number": "AIR-MOD-2300",
+      "title": "Receiver and Dryer Connection Layout",
+      "revision_id": "02",
+      "revision_scheme": "numeric_zero_padded",
+      "document_status": "issued_for_release",
+      "discipline": "mechanical",
+      "owner": "package_engineering",
+      "equipment_tags": [
+        "DR-230A",
+        "V-220A"
+      ],
+      "required_for_release": true,
+      "file_ref_id": "FILE-AIR-DWG-003"
+    },
+    {
+      "record_id": "DWMETA-AIR-210",
+      "document_id": "DOC-AIR-DWG-001",
+      "drawing_number": "AIR-MOD-2100",
+      "title": "Instrument Air Module General Arrangement",
+      "revision_id": "03",
+      "revision_scheme": "numeric_zero_padded",
+      "document_status": "issued_for_release",
+      "discipline": "mechanical",
+      "owner": "package_engineering",
+      "equipment_tags": [
+        "DR-230A",
+        "C-210A",
+        "V-220A"
+      ],
+      "required_for_release": true,
+      "file_ref_id": "FILE-AIR-DWG-001"
+    }
+  ]
+}
