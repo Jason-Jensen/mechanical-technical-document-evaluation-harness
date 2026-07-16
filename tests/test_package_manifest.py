@@ -419,15 +419,104 @@ def test_load_package_manifest_rejects_duplicate_document_id(tmp_path: Path) -> 
         _load(tmp_path / "package", manifest)
 
 
+@pytest.mark.parametrize(
+    ("document_type", "identifier_field", "identifier"),
+    [
+        ("datasheet", "datasheet_id", "DS-001"),
+        ("specification", "specification_id", "SPEC-001"),
+    ],
+)
+def test_load_package_manifest_rejects_duplicate_unique_document_identifier(
+    tmp_path: Path,
+    document_type: str,
+    identifier_field: str,
+    identifier: str,
+) -> None:
+    manifest = _valid_manifest()
+    documents = manifest["document_inventory"]
+    assert isinstance(documents, list)
+    template = documents[0]
+    documents.clear()
+    for index in (1, 2):
+        document = deepcopy(template)
+        document["document_id"] = f"DOC-00{index}"
+        document["document_type"] = document_type
+        document.pop("drawing_number")
+        document[identifier_field] = identifier
+        documents.append(document)
+
+    with pytest.raises(
+        PackageManifestError,
+        match=rf"Duplicate {identifier_field}: {identifier}",
+    ):
+        _load(tmp_path / "package", manifest)
+
+
+@pytest.mark.parametrize(
+    ("document_type", "identifier_type", "identifier"),
+    [
+        ("drawing", "drawing_number", "DWG 1001-A"),
+        ("datasheet", "datasheet_id", "DS-001"),
+        ("specification", "specification_id", "SPEC-001"),
+    ],
+)
+def test_load_package_manifest_accepts_declared_document_relationship_endpoint(
+    tmp_path: Path,
+    document_type: str,
+    identifier_type: str,
+    identifier: str,
+) -> None:
+    manifest = _valid_manifest()
+    documents = manifest["document_inventory"]
+    relationships = manifest["relationship_declarations"]
+    assert isinstance(documents, list)
+    assert isinstance(relationships, list)
+    document = documents[0]
+    document["document_type"] = document_type
+    if identifier_type != "drawing_number":
+        document.pop("drawing_number")
+        document[identifier_type] = identifier
+    relationships[0]["source"] = {
+        "identifier_type": identifier_type,
+        "identifier": identifier,
+    }
+
+    loaded = _load(tmp_path / "package", manifest)
+
+    assert loaded.manifest["relationship_declarations"][0]["source"] == {
+        "identifier_type": identifier_type,
+        "identifier": identifier,
+    }
+
+
+@pytest.mark.parametrize(
+    ("endpoint_name", "identifier_type", "identifier"),
+    [
+        ("source", "document_id", "DOC-999"),
+        ("source", "drawing_number", "DWG-999"),
+        ("source", "datasheet_id", "DS-999"),
+        ("source", "specification_id", "SPEC-999"),
+        ("target", "file_ref_id", "FILE-999"),
+    ],
+)
 def test_load_package_manifest_rejects_undeclared_relationship_endpoint(
     tmp_path: Path,
+    endpoint_name: str,
+    identifier_type: str,
+    identifier: str,
 ) -> None:
     manifest = _valid_manifest()
     relationships = manifest["relationship_declarations"]
     assert isinstance(relationships, list)
-    relationships[0]["source"]["identifier"] = "DOC-999"
+    relationships[0][endpoint_name] = {
+        "identifier_type": identifier_type,
+        "identifier": identifier,
+    }
 
-    with pytest.raises(PackageManifestError, match="undeclared document_id: DOC-999"):
+    with pytest.raises(
+        PackageManifestError,
+        match=rf"undeclared {identifier_type}: {identifier}",
+    ):
         _load(tmp_path / "package", manifest)
 
 

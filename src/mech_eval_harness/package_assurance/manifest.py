@@ -196,6 +196,21 @@ def _require_unique(items: list[dict[str, Any]], key: str, label: str) -> None:
         seen.add(value)
 
 
+def _require_unique_if_declared(
+    items: list[dict[str, Any]],
+    key: str,
+    label: str,
+) -> None:
+    seen: set[str] = set()
+    for item in items:
+        value = item.get(key)
+        if value is None:
+            continue
+        if value in seen:
+            raise PackageManifestError(f"Duplicate {label}: {value}")
+        seen.add(value)
+
+
 def _validate_source_inventory(
     manifest: dict[str, Any],
     package_root: Path,
@@ -268,6 +283,12 @@ def _validate_document_inventory(
     file_reference_paths: dict[str, Path],
 ) -> None:
     _require_unique(documents, "document_id", "document_id")
+    _require_unique_if_declared(documents, "datasheet_id", "datasheet_id")
+    _require_unique_if_declared(
+        documents,
+        "specification_id",
+        "specification_id",
+    )
     for index, document in enumerate(documents):
         file_ref_id = document.get("file_ref_id")
         if file_ref_id is not None and file_ref_id not in file_reference_paths:
@@ -289,6 +310,21 @@ def _validate_relationships(
     _require_unique(relationships, "relationship_id", "relationship_id")
     declared_ids = {
         "document_id": {document["document_id"] for document in documents},
+        "drawing_number": {
+            document["drawing_number"]
+            for document in documents
+            if "drawing_number" in document
+        },
+        "datasheet_id": {
+            document["datasheet_id"]
+            for document in documents
+            if "datasheet_id" in document
+        },
+        "specification_id": {
+            document["specification_id"]
+            for document in documents
+            if "specification_id" in document
+        },
         "file_ref_id": set(file_reference_paths),
     }
     for index, relationship in enumerate(relationships):
