@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-16
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `feature/package-assurance-contract`
+**Current branch:** `feature/package-manifest`
 
 ## Executive Summary
 
@@ -31,14 +31,16 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P1.1, package manifest schema and loader
-- **Status:** P0.2 accepted on 2026-07-16; P1.1 authorized
-- **Implementation state:** P1.1 begins only after the P0 branch is integrated and a dedicated capability branch is created
+- **Status:** P1.1 implementation complete and verified; user acceptance pending
+- **Implementation state:** Versioned manifest schema and isolated loader implemented on `feature/package-manifest`; no fixtures or rule behavior added
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
 P0.2 is accepted. It freezes the development/held-out split, minimum scenario matrix, exact oracle matching, state and CLI routing, reproducibility, contamination handling, false-positive/false-negative review, bounded claims, and release stop conditions.
 
-P1.1 is authorized to implement only the package manifest schema and loader. P1.2 fixtures and all rule-engine work remain blocked by their own predecessor gates.
+P1.1 now validates package metadata, mandatory source declarations, canonical manifest identifiers, document revisions, relationship declarations, authority-map references, and controlled paths. It resolves source and file declarations without parsing source records or assigning package result states; those behaviors remain in later gated work.
+
+P1.2 fixtures and all rule-engine work remain blocked pending P1.1 acceptance and integration.
 
 ## Intended Outcome
 
@@ -78,7 +80,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate the accepted P0 branch, create `feature/package-manifest`, and implement P1.1 against the frozen P0.1 and P0.2 contracts. Do not begin P1.2 fixtures, consistency rules, PDF/CAD, agent, API, database, RAG, or frontend implementation.
+Review and accept the verified P1.1 schema and loader, then integrate `feature/package-manifest`. Do not begin P1.2 fixtures, consistency rules, PDF/CAD, agent, API, database, RAG, or frontend implementation until the predecessor gate is accepted.
 
 ## Engineering Boundary
 
