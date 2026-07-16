@@ -1,0 +1,105 @@
+{
+  "schema_version": "0.3.0-fixture-inventory",
+  "algorithm": "sha256",
+  "scope": "package_tree",
+  "canonicalization": "sorted relative path, NUL, lowercase file sha256, LF",
+  "content_hash": "a4b278e5bd20f3b64a85d52c478747b1115e15bbaf63b19bf47f5dffddfaf31a",
+  "file_count": 19,
+  "files": [
+    {
+      "path": "authority/authority_map.json",
+      "size_bytes": 12607,
+      "sha256": "d7b67073db09b8ed02b9fb634a001df599910c115b5d44fcd9e7bb2410cf5e98"
+    },
+    {
+      "path": "expected/expected_findings.json",
+      "size_bytes": 343,
+      "sha256": "35256fd46b3952d04fe61302ff327460bc47dad771777fe1d82ef29540f6322c"
+    },
+    {
+      "path": "expected/expected_release_state.json",
+      "size_bytes": 500,
+      "sha256": "ba03f6c71e6571fb03bf717a3843a4c50cc25abac1205e5fc0592904c90714a2"
+    },
+    {
+      "path": "expected/golden_relationships.json",
+      "size_bytes": 15618,
+      "sha256": "14def932fb18b968dd7a12629dbb95af5bb740e182fae7aa6c3041d50cf51dce"
+    },
+    {
+      "path": "files/control/Drawing_Register_rev_1.txt",
+      "size_bytes": 244,
+      "sha256": "b4d4c6f7e2fbe9ac07b9723b25d6a53c999db8398c5324907168683fa3cf204e"
+    },
+    {
+      "path": "files/control/Equipment_List_rev_1.txt",
+      "size_bytes": 242,
+      "sha256": "704f9201679fa655994f272b9048bb841e9d63c2286471a1aeeb8551d628755e"
+    },
+    {
+      "path": "files/control/Revision_History_rev_1.txt",
+      "size_bytes": 244,
+      "sha256": "009176f16d048139cab7389d743f2d24740ced286c289610247e6e8dde90f6fb"
+    },
+    {
+      "path": "files/datasheets/DS-M-101_rev_A.txt",
+      "size_bytes": 227,
+      "sha256": "67c6824180cc9c2d2f6075bc0e740e6315d8c5659862d122317e1708118caa7e"
+    },
+    {
+      "path": "files/datasheets/DS-P-101_rev_B.txt",
+      "size_bytes": 227,
+      "sha256": "ea683d69451b3f42b08983b11d26758a5f07dce9b78e5ce42fc69a22b7cf917c"
+    },
+    {
+      "path": "files/drawings/DWG-PSK-1001_rev_C.txt",
+      "size_bytes": 232,
+      "sha256": "8104ea175ceb1244aded37c504bc4c2182e645335595c4f584119376677edcaf"
+    },
+    {
+      "path": "files/drawings/DWG-PSK-1002_rev_B.txt",
+      "size_bytes": 232,
+      "sha256": "8c6558194a9f6097c5820c99796cd044b987c6d71a15f70cedd108003256ae20"
+    },
+    {
+      "path": "files/specifications/SPEC-MOTOR-001_rev_A.txt",
+      "size_bytes": 235,
+      "sha256": "a6139e9cbc0eea5c3fd9b3cd02cf6f6a2db084f7fe6dda3a2050f904f2b6c5c0"
+    },
+    {
+      "path": "files/specifications/SPEC-PUMP-001_rev_A.txt",
+      "size_bytes": 234,
+      "sha256": "bf2c5e01bb2d2ddbd7a7a12950f606a4708b78f8662a6070ef2efa147506d8a8"
+    },
+    {
+      "path": "inputs/bom_or_equipment_list.csv",
+      "size_bytes": 423,
+      "sha256": "a848b9bf32dfac23728afe279c33ec4e7050ac94ee657553cb1155bb58a5b228"
+    },
+    {
+      "path": "inputs/datasheet_spec_metadata.json",
+      "size_bytes": 3239,
+      "sha256": "c5f9918c54b40132774f26da611ebd91696a067c7e6ec1a7444ba102d0ccf5d0"
+    },
+    {
+      "path": "inputs/drawing_metadata.json",
+      "size_bytes": 1074,
+      "sha256": "87a1f5fadfa616c0761b936f5ec18bd137058d6b8498856ae7f7cc067c78fb97"
+    },
+    {
+      "path": "inputs/drawing_register.csv",
+      "size_bytes": 395,
+      "sha256": "377bc4b8a4ffc4e803b593592ccb0b1bea7f96b8fea5e310059c40fe555d0878"
+    },
+    {
+      "path": "inputs/revision_history.csv",
+      "size_bytes": 1583,
+      "sha256": "bed8eac210d6f958e41391b99cbb995bd07c3b27b52db2ef622424cba67e93cd"
+    },
+    {
+      "path": "package_manifest.json",
+      "size_bytes": 13647,
+      "sha256": "7039d1d3f080b019f2e70bcafc76f72d3f7018bb23ccc8a9ce5d93569c0591da"
+    }
+  ]
+}

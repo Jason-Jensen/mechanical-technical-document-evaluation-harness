@@ -1,0 +1,14 @@
+revision_record_id,document_id,owner_identifier_type,owner_identifier,revision_id,revision_scheme,sequence_index,revision_status,release_status,effective_date
+REVREC-DWG-001-A,DOC-DWG-001,drawing_number,DWG-PSK-1001,A,alpha_upper,1,superseded,issued,2026-04-02
+REVREC-DWG-001-B,DOC-DWG-001,drawing_number,DWG-PSK-1001,B,alpha_upper,2,superseded,issued,2026-05-07
+REVREC-DWG-001-C,DOC-DWG-001,drawing_number,DWG-PSK-1001,C,alpha_upper,3,current,issued_for_release,2026-06-11
+REVREC-DWG-002-A,DOC-DWG-002,drawing_number,DWG-PSK-1002,A,alpha_upper,1,superseded,issued,2026-04-09
+REVREC-DWG-002-B,DOC-DWG-002,drawing_number,DWG-PSK-1002,B,alpha_upper,2,current,issued_for_release,2026-06-11
+REVREC-DS-001-A,DOC-DS-001,datasheet_id,DS-P-101,A,explicit_sequence,1,superseded,issued,2026-04-16
+REVREC-DS-001-B,DOC-DS-001,datasheet_id,DS-P-101,B,explicit_sequence,2,current,issued_for_release,2026-06-11
+REVREC-DS-002-A,DOC-DS-002,datasheet_id,DS-M-101,A,explicit_sequence,1,current,issued_for_release,2026-06-11
+REVREC-SPEC-001-A,DOC-SPEC-001,specification_id,SPEC-PUMP-001,A,explicit_sequence,1,current,issued_for_release,2026-05-14
+REVREC-SPEC-002-A,DOC-SPEC-002,specification_id,SPEC-MOTOR-001,A,explicit_sequence,1,current,issued_for_release,2026-05-14
+REVREC-REG-001-1,DOC-REG-001,document_id,DOC-REG-001,1,numeric_integer,1,current,issued_for_release,2026-06-11
+REVREC-EQL-001-1,DOC-EQL-001,document_id,DOC-EQL-001,1,numeric_integer,1,current,issued_for_release,2026-06-11
+REVREC-REV-001-1,DOC-REV-001,document_id,DOC-REV-001,1,numeric_integer,1,current,issued_for_release,2026-06-11

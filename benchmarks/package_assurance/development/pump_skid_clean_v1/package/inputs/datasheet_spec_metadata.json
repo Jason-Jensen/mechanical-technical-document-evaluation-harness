@@ -1,0 +1,132 @@
+{
+  "schema_version": "0.3.0-fixture-example",
+  "source_type": "datasheet_spec_metadata",
+  "datasheets": [
+    {
+      "record_id": "DSMETA-001",
+      "document_id": "DOC-DS-001",
+      "datasheet_id": "DS-P-101",
+      "equipment_tag": "P-101A",
+      "title": "Pump P-101A Datasheet",
+      "revision_id": "B",
+      "revision_scheme": "explicit_sequence",
+      "revision_sequence": [
+        "A",
+        "B",
+        "C"
+      ],
+      "document_status": "issued_for_release",
+      "required_for_release": true,
+      "file_ref_id": "FILE-DS-001",
+      "controlled_values": {
+        "rated_flow": {
+          "value": 120,
+          "unit": "m3/h"
+        },
+        "rated_head": {
+          "value": 45,
+          "unit": "m"
+        },
+        "design_pressure": {
+          "value": 1100,
+          "unit": "kPag"
+        },
+        "casing_material": "ASTM A216 WCB"
+      }
+    },
+    {
+      "record_id": "DSMETA-002",
+      "document_id": "DOC-DS-002",
+      "datasheet_id": "DS-M-101",
+      "equipment_tag": "M-101A",
+      "title": "Motor M-101A Datasheet",
+      "revision_id": "A",
+      "revision_scheme": "explicit_sequence",
+      "revision_sequence": [
+        "A",
+        "B",
+        "C"
+      ],
+      "document_status": "issued_for_release",
+      "required_for_release": true,
+      "file_ref_id": "FILE-DS-002",
+      "controlled_values": {
+        "rated_power": {
+          "value": 30,
+          "unit": "kW"
+        },
+        "rated_voltage": {
+          "value": 460,
+          "unit": "V"
+        },
+        "rated_frequency": {
+          "value": 60,
+          "unit": "Hz"
+        },
+        "enclosure": "TEFC"
+      }
+    }
+  ],
+  "specifications": [
+    {
+      "record_id": "SPMETA-001",
+      "document_id": "DOC-SPEC-001",
+      "specification_id": "SPEC-PUMP-001",
+      "equipment_tags": [
+        "P-101A"
+      ],
+      "title": "Centrifugal Pump Minimum Requirements",
+      "revision_id": "A",
+      "revision_scheme": "explicit_sequence",
+      "revision_sequence": [
+        "A",
+        "B",
+        "C"
+      ],
+      "document_status": "issued_for_release",
+      "required_for_release": true,
+      "file_ref_id": "FILE-SPEC-001",
+      "requirement_summary": {
+        "minimum_design_pressure": {
+          "value": 1100,
+          "unit": "kPag"
+        },
+        "required_casing_material": "ASTM A216 WCB"
+      }
+    },
+    {
+      "record_id": "SPMETA-002",
+      "document_id": "DOC-SPEC-002",
+      "specification_id": "SPEC-MOTOR-001",
+      "equipment_tags": [
+        "M-101A"
+      ],
+      "title": "Induction Motor Minimum Requirements",
+      "revision_id": "A",
+      "revision_scheme": "explicit_sequence",
+      "revision_sequence": [
+        "A",
+        "B",
+        "C"
+      ],
+      "document_status": "issued_for_release",
+      "required_for_release": true,
+      "file_ref_id": "FILE-SPEC-002",
+      "requirement_summary": {
+        "minimum_rated_power": {
+          "value": 30,
+          "unit": "kW"
+        },
+        "required_voltage": {
+          "value": 460,
+          "unit": "V"
+        },
+        "required_frequency": {
+          "value": 60,
+          "unit": "Hz"
+        },
+        "required_enclosure": "TEFC"
+      }
+    }
+  ]
+}

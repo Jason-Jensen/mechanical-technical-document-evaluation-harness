@@ -1,0 +1,510 @@
+{
+  "schema_version": "0.3.0-fixture-oracle",
+  "scenario_id": "SCN-DEV-PUMP-SKID-CLEAN-001",
+  "package_id": "PKG-DEV-PUMP-SKID-001",
+  "relationship_count": 20,
+  "oracle_review_status": "author_reviewed_pending_user_acceptance",
+  "freeze_status": "pending_user_acceptance",
+  "relationships": [
+    {
+      "relationship_id": "REL-DOC-FILE-001",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-DWG-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-DWG-001"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "drawing_register",
+        "source_file": "inputs/drawing_register.csv",
+        "format": "csv",
+        "row_number": 2,
+        "header_row_number": 1,
+        "column_name": "file_ref_id",
+        "row_key": {
+          "column_name": "document_id",
+          "value": "DOC-DWG-001"
+        },
+        "original_value": "FILE-DWG-001",
+        "normalized_value": "FILE-DWG-001"
+      }
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-002",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-DWG-002"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-DWG-002"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "drawing_register",
+        "source_file": "inputs/drawing_register.csv",
+        "format": "csv",
+        "row_number": 3,
+        "header_row_number": 1,
+        "column_name": "file_ref_id",
+        "row_key": {
+          "column_name": "document_id",
+          "value": "DOC-DWG-002"
+        },
+        "original_value": "FILE-DWG-002",
+        "normalized_value": "FILE-DWG-002"
+      }
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-003",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-DS-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-DS-001"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "datasheet_spec_metadata",
+        "source_file": "inputs/datasheet_spec_metadata.json",
+        "format": "json",
+        "json_pointer": "/datasheets/0/file_ref_id",
+        "record_id": "DSMETA-001",
+        "property_name": "file_ref_id",
+        "original_value": "FILE-DS-001",
+        "normalized_value": "FILE-DS-001"
+      }
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-004",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-DS-002"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-DS-002"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "datasheet_spec_metadata",
+        "source_file": "inputs/datasheet_spec_metadata.json",
+        "format": "json",
+        "json_pointer": "/datasheets/1/file_ref_id",
+        "record_id": "DSMETA-002",
+        "property_name": "file_ref_id",
+        "original_value": "FILE-DS-002",
+        "normalized_value": "FILE-DS-002"
+      }
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-005",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-SPEC-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-SPEC-001"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "datasheet_spec_metadata",
+        "source_file": "inputs/datasheet_spec_metadata.json",
+        "format": "json",
+        "json_pointer": "/specifications/0/file_ref_id",
+        "record_id": "SPMETA-001",
+        "property_name": "file_ref_id",
+        "original_value": "FILE-SPEC-001",
+        "normalized_value": "FILE-SPEC-001"
+      }
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-006",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-SPEC-002"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-SPEC-002"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "datasheet_spec_metadata",
+        "source_file": "inputs/datasheet_spec_metadata.json",
+        "format": "json",
+        "json_pointer": "/specifications/1/file_ref_id",
+        "record_id": "SPMETA-002",
+        "property_name": "file_ref_id",
+        "original_value": "FILE-SPEC-002",
+        "normalized_value": "FILE-SPEC-002"
+      }
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-007",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-REG-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-REG-001"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "package_manifest",
+        "source_file": "package_manifest.json",
+        "format": "json",
+        "json_pointer": "/document_inventory/6/file_ref_id",
+        "record_id": "DOC-REG-001",
+        "property_name": "file_ref_id",
+        "original_value": "FILE-REG-001",
+        "normalized_value": "FILE-REG-001"
+      }
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-008",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-EQL-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-EQL-001"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "package_manifest",
+        "source_file": "package_manifest.json",
+        "format": "json",
+        "json_pointer": "/document_inventory/7/file_ref_id",
+        "record_id": "DOC-EQL-001",
+        "property_name": "file_ref_id",
+        "original_value": "FILE-EQL-001",
+        "normalized_value": "FILE-EQL-001"
+      }
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-009",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-REV-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-REV-001"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "package_manifest",
+        "source_file": "package_manifest.json",
+        "format": "json",
+        "json_pointer": "/document_inventory/8/file_ref_id",
+        "record_id": "DOC-REV-001",
+        "property_name": "file_ref_id",
+        "original_value": "FILE-REV-001",
+        "normalized_value": "FILE-REV-001"
+      }
+    },
+    {
+      "relationship_id": "REL-DWG-EQ-001",
+      "relationship_type": "drawing_to_equipment",
+      "source": {
+        "identifier_type": "drawing_number",
+        "identifier": "DWG-PSK-1001"
+      },
+      "target": {
+        "identifier_type": "equipment_tag",
+        "identifier": "P-101A"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "drawing_metadata",
+        "source_file": "inputs/drawing_metadata.json",
+        "format": "json",
+        "json_pointer": "/records/0/equipment_tags/0",
+        "record_id": "DWMETA-001",
+        "property_name": "equipment_tags",
+        "original_value": "P-101A",
+        "normalized_value": "P-101A"
+      }
+    },
+    {
+      "relationship_id": "REL-DWG-EQ-002",
+      "relationship_type": "drawing_to_equipment",
+      "source": {
+        "identifier_type": "drawing_number",
+        "identifier": "DWG-PSK-1001"
+      },
+      "target": {
+        "identifier_type": "equipment_tag",
+        "identifier": "M-101A"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "drawing_metadata",
+        "source_file": "inputs/drawing_metadata.json",
+        "format": "json",
+        "json_pointer": "/records/0/equipment_tags/1",
+        "record_id": "DWMETA-001",
+        "property_name": "equipment_tags",
+        "original_value": "M-101A",
+        "normalized_value": "M-101A"
+      }
+    },
+    {
+      "relationship_id": "REL-DWG-EQ-003",
+      "relationship_type": "drawing_to_equipment",
+      "source": {
+        "identifier_type": "drawing_number",
+        "identifier": "DWG-PSK-1002"
+      },
+      "target": {
+        "identifier_type": "equipment_tag",
+        "identifier": "P-101A"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "drawing_metadata",
+        "source_file": "inputs/drawing_metadata.json",
+        "format": "json",
+        "json_pointer": "/records/1/equipment_tags/0",
+        "record_id": "DWMETA-002",
+        "property_name": "equipment_tags",
+        "original_value": "P-101A",
+        "normalized_value": "P-101A"
+      }
+    },
+    {
+      "relationship_id": "REL-ITEM-EQ-001",
+      "relationship_type": "item_to_equipment",
+      "source": {
+        "identifier_type": "item_id",
+        "identifier": "ITEM-PUMP-001"
+      },
+      "target": {
+        "identifier_type": "equipment_tag",
+        "identifier": "P-101A"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv",
+        "format": "csv",
+        "row_number": 2,
+        "header_row_number": 1,
+        "column_name": "equipment_tag",
+        "row_key": {
+          "column_name": "item_id",
+          "value": "ITEM-PUMP-001"
+        },
+        "original_value": "P-101A",
+        "normalized_value": "P-101A"
+      }
+    },
+    {
+      "relationship_id": "REL-ITEM-EQ-002",
+      "relationship_type": "item_to_equipment",
+      "source": {
+        "identifier_type": "item_id",
+        "identifier": "ITEM-MOTOR-001"
+      },
+      "target": {
+        "identifier_type": "equipment_tag",
+        "identifier": "M-101A"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv",
+        "format": "csv",
+        "row_number": 3,
+        "header_row_number": 1,
+        "column_name": "equipment_tag",
+        "row_key": {
+          "column_name": "item_id",
+          "value": "ITEM-MOTOR-001"
+        },
+        "original_value": "M-101A",
+        "normalized_value": "M-101A"
+      }
+    },
+    {
+      "relationship_id": "REL-ITEM-DWG-001",
+      "relationship_type": "item_to_drawing",
+      "source": {
+        "identifier_type": "item_id",
+        "identifier": "ITEM-PUMP-001"
+      },
+      "target": {
+        "identifier_type": "drawing_number",
+        "identifier": "DWG-PSK-1002"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv",
+        "format": "csv",
+        "row_number": 2,
+        "header_row_number": 1,
+        "column_name": "drawing_number",
+        "row_key": {
+          "column_name": "item_id",
+          "value": "ITEM-PUMP-001"
+        },
+        "original_value": "DWG-PSK-1002",
+        "normalized_value": "DWG-PSK-1002"
+      }
+    },
+    {
+      "relationship_id": "REL-ITEM-DWG-002",
+      "relationship_type": "item_to_drawing",
+      "source": {
+        "identifier_type": "item_id",
+        "identifier": "ITEM-MOTOR-001"
+      },
+      "target": {
+        "identifier_type": "drawing_number",
+        "identifier": "DWG-PSK-1001"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv",
+        "format": "csv",
+        "row_number": 3,
+        "header_row_number": 1,
+        "column_name": "drawing_number",
+        "row_key": {
+          "column_name": "item_id",
+          "value": "ITEM-MOTOR-001"
+        },
+        "original_value": "DWG-PSK-1001",
+        "normalized_value": "DWG-PSK-1001"
+      }
+    },
+    {
+      "relationship_id": "REL-EQ-DS-001",
+      "relationship_type": "equipment_to_datasheet",
+      "source": {
+        "identifier_type": "equipment_tag",
+        "identifier": "P-101A"
+      },
+      "target": {
+        "identifier_type": "datasheet_id",
+        "identifier": "DS-P-101"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv",
+        "format": "csv",
+        "row_number": 2,
+        "header_row_number": 1,
+        "column_name": "datasheet_id",
+        "row_key": {
+          "column_name": "equipment_tag",
+          "value": "P-101A"
+        },
+        "original_value": "DS-P-101",
+        "normalized_value": "DS-P-101"
+      }
+    },
+    {
+      "relationship_id": "REL-EQ-DS-002",
+      "relationship_type": "equipment_to_datasheet",
+      "source": {
+        "identifier_type": "equipment_tag",
+        "identifier": "M-101A"
+      },
+      "target": {
+        "identifier_type": "datasheet_id",
+        "identifier": "DS-M-101"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv",
+        "format": "csv",
+        "row_number": 3,
+        "header_row_number": 1,
+        "column_name": "datasheet_id",
+        "row_key": {
+          "column_name": "equipment_tag",
+          "value": "M-101A"
+        },
+        "original_value": "DS-M-101",
+        "normalized_value": "DS-M-101"
+      }
+    },
+    {
+      "relationship_id": "REL-EQ-SPEC-001",
+      "relationship_type": "equipment_to_specification",
+      "source": {
+        "identifier_type": "equipment_tag",
+        "identifier": "P-101A"
+      },
+      "target": {
+        "identifier_type": "specification_id",
+        "identifier": "SPEC-PUMP-001"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv",
+        "format": "csv",
+        "row_number": 2,
+        "header_row_number": 1,
+        "column_name": "specification_id",
+        "row_key": {
+          "column_name": "equipment_tag",
+          "value": "P-101A"
+        },
+        "original_value": "SPEC-PUMP-001",
+        "normalized_value": "SPEC-PUMP-001"
+      }
+    },
+    {
+      "relationship_id": "REL-EQ-SPEC-002",
+      "relationship_type": "equipment_to_specification",
+      "source": {
+        "identifier_type": "equipment_tag",
+        "identifier": "M-101A"
+      },
+      "target": {
+        "identifier_type": "specification_id",
+        "identifier": "SPEC-MOTOR-001"
+      },
+      "required_for_release": true,
+      "evidence_locator": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv",
+        "format": "csv",
+        "row_number": 3,
+        "header_row_number": 1,
+        "column_name": "specification_id",
+        "row_key": {
+          "column_name": "equipment_tag",
+          "value": "M-101A"
+        },
+        "original_value": "SPEC-MOTOR-001",
+        "normalized_value": "SPEC-MOTOR-001"
+      }
+    }
+  ]
+}

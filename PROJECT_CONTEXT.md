@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-16
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `feature/package-manifest`
+**Current branch:** `feature/package-fixtures`
 
 ## Executive Summary
 
@@ -30,17 +30,17 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P1.1, package manifest schema and loader
-- **Status:** P1.1 implementation complete and verified; user acceptance pending
-- **Implementation state:** Versioned manifest schema and isolated loader implemented on `feature/package-manifest`; no fixtures or rule behavior added
+- **Active WBS:** P1.2, development synthetic package
+- **Status:** P1.2 fixture and integrity checks are complete; user acceptance pending
+- **Implementation state:** One clean synthetic development package and its protected golden relationships are implemented on `feature/package-fixtures`; no source adapters, gates, consistency rules, result routing, or reports were added
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
 P0.2 is accepted. It freezes the development/held-out split, minimum scenario matrix, exact oracle matching, state and CLI routing, reproducibility, contamination handling, false-positive/false-negative review, bounded claims, and release stop conditions.
 
-P1.1 now validates package metadata, mandatory source declarations, canonical manifest identifiers, document revisions, relationship declarations, authority-map references, and controlled paths. It resolves source and file declarations without parsing source records or assigning package result states; those behaviors remain in later gated work.
+P1.1 is accepted and locally integrated at commit `42ad037`. It validates package metadata, mandatory source declarations, canonical manifest identifiers, document revisions, relationship declarations, authority-map references, and controlled paths. It resolves source and file declarations without parsing source records or assigning package result states; those behaviors remain in later gated work.
 
-P1.2 fixtures and all rule-engine work remain blocked pending P1.1 acceptance and integration.
+P1.2 provides `SCN-DEV-PUMP-SKID-CLEAN-001`, a clean, fully synthetic pump-skid package with all seven mandatory sources, nine controlled file references, 20 reviewed semantic relationships, exact hidden evidence locators, expected clean results, and a package-tree content hash. Its source layouts are fixture examples rather than accepted general schemas. P1.3 held-out authoring and all evaluator behavior remain blocked pending P1.2 acceptance.
 
 ## Intended Outcome
 
@@ -80,7 +80,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review and accept the verified P1.1 schema and loader, then integrate `feature/package-manifest`. Do not begin P1.2 fixtures, consistency rules, PDF/CAD, agent, API, database, RAG, or frontend implementation until the predecessor gate is accepted.
+Review and accept the verified P1.2 development fixture. Do not begin P1.3 held-out authoring, source adapters, mandatory gates, consistency rules, PDF/CAD, agent, API, database, RAG, or frontend implementation until the predecessor gate is accepted.
 
 ## Engineering Boundary
 

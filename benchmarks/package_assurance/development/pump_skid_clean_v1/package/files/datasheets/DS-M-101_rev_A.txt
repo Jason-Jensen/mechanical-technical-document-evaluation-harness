@@ -1,0 +1,6 @@
+SYNTHETIC CONTROLLED ARTIFACT
+Document ID: DOC-DS-002
+Canonical ID: DS-M-101
+Revision: A
+Status: issued_for_release
+Purpose: File-existence and reciprocal-reference fixture only; content interpretation is outside v0.3.0 scope.

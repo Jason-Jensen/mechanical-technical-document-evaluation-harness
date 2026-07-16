@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.3.0-fixture-example",
+  "source_type": "drawing_metadata",
+  "records": [
+    {
+      "record_id": "DWMETA-001",
+      "document_id": "DOC-DWG-001",
+      "drawing_number": "DWG-PSK-1001",
+      "title": "Pump Skid General Arrangement",
+      "revision_id": "C",
+      "revision_scheme": "alpha_upper",
+      "document_status": "issued_for_release",
+      "discipline": "mechanical",
+      "owner": "package_engineering",
+      "equipment_tags": [
+        "P-101A",
+        "M-101A"
+      ],
+      "required_for_release": true,
+      "file_ref_id": "FILE-DWG-001"
+    },
+    {
+      "record_id": "DWMETA-002",
+      "document_id": "DOC-DWG-002",
+      "drawing_number": "DWG-PSK-1002",
+      "title": "Pump Piping Arrangement",
+      "revision_id": "B",
+      "revision_scheme": "alpha_upper",
+      "document_status": "issued_for_release",
+      "discipline": "mechanical",
+      "owner": "package_engineering",
+      "equipment_tags": [
+        "P-101A"
+      ],
+      "required_for_release": true,
+      "file_ref_id": "FILE-DWG-002"
+    }
+  ]
+}

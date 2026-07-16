@@ -1,0 +1,3 @@
+item_id,equipment_tag,item_type,description,quantity,quantity_unit,part_or_material_id,drawing_number,datasheet_id,specification_id,required_for_release
+ITEM-PUMP-001,P-101A,centrifugal_pump,Synthetic horizontal centrifugal pump,1,EA,PUMP-SYN-4X3-13,DWG-PSK-1002,DS-P-101,SPEC-PUMP-001,true
+ITEM-MOTOR-001,M-101A,induction_motor,Synthetic 30 kW induction motor,1,EA,MOTOR-SYN-30KW,DWG-PSK-1001,DS-M-101,SPEC-MOTOR-001,true

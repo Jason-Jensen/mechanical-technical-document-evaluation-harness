@@ -6,21 +6,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 
 - **P0.1:** Accepted. Workflow contract and authority-map boundary are frozen.
 - **P0.2:** Accepted on 2026-07-16. Benchmark and acceptance policy are frozen.
-- **P1.1:** Implemented and verified on `feature/package-manifest`; user acceptance pending.
-- **P1.2 and later:** Blocked pending predecessor acceptance and integration.
+- **P1.1:** Accepted and locally integrated at commit `42ad037`.
+- **P1.2:** Clean development fixture implemented and integrity-verified on `feature/package-fixtures`; user acceptance pending.
+- **P1.3 and later:** Blocked pending predecessor acceptance.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-P0.2 acceptance authorized only P1.1. P1.1 implementation is ready for review; P1.2 and deferred capabilities are not yet authorized.
+The user's instruction to continue after committing and pushing P1.1 accepted that gate and authorized P1.2. This authorization does not extend to P1.3 held-out authoring or evaluator behavior.
 
 ## Active Work Block
 
-- **WBS:** P1.1, package manifest schema and loader
-- **Branch:** `feature/package-manifest`
-- **Definition of done:** Met locally. The versioned manifest contract validates package metadata, source inventory, identifiers, revisions, relationships, authority declarations, controlled file references, and stable missing/malformed manifest failures.
+- **WBS:** P1.2, development synthetic package
+- **Branch:** `feature/package-fixtures`
+- **Definition of done:** Met locally. One realistic clean structured package contains every mandatory source and controlled file reference; canonical identifiers, revisions, and relationships are internally consistent; hidden clean-state and relationship goldens have exact evidence locators; provenance and package-tree hashes are recorded; and fixture-integrity tests pass.
 
-Next action: review and accept P1.1, then integrate the branch. Source adapters, package fixtures, and evaluator behavior remain outside this work block.
+Next action: review and accept P1.2, then authorize P1.3 as a separate controlled work block. Source adapters, mandatory gates, evaluator behavior, and all deferred capabilities remain outside this work block.
 
 ## Delivery Sequence
 
