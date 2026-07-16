@@ -1,5 +1,7 @@
 # Persisted Project Memory Summary
 
+> Historical handoff snapshot. Use `PROJECT_CONTEXT.md` for current state.
+
 The following durable context has been stored for future project conversations:
 
 - The Mechanical Technical Document Evaluation Harness v0.2.0 is complete and frozen at accepted commit `45336a2`, with five reviewed cases, 121 passing tests, a 9/9 harness-verification baseline, a 2/2 deterministic demo, immutable results, CI, release documentation, and an annotated tag.

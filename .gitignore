@@ -23,5 +23,6 @@ runs/*
 # Local scratch files
 scratch/
 outputs/
+*.inspect.ndjson
 
 demo_output/

@@ -33,13 +33,13 @@ At the start of every work block:
 
 1. Read `Start Here`, `AI Context`, and the active/next rows in `Pilot Gantt`.
 2. Review the last three entries in `Work Block Log` and all open decisions, risks, and evidence relevant to the active WBS.
-3. State the active WBS, objective, expected duration, branch or worktree, and definition of done.
+3. State the active WBS, objective, branch or worktree, and definition of done.
 4. Identify authoritative inputs, protected assets, and allowed write locations.
 5. Reject work that does not directly advance the active deliverable.
 
 At closeout:
 
-1. Record actual hours only when known; preserve prior history.
+1. Preserve prior time history; prospective work-block time tracking is waived unless the user explicitly restores it.
 2. Update status, percent complete, evidence, decisions, blockers, notes, and exact next action.
 3. Run focused tests and broader regression tests when justified.
 4. Inspect generated files, diffs, command output, and repository state.
@@ -50,13 +50,7 @@ Use one branch per coherent capability, not per trivial test. Use parallel workt
 
 ## Current Work Block
 
-- **Active WBS:** P0.1 — Define workflow contract and authority map
-- **Objective:** Freeze the v0.3.0 package-audit contract before implementation.
-- **Expected duration:** 2 focused hours
-- **Definition of done:** Document types, canonical identifiers, source precedence, explicit result states, exclusions, human-review boundaries, and acceptance evidence are explicit and internally consistent.
-- **Recommended branch:** `feature/package-assurance-contract`
-
-Do not begin P0.2 or implementation until P0.1 is reviewed and accepted.
+Current status belongs in `gantt.xlsx` and the compact handoff in `PROJECT_CONTEXT.md`; do not duplicate it here. The durable implementation hold is: do not begin P1 unless the controlling Gantt records P0.2 acceptance and names the authorized capability branch.
 
 ## Architecture Invariants
 
@@ -108,11 +102,11 @@ Preserve failed runs. Use development and held-out packages. Do not change golde
 
 Do not claim improvement without repeatable evidence.
 
-## GPT-5.6 Operating Model
+## Agent Operating Model
 
-Use GPT-5.6 for high-value long-horizon work such as repository reconnaissance, architecture, cross-file implementation, debugging, technical-document synthesis, and artifact production.
+Use capable coding agents for high-value long-horizon work such as repository reconnaissance, architecture, cross-file implementation, debugging, technical-document synthesis, and artifact production. Keep the evaluator and project controls provider-independent.
 
-Its increased autonomy does not remove supervision. For every substantial task:
+Greater autonomy does not remove supervision. For every substantial task:
 
 1. Bound the writable files, tools, permissions, network access, and external effects.
 2. Define acceptance criteria before execution.
