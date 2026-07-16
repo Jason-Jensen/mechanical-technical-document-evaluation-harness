@@ -1,6 +1,6 @@
 # v0.3.0 Package Assurance Pilot - Acceptance Plan and Benchmark Protocol
 
-**Status:** Reviewed for P0.2 acceptance
+**Status:** Accepted for P0.2 on 2026-07-16
 **Release:** v0.3.0
 **Predecessor:** Accepted P0.1 workflow contract and authority-map boundary
 **Scope:** Structured package assurance only

@@ -5,17 +5,16 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 ## Current Gate
 
 - **P0.1:** Accepted. Workflow contract and authority-map boundary are frozen.
-- **P0.2:** Reviewed and complete pending user acceptance.
-- **P1 implementation:** Blocked until P0.2 acceptance is recorded.
+- **P0.2:** Accepted on 2026-07-16. Benchmark and acceptance policy are frozen.
+- **P1.1:** Authorized after P0 branch integration on its own capability branch.
+- **P1.2 and later:** Blocked by predecessor gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
-## Decision Required
+## Current Authorization
 
-Accept, revise, or reject `docs/package_assurance/acceptance_plan_v0.3.0.md` as the v0.3.0 benchmark policy.
+P0.2 acceptance authorizes only P1.1. It does not authorize the full roadmap or any deferred capability.
 
-Acceptance authorizes only P1.1. It does not authorize the full roadmap or any deferred capability.
-
-## Next Work Block After Acceptance
+## Active Work Block
 
 - **WBS:** P1.1, package manifest schema and loader
 - **Branch:** a separate package-manifest capability branch

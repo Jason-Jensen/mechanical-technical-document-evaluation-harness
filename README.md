@@ -8,8 +8,8 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** P0.2 benchmark and acceptance policy is reviewed pending user acceptance.
-- **Implementation boundary:** no v0.3.0 package loader, schema, fixture, rule engine, PDF/CAD adapter, agent, API, database, RAG, or frontend has been implemented.
+- **Current gate:** P0.2 is accepted; P1.1 package manifest schema and loader work is authorized.
+- **Implementation boundary:** P1.1 is the only authorized v0.3.0 implementation scope. Package fixtures, rules, PDF/CAD adapters, agents, APIs, databases, RAG, and frontend work remain unimplemented.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 

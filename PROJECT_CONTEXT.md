@@ -27,18 +27,18 @@ Accepted evidence:
 
 Do not rewrite this kernel or alter its protected evidence without an approved interface-conflict decision.
 
-## Active Gate
+## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P0.2, acceptance plan and benchmark protocol
-- **Status:** Reviewed deliverable complete; user acceptance is still required
-- **Implementation state:** No package-assurance implementation has begun
+- **Active WBS:** P1.1, package manifest schema and loader
+- **Status:** P0.2 accepted on 2026-07-16; P1.1 authorized
+- **Implementation state:** P1.1 begins only after the P0 branch is integrated and a dedicated capability branch is created
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
-P0.2 freezes the development/held-out split, minimum scenario matrix, exact oracle matching, state and CLI routing, reproducibility, contamination handling, false-positive/false-negative review, bounded claims, and release stop conditions.
+P0.2 is accepted. It freezes the development/held-out split, minimum scenario matrix, exact oracle matching, state and CLI routing, reproducibility, contamination handling, false-positive/false-negative review, bounded claims, and release stop conditions.
 
-P1 remains blocked until the user accepts P0.2 in the controlling Gantt.
+P1.1 is authorized to implement only the package manifest schema and loader. P1.2 fixtures and all rule-engine work remain blocked by their own predecessor gates.
 
 ## Intended Outcome
 
@@ -76,9 +76,9 @@ Read current project information in this order:
 
 Files under `docs/archive/` and dated modernization records are historical provenance, not current control.
 
-## Next Authorized Action
+## Current Authorized Action
 
-Review the P0.2 acceptance plan and management recommendations. If P0.2 is accepted, record the gate and begin P1.1 on a separate package-manifest capability branch. Do not begin loader, schema, fixture, rule-engine, PDF/CAD, agent, API, database, RAG, or frontend implementation before that acceptance.
+Integrate the accepted P0 branch, create `feature/package-manifest`, and implement P1.1 against the frozen P0.1 and P0.2 contracts. Do not begin P1.2 fixtures, consistency rules, PDF/CAD, agent, API, database, RAG, or frontend implementation.
 
 ## Engineering Boundary
 
