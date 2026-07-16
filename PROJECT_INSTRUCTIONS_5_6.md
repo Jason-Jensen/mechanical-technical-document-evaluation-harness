@@ -33,13 +33,13 @@ At the start of every work block:
 
 1. Read `Start Here`, `AI Context`, and the active/next rows in `Pilot Gantt`.
 2. Review the last three entries in `Work Block Log` and all open decisions, risks, and evidence relevant to the active WBS.
-3. State the active WBS, objective, expected duration, branch or worktree, and definition of done.
+3. State the active WBS, objective, branch or worktree, and definition of done.
 4. Identify authoritative inputs, protected assets, and allowed write locations.
 5. Reject work that does not directly advance the active deliverable.
 
 At closeout:
 
-1. Record actual hours only when known; preserve prior history.
+1. Preserve prior time history; prospective work-block time tracking is waived unless the user explicitly restores it.
 2. Update status, percent complete, evidence, decisions, blockers, notes, and exact next action.
 3. Run focused tests and broader regression tests when justified.
 4. Inspect generated files, diffs, command output, and repository state.
@@ -50,13 +50,13 @@ Use one branch per coherent capability, not per trivial test. Use parallel workt
 
 ## Current Work Block
 
-- **Active WBS:** P0.1 — Define workflow contract and authority map
-- **Objective:** Freeze the v0.3.0 package-audit contract before implementation.
-- **Expected duration:** 2 focused hours
-- **Definition of done:** Document types, canonical identifiers, source precedence, explicit result states, exclusions, human-review boundaries, and acceptance evidence are explicit and internally consistent.
+- **Active WBS:** P0.2 - Define acceptance plan and benchmark protocol
+- **Objective:** Freeze how v0.3.0 will be proven before implementation.
+- **Time tracking:** Waived prospectively by the user; preserve historical values without requesting or backfilling durations.
+- **Definition of done:** Development and held-out separation, scenario and fault matrix, exact oracle rules, state and CLI expectations, evidence requirements, reproducibility, contamination handling, false-positive/false-negative review, claim boundaries, and stop conditions are explicit and internally consistent.
 - **Recommended branch:** `feature/package-assurance-contract`
 
-Do not begin P0.2 or implementation until P0.1 is reviewed and accepted.
+P0.1 is accepted. Do not begin P1 implementation until P0.2 is reviewed and accepted by the user.
 
 ## Architecture Invariants
 

@@ -2,8 +2,8 @@
 
 ## Work Block P0.1 — Workflow Contract and Authority Map
 
+**Status:** Accepted on 2026-07-15.
 **Objective:** Freeze what the package audit evaluates and how authority is resolved.
-**Expected duration:** 2 focused hours.
 **Branch:** `feature/package-assurance-contract`
 **Definition of done:** The reviewed contract specifies inputs, canonical IDs, source precedence, gates, checks, result states, release holds, evidence, exclusions, and human-review boundaries.
 
@@ -18,8 +18,9 @@ Actions:
 
 ## Work Block P0.2 — Acceptance Plan and Benchmark Protocol
 
+**Status:** Active; reviewed deliverable pending user acceptance.
 **Objective:** Define how v0.3.0 will be proven before implementation.
-**Expected duration:** 2 focused hours.
+**Time tracking:** Waived prospectively; do not request or backfill work-block durations.
 **Definition of done:** Development and held-out split, fault matrix, release gates, evidence requirements, false-negative review, claim boundaries, and stop conditions are frozen.
 
 Actions:

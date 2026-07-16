@@ -16,7 +16,7 @@ Read, in order:
 4. `PROJECT_CONTEXT.md`
 5. relevant architecture and workflow documents
 
-The active WBS is P0.1. Do not implement package loaders or rules until the workflow contract and authority model are accepted.
+The active WBS is P0.2. P0.1 is accepted. Do not implement package loaders, schemas, fixtures, or rules until the acceptance plan and benchmark protocol are accepted.
 
 ## Change Discipline
 

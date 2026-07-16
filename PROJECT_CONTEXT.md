@@ -1,6 +1,6 @@
 # Project Context
 
-**Updated:** 2026-07-10
+**Updated:** 2026-07-15
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
 
 ## Frozen Release
@@ -41,25 +41,25 @@ Primary output:
 
 ### Active WBS
 
-P0.1 — Define workflow contract and authority map.
+P0.2 - Define acceptance plan and benchmark protocol.
 
 ### Immediate Objective
 
-Freeze scope, canonical IDs, authoritative fields and source precedence, result states, exclusions, human-review boundaries, and acceptance evidence before implementation.
+Freeze how the structured package-assurance pilot will be proven: benchmark separation, scenario coverage, fault-oracle matching, state and exit routing, evidence completeness, reproducibility, contamination handling, release claims, and stop conditions.
 
-### Expected Duration
+### Time Tracking
 
-2 focused hours.
+Prospective time tracking was waived by the user on 2026-07-15. Preserve historical workbook values, but do not request, estimate, or backfill work-block durations.
 
 ### Definition of Done
 
-The workflow contract is explicit, internally consistent, reviewable, and sufficient to author the acceptance plan without inventing missing product behavior.
+The reviewed acceptance plan freezes the development/held-out split, minimum scenario and fault matrix, exact oracle rules, state and CLI expectations, evidence requirements, reproducibility protocol, contamination and replacement rules, false-positive/false-negative review, bounded claims, and release stop conditions.
 
 ### Next WBS
 
-P0.2 — Define acceptance plan and benchmark protocol.
+P1.1 - Implement the package manifest schema and loader, only after user acceptance of P0.2 and on its own capability branch.
 
-No pilot actual hours have been recorded yet.
+P0.1 was accepted by the user on 2026-07-15. P0.2 is reviewed and complete pending user acceptance. No package-assurance implementation has begun.
 
 ## Product Interpretation
 
