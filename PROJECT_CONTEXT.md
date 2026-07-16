@@ -1,104 +1,85 @@
 # Project Context
 
-**Updated:** 2026-07-15
+**Updated:** 2026-07-16
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
+**Current branch:** `feature/package-assurance-contract`
 
-## Frozen Release
+## Executive Summary
 
-Mechanical Technical Document Evaluation Harness **v0.2.0** is complete and frozen at accepted commit `45336a2`.
+The repository contains two deliberately different assets:
 
-Verified release evidence:
+- **v0.2.0 Mechanical Technical Document Evaluation Harness:** a frozen, verified evaluation kernel;
+- **v0.3.0 Package Assurance Pilot:** the active effort to prove one complete structured Mechanical Package Consistency Audit.
+
+The project is not building a generic AI platform or SaaS product. Its near-term goal is to prove that a bounded, deterministic-first workflow can identify package inconsistencies, preserve evidence, route uncertainty correctly, and support qualified human release review.
+
+## Frozen Baseline
+
+v0.2.0 is frozen at accepted commit `45336a2` and the annotated `v0.2.0` tag.
+
+Accepted evidence:
 
 - five reviewed mechanical cases;
 - 121 passing tests;
 - 9/9 harness-verification baseline;
 - 2/2 deterministic portfolio demo;
-- immutable result records;
-- CI and release documentation;
-- annotated `v0.2.0` tag.
+- immutable result records, CI, release documentation, and clean-clone acceptance.
 
-Do not restart or replace this kernel.
+Do not rewrite this kernel or alter its protected evidence without an approved interface-conflict decision.
 
-## Product Direction
+## Active Gate
 
-The strategic product is the **Mechanical Engineering Workflow Assurance Platform**.
+- **Release:** v0.3.0 Package Assurance Pilot
+- **Active WBS:** P0.2, acceptance plan and benchmark protocol
+- **Status:** Reviewed deliverable complete; user acceptance is still required
+- **Implementation state:** No package-assurance implementation has begun
 
-The selected first post-MVP vertical is a **Mechanical Package Consistency Audit** over structured package manifests and controlled file references.
+P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
-Target relationships:
+P0.2 freezes the development/held-out split, minimum scenario matrix, exact oracle matching, state and CLI routing, reproducibility, contamination handling, false-positive/false-negative review, bounded claims, and release stop conditions.
 
-`drawing register <-> drawing metadata <-> BOM/equipment list <-> datasheet/specification metadata <-> revision history`
+P1 remains blocked until the user accepts P0.2 in the controlling Gantt.
 
-Primary output:
+## Intended Outcome
 
+The pilot audits structured relationships among:
+
+`drawing register <-> drawing metadata <-> BOM/equipment list <-> datasheet/specification metadata <-> revision history <-> controlled file references`
+
+Primary deliverables:
+
+- immutable machine-readable package result;
 - evidence-linked issue register;
 - release-readiness summary;
-- immutable machine-readable result.
+- explicit package states and stable CLI exits;
+- benchmark and clean-clone evidence;
+- bounded service demonstration.
 
-## Active Release
+## Operating Decisions
 
-**v0.3.0 — Package Assurance Pilot**
+- Use gate and evidence completion, not hours, to control progress. Prospective time tracking is waived; historical values remain archival context.
+- Keep the evaluator independent of any producer, model, or agent runtime.
+- Prefer deterministic, source-linked checks and fail closed on unsafe normalization or missing authority.
+- Preserve failed runs and keep package definitions, expected assets, candidate artifacts, traces, and results separate.
+- Use only public, synthetic, self-authored, or explicitly authorized data.
+- Treat the first commercial offer as a bounded audit service, not software access.
 
-### Active WBS
+## Document Authority
 
-P0.2 - Define acceptance plan and benchmark protocol.
+Read current project information in this order:
 
-### Immediate Objective
+1. `gantt.xlsx` for active status, gates, decisions, risks, evidence, and next action;
+2. accepted workflow and acceptance contracts for product behavior;
+3. `AGENTS.md` for durable repository controls;
+4. this file for the compact current handoff;
+5. architecture, strategy, commercial, and release documents for supporting context.
 
-Freeze how the structured package-assurance pilot will be proven: benchmark separation, scenario coverage, fault-oracle matching, state and exit routing, evidence completeness, reproducibility, contamination handling, release claims, and stop conditions.
+Files under `docs/archive/` and dated modernization records are historical provenance, not current control.
 
-### Time Tracking
+## Next Authorized Action
 
-Prospective time tracking was waived by the user on 2026-07-15. Preserve historical workbook values, but do not request, estimate, or backfill work-block durations.
+Review the P0.2 acceptance plan and management recommendations. If P0.2 is accepted, record the gate and begin P1.1 on a separate package-manifest capability branch. Do not begin loader, schema, fixture, rule-engine, PDF/CAD, agent, API, database, RAG, or frontend implementation before that acceptance.
 
-### Definition of Done
+## Engineering Boundary
 
-The reviewed acceptance plan freezes the development/held-out split, minimum scenario and fault matrix, exact oracle rules, state and CLI expectations, evidence requirements, reproducibility protocol, contamination and replacement rules, false-positive/false-negative review, bounded claims, and release stop conditions.
-
-### Next WBS
-
-P1.1 - Implement the package manifest schema and loader, only after user acceptance of P0.2 and on its own capability branch.
-
-P0.1 was accepted by the user on 2026-07-15. P0.2 is reviewed and complete pending user acceptance. No package-assurance implementation has begun.
-
-## Product Interpretation
-
-The existing release proves that the evaluation kernel works. It does not yet prove a realistic package-assurance workflow, external validity, commercial value, or agent performance.
-
-v0.3.0 must add one complete vertical rather than more isolated checks.
-
-## Required Package States
-
-- automatic pass;
-- automatic fail;
-- engineering review required;
-- missing authoritative information;
-- extraction or tool failure;
-- evaluator uncertainty.
-
-A score may summarize non-critical quality but cannot override release-critical holds.
-
-## Data Boundary
-
-Use public, synthetic, self-authored, or explicitly authorized data only. Do not use confidential work-product details from Outlier, employers, clients, or private engineering packages.
-
-## Deferred Until After v0.3.0
-
-- PDF, image, drawing, table, and native CAD extraction;
-- agent runtime integration;
-- APIs, databases, and frontend work;
-- observability dashboards;
-- RAG;
-- hosted deployment;
-- reward models, LoRA, and RL.
-
-## Source Hierarchy
-
-1. Current project instructions
-2. Current `gantt.xlsx`
-3. `AGENTS.md` and this file
-4. Repository architecture/workflow contracts
-5. Accepted release and benchmark evidence
-6. Research and market sources
-
-Research informs design; it does not override the controlling Gantt or accepted contracts.
+Outputs are flags, evidence, draft reports, and review packages. They are not engineering sign-off, code-compliance opinions, autonomous release decisions, or safety-critical final decisions.

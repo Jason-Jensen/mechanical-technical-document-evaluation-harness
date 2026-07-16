@@ -16,12 +16,12 @@ Read, in order:
 4. `PROJECT_CONTEXT.md`
 5. relevant architecture and workflow documents
 
-The active WBS is P0.2. P0.1 is accepted. Do not implement package loaders, schemas, fixtures, or rules until the acceptance plan and benchmark protocol are accepted.
+The workbook, not this file, defines the active WBS. Do not implement package loaders, schemas, fixtures, or rules unless `gantt.xlsx` records P0.2 acceptance and authorizes P1.
 
 ## Change Discipline
 
 - Use one branch per coherent capability.
-- Recommended current branch: `feature/package-assurance-contract`.
+- Use the capability branch or worktree named in the active `Pilot Gantt` row.
 - Do not modify unrelated files.
 - Do not rewrite the v0.2.0 kernel unless an explicit interface conflict is demonstrated and approved.
 - Keep package case definitions, golden relationships, candidate artifacts, traces, and run results separate.

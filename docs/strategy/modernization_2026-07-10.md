@@ -1,5 +1,7 @@
 # Project Modernization Decision — 2026-07-10
 
+> Historical decision record. Current operational status is controlled by `gantt.xlsx`; use `PROJECT_CONTEXT.md` for the current handoff. Dates, hours, and the immediate work block below are preserved as the modernization baseline, not current instructions.
+
 ## Executive Decision
 
 Continue the project. Freeze v0.2.0 as the accepted evaluation kernel and build one complete, economically meaningful workflow on top of it.

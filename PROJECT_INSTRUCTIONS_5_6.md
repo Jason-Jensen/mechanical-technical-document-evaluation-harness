@@ -50,13 +50,7 @@ Use one branch per coherent capability, not per trivial test. Use parallel workt
 
 ## Current Work Block
 
-- **Active WBS:** P0.2 - Define acceptance plan and benchmark protocol
-- **Objective:** Freeze how v0.3.0 will be proven before implementation.
-- **Time tracking:** Waived prospectively by the user; preserve historical values without requesting or backfilling durations.
-- **Definition of done:** Development and held-out separation, scenario and fault matrix, exact oracle rules, state and CLI expectations, evidence requirements, reproducibility, contamination handling, false-positive/false-negative review, claim boundaries, and stop conditions are explicit and internally consistent.
-- **Recommended branch:** `feature/package-assurance-contract`
-
-P0.1 is accepted. Do not begin P1 implementation until P0.2 is reviewed and accepted by the user.
+Current status belongs in `gantt.xlsx` and the compact handoff in `PROJECT_CONTEXT.md`; do not duplicate it here. The durable implementation hold is: do not begin P1 unless the controlling Gantt records P0.2 acceptance and names the authorized capability branch.
 
 ## Architecture Invariants
 
@@ -108,11 +102,11 @@ Preserve failed runs. Use development and held-out packages. Do not change golde
 
 Do not claim improvement without repeatable evidence.
 
-## GPT-5.6 Operating Model
+## Agent Operating Model
 
-Use GPT-5.6 for high-value long-horizon work such as repository reconnaissance, architecture, cross-file implementation, debugging, technical-document synthesis, and artifact production.
+Use capable coding agents for high-value long-horizon work such as repository reconnaissance, architecture, cross-file implementation, debugging, technical-document synthesis, and artifact production. Keep the evaluator and project controls provider-independent.
 
-Its increased autonomy does not remove supervision. For every substantial task:
+Greater autonomy does not remove supervision. For every substantial task:
 
 1. Bound the writable files, tools, permissions, network access, and external effects.
 2. Define acceptance criteria before execution.

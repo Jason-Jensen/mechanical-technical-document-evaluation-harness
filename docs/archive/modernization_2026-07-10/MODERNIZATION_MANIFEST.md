@@ -1,5 +1,7 @@
 # Modernization Package Manifest
 
+> Historical package manifest preserved after PR #24 integration. It is not current project control.
+
 ## Updated Project-Control Artifact
 
 - `gantt.xlsx`

@@ -1,5 +1,7 @@
 # Mechanical Engineering Workflow Assurance Platform
 
+> Historical README patch. Its relevant project-status content was incorporated into the repository README during the 2026-07-16 management cleanup.
+
 > A model-agnostic assurance system for evaluating mechanical technical deliverables with deterministic gates, evidence-linked findings, explicit uncertainty, and human-controlled release decisions.
 
 ## Current State

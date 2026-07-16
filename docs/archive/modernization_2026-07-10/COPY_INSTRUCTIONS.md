@@ -1,5 +1,7 @@
 # Integration Instructions
 
+> Historical transfer instructions. The modernization package was merged in PR #24 and these commands are no longer current project control.
+
 This package modernizes project control and documentation. It does **not** claim that the local repository was modified.
 
 ## Recommended Integration

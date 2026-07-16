@@ -1,6 +1,6 @@
 # v0.3.0 Mechanical Package Consistency Audit - Workflow Contract
 
-**Status:** Reviewed for P0.1 acceptance
+**Status:** Accepted for P0.1 on 2026-07-15
 **Release:** v0.3.0
 **Scope:** Structured package metadata and controlled file references
 

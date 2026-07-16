@@ -1,7 +1,7 @@
 {
   "schema_version": "0.3.0",
   "example_id": "synthetic_package_authority_map_example_v0_3_0",
-  "review_status": "reviewed_for_p0_1_acceptance",
+  "review_status": "accepted_p0_1_2026_07_15",
   "applies_to": "Synthetic v0.3.0 package assurance pilot examples",
   "note": "This is a reviewed example for the structured pilot contract. It is not a universal engineering hierarchy.",
   "package_scope": {

@@ -1,8 +1,19 @@
-# Mechanical Technical Document Evaluation Harness
+# Mechanical Engineering Workflow Assurance Platform
 
-A schema-first Python CLI for evaluating structured candidate artifacts against versioned mechanical-engineering workflow cases.
+This repository combines a frozen evaluation kernel with an active, structured package-assurance pilot.
 
-The current MVP is the evaluation kernel for a broader Mechanical Engineering Workflow Assurance Platform. It converts engineering review requirements into reproducible gates, deterministic checks, weighted scores, failure evidence, and immutable result records.
+The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a schema-first Python CLI that converts engineering review requirements into reproducible gates, deterministic checks, weighted scores, failure evidence, and immutable result records.
+
+## Project status
+
+- **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
+- **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
+- **Current gate:** P0.2 benchmark and acceptance policy is reviewed pending user acceptance.
+- **Implementation boundary:** no v0.3.0 package loader, schema, fixture, rule engine, PDF/CAD adapter, agent, API, database, RAG, or frontend has been implemented.
+
+The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
+
+Current execution status is controlled in `gantt.xlsx`. Product behavior is defined in [the workflow contract](docs/package_assurance/workflow_contract_v0.3.0.md) and [acceptance plan](docs/package_assurance/acceptance_plan_v0.3.0.md).
 
 ## Current MVP
 
@@ -109,6 +120,7 @@ Run the deterministic portfolio demonstration:
 python scripts/run_portfolio_demo.py `
     --runs-dir runs\portfolio-demo `
     --report-path evidence\portfolio_demo\report.md
+```
 
 ## CLI usage
 
@@ -209,7 +221,7 @@ schema-valid immutable result record
 
 Mandatory-gate failure prevents detailed checks from running. The result record still captures the failure evidence and final score.
 
-See [docs/architecture.md](docs/architecture.md) for component boundaries and data flow.
+See [docs/architecture.md](docs/architecture.md) for the implemented v0.2.0 component boundaries and [the package-assurance target architecture](docs/architecture/package_assurance_target_architecture.md) for the planned v0.3.0 extension.
 
 ## Benchmark cases
 
