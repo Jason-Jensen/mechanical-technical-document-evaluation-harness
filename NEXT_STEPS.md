@@ -10,21 +10,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** Relationship-slice definition authorized; implementation remains blocked pending acceptance of that definition.
+- **P2.2:** First relationship-slice definition is review-ready; implementation remains blocked pending acceptance of that definition.
 - **P2.3 and later:** Blocked pending the preceding gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-The user explicitly accepted stabilization and P2.1 and authorized definition of one narrow P2.2 relationship slice. Authorization does not yet extend to relationship implementation, package-state routing, reports, CLI behavior, or semantic held-out evaluation.
+The user explicitly accepted stabilization and P2.1 and authorized definition of one narrow P2.2 relationship slice. That definition is now review-ready. Authorization does not yet extend to relationship implementation, package-state routing, reports, CLI behavior, or semantic held-out evaluation.
 
 ## Active Work Block
 
 - **WBS:** P2.2 definition, first document-relationship slice
 - **Branch:** `codex/p2.2-relationship-slice-definition`
-- **Definition of done:** A reviewed document freezes one register-to-metadata check, its authority and join rules, exact clean/fault outcomes, evidence, downstream handoff, module boundary, tests, and exclusions without adding executable P2.2 behavior.
+- **Definition of done:** Met for review. `docs/package_assurance/p2_2_relationship_slice_definition_v0.3.0.md` freezes one register-to-metadata check, its authority and join rules, exact clean/fault outcomes, evidence, downstream handoff, module boundary, tests, and exclusions without adding executable P2.2 behavior.
 
-Next action: finish and review the P2.2 relationship-slice definition, integrate the accepted feature chain through a reviewed pull request, and authorize implementation separately. The full suite exercised only opaque held-out integrity checks; no semantic held-out run or tuning occurred. P2.2 executable checks, P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this definition block.
+Next action: review and accept, revise, or reject the P2.2 relationship-slice definition; integrate the accepted feature chain through a reviewed pull request; and authorize implementation separately. The full suite exercised only opaque held-out integrity checks; no semantic held-out run or tuning occurred. P2.2 executable checks, P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this definition block.
 
 ## Delivery Sequence
 
