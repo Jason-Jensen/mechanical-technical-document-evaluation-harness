@@ -3,14 +3,14 @@
 ## Control Status
 
 - **WBS:** P2.2, third directional document-relationship slice
-- **Status:** Definition integrated; implementation accepted; PR #33 integration pending
-- **Integration baseline:** `main` at PR #32 merge commit `6d1f2f2`
+- **Status:** Definition and implementation accepted, integrated, and verified
+- **Integration baseline:** `main` at PR #33 merge commit `8d7f314`
 - **Definition branch:** `codex/p2.2-drawing-metadata-orphan-definition`
 - **Implementation branch:** `codex/p2.2-drawing-metadata-register-authority-implementation`
 - **Implementation commit:** `8eb431d`
-- **Review PR:** #33
-- **Decisions:** D-059, D-060, D-061, D-062, D-063, D-064
-- **Evidence:** EV-056, EV-057, EV-058, EV-059, EV-060, EV-061
+- **Review PR:** #33, merged
+- **Decisions:** D-059, D-060, D-061, D-062, D-063, D-064, D-065
+- **Evidence:** EV-056, EV-057, EV-058, EV-059, EV-060, EV-061, EV-062
 
 This definition is the authorized next block after the accepted
 `drawing_register_metadata_presence` implementation was integrated through PR
@@ -28,8 +28,9 @@ The user accepted all three main definition decisions on 2026-07-17:
 
 PR #32 integrated this accepted definition to `main` at `6d1f2f2`, and the
 exact merged tree passed the required verification. Implementation commit
-`8eb431d` is complete. The user accepted it on 2026-07-17; PR #33
-integration and exact merged-tree verification are pending.
+`8eb431d` is complete. The user accepted it on 2026-07-17. PR #33 integrated
+the implementation and acceptance evidence to `main` at `8d7f314`; exact
+merged-tree verification passed.
 
 ## Plain-Language Goal
 
@@ -407,5 +408,8 @@ repeatability, source-order, and prerequisite behavior. Verification passes 40
 focused tests, 211 full-suite tests with one expected skip, repository
 validation 5/5, Ruff, and 85.18% coverage. No accepted fixture, golden,
 held-out asset, schema, authority map, or historical evidence changed. The
-user accepted the implementation on 2026-07-17. PR #33 integration and exact
-merged-tree verification remain required before the next definition block.
+user accepted the implementation on 2026-07-17. PR #33 integrated it to
+`main` at `8d7f314`. Exact merged-tree verification passes 40 focused tests,
+211 full-suite tests with one expected skip, repository validation 5/5, Ruff,
+and 85.37% coverage. The next bounded definition block may proceed; no further
+implementation is authorized by this document.

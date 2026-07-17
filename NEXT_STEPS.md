@@ -10,22 +10,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** The revision slice is integrated at `5866212`; the metadata-presence slice is integrated at `36338c0`; the reverse metadata-without-register authority definition is integrated at `6d1f2f2`, and implementation `8eb431d` was accepted on 2026-07-17 and awaits PR #33 integration.
+- **P2.2:** Three ordered drawing checks are integrated through PR #33 at exact `main` commit `8d7f314`. The fourth, `drawing_register_metadata_file_reference`, is defined for review only; no fourth-check implementation is authorized.
 - **P2.3 and later:** Blocked pending the preceding gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-The accepted `drawing_register_metadata_revision` and `drawing_register_metadata_presence` v0.3.0 slices are implemented and integrated. The user accepted `drawing_metadata_register_authority` implementation `8eb431d` on 2026-07-17. Integrate PR #33 and verify its exact merged tree before opening only the next bounded relationship-definition block. Every other relationship, package-state routing, report, CLI behavior, and semantic held-out evaluation remains blocked.
+The three accepted drawing checks are implemented, integrated, and verified on exact `main` commit `8d7f314`. Review only the proposed `drawing_register_metadata_file_reference` v0.3.0 definition. It compares exact register/metadata drawing pairs under `AUTH-DWG-002` and does not authorize executable behavior. Every other relationship, package-state routing, report, CLI behavior, and semantic held-out evaluation remains blocked.
 
 ## Active Work Block
 
-- **WBS:** P2.2 drawing-metadata register-authority implementation integration
-- **Branch:** `codex/p2.2-drawing-metadata-register-authority-implementation`
-- **Objective:** Integrate the accepted `drawing_metadata_register_authority` v0.3.0 implementation through PR #33 and establish the next exact verified baseline.
-- **Definition of done:** Acceptance is recorded; PR #33 merges with green checks; exact merged-tree verification passes; protected assets remain unchanged; and only a definition branch for the next bounded relationship slice is created.
+- **WBS:** P2.2 drawing file-reference agreement definition
+- **Branch:** `codex/p2.2-drawing-file-reference-definition`
+- **Objective:** Freeze one deterministic check for exact drawing pairs whose drawing-register and drawing-metadata `file_ref_id` values disagree under `AUTH-DWG-002`.
+- **Definition of done:** The ten review decisions, exact wrong-but-valid development fault, evidence, exclusions, implementation acceptance tests, and adjacent declaration/reciprocity gap are reviewed; the controlling workbook is current; the diff contains no executable or protected-asset change; and a draft definition PR is ready for explicit user acceptance.
 
-Next action: merge PR #33, verify exact `main`, then define the next smallest P2.2 relationship gap without adding executable behavior. No semantic held-out run or tuning is authorized.
+Next action: review and accept, revise, or reject the fourth-slice definition. Implementation may begin only after explicit acceptance and definition integration. No semantic held-out run or tuning is authorized.
 
 ## Delivery Sequence
 
