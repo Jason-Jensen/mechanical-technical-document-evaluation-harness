@@ -3,17 +3,28 @@
 ## Control Status
 
 - **WBS:** P2.2, third directional document-relationship slice
-- **Status:** Proposed definition; implementation blocked pending user acceptance
+- **Status:** Accepted definition; PR #32 integration pending
 - **Integration baseline:** `main` at PR #31 merge commit `36338c0`
 - **Definition branch:** `codex/p2.2-drawing-metadata-orphan-definition`
-- **Decisions:** D-059, D-060
-- **Evidence:** EV-056, EV-057
+- **Decisions:** D-059, D-060, D-061
+- **Evidence:** EV-056, EV-057, EV-058
 
 This definition is the authorized next block after the accepted
 `drawing_register_metadata_presence` implementation was integrated through PR
 #31 and verified on the exact merged tree. It defines behavior only. No
 executable relationship, package-state routing, fixture, schema, authority-map,
 report, or CLI change is authorized until the user accepts this contract.
+
+The user accepted all three main definition decisions on 2026-07-17:
+
+1. route the missing register authority to
+   `missing_authoritative_information`;
+2. apply `AUTH-DWG-001` narrowly to the metadata revision claim; and
+3. use exact metadata evidence plus a row-1 header-anchored register membership
+   snapshot without inventing a missing row.
+
+Implementation is authorized only after PR #32 integrates this accepted
+definition to `main` and the exact merged tree is verified.
 
 ## Plain-Language Goal
 
@@ -378,3 +389,7 @@ This definition block is done when:
   was added;
 - the branch is committed, pushed, and opened as a draft definition PR; and
 - the user accepts, revises, or rejects the definition before implementation.
+
+All definition criteria are satisfied. The user accepted the definition on
+2026-07-17. PR #32 integration and exact merged-tree verification remain the
+required predecessor to implementation.

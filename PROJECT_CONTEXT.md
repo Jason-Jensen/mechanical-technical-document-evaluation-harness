@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.2 definition, metadata-to-drawing-register authority direction
-- **Status:** The first two relationship behaviors are integrated and verified. The third directional definition is proposed for review; implementation remains blocked
+- **Active WBS:** P2.2 definition integration, metadata-to-drawing-register authority direction
+- **Status:** The first two relationship behaviors are integrated and verified. The user accepted the third directional definition on 2026-07-17; PR #32 integration and exact merged-tree verification are pending
 - **Implementation state:** `relationships.py` now returns the accepted revision comparison first and the directional metadata-presence check second, with deterministic pass, mismatch, missing-counterpart, or prerequisite-skip records. P2.2 reverse orphan detection and other relationships, P2.3 consistency rules, P2.4 state routing, reports, and semantic held-out evaluation remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -56,7 +56,7 @@ The user accepted the implementation by merging PR #29 into the accepted definit
 
 The accepted second slice checks only whether every authoritative drawing-register entry has a drawing-metadata counterpart. It deliberately excludes the reverse orphan-record direction because a metadata record with no register authority routes to `missing_authoritative_information`, not the same `automatic_fail`, and needs separate absence evidence. The user accepted the definition and implementation on 2026-07-17. PR #31 integrated the complete slice to `main` at `36338c0`. Verification on that exact merged tree passes 35 focused tests, 206 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 84.93% coverage.
 
-The proposed third direction is `drawing_metadata_register_authority` v0.3.0. It starts from accepted metadata records, requires an exact normalized drawing-register match under `AUTH-DWG-001`, and classifies an absent authority row as a high-severity release hold in `missing_authoritative_information`. The reviewed temporary fault removes only register row `DOC-DWG-001`; all eight P2.1 gates and both accepted P2.2 checks still pass, isolating the new behavior. The definition freezes exact metadata evidence, a row-1 header-anchored register-membership locator, stable identity and order, check ordering, and implementation tests without adding executable behavior.
+The accepted third direction is `drawing_metadata_register_authority` v0.3.0. It starts from accepted metadata records, requires an exact normalized drawing-register match under `AUTH-DWG-001`, and classifies an absent authority row as a high-severity release hold in `missing_authoritative_information`. The reviewed temporary fault removes only register row `DOC-DWG-001`; all eight P2.1 gates and both accepted P2.2 checks still pass, isolating the new behavior. The definition freezes exact metadata evidence, a row-1 header-anchored register-membership locator, stable identity and order, check ordering, and implementation tests. The user accepted all three main definition decisions on 2026-07-17. PR #32 integration remains the implementation predecessor.
 
 ## Intended Outcome
 
@@ -96,7 +96,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review and accept, revise, or reject `docs/package_assurance/p2_2_drawing_metadata_register_authority_definition_v0.3.0.md`. Do not implement it or another downstream layer before explicit acceptance. Semantic held-out execution, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Integrate the accepted `docs/package_assurance/p2_2_drawing_metadata_register_authority_definition_v0.3.0.md` through PR #32 and verify exact `main`. Then implement only that accepted check on a fresh branch. Semantic held-out execution, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
