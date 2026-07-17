@@ -26,13 +26,20 @@ DRAWING_REGISTER_METADATA_REVISION_CHECK_ID = (
 DRAWING_REGISTER_METADATA_PRESENCE_CHECK_ID = (
     "drawing_register_metadata_presence"
 )
+DRAWING_METADATA_REGISTER_AUTHORITY_CHECK_ID = (
+    "drawing_metadata_register_authority"
+)
 DRAWING_REVISION_MISMATCH_CODE = "DRAWING_REVISION_MISMATCH"
 DRAWING_METADATA_MISSING_CODE = "DRAWING_METADATA_MISSING"
+DRAWING_REGISTER_AUTHORITY_MISSING_CODE = (
+    "DRAWING_REGISTER_AUTHORITY_MISSING"
+)
 DRAWING_REVISION_AUTHORITY_RULE_ID = "AUTH-DWG-001"
 
 RELATIONSHIP_CHECK_ORDER = (
     DRAWING_REGISTER_METADATA_REVISION_CHECK_ID,
     DRAWING_REGISTER_METADATA_PRESENCE_CHECK_ID,
+    DRAWING_METADATA_REGISTER_AUTHORITY_CHECK_ID,
 )
 
 
@@ -92,9 +99,13 @@ def run_package_relationships(
         package_id=gate_evaluation.package_id,
         sources=gate_evaluation.sources,
     )
+    authority_check = _drawing_metadata_register_authority_check(
+        package_id=gate_evaluation.package_id,
+        sources=gate_evaluation.sources,
+    )
     return PackageRelationshipEvaluation(
         package_id=gate_evaluation.package_id,
-        checks=(revision_check, presence_check),
+        checks=(revision_check, presence_check, authority_check),
     )
 
 
@@ -276,6 +287,65 @@ def _drawing_register_metadata_presence_check(
     )
 
 
+def _drawing_metadata_register_authority_check(
+    *,
+    package_id: str,
+    sources: LoadedStructuredSources,
+) -> RelationshipCheckResult:
+    metadata_records = sources.records_of_type("drawing_metadata_record")
+    metadata_by_drawing = _records_by_drawing_number(metadata_records)
+    register_records = sources.records_of_type("drawing_register_record")
+    register_by_drawing = _records_by_drawing_number(register_records)
+    drawing_numbers = sorted(metadata_by_drawing)
+    collection_locator = _register_collection_locator(register_records)
+
+    findings: list[RelationshipFinding] = []
+    evidence: list[EvidenceLocator] = []
+    for drawing_number in drawing_numbers:
+        metadata_record = metadata_by_drawing[drawing_number]
+        metadata_locator = _metadata_drawing_number_locator(
+            drawing_number=drawing_number,
+            metadata_record=metadata_record,
+        )
+        evidence.append(metadata_locator)
+        if drawing_number in register_by_drawing:
+            continue
+
+        findings.append(
+            _missing_register_authority_finding(
+                package_id=package_id,
+                document_id=str(metadata_record.values["document_id"]),
+                drawing_number=drawing_number,
+                evidence=(metadata_locator, collection_locator),
+            )
+        )
+
+    evidence.append(collection_locator)
+    if findings:
+        return RelationshipCheckResult(
+            check_id=DRAWING_METADATA_REGISTER_AUTHORITY_CHECK_ID,
+            check_version=RELATIONSHIP_CHECK_VERSION,
+            status="failed",
+            summary=(
+                f"Drawing-metadata records checked: {len(drawing_numbers)}; "
+                f"records without drawing-register authority: {len(findings)}."
+            ),
+            findings=tuple(findings),
+            evidence=tuple(evidence),
+        )
+
+    return RelationshipCheckResult(
+        check_id=DRAWING_METADATA_REGISTER_AUTHORITY_CHECK_ID,
+        check_version=RELATIONSHIP_CHECK_VERSION,
+        status="passed",
+        summary=(
+            f"All {len(drawing_numbers)} drawing-metadata record(s) have an "
+            "authoritative drawing-register record."
+        ),
+        evidence=tuple(evidence),
+    )
+
+
 def _records_by_drawing_number(
     records: tuple[StructuredSourceRecord, ...],
 ) -> dict[str, StructuredSourceRecord]:
@@ -356,6 +426,40 @@ def _metadata_collection_locator(
         format="json",
         json_pointer="/records",
         property_name="records",
+        original_value=original_membership,
+        normalized_value=normalized_membership,
+    )
+
+
+def _metadata_drawing_number_locator(
+    *,
+    drawing_number: str,
+    metadata_record: StructuredSourceRecord,
+) -> EvidenceLocator:
+    return metadata_record.field_locator(
+        "drawing_number",
+        original_value=metadata_record.original_values["drawing_number"],
+        normalized_value=drawing_number,
+    )
+
+
+def _register_collection_locator(
+    register_records: tuple[StructuredSourceRecord, ...],
+) -> EvidenceLocator:
+    original_membership = [
+        record.original_values["drawing_number"] for record in register_records
+    ]
+    normalized_membership = sorted(
+        _normalize_identifier(record.values["drawing_number"])
+        for record in register_records
+    )
+    return EvidenceLocator(
+        source_type="drawing_register",
+        source_file="inputs/drawing_register.csv",
+        format="csv",
+        row_number=1,
+        header_row_number=1,
+        column_name="drawing_number",
         original_value=original_membership,
         normalized_value=normalized_membership,
     )
@@ -459,6 +563,59 @@ def _missing_metadata_finding(
         message=(
             f"Authoritative drawing-register drawing {drawing_number} has no "
             "drawing-metadata counterpart."
+        ),
+        affected_identifiers=(document_id, drawing_number),
+        expected_value=expected_value,
+        actual_value=actual_value,
+        review_owner="document_control",
+        evidence=evidence,
+    )
+
+
+def _missing_register_authority_finding(
+    *,
+    package_id: str,
+    document_id: str,
+    drawing_number: str,
+    evidence: tuple[EvidenceLocator, EvidenceLocator],
+) -> RelationshipFinding:
+    result_state = "missing_authoritative_information"
+    expected_value = "authoritative drawing_register record"
+    actual_value = "missing"
+    semantic = {
+        "package_id": package_id,
+        "check_id": DRAWING_METADATA_REGISTER_AUTHORITY_CHECK_ID,
+        "check_version": RELATIONSHIP_CHECK_VERSION,
+        "code": DRAWING_REGISTER_AUTHORITY_MISSING_CODE,
+        "authority_rule_id": DRAWING_REVISION_AUTHORITY_RULE_ID,
+        "drawing_number": drawing_number,
+        "result_state": result_state,
+        "severity": "high",
+        "release_hold": True,
+        "expected_value": expected_value,
+        "actual_value": actual_value,
+    }
+    digest = hashlib.sha256(
+        json.dumps(
+            semantic,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+        ).encode("ascii")
+    ).hexdigest()[:16]
+    return RelationshipFinding(
+        finding_id=f"FND-{digest.upper()}",
+        check_id=DRAWING_METADATA_REGISTER_AUTHORITY_CHECK_ID,
+        check_version=RELATIONSHIP_CHECK_VERSION,
+        package_id=package_id,
+        code=DRAWING_REGISTER_AUTHORITY_MISSING_CODE,
+        result_state=result_state,
+        severity="high",
+        release_hold=True,
+        authority_rule_id=DRAWING_REVISION_AUTHORITY_RULE_ID,
+        message=(
+            f"Drawing metadata {drawing_number} has no authoritative "
+            "drawing-register record."
         ),
         affected_identifiers=(document_id, drawing_number),
         expected_value=expected_value,
