@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-16
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `feature/package-fixtures`
+**Current branch:** `feature/package-inventory-gates`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P1.3, held-out package and fault variants
-- **Status:** P1.3 is complete and integrity-verified on `feature/package-fixtures`; user acceptance and pre-tuning freeze activation are pending
-- **Implementation state:** The accepted development fixture and the new held-out freeze candidate are present; source adapters, gates, consistency rules, result routing, and reports remain unimplemented
+- **Active WBS:** P2.1, package inventory, parse, revision, and authority gates
+- **Status:** P1.3 is accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active and P2.1 is in progress on `feature/package-inventory-gates`
+- **Implementation state:** The manifest boundary and both fixture families are accepted. P2.1 package gates are authorized against development inputs only; relationship checks, package-state routing, issue/report generation, and held-out execution remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -42,7 +42,7 @@ P1.1 is accepted and locally integrated at commit `42ad037`. It validates packag
 
 P1.2 is accepted at commit `f26ed27`. It provides `SCN-DEV-PUMP-SKID-CLEAN-001`, a clean, fully synthetic pump-skid package with all seven mandatory sources, nine controlled file references, 20 reviewed semantic relationships, exact hidden evidence locators, expected clean results, and a package-tree content hash. Its source layouts are fixture examples rather than accepted general schemas.
 
-P1.3 provides `FAM-HO-INSTRUMENT-AIR-001`, a materially distinct synthetic instrument-air family with one clean scenario and seven controlled variants. The family contains 11 documents, 31 reviewed relationships, eight seeded fault records, seven release-blocking variants, an `evaluator_uncertainty` case, and a compound state-precedence case. Exact protected findings, evidence locators, check IDs, package states, per-scenario hashes, material-distinction evidence, contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884` are recorded. Focused verification passed 50 tests with one expected Windows symlink skip; the full suite passed 170 with the same skip. The family is a self-authored pre-tuning freeze candidate, not an independently blind benchmark. P2 evaluator implementation remains blocked until P1.3 is accepted.
+P1.3 is accepted at commit `4b7516e`. It provides a materially distinct synthetic held-out family with exact protected findings, evidence locators, check IDs, package states, per-scenario hashes, material-distinction evidence, contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884`. Its recorded `frozen_pre_tuning` status is active without editing protected content. It is self-authored pre-tuning, not independently blind. P2 implementers must not inspect or execute the accepted held-out family before the controlled held-out run.
 
 ## Intended Outcome
 
@@ -82,7 +82,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review and accept the verified P1.3 held-out freeze candidate. Acceptance activates the recorded pre-tuning freeze without changing protected fixture content. Do not begin P2 source adapters, mandatory gates, consistency rules, PDF/CAD, agent, API, database, RAG, or frontend implementation until P1.3 is accepted.
+Implement P2.1 inventory, structured-source parse, revision, authority, duplicate, evidence-locator, and controlled-file gates against accepted contracts and development inputs only. Stop for user acceptance before P2.2 document/tag relationship checks. Do not inspect the held-out family or begin package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, or frontend implementation.
 
 ## Engineering Boundary
 

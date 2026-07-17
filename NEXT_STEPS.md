@@ -8,21 +8,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P0.2:** Accepted on 2026-07-16. Benchmark and acceptance policy are frozen.
 - **P1.1:** Accepted and locally integrated at commit `42ad037`.
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
-- **P1.3:** Complete and integrity-verified on `feature/package-fixtures`; user acceptance and pre-tuning freeze activation are pending.
-- **P2.1 and later:** Blocked pending P1.3 acceptance and held-out freeze.
+- **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
+- **P2.1:** In progress on `feature/package-inventory-gates` against development inputs only.
+- **P2.2 and later:** Blocked pending P2.1 acceptance.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-The user explicitly accepted P1.2 and authorized P1.3. That work is complete locally, but the authorization does not extend to P2 evaluator behavior.
+The user explicitly accepted P1.3 and authorized the next step. Authorization is limited to P2.1 package inventory gates and does not extend to relationship checks, package-state routing, reports, or held-out execution.
 
 ## Active Work Block
 
-- **WBS:** P1.3, held-out package and fault variants
-- **Branch:** `feature/package-fixtures`
-- **Definition of done:** Met locally. `FAM-HO-INSTRUMENT-AIR-001` contains one clean package and seven controlled variants, including seven release-blocking variants, an `evaluator_uncertainty` case, and a compound precedence case. Exact protected oracles, 31 relationship goldens, per-scenario inventories, material-distinction and contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884` are verified. Focused tests passed 50 with one expected Windows symlink skip; the full suite passed 170 with the same skip.
+- **WBS:** P2.1, package inventory, parse, revision, and authority gates
+- **Branch:** `feature/package-inventory-gates`
+- **Definition of done:** Package-level inventory, structured-source parse, revision, authority, duplicate, evidence-locator, and controlled-file gates fail closed with deterministic evidence; dependent behavior is explicitly suppressed when prerequisites fail; accepted manifest behavior and frozen v0.2.0 regressions remain passing.
 
-Next action: review and accept P1.3, which activates the recorded pre-tuning freeze without editing protected content. Then authorize P2.1 as a separate package-gate work block. Source adapters, mandatory gates, evaluator behavior, and all deferred capabilities remain outside this work block until acceptance.
+Next action: implement and verify P2.1 against the development package only, update evidence, and stop for user acceptance. Do not inspect or execute the held-out family. P2.2 relationship checks, P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this work block.
 
 ## Delivery Sequence
 
