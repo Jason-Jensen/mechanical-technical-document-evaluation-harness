@@ -3,11 +3,13 @@
 ## Control Status
 
 - **WBS:** P2.2, third directional document-relationship slice
-- **Status:** Accepted definition; PR #32 integration pending
-- **Integration baseline:** `main` at PR #31 merge commit `36338c0`
+- **Status:** Accepted definition integrated; implementation ready for review
+- **Integration baseline:** `main` at PR #32 merge commit `6d1f2f2`
 - **Definition branch:** `codex/p2.2-drawing-metadata-orphan-definition`
-- **Decisions:** D-059, D-060, D-061
-- **Evidence:** EV-056, EV-057, EV-058
+- **Implementation branch:** `codex/p2.2-drawing-metadata-register-authority-implementation`
+- **Implementation commit:** `8eb431d`
+- **Decisions:** D-059, D-060, D-061, D-062, D-063
+- **Evidence:** EV-056, EV-057, EV-058, EV-059, EV-060
 
 This definition is the authorized next block after the accepted
 `drawing_register_metadata_presence` implementation was integrated through PR
@@ -23,8 +25,9 @@ The user accepted all three main definition decisions on 2026-07-17:
 3. use exact metadata evidence plus a row-1 header-anchored register membership
    snapshot without inventing a missing row.
 
-Implementation is authorized only after PR #32 integrates this accepted
-definition to `main` and the exact merged tree is verified.
+PR #32 integrated this accepted definition to `main` at `6d1f2f2`, and the
+exact merged tree passed the required verification. Implementation commit
+`8eb431d` is complete and ready for explicit user review.
 
 ## Plain-Language Goal
 
@@ -391,5 +394,16 @@ This definition block is done when:
 - the user accepts, revises, or rejects the definition before implementation.
 
 All definition criteria are satisfied. The user accepted the definition on
-2026-07-17. PR #32 integration and exact merged-tree verification remain the
-required predecessor to implementation.
+2026-07-17. PR #32 integrated it at `6d1f2f2`, and exact merged-tree
+verification passed.
+
+Implementation commit `8eb431d` satisfies the accepted implementation
+criteria. It appends `drawing_metadata_register_authority` as the third check,
+emits the frozen missing-authority result and evidence, and preserves both
+earlier checks. Temporary-copy tests cover clean, one-row, empty-register,
+repeatability, source-order, and prerequisite behavior. Verification passes 40
+focused tests, 211 full-suite tests with one expected skip, repository
+validation 5/5, Ruff, and 85.18% coverage. No accepted fixture, golden,
+held-out asset, schema, authority map, or historical evidence changed. The
+implementation is ready for explicit acceptance; integration and later work
+remain blocked until that review.
