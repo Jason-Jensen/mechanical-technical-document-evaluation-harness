@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-17
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.2-drawing-counterpart-definition`
+**Current branch:** `codex/p2.2-drawing-metadata-presence-implementation`
 
 ## Executive Summary
 
@@ -31,8 +31,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P2.2 integration, second drawing-register-to-metadata relationship slice
-- **Status:** The first slice is integrated to `main` through PR #28 at `5866212`. The directional register-to-metadata presence definition is accepted and awaits PR #30 integration before implementation
-- **Implementation state:** A separate `relationships.py` module now compares authoritative drawing-register revisions with exact drawing-metadata matches and returns deterministic pass, mismatch, or prerequisite-skip records. P2.2 missing/extra documents, tags and other relationships, P2.3 consistency rules, P2.4 state routing, reports, and semantic held-out evaluation remain unimplemented
+- **Status:** The first slice is integrated through PR #28 at `5866212`. The user accepted the second directional implementation on 2026-07-17; PR #31 integration and exact merged-tree verification are pending
+- **Implementation state:** `relationships.py` now returns the accepted revision comparison first and the directional metadata-presence check second, with deterministic pass, mismatch, missing-counterpart, or prerequisite-skip records. P2.2 reverse orphan detection and other relationships, P2.3 consistency rules, P2.4 state routing, reports, and semantic held-out evaluation remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -54,7 +54,7 @@ The implemented slice keeps P2.1 gates unchanged, consumes their completed evalu
 
 The user accepted the implementation by merging PR #29 into the accepted definition branch on 2026-07-17. PR #28 then integrated the complete definition-and-implementation chain to `main` at `5866212`. Verification on that exact merged tree passes 30 focused tests, 201 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 84.64% coverage.
 
-The accepted second slice checks only whether every authoritative drawing-register entry has a drawing-metadata counterpart. It deliberately excludes the reverse orphan-record direction because a metadata record with no register authority routes to `missing_authoritative_information`, not the same `automatic_fail`, and needs a separate absence-evidence decision. The user accepted the definition on 2026-07-17. No second-slice behavior is implemented; implementation begins only after PR #30 is merged and verified.
+The accepted second slice checks only whether every authoritative drawing-register entry has a drawing-metadata counterpart. It deliberately excludes the reverse orphan-record direction because a metadata record with no register authority routes to `missing_authoritative_information`, not the same `automatic_fail`, and needs a separate absence-evidence decision. The user accepted the definition on 2026-07-17, and PR #30 integrated it to `main` at `551200b`. Implementation commit `b24ca65` appends the accepted presence check without changing P2.1 gates or revision-finding semantics. A clean package passes; one or two temporary metadata removals produce exact sorted release-hold findings with authoritative-row and searched-collection evidence; repeated and reordered runs preserve semantic identity; and failed P2.1 prerequisites skip both checks. Verification passes 35 focused tests, 206 full-suite tests with one expected skip, repository validation 5/5, Ruff, 84.93% coverage, and two GitHub CI runs. The user accepted this implementation on 2026-07-17; PR #31 integration is pending.
 
 ## Intended Outcome
 
@@ -94,7 +94,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate the accepted `drawing_register_metadata_presence` definition through PR #30, verify its exact merge to `main`, and create the scoped implementation branch. Implement no other relationship or downstream layer. Semantic held-out execution, reverse orphan detection, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Integrate the accepted `drawing_register_metadata_presence` v0.3.0 behavior through PR #31 and verify the exact merged `main` tree. Then create a definition-only branch for the reverse metadata-without-register authority gap. Do not implement that next slice or another downstream layer before its definition is explicitly accepted. Semantic held-out execution, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

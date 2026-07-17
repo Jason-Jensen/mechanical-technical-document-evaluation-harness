@@ -10,21 +10,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** First relationship slice integrated to `main` through PR #28 at `5866212`; the second directional slice definition is accepted and awaits PR #30 integration; broader P2.2 remains open.
+- **P2.2:** First relationship slice integrated through PR #28 at `5866212`; the second directional implementation was accepted by the user on 2026-07-17 and awaits PR #31 integration; broader P2.2 remains open.
 - **P2.3 and later:** Blocked pending the preceding gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-The accepted `drawing_register_metadata_revision` v0.3.0 slice is implemented, integrated, and verified on `main`. The user accepted `drawing_register_metadata_presence` v0.3.0 on 2026-07-17. Its narrow implementation is authorized only after PR #30 merges to `main` and that merge is verified. Reverse orphan detection, additional relationships, package-state routing, reports, CLI behavior, and semantic held-out evaluation remain blocked.
+The accepted `drawing_register_metadata_revision` v0.3.0 slice is implemented, integrated, and verified on `main`. The user accepted the implemented `drawing_register_metadata_presence` v0.3.0 behavior on 2026-07-17. Integrate PR #31 and verify the exact merged tree before opening a definition-only block for the reverse metadata-without-register authority gap. Additional relationships, package-state routing, reports, CLI behavior, and semantic held-out evaluation remain blocked.
 
 ## Active Work Block
 
 - **WBS:** P2.2 second relationship-slice integration
-- **Branch:** `codex/p2.2-drawing-counterpart-definition`
-- **Definition of done:** Integrate the accepted definition through PR #30, verify the exact merge and green checks, then create the scoped implementation branch without changing protected assets.
+- **Branch:** `codex/p2.2-drawing-metadata-presence-implementation`
+- **Objective:** Integrate the accepted directional presence check through PR #31 and verify the exact merged `main` tree.
+- **Definition of done:** Acceptance is recorded; PR #31 merges with green checks; exact merged-tree verification passes; protected assets remain unchanged; and only then is the next definition branch created.
 
-Next action: merge PR #30 to `main`, verify the merge, and create `codex/p2.2-drawing-metadata-presence-implementation`. Implement only the accepted directional presence rule. The full suite continues to exercise only opaque held-out integrity checks; no semantic held-out run or tuning occurred. Reverse orphan detection, P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this block.
+Next action: merge PR #31, verify `main`, then create a definition-only branch for metadata records that lack drawing-register authority. The accepted implementation passes 35 focused tests, 206 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 84.93% coverage. The full suite continues to exercise only opaque held-out integrity checks; no semantic held-out run or tuning occurred. P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this block.
 
 ## Delivery Sequence
 
