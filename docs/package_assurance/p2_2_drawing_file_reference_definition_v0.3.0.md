@@ -3,15 +3,15 @@
 ## Control Status
 
 - **WBS:** P2.2, fourth document-relationship slice
-- **Status:** Definition proposed; explicit user acceptance pending
+- **Status:** Definition accepted; PR #34 integration pending
 - **Integration baseline:** `main` at PR #33 merge commit `8d7f314`
 - **Definition branch:** `codex/p2.2-drawing-file-reference-definition`
 - **Definition commit:** `d46d56f`
 - **Review PR:** #34, draft, mergeable, two initial CI runs green
 - **Proposed implementation branch:**
   `codex/p2.2-drawing-file-reference-implementation`
-- **Decisions:** D-065, D-066
-- **Evidence:** EV-062, EV-063
+- **Decisions:** D-065, D-066, D-067
+- **Evidence:** EV-062, EV-063, EV-064
 
 PR #33 integrated the accepted `drawing_metadata_register_authority` check and
 its acceptance record to `main` at `8d7f314`. Exact merged-tree verification
@@ -20,6 +20,19 @@ passed before this branch was created.
 This document defines the next bounded relationship behavior only. It does not
 authorize executable behavior, package-state routing, fixture, schema,
 authority-map, report, CLI, semantic held-out, or protected-asset changes.
+
+The user accepted the complete definition on 2026-07-17, including these three
+main decisions:
+
+1. classify an exact-pair file-reference conflict as a high-severity,
+   release-holding `automatic_fail` under `AUTH-DWG-002`;
+2. require both compared field locators and both resolved manifest
+   file-reference locators for the reviewed wrong-but-valid fault; and
+3. keep shared undeclared source references and full manifest reciprocity as
+   separate controls rather than overstating this slice.
+
+Implementation is authorized only after PR #34 is integrated and its exact
+merged `main` tree passes verification.
 
 ## Plain-Language Goal
 
@@ -387,5 +400,5 @@ This definition block is done when:
 
 The document and evidence review are complete. Definition commit `d46d56f` is
 published on draft PR #34, which is mergeable and has two successful initial
-CI runs. Implementation remains blocked until explicit user acceptance and
-integration of this definition.
+CI runs. The user accepted the definition on 2026-07-17. Implementation remains
+blocked until PR #34 integration and exact merged-tree verification.
