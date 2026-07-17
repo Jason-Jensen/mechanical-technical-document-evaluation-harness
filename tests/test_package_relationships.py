@@ -7,9 +7,12 @@ from pathlib import Path
 from typing import Any, Callable
 
 from mech_eval_harness.package_assurance import (
+    DRAWING_FILE_REFERENCE_AUTHORITY_RULE_ID,
+    DRAWING_FILE_REFERENCE_MISMATCH_CODE,
     DRAWING_METADATA_MISSING_CODE,
     DRAWING_METADATA_REGISTER_AUTHORITY_CHECK_ID,
     DRAWING_REGISTER_AUTHORITY_MISSING_CODE,
+    DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
     DRAWING_REGISTER_METADATA_PRESENCE_CHECK_ID,
     DRAWING_REGISTER_METADATA_REVISION_CHECK_ID,
     DRAWING_REVISION_AUTHORITY_RULE_ID,
@@ -20,6 +23,7 @@ from mech_eval_harness.package_assurance import (
     run_package_relationships,
 )
 from mech_eval_harness.package_assurance.gates import (
+    AUTHORITY_GATE_ID,
     SOURCE_INVENTORY_GATE_ID,
 )
 from mech_eval_harness.package_assurance.models import (
@@ -105,6 +109,18 @@ def _set_metadata_revisions(package_root: Path, revision: str) -> None:
     document = _load_json(path)
     for record in document["records"]:
         record["revision_id"] = revision
+    _write_json(path, document)
+
+
+def _set_metadata_file_references(
+    package_root: Path,
+    values_by_record_id: dict[str, str],
+) -> None:
+    path = package_root / "inputs" / "drawing_metadata.json"
+    document = _load_json(path)
+    for record in document["records"]:
+        if record["record_id"] in values_by_record_id:
+            record["file_ref_id"] = values_by_record_id[record["record_id"]]
     _write_json(path, document)
 
 
@@ -267,6 +283,73 @@ def test_clean_drawing_metadata_authority_passes_with_membership_evidence(
     }
 
 
+def test_clean_drawing_file_references_pass_with_resolution_evidence(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    gates = _evaluate_gates(package_root)
+
+    first = _check(
+        gates,
+        DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
+    )
+    second = _check(
+        gates,
+        DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
+    )
+
+    assert gates.dependent_checks_allowed is True
+    assert first.check_version == RELATIONSHIP_CHECK_VERSION
+    assert first.status == "passed"
+    assert first.findings == ()
+    assert first.blocked_by == ()
+    assert len(first.evidence) == 6
+    assert first.to_dict() == second.to_dict()
+    assert tuple(locator.to_dict() for locator in first.evidence[:3]) == (
+        {
+            "source_type": "drawing_register",
+            "source_file": "inputs/drawing_register.csv",
+            "format": "csv",
+            "row_number": 2,
+            "header_row_number": 1,
+            "column_name": "file_ref_id",
+            "row_key": {
+                "column_name": "document_id",
+                "value": "DOC-DWG-001",
+            },
+            "original_value": "FILE-DWG-001",
+            "normalized_value": "FILE-DWG-001",
+        },
+        {
+            "source_type": "drawing_metadata",
+            "source_file": "inputs/drawing_metadata.json",
+            "format": "json",
+            "json_pointer": "/records/0/file_ref_id",
+            "record_id": "DWMETA-001",
+            "property_name": "file_ref_id",
+            "original_value": "FILE-DWG-001",
+            "normalized_value": "FILE-DWG-001",
+        },
+        {
+            "source_type": "package_manifest",
+            "source_file": "package_manifest.json",
+            "format": "file_reference",
+            "file_ref_id": "FILE-DWG-001",
+            "declared_relative_path": (
+                "files/drawings/DWG-PSK-1001_rev_C.txt"
+            ),
+            "resolved_package_relative_path": (
+                "files/drawings/DWG-PSK-1001_rev_C.txt"
+            ),
+            "boundary_check": "inside_allowed_root",
+        },
+    )
+
+    serialized = json.dumps(first.to_dict(), sort_keys=True)
+    assert str(package_root.resolve()) not in serialized
+    assert "package_state" not in serialized
+
+
 def test_metadata_revision_mismatch_emits_frozen_release_hold(
     tmp_path: Path,
 ) -> None:
@@ -332,6 +415,202 @@ def test_metadata_revision_mismatch_emits_frozen_release_hold(
     )
 
 
+def test_metadata_file_reference_mismatch_emits_frozen_release_hold(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    _set_metadata_file_references(
+        package_root,
+        {"DWMETA-001": "FILE-DWG-002"},
+    )
+
+    gates = _evaluate_gates(package_root)
+    first = run_package_relationships(gates)
+    second = run_package_relationships(gates)
+    revision_check, presence_check, authority_check, check = first.checks
+
+    assert all(gate.status == "passed" for gate in gates.gates)
+    assert revision_check.status == "passed"
+    assert presence_check.status == "passed"
+    assert authority_check.status == "passed"
+    assert check.status == "failed"
+    assert len(check.findings) == 1
+    assert len(check.evidence) == 7
+    finding = check.findings[0]
+    assert finding.finding_id == second.checks[3].findings[0].finding_id
+    assert (
+        finding.check_id
+        == DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID
+    )
+    assert finding.check_version == RELATIONSHIP_CHECK_VERSION
+    assert finding.package_id == "PKG-DEV-PUMP-SKID-001"
+    assert finding.code == DRAWING_FILE_REFERENCE_MISMATCH_CODE
+    assert finding.result_state == "automatic_fail"
+    assert finding.severity == "high"
+    assert finding.release_hold is True
+    assert (
+        finding.authority_rule_id
+        == DRAWING_FILE_REFERENCE_AUTHORITY_RULE_ID
+    )
+    assert finding.affected_identifiers == (
+        "DOC-DWG-001",
+        "DWG-PSK-1001",
+        "FILE-DWG-001",
+        "FILE-DWG-002",
+    )
+    assert finding.expected_value == "FILE-DWG-001"
+    assert finding.actual_value == "FILE-DWG-002"
+    assert finding.review_owner == "document_control"
+    assert "metadata file reference FILE-DWG-002" in finding.message
+    assert "drawing-register file reference FILE-DWG-001" in finding.message
+    assert "DWG-PSK-1001" in finding.message
+    assert tuple(locator.to_dict() for locator in finding.evidence) == (
+        {
+            "source_type": "drawing_register",
+            "source_file": "inputs/drawing_register.csv",
+            "format": "csv",
+            "row_number": 2,
+            "header_row_number": 1,
+            "column_name": "file_ref_id",
+            "row_key": {
+                "column_name": "document_id",
+                "value": "DOC-DWG-001",
+            },
+            "original_value": "FILE-DWG-001",
+            "normalized_value": "FILE-DWG-001",
+        },
+        {
+            "source_type": "drawing_metadata",
+            "source_file": "inputs/drawing_metadata.json",
+            "format": "json",
+            "json_pointer": "/records/0/file_ref_id",
+            "record_id": "DWMETA-001",
+            "property_name": "file_ref_id",
+            "original_value": "FILE-DWG-002",
+            "normalized_value": "FILE-DWG-002",
+        },
+        {
+            "source_type": "package_manifest",
+            "source_file": "package_manifest.json",
+            "format": "file_reference",
+            "file_ref_id": "FILE-DWG-001",
+            "declared_relative_path": (
+                "files/drawings/DWG-PSK-1001_rev_C.txt"
+            ),
+            "resolved_package_relative_path": (
+                "files/drawings/DWG-PSK-1001_rev_C.txt"
+            ),
+            "boundary_check": "inside_allowed_root",
+        },
+        {
+            "source_type": "package_manifest",
+            "source_file": "package_manifest.json",
+            "format": "file_reference",
+            "file_ref_id": "FILE-DWG-002",
+            "declared_relative_path": (
+                "files/drawings/DWG-PSK-1002_rev_B.txt"
+            ),
+            "resolved_package_relative_path": (
+                "files/drawings/DWG-PSK-1002_rev_B.txt"
+            ),
+            "boundary_check": "inside_allowed_root",
+        },
+    )
+
+    serialized = json.dumps(first.to_dict(), sort_keys=True)
+    assert str(package_root.resolve()) not in serialized
+    assert "package_state" not in serialized
+
+
+def test_swapped_metadata_file_references_emit_sorted_findings(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    _set_metadata_file_references(
+        package_root,
+        {
+            "DWMETA-001": "FILE-DWG-002",
+            "DWMETA-002": "FILE-DWG-001",
+        },
+    )
+
+    gates = _evaluate_gates(package_root)
+    first = run_package_relationships(gates)
+    second = run_package_relationships(gates)
+    revision_check, presence_check, authority_check, check = first.checks
+
+    assert all(gate.status == "passed" for gate in gates.gates)
+    assert revision_check.status == "passed"
+    assert presence_check.status == "passed"
+    assert authority_check.status == "passed"
+    assert check.status == "failed"
+    assert [
+        finding.affected_identifiers[1] for finding in check.findings
+    ] == ["DWG-PSK-1001", "DWG-PSK-1002"]
+    assert [
+        (finding.expected_value, finding.actual_value)
+        for finding in check.findings
+    ] == [
+        ("FILE-DWG-001", "FILE-DWG-002"),
+        ("FILE-DWG-002", "FILE-DWG-001"),
+    ]
+    assert first.to_dict() == second.to_dict()
+
+
+def test_file_reference_findings_ignore_metadata_record_order(
+    tmp_path: Path,
+) -> None:
+    original_order = _copy_package(tmp_path, "original-file-ref-order")
+    reordered = _copy_package(tmp_path, "reordered-file-ref")
+    swapped_values = {
+        "DWMETA-001": "FILE-DWG-002",
+        "DWMETA-002": "FILE-DWG-001",
+    }
+    _set_metadata_file_references(original_order, swapped_values)
+    _set_metadata_file_references(reordered, swapped_values)
+
+    metadata_path = reordered / "inputs" / "drawing_metadata.json"
+    metadata = _load_json(metadata_path)
+    metadata["records"].reverse()
+    _write_json(metadata_path, metadata)
+
+    original_gates = _evaluate_gates(original_order)
+    reordered_gates = _evaluate_gates(reordered)
+    original = _check(
+        original_gates,
+        DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
+    )
+    changed_order = _check(
+        reordered_gates,
+        DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
+    )
+
+    assert all(gate.status == "passed" for gate in original_gates.gates)
+    assert all(gate.status == "passed" for gate in reordered_gates.gates)
+    assert original.status == changed_order.status == "failed"
+
+    def semantic_findings(check: RelationshipCheckResult) -> list[tuple[Any, ...]]:
+        return [
+            (
+                finding.finding_id,
+                finding.code,
+                finding.result_state,
+                finding.affected_identifiers,
+                finding.expected_value,
+                finding.actual_value,
+            )
+            for finding in check.findings
+        ]
+
+    assert semantic_findings(original) == semantic_findings(changed_order)
+    assert [
+        finding.affected_identifiers[1] for finding in original.findings
+    ] == ["DWG-PSK-1001", "DWG-PSK-1002"]
+    assert [locator.normalized_value for locator in original.evidence] == [
+        locator.normalized_value for locator in changed_order.evidence
+    ]
+
+
 def test_missing_drawing_metadata_emits_frozen_release_hold(
     tmp_path: Path,
 ) -> None:
@@ -341,7 +620,12 @@ def test_missing_drawing_metadata_emits_frozen_release_hold(
     gates = _evaluate_gates(package_root)
     first = run_package_relationships(gates)
     second = run_package_relationships(gates)
-    revision_check, presence_check, authority_check = first.checks
+    (
+        revision_check,
+        presence_check,
+        authority_check,
+        file_reference_check,
+    ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert revision_check.status == "passed"
@@ -349,6 +633,8 @@ def test_missing_drawing_metadata_emits_frozen_release_hold(
     assert presence_check.status == "failed"
     assert authority_check.status == "passed"
     assert authority_check.findings == ()
+    assert file_reference_check.status == "passed"
+    assert file_reference_check.findings == ()
     assert len(presence_check.findings) == 1
     finding = presence_check.findings[0]
     assert finding.finding_id == second.checks[1].findings[0].finding_id
@@ -411,13 +697,20 @@ def test_all_missing_metadata_findings_are_sorted_and_repeatable(
     gates = _evaluate_gates(package_root)
     first = run_package_relationships(gates)
     second = run_package_relationships(gates)
-    revision_check, presence_check, authority_check = first.checks
+    (
+        revision_check,
+        presence_check,
+        authority_check,
+        file_reference_check,
+    ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert revision_check.status == "passed"
     assert presence_check.status == "failed"
     assert authority_check.status == "passed"
     assert authority_check.findings == ()
+    assert file_reference_check.status == "passed"
+    assert file_reference_check.findings == ()
     assert [
         finding.affected_identifiers[-1]
         for finding in presence_check.findings
@@ -450,6 +743,35 @@ def test_failed_p21_prerequisite_skips_relationship_check(
         assert SOURCE_INVENTORY_GATE_ID in check.blocked_by
 
 
+def test_file_reference_check_requires_exact_accepted_authority_rule(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    authority_path = package_root / "authority" / "authority_map.json"
+    authority = _load_json(authority_path)
+    file_reference_rule = next(
+        rule
+        for rule in authority["rules"]
+        if rule["rule_id"] == DRAWING_FILE_REFERENCE_AUTHORITY_RULE_ID
+    )
+    file_reference_rule["rule_id"] = "AUTH-DWG-SUBSTITUTE"
+    _write_json(authority_path, authority)
+
+    gates = _evaluate_gates(package_root)
+    evaluation = run_package_relationships(gates)
+    revision_check, presence_check, authority_check, check = evaluation.checks
+
+    assert gates.dependent_checks_allowed is True
+    assert revision_check.status == "passed"
+    assert presence_check.status == "passed"
+    assert authority_check.status == "passed"
+    assert check.status == "skipped"
+    assert check.blocked_by == (AUTHORITY_GATE_ID,)
+    assert check.findings == ()
+    assert check.evidence == ()
+    assert "AUTH-DWG-002" in check.summary
+
+
 def test_missing_register_authority_emits_frozen_release_hold(
     tmp_path: Path,
 ) -> None:
@@ -459,7 +781,12 @@ def test_missing_register_authority_emits_frozen_release_hold(
     gates = _evaluate_gates(package_root)
     first = run_package_relationships(gates)
     second = run_package_relationships(gates)
-    revision_check, presence_check, authority_check = first.checks
+    (
+        revision_check,
+        presence_check,
+        authority_check,
+        file_reference_check,
+    ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert revision_check.status == "passed"
@@ -467,6 +794,8 @@ def test_missing_register_authority_emits_frozen_release_hold(
     assert presence_check.status == "passed"
     assert presence_check.findings == ()
     assert authority_check.status == "failed"
+    assert file_reference_check.status == "passed"
+    assert file_reference_check.findings == ()
     assert len(authority_check.findings) == 1
     finding = authority_check.findings[0]
     assert finding.finding_id == second.checks[2].findings[0].finding_id
@@ -524,12 +853,19 @@ def test_all_missing_register_authority_findings_are_sorted_and_repeatable(
     gates = _evaluate_gates(package_root)
     first = run_package_relationships(gates)
     second = run_package_relationships(gates)
-    revision_check, presence_check, authority_check = first.checks
+    (
+        revision_check,
+        presence_check,
+        authority_check,
+        file_reference_check,
+    ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert revision_check.status == "passed"
     assert presence_check.status == "passed"
     assert authority_check.status == "failed"
+    assert file_reference_check.status == "passed"
+    assert file_reference_check.findings == ()
     assert [
         finding.affected_identifiers[-1]
         for finding in authority_check.findings
