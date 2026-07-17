@@ -1,0 +1,4 @@
+item_id,equipment_tag,item_type,description,quantity,quantity_unit,part_or_material_id,drawing_number,datasheet_id,specification_id,required_for_release
+ITEM-AIR-DRYER-230,DR-230A,desiccant_air_dryer,Synthetic twin-tower desiccant air dryer,1,EA,DRYER-SYN-600,AIR-MOD-2300,DS-AIR-DR230,SPEC-AIR-SYS-010,true
+ITEM-AIR-COMP-210,C-210A,rotary_screw_compressor,Synthetic oil-free rotary screw air compressor,2,EA,COMP-SYN-600,AIR-MOD-2200,DS-AIR-C210,SPEC-AIR-SYS-010,true
+ITEM-AIR-RECV-220,V-220A,vertical_air_receiver,Synthetic vertical instrument air receiver,1,EA,VESSEL-SYN-6M3,AIR-MOD-2300,DS-AIR-V220,SPEC-AIR-VES-020,true

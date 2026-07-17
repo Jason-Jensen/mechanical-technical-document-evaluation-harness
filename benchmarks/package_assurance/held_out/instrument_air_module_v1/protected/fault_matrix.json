@@ -1,0 +1,1023 @@
+{
+  "schema_version": "0.3.0-held-out-fault-matrix",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "split": "held_out",
+  "producer_hidden": true,
+  "fault_count": 8,
+  "release_blocking_fault_count": 7,
+  "records": [
+    {
+      "scenario_id": "SCN-HO-AIR-MISSING-DOC-001",
+      "package_id": "PKG-HO-AIR-MISSING-DOC-001",
+      "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+      "split": "held_out",
+      "benchmark_revision": "1",
+      "seeded_fault_id": "FAULT-HO-MISSING-DOC-001",
+      "scenario_type": "single_fault",
+      "source_file": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+      "record": "FILE-AIR-DWG-003",
+      "field": "file_existence",
+      "protected_mutation_description": "Remove the required AIR-MOD-2300 controlled drawing artifact while retaining its manifest declaration.",
+      "affected_canonical_identifiers": [
+        "DOC-AIR-DWG-003",
+        "FILE-AIR-DWG-003",
+        "AIR-MOD-2300"
+      ],
+      "required_check_ids": [
+        "GATE-CONTROLLED-FILE-EXISTS"
+      ],
+      "expected_finding_state": "automatic_fail",
+      "expected_severity": "critical",
+      "expected_release_hold": true,
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "required_evidence_locators": [
+        {
+          "source_type": "package_manifest",
+          "source_file": "package_manifest.json",
+          "format": "json",
+          "json_pointer": "/file_references/2/path",
+          "record_id": "FILE-AIR-DWG-003",
+          "property_name": "path",
+          "original_value": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+          "normalized_value": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref"
+        },
+        {
+          "source_type": "controlled_file_reference",
+          "source_file": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+          "format": "file_reference",
+          "file_ref_id": "FILE-AIR-DWG-003",
+          "declared_relative_path": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+          "resolved_package_relative_path": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+          "boundary_check": "inside_allowed_root",
+          "existence_check": "missing"
+        }
+      ],
+      "expected_values": {
+        "expected": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+        "actual": null,
+        "condition": "declared_required_file_missing"
+      },
+      "expected_skipped_checks": [],
+      "required_findings": [
+        {
+          "finding_id": "FIND-HO-MISSING-DOC-001",
+          "check_id": "GATE-CONTROLLED-FILE-EXISTS",
+          "check_version": "0.3.0",
+          "result_state": "automatic_fail",
+          "severity": "critical",
+          "release_hold": true,
+          "affected_identifiers": [
+            {
+              "identifier_type": "document_id",
+              "identifier": "DOC-AIR-DWG-003"
+            },
+            {
+              "identifier_type": "file_ref_id",
+              "identifier": "FILE-AIR-DWG-003"
+            }
+          ],
+          "authority_rule_id": "AUTH-PKG-002",
+          "condition": "declared_required_file_missing",
+          "expected_value": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+          "actual_value": null,
+          "authoritative_source_ref": {
+            "source_type": "package_manifest",
+            "source_file": "package_manifest.json"
+          },
+          "compared_source_ref": {
+            "source_type": "controlled_file_reference",
+            "source_file": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref"
+          },
+          "evidence_locators": [
+            {
+              "source_type": "package_manifest",
+              "source_file": "package_manifest.json",
+              "format": "json",
+              "json_pointer": "/file_references/2/path",
+              "record_id": "FILE-AIR-DWG-003",
+              "property_name": "path",
+              "original_value": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+              "normalized_value": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref"
+            },
+            {
+              "source_type": "controlled_file_reference",
+              "source_file": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+              "format": "file_reference",
+              "file_ref_id": "FILE-AIR-DWG-003",
+              "declared_relative_path": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+              "resolved_package_relative_path": "files/issued_drawings/AIR-MOD-2300_CONNECTION__r02.ref",
+              "boundary_check": "inside_allowed_root",
+              "existence_check": "missing"
+            }
+          ],
+          "review_owner": "document_control"
+        }
+      ],
+      "allowed_incidental_findings": [],
+      "reviewer": "User acceptance pending",
+      "fixture_freeze_status": "freeze_candidate_pending_user_acceptance"
+    },
+    {
+      "scenario_id": "SCN-HO-AIR-REVISION-001",
+      "package_id": "PKG-HO-AIR-REVISION-001",
+      "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+      "split": "held_out",
+      "benchmark_revision": "1",
+      "seeded_fault_id": "FAULT-HO-REVISION-001",
+      "scenario_type": "single_fault",
+      "source_file": "inputs/drawing_metadata.json",
+      "record": "DWMETA-AIR-220",
+      "field": "revision_id",
+      "protected_mutation_description": "Replace current revision 05 with superseded revision 04 for AIR-MOD-2200 in drawing metadata.",
+      "affected_canonical_identifiers": [
+        "DOC-AIR-DWG-002",
+        "AIR-MOD-2200"
+      ],
+      "required_check_ids": [
+        "CHECK-DRAWING-REVISION-CONSISTENCY"
+      ],
+      "expected_finding_state": "automatic_fail",
+      "expected_severity": "critical",
+      "expected_release_hold": true,
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "required_evidence_locators": [
+        {
+          "source_type": "drawing_register",
+          "source_file": "inputs/drawing_register.csv",
+          "format": "csv",
+          "row_number": 4,
+          "header_row_number": 1,
+          "column_name": "revision_id",
+          "row_key": {
+            "column_name": "drawing_number",
+            "value": "AIR-MOD-2200"
+          },
+          "original_value": "05",
+          "normalized_value": "05"
+        },
+        {
+          "source_type": "drawing_metadata",
+          "source_file": "inputs/drawing_metadata.json",
+          "format": "json",
+          "json_pointer": "/records/0/revision_id",
+          "record_id": "DWMETA-AIR-220",
+          "property_name": "revision_id",
+          "original_value": "04",
+          "normalized_value": "04"
+        },
+        {
+          "source_type": "revision_history",
+          "source_file": "inputs/revision_history.csv",
+          "format": "csv",
+          "row_number": 13,
+          "header_row_number": 1,
+          "column_name": "revision_status",
+          "row_key": {
+            "column_name": "revision_record_id",
+            "value": "REVREC-DOC-AIR-DWG-002-04"
+          },
+          "original_value": "superseded",
+          "normalized_value": "superseded"
+        }
+      ],
+      "expected_values": {
+        "expected": "05",
+        "actual": "04",
+        "condition": "superseded_revision_selected_in_secondary_metadata"
+      },
+      "expected_skipped_checks": [],
+      "required_findings": [
+        {
+          "finding_id": "FIND-HO-REVISION-001",
+          "check_id": "CHECK-DRAWING-REVISION-CONSISTENCY",
+          "check_version": "0.3.0",
+          "result_state": "automatic_fail",
+          "severity": "critical",
+          "release_hold": true,
+          "affected_identifiers": [
+            {
+              "identifier_type": "document_id",
+              "identifier": "DOC-AIR-DWG-002"
+            },
+            {
+              "identifier_type": "drawing_number",
+              "identifier": "AIR-MOD-2200"
+            }
+          ],
+          "authority_rule_id": "AUTH-DWG-001",
+          "condition": "superseded_revision_selected_in_secondary_metadata",
+          "expected_value": "05",
+          "actual_value": "04",
+          "authoritative_source_ref": {
+            "source_type": "drawing_register",
+            "source_file": "inputs/drawing_register.csv"
+          },
+          "compared_source_ref": {
+            "source_type": "drawing_metadata",
+            "source_file": "inputs/drawing_metadata.json"
+          },
+          "evidence_locators": [
+            {
+              "source_type": "drawing_register",
+              "source_file": "inputs/drawing_register.csv",
+              "format": "csv",
+              "row_number": 4,
+              "header_row_number": 1,
+              "column_name": "revision_id",
+              "row_key": {
+                "column_name": "drawing_number",
+                "value": "AIR-MOD-2200"
+              },
+              "original_value": "05",
+              "normalized_value": "05"
+            },
+            {
+              "source_type": "drawing_metadata",
+              "source_file": "inputs/drawing_metadata.json",
+              "format": "json",
+              "json_pointer": "/records/0/revision_id",
+              "record_id": "DWMETA-AIR-220",
+              "property_name": "revision_id",
+              "original_value": "04",
+              "normalized_value": "04"
+            },
+            {
+              "source_type": "revision_history",
+              "source_file": "inputs/revision_history.csv",
+              "format": "csv",
+              "row_number": 13,
+              "header_row_number": 1,
+              "column_name": "revision_status",
+              "row_key": {
+                "column_name": "revision_record_id",
+                "value": "REVREC-DOC-AIR-DWG-002-04"
+              },
+              "original_value": "superseded",
+              "normalized_value": "superseded"
+            }
+          ],
+          "review_owner": "document_control"
+        }
+      ],
+      "allowed_incidental_findings": [],
+      "reviewer": "User acceptance pending",
+      "fixture_freeze_status": "freeze_candidate_pending_user_acceptance"
+    },
+    {
+      "scenario_id": "SCN-HO-AIR-ORPHAN-TAG-001",
+      "package_id": "PKG-HO-AIR-ORPHAN-TAG-001",
+      "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+      "split": "held_out",
+      "benchmark_revision": "1",
+      "seeded_fault_id": "FAULT-HO-ORPHAN-TAG-001",
+      "scenario_type": "single_fault",
+      "source_file": "inputs/drawing_metadata.json",
+      "record": "DWMETA-AIR-230",
+      "field": "equipment_tags[0]",
+      "protected_mutation_description": "Replace required dryer tag DR-230A with undeclared orphan tag DR-230B on AIR-MOD-2300.",
+      "affected_canonical_identifiers": [
+        "AIR-MOD-2300",
+        "DR-230A",
+        "DR-230B"
+      ],
+      "required_check_ids": [
+        "CHECK-DRAWING-EQUIPMENT-RELATIONSHIP"
+      ],
+      "expected_finding_state": "automatic_fail",
+      "expected_severity": "critical",
+      "expected_release_hold": true,
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "required_evidence_locators": [
+        {
+          "source_type": "bom_or_equipment_list",
+          "source_file": "inputs/bom_or_equipment_list.csv",
+          "format": "csv",
+          "row_number": 2,
+          "header_row_number": 1,
+          "column_name": "equipment_tag",
+          "row_key": {
+            "column_name": "item_id",
+            "value": "ITEM-AIR-DRYER-230"
+          },
+          "original_value": "DR-230A",
+          "normalized_value": "DR-230A"
+        },
+        {
+          "source_type": "drawing_metadata",
+          "source_file": "inputs/drawing_metadata.json",
+          "format": "json",
+          "json_pointer": "/records/1/equipment_tags/0",
+          "record_id": "DWMETA-AIR-230",
+          "property_name": "equipment_tags",
+          "original_value": "DR-230B",
+          "normalized_value": "DR-230B"
+        }
+      ],
+      "expected_values": {
+        "expected": "DR-230A",
+        "actual": "DR-230B",
+        "condition": "required_equipment_tag_replaced_by_orphan_tag"
+      },
+      "expected_skipped_checks": [],
+      "required_findings": [
+        {
+          "finding_id": "FIND-HO-ORPHAN-TAG-001",
+          "check_id": "CHECK-DRAWING-EQUIPMENT-RELATIONSHIP",
+          "check_version": "0.3.0",
+          "result_state": "automatic_fail",
+          "severity": "critical",
+          "release_hold": true,
+          "affected_identifiers": [
+            {
+              "identifier_type": "drawing_number",
+              "identifier": "AIR-MOD-2300"
+            },
+            {
+              "identifier_type": "equipment_tag",
+              "identifier": "DR-230A"
+            }
+          ],
+          "authority_rule_id": "AUTH-BOM-002",
+          "condition": "required_equipment_tag_replaced_by_orphan_tag",
+          "expected_value": "DR-230A",
+          "actual_value": "DR-230B",
+          "authoritative_source_ref": {
+            "source_type": "bom_or_equipment_list",
+            "source_file": "inputs/bom_or_equipment_list.csv"
+          },
+          "compared_source_ref": {
+            "source_type": "drawing_metadata",
+            "source_file": "inputs/drawing_metadata.json"
+          },
+          "evidence_locators": [
+            {
+              "source_type": "bom_or_equipment_list",
+              "source_file": "inputs/bom_or_equipment_list.csv",
+              "format": "csv",
+              "row_number": 2,
+              "header_row_number": 1,
+              "column_name": "equipment_tag",
+              "row_key": {
+                "column_name": "item_id",
+                "value": "ITEM-AIR-DRYER-230"
+              },
+              "original_value": "DR-230A",
+              "normalized_value": "DR-230A"
+            },
+            {
+              "source_type": "drawing_metadata",
+              "source_file": "inputs/drawing_metadata.json",
+              "format": "json",
+              "json_pointer": "/records/1/equipment_tags/0",
+              "record_id": "DWMETA-AIR-230",
+              "property_name": "equipment_tags",
+              "original_value": "DR-230B",
+              "normalized_value": "DR-230B"
+            }
+          ],
+          "review_owner": "mechanical_engineering"
+        }
+      ],
+      "allowed_incidental_findings": [],
+      "reviewer": "User acceptance pending",
+      "fixture_freeze_status": "freeze_candidate_pending_user_acceptance"
+    },
+    {
+      "scenario_id": "SCN-HO-AIR-QUANTITY-001",
+      "package_id": "PKG-HO-AIR-QUANTITY-001",
+      "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+      "split": "held_out",
+      "benchmark_revision": "1",
+      "seeded_fault_id": "FAULT-HO-QUANTITY-001",
+      "scenario_type": "single_fault",
+      "source_file": "inputs/bom_or_equipment_list.csv",
+      "record": "ITEM-AIR-COMP-210",
+      "field": "quantity",
+      "protected_mutation_description": "Change authoritative compressor quantity from 1 to 2 while package metadata remains 1.",
+      "affected_canonical_identifiers": [
+        "ITEM-AIR-COMP-210",
+        "C-210A"
+      ],
+      "required_check_ids": [
+        "CHECK-BOM-QUANTITY-CONSISTENCY"
+      ],
+      "expected_finding_state": "automatic_fail",
+      "expected_severity": "critical",
+      "expected_release_hold": true,
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "required_evidence_locators": [
+        {
+          "source_type": "bom_or_equipment_list",
+          "source_file": "inputs/bom_or_equipment_list.csv",
+          "format": "csv",
+          "row_number": 3,
+          "header_row_number": 1,
+          "column_name": "quantity",
+          "row_key": {
+            "column_name": "item_id",
+            "value": "ITEM-AIR-COMP-210"
+          },
+          "original_value": "2",
+          "normalized_value": "2"
+        },
+        {
+          "source_type": "datasheet_spec_metadata",
+          "source_file": "inputs/datasheet_spec_metadata.json",
+          "format": "json",
+          "json_pointer": "/datasheets/1/package_quantity",
+          "record_id": "DSMETA-AIR-210",
+          "property_name": "package_quantity",
+          "original_value": 1,
+          "normalized_value": "1"
+        }
+      ],
+      "expected_values": {
+        "expected": "2",
+        "actual": 1,
+        "condition": "authoritative_quantity_conflicts_with_package_metadata"
+      },
+      "expected_skipped_checks": [],
+      "required_findings": [
+        {
+          "finding_id": "FIND-HO-QUANTITY-001",
+          "check_id": "CHECK-BOM-QUANTITY-CONSISTENCY",
+          "check_version": "0.3.0",
+          "result_state": "automatic_fail",
+          "severity": "critical",
+          "release_hold": true,
+          "affected_identifiers": [
+            {
+              "identifier_type": "item_id",
+              "identifier": "ITEM-AIR-COMP-210"
+            },
+            {
+              "identifier_type": "equipment_tag",
+              "identifier": "C-210A"
+            }
+          ],
+          "authority_rule_id": "AUTH-BOM-001",
+          "condition": "authoritative_quantity_conflicts_with_package_metadata",
+          "expected_value": "2",
+          "actual_value": 1,
+          "authoritative_source_ref": {
+            "source_type": "bom_or_equipment_list",
+            "source_file": "inputs/bom_or_equipment_list.csv"
+          },
+          "compared_source_ref": {
+            "source_type": "datasheet_spec_metadata",
+            "source_file": "inputs/datasheet_spec_metadata.json"
+          },
+          "evidence_locators": [
+            {
+              "source_type": "bom_or_equipment_list",
+              "source_file": "inputs/bom_or_equipment_list.csv",
+              "format": "csv",
+              "row_number": 3,
+              "header_row_number": 1,
+              "column_name": "quantity",
+              "row_key": {
+                "column_name": "item_id",
+                "value": "ITEM-AIR-COMP-210"
+              },
+              "original_value": "2",
+              "normalized_value": "2"
+            },
+            {
+              "source_type": "datasheet_spec_metadata",
+              "source_file": "inputs/datasheet_spec_metadata.json",
+              "format": "json",
+              "json_pointer": "/datasheets/1/package_quantity",
+              "record_id": "DSMETA-AIR-210",
+              "property_name": "package_quantity",
+              "original_value": 1,
+              "normalized_value": "1"
+            }
+          ],
+          "review_owner": "mechanical_engineering"
+        }
+      ],
+      "allowed_incidental_findings": [],
+      "reviewer": "User acceptance pending",
+      "fixture_freeze_status": "freeze_candidate_pending_user_acceptance"
+    },
+    {
+      "scenario_id": "SCN-HO-AIR-DATASHEET-001",
+      "package_id": "PKG-HO-AIR-DATASHEET-001",
+      "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+      "split": "held_out",
+      "benchmark_revision": "1",
+      "seeded_fault_id": "FAULT-HO-DATASHEET-001",
+      "scenario_type": "single_fault",
+      "source_file": "inputs/bom_or_equipment_list.csv",
+      "record": "ITEM-AIR-DRYER-230",
+      "field": "datasheet_id",
+      "protected_mutation_description": "Replace the dryer datasheet association DS-AIR-DR230 with compressor datasheet DS-AIR-C210.",
+      "affected_canonical_identifiers": [
+        "ITEM-AIR-DRYER-230",
+        "DR-230A",
+        "DS-AIR-DR230",
+        "DS-AIR-C210"
+      ],
+      "required_check_ids": [
+        "CHECK-EQUIPMENT-DATASHEET-RELATIONSHIP"
+      ],
+      "expected_finding_state": "automatic_fail",
+      "expected_severity": "critical",
+      "expected_release_hold": true,
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "required_evidence_locators": [
+        {
+          "source_type": "datasheet_spec_metadata",
+          "source_file": "inputs/datasheet_spec_metadata.json",
+          "format": "json",
+          "json_pointer": "/datasheets/2/datasheet_id",
+          "record_id": "DSMETA-AIR-230",
+          "property_name": "datasheet_id",
+          "original_value": "DS-AIR-DR230",
+          "normalized_value": "DS-AIR-DR230"
+        },
+        {
+          "source_type": "bom_or_equipment_list",
+          "source_file": "inputs/bom_or_equipment_list.csv",
+          "format": "csv",
+          "row_number": 2,
+          "header_row_number": 1,
+          "column_name": "datasheet_id",
+          "row_key": {
+            "column_name": "item_id",
+            "value": "ITEM-AIR-DRYER-230"
+          },
+          "original_value": "DS-AIR-C210",
+          "normalized_value": "DS-AIR-C210"
+        }
+      ],
+      "expected_values": {
+        "expected": "DS-AIR-DR230",
+        "actual": "DS-AIR-C210",
+        "condition": "equipment_mapped_to_wrong_datasheet"
+      },
+      "expected_skipped_checks": [],
+      "required_findings": [
+        {
+          "finding_id": "FIND-HO-DATASHEET-001",
+          "check_id": "CHECK-EQUIPMENT-DATASHEET-RELATIONSHIP",
+          "check_version": "0.3.0",
+          "result_state": "automatic_fail",
+          "severity": "critical",
+          "release_hold": true,
+          "affected_identifiers": [
+            {
+              "identifier_type": "equipment_tag",
+              "identifier": "DR-230A"
+            },
+            {
+              "identifier_type": "datasheet_id",
+              "identifier": "DS-AIR-DR230"
+            }
+          ],
+          "authority_rule_id": "AUTH-SPEC-001",
+          "condition": "equipment_mapped_to_wrong_datasheet",
+          "expected_value": "DS-AIR-DR230",
+          "actual_value": "DS-AIR-C210",
+          "authoritative_source_ref": {
+            "source_type": "datasheet_spec_metadata",
+            "source_file": "inputs/datasheet_spec_metadata.json"
+          },
+          "compared_source_ref": {
+            "source_type": "bom_or_equipment_list",
+            "source_file": "inputs/bom_or_equipment_list.csv"
+          },
+          "evidence_locators": [
+            {
+              "source_type": "datasheet_spec_metadata",
+              "source_file": "inputs/datasheet_spec_metadata.json",
+              "format": "json",
+              "json_pointer": "/datasheets/2/datasheet_id",
+              "record_id": "DSMETA-AIR-230",
+              "property_name": "datasheet_id",
+              "original_value": "DS-AIR-DR230",
+              "normalized_value": "DS-AIR-DR230"
+            },
+            {
+              "source_type": "bom_or_equipment_list",
+              "source_file": "inputs/bom_or_equipment_list.csv",
+              "format": "csv",
+              "row_number": 2,
+              "header_row_number": 1,
+              "column_name": "datasheet_id",
+              "row_key": {
+                "column_name": "item_id",
+                "value": "ITEM-AIR-DRYER-230"
+              },
+              "original_value": "DS-AIR-C210",
+              "normalized_value": "DS-AIR-C210"
+            }
+          ],
+          "review_owner": "mechanical_engineering"
+        }
+      ],
+      "allowed_incidental_findings": [],
+      "reviewer": "User acceptance pending",
+      "fixture_freeze_status": "freeze_candidate_pending_user_acceptance"
+    },
+    {
+      "scenario_id": "SCN-HO-AIR-AMBIGUOUS-ID-001",
+      "package_id": "PKG-HO-AIR-AMBIGUOUS-ID-001",
+      "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+      "split": "held_out",
+      "benchmark_revision": "1",
+      "seeded_fault_id": "FAULT-HO-AMBIGUOUS-ID-001",
+      "scenario_type": "single_fault",
+      "source_file": "inputs/drawing_metadata.json",
+      "record": "DWMETA-AIR-210",
+      "field": "equipment_tags[1]",
+      "protected_mutation_description": "Replace C-210A with C 210A, which cannot be safely normalized under the punctuation-preserving profile.",
+      "affected_canonical_identifiers": [
+        "AIR-MOD-2100",
+        "C-210A",
+        "C 210A"
+      ],
+      "required_check_ids": [
+        "CHECK-CANONICAL-IDENTIFIER-NORMALIZATION"
+      ],
+      "expected_finding_state": "evaluator_uncertainty",
+      "expected_severity": "high",
+      "expected_release_hold": true,
+      "expected_package_state": "evaluator_uncertainty",
+      "expected_cli_exit_code": 5,
+      "required_evidence_locators": [
+        {
+          "source_type": "bom_or_equipment_list",
+          "source_file": "inputs/bom_or_equipment_list.csv",
+          "format": "csv",
+          "row_number": 3,
+          "header_row_number": 1,
+          "column_name": "equipment_tag",
+          "row_key": {
+            "column_name": "item_id",
+            "value": "ITEM-AIR-COMP-210"
+          },
+          "original_value": "C-210A",
+          "normalized_value": "C-210A"
+        },
+        {
+          "source_type": "drawing_metadata",
+          "source_file": "inputs/drawing_metadata.json",
+          "format": "json",
+          "json_pointer": "/records/2/equipment_tags/1",
+          "record_id": "DWMETA-AIR-210",
+          "property_name": "equipment_tags",
+          "original_value": "C 210A",
+          "normalized_value": "C 210A"
+        }
+      ],
+      "expected_values": {
+        "expected": "C-210A",
+        "actual": "C 210A",
+        "condition": "ambiguous_identifier_normalization"
+      },
+      "expected_skipped_checks": [],
+      "required_findings": [
+        {
+          "finding_id": "FIND-HO-AMBIGUOUS-ID-001",
+          "check_id": "CHECK-CANONICAL-IDENTIFIER-NORMALIZATION",
+          "check_version": "0.3.0",
+          "result_state": "evaluator_uncertainty",
+          "severity": "high",
+          "release_hold": true,
+          "affected_identifiers": [
+            {
+              "identifier_type": "drawing_number",
+              "identifier": "AIR-MOD-2100"
+            },
+            {
+              "identifier_type": "equipment_tag",
+              "identifier": "C-210A"
+            }
+          ],
+          "authority_rule_id": "AUTH-BOM-002",
+          "condition": "ambiguous_identifier_normalization",
+          "expected_value": "C-210A",
+          "actual_value": "C 210A",
+          "authoritative_source_ref": {
+            "source_type": "bom_or_equipment_list",
+            "source_file": "inputs/bom_or_equipment_list.csv"
+          },
+          "compared_source_ref": {
+            "source_type": "drawing_metadata",
+            "source_file": "inputs/drawing_metadata.json"
+          },
+          "evidence_locators": [
+            {
+              "source_type": "bom_or_equipment_list",
+              "source_file": "inputs/bom_or_equipment_list.csv",
+              "format": "csv",
+              "row_number": 3,
+              "header_row_number": 1,
+              "column_name": "equipment_tag",
+              "row_key": {
+                "column_name": "item_id",
+                "value": "ITEM-AIR-COMP-210"
+              },
+              "original_value": "C-210A",
+              "normalized_value": "C-210A"
+            },
+            {
+              "source_type": "drawing_metadata",
+              "source_file": "inputs/drawing_metadata.json",
+              "format": "json",
+              "json_pointer": "/records/2/equipment_tags/1",
+              "record_id": "DWMETA-AIR-210",
+              "property_name": "equipment_tags",
+              "original_value": "C 210A",
+              "normalized_value": "C 210A"
+            }
+          ],
+          "review_owner": "mechanical_engineering",
+          "normalization": {
+            "profile_id": "canonical_identifier_v1",
+            "authoritative_normalized_value": "C-210A",
+            "compared_normalized_value": "C 210A",
+            "ambiguity_reason": "Punctuation and embedded spaces are preserved; equivalence cannot be inferred safely."
+          }
+        }
+      ],
+      "allowed_incidental_findings": [],
+      "reviewer": "User acceptance pending",
+      "fixture_freeze_status": "freeze_candidate_pending_user_acceptance"
+    },
+    {
+      "scenario_id": "SCN-HO-AIR-COMPOUND-001",
+      "package_id": "PKG-HO-AIR-COMPOUND-001",
+      "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+      "split": "held_out",
+      "benchmark_revision": "1",
+      "seeded_fault_id": "FAULT-HO-COMPOUND-REV-001",
+      "scenario_type": "compound_fault",
+      "source_file": "inputs/drawing_metadata.json",
+      "record": "DWMETA-AIR-210",
+      "field": "revision_id",
+      "protected_mutation_description": "Replace current revision 03 with superseded revision 02 for AIR-MOD-2100.",
+      "affected_canonical_identifiers": [
+        "DOC-AIR-DWG-001",
+        "AIR-MOD-2100"
+      ],
+      "required_check_ids": [
+        "CHECK-DRAWING-REVISION-CONSISTENCY"
+      ],
+      "expected_finding_state": "automatic_fail",
+      "expected_severity": "critical",
+      "expected_release_hold": true,
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "required_evidence_locators": [
+        {
+          "source_type": "drawing_register",
+          "source_file": "inputs/drawing_register.csv",
+          "format": "csv",
+          "row_number": 3,
+          "header_row_number": 1,
+          "column_name": "revision_id",
+          "row_key": {
+            "column_name": "drawing_number",
+            "value": "AIR-MOD-2100"
+          },
+          "original_value": "03",
+          "normalized_value": "03"
+        },
+        {
+          "source_type": "drawing_metadata",
+          "source_file": "inputs/drawing_metadata.json",
+          "format": "json",
+          "json_pointer": "/records/2/revision_id",
+          "record_id": "DWMETA-AIR-210",
+          "property_name": "revision_id",
+          "original_value": "02",
+          "normalized_value": "02"
+        },
+        {
+          "source_type": "revision_history",
+          "source_file": "inputs/revision_history.csv",
+          "format": "csv",
+          "row_number": 12,
+          "header_row_number": 1,
+          "column_name": "revision_status",
+          "row_key": {
+            "column_name": "revision_record_id",
+            "value": "REVREC-DOC-AIR-DWG-001-02"
+          },
+          "original_value": "superseded",
+          "normalized_value": "superseded"
+        }
+      ],
+      "expected_values": {
+        "expected": "03",
+        "actual": "02",
+        "condition": "superseded_revision_selected_in_secondary_metadata"
+      },
+      "expected_skipped_checks": [],
+      "required_findings": [
+        {
+          "finding_id": "FIND-HO-COMPOUND-REV-001",
+          "check_id": "CHECK-DRAWING-REVISION-CONSISTENCY",
+          "check_version": "0.3.0",
+          "result_state": "automatic_fail",
+          "severity": "critical",
+          "release_hold": true,
+          "affected_identifiers": [
+            {
+              "identifier_type": "document_id",
+              "identifier": "DOC-AIR-DWG-001"
+            },
+            {
+              "identifier_type": "drawing_number",
+              "identifier": "AIR-MOD-2100"
+            }
+          ],
+          "authority_rule_id": "AUTH-DWG-001",
+          "condition": "superseded_revision_selected_in_secondary_metadata",
+          "expected_value": "03",
+          "actual_value": "02",
+          "authoritative_source_ref": {
+            "source_type": "drawing_register",
+            "source_file": "inputs/drawing_register.csv"
+          },
+          "compared_source_ref": {
+            "source_type": "drawing_metadata",
+            "source_file": "inputs/drawing_metadata.json"
+          },
+          "evidence_locators": [
+            {
+              "source_type": "drawing_register",
+              "source_file": "inputs/drawing_register.csv",
+              "format": "csv",
+              "row_number": 3,
+              "header_row_number": 1,
+              "column_name": "revision_id",
+              "row_key": {
+                "column_name": "drawing_number",
+                "value": "AIR-MOD-2100"
+              },
+              "original_value": "03",
+              "normalized_value": "03"
+            },
+            {
+              "source_type": "drawing_metadata",
+              "source_file": "inputs/drawing_metadata.json",
+              "format": "json",
+              "json_pointer": "/records/2/revision_id",
+              "record_id": "DWMETA-AIR-210",
+              "property_name": "revision_id",
+              "original_value": "02",
+              "normalized_value": "02"
+            },
+            {
+              "source_type": "revision_history",
+              "source_file": "inputs/revision_history.csv",
+              "format": "csv",
+              "row_number": 12,
+              "header_row_number": 1,
+              "column_name": "revision_status",
+              "row_key": {
+                "column_name": "revision_record_id",
+                "value": "REVREC-DOC-AIR-DWG-001-02"
+              },
+              "original_value": "superseded",
+              "normalized_value": "superseded"
+            }
+          ],
+          "review_owner": "document_control"
+        }
+      ],
+      "allowed_incidental_findings": [],
+      "reviewer": "User acceptance pending",
+      "fixture_freeze_status": "freeze_candidate_pending_user_acceptance"
+    },
+    {
+      "scenario_id": "SCN-HO-AIR-COMPOUND-001",
+      "package_id": "PKG-HO-AIR-COMPOUND-001",
+      "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+      "split": "held_out",
+      "benchmark_revision": "1",
+      "seeded_fault_id": "FAULT-HO-COMPOUND-TITLE-001",
+      "scenario_type": "compound_fault",
+      "source_file": "inputs/drawing_metadata.json",
+      "record": "DWMETA-AIR-210",
+      "field": "title",
+      "protected_mutation_description": "Change the secondary drawing title while the authoritative register title remains unchanged.",
+      "affected_canonical_identifiers": [
+        "DOC-AIR-DWG-001",
+        "AIR-MOD-2100"
+      ],
+      "required_check_ids": [
+        "CHECK-DRAWING-TITLE-CONSISTENCY"
+      ],
+      "expected_finding_state": "engineering_review_required",
+      "expected_severity": "medium",
+      "expected_release_hold": false,
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "required_evidence_locators": [
+        {
+          "source_type": "drawing_register",
+          "source_file": "inputs/drawing_register.csv",
+          "format": "csv",
+          "row_number": 3,
+          "header_row_number": 1,
+          "column_name": "title",
+          "row_key": {
+            "column_name": "drawing_number",
+            "value": "AIR-MOD-2100"
+          },
+          "original_value": "Instrument Air Module General Arrangement",
+          "normalized_value": "Instrument Air Module General Arrangement"
+        },
+        {
+          "source_type": "drawing_metadata",
+          "source_file": "inputs/drawing_metadata.json",
+          "format": "json",
+          "json_pointer": "/records/2/title",
+          "record_id": "DWMETA-AIR-210",
+          "property_name": "title",
+          "original_value": "Instrument Air Module Overall Arrangement",
+          "normalized_value": "Instrument Air Module Overall Arrangement"
+        }
+      ],
+      "expected_values": {
+        "expected": "Instrument Air Module General Arrangement",
+        "actual": "Instrument Air Module Overall Arrangement",
+        "condition": "review_routed_title_conflict"
+      },
+      "expected_skipped_checks": [],
+      "required_findings": [
+        {
+          "finding_id": "FIND-HO-COMPOUND-TITLE-001",
+          "check_id": "CHECK-DRAWING-TITLE-CONSISTENCY",
+          "check_version": "0.3.0",
+          "result_state": "engineering_review_required",
+          "severity": "medium",
+          "release_hold": false,
+          "affected_identifiers": [
+            {
+              "identifier_type": "document_id",
+              "identifier": "DOC-AIR-DWG-001"
+            },
+            {
+              "identifier_type": "drawing_number",
+              "identifier": "AIR-MOD-2100"
+            }
+          ],
+          "authority_rule_id": "AUTH-DWG-003",
+          "condition": "review_routed_title_conflict",
+          "expected_value": "Instrument Air Module General Arrangement",
+          "actual_value": "Instrument Air Module Overall Arrangement",
+          "authoritative_source_ref": {
+            "source_type": "drawing_register",
+            "source_file": "inputs/drawing_register.csv"
+          },
+          "compared_source_ref": {
+            "source_type": "drawing_metadata",
+            "source_file": "inputs/drawing_metadata.json"
+          },
+          "evidence_locators": [
+            {
+              "source_type": "drawing_register",
+              "source_file": "inputs/drawing_register.csv",
+              "format": "csv",
+              "row_number": 3,
+              "header_row_number": 1,
+              "column_name": "title",
+              "row_key": {
+                "column_name": "drawing_number",
+                "value": "AIR-MOD-2100"
+              },
+              "original_value": "Instrument Air Module General Arrangement",
+              "normalized_value": "Instrument Air Module General Arrangement"
+            },
+            {
+              "source_type": "drawing_metadata",
+              "source_file": "inputs/drawing_metadata.json",
+              "format": "json",
+              "json_pointer": "/records/2/title",
+              "record_id": "DWMETA-AIR-210",
+              "property_name": "title",
+              "original_value": "Instrument Air Module Overall Arrangement",
+              "normalized_value": "Instrument Air Module Overall Arrangement"
+            }
+          ],
+          "review_owner": "document_control"
+        }
+      ],
+      "allowed_incidental_findings": [],
+      "reviewer": "User acceptance pending",
+      "fixture_freeze_status": "freeze_candidate_pending_user_acceptance"
+    }
+  ],
+  "review_status": "author_reviewed_pending_user_acceptance",
+  "freeze_status": "freeze_candidate_pending_user_acceptance"
+}

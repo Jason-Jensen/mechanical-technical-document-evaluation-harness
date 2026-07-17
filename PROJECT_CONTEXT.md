@@ -1,8 +1,8 @@
 # Project Context
 
-**Updated:** 2026-07-16
+**Updated:** 2026-07-17
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `feature/package-assurance-contract`
+**Current branch:** `codex/stabilization-improvement-loop`
 
 ## Executive Summary
 
@@ -30,15 +30,23 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P1.1, package manifest schema and loader
-- **Status:** P0.2 accepted on 2026-07-16; P1.1 authorized
-- **Implementation state:** P1.1 begins only after the P0 branch is integrated and a dedicated capability branch is created
+- **Active WBS:** P2.1, package inventory, parse, revision, and authority gates
+- **Status:** P2.1 implementation is committed at `e1ada72`; the pre-P2.2 stabilization block is verified on `codex/stabilization-improvement-loop`; user acceptance is pending
+- **Implementation state:** Structured JSON/CSV adapters and eight deterministic package gates now cover manifest, source inventory/parse, authority, boundary/file references, identifiers, duplicates, revisions, and evidence locators. P2.2 relationships, P2.3 consistency rules, P2.4 state routing, reports, and semantic held-out evaluation remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
 P0.2 is accepted. It freezes the development/held-out split, minimum scenario matrix, exact oracle matching, state and CLI routing, reproducibility, contamination handling, false-positive/false-negative review, bounded claims, and release stop conditions.
 
-P1.1 is authorized to implement only the package manifest schema and loader. P1.2 fixtures and all rule-engine work remain blocked by their own predecessor gates.
+P1.1 is accepted and locally integrated at commit `42ad037`. It validates package metadata, mandatory source declarations, canonical manifest identifiers, document revisions, relationship declarations, authority-map references, and controlled paths. It resolves source and file declarations without parsing source records or assigning package result states; those behaviors remain in later gated work.
+
+P1.2 is accepted at commit `f26ed27`. It provides `SCN-DEV-PUMP-SKID-CLEAN-001`, a clean, fully synthetic pump-skid package with all seven mandatory sources, nine controlled file references, 20 reviewed semantic relationships, exact hidden evidence locators, expected clean results, and a package-tree content hash. Its source layouts are fixture examples rather than accepted general schemas.
+
+P1.3 is accepted at commit `4b7516e`. It provides a materially distinct synthetic held-out family with exact protected findings, evidence locators, check IDs, package states, per-scenario hashes, material-distinction evidence, contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884`. Its recorded `frozen_pre_tuning` status is active. It is self-authored pre-tuning, not independently blind. During P2.1, tracked held-out path names were inadvertently enumerated and the full suite exercised opaque integrity checks; protected source and oracle content was not opened or used to tune evaluator behavior. The first semantic held-out evaluation remains gated.
+
+P2.1 implementation is committed at `e1ada72`. It adds fail-closed structured-source adapters, deterministic evidence models, eight ordered package gates, stable findings, and explicit prerequisite skips without selecting a package-level result state. Focused verification passed 60 tests with one expected Windows symlink skip; the full suite passed 187 tests with the same skip. An approved EOL-only repair adds byte-preserving Git attributes so raw benchmark inventories remain reproducible on Windows; no fixture JSON value, oracle, expected state, or accepted hash changed.
+
+The authorized stabilization block closes cross-platform evidence-path and JSON fixture-profile version gaps, adds ten regression cases, installs Ruff and an 80% coverage floor in CI, ignores temporary Excel lock files, and records reusable lessons in `docs/quality/improvement_register.md`. Verification passes 26 focused tests, 197 full-suite tests with one expected Windows symlink skip, five-case repository validation, Ruff, and 84.33% coverage. No P2.2 relationship, package-state routing, report, CLI, semantic held-out execution, or deferred capability was added.
 
 ## Intended Outcome
 
@@ -78,7 +86,10 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate the accepted P0 branch, create `feature/package-manifest`, and implement P1.1 against the frozen P0.1 and P0.2 contracts. Do not begin P1.2 fixtures, consistency rules, PDF/CAD, agent, API, database, RAG, or frontend implementation.
+Complete the authorized pre-P2.2 stabilization and improvement-loop block, then review and accept the verified P2.1 package-gate implementation. This block may harden existing P2.1 boundaries, add regression and CI controls, correct project status, and install durable project learning records. Do not begin P2.2 document/tag relationship checks until P2.1 acceptance and a separate next-slice scope are recorded. Semantic held-out execution, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+
+Reusable lessons, prevention actions, and proof are controlled in
+`docs/quality/improvement_register.md`.
 
 ## Engineering Boundary
 

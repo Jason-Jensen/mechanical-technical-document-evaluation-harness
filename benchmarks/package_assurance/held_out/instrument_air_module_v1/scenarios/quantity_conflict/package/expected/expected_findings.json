@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.3.0-fixture-oracle",
+  "scenario_id": "SCN-HO-AIR-QUANTITY-001",
+  "package_id": "PKG-HO-AIR-QUANTITY-001",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "scenario_type": "single_fault",
+  "seeded_fault_ids": [
+    "FAULT-HO-QUANTITY-001"
+  ],
+  "expected_findings": [
+    {
+      "finding_id": "FIND-HO-QUANTITY-001",
+      "check_id": "CHECK-BOM-QUANTITY-CONSISTENCY",
+      "check_version": "0.3.0",
+      "result_state": "automatic_fail",
+      "severity": "critical",
+      "release_hold": true,
+      "affected_identifiers": [
+        {
+          "identifier_type": "item_id",
+          "identifier": "ITEM-AIR-COMP-210"
+        },
+        {
+          "identifier_type": "equipment_tag",
+          "identifier": "C-210A"
+        }
+      ],
+      "authority_rule_id": "AUTH-BOM-001",
+      "condition": "authoritative_quantity_conflicts_with_package_metadata",
+      "expected_value": "2",
+      "actual_value": 1,
+      "authoritative_source_ref": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv"
+      },
+      "compared_source_ref": {
+        "source_type": "datasheet_spec_metadata",
+        "source_file": "inputs/datasheet_spec_metadata.json"
+      },
+      "evidence_locators": [
+        {
+          "source_type": "bom_or_equipment_list",
+          "source_file": "inputs/bom_or_equipment_list.csv",
+          "format": "csv",
+          "row_number": 3,
+          "header_row_number": 1,
+          "column_name": "quantity",
+          "row_key": {
+            "column_name": "item_id",
+            "value": "ITEM-AIR-COMP-210"
+          },
+          "original_value": "2",
+          "normalized_value": "2"
+        },
+        {
+          "source_type": "datasheet_spec_metadata",
+          "source_file": "inputs/datasheet_spec_metadata.json",
+          "format": "json",
+          "json_pointer": "/datasheets/1/package_quantity",
+          "record_id": "DSMETA-AIR-210",
+          "property_name": "package_quantity",
+          "original_value": 1,
+          "normalized_value": "1"
+        }
+      ],
+      "review_owner": "mechanical_engineering"
+    }
+  ],
+  "allowed_incidental_findings": [],
+  "oracle_review_status": "author_reviewed_pending_user_acceptance",
+  "freeze_status": "freeze_candidate_pending_user_acceptance"
+}

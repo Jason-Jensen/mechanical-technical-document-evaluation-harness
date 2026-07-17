@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.3.0-fixture-oracle",
+  "scenario_id": "SCN-HO-AIR-ORPHAN-TAG-001",
+  "package_id": "PKG-HO-AIR-ORPHAN-TAG-001",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "scenario_type": "single_fault",
+  "seeded_fault_ids": [
+    "FAULT-HO-ORPHAN-TAG-001"
+  ],
+  "expected_findings": [
+    {
+      "finding_id": "FIND-HO-ORPHAN-TAG-001",
+      "check_id": "CHECK-DRAWING-EQUIPMENT-RELATIONSHIP",
+      "check_version": "0.3.0",
+      "result_state": "automatic_fail",
+      "severity": "critical",
+      "release_hold": true,
+      "affected_identifiers": [
+        {
+          "identifier_type": "drawing_number",
+          "identifier": "AIR-MOD-2300"
+        },
+        {
+          "identifier_type": "equipment_tag",
+          "identifier": "DR-230A"
+        }
+      ],
+      "authority_rule_id": "AUTH-BOM-002",
+      "condition": "required_equipment_tag_replaced_by_orphan_tag",
+      "expected_value": "DR-230A",
+      "actual_value": "DR-230B",
+      "authoritative_source_ref": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv"
+      },
+      "compared_source_ref": {
+        "source_type": "drawing_metadata",
+        "source_file": "inputs/drawing_metadata.json"
+      },
+      "evidence_locators": [
+        {
+          "source_type": "bom_or_equipment_list",
+          "source_file": "inputs/bom_or_equipment_list.csv",
+          "format": "csv",
+          "row_number": 2,
+          "header_row_number": 1,
+          "column_name": "equipment_tag",
+          "row_key": {
+            "column_name": "item_id",
+            "value": "ITEM-AIR-DRYER-230"
+          },
+          "original_value": "DR-230A",
+          "normalized_value": "DR-230A"
+        },
+        {
+          "source_type": "drawing_metadata",
+          "source_file": "inputs/drawing_metadata.json",
+          "format": "json",
+          "json_pointer": "/records/1/equipment_tags/0",
+          "record_id": "DWMETA-AIR-230",
+          "property_name": "equipment_tags",
+          "original_value": "DR-230B",
+          "normalized_value": "DR-230B"
+        }
+      ],
+      "review_owner": "mechanical_engineering"
+    }
+  ],
+  "allowed_incidental_findings": [],
+  "oracle_review_status": "author_reviewed_pending_user_acceptance",
+  "freeze_status": "freeze_candidate_pending_user_acceptance"
+}

@@ -1,0 +1,502 @@
+{
+  "schema_version": "0.3.0",
+  "package_id": "PKG-DEV-PUMP-SKID-001",
+  "package_title": "Synthetic P-101A Pump Skid Release Package",
+  "created_date": "2026-07-16",
+  "synthetic": true,
+  "source_inventory": [
+    {
+      "source_type": "package_manifest",
+      "path": "package_manifest.json",
+      "format": "json",
+      "required_for_release": true
+    },
+    {
+      "source_type": "drawing_register",
+      "path": "inputs/drawing_register.csv",
+      "format": "csv",
+      "required_for_release": true
+    },
+    {
+      "source_type": "drawing_metadata",
+      "path": "inputs/drawing_metadata.json",
+      "format": "json",
+      "required_for_release": true
+    },
+    {
+      "source_type": "bom_or_equipment_list",
+      "path": "inputs/bom_or_equipment_list.csv",
+      "format": "csv",
+      "required_for_release": true
+    },
+    {
+      "source_type": "datasheet_spec_metadata",
+      "path": "inputs/datasheet_spec_metadata.json",
+      "format": "json",
+      "required_for_release": true
+    },
+    {
+      "source_type": "revision_history",
+      "path": "inputs/revision_history.csv",
+      "format": "csv",
+      "required_for_release": true
+    },
+    {
+      "source_type": "authority_map",
+      "path": "authority/authority_map.json",
+      "format": "json",
+      "required_for_release": true
+    }
+  ],
+  "authority_map_ref": "authority/authority_map.json",
+  "allowed_file_reference_roots": [
+    "files"
+  ],
+  "document_inventory": [
+    {
+      "document_id": "DOC-DWG-001",
+      "document_type": "drawing",
+      "drawing_number": "DWG-PSK-1001",
+      "title": "Pump Skid General Arrangement",
+      "required_for_release": true,
+      "current_revision": {
+        "revision_id": "C",
+        "scheme": "alpha_upper",
+        "max_letters": 1
+      },
+      "file_ref_id": "FILE-DWG-001"
+    },
+    {
+      "document_id": "DOC-DWG-002",
+      "document_type": "drawing",
+      "drawing_number": "DWG-PSK-1002",
+      "title": "Pump Piping Arrangement",
+      "required_for_release": true,
+      "current_revision": {
+        "revision_id": "B",
+        "scheme": "alpha_upper",
+        "max_letters": 1
+      },
+      "file_ref_id": "FILE-DWG-002"
+    },
+    {
+      "document_id": "DOC-DS-001",
+      "document_type": "datasheet",
+      "datasheet_id": "DS-P-101",
+      "title": "Pump P-101A Datasheet",
+      "required_for_release": true,
+      "current_revision": {
+        "revision_id": "B",
+        "scheme": "explicit_sequence",
+        "allowed_values": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "file_ref_id": "FILE-DS-001"
+    },
+    {
+      "document_id": "DOC-DS-002",
+      "document_type": "datasheet",
+      "datasheet_id": "DS-M-101",
+      "title": "Motor M-101A Datasheet",
+      "required_for_release": true,
+      "current_revision": {
+        "revision_id": "A",
+        "scheme": "explicit_sequence",
+        "allowed_values": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "file_ref_id": "FILE-DS-002"
+    },
+    {
+      "document_id": "DOC-SPEC-001",
+      "document_type": "specification",
+      "specification_id": "SPEC-PUMP-001",
+      "title": "Centrifugal Pump Minimum Requirements",
+      "required_for_release": true,
+      "current_revision": {
+        "revision_id": "A",
+        "scheme": "explicit_sequence",
+        "allowed_values": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "file_ref_id": "FILE-SPEC-001"
+    },
+    {
+      "document_id": "DOC-SPEC-002",
+      "document_type": "specification",
+      "specification_id": "SPEC-MOTOR-001",
+      "title": "Induction Motor Minimum Requirements",
+      "required_for_release": true,
+      "current_revision": {
+        "revision_id": "A",
+        "scheme": "explicit_sequence",
+        "allowed_values": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      "file_ref_id": "FILE-SPEC-002"
+    },
+    {
+      "document_id": "DOC-REG-001",
+      "document_type": "register",
+      "title": "Package Drawing Register",
+      "required_for_release": true,
+      "current_revision": {
+        "revision_id": "1",
+        "scheme": "numeric_integer"
+      },
+      "file_ref_id": "FILE-REG-001"
+    },
+    {
+      "document_id": "DOC-EQL-001",
+      "document_type": "equipment_list",
+      "title": "Package Equipment List",
+      "required_for_release": true,
+      "current_revision": {
+        "revision_id": "1",
+        "scheme": "numeric_integer"
+      },
+      "file_ref_id": "FILE-EQL-001"
+    },
+    {
+      "document_id": "DOC-REV-001",
+      "document_type": "revision_record",
+      "title": "Package Revision History",
+      "required_for_release": true,
+      "current_revision": {
+        "revision_id": "1",
+        "scheme": "numeric_integer"
+      },
+      "file_ref_id": "FILE-REV-001"
+    }
+  ],
+  "file_references": [
+    {
+      "file_ref_id": "FILE-DWG-001",
+      "path": "files/drawings/DWG-PSK-1001_rev_C.txt",
+      "artifact_type": "drawing_reference",
+      "required_for_release": true
+    },
+    {
+      "file_ref_id": "FILE-DWG-002",
+      "path": "files/drawings/DWG-PSK-1002_rev_B.txt",
+      "artifact_type": "drawing_reference",
+      "required_for_release": true
+    },
+    {
+      "file_ref_id": "FILE-DS-001",
+      "path": "files/datasheets/DS-P-101_rev_B.txt",
+      "artifact_type": "datasheet_reference",
+      "required_for_release": true
+    },
+    {
+      "file_ref_id": "FILE-DS-002",
+      "path": "files/datasheets/DS-M-101_rev_A.txt",
+      "artifact_type": "datasheet_reference",
+      "required_for_release": true
+    },
+    {
+      "file_ref_id": "FILE-SPEC-001",
+      "path": "files/specifications/SPEC-PUMP-001_rev_A.txt",
+      "artifact_type": "specification_reference",
+      "required_for_release": true
+    },
+    {
+      "file_ref_id": "FILE-SPEC-002",
+      "path": "files/specifications/SPEC-MOTOR-001_rev_A.txt",
+      "artifact_type": "specification_reference",
+      "required_for_release": true
+    },
+    {
+      "file_ref_id": "FILE-REG-001",
+      "path": "files/control/Drawing_Register_rev_1.txt",
+      "artifact_type": "register_reference",
+      "required_for_release": true
+    },
+    {
+      "file_ref_id": "FILE-EQL-001",
+      "path": "files/control/Equipment_List_rev_1.txt",
+      "artifact_type": "equipment_list_reference",
+      "required_for_release": true
+    },
+    {
+      "file_ref_id": "FILE-REV-001",
+      "path": "files/control/Revision_History_rev_1.txt",
+      "artifact_type": "revision_record_reference",
+      "required_for_release": true
+    }
+  ],
+  "relationship_declarations": [
+    {
+      "relationship_id": "REL-DOC-FILE-001",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-DWG-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-DWG-001"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-002",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-DWG-002"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-DWG-002"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-003",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-DS-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-DS-001"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-004",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-DS-002"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-DS-002"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-005",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-SPEC-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-SPEC-001"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-006",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-SPEC-002"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-SPEC-002"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-007",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-REG-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-REG-001"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-008",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-EQL-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-EQL-001"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DOC-FILE-009",
+      "relationship_type": "document_to_file",
+      "source": {
+        "identifier_type": "document_id",
+        "identifier": "DOC-REV-001"
+      },
+      "target": {
+        "identifier_type": "file_ref_id",
+        "identifier": "FILE-REV-001"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DWG-EQ-001",
+      "relationship_type": "drawing_to_equipment",
+      "source": {
+        "identifier_type": "drawing_number",
+        "identifier": "DWG-PSK-1001"
+      },
+      "target": {
+        "identifier_type": "equipment_tag",
+        "identifier": "P-101A"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DWG-EQ-002",
+      "relationship_type": "drawing_to_equipment",
+      "source": {
+        "identifier_type": "drawing_number",
+        "identifier": "DWG-PSK-1001"
+      },
+      "target": {
+        "identifier_type": "equipment_tag",
+        "identifier": "M-101A"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-DWG-EQ-003",
+      "relationship_type": "drawing_to_equipment",
+      "source": {
+        "identifier_type": "drawing_number",
+        "identifier": "DWG-PSK-1002"
+      },
+      "target": {
+        "identifier_type": "equipment_tag",
+        "identifier": "P-101A"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-ITEM-EQ-001",
+      "relationship_type": "item_to_equipment",
+      "source": {
+        "identifier_type": "item_id",
+        "identifier": "ITEM-PUMP-001"
+      },
+      "target": {
+        "identifier_type": "equipment_tag",
+        "identifier": "P-101A"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-ITEM-EQ-002",
+      "relationship_type": "item_to_equipment",
+      "source": {
+        "identifier_type": "item_id",
+        "identifier": "ITEM-MOTOR-001"
+      },
+      "target": {
+        "identifier_type": "equipment_tag",
+        "identifier": "M-101A"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-ITEM-DWG-001",
+      "relationship_type": "item_to_drawing",
+      "source": {
+        "identifier_type": "item_id",
+        "identifier": "ITEM-PUMP-001"
+      },
+      "target": {
+        "identifier_type": "drawing_number",
+        "identifier": "DWG-PSK-1002"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-ITEM-DWG-002",
+      "relationship_type": "item_to_drawing",
+      "source": {
+        "identifier_type": "item_id",
+        "identifier": "ITEM-MOTOR-001"
+      },
+      "target": {
+        "identifier_type": "drawing_number",
+        "identifier": "DWG-PSK-1001"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-EQ-DS-001",
+      "relationship_type": "equipment_to_datasheet",
+      "source": {
+        "identifier_type": "equipment_tag",
+        "identifier": "P-101A"
+      },
+      "target": {
+        "identifier_type": "datasheet_id",
+        "identifier": "DS-P-101"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-EQ-DS-002",
+      "relationship_type": "equipment_to_datasheet",
+      "source": {
+        "identifier_type": "equipment_tag",
+        "identifier": "M-101A"
+      },
+      "target": {
+        "identifier_type": "datasheet_id",
+        "identifier": "DS-M-101"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-EQ-SPEC-001",
+      "relationship_type": "equipment_to_specification",
+      "source": {
+        "identifier_type": "equipment_tag",
+        "identifier": "P-101A"
+      },
+      "target": {
+        "identifier_type": "specification_id",
+        "identifier": "SPEC-PUMP-001"
+      },
+      "required_for_release": true
+    },
+    {
+      "relationship_id": "REL-EQ-SPEC-002",
+      "relationship_type": "equipment_to_specification",
+      "source": {
+        "identifier_type": "equipment_tag",
+        "identifier": "M-101A"
+      },
+      "target": {
+        "identifier_type": "specification_id",
+        "identifier": "SPEC-MOTOR-001"
+      },
+      "required_for_release": true
+    }
+  ]
+}

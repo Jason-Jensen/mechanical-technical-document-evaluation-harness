@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.3.0-fixture-oracle",
+  "scenario_id": "SCN-DEV-PUMP-SKID-CLEAN-001",
+  "package_id": "PKG-DEV-PUMP-SKID-001",
+  "scenario_type": "clean",
+  "expected_package_state": "automatic_pass",
+  "expected_cli_exit_code": 0,
+  "expected_release_hold": false,
+  "expected_blocking_states": [],
+  "expected_skipped_checks": [],
+  "human_release_approval_required": true,
+  "oracle_review_status": "author_reviewed_pending_user_acceptance",
+  "freeze_status": "pending_user_acceptance"
+}

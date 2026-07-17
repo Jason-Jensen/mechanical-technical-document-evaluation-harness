@@ -1,0 +1,6 @@
+SYNTHETIC CONTROLLED ARTIFACT
+Document ID: DOC-REG-001
+Canonical ID: Package Drawing Register
+Revision: 1
+Status: issued_for_release
+Purpose: File-existence and reciprocal-reference fixture only; content interpretation is outside v0.3.0 scope.

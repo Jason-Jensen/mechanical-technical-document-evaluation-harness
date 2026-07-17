@@ -6,21 +6,24 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 
 - **P0.1:** Accepted. Workflow contract and authority-map boundary are frozen.
 - **P0.2:** Accepted on 2026-07-16. Benchmark and acceptance policy are frozen.
-- **P1.1:** Authorized after P0 branch integration on its own capability branch.
-- **P1.2 and later:** Blocked by predecessor gates.
+- **P1.1:** Accepted and locally integrated at commit `42ad037`.
+- **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
+- **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
+- **P2.1:** Implementation committed at `e1ada72` and verified on `feature/package-inventory-gates`; user acceptance is pending.
+- **P2.2 and later:** Blocked pending P2.1 acceptance.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-P0.2 acceptance authorizes only P1.1. It does not authorize the full roadmap or any deferred capability.
+The user explicitly accepted P1.3 and authorized P2.1. That implementation is now review-ready, but authorization does not extend to P2.2 relationship checks, package-state routing, reports, or semantic held-out evaluation.
 
 ## Active Work Block
 
-- **WBS:** P1.1, package manifest schema and loader
-- **Branch:** a separate package-manifest capability branch
-- **Definition of done:** A versioned manifest contract validates package metadata, source inventory, identifiers, revisions, relationships, authority declarations, controlled file references, and stable missing/malformed failure behavior.
+- **WBS:** P2.1, package inventory, parse, revision, and authority gates
+- **Branch:** `feature/package-inventory-gates`
+- **Definition of done:** Met locally. Eight ordered gates fail closed with deterministic evidence for manifest, source inventory/parse, authority, boundary/file references, identifiers, duplicates, revisions, and evidence locators. Prerequisite failures explicitly suppress dependent behavior; focused verification passed 60 tests with one expected Windows symlink skip and the full suite passed 187 with the same skip.
 
-P1.1 must conform to the accepted P0.1 and P0.2 contracts. It may not silently change product or benchmark policy.
+Next action: review and accept P2.1, then authorize P2.2 as a separate work block. The full suite exercised only opaque held-out integrity checks; no semantic held-out run or tuning occurred. P2.2 relationship checks, P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this work block.
 
 ## Delivery Sequence
 

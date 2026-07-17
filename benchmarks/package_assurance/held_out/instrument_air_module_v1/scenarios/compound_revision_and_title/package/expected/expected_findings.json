@@ -1,0 +1,144 @@
+{
+  "schema_version": "0.3.0-fixture-oracle",
+  "scenario_id": "SCN-HO-AIR-COMPOUND-001",
+  "package_id": "PKG-HO-AIR-COMPOUND-001",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "scenario_type": "compound_fault",
+  "seeded_fault_ids": [
+    "FAULT-HO-COMPOUND-REV-001",
+    "FAULT-HO-COMPOUND-TITLE-001"
+  ],
+  "expected_findings": [
+    {
+      "finding_id": "FIND-HO-COMPOUND-REV-001",
+      "check_id": "CHECK-DRAWING-REVISION-CONSISTENCY",
+      "check_version": "0.3.0",
+      "result_state": "automatic_fail",
+      "severity": "critical",
+      "release_hold": true,
+      "affected_identifiers": [
+        {
+          "identifier_type": "document_id",
+          "identifier": "DOC-AIR-DWG-001"
+        },
+        {
+          "identifier_type": "drawing_number",
+          "identifier": "AIR-MOD-2100"
+        }
+      ],
+      "authority_rule_id": "AUTH-DWG-001",
+      "condition": "superseded_revision_selected_in_secondary_metadata",
+      "expected_value": "03",
+      "actual_value": "02",
+      "authoritative_source_ref": {
+        "source_type": "drawing_register",
+        "source_file": "inputs/drawing_register.csv"
+      },
+      "compared_source_ref": {
+        "source_type": "drawing_metadata",
+        "source_file": "inputs/drawing_metadata.json"
+      },
+      "evidence_locators": [
+        {
+          "source_type": "drawing_register",
+          "source_file": "inputs/drawing_register.csv",
+          "format": "csv",
+          "row_number": 3,
+          "header_row_number": 1,
+          "column_name": "revision_id",
+          "row_key": {
+            "column_name": "drawing_number",
+            "value": "AIR-MOD-2100"
+          },
+          "original_value": "03",
+          "normalized_value": "03"
+        },
+        {
+          "source_type": "drawing_metadata",
+          "source_file": "inputs/drawing_metadata.json",
+          "format": "json",
+          "json_pointer": "/records/2/revision_id",
+          "record_id": "DWMETA-AIR-210",
+          "property_name": "revision_id",
+          "original_value": "02",
+          "normalized_value": "02"
+        },
+        {
+          "source_type": "revision_history",
+          "source_file": "inputs/revision_history.csv",
+          "format": "csv",
+          "row_number": 12,
+          "header_row_number": 1,
+          "column_name": "revision_status",
+          "row_key": {
+            "column_name": "revision_record_id",
+            "value": "REVREC-DOC-AIR-DWG-001-02"
+          },
+          "original_value": "superseded",
+          "normalized_value": "superseded"
+        }
+      ],
+      "review_owner": "document_control"
+    },
+    {
+      "finding_id": "FIND-HO-COMPOUND-TITLE-001",
+      "check_id": "CHECK-DRAWING-TITLE-CONSISTENCY",
+      "check_version": "0.3.0",
+      "result_state": "engineering_review_required",
+      "severity": "medium",
+      "release_hold": false,
+      "affected_identifiers": [
+        {
+          "identifier_type": "document_id",
+          "identifier": "DOC-AIR-DWG-001"
+        },
+        {
+          "identifier_type": "drawing_number",
+          "identifier": "AIR-MOD-2100"
+        }
+      ],
+      "authority_rule_id": "AUTH-DWG-003",
+      "condition": "review_routed_title_conflict",
+      "expected_value": "Instrument Air Module General Arrangement",
+      "actual_value": "Instrument Air Module Overall Arrangement",
+      "authoritative_source_ref": {
+        "source_type": "drawing_register",
+        "source_file": "inputs/drawing_register.csv"
+      },
+      "compared_source_ref": {
+        "source_type": "drawing_metadata",
+        "source_file": "inputs/drawing_metadata.json"
+      },
+      "evidence_locators": [
+        {
+          "source_type": "drawing_register",
+          "source_file": "inputs/drawing_register.csv",
+          "format": "csv",
+          "row_number": 3,
+          "header_row_number": 1,
+          "column_name": "title",
+          "row_key": {
+            "column_name": "drawing_number",
+            "value": "AIR-MOD-2100"
+          },
+          "original_value": "Instrument Air Module General Arrangement",
+          "normalized_value": "Instrument Air Module General Arrangement"
+        },
+        {
+          "source_type": "drawing_metadata",
+          "source_file": "inputs/drawing_metadata.json",
+          "format": "json",
+          "json_pointer": "/records/2/title",
+          "record_id": "DWMETA-AIR-210",
+          "property_name": "title",
+          "original_value": "Instrument Air Module Overall Arrangement",
+          "normalized_value": "Instrument Air Module Overall Arrangement"
+        }
+      ],
+      "review_owner": "document_control"
+    }
+  ],
+  "allowed_incidental_findings": [],
+  "oracle_review_status": "author_reviewed_pending_user_acceptance",
+  "freeze_status": "freeze_candidate_pending_user_acceptance"
+}

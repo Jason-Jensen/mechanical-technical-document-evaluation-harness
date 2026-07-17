@@ -1,0 +1,6 @@
+SYNTHETIC CONTROLLED ARTIFACT
+Document ID: DOC-REV-001
+Canonical ID: Package Revision History
+Revision: 1
+Status: issued_for_release
+Purpose: File-existence and reciprocal-reference fixture only; content interpretation is outside v0.3.0 scope.

@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.3.0-fixture-oracle",
+  "scenario_id": "SCN-HO-AIR-DATASHEET-001",
+  "package_id": "PKG-HO-AIR-DATASHEET-001",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "scenario_type": "single_fault",
+  "seeded_fault_ids": [
+    "FAULT-HO-DATASHEET-001"
+  ],
+  "expected_findings": [
+    {
+      "finding_id": "FIND-HO-DATASHEET-001",
+      "check_id": "CHECK-EQUIPMENT-DATASHEET-RELATIONSHIP",
+      "check_version": "0.3.0",
+      "result_state": "automatic_fail",
+      "severity": "critical",
+      "release_hold": true,
+      "affected_identifiers": [
+        {
+          "identifier_type": "equipment_tag",
+          "identifier": "DR-230A"
+        },
+        {
+          "identifier_type": "datasheet_id",
+          "identifier": "DS-AIR-DR230"
+        }
+      ],
+      "authority_rule_id": "AUTH-SPEC-001",
+      "condition": "equipment_mapped_to_wrong_datasheet",
+      "expected_value": "DS-AIR-DR230",
+      "actual_value": "DS-AIR-C210",
+      "authoritative_source_ref": {
+        "source_type": "datasheet_spec_metadata",
+        "source_file": "inputs/datasheet_spec_metadata.json"
+      },
+      "compared_source_ref": {
+        "source_type": "bom_or_equipment_list",
+        "source_file": "inputs/bom_or_equipment_list.csv"
+      },
+      "evidence_locators": [
+        {
+          "source_type": "datasheet_spec_metadata",
+          "source_file": "inputs/datasheet_spec_metadata.json",
+          "format": "json",
+          "json_pointer": "/datasheets/2/datasheet_id",
+          "record_id": "DSMETA-AIR-230",
+          "property_name": "datasheet_id",
+          "original_value": "DS-AIR-DR230",
+          "normalized_value": "DS-AIR-DR230"
+        },
+        {
+          "source_type": "bom_or_equipment_list",
+          "source_file": "inputs/bom_or_equipment_list.csv",
+          "format": "csv",
+          "row_number": 2,
+          "header_row_number": 1,
+          "column_name": "datasheet_id",
+          "row_key": {
+            "column_name": "item_id",
+            "value": "ITEM-AIR-DRYER-230"
+          },
+          "original_value": "DS-AIR-C210",
+          "normalized_value": "DS-AIR-C210"
+        }
+      ],
+      "review_owner": "mechanical_engineering"
+    }
+  ],
+  "allowed_incidental_findings": [],
+  "oracle_review_status": "author_reviewed_pending_user_acceptance",
+  "freeze_status": "freeze_candidate_pending_user_acceptance"
+}

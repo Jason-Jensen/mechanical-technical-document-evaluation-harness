@@ -1,0 +1,6 @@
+SYNTHETIC CONTROLLED ARTIFACT
+Document ID: DOC-DWG-001
+Canonical ID: DWG-PSK-1001
+Revision: C
+Status: issued_for_release
+Purpose: File-existence and reciprocal-reference fixture only; content interpretation is outside v0.3.0 scope.

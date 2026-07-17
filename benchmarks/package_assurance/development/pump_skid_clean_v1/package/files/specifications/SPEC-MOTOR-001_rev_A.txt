@@ -1,0 +1,6 @@
+SYNTHETIC CONTROLLED ARTIFACT
+Document ID: DOC-SPEC-002
+Canonical ID: SPEC-MOTOR-001
+Revision: A
+Status: issued_for_release
+Purpose: File-existence and reciprocal-reference fixture only; content interpretation is outside v0.3.0 scope.

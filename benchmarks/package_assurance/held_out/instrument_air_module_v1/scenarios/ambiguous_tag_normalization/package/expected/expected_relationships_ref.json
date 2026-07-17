@@ -1,0 +1,8 @@
+{
+  "schema_version": "0.3.0-held-out-relationship-reference",
+  "package_family_id": "FAM-HO-INSTRUMENT-AIR-001",
+  "relationship_count": 31,
+  "family_relative_path": "protected/golden_relationships.json",
+  "sha256": "11bc14e43778e4ab2d725abdb01cb2aaa54490115ee50321562bb0695424660c",
+  "producer_hidden": true
+}

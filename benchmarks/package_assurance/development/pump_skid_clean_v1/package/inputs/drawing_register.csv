@@ -1,0 +1,3 @@
+document_id,drawing_number,title,revision_id,revision_scheme,document_status,discipline,owner,required_for_release,file_ref_id
+DOC-DWG-001,DWG-PSK-1001,Pump Skid General Arrangement,C,alpha_upper,issued_for_release,mechanical,package_engineering,true,FILE-DWG-001
+DOC-DWG-002,DWG-PSK-1002,Pump Piping Arrangement,B,alpha_upper,issued_for_release,mechanical,package_engineering,true,FILE-DWG-002
