@@ -31,7 +31,7 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P2.2 definition, first drawing-register-to-metadata relationship slice
-- **Status:** Stabilization and P2.1 were accepted by the user on 2026-07-17. The first P2.2 relationship-slice definition is review-ready on `codex/p2.2-relationship-slice-definition`; executable P2.2 behavior remains blocked. Integration to remote `main` and remote checks remain pending
+- **Status:** Stabilization and P2.1 were accepted by the user on 2026-07-17. Draft integration PR #27 is open from `codex/stabilization-improvement-loop` to `main`, is merge-clean, and has green CI; review and merge remain pending. The first P2.2 relationship-slice definition is review-ready on `codex/p2.2-relationship-slice-definition`; executable P2.2 behavior remains blocked
 - **Implementation state:** Structured JSON/CSV adapters and eight deterministic package gates now cover manifest, source inventory/parse, authority, boundary/file references, identifiers, duplicates, revisions, and evidence locators. P2.2 relationships, P2.3 consistency rules, P2.4 state routing, reports, and semantic held-out evaluation remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -88,7 +88,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review and accept, revise, or reject `docs/package_assurance/p2_2_relationship_slice_definition_v0.3.0.md`. Do not implement relationship behavior until that definition is accepted. Integration of the accepted feature chain and remote checks remain required. Semantic held-out execution, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Review and accept, revise, or reject `docs/package_assurance/p2_2_relationship_slice_definition_v0.3.0.md`, and review and merge draft integration PR #27 after approval. Do not implement relationship behavior until the definition is accepted. Semantic held-out execution, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

@@ -7,6 +7,8 @@
 - **Predecessor:** Accepted P2.1 package gates
 - **Definition branch:** `codex/p2.2-relationship-slice-definition`
 - **Implementation branch:** Not created
+- **Integration baseline:** Draft PR #27 from `codex/stabilization-improvement-loop`
+  to `main`; merge-clean with green CI, review and merge pending
 - **Decision:** D-049
 - **Evidence:** EV-046
 

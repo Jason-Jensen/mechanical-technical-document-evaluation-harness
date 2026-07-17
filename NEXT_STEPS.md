@@ -24,7 +24,7 @@ The user explicitly accepted stabilization and P2.1 and authorized definition of
 - **Branch:** `codex/p2.2-relationship-slice-definition`
 - **Definition of done:** Met for review. `docs/package_assurance/p2_2_relationship_slice_definition_v0.3.0.md` freezes one register-to-metadata check, its authority and join rules, exact clean/fault outcomes, evidence, downstream handoff, module boundary, tests, and exclusions without adding executable P2.2 behavior.
 
-Next action: review and accept, revise, or reject the P2.2 relationship-slice definition; integrate the accepted feature chain through a reviewed pull request; and authorize implementation separately. The full suite exercised only opaque held-out integrity checks; no semantic held-out run or tuning occurred. P2.2 executable checks, P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this definition block.
+Next action: review and accept, revise, or reject the P2.2 relationship-slice definition; review and merge draft integration PR #27, whose CI is green; and authorize implementation separately. The full suite exercised only opaque held-out integrity checks; no semantic held-out run or tuning occurred. P2.2 executable checks, P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this definition block.
 
 ## Delivery Sequence
 
