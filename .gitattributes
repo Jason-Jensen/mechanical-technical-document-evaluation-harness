@@ -1,0 +1,2 @@
+# Package-assurance inventories hash raw bytes; never rewrite benchmark EOLs.
+benchmarks/package_assurance/** -text whitespace=trailing-space,space-before-tab,cr-at-eol

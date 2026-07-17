@@ -31,8 +31,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P2.1, package inventory, parse, revision, and authority gates
-- **Status:** P1.3 is accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active and P2.1 is in progress on `feature/package-inventory-gates`
-- **Implementation state:** The manifest boundary and both fixture families are accepted. P2.1 package gates are authorized against development inputs only; relationship checks, package-state routing, issue/report generation, and held-out execution remain unimplemented
+- **Status:** P2.1 implementation is committed at `e1ada72` and verified on `feature/package-inventory-gates`; user acceptance is pending
+- **Implementation state:** Structured JSON/CSV adapters and eight deterministic package gates now cover manifest, source inventory/parse, authority, boundary/file references, identifiers, duplicates, revisions, and evidence locators. P2.2 relationships, P2.3 consistency rules, P2.4 state routing, reports, and semantic held-out evaluation remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -42,7 +42,9 @@ P1.1 is accepted and locally integrated at commit `42ad037`. It validates packag
 
 P1.2 is accepted at commit `f26ed27`. It provides `SCN-DEV-PUMP-SKID-CLEAN-001`, a clean, fully synthetic pump-skid package with all seven mandatory sources, nine controlled file references, 20 reviewed semantic relationships, exact hidden evidence locators, expected clean results, and a package-tree content hash. Its source layouts are fixture examples rather than accepted general schemas.
 
-P1.3 is accepted at commit `4b7516e`. It provides a materially distinct synthetic held-out family with exact protected findings, evidence locators, check IDs, package states, per-scenario hashes, material-distinction evidence, contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884`. Its recorded `frozen_pre_tuning` status is active without editing protected content. It is self-authored pre-tuning, not independently blind. P2 implementers must not inspect or execute the accepted held-out family before the controlled held-out run.
+P1.3 is accepted at commit `4b7516e`. It provides a materially distinct synthetic held-out family with exact protected findings, evidence locators, check IDs, package states, per-scenario hashes, material-distinction evidence, contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884`. Its recorded `frozen_pre_tuning` status is active. It is self-authored pre-tuning, not independently blind. During P2.1, tracked held-out path names were inadvertently enumerated and the full suite exercised opaque integrity checks; protected source and oracle content was not opened or used to tune evaluator behavior. The first semantic held-out evaluation remains gated.
+
+P2.1 implementation is committed at `e1ada72`. It adds fail-closed structured-source adapters, deterministic evidence models, eight ordered package gates, stable findings, and explicit prerequisite skips without selecting a package-level result state. Focused verification passed 60 tests with one expected Windows symlink skip; the full suite passed 187 tests with the same skip. An approved EOL-only repair adds byte-preserving Git attributes so raw benchmark inventories remain reproducible on Windows; no fixture JSON value, oracle, expected state, or accepted hash changed.
 
 ## Intended Outcome
 
@@ -82,7 +84,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Implement P2.1 inventory, structured-source parse, revision, authority, duplicate, evidence-locator, and controlled-file gates against accepted contracts and development inputs only. Stop for user acceptance before P2.2 document/tag relationship checks. Do not inspect the held-out family or begin package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, or frontend implementation.
+Review and accept the verified P2.1 package-gate implementation. Do not begin P2.2 document/tag relationship checks until that acceptance is recorded. Semantic held-out execution, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 ## Engineering Boundary
 
