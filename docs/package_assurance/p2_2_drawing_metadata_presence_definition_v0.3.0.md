@@ -3,20 +3,21 @@
 ## Control Status
 
 - **WBS:** P2.2, second document-relationship slice
-- **Status:** Definition and implementation accepted; PR #31 integration pending
+- **Status:** Definition and implementation accepted and integrated
 - **Predecessor:** First P2.2 relationship slice integrated through PR #28
 - **Definition branch:** `codex/p2.2-drawing-counterpart-definition`
 - **Implementation branch:** `codex/p2.2-drawing-metadata-presence-implementation`
 - **Implementation commit:** `b24ca65`
-- **Integration baseline:** `main` at PR #30 merge commit `551200b`
-- **Decisions:** D-054, D-055, D-056, D-057, D-058
-- **Evidence:** EV-051, EV-052, EV-053, EV-054, EV-055
+- **Definition baseline:** `main` at PR #30 merge commit `551200b`
+- **Implementation integration:** `main` at PR #31 merge commit `36338c0`
+- **Decisions:** D-054, D-055, D-056, D-057, D-058, D-059
+- **Evidence:** EV-051, EV-052, EV-053, EV-054, EV-055, EV-056
 
 The user accepted this definition on 2026-07-17. PR #30 merged it to `main` at
 `551200b`, and the exact merged tree was verified. Implementation authorization
 is limited to this exact directional check. Commit `b24ca65` implements it on
-PR #31. The user accepted the implementation on 2026-07-17; integration is
-pending.
+PR #31. The user accepted the implementation on 2026-07-17, and PR #31 merged
+it to `main` at `36338c0`. Exact merged-tree verification passed.
 
 ## Plain-Language Goal
 
@@ -333,4 +334,5 @@ Implementation commit `b24ca65` satisfies the accepted implementation criteria:
 repository validation passes 5/5, Ruff passes, coverage is 84.93%, and two PR
 #31 CI runs pass. No accepted fixture, golden, held-out asset, schema, authority
 map, or historical evidence changed. The user accepted the implementation on
-2026-07-17; PR #31 integration and exact merged-tree verification remain.
+2026-07-17. PR #31 integrated it at `36338c0`; exact merged-tree verification
+passes the same focused, full-suite, validation, Ruff, and coverage checks.
