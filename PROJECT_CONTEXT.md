@@ -31,7 +31,7 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P2.2 implementation review, metadata-to-drawing-register authority direction
-- **Status:** The first two relationship behaviors are integrated and verified. The third definition is integrated at `6d1f2f2`; implementation commit `8eb431d` is complete and ready for explicit review
+- **Status:** The first two relationship behaviors are integrated and verified. The third definition is integrated at `6d1f2f2`; implementation commit `8eb431d` is complete and ready for explicit review on green draft PR #33
 - **Implementation state:** `relationships.py` now returns three ordered drawing checks: revision agreement, registered-drawing metadata presence, and metadata claim register authority. It emits deterministic pass, conflict, missing-counterpart, missing-authority, or prerequisite-skip records without selecting package state. Other P2.2 relationships, P2.3 consistency rules, P2.4 routing, reports, and semantic held-out evaluation remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -96,7 +96,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review and accept, revise, or reject `drawing_metadata_register_authority` implementation commit `8eb431d`. Do not merge it or begin another relationship before explicit acceptance. Semantic held-out execution, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Review and accept, revise, or reject draft PR #33 and `drawing_metadata_register_authority` implementation commit `8eb431d`. Do not merge it or begin another relationship before explicit acceptance. Semantic held-out execution, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

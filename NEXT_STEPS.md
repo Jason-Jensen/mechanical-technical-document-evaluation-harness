@@ -10,7 +10,7 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** The revision slice is integrated at `5866212`; the metadata-presence slice is integrated at `36338c0`; the reverse metadata-without-register authority definition is integrated at `6d1f2f2`, and its implementation is ready for review at `8eb431d`.
+- **P2.2:** The revision slice is integrated at `5866212`; the metadata-presence slice is integrated at `36338c0`; the reverse metadata-without-register authority definition is integrated at `6d1f2f2`, and implementation `8eb431d` is ready for review on draft PR #33.
 - **P2.3 and later:** Blocked pending the preceding gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
@@ -25,7 +25,7 @@ The accepted `drawing_register_metadata_revision` and `drawing_register_metadata
 - **Objective:** Implement and prove only the accepted `drawing_metadata_register_authority` v0.3.0 behavior.
 - **Definition of done:** The third check and exact evidence are implemented; temporary-copy faults prove clean, one-missing, all-missing, repeatability, ordering, and prerequisite behavior; the full verification contract passes; protected assets remain unchanged; and a review PR is ready for explicit acceptance.
 
-Next action: review and accept, revise, or reject implementation commit `8eb431d`. The new third check routes an unbacked metadata revision claim to `missing_authoritative_information`, places a release hold, and preserves exact claim plus searched-register evidence. Verification passes 40 focused tests, 211 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 85.18% coverage. No semantic held-out run or tuning occurred.
+Next action: review and accept, revise, or reject draft PR #33 and implementation commit `8eb431d`. The new third check routes an unbacked metadata revision claim to `missing_authoritative_information`, places a release hold, and preserves exact claim plus searched-register evidence. Verification passes 40 focused tests, 211 full-suite tests with one expected skip, repository validation 5/5, Ruff, 85.18% coverage, and two green GitHub CI runs. No semantic held-out run or tuning occurred.
 
 ## Delivery Sequence
 
