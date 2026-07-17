@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from pathlib import PurePosixPath
+from pathlib import PurePosixPath, PureWindowsPath
 from typing import TYPE_CHECKING, Any, Literal, Mapping
 
 if TYPE_CHECKING:
@@ -53,7 +53,14 @@ class EvidenceLocator:
                 raise ValueError(f"Evidence {label} must be a non-empty string")
 
         source_path = PurePosixPath(self.source_file)
-        if source_path.is_absolute() or ".." in source_path.parts:
+        windows_path = PureWindowsPath(self.source_file)
+        if (
+            "\\" in self.source_file
+            or source_path.is_absolute()
+            or windows_path.is_absolute()
+            or bool(windows_path.drive)
+            or ".." in source_path.parts
+        ):
             raise ValueError("Evidence source_file must be package-relative")
 
     def to_dict(self) -> dict[str, Any]:

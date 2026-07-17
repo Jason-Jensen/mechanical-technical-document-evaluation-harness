@@ -19,6 +19,11 @@ from mech_eval_harness.package_assurance.models import (
 )
 
 
+SUPPORTED_JSON_SOURCE_SCHEMA_VERSIONS = frozenset(
+    {"0.3.0-fixture-example"}
+)
+
+
 @dataclass(frozen=True)
 class SourceLoadOutcome:
     """Successful source records plus every controlled load/parse error."""
@@ -480,6 +485,23 @@ def _load_json_source(
             )
         )
         schema_version = "<missing>"
+    elif schema_version not in SUPPORTED_JSON_SOURCE_SCHEMA_VERSIONS:
+        expected_versions = ", ".join(
+            sorted(SUPPORTED_JSON_SOURCE_SCHEMA_VERSIONS)
+        )
+        errors.append(
+            SourceLoadError(
+                source_type=source_type,
+                source_file=source_file,
+                format="json",
+                code="SOURCE_SCHEMA_VERSION_UNSUPPORTED",
+                message=(
+                    f"JSON source schema_version {schema_version!r} is unsupported; "
+                    f"expected one of: {expected_versions}"
+                ),
+                json_pointer="/schema_version",
+            )
+        )
     if document.get("source_type") != source_type:
         errors.append(
             SourceLoadError(

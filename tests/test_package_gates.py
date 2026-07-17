@@ -199,6 +199,26 @@ def test_invalid_csv_value_is_a_source_parse_failure(tmp_path: Path) -> None:
     assert finding.evidence[0].column_name == "quantity"
 
 
+def test_unsupported_json_source_version_fails_closed(tmp_path: Path) -> None:
+    package_root = _copy_package(tmp_path)
+    source_path = package_root / "inputs" / "drawing_metadata.json"
+    document = _load_json(source_path)
+    document["schema_version"] = "0.4.0"
+    _write_json(source_path, document)
+
+    evaluation = _evaluate(package_root)
+
+    source_gate = _gate(evaluation, SOURCE_INVENTORY_GATE_ID)
+    assert source_gate.status == "failed"
+    assert [finding.code for finding in source_gate.findings] == [
+        "SOURCE_SCHEMA_VERSION_UNSUPPORTED"
+    ]
+    assert source_gate.findings[0].evidence[0].json_pointer == "/schema_version"
+    assert _gate(evaluation, IDENTIFIER_GATE_ID).status == "skipped"
+    assert _gate(evaluation, DUPLICATE_GATE_ID).status == "skipped"
+    assert evaluation.dependent_checks_allowed is False
+
+
 def test_missing_controlled_file_is_a_boundary_hold(tmp_path: Path) -> None:
     package_root = _copy_package(tmp_path)
     manifest = _load_json(package_root / "package_manifest.json")

@@ -31,5 +31,8 @@ jobs:
       - name: Validate repository cases
         run: mech-eval validate .
 
-      - name: Run test suite
-        run: python -m pytest
+      - name: Check Python source
+        run: python -m ruff check .
+
+      - name: Run test suite with coverage floor
+        run: python -m pytest --cov=mech_eval_harness --cov-report=term-missing --cov-fail-under=80

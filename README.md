@@ -8,12 +8,12 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** P2.1 package inventory gates are implemented at commit `e1ada72` and regression-verified on `feature/package-inventory-gates`; user acceptance is pending.
+- **Current gate:** P2.1 package inventory gates are implemented at commit `e1ada72` and hardened on `codex/stabilization-improvement-loop`; stabilization is verified and user acceptance is pending.
 - **Implementation boundary:** P2.2+ relationship, consistency, and state-routing work, held-out execution, and all PDF/CAD, agent, API, database, RAG, and frontend work remain blocked and unimplemented.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 
-Current execution status is controlled in `gantt.xlsx`. Product behavior is defined in [the workflow contract](docs/package_assurance/workflow_contract_v0.3.0.md) and [acceptance plan](docs/package_assurance/acceptance_plan_v0.3.0.md).
+Current execution status is controlled in `gantt.xlsx`. Product behavior is defined in [the workflow contract](docs/package_assurance/workflow_contract_v0.3.0.md) and [acceptance plan](docs/package_assurance/acceptance_plan_v0.3.0.md). Reusable lessons and their permanent checks are tracked in [the improvement register](docs/quality/improvement_register.md).
 
 ## Current MVP
 
@@ -299,7 +299,8 @@ CI performs:
 1. repository checkout;
 2. package and development-dependency installation;
 3. five-case repository validation;
-4. the complete pytest suite.
+4. Python source linting;
+5. the complete pytest suite with an 80% coverage floor.
 
 A controlled seeded failure was used during CI acceptance to confirm that the workflow reports a red run when a required step fails.
 
