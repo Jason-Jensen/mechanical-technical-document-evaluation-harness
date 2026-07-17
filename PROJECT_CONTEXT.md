@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-17
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.2-relationship-slice-definition`
+**Current branch:** `codex/p2.2-relationship-slice-implementation`
 
 ## Executive Summary
 
@@ -31,8 +31,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P2.2 implementation, first drawing-register-to-metadata relationship slice
-- **Status:** Stabilization and P2.1 are integrated on `main` at merge commit `94d9117`. The user accepted the first P2.2 relationship-slice definition on 2026-07-17 and authorized its narrow implementation; all other P2.2 checks and later capabilities remain blocked
-- **Implementation state:** Structured JSON/CSV adapters and eight deterministic package gates now cover manifest, source inventory/parse, authority, boundary/file references, identifiers, duplicates, revisions, and evidence locators. P2.2 relationships, P2.3 consistency rules, P2.4 state routing, reports, and semantic held-out evaluation remain unimplemented
+- **Status:** The first P2.2 relationship slice is implementation-complete and review-ready. It passes 30 focused tests and the full 201-test regression suite with one expected Windows symlink skip; all other P2.2 checks and later capabilities remain blocked
+- **Implementation state:** A separate `relationships.py` module now compares authoritative drawing-register revisions with exact drawing-metadata matches and returns deterministic pass, mismatch, or prerequisite-skip records. P2.2 missing/extra documents, tags and other relationships, P2.3 consistency rules, P2.4 state routing, reports, and semantic held-out evaluation remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -49,6 +49,8 @@ P2.1 implementation is committed at `e1ada72`. It adds fail-closed structured-so
 The accepted stabilization block closes cross-platform evidence-path and JSON fixture-profile version gaps, adds ten regression cases, installs Ruff and an 80% coverage floor in CI, ignores temporary Excel lock files, and records reusable lessons in `docs/quality/improvement_register.md`. Verification passes 26 focused tests, 197 full-suite tests with one expected Windows symlink skip, five-case repository validation, Ruff, and 84.33% coverage. No P2.2 relationship, package-state routing, report, CLI, semantic held-out execution, or deferred capability was added.
 
 The accepted P2.2 definition freezes one drawing-register-to-metadata revision comparison under `AUTH-DWG-001`. It defines exact joining, pass/fail behavior, a high-severity release-hold finding, both field-level evidence locators, deterministic identity, a separate `relationships.py` boundary, downstream P2.4/P3 handoff, acceptance tests, and explicit exclusions. It does not authorize any other relationship rule, package-state routing, report, CLI, or protected-asset change.
+
+The implemented slice keeps P2.1 gates unchanged, consumes their completed evaluation, and emits no package-level state. The clean development package passes; a temporary metadata mutation from revision `C` to `A` produces exactly one stable `DRAWING_REVISION_MISMATCH` finding with both frozen locators. Repeated runs and reordered records preserve semantic finding identity and order. Verification passes 30 focused tests, 201 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 84.64% coverage.
 
 ## Intended Outcome
 
@@ -88,7 +90,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Implement and verify only `drawing_register_metadata_revision` v0.3.0 in a separate `relationships.py` module under the accepted definition. Use temporary test copies and preserve accepted fixtures, schemas, goldens, held-out assets, and historical evidence. Semantic held-out execution, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Review and accept, revise, or reject the first P2.2 implementation slice and its evidence. Do not begin another relationship or downstream layer until this implementation is accepted. Semantic held-out execution, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

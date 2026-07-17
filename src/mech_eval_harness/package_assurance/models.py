@@ -1,4 +1,4 @@
-"""Typed records and deterministic outcomes for package-assurance gates."""
+"""Typed records and deterministic package-assurance outcomes."""
 
 from __future__ import annotations
 
@@ -19,6 +19,8 @@ PackageResultState = Literal[
     "evaluator_uncertainty",
 ]
 GateStatus = Literal["passed", "failed", "skipped"]
+RelationshipCheckStatus = Literal["passed", "failed", "skipped"]
+RelationshipSeverity = Literal["high"]
 
 
 @dataclass(frozen=True)
@@ -300,4 +302,103 @@ class PackageGateEvaluation:
             "package_id": self.package_id,
             "dependent_checks_allowed": self.dependent_checks_allowed,
             "gates": [result.to_dict() for result in self.gates],
+        }
+
+
+@dataclass(frozen=True)
+class RelationshipFinding:
+    """One deterministic, evidence-linked cross-document finding."""
+
+    finding_id: str
+    check_id: str
+    check_version: str
+    package_id: str
+    code: str
+    result_state: PackageResultState
+    severity: RelationshipSeverity
+    release_hold: bool
+    authority_rule_id: str
+    message: str
+    affected_identifiers: tuple[str, ...]
+    expected_value: Any
+    actual_value: Any
+    review_owner: str
+    evidence: tuple[EvidenceLocator, ...]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "finding_id": self.finding_id,
+            "check_id": self.check_id,
+            "check_version": self.check_version,
+            "package_id": self.package_id,
+            "code": self.code,
+            "result_state": self.result_state,
+            "severity": self.severity,
+            "release_hold": self.release_hold,
+            "authority_rule_id": self.authority_rule_id,
+            "message": self.message,
+            "affected_identifiers": list(self.affected_identifiers),
+            "expected_value": self.expected_value,
+            "actual_value": self.actual_value,
+            "review_owner": self.review_owner,
+            "evidence": [locator.to_dict() for locator in self.evidence],
+        }
+
+
+@dataclass(frozen=True)
+class RelationshipCheckResult:
+    """Passed, failed, or prerequisite-skipped relationship result."""
+
+    check_id: str
+    check_version: str
+    status: RelationshipCheckStatus
+    summary: str
+    findings: tuple[RelationshipFinding, ...] = ()
+    evidence: tuple[EvidenceLocator, ...] = ()
+    blocked_by: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        if self.status == "passed" and self.findings:
+            raise ValueError("Passed relationship checks cannot contain findings")
+        if self.status == "failed" and not self.findings:
+            raise ValueError("Failed relationship checks require a finding")
+        if self.status == "skipped":
+            if self.findings:
+                raise ValueError("Skipped relationship checks cannot contain findings")
+            if not self.blocked_by:
+                raise ValueError("Skipped relationship checks require blocked_by")
+        elif self.blocked_by:
+            raise ValueError("Only skipped relationship checks may set blocked_by")
+
+    @property
+    def passed(self) -> bool:
+        return self.status == "passed"
+
+    @property
+    def skipped(self) -> bool:
+        return self.status == "skipped"
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "check_id": self.check_id,
+            "check_version": self.check_version,
+            "status": self.status,
+            "summary": self.summary,
+            "findings": [finding.to_dict() for finding in self.findings],
+            "evidence": [locator.to_dict() for locator in self.evidence],
+            "blocked_by": list(self.blocked_by),
+        }
+
+
+@dataclass(frozen=True)
+class PackageRelationshipEvaluation:
+    """P2.2 relationship results without package-state routing."""
+
+    package_id: str | None
+    checks: tuple[RelationshipCheckResult, ...]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "package_id": self.package_id,
+            "checks": [result.to_dict() for result in self.checks],
         }
