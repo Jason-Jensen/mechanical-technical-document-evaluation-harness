@@ -10,21 +10,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** First relationship-slice implementation was accepted through merged PR #29; combined integration PR #28 is pending merge to `main`; broader P2.2 remains open.
+- **P2.2:** First relationship slice integrated to `main` through PR #28 at `5866212`; the second directional slice definition is proposed; broader P2.2 remains open.
 - **P2.3 and later:** Blocked pending the preceding gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-The accepted `drawing_register_metadata_revision` v0.3.0 slice is implemented and verified. PR #29 merged it into the accepted definition branch at `d714f4e`; PR #28 is now the combined integration PR. No further implementation is authorized until that chain is merged to `main` and verified. Additional relationships, package-state routing, reports, CLI behavior, and semantic held-out evaluation remain blocked.
+The accepted `drawing_register_metadata_revision` v0.3.0 slice is implemented, integrated, and verified on `main`. Definition work is authorized only for `drawing_register_metadata_presence`, which detects authoritative register drawings missing metadata counterparts. No second-slice implementation is authorized. Reverse orphan detection, additional relationships, package-state routing, reports, CLI behavior, and semantic held-out evaluation remain blocked.
 
 ## Active Work Block
 
-- **WBS:** P2.2 first-slice integration
-- **Branch:** `codex/p2.2-relationship-slice-definition`
-- **Definition of done:** Merge PR #28 to `main`, verify its exact merge commit and green checks, and preserve the accepted implementation evidence and protected assets.
+- **WBS:** P2.2 second relationship-slice definition
+- **Branch:** `codex/p2.2-drawing-counterpart-definition`
+- **Definition of done:** Freeze one directional register-to-metadata presence rule, its authority outcome, negative evidence, stable behavior, acceptance tests, and exclusions without adding executable behavior or changing protected assets.
 
-Next action: merge combined integration PR #28 to `main`, then verify the merge before defining another P2.2 slice. The full suite continues to exercise only opaque held-out integrity checks; no semantic held-out run or tuning occurred. P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this integration block.
+Next action: review and accept, revise, or reject `docs/package_assurance/p2_2_drawing_metadata_presence_definition_v0.3.0.md`. Implementation remains blocked until explicit acceptance. The full suite continues to exercise only opaque held-out integrity checks; no semantic held-out run or tuning occurred. P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this definition block.
 
 ## Delivery Sequence
 
