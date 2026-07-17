@@ -3,12 +3,17 @@
 ## Control Status
 
 - **WBS:** P2.2, second document-relationship slice
-- **Status:** Proposed for review; implementation is not authorized
+- **Status:** Accepted 2026-07-17; narrow implementation authorized after integration
 - **Predecessor:** First P2.2 relationship slice integrated through PR #28
 - **Definition branch:** `codex/p2.2-drawing-counterpart-definition`
+- **Implementation branch:** `codex/p2.2-drawing-metadata-presence-implementation`
 - **Integration baseline:** `main` at merge commit `5866212`
-- **Decision:** D-054
-- **Evidence:** EV-051
+- **Decisions:** D-054, D-055
+- **Evidence:** EV-051, EV-052
+
+The user accepted this definition on 2026-07-17. Implementation authorization
+is limited to this exact directional check and begins only after PR #30 is
+merged to `main` and its exact merge commit is verified.
 
 ## Plain-Language Goal
 
@@ -315,3 +320,7 @@ This definition block is done when:
 - definition-block verification passes;
 - the branch is committed, pushed, and opened for review; and
 - the user accepts, revises, or rejects the definition before implementation.
+
+All definition-block criteria are satisfied. The user accepted the definition
+on 2026-07-17; implementation remains sequenced behind verified PR #30
+integration.
