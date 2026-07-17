@@ -15,6 +15,17 @@ from mech_eval_harness.package_assurance.models import (
     PackageGateEvaluation,
     PackageGateFinding,
     PackageGateResult,
+    PackageRelationshipEvaluation,
+    RelationshipCheckResult,
+    RelationshipFinding,
+)
+from mech_eval_harness.package_assurance.relationships import (
+    DRAWING_REGISTER_METADATA_REVISION_CHECK_ID,
+    DRAWING_REVISION_AUTHORITY_RULE_ID,
+    DRAWING_REVISION_MISMATCH_CODE,
+    RELATIONSHIP_CHECK_ORDER,
+    RELATIONSHIP_CHECK_VERSION,
+    run_package_relationships,
 )
 
 __all__ = [
@@ -24,8 +35,17 @@ __all__ = [
     "PackageGateEvaluation",
     "PackageGateFinding",
     "PackageGateResult",
+    "PackageRelationshipEvaluation",
+    "RelationshipCheckResult",
+    "RelationshipFinding",
     "PACKAGE_GATE_ORDER",
     "PACKAGE_GATE_VERSION",
+    "DRAWING_REGISTER_METADATA_REVISION_CHECK_ID",
+    "DRAWING_REVISION_AUTHORITY_RULE_ID",
+    "DRAWING_REVISION_MISMATCH_CODE",
+    "RELATIONSHIP_CHECK_ORDER",
+    "RELATIONSHIP_CHECK_VERSION",
     "load_package_manifest",
     "run_package_gates",
+    "run_package_relationships",
 ]
