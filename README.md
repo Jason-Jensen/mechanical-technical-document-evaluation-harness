@@ -8,8 +8,8 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** The first P2.2 drawing revision slice is integrated at `5866212`; the accepted definition for registered drawings missing metadata is integrated through PR #30 at `551200b`, and its implementation block is ready.
-- **Implementation boundary:** Only `drawing_register_metadata_revision` v0.3.0 is implemented. The accepted presence check is authorized on `codex/p2.2-drawing-metadata-presence-implementation` but remains unimplemented; reverse orphan detection, other relationships, state routing, held-out execution, and all PDF/CAD, agent, API, database, RAG, and frontend work remain blocked.
+- **Current gate:** The first P2.2 drawing revision slice is integrated at `5866212`; the accepted registered-drawing metadata-presence check is implementation-complete at `b24ca65` on PR #31 and awaits user acceptance.
+- **Implementation boundary:** The active branch implements only `drawing_register_metadata_revision` and `drawing_register_metadata_presence` v0.3.0. Reverse orphan detection, other relationships, state routing, held-out execution, and all PDF/CAD, agent, API, database, RAG, and frontend work remain blocked.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 
