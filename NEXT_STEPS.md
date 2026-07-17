@@ -10,21 +10,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** First relationship-slice definition accepted by the user on 2026-07-17; its narrow implementation is authorized.
+- **P2.2:** First relationship-slice implementation is complete and review-ready; broader P2.2 remains open.
 - **P2.3 and later:** Blocked pending the preceding gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-The user explicitly accepted the first P2.2 relationship-slice definition. Authorization extends only to `drawing_register_metadata_revision` v0.3.0 and its focused result/evidence types and tests. It does not extend to additional relationships, package-state routing, reports, CLI behavior, or semantic held-out evaluation.
+The accepted `drawing_register_metadata_revision` v0.3.0 slice is implemented and verified. No further implementation is authorized until this slice is reviewed and accepted. Additional relationships, package-state routing, reports, CLI behavior, and semantic held-out evaluation remain blocked.
 
 ## Active Work Block
 
-- **WBS:** P2.2 implementation, first document-relationship slice
+- **WBS:** P2.2 implementation review, first document-relationship slice
 - **Branch:** `codex/p2.2-relationship-slice-implementation`
-- **Definition of done:** The accepted clean pair passes; the temporary revision fault produces exactly one stable, high-severity release-hold finding with both evidence locators; prerequisite skips and record ordering are deterministic; focused and full verification pass; protected assets remain unchanged.
+- **Definition of done:** Met for review. The clean package passes; the temporary revision fault produces exactly one stable, high-severity release-hold finding with both evidence locators; prerequisite skips and record ordering are deterministic; 30 focused and 201 full tests pass; protected assets remain unchanged.
 
-Next action: implement and verify the accepted P2.2 relationship slice, then present its diff and evidence for review before integration. The full suite continues to exercise only opaque held-out integrity checks; no semantic held-out run or tuning is authorized. P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this implementation block.
+Next action: review and accept, revise, or reject the first P2.2 implementation slice before integration or further P2.2 work. The full suite continues to exercise only opaque held-out integrity checks; no semantic held-out run or tuning occurred. P2.3 consistency rules, P2.4 state routing, and deferred capabilities remain outside this implementation block.
 
 ## Delivery Sequence
 
