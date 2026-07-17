@@ -3,12 +3,11 @@
 ## Control Status
 
 - **WBS:** P2.2, first document-relationship slice
-- **Status:** Review ready; implementation not authorized
+- **Status:** Accepted 2026-07-17; narrow implementation authorized
 - **Predecessor:** Accepted P2.1 package gates
 - **Definition branch:** `codex/p2.2-relationship-slice-definition`
-- **Implementation branch:** Not created
-- **Integration baseline:** Draft PR #27 from `codex/stabilization-improvement-loop`
-  to `main`; merge-clean with green CI, review and merge pending
+- **Implementation branch:** `codex/p2.2-relationship-slice-implementation`
+- **Integration baseline:** PR #27 merged to `main` at `94d9117` after green CI
 - **Decision:** D-049
 - **Evidence:** EV-046
 
@@ -285,7 +284,7 @@ This slice does not define or implement:
 | What evidence is mandatory? | Exact register CSV and metadata JSON field locators with original and normalized values. |
 | Where will code live? | A separate `relationships.py` module, not `gates.py`. |
 | What may change in fixtures? | Only temporary test copies; no accepted or protected asset changes. |
-| What remains blocked? | All executable P2.2 work until this definition is accepted, plus all later WBS capabilities. |
+| What remains blocked? | All P2.2 work outside this exact slice, plus all later WBS capabilities. |
 
 ## Definition of Done
 
