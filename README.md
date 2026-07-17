@@ -8,12 +8,12 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** The first P2.2 drawing-register-to-metadata revision slice is accepted through merged PR #29 and awaits final integration to `main` through combined PR #28.
-- **Implementation boundary:** Only `drawing_register_metadata_revision` v0.3.0 is implemented. Other relationship and consistency checks, state routing, held-out execution, and all PDF/CAD, agent, API, database, RAG, and frontend work remain blocked and unimplemented.
+- **Current gate:** The first P2.2 drawing revision slice is integrated to `main` at `5866212`; the second definition for registered drawings missing metadata is accepted and awaits PR #30 integration.
+- **Implementation boundary:** Only `drawing_register_metadata_revision` v0.3.0 is implemented. The accepted presence check remains unimplemented until PR #30 integration; reverse orphan detection, other relationships, state routing, held-out execution, and all PDF/CAD, agent, API, database, RAG, and frontend work remain blocked and unimplemented.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 
-Current execution status is controlled in `gantt.xlsx`. Product behavior is defined in [the workflow contract](docs/package_assurance/workflow_contract_v0.3.0.md) and [acceptance plan](docs/package_assurance/acceptance_plan_v0.3.0.md). The accepted first P2.2 behavior is frozen in [the relationship-slice definition](docs/package_assurance/p2_2_relationship_slice_definition_v0.3.0.md). Reusable lessons and their permanent checks are tracked in [the improvement register](docs/quality/improvement_register.md).
+Current execution status is controlled in `gantt.xlsx`. Product behavior is defined in [the workflow contract](docs/package_assurance/workflow_contract_v0.3.0.md) and [acceptance plan](docs/package_assurance/acceptance_plan_v0.3.0.md). The accepted P2.2 behaviors are frozen in [the revision relationship definition](docs/package_assurance/p2_2_relationship_slice_definition_v0.3.0.md) and [the drawing metadata presence definition](docs/package_assurance/p2_2_drawing_metadata_presence_definition_v0.3.0.md). Reusable lessons and their permanent checks are tracked in [the improvement register](docs/quality/improvement_register.md).
 
 ## Current MVP
 

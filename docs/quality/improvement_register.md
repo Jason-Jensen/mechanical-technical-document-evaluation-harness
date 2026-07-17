@@ -60,6 +60,7 @@ held-out case, acceptance rule, or mandatory hold.
 | `IMP-006` | Accepted feature work accumulated ahead of remote `main`, increasing integration risk. Acceptance and integration were treated as separate, informal steps. | End accepted capability chains with one reviewed integration pull request and verify its checks before merge. | PR #27 merged to `main` at `94d9117` after green GitHub checks. | Retained |
 | `IMP-007` | CI proved behavior but did not automatically catch basic source defects or coverage loss. | Run Ruff checks and enforce an initial 80% test-coverage floor in CI. | Local lint passes; full suite establishes 84% baseline before the floor is enabled. | Retained |
 | `IMP-008` | Excel lock files appeared as recurring working-tree noise while the controlling workbook was open. | Ignore `~$*.xlsx` temporary files without ignoring the workbook itself. | Clean status while `gantt.xlsx` is open. | Retained |
+| `IMP-009` | Bidirectional counterpart gaps initially looked like one rule, but the two directions have different authority states and negative-evidence needs. | Define relationship directions separately whenever authority, result-state routing, or absence evidence differs; do not hide distinct failures in one check. | The accepted `p2_2_drawing_metadata_presence_definition_v0.3.0.md` isolates register-to-metadata absence and explicitly defers metadata-without-register authority. | Retained |
 
 ## Work-Block Closeout Rule
 

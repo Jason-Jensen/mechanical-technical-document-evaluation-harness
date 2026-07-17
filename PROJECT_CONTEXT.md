@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-17
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.2-relationship-slice-definition`
+**Current branch:** `codex/p2.2-drawing-counterpart-definition`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.2 integration, first drawing-register-to-metadata relationship slice
-- **Status:** PR #29 merged the accepted implementation into the definition branch at `d714f4e`. Combined PR #28 is pending integration to `main`; all other P2.2 checks and later capabilities remain blocked
+- **Active WBS:** P2.2 integration, second drawing-register-to-metadata relationship slice
+- **Status:** The first slice is integrated to `main` through PR #28 at `5866212`. The directional register-to-metadata presence definition is accepted and awaits PR #30 integration before implementation
 - **Implementation state:** A separate `relationships.py` module now compares authoritative drawing-register revisions with exact drawing-metadata matches and returns deterministic pass, mismatch, or prerequisite-skip records. P2.2 missing/extra documents, tags and other relationships, P2.3 consistency rules, P2.4 state routing, reports, and semantic held-out evaluation remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -52,7 +52,9 @@ The accepted P2.2 definition freezes one drawing-register-to-metadata revision c
 
 The implemented slice keeps P2.1 gates unchanged, consumes their completed evaluation, and emits no package-level state. The clean development package passes; a temporary metadata mutation from revision `C` to `A` produces exactly one stable `DRAWING_REVISION_MISMATCH` finding with both frozen locators. Repeated runs and reordered records preserve semantic finding identity and order. Verification passes 30 focused tests, 201 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 84.64% coverage.
 
-The user accepted the implementation by merging PR #29 into the accepted definition branch on 2026-07-17. Merge commit `d714f4e` now places the complete definition-and-implementation chain behind PR #28. That pull request must merge to `main` and be verified before another P2.2 slice begins.
+The user accepted the implementation by merging PR #29 into the accepted definition branch on 2026-07-17. PR #28 then integrated the complete definition-and-implementation chain to `main` at `5866212`. Verification on that exact merged tree passes 30 focused tests, 201 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 84.64% coverage.
+
+The accepted second slice checks only whether every authoritative drawing-register entry has a drawing-metadata counterpart. It deliberately excludes the reverse orphan-record direction because a metadata record with no register authority routes to `missing_authoritative_information`, not the same `automatic_fail`, and needs a separate absence-evidence decision. The user accepted the definition on 2026-07-17. No second-slice behavior is implemented; implementation begins only after PR #30 is merged and verified.
 
 ## Intended Outcome
 
@@ -92,7 +94,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate the accepted first P2.2 slice through PR #28 and verify its merge to `main`. Do not begin another relationship or downstream layer before that integration closes. Semantic held-out execution, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Integrate the accepted `drawing_register_metadata_presence` definition through PR #30, verify its exact merge to `main`, and create the scoped implementation branch. Implement no other relationship or downstream layer. Semantic held-out execution, reverse orphan detection, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
