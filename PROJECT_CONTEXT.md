@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-17
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.2-drawing-metadata-register-authority-implementation`
+**Current branch:** `codex/p2.2-drawing-file-reference-definition`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.2 implementation integration, metadata-to-drawing-register authority direction
-- **Status:** The first two relationship behaviors are integrated and verified. The user accepted third-direction implementation `8eb431d` on 2026-07-17; PR #33 integration and exact merged-tree verification are pending
-- **Implementation state:** `relationships.py` now returns three ordered drawing checks: revision agreement, registered-drawing metadata presence, and metadata claim register authority. It emits deterministic pass, conflict, missing-counterpart, missing-authority, or prerequisite-skip records without selecting package state. Other P2.2 relationships, P2.3 consistency rules, P2.4 routing, reports, and semantic held-out evaluation remain unimplemented
+- **Active WBS:** P2.2 drawing file-reference definition integration
+- **Status:** Three relationship behaviors are integrated and verified on exact `main` commit `8d7f314`. The fourth definition at `d46d56f` was accepted on 2026-07-17 and awaits PR #34 integration and exact merged-tree verification before implementation
+- **Implementation state:** `relationships.py` returns three ordered drawing checks: revision agreement, registered-drawing metadata presence, and metadata claim register authority. The proposed fourth check is documentation only. Package-state routing, reports, semantic held-out evaluation, and all other relationships remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -56,7 +56,9 @@ The user accepted the implementation by merging PR #29 into the accepted definit
 
 The accepted second slice checks only whether every authoritative drawing-register entry has a drawing-metadata counterpart. It deliberately excludes the reverse orphan-record direction because a metadata record with no register authority routes to `missing_authoritative_information`, not the same `automatic_fail`, and needs separate absence evidence. The user accepted the definition and implementation on 2026-07-17. PR #31 integrated the complete slice to `main` at `36338c0`. Verification on that exact merged tree passes 35 focused tests, 206 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 84.93% coverage.
 
-The accepted third direction is `drawing_metadata_register_authority` v0.3.0. PR #32 integrated its definition to `main` at `6d1f2f2`; exact verification passed 35 focused tests, 206 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 84.93% coverage. Implementation commit `8eb431d` appends the third check without changing the first two. Removing one register row in a temporary copy leaves all eight P2.1 gates and both earlier P2.2 checks passing, then emits exactly one high-severity `DRAWING_REGISTER_AUTHORITY_MISSING` release hold in `missing_authoritative_information`. Empty-register and reordered-source tests prove sorted, repeatable findings and exact header-anchored membership evidence. Verification passes 40 focused tests, 211 full-suite tests with one expected skip, validation 5/5, Ruff, and 85.18% coverage. No accepted fixture, golden, held-out asset, schema, authority map, or historical evidence changed.
+The accepted third direction is `drawing_metadata_register_authority` v0.3.0. PR #32 integrated its definition to `main` at `6d1f2f2`; implementation commit `8eb431d` appends the third check without changing the first two. PR #33 integrated the accepted implementation and acceptance evidence to `main` at `8d7f314`. Exact merged-tree verification passes 40 focused tests, 211 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 85.37% coverage. No accepted fixture, golden, held-out asset, schema, authority map, or historical evidence changed.
+
+The accepted fourth slice is `drawing_register_metadata_file_reference` v0.3.0 under `AUTH-DWG-002`. A temporary development-package copy proves the gap: metadata drawing `DWG-PSK-1001` can point to the valid `FILE-DWG-002` reference while all eight P2.1 gates and all three accepted P2.2 checks pass. Definition commit `d46d56f` freezes one high-severity `automatic_fail` release hold with both compared field locators and both resolved manifest file-reference locators. The user accepted the complete definition on 2026-07-17. Draft PR #34 is mergeable and both initial CI runs pass. The definition deliberately does not claim full document-to-file reciprocity or cover a shared undeclared source-level reference. No Python, fixture, schema, authority-map, golden, or held-out content is changed in the definition block.
 
 ## Intended Outcome
 
@@ -96,7 +98,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate accepted `drawing_metadata_register_authority` implementation PR #33 and verify exact `main`. Then define only the next bounded relationship slice before any further implementation. Semantic held-out execution, additional executable relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Integrate accepted definition PR #34 and verify exact merged `main`. Then implement only `drawing_register_metadata_file_reference` v0.3.0 on its dedicated branch. Semantic held-out execution, additional executable relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
