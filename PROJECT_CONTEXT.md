@@ -31,7 +31,7 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P2.2 definition, drawing-register to drawing-metadata file-reference agreement
-- **Status:** Three accepted relationship behaviors are integrated and verified on exact `main` commit `8d7f314`. A fourth definition is proposed for explicit user review; no fourth-check implementation is authorized
+- **Status:** Three accepted relationship behaviors are integrated and verified on exact `main` commit `8d7f314`. The fourth definition is proposed at `d46d56f` on green draft PR #34 for explicit user review; no fourth-check implementation is authorized
 - **Implementation state:** `relationships.py` returns three ordered drawing checks: revision agreement, registered-drawing metadata presence, and metadata claim register authority. The proposed fourth check is documentation only. Package-state routing, reports, semantic held-out evaluation, and all other relationships remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -58,7 +58,7 @@ The accepted second slice checks only whether every authoritative drawing-regist
 
 The accepted third direction is `drawing_metadata_register_authority` v0.3.0. PR #32 integrated its definition to `main` at `6d1f2f2`; implementation commit `8eb431d` appends the third check without changing the first two. PR #33 integrated the accepted implementation and acceptance evidence to `main` at `8d7f314`. Exact merged-tree verification passes 40 focused tests, 211 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 85.37% coverage. No accepted fixture, golden, held-out asset, schema, authority map, or historical evidence changed.
 
-The proposed fourth slice is `drawing_register_metadata_file_reference` v0.3.0 under `AUTH-DWG-002`. A temporary development-package copy proves the gap: metadata drawing `DWG-PSK-1001` can point to the valid `FILE-DWG-002` reference while all eight P2.1 gates and all three accepted P2.2 checks pass. The definition freezes one high-severity `automatic_fail` release hold with both compared field locators and both resolved manifest file-reference locators. It deliberately does not claim full document-to-file reciprocity or cover a shared undeclared source-level reference. No Python, fixture, schema, authority-map, golden, or held-out content is changed in the definition block.
+The proposed fourth slice is `drawing_register_metadata_file_reference` v0.3.0 under `AUTH-DWG-002`. A temporary development-package copy proves the gap: metadata drawing `DWG-PSK-1001` can point to the valid `FILE-DWG-002` reference while all eight P2.1 gates and all three accepted P2.2 checks pass. Definition commit `d46d56f` freezes one high-severity `automatic_fail` release hold with both compared field locators and both resolved manifest file-reference locators. Draft PR #34 is mergeable and both initial CI runs pass. The definition deliberately does not claim full document-to-file reciprocity or cover a shared undeclared source-level reference. No Python, fixture, schema, authority-map, golden, or held-out content is changed in the definition block.
 
 ## Intended Outcome
 
@@ -98,7 +98,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the proposed `drawing_register_metadata_file_reference` v0.3.0 definition and its ten decisions. Do not implement it until explicit user acceptance and definition integration. Semantic held-out execution, additional executable relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Review draft PR #34 for the proposed `drawing_register_metadata_file_reference` v0.3.0 definition and its ten decisions. Do not implement it until explicit user acceptance and definition integration. Semantic held-out execution, additional executable relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
