@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-17
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.2-relationship-slice-implementation`
+**Current branch:** `codex/p2.2-relationship-slice-definition`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.2 implementation, first drawing-register-to-metadata relationship slice
-- **Status:** The first P2.2 relationship slice is implementation-complete and review-ready. It passes 30 focused tests and the full 201-test regression suite with one expected Windows symlink skip; all other P2.2 checks and later capabilities remain blocked
+- **Active WBS:** P2.2 integration, first drawing-register-to-metadata relationship slice
+- **Status:** PR #29 merged the accepted implementation into the definition branch at `d714f4e`. Combined PR #28 is pending integration to `main`; all other P2.2 checks and later capabilities remain blocked
 - **Implementation state:** A separate `relationships.py` module now compares authoritative drawing-register revisions with exact drawing-metadata matches and returns deterministic pass, mismatch, or prerequisite-skip records. P2.2 missing/extra documents, tags and other relationships, P2.3 consistency rules, P2.4 state routing, reports, and semantic held-out evaluation remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -51,6 +51,8 @@ The accepted stabilization block closes cross-platform evidence-path and JSON fi
 The accepted P2.2 definition freezes one drawing-register-to-metadata revision comparison under `AUTH-DWG-001`. It defines exact joining, pass/fail behavior, a high-severity release-hold finding, both field-level evidence locators, deterministic identity, a separate `relationships.py` boundary, downstream P2.4/P3 handoff, acceptance tests, and explicit exclusions. It does not authorize any other relationship rule, package-state routing, report, CLI, or protected-asset change.
 
 The implemented slice keeps P2.1 gates unchanged, consumes their completed evaluation, and emits no package-level state. The clean development package passes; a temporary metadata mutation from revision `C` to `A` produces exactly one stable `DRAWING_REVISION_MISMATCH` finding with both frozen locators. Repeated runs and reordered records preserve semantic finding identity and order. Verification passes 30 focused tests, 201 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 84.64% coverage.
+
+The user accepted the implementation by merging PR #29 into the accepted definition branch on 2026-07-17. Merge commit `d714f4e` now places the complete definition-and-implementation chain behind PR #28. That pull request must merge to `main` and be verified before another P2.2 slice begins.
 
 ## Intended Outcome
 
@@ -90,7 +92,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review and accept, revise, or reject the first P2.2 implementation slice and its evidence. Do not begin another relationship or downstream layer until this implementation is accepted. Semantic held-out execution, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Integrate the accepted first P2.2 slice through PR #28 and verify its merge to `main`. Do not begin another relationship or downstream layer before that integration closes. Semantic held-out execution, additional relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
