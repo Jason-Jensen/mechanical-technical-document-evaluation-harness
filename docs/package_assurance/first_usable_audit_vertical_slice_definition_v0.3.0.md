@@ -7,6 +7,9 @@
   separate blocks defined below
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
+- **P2.2 implementation:** commit `4f06352` on
+  `codex/p2.2-drawing-register-manifest-reciprocity-implementation`; ready for
+  review, not yet accepted or integrated
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
 - **Protected assets changed:** None
 
@@ -441,6 +444,27 @@ This vertical slice does not add:
 | 8. What establishes a package context? | A valid command naming an existing repository root and package directory; manifest identity may remain null on controlled manifest failure. |
 | 9. What are the reports and CLI allowed to do? | Render only the immutable result, return exact exits, preserve failures, and avoid engineering approval claims. |
 | 10. What remains blocked? | All implementation until definition acceptance; semantic held-out execution until its later gate; broad P2.3 expansion until this vertical slice is accepted; and every deferred multimodal/platform capability. |
+
+## P2.2 Reciprocity Implementation Review
+
+Commit `4f06352` implements only the fifth ordered relationship check defined
+above. It leaves the eight P2.1 gates and first four P2.2 checks unchanged. The
+check fails closed when exact `AUTH-DWG-002` semantics are unavailable and
+emits one deterministic `DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED` automatic
+failure and release hold for each affected authoritative drawing.
+
+Temporary development-package copies prove clean behavior, a missing required
+mapping, a wrong-but-valid target, an additional conflicting required mapping,
+a shared undeclared register/metadata reference, two sorted findings,
+repeatability, exact evidence, and prerequisite skips. Verification passes 25
+relationship tests, 51 focused package tests, 222 full-suite tests with one
+expected Windows symlink skip, repository validation 5/5, Ruff, and 85.64%
+coverage.
+
+No accepted fixture, schema, authority map, expected result, golden, held-out
+asset, historical evidence, or v0.2 behavior changed. The implementation is
+ready for explicit review. P2.4 remains blocked until this implementation is
+accepted and integrated.
 
 ## Definition of Done
 

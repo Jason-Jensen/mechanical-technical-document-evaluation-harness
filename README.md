@@ -8,8 +8,8 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** Implement the accepted fifth P2.2 drawing relationship check, `drawing_register_manifest_file_reciprocity`, on its own branch.
-- **Implementation boundary:** Four separate ordered drawing checks cover revision agreement, register-to-metadata presence, metadata-to-register authority, and exact-pair file-reference agreement. The accepted definition authorizes one drawing-manifest reciprocity check next, followed through separate gates by the minimum package-state, immutable-result, issue-register, release-summary, and CLI path.
+- **Current gate:** Review the implemented fifth P2.2 drawing relationship check, `drawing_register_manifest_file_reciprocity`, at commit `4f06352`.
+- **Implementation boundary:** Five ordered drawing checks now cover revision agreement, register-to-metadata presence, metadata-to-register authority, exact-pair file-reference agreement, and drawing-to-manifest inventory/file/mapping reciprocity. The fifth check is verified but not yet accepted or integrated. P2.4 and later result, report, and CLI behavior remain separately gated.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 
