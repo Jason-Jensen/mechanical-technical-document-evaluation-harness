@@ -3,15 +3,17 @@
 ## Control Status
 
 - **WBS:** P2.2, fourth document-relationship slice
-- **Status:** Definition accepted; PR #34 integration pending
-- **Integration baseline:** `main` at PR #33 merge commit `8d7f314`
+- **Status:** Definition integrated; implementation complete and awaiting review
+- **Integration baseline:** `main` at PR #34 merge commit `12c45dd`
 - **Definition branch:** `codex/p2.2-drawing-file-reference-definition`
 - **Definition commit:** `d46d56f`
-- **Review PR:** #34, draft, mergeable, two initial CI runs green
-- **Proposed implementation branch:**
+- **Definition PR:** #34, merged at `12c45dd`
+- **Implementation branch:**
   `codex/p2.2-drawing-file-reference-implementation`
-- **Decisions:** D-065, D-066, D-067
-- **Evidence:** EV-062, EV-063, EV-064
+- **Implementation commit:** `74970c3`
+- **Implementation PR:** #35, draft, two initial CI runs green
+- **Decisions:** D-065, D-066, D-067, D-068, D-069
+- **Evidence:** EV-062, EV-063, EV-064, EV-065, EV-066
 
 PR #33 integrated the accepted `drawing_metadata_register_authority` check and
 its acceptance record to `main` at `8d7f314`. Exact merged-tree verification
@@ -31,8 +33,13 @@ main decisions:
 3. keep shared undeclared source references and full manifest reciprocity as
    separate controls rather than overstating this slice.
 
-Implementation is authorized only after PR #34 is integrated and its exact
-merged `main` tree passes verification.
+PR #34 merged the accepted definition and acceptance record to `main` at
+`12c45dd`. Exact merged-tree verification passed before the implementation
+branch was created. Implementation commit `74970c3` adds only the accepted
+fourth check and supporting exports/tests. It passes 19 relationship tests, 45
+focused tests, 216 full-suite tests with one expected skip, repository
+validation 5/5, Ruff, and 85.47% coverage. User implementation review remains
+required before integration.
 
 ## Plain-Language Goal
 
@@ -398,7 +405,8 @@ This definition block is done when:
 - the branch is committed, pushed, and opened as a draft definition PR; and
 - the user accepts, revises, or rejects the definition before implementation.
 
-The document and evidence review are complete. Definition commit `d46d56f` is
-published on draft PR #34, which is mergeable and has two successful initial
-CI runs. The user accepted the definition on 2026-07-17. Implementation remains
-blocked until PR #34 integration and exact merged-tree verification.
+The document and evidence review are complete. The user accepted the definition
+on 2026-07-17, and PR #34 integrated it at exact `main` commit `12c45dd` after
+green CI. Implementation commit `74970c3` satisfies the frozen acceptance tests
+without changing protected assets or adding adjacent controls. Implementation
+acceptance and integration remain pending.
