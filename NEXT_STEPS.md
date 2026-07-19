@@ -10,23 +10,24 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** Four ordered drawing checks are integrated through PR #35 and control closeout `a18fc5f`. P2.2 remains 50% because drawing declaration/manifest reciprocity and other relationship gaps remain open.
-- **First usable audit definition:** Active on `codex/first-usable-audit-definition`. It proposes closing one bounded reciprocity gap, then routing and reporting that proven slice before broad P2.3 expansion.
-- **P2.3 and later:** Implementation remains blocked pending definition review and the newly ordered accepted gates.
+- **P2.2:** Complete for the accepted vertical slice. Five ordered drawing checks are integrated through PRs #35 and #37; the exact accepted main baseline is `5571d2a`.
+- **First usable audit definition:** Accepted and integrated through PR #36 at `5b32b6d`.
+- **P2.4:** Authorized next as the minimum package-result core. Reports and CLI remain later gates.
+- **P2.3 and later:** Broad relationship expansion remains blocked until the first runnable audit through P3.3 is accepted.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Review `docs/package_assurance/first_usable_audit_vertical_slice_definition_v0.3.0.md`. No new executable behavior is authorized until its sequencing, fifth-check boundary, final-finding clarification, result/report/CLI contract, and acceptance matrix are accepted.
+Implement only required-result completeness, canonical final findings, package-state precedence, the versioned package-result model/schema, and immutable persistence. Do not add reports, CLI integration, P2.3 expansion, held-out semantics, or deferred capabilities.
 
 ## Active Work Block
 
-- **WBS:** First usable audit vertical-slice definition and resequencing
-- **Branch:** `codex/first-usable-audit-definition`
-- **Objective:** Freeze the smallest honest structured-package audit from package input through explicit state, immutable result, issue register, release summary, and CLI contract.
-- **Definition of done:** Ten decisions and exact acceptance matrix are reviewed; the Gantt records the proposed sequence and evidence; short handoffs are current; protected assets and executable behavior remain unchanged; and implementation stays blocked pending acceptance.
+- **WBS:** P2.4 minimum package-result core
+- **Branch:** `codex/p2.4-result-core` after the P2.2 closeout merges
+- **Objective:** Convert the complete ordered gate/check set into one deterministic package state and immutable, schema-valid package result.
+- **Definition of done:** Required results are present exactly once or fail closed; all intermediate findings become canonical final findings; state precedence and holds are deterministic; repeated unchanged evaluations are semantically stable; immutable persistence never overwrites a run; focused/full tests, validation, Ruff, coverage, and control evidence pass.
 
-Next action: accept, revise, or reject the vertical-slice definition. After acceptance, implement the fifth P2.2 drawing-manifest reciprocity check on a separate branch.
+Next action: implement and review the bounded P2.4 result core. P3 report views remain blocked until P2.4 is accepted and integrated.
 
 ## Delivery Sequence
 
