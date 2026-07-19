@@ -3,11 +3,17 @@
 ## Control Status
 
 - **WBS:** Cross-WBS definition for the remaining P2.2, P2.4, and P3 pilot work
-- **Status:** Definition review required; no implementation authorized by this document
+- **Status:** Accepted 2026-07-19; implementation authorized only through the
+  separate blocks defined below
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
 - **Protected assets changed:** None
+
+The user accepted all ten review decisions and instructed the project to begin
+the next step on 2026-07-19. Acceptance authorizes only the bounded sequence in
+this document. It does not collapse the separate implementation, review, and
+integration gates for P2.2, P2.4, P3, or P2.3.
 
 This definition converts the next several horizontal work items into one thin,
 usable path through the existing platform. It does not reduce the accepted
@@ -421,9 +427,9 @@ This vertical slice does not add:
 - broad P2.3 BOM/equipment/datasheet/specification/revision checks before the
   first usable audit is accepted.
 
-## Ten Review Decisions
+## Accepted Review Decisions
 
-| Question | Proposed resolution |
+| Question | Accepted resolution |
 |---|---|
 | 1. What is the next user-visible milestone? | One structured package directory produces an immutable result, issue register, release summary, and exact CLI exit. |
 | 2. Why change the sequence? | The current horizontal sequence delays user testing until many rules are built; a thin vertical slice proves the product boundary earlier. |
@@ -451,3 +457,7 @@ This definition block is done when:
 - the final diff contains no executable behavior, schema, fixture, authority
   map, expected result, or held-out change; and
 - documentation checks and workbook inspection pass before publication.
+
+All definition criteria were satisfied on 2026-07-19. Decision `D-073` and
+evidence `EV-070` record acceptance; the first authorized implementation block
+is the fifth P2.2 reciprocity check only.

@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** First usable audit vertical-slice definition and resequencing
-- **Status:** Definition review in progress from clean `main` baseline `a18fc5f`; no new executable behavior is authorized before acceptance
-- **Implementation state:** `relationships.py` returns four ordered drawing checks: revision agreement, registered-drawing metadata presence, metadata claim register authority, and exact-pair drawing file-reference agreement. Package-state routing, reports, semantic held-out evaluation, undeclared source-reference detection, full manifest reciprocity, and all other relationships remain unimplemented
+- **Active WBS:** P2.2 fifth drawing relationship check
+- **Status:** The first usable audit definition and all ten review decisions were accepted on 2026-07-19; only `drawing_register_manifest_file_reciprocity` implementation is authorized next
+- **Implementation state:** `relationships.py` returns four ordered drawing checks: revision agreement, registered-drawing metadata presence, metadata claim register authority, and exact-pair drawing file-reference agreement. The accepted next block appends the fifth manifest-reciprocity check. Package-state routing, reports, semantic held-out evaluation, broad P2.3 relationships, and deferred platform capabilities remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -59,6 +59,15 @@ The accepted second slice checks only whether every authoritative drawing-regist
 The accepted third direction is `drawing_metadata_register_authority` v0.3.0. PR #32 integrated its definition to `main` at `6d1f2f2`; implementation commit `8eb431d` appends the third check without changing the first two. PR #33 integrated the accepted implementation and acceptance evidence to `main` at `8d7f314`. Exact merged-tree verification passes 40 focused tests, 211 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 85.37% coverage. No accepted fixture, golden, held-out asset, schema, authority map, or historical evidence changed.
 
 The accepted fourth slice is `drawing_register_metadata_file_reference` v0.3.0 under `AUTH-DWG-002`. A temporary development-package copy proves the gap: metadata drawing `DWG-PSK-1001` can point to the valid `FILE-DWG-002` reference while all eight P2.1 gates and the first three P2.2 checks pass. PR #34 integrated the definition and acceptance record at exact `main` commit `12c45dd`. Implementation commit `74970c3` appends the fourth check, requires the exact accepted authority rule, and produces the frozen high-severity `automatic_fail` release hold with both compared field locators and both resolved manifest file-reference locators. PR #35 integrated the accepted implementation and evidence at exact `main` commit `e5db29e`. Exact merged-tree verification passes 19 relationship tests, 45 focused tests, 216 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 85.47% coverage. Accepted fixtures, schemas, authority maps, goldens, held-out assets, and historical evidence remain unchanged. Full document-to-file reciprocity and shared undeclared source references remain explicit gaps.
+
+The accepted first-usable-audit definition closes the planning gap identified
+by `IMP-012`. It freezes five implementation blocks: P2.2 manifest reciprocity,
+P2.4 result core, P3.1/P3.2 report views, P3.3 CLI integration, then broad P2.3
+expansion before P4. The current authorization is limited to the first block.
+The fifth check reuses `AUTH-DWG-002`, evaluates one authoritative drawing at a
+time, and produces one evidence-rich automatic-fail release hold per drawing
+whose manifest inventory, controlled file, or required document-to-file mapping
+is not reciprocal.
 
 ## Intended Outcome
 
