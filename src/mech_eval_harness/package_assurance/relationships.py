@@ -8,6 +8,10 @@ from dataclasses import replace
 from typing import Any, Mapping
 
 from mech_eval_harness.package_assurance.gates import AUTHORITY_GATE_ID
+from mech_eval_harness.package_assurance.manifest import (
+    PACKAGE_MANIFEST_FILENAME,
+    LoadedPackageManifest,
+)
 from mech_eval_harness.package_assurance.models import (
     EvidenceLocator,
     LoadedStructuredSources,
@@ -29,17 +33,23 @@ DRAWING_REGISTER_METADATA_PRESENCE_CHECK_ID = (
 DRAWING_METADATA_REGISTER_AUTHORITY_CHECK_ID = (
     "drawing_metadata_register_authority"
 )
+DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID = (
+    "drawing_register_metadata_file_reference"
+)
 DRAWING_REVISION_MISMATCH_CODE = "DRAWING_REVISION_MISMATCH"
 DRAWING_METADATA_MISSING_CODE = "DRAWING_METADATA_MISSING"
 DRAWING_REGISTER_AUTHORITY_MISSING_CODE = (
     "DRAWING_REGISTER_AUTHORITY_MISSING"
 )
+DRAWING_FILE_REFERENCE_MISMATCH_CODE = "DRAWING_FILE_REFERENCE_MISMATCH"
 DRAWING_REVISION_AUTHORITY_RULE_ID = "AUTH-DWG-001"
+DRAWING_FILE_REFERENCE_AUTHORITY_RULE_ID = "AUTH-DWG-002"
 
 RELATIONSHIP_CHECK_ORDER = (
     DRAWING_REGISTER_METADATA_REVISION_CHECK_ID,
     DRAWING_REGISTER_METADATA_PRESENCE_CHECK_ID,
     DRAWING_METADATA_REGISTER_AUTHORITY_CHECK_ID,
+    DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
 )
 
 
@@ -103,9 +113,40 @@ def run_package_relationships(
         package_id=gate_evaluation.package_id,
         sources=gate_evaluation.sources,
     )
+    if _drawing_file_reference_authority_rule(gate_evaluation.sources) is None:
+        file_reference_check = _skipped_check(
+            check_id=DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
+            blocked_by=(AUTHORITY_GATE_ID,),
+            summary=(
+                "Skipped because the accepted AUTH-DWG-002 drawing "
+                "file-reference authority rule is unavailable."
+            ),
+        )
+    elif gate_evaluation.manifest is None:
+        file_reference_check = _skipped_check(
+            check_id=DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
+            blocked_by=("package_gate_evaluation",),
+            summary=(
+                "Skipped because the accepted loaded package manifest is "
+                "unavailable."
+            ),
+        )
+    else:
+        file_reference_check = (
+            _drawing_register_metadata_file_reference_check(
+                package_id=gate_evaluation.package_id,
+                sources=gate_evaluation.sources,
+                manifest=gate_evaluation.manifest,
+            )
+        )
     return PackageRelationshipEvaluation(
         package_id=gate_evaluation.package_id,
-        checks=(revision_check, presence_check, authority_check),
+        checks=(
+            revision_check,
+            presence_check,
+            authority_check,
+            file_reference_check,
+        ),
     )
 
 
@@ -142,6 +183,43 @@ def _drawing_revision_authority_rule(
             and rule.get("authoritative_source") == "drawing_register"
             and isinstance(secondary_sources, list)
             and "drawing_metadata" in secondary_sources
+        ):
+            return rule
+    return None
+
+
+def _drawing_file_reference_authority_rule(
+    sources: LoadedStructuredSources,
+) -> Mapping[str, Any] | None:
+    authority_map = sources.documents.get("authority_map")
+    if not isinstance(authority_map, Mapping):
+        return None
+    rules = authority_map.get("rules")
+    if not isinstance(rules, list):
+        return None
+    for rule in rules:
+        if not isinstance(rule, Mapping):
+            continue
+        if rule.get("rule_id") != DRAWING_FILE_REFERENCE_AUTHORITY_RULE_ID:
+            continue
+        if (
+            rule.get("field") == "drawing.file_ref_id"
+            and rule.get("authoritative_source") == "drawing_register"
+            and rule.get("secondary_sources") == ["drawing_metadata"]
+            and rule.get("agreement_rule")
+            == (
+                "declared drawing file reference must resolve to the same "
+                "canonical drawing"
+            )
+            and rule.get("normalization_profile")
+            == "canonical_identifier_v1"
+            and rule.get("required_for_release") is True
+            and rule.get("on_missing_authority")
+            == "missing_authoritative_information"
+            and rule.get("on_missing_value") == "automatic_fail"
+            and rule.get("on_conflict") == "automatic_fail"
+            and rule.get("release_hold_on_conflict") is True
+            and rule.get("review_owner") == "document_control"
         ):
             return rule
     return None
@@ -346,6 +424,85 @@ def _drawing_metadata_register_authority_check(
     )
 
 
+def _drawing_register_metadata_file_reference_check(
+    *,
+    package_id: str,
+    sources: LoadedStructuredSources,
+    manifest: LoadedPackageManifest,
+) -> RelationshipCheckResult:
+    register_by_drawing = _records_by_drawing_number(
+        sources.records_of_type("drawing_register_record")
+    )
+    metadata_by_drawing = _records_by_drawing_number(
+        sources.records_of_type("drawing_metadata_record")
+    )
+    drawing_numbers = sorted(
+        register_by_drawing.keys() & metadata_by_drawing.keys()
+    )
+
+    findings: list[RelationshipFinding] = []
+    evidence: list[EvidenceLocator] = []
+    for drawing_number in drawing_numbers:
+        register_record = register_by_drawing[drawing_number]
+        metadata_record = metadata_by_drawing[drawing_number]
+        expected_original = register_record.original_values["file_ref_id"]
+        actual_original = metadata_record.original_values["file_ref_id"]
+        expected_value = _normalize_identifier(
+            register_record.values["file_ref_id"]
+        )
+        actual_value = _normalize_identifier(
+            metadata_record.values["file_ref_id"]
+        )
+        pair_evidence = _file_reference_evidence(
+            manifest=manifest,
+            register_record=register_record,
+            metadata_record=metadata_record,
+            expected_original=expected_original,
+            expected_value=expected_value,
+            actual_original=actual_original,
+            actual_value=actual_value,
+        )
+        evidence.extend(pair_evidence)
+        if expected_value == actual_value:
+            continue
+
+        findings.append(
+            _file_reference_mismatch_finding(
+                package_id=package_id,
+                document_id=str(register_record.values["document_id"]),
+                drawing_number=drawing_number,
+                expected_value=expected_value,
+                actual_value=actual_value,
+                evidence=pair_evidence,
+            )
+        )
+
+    if findings:
+        return RelationshipCheckResult(
+            check_id=DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
+            check_version=RELATIONSHIP_CHECK_VERSION,
+            status="failed",
+            summary=(
+                f"Compared {len(drawing_numbers)} exact drawing pair(s) and "
+                f"found {len(findings)} authoritative file-reference "
+                "mismatch(es)."
+            ),
+            findings=tuple(findings),
+            evidence=tuple(evidence),
+        )
+
+    return RelationshipCheckResult(
+        check_id=DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
+        check_version=RELATIONSHIP_CHECK_VERSION,
+        status="passed",
+        summary=(
+            f"All {len(drawing_numbers)} exact drawing pair(s) agree with the "
+            "authoritative drawing-register file reference."
+        ),
+        evidence=tuple(evidence),
+    )
+
+
 def _records_by_drawing_number(
     records: tuple[StructuredSourceRecord, ...],
 ) -> dict[str, StructuredSourceRecord]:
@@ -392,6 +549,89 @@ def _revision_evidence(
         normalized_value=actual_value,
     )
     return register_locator, metadata_locator
+
+
+def _file_reference_evidence(
+    *,
+    manifest: LoadedPackageManifest,
+    register_record: StructuredSourceRecord,
+    metadata_record: StructuredSourceRecord,
+    expected_original: Any,
+    expected_value: str,
+    actual_original: Any,
+    actual_value: str,
+) -> tuple[EvidenceLocator, ...]:
+    evidence = [
+        register_record.field_locator(
+            "file_ref_id",
+            original_value=expected_original,
+            normalized_value=expected_value,
+        ),
+        metadata_record.field_locator(
+            "file_ref_id",
+            original_value=actual_original,
+            normalized_value=actual_value,
+        ),
+    ]
+    expected_locator = _manifest_file_reference_locator(
+        manifest,
+        expected_value,
+    )
+    if expected_locator is not None:
+        evidence.append(expected_locator)
+    if actual_value != expected_value:
+        actual_locator = _manifest_file_reference_locator(
+            manifest,
+            actual_value,
+        )
+        if actual_locator is not None:
+            evidence.append(actual_locator)
+    return tuple(evidence)
+
+
+def _manifest_file_reference_locator(
+    manifest: LoadedPackageManifest,
+    file_ref_id: str,
+) -> EvidenceLocator | None:
+    declarations = manifest.manifest.get("file_references")
+    if not isinstance(declarations, list):
+        return None
+    declaration = next(
+        (
+            item
+            for item in declarations
+            if isinstance(item, Mapping)
+            and item.get("file_ref_id") == file_ref_id
+        ),
+        None,
+    )
+    resolved = manifest.file_reference_paths.get(file_ref_id)
+    if declaration is None or resolved is None:
+        return None
+    declared_path = declaration.get("path")
+    if not isinstance(declared_path, str):
+        return None
+    try:
+        package_relative = resolved.relative_to(manifest.package_root).as_posix()
+    except ValueError:
+        package_relative = declared_path
+    inside_allowed_root = any(
+        resolved != allowed_root and resolved.is_relative_to(allowed_root)
+        for allowed_root in manifest.allowed_file_roots
+    )
+    return EvidenceLocator(
+        source_type="package_manifest",
+        source_file=PACKAGE_MANIFEST_FILENAME,
+        format="file_reference",
+        file_ref_id=file_ref_id,
+        declared_relative_path=declared_path,
+        resolved_package_relative_path=package_relative,
+        boundary_check=(
+            "inside_allowed_root"
+            if inside_allowed_root
+            else "outside_allowed_root"
+        ),
+    )
 
 
 def _register_drawing_number_locator(
@@ -512,6 +752,65 @@ def _revision_mismatch_finding(
             f"{drawing_number}."
         ),
         affected_identifiers=(document_id, drawing_number),
+        expected_value=expected_value,
+        actual_value=actual_value,
+        review_owner="document_control",
+        evidence=evidence,
+    )
+
+
+def _file_reference_mismatch_finding(
+    *,
+    package_id: str,
+    document_id: str,
+    drawing_number: str,
+    expected_value: str,
+    actual_value: str,
+    evidence: tuple[EvidenceLocator, ...],
+) -> RelationshipFinding:
+    result_state = "automatic_fail"
+    semantic = {
+        "package_id": package_id,
+        "check_id": DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
+        "check_version": RELATIONSHIP_CHECK_VERSION,
+        "code": DRAWING_FILE_REFERENCE_MISMATCH_CODE,
+        "authority_rule_id": DRAWING_FILE_REFERENCE_AUTHORITY_RULE_ID,
+        "drawing_number": drawing_number,
+        "result_state": result_state,
+        "severity": "high",
+        "release_hold": True,
+        "expected_value": expected_value,
+        "actual_value": actual_value,
+    }
+    digest = hashlib.sha256(
+        json.dumps(
+            semantic,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+        ).encode("ascii")
+    ).hexdigest()[:16]
+    return RelationshipFinding(
+        finding_id=f"FND-{digest.upper()}",
+        check_id=DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
+        check_version=RELATIONSHIP_CHECK_VERSION,
+        package_id=package_id,
+        code=DRAWING_FILE_REFERENCE_MISMATCH_CODE,
+        result_state=result_state,
+        severity="high",
+        release_hold=True,
+        authority_rule_id=DRAWING_FILE_REFERENCE_AUTHORITY_RULE_ID,
+        message=(
+            f"Drawing metadata file reference {actual_value} conflicts with "
+            "authoritative drawing-register file reference "
+            f"{expected_value} for {drawing_number}."
+        ),
+        affected_identifiers=(
+            document_id,
+            drawing_number,
+            expected_value,
+            actual_value,
+        ),
         expected_value=expected_value,
         actual_value=actual_value,
         review_owner="document_control",

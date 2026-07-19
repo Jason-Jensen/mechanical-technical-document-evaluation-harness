@@ -10,22 +10,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** Three ordered drawing checks are integrated through PR #33 at exact `main` commit `8d7f314`. The fourth, `drawing_register_metadata_file_reference`, is defined at `d46d56f` on green draft PR #34 and was accepted on 2026-07-17; implementation remains sequenced behind PR #34 integration and exact merged-tree verification.
+- **P2.2:** PR #34 integrated the accepted fourth-check definition at exact `main` commit `12c45dd`. The user accepted implementation commit `74970c3` on 2026-07-19 after local verification and green draft PR #35 CI.
 - **P2.3 and later:** Blocked pending the preceding gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-The three implemented drawing checks are integrated and verified on exact `main` commit `8d7f314`. The user accepted the `drawing_register_metadata_file_reference` v0.3.0 definition at `d46d56f` on 2026-07-17. Integrate PR #34 and verify exact merged `main`; only then implement that accepted fourth check on its dedicated branch. Every other relationship, package-state routing, report, CLI behavior, and semantic held-out evaluation remains blocked.
+Integrate accepted `drawing_register_metadata_file_reference` v0.3.0 through PR #35, then verify the exact merged `main` tree. Every other relationship, declaration/reciprocity control, package-state router, report, CLI behavior, and semantic held-out evaluation remains blocked.
 
 ## Active Work Block
 
-- **WBS:** P2.2 drawing file-reference definition integration
-- **Branch:** `codex/p2.2-drawing-file-reference-definition`
-- **Objective:** Integrate the accepted fourth-slice definition through PR #34 and establish the exact implementation baseline.
-- **Definition of done:** Acceptance is recorded; PR #34 merges with green checks; exact merged-tree verification passes; protected assets remain unchanged; and the scoped implementation branch is created from that exact baseline.
+- **WBS:** P2.2 drawing file-reference implementation integration
+- **Branch:** `codex/p2.2-drawing-file-reference-implementation`
+- **Objective:** Integrate the accepted `AUTH-DWG-002` exact-pair file-reference agreement as the fourth stable relationship check.
+- **Definition of done:** Acceptance is recorded; PR #35 merges after green checks; exact merged `main` verification passes; protected assets remain unchanged; and the next bounded action is selected without adding adjacent controls.
 
-Next action: merge PR #34, verify exact `main`, then implement only the accepted fourth check. No semantic held-out run or tuning is authorized.
+Next action: merge PR #35 after final green checks and verify exact `main`. No semantic held-out run or tuning is authorized.
 
 ## Delivery Sequence
 

@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-17
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.2-drawing-file-reference-definition`
+**Current branch:** `codex/p2.2-drawing-file-reference-implementation`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.2 drawing file-reference definition integration
-- **Status:** Three relationship behaviors are integrated and verified on exact `main` commit `8d7f314`. The fourth definition at `d46d56f` was accepted on 2026-07-17 and awaits PR #34 integration and exact merged-tree verification before implementation
-- **Implementation state:** `relationships.py` returns three ordered drawing checks: revision agreement, registered-drawing metadata presence, and metadata claim register authority. The proposed fourth check is documentation only. Package-state routing, reports, semantic held-out evaluation, and all other relationships remain unimplemented
+- **Active WBS:** P2.2 drawing file-reference implementation integration
+- **Status:** PR #34 integrated the accepted fourth-check definition at exact `main` commit `12c45dd`. The user accepted implementation commit `74970c3` on 2026-07-19 after local and green draft PR #35 verification; integration is pending
+- **Implementation state:** `relationships.py` returns four ordered drawing checks: revision agreement, registered-drawing metadata presence, metadata claim register authority, and exact-pair drawing file-reference agreement. Package-state routing, reports, semantic held-out evaluation, undeclared source-reference detection, full manifest reciprocity, and all other relationships remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -58,7 +58,7 @@ The accepted second slice checks only whether every authoritative drawing-regist
 
 The accepted third direction is `drawing_metadata_register_authority` v0.3.0. PR #32 integrated its definition to `main` at `6d1f2f2`; implementation commit `8eb431d` appends the third check without changing the first two. PR #33 integrated the accepted implementation and acceptance evidence to `main` at `8d7f314`. Exact merged-tree verification passes 40 focused tests, 211 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 85.37% coverage. No accepted fixture, golden, held-out asset, schema, authority map, or historical evidence changed.
 
-The accepted fourth slice is `drawing_register_metadata_file_reference` v0.3.0 under `AUTH-DWG-002`. A temporary development-package copy proves the gap: metadata drawing `DWG-PSK-1001` can point to the valid `FILE-DWG-002` reference while all eight P2.1 gates and all three accepted P2.2 checks pass. Definition commit `d46d56f` freezes one high-severity `automatic_fail` release hold with both compared field locators and both resolved manifest file-reference locators. The user accepted the complete definition on 2026-07-17. Draft PR #34 is mergeable and both initial CI runs pass. The definition deliberately does not claim full document-to-file reciprocity or cover a shared undeclared source-level reference. No Python, fixture, schema, authority-map, golden, or held-out content is changed in the definition block.
+The accepted fourth slice is `drawing_register_metadata_file_reference` v0.3.0 under `AUTH-DWG-002`. A temporary development-package copy proves the gap: metadata drawing `DWG-PSK-1001` can point to the valid `FILE-DWG-002` reference while all eight P2.1 gates and the first three P2.2 checks pass. PR #34 integrated the definition and acceptance record at exact `main` commit `12c45dd`; exact verification passed 40 focused tests, 211 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 85.37% coverage. Implementation commit `74970c3` appends the fourth check, requires the exact accepted authority rule, and produces the frozen high-severity `automatic_fail` release hold with both compared field locators and both resolved manifest file-reference locators. Verification passes 19 relationship tests, 45 focused tests, 216 full-suite tests with one expected skip, repository validation 5/5, Ruff, and 85.47% coverage. Accepted fixtures, schemas, authority maps, goldens, held-out assets, and historical evidence remain unchanged. Full document-to-file reciprocity and shared undeclared source references remain explicit gaps.
 
 ## Intended Outcome
 
@@ -98,7 +98,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate accepted definition PR #34 and verify exact merged `main`. Then implement only `drawing_register_metadata_file_reference` v0.3.0 on its dedicated branch. Semantic held-out execution, additional executable relationships, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Integrate accepted `drawing_register_metadata_file_reference` v0.3.0 through PR #35 and verify exact merged `main`. Semantic held-out execution, additional executable relationships, declaration/reciprocity controls, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
