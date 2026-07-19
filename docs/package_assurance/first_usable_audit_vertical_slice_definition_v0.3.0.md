@@ -3,12 +3,14 @@
 ## Control Status
 
 - **WBS:** Cross-WBS definition for the remaining P2.2, P2.4, and P3 pilot work
-- **Status:** Accepted 2026-07-19; implementation authorized only through the
-  separate blocks defined below
+- **Status:** Accepted 2026-07-19; P2.2 is integrated and bounded P2.4
+  implementation `cbcfc2b` is ready for review
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
 - **P2.2 implementation:** accepted commit `4f06352`; integrated through PR
   #37 at exact `main` commit `5571d2a`
+- **P2.4 implementation:** commit `cbcfc2b`; focused and full verification
+  passed; acceptance and integration remain required
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
 - **Protected assets changed:** None
 
@@ -464,6 +466,29 @@ No accepted fixture, schema, authority map, expected result, golden, held-out
 asset, historical evidence, or v0.2 behavior changed. The implementation is
 accepted by the user and integrated through PR #37 at exact `main` commit
 `5571d2a`. P2.4 is the next authorized implementation block.
+
+## P2.4 Result-Core Implementation Review
+
+Commit `cbcfc2b` implements only the accepted minimum result core. It checks
+that all eight gate and five relationship results are present once in the
+accepted order, permits only skips caused by an actually failed prerequisite
+gate, and emits release-holding `REQUIRED_EVALUATION_INCOMPLETE` uncertainty
+when evaluator output is missing, duplicated, reordered, or unexpectedly
+skipped.
+
+The result boundary converts intermediate gate and relationship findings into
+one canonical finding list, applies the accepted six-state precedence, retains
+all blocking states, fingerprints only declared package inputs, validates the
+separate `package_result.schema.json`, and writes `package_result.json` to a
+new run directory without overwrite. It does not change the frozen v0.2 result
+model, schema, or persistence path.
+
+Verification passes 15 focused result tests, 237 full-suite tests with one
+expected Windows symlink skip, repository validation 5/5, Ruff, and 86.10%
+coverage. A clean result artifact and controlled incomplete result were
+inspected from the ignored test output. Reports, CLI, broad P2.3 relationships,
+semantic held-out execution, and deferred capabilities remain blocked pending
+separate gates.
 
 ## Definition of Done
 
