@@ -59,6 +59,14 @@ from mech_eval_harness.package_assurance.persistence import (
     validate_package_result_document,
     write_package_result,
 )
+from mech_eval_harness.package_assurance.issue_register import (
+    ISSUE_REGISTER_CSV_FIELDS,
+    ISSUE_REGISTER_CSV_FILENAME,
+    ISSUE_REGISTER_MARKDOWN_FILENAME,
+    IssueRegisterRenderError,
+    IssueRegisterViews,
+    render_issue_register_views,
+)
 
 __all__ = [
     "LoadedPackageManifest",
@@ -100,12 +108,18 @@ __all__ = [
     "PackageResultCollisionError",
     "PackageResultPersistenceError",
     "PackageResultSchemaValidationError",
+    "ISSUE_REGISTER_CSV_FIELDS",
+    "ISSUE_REGISTER_CSV_FILENAME",
+    "ISSUE_REGISTER_MARKDOWN_FILENAME",
+    "IssueRegisterRenderError",
+    "IssueRegisterViews",
     "build_package_input_fingerprint",
     "build_package_result",
     "load_package_manifest",
     "route_package_state",
     "run_package_gates",
     "run_package_relationships",
+    "render_issue_register_views",
     "validate_package_result_document",
     "write_package_result",
 ]
