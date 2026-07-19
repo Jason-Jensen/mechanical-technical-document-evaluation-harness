@@ -10,22 +10,23 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** Four ordered drawing checks are integrated through PR #35 at exact `main` commit `e5db29e`. Exact merged-tree verification passed on 2026-07-19; P2.2 remains 50% because declaration/reciprocity and other relationship gaps remain open.
-- **P2.3 and later:** Blocked pending the preceding gates.
+- **P2.2:** Four ordered drawing checks are integrated through PR #35 and control closeout `a18fc5f`. P2.2 remains 50% because drawing declaration/manifest reciprocity and other relationship gaps remain open.
+- **First usable audit definition:** Active on `codex/first-usable-audit-definition`. It proposes closing one bounded reciprocity gap, then routing and reporting that proven slice before broad P2.3 expansion.
+- **P2.3 and later:** Implementation remains blocked pending definition review and the newly ordered accepted gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Review the integrated four-check drawing baseline and select the next bounded work block. No new executable behavior is authorized until that decision is accepted. Declaration/reciprocity controls, other relationships, package-state routing, reports, CLI behavior, and semantic held-out evaluation remain blocked.
+Review `docs/package_assurance/first_usable_audit_vertical_slice_definition_v0.3.0.md`. No new executable behavior is authorized until its sequencing, fifth-check boundary, final-finding clarification, result/report/CLI contract, and acceptance matrix are accepted.
 
 ## Active Work Block
 
-- **WBS:** P2.2 integration closeout / next-gate review
-- **Branch:** `codex/p2.2-drawing-file-reference-integration-closeout`
-- **Objective:** Record the exact PR #35 integration evidence and leave a truthful, bounded starting point for the next decision.
-- **Definition of done:** Merge commit and exact verification are recorded; protected assets remain unchanged; the repository returns to clean `main`; and no next implementation begins before its scope is accepted.
+- **WBS:** First usable audit vertical-slice definition and resequencing
+- **Branch:** `codex/first-usable-audit-definition`
+- **Objective:** Freeze the smallest honest structured-package audit from package input through explicit state, immutable result, issue register, release summary, and CLI contract.
+- **Definition of done:** Ten decisions and exact acceptance matrix are reviewed; the Gantt records the proposed sequence and evidence; short handoffs are current; protected assets and executable behavior remain unchanged; and implementation stays blocked pending acceptance.
 
-Next action: review the project state and accept or revise the recommended next gate. No semantic held-out run, tuning, or new implementation is authorized.
+Next action: accept, revise, or reject the vertical-slice definition. After acceptance, implement the fifth P2.2 drawing-manifest reciprocity check on a separate branch.
 
 ## Delivery Sequence
 
