@@ -3,14 +3,16 @@
 ## Control Status
 
 - **WBS:** Cross-WBS definition for the remaining P2.2, P2.4, and P3 pilot work
-- **Status:** Accepted 2026-07-19; P2.2 and P2.4 are integrated; P3.1 issue
-  register is the next authorized block
+- **Status:** Accepted 2026-07-19; P2.2 and P2.4 are integrated; P3.1
+  implementation `2f93335` is ready for review
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
 - **P2.2 implementation:** accepted commit `4f06352`; integrated through PR
   #37 at exact `main` commit `5571d2a`
 - **P2.4 implementation:** accepted commit `cbcfc2b`; integrated through PR
   #39 at exact `main` commit `cd9b52e`
+- **P3.1 implementation:** commit `2f93335`; focused and full verification
+  passed; acceptance and integration remain required
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
 - **Protected assets changed:** None
 
@@ -497,6 +499,32 @@ passes with one expected Windows symlink skip, repository validation 5/5,
 Ruff, and 86.10% coverage. P3.1 issue-register views are authorized next;
 P3.2, P3.3, broad P2.3, semantic held-out execution, and deferred capabilities
 retain separate gates.
+
+## P3.1 Issue-Register Implementation Review
+
+Implementation commit `2f93335` adds only the bounded issue-register view on
+`codex/p3.1-issue-register` from accepted predecessor `main` commit `b9de4e6`.
+The renderer loads strict JSON, rejects duplicate object keys and non-JSON
+numeric constants, validates the document against the accepted package-result
+schema, and then renders CSV and Markdown from the stored canonical findings.
+It preserves finding order and does not import or call the gate, relationship,
+authority, state-routing, or hold logic.
+
+The CSV has one stable header and stores affected identifiers,
+expected/actual values, and evidence as deterministic JSON fields. A clean
+result has zero data rows. The Markdown carries package/run identity, the exact
+engineering-review limitation, and the same finding facts without release,
+compliance, or correctness approval. Report publishing, release readiness,
+CLI integration, P2.3 expansion, held-out semantics, and deferred capabilities
+are not included.
+
+Verification passes 11 focused renderer tests, 26 focused package-result and
+report tests, 248 full-suite tests with one expected Windows symlink skip,
+repository validation 5/5, Ruff, and 86.49% coverage. A generated
+drawing-revision conflict was inspected: its CSV evidence parses back to the
+accepted package-relative locators, its Markdown shows the same authority and
+values, and neither view contains an absolute machine path. P3.1 acceptance
+and integration remain required before P3.2 begins.
 
 ## Definition of Done
 

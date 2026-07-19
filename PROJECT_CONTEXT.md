@@ -108,6 +108,22 @@ issue-register views of the immutable canonical result; P3.2 release summary,
 P3.3 CLI, P2.3 expansion, semantic held-out execution, and deferred
 capabilities remain blocked.
 
+P3.1 implementation commit `2f93335` adds a package-assurance-specific issue
+register renderer on `codex/p3.1-issue-register` from accepted predecessor
+`b9de4e6`. It reads strict JSON, rejects duplicate keys and non-JSON numeric
+constants, validates the immutable result against `package_result.schema.json`,
+and emits deterministic CSV and Markdown strings from the stored canonical
+finding order. Structured identifiers, expected/actual values, and evidence
+remain JSON in the CSV; the Markdown preserves the same facts and the accepted
+human-review limitation. It does not rerun gates, checks, authority selection,
+state routing, or holds, and it does not write reports or add CLI behavior.
+Verification passes 11 renderer tests, 26 focused result/report tests, 248
+full-suite tests with one expected Windows symlink skip, repository validation
+5/5, Ruff, and 86.49% coverage. A real drawing-revision conflict report was
+inspected and contains package-relative evidence without approval language.
+P3.1 acceptance and integration remain required; P3.2, P3.3, broad P2.3,
+semantic held-out execution, and deferred capabilities remain blocked.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:

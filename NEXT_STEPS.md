@@ -13,22 +13,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P2.2:** Complete for the accepted vertical slice. Five ordered drawing checks are integrated through PRs #35 and #37; the exact accepted main baseline is `5571d2a`.
 - **First usable audit definition:** Accepted and integrated through PR #36 at `5b32b6d`.
 - **P2.4:** Accepted and integrated through PR #39 at exact `main` commit `cd9b52e`.
-- **P3.1:** Authorized next for pure CSV and Markdown issue-register views of `package_result.json`.
+- **P3.1:** Implementation `2f93335` is verified and ready for review. Acceptance and integration remain required.
 - **P2.3 and later:** Broad relationship expansion remains blocked until the first runnable audit through P3.3 is accepted.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Implement only deterministic CSV and Markdown issue-register views from the accepted immutable package result. Do not add the release summary, CLI integration, P2.3 expansion, held-out semantics, or deferred capabilities.
+Review only the bounded P3.1 implementation and its evidence. Do not begin the release summary, report publishing, CLI integration, P2.3 expansion, held-out semantics, or deferred capabilities before P3.1 acceptance and integration.
 
 ## Active Work Block
 
 - **WBS:** P3.1 evidence-linked issue register
 - **Branch:** `codex/p3.1-issue-register` after the P2.4 integration closeout
-- **Objective:** Render deterministic CSV and Markdown issue registers as pure views of the accepted immutable package result.
+- **Objective:** Review and integrate deterministic CSV and Markdown issue registers as pure views of the accepted immutable package result.
 - **Definition of done:** Both views contain only canonical non-pass findings in accepted order; a clean result writes headers and zero issue rows; evidence remains machine-readable; reports do not rerun gates, checks, authority, state, or holds; malformed result input fails closed; focused/full tests, validation, Ruff, coverage, and control evidence pass.
 
-Next action: implement only the bounded P3.1 CSV and Markdown issue-register views. P3.2 release summary, P3.3 CLI, P2.3 expansion, and deferred capabilities remain blocked.
+Next action: review implementation `2f93335`, its focused/full verification, and the inspected revision-conflict report. P3.2 release summary, P3.3 CLI, P2.3 expansion, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
