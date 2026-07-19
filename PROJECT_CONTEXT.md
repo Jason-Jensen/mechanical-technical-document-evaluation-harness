@@ -85,6 +85,20 @@ package tests, 222 full-suite tests with one expected Windows symlink skip,
 repository validation 5/5, Ruff, and 85.64% coverage. P2.2 is closed for the
 accepted vertical slice.
 
+P2.4 implementation commit `cbcfc2b` adds the bounded package-result core on
+`codex/p2.4-result-core` from accepted predecessor `1e7da37`. It requires the
+exact ordered eight-gate/five-check result set and fails closed on missing,
+duplicate, out-of-order, or unexplained skipped results. It converts gate and
+relationship findings into one canonical report-ready finding set, applies the
+accepted six-state precedence without scoring, fingerprints only declared
+package inputs, validates `package_result.json` against a separate v0.3.0
+schema, and writes new run directories without overwrite. The frozen v0.2
+result schema and persistence path are unchanged. Verification passes 15
+focused result tests, 237 full-suite tests with one expected Windows symlink
+skip, repository validation 5/5, Ruff, and 86.10% coverage. P2.4 acceptance
+and integration remain required; reports, CLI, P2.3 expansion, and deferred
+capabilities remain blocked.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:

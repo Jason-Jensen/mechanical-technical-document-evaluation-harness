@@ -12,7 +12,7 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
 - **P2.2:** Complete for the accepted vertical slice. Five ordered drawing checks are integrated through PRs #35 and #37; the exact accepted main baseline is `5571d2a`.
 - **First usable audit definition:** Accepted and integrated through PR #36 at `5b32b6d`.
-- **P2.4:** Authorized next as the minimum package-result core. Reports and CLI remain later gates.
+- **P2.4:** Implementation `cbcfc2b` is verified and ready for review. Acceptance and integration remain required; reports and CLI remain later gates.
 - **P2.3 and later:** Broad relationship expansion remains blocked until the first runnable audit through P3.3 is accepted.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
@@ -24,10 +24,10 @@ Implement only required-result completeness, canonical final findings, package-s
 
 - **WBS:** P2.4 minimum package-result core
 - **Branch:** `codex/p2.4-result-core` after the P2.2 closeout merges
-- **Objective:** Convert the complete ordered gate/check set into one deterministic package state and immutable, schema-valid package result.
+- **Objective:** Review and integrate the implementation that converts the complete ordered gate/check set into one deterministic package state and immutable, schema-valid package result.
 - **Definition of done:** Required results are present exactly once or fail closed; all intermediate findings become canonical final findings; state precedence and holds are deterministic; repeated unchanged evaluations are semantically stable; immutable persistence never overwrites a run; focused/full tests, validation, Ruff, coverage, and control evidence pass.
 
-Next action: implement and review the bounded P2.4 result core. P3 report views remain blocked until P2.4 is accepted and integrated.
+Next action: review P2.4 implementation `cbcfc2b`, its focused/full verification, generated package-result evidence, and pull request. P3 report views remain blocked until P2.4 is accepted and integrated.
 
 ## Delivery Sequence
 
