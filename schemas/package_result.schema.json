@@ -1,0 +1,707 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/package_result.schema.json",
+  "title": "Mechanical Package Assurance Result v0.3.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "run_metadata",
+    "package_id",
+    "versions",
+    "input_fingerprint",
+    "package_state",
+    "release_hold",
+    "blocking_states",
+    "gate_results",
+    "relationship_results",
+    "findings",
+    "required_result_completeness",
+    "output_generation",
+    "engineering_review_limitation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.3.0"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^RUN-[0-9]{8}T[0-9]{12}Z-[0-9a-f]{8}$"
+    },
+    "run_metadata": {
+      "$ref": "#/$defs/runMetadata"
+    },
+    "package_id": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/canonicalIdentifier"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "versions": {
+      "$ref": "#/$defs/versions"
+    },
+    "input_fingerprint": {
+      "$ref": "#/$defs/inputFingerprint"
+    },
+    "package_state": {
+      "$ref": "#/$defs/resultState"
+    },
+    "release_hold": {
+      "type": "boolean"
+    },
+    "blocking_states": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/blockingState"
+      }
+    },
+    "gate_results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/gateResult"
+      }
+    },
+    "relationship_results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/relationshipResult"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "required_result_completeness": {
+      "$ref": "#/$defs/completeness"
+    },
+    "output_generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "output_names"
+      ],
+      "properties": {
+        "status": {
+          "const": "package_result_ready"
+        },
+        "output_names": {
+          "const": [
+            "package_result.json"
+          ]
+        }
+      }
+    },
+    "engineering_review_limitation": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "canonicalIdentifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^(?!\\s)(?!.*\\s$)[^\\u0000-\\u001F\\u007F]+$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\u0000-\\u001F\\u007F]+$"
+    },
+    "resultState": {
+      "type": "string",
+      "enum": [
+        "automatic_pass",
+        "automatic_fail",
+        "engineering_review_required",
+        "missing_authoritative_information",
+        "extraction_or_tool_failure",
+        "evaluator_uncertainty"
+      ]
+    },
+    "blockingState": {
+      "type": "string",
+      "enum": [
+        "automatic_fail",
+        "extraction_or_tool_failure",
+        "missing_authoritative_information",
+        "evaluator_uncertainty",
+        "engineering_review_required"
+      ]
+    },
+    "nullableVersion": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package_result_schema",
+        "evaluator",
+        "router",
+        "workflow_contract",
+        "package_manifest",
+        "authority_map"
+      ],
+      "properties": {
+        "package_result_schema": {
+          "const": "0.3.0"
+        },
+        "evaluator": {
+          "const": "0.3.0"
+        },
+        "router": {
+          "const": "0.3.0"
+        },
+        "workflow_contract": {
+          "const": "0.3.0"
+        },
+        "package_manifest": {
+          "$ref": "#/$defs/nullableVersion"
+        },
+        "authority_map": {
+          "$ref": "#/$defs/nullableVersion"
+        }
+      }
+    },
+    "runMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "started_at",
+        "completed_at",
+        "duration_ms",
+        "host",
+        "output_location"
+      ],
+      "properties": {
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "duration_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "host": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "output_location": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "inputFingerprint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "status",
+        "sha256",
+        "artifacts"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "sha256-path-status-size-bytes-v1"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial"
+          ]
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/inputArtifact"
+          }
+        }
+      }
+    },
+    "inputArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "status",
+        "sha256",
+        "size_bytes"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "available",
+            "missing",
+            "unreadable",
+            "outside_package"
+          ]
+        },
+        "sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "size_bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "gateResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_id",
+        "gate_version",
+        "kind",
+        "status",
+        "summary",
+        "finding_ids",
+        "evidence",
+        "blocked_by"
+      ],
+      "properties": {
+        "gate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "gate_version": {
+          "const": "0.3.0"
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/controlStatus"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "finding_ids": {
+          "$ref": "#/$defs/findingIds"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidenceList"
+        },
+        "blocked_by": {
+          "$ref": "#/$defs/blockedBy"
+        }
+      }
+    },
+    "relationshipResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "check_id",
+        "check_version",
+        "status",
+        "summary",
+        "finding_ids",
+        "evidence",
+        "blocked_by"
+      ],
+      "properties": {
+        "check_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "check_version": {
+          "const": "0.3.0"
+        },
+        "status": {
+          "$ref": "#/$defs/controlStatus"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "finding_ids": {
+          "$ref": "#/$defs/findingIds"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidenceList"
+        },
+        "blocked_by": {
+          "$ref": "#/$defs/blockedBy"
+        }
+      }
+    },
+    "controlStatus": {
+      "type": "string",
+      "enum": [
+        "passed",
+        "failed",
+        "skipped"
+      ]
+    },
+    "findingIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/findingId"
+      }
+    },
+    "findingId": {
+      "type": "string",
+      "pattern": "^FND-[0-9A-F]{16}$"
+    },
+    "blockedBy": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id",
+        "control_type",
+        "control_id",
+        "control_version",
+        "package_id",
+        "code",
+        "result_state",
+        "severity",
+        "release_hold",
+        "authority_rule_id",
+        "governing_control_id",
+        "message",
+        "affected_identifiers",
+        "expected_value",
+        "actual_value",
+        "review_owner",
+        "evaluator_version",
+        "evidence"
+      ],
+      "properties": {
+        "finding_id": {
+          "$ref": "#/$defs/findingId"
+        },
+        "control_type": {
+          "type": "string",
+          "enum": [
+            "gate",
+            "relationship_check",
+            "evaluator"
+          ]
+        },
+        "control_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "control_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "package_id": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/canonicalIdentifier"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "result_state": {
+          "$ref": "#/$defs/blockingState"
+        },
+        "severity": {
+          "const": "high"
+        },
+        "release_hold": {
+          "type": "boolean"
+        },
+        "authority_rule_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "governing_control_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "affected_identifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/canonicalIdentifier"
+          }
+        },
+        "expected_value": {},
+        "actual_value": {},
+        "review_owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evaluator_version": {
+          "const": "0.3.0"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidenceList"
+        }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "authority_rule_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "governing_control_id": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "properties": {
+            "authority_rule_id": {
+              "type": "null"
+            },
+            "governing_control_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      ]
+    },
+    "evidenceList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_type",
+        "source_file",
+        "format"
+      ],
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_file": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "csv",
+            "json",
+            "file_reference"
+          ]
+        },
+        "row_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "header_row_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "column_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "row_key": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "column_name",
+            "value"
+          ],
+          "properties": {
+            "column_name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        "json_pointer": {
+          "type": "string"
+        },
+        "record_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "property_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "file_ref_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "declared_relative_path": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "resolved_package_relative_path": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "boundary_check": {
+          "type": "string",
+          "minLength": 1
+        },
+        "original_value": {},
+        "normalized_value": {}
+      }
+    },
+    "completeness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "automatic_pass_eligible",
+        "expected_gate_ids",
+        "actual_gate_ids",
+        "expected_check_ids",
+        "actual_check_ids",
+        "issues"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "incomplete"
+          ]
+        },
+        "automatic_pass_eligible": {
+          "type": "boolean"
+        },
+        "expected_gate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actual_gate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected_check_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actual_check_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/completenessIssue"
+          }
+        }
+      }
+    },
+    "completenessIssue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "control_type",
+        "control_id",
+        "detail"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "control_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "control_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
