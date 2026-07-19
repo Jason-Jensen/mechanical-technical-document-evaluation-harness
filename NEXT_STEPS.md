@@ -10,22 +10,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** PR #34 integrated the accepted fourth-check definition at exact `main` commit `12c45dd`. Implementation commit `74970c3` appends `drawing_register_metadata_file_reference`; local verification and both draft PR #35 CI checks pass, and user review is pending.
+- **P2.2:** PR #34 integrated the accepted fourth-check definition at exact `main` commit `12c45dd`. The user accepted implementation commit `74970c3` on 2026-07-19 after local verification and green draft PR #35 CI.
 - **P2.3 and later:** Blocked pending the preceding gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Review only the `drawing_register_metadata_file_reference` v0.3.0 implementation at `74970c3`. It adds the accepted fourth ordered check and temporary-copy tests without changing P2.1 gates, accepted fixtures, schemas, authority maps, goldens, held-out assets, package-state routing, reports, CLI behavior, or semantic held-out evaluation.
+Integrate accepted `drawing_register_metadata_file_reference` v0.3.0 through PR #35, then verify the exact merged `main` tree. Every other relationship, declaration/reciprocity control, package-state router, report, CLI behavior, and semantic held-out evaluation remains blocked.
 
 ## Active Work Block
 
-- **WBS:** P2.2 drawing file-reference implementation review
+- **WBS:** P2.2 drawing file-reference implementation integration
 - **Branch:** `codex/p2.2-drawing-file-reference-implementation`
-- **Objective:** Review the accepted `AUTH-DWG-002` exact-pair file-reference agreement as the fourth stable relationship check.
-- **Definition of done:** The clean package and reviewed wrong-but-valid fault behave exactly as defined; four-locator evidence, stable identity/order, exact authority, prerequisite skips, and prior-check preservation are proven; all verification passes; protected assets remain unchanged; and the implementation is accepted, revised, or rejected.
+- **Objective:** Integrate the accepted `AUTH-DWG-002` exact-pair file-reference agreement as the fourth stable relationship check.
+- **Definition of done:** Acceptance is recorded; PR #35 merges after green checks; exact merged `main` verification passes; protected assets remain unchanged; and the next bounded action is selected without adding adjacent controls.
 
-Next action: review and accept, revise, or reject implementation commit `74970c3` on draft PR #35. No semantic held-out run or tuning is authorized.
+Next action: merge PR #35 after final green checks and verify exact `main`. No semantic held-out run or tuning is authorized.
 
 ## Delivery Sequence
 
