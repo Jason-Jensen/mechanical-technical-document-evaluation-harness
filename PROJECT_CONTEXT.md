@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-19
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.2-drawing-register-manifest-reciprocity-implementation`
+**Current branch:** `codex/p2.2-reciprocity-integration-closeout`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.2 fifth drawing relationship check
-- **Status:** `drawing_register_manifest_file_reciprocity` is implemented at `4f06352`, verified, and ready for review; it is not yet accepted or integrated
-- **Implementation state:** `relationships.py` returns five ordered drawing checks. The fifth requires every authoritative register drawing to match one manifest inventory item, the same declared and resolved file reference, and exactly one required document-to-file mapping with no conflict. Package-state routing, reports, semantic held-out evaluation, broad P2.3 relationships, and deferred platform capabilities remain unimplemented
+- **Active WBS:** P2.4 minimum package-result core
+- **Status:** The first-usable-audit definition and fifth P2.2 reciprocity check are accepted and integrated through PRs #36-#37 at exact `main` commit `5571d2a`
+- **Implementation state:** Eight ordered gates and five ordered drawing checks are integrated. The next authorized block is required-result completeness, canonical final findings, package-state precedence, `package_result.json` schema/model, and immutable persistence. Reports, CLI integration, semantic held-out evaluation, broad P2.3 relationships, and deferred platform capabilities remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -77,8 +77,13 @@ repeatability, exact authority prerequisite, and portable evidence. Verification
 passes 25 relationship tests, 51 focused package tests, 222 full-suite tests
 with one expected Windows symlink skip, repository validation 5/5, Ruff, and
 85.64% coverage. No accepted fixture, schema, authority map, golden, held-out
-asset, historical evidence, or v0.2 behavior changed. The implementation is
-ready for review and remains unaccepted.
+asset, historical evidence, or v0.2 behavior changed. The user accepted and
+authorized integration on 2026-07-19. PR #36 merged the definition at
+`5b32b6d`; PR #37 merged the implementation at exact `main` `5571d2a`.
+Verification on that merged tree passes 25 relationship tests, 51 focused
+package tests, 222 full-suite tests with one expected Windows symlink skip,
+repository validation 5/5, Ruff, and 85.64% coverage. P2.2 is closed for the
+accepted vertical slice.
 
 ## Intended Outcome
 
@@ -118,11 +123,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review implementation commit `4f06352` and its evidence for the accepted fifth
-P2.2 check. After explicit acceptance, integrate the implementation and verify
-the exact merged tree. P2.4 result-core work remains blocked until that
-integration closes; semantic held-out execution and deferred multimodal or
-platform capabilities remain separately gated.
+Implement only the accepted P2.4 minimum result core on a separate branch:
+required-result completeness, canonical final findings, deterministic state
+precedence, package-result model/schema, and immutable persistence. Do not add
+issue-register or release-summary views, CLI integration, P2.3 expansion,
+semantic held-out execution, or deferred multimodal/platform capabilities in
+that block.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

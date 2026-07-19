@@ -7,9 +7,8 @@
   separate blocks defined below
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
-- **P2.2 implementation:** commit `4f06352` on
-  `codex/p2.2-drawing-register-manifest-reciprocity-implementation`; ready for
-  review, not yet accepted or integrated
+- **P2.2 implementation:** accepted commit `4f06352`; integrated through PR
+  #37 at exact `main` commit `5571d2a`
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
 - **Protected assets changed:** None
 
@@ -463,8 +462,8 @@ coverage.
 
 No accepted fixture, schema, authority map, expected result, golden, held-out
 asset, historical evidence, or v0.2 behavior changed. The implementation is
-ready for explicit review. P2.4 remains blocked until this implementation is
-accepted and integrated.
+accepted by the user and integrated through PR #37 at exact `main` commit
+`5571d2a`. P2.4 is the next authorized implementation block.
 
 ## Definition of Done
 
