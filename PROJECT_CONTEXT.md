@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-19
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.2-drawing-file-reference-integration-closeout`
+**Current branch:** `codex/first-usable-audit-definition`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.2 integration closeout / next-gate review
-- **Status:** PR #35 integrated the accepted fourth drawing check at exact `main` commit `e5db29e`. Exact merged-tree verification passed on 2026-07-19; the next bounded work block has not been authorized
+- **Active WBS:** First usable audit vertical-slice definition and resequencing
+- **Status:** Definition review in progress from clean `main` baseline `a18fc5f`; no new executable behavior is authorized before acceptance
 - **Implementation state:** `relationships.py` returns four ordered drawing checks: revision agreement, registered-drawing metadata presence, metadata claim register authority, and exact-pair drawing file-reference agreement. Package-state routing, reports, semantic held-out evaluation, undeclared source-reference detection, full manifest reciprocity, and all other relationships remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -98,7 +98,7 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the integrated four-check baseline and accept or revise the next bounded gate before implementation. Semantic held-out execution, additional executable relationships, declaration/reciprocity controls, package-state routing, CLI/reporting, PDF/CAD, agent, API, database, RAG, and frontend implementation remain blocked.
+Review `docs/package_assurance/first_usable_audit_vertical_slice_definition_v0.3.0.md`. The proposed sequence closes one bounded drawing-manifest reciprocity gap, then delivers explicit package state, immutable result, issue register, release summary, and CLI before broad P2.3 expansion. All executable work remains blocked until the definition is accepted; semantic held-out execution and deferred multimodal/platform capabilities remain separately gated.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
