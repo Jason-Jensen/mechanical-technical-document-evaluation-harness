@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-19
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/first-usable-audit-definition`
+**Current branch:** `codex/p2.2-drawing-register-manifest-reciprocity-implementation`
 
 ## Executive Summary
 
@@ -31,8 +31,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P2.2 fifth drawing relationship check
-- **Status:** The first usable audit definition and all ten review decisions were accepted on 2026-07-19; only `drawing_register_manifest_file_reciprocity` implementation is authorized next
-- **Implementation state:** `relationships.py` returns four ordered drawing checks: revision agreement, registered-drawing metadata presence, metadata claim register authority, and exact-pair drawing file-reference agreement. The accepted next block appends the fifth manifest-reciprocity check. Package-state routing, reports, semantic held-out evaluation, broad P2.3 relationships, and deferred platform capabilities remain unimplemented
+- **Status:** `drawing_register_manifest_file_reciprocity` is implemented at `4f06352`, verified, and ready for review; it is not yet accepted or integrated
+- **Implementation state:** `relationships.py` returns five ordered drawing checks. The fifth requires every authoritative register drawing to match one manifest inventory item, the same declared and resolved file reference, and exactly one required document-to-file mapping with no conflict. Package-state routing, reports, semantic held-out evaluation, broad P2.3 relationships, and deferred platform capabilities remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -68,6 +68,17 @@ The fifth check reuses `AUTH-DWG-002`, evaluates one authoritative drawing at a
 time, and produces one evidence-rich automatic-fail release hold per drawing
 whose manifest inventory, controlled file, or required document-to-file mapping
 is not reciprocal.
+
+Implementation commit `4f06352` appends that fifth check without changing the
+eight P2.1 gates or the first four relationship checks. Temporary development
+copies prove the clean case, missing required mapping, wrong-but-valid target,
+conflicting required mapping, shared undeclared reference, two-finding order,
+repeatability, exact authority prerequisite, and portable evidence. Verification
+passes 25 relationship tests, 51 focused package tests, 222 full-suite tests
+with one expected Windows symlink skip, repository validation 5/5, Ruff, and
+85.64% coverage. No accepted fixture, schema, authority map, golden, held-out
+asset, historical evidence, or v0.2 behavior changed. The implementation is
+ready for review and remains unaccepted.
 
 ## Intended Outcome
 
@@ -107,7 +118,11 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review `docs/package_assurance/first_usable_audit_vertical_slice_definition_v0.3.0.md`. The proposed sequence closes one bounded drawing-manifest reciprocity gap, then delivers explicit package state, immutable result, issue register, release summary, and CLI before broad P2.3 expansion. All executable work remains blocked until the definition is accepted; semantic held-out execution and deferred multimodal/platform capabilities remain separately gated.
+Review implementation commit `4f06352` and its evidence for the accepted fifth
+P2.2 check. After explicit acceptance, integrate the implementation and verify
+the exact merged tree. P2.4 result-core work remains blocked until that
+integration closes; semantic held-out execution and deferred multimodal or
+platform capabilities remain separately gated.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
