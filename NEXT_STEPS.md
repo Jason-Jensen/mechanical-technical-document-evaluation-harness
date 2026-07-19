@@ -12,22 +12,23 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
 - **P2.2:** Complete for the accepted vertical slice. Five ordered drawing checks are integrated through PRs #35 and #37; the exact accepted main baseline is `5571d2a`.
 - **First usable audit definition:** Accepted and integrated through PR #36 at `5b32b6d`.
-- **P2.4:** Implementation `cbcfc2b` is verified and ready for review. Acceptance and integration remain required; reports and CLI remain later gates.
+- **P2.4:** Accepted and integrated through PR #39 at exact `main` commit `cd9b52e`.
+- **P3.1:** Authorized next for pure CSV and Markdown issue-register views of `package_result.json`.
 - **P2.3 and later:** Broad relationship expansion remains blocked until the first runnable audit through P3.3 is accepted.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Implement only required-result completeness, canonical final findings, package-state precedence, the versioned package-result model/schema, and immutable persistence. Do not add reports, CLI integration, P2.3 expansion, held-out semantics, or deferred capabilities.
+Implement only deterministic CSV and Markdown issue-register views from the accepted immutable package result. Do not add the release summary, CLI integration, P2.3 expansion, held-out semantics, or deferred capabilities.
 
 ## Active Work Block
 
-- **WBS:** P2.4 minimum package-result core
-- **Branch:** `codex/p2.4-result-core` after the P2.2 closeout merges
-- **Objective:** Review and integrate the implementation that converts the complete ordered gate/check set into one deterministic package state and immutable, schema-valid package result.
-- **Definition of done:** Required results are present exactly once or fail closed; all intermediate findings become canonical final findings; state precedence and holds are deterministic; repeated unchanged evaluations are semantically stable; immutable persistence never overwrites a run; focused/full tests, validation, Ruff, coverage, and control evidence pass.
+- **WBS:** P3.1 evidence-linked issue register
+- **Branch:** `codex/p3.1-issue-register` after the P2.4 integration closeout
+- **Objective:** Render deterministic CSV and Markdown issue registers as pure views of the accepted immutable package result.
+- **Definition of done:** Both views contain only canonical non-pass findings in accepted order; a clean result writes headers and zero issue rows; evidence remains machine-readable; reports do not rerun gates, checks, authority, state, or holds; malformed result input fails closed; focused/full tests, validation, Ruff, coverage, and control evidence pass.
 
-Next action: review P2.4 implementation `cbcfc2b`, its focused/full verification, generated package-result evidence, and pull request. P3 report views remain blocked until P2.4 is accepted and integrated.
+Next action: implement only the bounded P3.1 CSV and Markdown issue-register views. P3.2 release summary, P3.3 CLI, P2.3 expansion, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 

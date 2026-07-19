@@ -3,14 +3,14 @@
 ## Control Status
 
 - **WBS:** Cross-WBS definition for the remaining P2.2, P2.4, and P3 pilot work
-- **Status:** Accepted 2026-07-19; P2.2 is integrated and bounded P2.4
-  implementation `cbcfc2b` is ready for review
+- **Status:** Accepted 2026-07-19; P2.2 and P2.4 are integrated; P3.1 issue
+  register is the next authorized block
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
 - **P2.2 implementation:** accepted commit `4f06352`; integrated through PR
   #37 at exact `main` commit `5571d2a`
-- **P2.4 implementation:** commit `cbcfc2b`; focused and full verification
-  passed; acceptance and integration remain required
+- **P2.4 implementation:** accepted commit `cbcfc2b`; integrated through PR
+  #39 at exact `main` commit `cd9b52e`
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
 - **Protected assets changed:** None
 
@@ -465,7 +465,7 @@ coverage.
 No accepted fixture, schema, authority map, expected result, golden, held-out
 asset, historical evidence, or v0.2 behavior changed. The implementation is
 accepted by the user and integrated through PR #37 at exact `main` commit
-`5571d2a`. P2.4 is the next authorized implementation block.
+`5571d2a`. P2.4 subsequently completed and is integrated as recorded below.
 
 ## P2.4 Result-Core Implementation Review
 
@@ -489,6 +489,14 @@ coverage. A clean result artifact and controlled incomplete result were
 inspected from the ignored test output. Reports, CLI, broad P2.3 relationships,
 semantic held-out execution, and deferred capabilities remain blocked pending
 separate gates.
+
+The user accepted P2.4 on 2026-07-19. PR #39 integrated implementation
+`cbcfc2b` and its review evidence at exact `main` commit `cd9b52e`. Exact-main
+verification preserves the same 15 focused result passes, 237 full-suite
+passes with one expected Windows symlink skip, repository validation 5/5,
+Ruff, and 86.10% coverage. P3.1 issue-register views are authorized next;
+P3.2, P3.3, broad P2.3, semantic held-out execution, and deferred capabilities
+retain separate gates.
 
 ## Definition of Done
 

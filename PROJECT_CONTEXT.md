@@ -96,7 +96,16 @@ schema, and writes new run directories without overwrite. The frozen v0.2
 result schema and persistence path are unchanged. Verification passes 15
 focused result tests, 237 full-suite tests with one expected Windows symlink
 skip, repository validation 5/5, Ruff, and 86.10% coverage. P2.4 acceptance
-and integration remain required; reports, CLI, P2.3 expansion, and deferred
+and integration evidence is recorded below. Reports, CLI, P2.3 expansion, and
+deferred capabilities were not part of the implementation.
+
+The user accepted P2.4 on 2026-07-19. PR #39 merged the implementation and
+review evidence at exact `main` commit `cd9b52e`. Verification on that merged
+tree passes 15 focused result tests, 237 full-suite tests with one expected
+Windows symlink skip, repository validation 5/5, Ruff, and 86.10% coverage.
+P2.4 is closed. P3.1 is authorized next only for deterministic CSV and Markdown
+issue-register views of the immutable canonical result; P3.2 release summary,
+P3.3 CLI, P2.3 expansion, semantic held-out execution, and deferred
 capabilities remain blocked.
 
 ## Intended Outcome
