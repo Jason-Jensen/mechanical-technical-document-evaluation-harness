@@ -3,17 +3,18 @@
 ## Control Status
 
 - **WBS:** P2.2, fourth document-relationship slice
-- **Status:** Definition integrated; implementation accepted; PR #35 integration pending
-- **Integration baseline:** `main` at PR #34 merge commit `12c45dd`
+- **Status:** Definition and accepted implementation integrated and exactly verified
+- **Definition integration baseline:** `main` at PR #34 merge commit `12c45dd`
+- **Implementation integration baseline:** `main` at PR #35 merge commit `e5db29e`
 - **Definition branch:** `codex/p2.2-drawing-file-reference-definition`
 - **Definition commit:** `d46d56f`
 - **Definition PR:** #34, merged at `12c45dd`
 - **Implementation branch:**
   `codex/p2.2-drawing-file-reference-implementation`
 - **Implementation commit:** `74970c3`
-- **Implementation PR:** #35, draft, two initial CI runs green
-- **Decisions:** D-065, D-066, D-067, D-068, D-069, D-070
-- **Evidence:** EV-062, EV-063, EV-064, EV-065, EV-066, EV-067
+- **Implementation PR:** #35, merged at `e5db29e`
+- **Decisions:** D-065, D-066, D-067, D-068, D-069, D-070, D-071
+- **Evidence:** EV-062, EV-063, EV-064, EV-065, EV-066, EV-067, EV-068
 
 PR #33 integrated the accepted `drawing_metadata_register_authority` check and
 its acceptance record to `main` at `8d7f314`. Exact merged-tree verification
@@ -39,7 +40,8 @@ branch was created. Implementation commit `74970c3` adds only the accepted
 fourth check and supporting exports/tests. It passes 19 relationship tests, 45
 focused tests, 216 full-suite tests with one expected skip, repository
 validation 5/5, Ruff, and 85.47% coverage. The user accepted the complete
-implementation on 2026-07-19 and authorized PR #35 integration.
+implementation on 2026-07-19. PR #35 integrated it at exact `main` commit
+`e5db29e`; exact merged-tree verification reproduced those results.
 
 ## Plain-Language Goal
 
@@ -410,4 +412,6 @@ on 2026-07-17, and PR #34 integrated it at exact `main` commit `12c45dd` after
 green CI. Implementation commit `74970c3` satisfies the frozen acceptance tests
 without changing protected assets or adding adjacent controls. The user
 accepted the implementation on 2026-07-19. PR #35 integration and exact
-merged-tree verification remain pending.
+merged-tree verification completed at `e5db29e`. This bounded fourth slice is
+closed; adjacent declaration/reciprocity controls and other relationships
+remain separate, unimplemented gates.

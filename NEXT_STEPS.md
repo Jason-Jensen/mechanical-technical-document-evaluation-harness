@@ -10,22 +10,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P1.2:** Accepted at commit `f26ed27`; clean development fixture is the frozen predecessor baseline.
 - **P1.3:** Accepted at commit `4b7516e`; the recorded `frozen_pre_tuning` status is active without changing protected content.
 - **P2.1:** Stabilization and implementation accepted by the user on 2026-07-17; accepted feature chain pushed on `codex/stabilization-improvement-loop`.
-- **P2.2:** PR #34 integrated the accepted fourth-check definition at exact `main` commit `12c45dd`. The user accepted implementation commit `74970c3` on 2026-07-19 after local verification and green draft PR #35 CI.
+- **P2.2:** Four ordered drawing checks are integrated through PR #35 at exact `main` commit `e5db29e`. Exact merged-tree verification passed on 2026-07-19; P2.2 remains 50% because declaration/reciprocity and other relationship gaps remain open.
 - **P2.3 and later:** Blocked pending the preceding gates.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Integrate accepted `drawing_register_metadata_file_reference` v0.3.0 through PR #35, then verify the exact merged `main` tree. Every other relationship, declaration/reciprocity control, package-state router, report, CLI behavior, and semantic held-out evaluation remains blocked.
+Review the integrated four-check drawing baseline and select the next bounded work block. No new executable behavior is authorized until that decision is accepted. Declaration/reciprocity controls, other relationships, package-state routing, reports, CLI behavior, and semantic held-out evaluation remain blocked.
 
 ## Active Work Block
 
-- **WBS:** P2.2 drawing file-reference implementation integration
-- **Branch:** `codex/p2.2-drawing-file-reference-implementation`
-- **Objective:** Integrate the accepted `AUTH-DWG-002` exact-pair file-reference agreement as the fourth stable relationship check.
-- **Definition of done:** Acceptance is recorded; PR #35 merges after green checks; exact merged `main` verification passes; protected assets remain unchanged; and the next bounded action is selected without adding adjacent controls.
+- **WBS:** P2.2 integration closeout / next-gate review
+- **Branch:** `codex/p2.2-drawing-file-reference-integration-closeout`
+- **Objective:** Record the exact PR #35 integration evidence and leave a truthful, bounded starting point for the next decision.
+- **Definition of done:** Merge commit and exact verification are recorded; protected assets remain unchanged; the repository returns to clean `main`; and no next implementation begins before its scope is accepted.
 
-Next action: merge PR #35 after final green checks and verify exact `main`. No semantic held-out run or tuning is authorized.
+Next action: review the project state and accept or revise the recommended next gate. No semantic held-out run, tuning, or new implementation is authorized.
 
 ## Delivery Sequence
 

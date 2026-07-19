@@ -8,7 +8,7 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** PR #34 integrated the accepted fourth drawing relationship definition at exact `main` commit `12c45dd`. The user accepted implementation commit `74970c3` on 2026-07-19; green PR #35 integration and exact merged-tree verification are next.
+- **Current gate:** PR #35 integrated the accepted fourth drawing relationship check at exact `main` commit `e5db29e`. Exact merged-tree verification passed on 2026-07-19; selection of the next bounded work block is pending.
 - **Implementation boundary:** Four separate ordered drawing checks now cover revision agreement, register-to-metadata presence, metadata-to-register authority, and exact-pair file-reference agreement. Package-state routing, undeclared source-reference detection, full manifest reciprocity, held-out execution, and all PDF/CAD, agent, API, database, RAG, and frontend work remain blocked.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
