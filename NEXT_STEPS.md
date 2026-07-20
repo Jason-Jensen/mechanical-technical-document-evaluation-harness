@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** Definition is authorized for the remaining BOM, equipment, datasheet, specification, and revision relationship slices. Implementation remains blocked pending definition acceptance.
+- **P2.3:** The relationship-expansion definition is ready for explicit review. It proposes six existing-authority checks and records six authority/source gaps; implementation remains blocked pending acceptance.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Define only the ordered P2.3 relationship slices, exact authority dependencies, evidence, states, holds, prerequisites, and negative tests. Do not implement a P2.3 rule, execute held-out semantics, or add deferred capabilities before definition acceptance.
+Review only `docs/package_assurance/p2_3_relationship_expansion_definition_v0.3.0.md`, its six-check sequence, six authority gaps, test faults, and scope boundaries. Do not implement a P2.3 rule, execute held-out semantics, or add deferred capabilities before definition acceptance.
 
 ## Active Work Block
 
-- **WBS:** P2.3 relationship-expansion definition
-- **Branch:** `codex/p2.3-relationship-expansion-definition` after the P3.3 integration closeout
-- **Objective:** Freeze a small, ordered implementation sequence for BOM/equipment, datasheet/specification, and revision checks using the accepted authority map and runnable audit path.
+- **WBS:** P2.3 relationship-expansion definition review
+- **Branch:** `codex/p2.3-relationship-expansion-definition`
+- **Objective:** Review and freeze a small, ordered implementation sequence for BOM/equipment, datasheet/specification, and revision checks using the accepted authority map and runnable audit path.
 - **Definition of done:** The definition states each check's exact source and target, accepted authority rule, prerequisites, pass/fail/skip behavior, finding fields, result state and hold, positive and negative development tests, implementation order, exclusions, and acceptance gate. It does not change code, schemas, fixtures, goldens, or held-out content.
 
-Next action: review and accept the bounded P2.3 relationship-expansion definition before the first implementation slice. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: accept, revise, or reject the bounded P2.3 definition. If accepted, the first implementation slice is `bom_item_equipment_manifest_reciprocity` on `codex/p2.3-bom-item-equipment-reciprocity`. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
