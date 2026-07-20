@@ -3,16 +3,16 @@
 ## Control Status
 
 - **WBS:** Cross-WBS definition for the remaining P2.2, P2.4, and P3 pilot work
-- **Status:** Accepted 2026-07-19; P2.2 and P2.4 are integrated; P3.1
-  implementation `2f93335` is ready for review
+- **Status:** Accepted 2026-07-19; P2.2, P2.4, and P3.1 are integrated; P3.2
+  release-readiness summary is the next authorized block
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
 - **P2.2 implementation:** accepted commit `4f06352`; integrated through PR
   #37 at exact `main` commit `5571d2a`
 - **P2.4 implementation:** accepted commit `cbcfc2b`; integrated through PR
   #39 at exact `main` commit `cd9b52e`
-- **P3.1 implementation:** commit `2f93335`; focused and full verification
-  passed; acceptance and integration remain required
+- **P3.1 implementation:** accepted commit `2f93335`; integrated with review
+  evidence at exact `main` commit `8f66b12`
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
 - **Protected assets changed:** None
 
@@ -524,7 +524,16 @@ repository validation 5/5, Ruff, and 86.49% coverage. A generated
 drawing-revision conflict was inspected: its CSV evidence parses back to the
 accepted package-relative locators, its Markdown shows the same authority and
 values, and neither view contains an absolute machine path. P3.1 acceptance
-and integration remain required before P3.2 begins.
+and integration were required before P3.2 could begin and are recorded below.
+
+The user accepted P3.1 and authorized merge on 2026-07-19. The reviewed branch
+was fast-forwarded to exact `main` commit `8f66b12`. Exact-main verification
+preserves the same 26 focused package-result/report passes, 248 full-suite
+passes with one expected Windows symlink skip, repository validation 5/5,
+Ruff, and 86.49% coverage. P3.2 is authorized next only for the non-approving
+Markdown release-readiness view defined above. Report publishing, P3.3 CLI,
+broad P2.3, semantic held-out execution, and deferred capabilities remain
+separately gated.
 
 ## Definition of Done
 

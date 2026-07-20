@@ -121,8 +121,17 @@ Verification passes 11 renderer tests, 26 focused result/report tests, 248
 full-suite tests with one expected Windows symlink skip, repository validation
 5/5, Ruff, and 86.49% coverage. A real drawing-revision conflict report was
 inspected and contains package-relative evidence without approval language.
-P3.1 acceptance and integration remain required; P3.2, P3.3, broad P2.3,
-semantic held-out execution, and deferred capabilities remain blocked.
+That review evidence was the basis for the acceptance and integration recorded
+below.
+
+The user accepted P3.1 and authorized its merge on 2026-07-19. The exact
+reviewed branch was fast-forwarded to `main` at `8f66b12`. Verification on that
+exact merged tree passes 26 focused package-result/report tests, 248 full-suite
+tests with one expected Windows symlink skip, repository validation 5/5, Ruff,
+and 86.49% coverage. P3.1 is closed. P3.2 is authorized next only for one
+concise, non-approving Markdown release-readiness view of the immutable result;
+report publishing, P3.3 CLI, broad P2.3, semantic held-out execution, and
+deferred capabilities remain blocked.
 
 ## Intended Outcome
 

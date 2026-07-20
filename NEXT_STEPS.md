@@ -13,22 +13,23 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P2.2:** Complete for the accepted vertical slice. Five ordered drawing checks are integrated through PRs #35 and #37; the exact accepted main baseline is `5571d2a`.
 - **First usable audit definition:** Accepted and integrated through PR #36 at `5b32b6d`.
 - **P2.4:** Accepted and integrated through PR #39 at exact `main` commit `cd9b52e`.
-- **P3.1:** Implementation `2f93335` is verified and ready for review. Acceptance and integration remain required.
+- **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
+- **P3.2:** Authorized next only for a concise, non-approving Markdown release-readiness summary from `package_result.json`.
 - **P2.3 and later:** Broad relationship expansion remains blocked until the first runnable audit through P3.3 is accepted.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Review only the bounded P3.1 implementation and its evidence. Do not begin the release summary, report publishing, CLI integration, P2.3 expansion, held-out semantics, or deferred capabilities before P3.1 acceptance and integration.
+Implement only the P3.2 Markdown release-readiness view from the accepted immutable package result. Do not add report publishing, CLI integration, P2.3 expansion, held-out semantics, or deferred capabilities.
 
 ## Active Work Block
 
-- **WBS:** P3.1 evidence-linked issue register
-- **Branch:** `codex/p3.1-issue-register` after the P2.4 integration closeout
-- **Objective:** Review and integrate deterministic CSV and Markdown issue registers as pure views of the accepted immutable package result.
-- **Definition of done:** Both views contain only canonical non-pass findings in accepted order; a clean result writes headers and zero issue rows; evidence remains machine-readable; reports do not rerun gates, checks, authority, state, or holds; malformed result input fails closed; focused/full tests, validation, Ruff, coverage, and control evidence pass.
+- **WBS:** P3.2 release-readiness summary
+- **Branch:** `codex/p3.2-release-readiness-summary` after this P3.1 closeout
+- **Objective:** Render one concise Markdown summary of the accepted immutable package result for qualified human review.
+- **Definition of done:** The view reports package/run identity, stored package state and hold, blocking states, stored gate/check counts, finding counts by state, known output names, the exact limitation, and the required qualified-human decision; it does not approve release, compliance, or engineering correctness; malformed input fails closed; focused/full tests, validation, Ruff, coverage, and control evidence pass.
 
-Next action: review implementation `2f93335`, its focused/full verification, and the inspected revision-conflict report. P3.2 release summary, P3.3 CLI, P2.3 expansion, and deferred capabilities remain blocked.
+Next action: implement only the bounded P3.2 release-readiness Markdown view. P3.3 CLI, report publishing, P2.3 expansion, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
