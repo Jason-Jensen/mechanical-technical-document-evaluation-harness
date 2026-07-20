@@ -37,6 +37,8 @@ PACKAGE_EVALUATOR_VERSION = "0.3.0"
 PACKAGE_RESULT_ROUTER_VERSION = "0.3.0"
 WORKFLOW_CONTRACT_VERSION = "0.3.0"
 PACKAGE_RESULT_FILENAME = "package_result.json"
+PACKAGE_RESULT_READY_STATUS = "package_result_ready"
+AUDIT_PACKAGE_READY_STATUS = "audit_package_ready"
 REQUIRED_EVALUATION_INCOMPLETE_CODE = "REQUIRED_EVALUATION_INCOMPLETE"
 RESULT_COMPLETENESS_CONTROL_ID = "WORKFLOW-PACKAGE-RESULT-COMPLETENESS"
 ENGINEERING_REVIEW_LIMITATION = (
@@ -274,6 +276,8 @@ def build_package_result(
     relationship_evaluation: PackageRelationshipEvaluation,
     host_metadata: Mapping[str, str] | None = None,
     output_location: str | None = None,
+    output_generation_status: str = PACKAGE_RESULT_READY_STATUS,
+    output_names: Sequence[str] = (PACKAGE_RESULT_FILENAME,),
 ) -> PackageResult:
     """Build one canonical package result from accepted gate and check outputs."""
 
@@ -363,8 +367,8 @@ def build_package_result(
         findings=findings,
         completeness=completeness,
         output_generation={
-            "status": "package_result_ready",
-            "output_names": [PACKAGE_RESULT_FILENAME],
+            "status": output_generation_status,
+            "output_names": list(output_names),
         },
     )
 

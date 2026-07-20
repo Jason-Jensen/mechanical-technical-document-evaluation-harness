@@ -180,6 +180,28 @@ mech-eval evaluate `
 
 Generated run records are evidence. They are not versioned benchmark definitions.
 
+### Audit a structured package
+
+```powershell
+mech-eval audit-package `
+    . `
+    benchmarks\package_assurance\development\pump_skid_clean_v1\package `
+    --runs-dir scratch\package-audit-runs
+```
+
+The command runs the accepted package gates, relationship checks, and result
+router. It publishes one new immutable run directory containing:
+
+- `package_result.json`;
+- `issue_register.csv`;
+- `issue_register.md`; and
+- `release_readiness.md`.
+
+The output directory must be outside the audited package. Existing run
+directories are never overwritten. A malformed manifest inside an existing
+package directory is retained as a controlled package result when the output
+location remains usable.
+
 ## Exit codes
 
 | Code | Meaning |
@@ -196,6 +218,19 @@ $LASTEXITCODE
 ```
 
 A candidate that is valid but fails engineering checks normally returns `1`. That is an evaluation result, not necessarily a software defect.
+
+The `audit-package` command uses the accepted package-state exits:
+
+| Code | Package audit meaning |
+|---:|---|
+| `0` | `automatic_pass` |
+| `1` | `automatic_fail` |
+| `2` | `engineering_review_required` |
+| `3` | `missing_authoritative_information` |
+| `4` | `extraction_or_tool_failure` |
+| `5` | `evaluator_uncertainty` |
+| `64` | Invalid command arguments or package/repository path |
+| `70` | Unexpected failure before a complete result can be published |
 
 ## Evaluation path
 

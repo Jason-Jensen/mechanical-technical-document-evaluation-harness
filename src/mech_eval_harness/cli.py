@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from datetime import datetime, timezone
 from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
@@ -33,12 +34,18 @@ from mech_eval_harness.validator import (
     load_json,
     validate_repository,
 )
+from mech_eval_harness.package_assurance.audit import (
+    execute_package_audit,
+    package_state_exit_code,
+)
 
 
 EXIT_PASS = 0
 EXIT_EVALUATION_FAILED = 1
 EXIT_CONFIGURATION_ERROR = 2
 EXIT_INTERNAL_ERROR = 3
+EXIT_AUDIT_USAGE_ERROR = 64
+EXIT_AUDIT_INTERNAL_ERROR = 70
 
 try:
     HARNESS_VERSION = version(
@@ -93,7 +100,115 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
 
+    audit_parser = subparsers.add_parser(
+        "audit-package",
+        help="Run the accepted structured package audit.",
+    )
+    _configure_audit_package_parser(audit_parser)
+
     return parser
+
+
+class _AuditPackageUsageError(ValueError):
+    """Raised instead of exiting for invalid audit-package arguments."""
+
+
+class _AuditPackageParser(argparse.ArgumentParser):
+    def error(self, message: str) -> None:
+        raise _AuditPackageUsageError(message)
+
+
+def _configure_audit_package_parser(
+    parser: argparse.ArgumentParser,
+) -> None:
+    parser.add_argument("repository_root", type=Path)
+    parser.add_argument("package_directory", type=Path)
+    parser.add_argument(
+        "--runs-dir",
+        type=Path,
+        default=None,
+        help=(
+            "Directory for immutable package audit runs. "
+            "Defaults to <repository-root>/runs."
+        ),
+    )
+
+
+def _audit_package_main(argv: list[str]) -> int:
+    parser = _AuditPackageParser(
+        prog="mech-eval audit-package",
+        description="Run and atomically publish one structured package audit.",
+    )
+    _configure_audit_package_parser(parser)
+    try:
+        args = parser.parse_args(argv)
+    except _AuditPackageUsageError as exc:
+        parser.print_usage(sys.stderr)
+        print(f"ERROR [USAGE]: {exc}", file=sys.stderr)
+        return EXIT_AUDIT_USAGE_ERROR
+
+    repository_root = args.repository_root.resolve()
+    package_root = args.package_directory.resolve()
+    runs_dir = (
+        args.runs_dir.resolve()
+        if args.runs_dir is not None
+        else (repository_root / "runs").resolve()
+    )
+    usage_error = _audit_path_usage_error(
+        repository_root=repository_root,
+        package_root=package_root,
+        runs_dir=runs_dir,
+    )
+    if usage_error is not None:
+        print(f"ERROR [USAGE]: {usage_error}", file=sys.stderr)
+        return EXIT_AUDIT_USAGE_ERROR
+
+    try:
+        outcome = execute_package_audit(
+            repository_root=repository_root,
+            package_root=package_root,
+            runs_dir=runs_dir,
+            schema_path=(
+                repository_root / "schemas" / "package_result.schema.json"
+            ),
+        )
+    except Exception as exc:
+        print(f"ERROR [INTERNAL]: {exc}", file=sys.stderr)
+        return EXIT_AUDIT_INTERNAL_ERROR
+
+    result = outcome.result
+    print(f"RUN ID: {result.run_id}")
+    print(f"PACKAGE ID: {result.package_id or 'not established'}")
+    print(f"PACKAGE STATE: {result.package_state}")
+    print(f"RELEASE HOLD: {'true' if result.release_hold else 'false'}")
+    print(f"ISSUE COUNT: {len(result.findings)}")
+    print(f"RESULT PATH: {outcome.publication.result_path}")
+    return package_state_exit_code(result.package_state)
+
+
+def _audit_path_usage_error(
+    *,
+    repository_root: Path,
+    package_root: Path,
+    runs_dir: Path,
+) -> str | None:
+    if not repository_root.is_dir():
+        return f"Repository root is not a directory: {repository_root}"
+    if not package_root.is_dir():
+        return f"Package path is not a directory: {package_root}"
+    if runs_dir.exists() and not runs_dir.is_dir():
+        return f"Runs path is not a directory: {runs_dir}"
+    if _path_is_within(runs_dir, package_root):
+        return "Package audit outputs must be outside the audited package."
+    return None
+
+
+def _path_is_within(path: Path, parent: Path) -> bool:
+    try:
+        path.relative_to(parent)
+    except ValueError:
+        return False
+    return True
 
 
 def _validate(root: Path) -> int:
@@ -428,8 +543,12 @@ def _render_evaluation(
 
 
 def main(argv: list[str] | None = None) -> int:
+    resolved_argv = list(sys.argv[1:] if argv is None else argv)
+    if resolved_argv[:1] == ["audit-package"]:
+        return _audit_package_main(resolved_argv[1:])
+
     parser = build_parser()
-    args = parser.parse_args(argv)
+    args = parser.parse_args(resolved_argv)
 
     try:
         if args.command == "validate":
