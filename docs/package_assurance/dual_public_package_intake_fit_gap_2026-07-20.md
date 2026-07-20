@@ -1,6 +1,6 @@
 # Dual Public-Package Intake and Fit-Gap Assessment
 
-**Status:** Ready for CEO review
+**Status:** Accepted on 2026-07-20; mapping definitions prepared for review
 **Date:** 2026-07-20
 **WBS:** P2.3 dual public-package intake
 **Branch:** `codex/p2.3-dual-public-package-intake`
@@ -192,3 +192,11 @@ Acceptance of this assessment would confirm only that both source intakes are
 complete and that controlled mapping design may begin. It would not approve
 engineering content, license compliance, a source-authority conclusion, an
 audit result, or product accuracy.
+
+## Acceptance Record
+
+The user accepted decision D-096 on 2026-07-20. PR #48 merged the reviewed
+intake and fit-gap evidence at exact `main` commit `99d16b6`. This acceptance
+authorized the two controlled manual mapping definitions and one shared
+transformation-and-assumption log contract. It did not authorize source
+conversion, working-package creation, or audit execution.

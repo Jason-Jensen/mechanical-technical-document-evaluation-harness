@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-20
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-dual-public-package-intake`
+**Current branch:** `codex/p2.3-dual-public-package-mapping-definition`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 dual public-package intake and fit-gap assessment
-- **Status:** Precious Plastic stopped without a download because official access was unavailable. The co-equal NASA/JPL and OpenFlexure intakes are complete: both official archives are preserved, SHA-256 hashed, ZIP-inventoried, and assessed under one protocol. The combined fit-gap and controlled-mapping recommendation await CEO review
+- **Active WBS:** P2.3 dual public-package mapping definition
+- **Status:** The co-equal NASA/JPL and OpenFlexure intake and fit-gap assessment was accepted and merged through PR #48 at exact `main` `99d16b6`. One bounded source-to-audit mapping for each package and one shared transformation-and-assumption log contract are ready for CEO review. No source has been converted and no audit has been run
 - **Implementation state:** Eight ordered gates and seven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Checks 6 and 7 add BOM item/equipment manifest reciprocity and BOM equipment drawing presence under exact `AUTH-BOM-002`; checks 8-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -256,11 +256,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review `docs/package_assurance/dual_public_package_intake_fit_gap_2026-07-20.md`.
-The recommended next gate is one controlled manual mapping-definition block for
-both packages. Do not transform source files, create working audit packages,
-run either audit, implement check 8, change authority-gap decisions,
-execute held-out semantics, change protected assets, or add deferred
+Review the NASA/JPL and OpenFlexure mapping definitions plus the shared
+transformation-and-assumption log contract. The recommended next gate is
+controlled local working-copy preparation for both packages with populated
+logs, followed by another review before either audit runs. Do not transform
+source files before mapping acceptance, implement check 8, change authority-gap
+decisions, execute held-out semantics, change protected assets, or add deferred
 multimodal/platform capabilities.
 
 Reusable lessons, prevention actions, and proof are controlled in
