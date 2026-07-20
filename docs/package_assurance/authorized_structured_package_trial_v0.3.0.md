@@ -1,6 +1,6 @@
 # Authorized Structured-Package Trial - Decision Gate
 
-**Status:** Awaiting CEO package selection and data authorization
+**Status:** Awaiting CEO selection from the public-package shortlist
 **WBS:** P2.3 practical-use trial gate
 **Product baseline:** PR #45 integrated at exact `main` commit `273c36a`
 **Scope:** One development-only, structured mechanical package
@@ -128,3 +128,15 @@ To authorize the trial, provide:
 3. confirmation that sensitive material has been removed, or instructions for
    what must remain outside Git and outside retained evidence; and
 4. the person who can judge whether findings are useful and factually grounded.
+
+## Public-Package Research
+
+The CEO reported that no private package is available and authorized public
+package research. The reviewed shortlist is recorded in
+`public_trial_package_shortlist_2026-07-20.md`. Precious Plastic Shredder Basic
+3.3 is recommended because its CAD, DXF, blueprint, schematic, BOM, and manual
+content most closely resembles the intended fabrication-package workflow.
+
+No candidate files have been downloaded. Selection authorizes only source
+verification, local Git-ignored intake, hashing, inventory, and a fit-and-gap
+report before transformation.

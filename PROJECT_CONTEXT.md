@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 authorized structured-package trial decision
-- **Status:** Check 7 is integrated through PR #45 at exact `main` `273c36a`; the project is paused for CEO package selection and data authorization
+- **Active WBS:** P2.3 public trial package selection
+- **Status:** The trial charter is integrated through PR #46 at exact `main` `361cc77`; three public candidates are researched and the project is paused for CEO selection
 - **Implementation state:** Eight ordered gates and seven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Checks 6 and 7 add BOM item/equipment manifest reciprocity and BOM equipment drawing presence under exact `AUTH-BOM-002`; checks 8-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -256,13 +256,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Wait for the CEO to identify one public, synthetic, self-authored, or explicitly
-authorized sanitized package and confirm the privacy, retention, and reviewer
-boundary in
-`docs/package_assurance/authorized_structured_package_trial_v0.3.0.md`. Do not
-begin package intake, check 8, change authority-gap decisions, execute held-out
-semantics, change protected assets, or add deferred multimodal/platform
-capabilities.
+Wait for the CEO to choose a candidate from
+`docs/package_assurance/public_trial_package_shortlist_2026-07-20.md`.
+Precious Plastic Shredder Basic 3.3 is recommended. Do not download or transform
+candidate files, begin package intake, implement check 8, change authority-gap
+decisions, execute held-out semantics, change protected assets, or add deferred
+multimodal/platform capabilities before selection.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** The relationship-expansion definition is accepted through PR #41; checks 6 and 7 are integrated through PRs #42 and #45; exact `main` is `273c36a`. Six authority/source gaps and checks 8-11 remain unimplemented.
+- **P2.3:** Checks 6 and 7 are integrated; the authorized trial charter is integrated through PR #46 at exact `main` `361cc77`; three public candidates are researched. Six authority/source gaps and checks 8-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Stop until the CEO identifies one public, synthetic, self-authored, or explicitly authorized sanitized package for the development-only structured trial and confirms the data boundary. Do not begin package intake, check 8, held-out semantics, authority-gap implementation, or deferred capabilities.
+Stop until the CEO chooses one researched public candidate. Recommend Precious Plastic Shredder Basic 3.3. Do not download package files, begin intake, implement check 8, execute held-out semantics, change authority policy, or add deferred capabilities before that selection.
 
 ## Active Work Block
 
-- **WBS:** P2.3 authorized structured-package trial decision
-- **Branch:** `codex/p2.3-real-package-structured-trial`
-- **Objective:** Select one permitted package and freeze the privacy, preparation, review, and learning boundaries for the first practical-use trial.
-- **Definition of done:** The CEO identifies the package, confirms authorized use and sanitization/retention boundaries, and names a qualified reviewer. No package content is touched before that decision.
+- **WBS:** P2.3 public trial package selection
+- **Branch:** `codex/p2.3-public-trial-package-shortlist`
+- **Objective:** Compare three public packages and recommend the best first practical-use trial input.
+- **Definition of done:** Source-backed shortlist records package fit, preparation burden, provenance, licensing, and limitations; CEO selects one candidate before download.
 
-Next action: CEO package-selection review. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: CEO chooses Precious Plastic Shredder Basic 3.3, NASA/JPL Open Source Rover v4.0.0, or OpenFlexure Microscope v7.0.0-beta5. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
