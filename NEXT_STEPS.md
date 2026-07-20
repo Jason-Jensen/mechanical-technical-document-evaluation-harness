@@ -14,22 +14,23 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **First usable audit definition:** Accepted and integrated through PR #36 at `5b32b6d`.
 - **P2.4:** Accepted and integrated through PR #39 at exact `main` commit `cd9b52e`.
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
-- **P3.2:** Implementation `7536bea` is verified and ready for review. Acceptance and integration remain required.
+- **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
+- **P3.3:** Authorized next only for atomic report publication and the accepted `audit-package` CLI workflow.
 - **P2.3 and later:** Broad relationship expansion remains blocked until the first runnable audit through P3.3 is accepted.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Review only the bounded P3.2 implementation and its evidence. Do not begin report publishing, P3.3 CLI integration, P2.3 expansion, held-out semantics, or deferred capabilities before P3.2 acceptance and integration.
+Implement only the bounded P3.3 report-publication and `audit-package` CLI workflow from the accepted result and report views. Do not expand P2.3, execute held-out semantics, or add deferred capabilities.
 
 ## Active Work Block
 
-- **WBS:** P3.2 release-readiness summary
-- **Branch:** `codex/p3.2-release-readiness-summary` after this P3.1 closeout
-- **Objective:** Review and integrate one concise Markdown summary of the accepted immutable package result for qualified human review.
-- **Definition of done:** The view reports package/run identity, stored package state and hold, blocking states, stored gate/check counts, finding counts by state, known output names, the exact limitation, and the required qualified-human decision; it does not approve release, compliance, or engineering correctness; malformed input fails closed; focused/full tests, validation, Ruff, coverage, and control evidence pass.
+- **WBS:** P3.3 audit-package CLI workflow
+- **Branch:** `codex/p3.3-audit-package-cli` after this P3.2 closeout
+- **Objective:** Provide one deterministic command that runs the accepted package audit and publishes its immutable result and accepted report views.
+- **Definition of done:** `mech-eval audit-package` validates arguments, executes the accepted gates/checks/result pipeline, immutably publishes `package_result.json`, both issue registers, and the readiness summary, returns accepted package-state exits `0`-`5`, usage exit `64`, and pre-result internal exit `70`, preserves controlled failures, leaves existing v0.2 commands unchanged, and passes focused/full tests, validation, Ruff, coverage, and inspected clean/fault evidence.
 
-Next action: review implementation `7536bea`, its focused/full verification, and the inspected revision-conflict summary. P3.3 CLI, report publishing, P2.3 expansion, and deferred capabilities remain blocked.
+Next action: implement only the bounded P3.3 workflow from the accepted first-usable-audit definition. P2.3 expansion, semantic held-out execution, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 

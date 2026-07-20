@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-19
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.2-reciprocity-integration-closeout`
+**Current branch:** `codex/p3.2-release-readiness-integration-closeout`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.4 minimum package-result core
-- **Status:** The first-usable-audit definition and fifth P2.2 reciprocity check are accepted and integrated through PRs #36-#37 at exact `main` commit `5571d2a`
-- **Implementation state:** Eight ordered gates and five ordered drawing checks are integrated. The next authorized block is required-result completeness, canonical final findings, package-state precedence, `package_result.json` schema/model, and immutable persistence. Reports, CLI integration, semantic held-out evaluation, broad P2.3 relationships, and deferred platform capabilities remain unimplemented
+- **Active WBS:** P3.3 atomic report publication and `audit-package` CLI
+- **Status:** P3.2 is accepted and integrated at exact `main` commit `4b848b9`; the first-usable-audit result and report views are complete
+- **Implementation state:** Eight ordered gates and five ordered drawing checks feed the accepted canonical package result, deterministic issue-register views, and non-approving release-readiness view. P3.3 is authorized only to publish those artifacts atomically and expose the accepted pipeline through one bounded CLI command. Semantic held-out evaluation, broad P2.3 relationships, and deferred platform capabilities remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -144,8 +144,17 @@ or add CLI behavior. Verification passes 36 focused package-result/report
 tests, 258 full-suite tests with one expected Windows symlink skip, repository
 validation 5/5, Ruff, and 86.75% coverage. An inspected drawing-revision fault
 summary matches the immutable result and contains no absolute machine path or
-approval claim. P3.2 acceptance and integration remain required; P3.3, broad
-P2.3, semantic held-out execution, and deferred capabilities remain blocked.
+approval claim. That review evidence was the basis for the acceptance and
+integration recorded below.
+
+The user accepted P3.2 and authorized continuation on 2026-07-19. The exact
+reviewed branch was fast-forwarded to `main` at `4b848b9`. Verification on that
+exact merged tree passes 36 focused package-result/report tests, 258 full-suite
+tests with one expected Windows symlink skip, repository validation 5/5, Ruff,
+and 86.75% coverage. P3.2 is closed. P3.3 is authorized next only for atomic
+publication of the accepted result/report artifacts and the bounded
+`audit-package` CLI with accepted exits. Broad P2.3, semantic held-out
+execution, protected changes, and deferred capabilities remain blocked.
 
 ## Intended Outcome
 
@@ -185,12 +194,13 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Implement only the accepted P2.4 minimum result core on a separate branch:
-required-result completeness, canonical final findings, deterministic state
-precedence, package-result model/schema, and immutable persistence. Do not add
-issue-register or release-summary views, CLI integration, P2.3 expansion,
-semantic held-out execution, or deferred multimodal/platform capabilities in
-that block.
+Implement only the accepted P3.3 workflow on `codex/p3.3-audit-package-cli`:
+atomic immutable publication of `package_result.json`, `issue_register.csv`,
+`issue_register.md`, and `release_readiness.md`; one `audit-package` command;
+accepted stable exit behavior; and preservation of controlled failures and
+existing v0.2 commands. Do not expand P2.3, execute held-out semantics, alter
+protected assets, or add deferred multimodal/platform capabilities in this
+block.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

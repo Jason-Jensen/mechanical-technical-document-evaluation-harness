@@ -3,8 +3,8 @@
 ## Control Status
 
 - **WBS:** Cross-WBS definition for the remaining P2.2, P2.4, and P3 pilot work
-- **Status:** Accepted 2026-07-19; P2.2, P2.4, and P3.1 are integrated; P3.2
-  implementation `7536bea` is ready for review
+- **Status:** Accepted 2026-07-19; P2.2, P2.4, P3.1, and P3.2 are integrated;
+  P3.3 audit-package CLI is the next authorized block
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
 - **P2.2 implementation:** accepted commit `4f06352`; integrated through PR
@@ -13,8 +13,8 @@
   #39 at exact `main` commit `cd9b52e`
 - **P3.1 implementation:** accepted commit `2f93335`; integrated with review
   evidence at exact `main` commit `8f66b12`
-- **P3.2 implementation:** commit `7536bea`; focused and full verification
-  passed; acceptance and integration remain required
+- **P3.2 implementation:** accepted commit `7536bea`; integrated with review
+  evidence at exact `main` commit `4b848b9`
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
 - **Protected assets changed:** None
 
@@ -555,7 +555,18 @@ drawing-revision conflict preserves the immutable result's 8 passed gates,
 4 passed and 1 failed relationship checks, `automatic_fail` state, release
 hold, one `automatic_fail` finding, and package-result link. The Markdown has
 no absolute machine path or release, compliance, or engineering-correctness
-approval. P3.2 acceptance and integration remain required before P3.3 begins.
+approval. P3.2 acceptance and integration were required before P3.3 could
+begin and are recorded below.
+
+The user accepted P3.2 and authorized continuation on 2026-07-19. The reviewed
+branch was fast-forwarded to exact `main` commit `4b848b9`. Exact-main
+verification preserves 36 focused package-result/report passes, 258 full-suite
+passes with one expected Windows symlink skip, repository validation 5/5,
+Ruff, and 86.75% coverage. P3.3 is authorized next only for atomic publication
+of the already accepted result and report views plus the bounded
+`audit-package` CLI and accepted exit behavior. Broad P2.3, semantic held-out
+execution, protected changes, and deferred capabilities remain separately
+gated.
 
 ## Definition of Done
 
