@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** Checks 6 and 7 are integrated. The package mappings were accepted and merged through PR #49 at exact `main` `53e19ad`. Both public packages and populated transformation logs are now prepared in separate Git-ignored roots and independently verified without an audit run. Six authority/source gaps and checks 8-11 remain unimplemented.
+- **P2.3:** Checks 6 and 7 are integrated. D-098 was accepted and PR #50 merged the preparation review at exact `main` `7009fe2`. The first NASA/JPL audit stopped before publication with internal exit `70` because blank optional BOM references produced schema-invalid affected identifiers. OpenFlexure was not audited. Six authority/source gaps and checks 8-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Review Gate
 
-The two prepared public-package trees and populated logs are ready for CEO review. Source hashes, all copied artifacts, BOM transformations, required relationships, log coverage, empty controlled sources, and the absence of audit outputs were independently verified. Both packages still predict honest missing-authority holds.
+The failed NASA/JPL execution and cross-package root-cause review are ready for CEO review. The strict result schema correctly blocked malformed evaluator findings, no outputs were published, both package trees remain unchanged, and the same defect was confirmed diagnostically before OpenFlexure execution.
 
 ## Active Work Block
 
-- **WBS:** P2.3 dual public-package preparation review
-- **Branch:** `codex/p2.3-dual-public-package-preparation`
-- **Objective:** Review the exact prepared NASA/JPL and OpenFlexure package trees and their populated transformation logs before real audit execution.
-- **Definition of done:** Source and package hashes, structured mappings, explicit missing authority, traceability coverage, and audit absence are independently verified and presented for a controlled execution decision.
+- **WBS:** P2.3 public-package audit failure review
+- **Branch:** `codex/p2.3-dual-public-package-audit-execution`
+- **Objective:** Preserve and explain the first real-package execution failure, prove whether it is package-specific, and define the smallest safe stabilization before any rerun.
+- **Definition of done:** Failure evidence, cross-package diagnosis, root cause, rejected workarounds, exact stabilization acceptance criteria, and the next decision are reviewed; neither public package is changed or rerun.
 
-Next action: review `docs/package_assurance/dual_public_package_preparation_review_2026-07-20.md`. Recommended D-098 accepts the two exact prepared trees and authorizes one controlled audit run per package, with no evaluator or package changes in the same execution block. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/dual_public_package_audit_failure_review_2026-07-20.md`. Recommended D-099 accepts the failure as valid learning evidence and authorizes a narrow identifier/result-contract stabilization with synthetic end-to-end regression proof. Public-package reruns, semantic held-out execution, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
