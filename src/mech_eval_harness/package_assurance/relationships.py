@@ -1,4 +1,4 @@
-"""Deterministic P2.2 cross-document relationship checks."""
+"""Deterministic package-assurance cross-document relationship checks."""
 
 from __future__ import annotations
 
@@ -39,6 +39,9 @@ DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID = (
 DRAWING_REGISTER_MANIFEST_FILE_RECIPROCITY_CHECK_ID = (
     "drawing_register_manifest_file_reciprocity"
 )
+BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID = (
+    "bom_item_equipment_manifest_reciprocity"
+)
 DRAWING_REVISION_MISMATCH_CODE = "DRAWING_REVISION_MISMATCH"
 DRAWING_METADATA_MISSING_CODE = "DRAWING_METADATA_MISSING"
 DRAWING_REGISTER_AUTHORITY_MISSING_CODE = (
@@ -48,8 +51,12 @@ DRAWING_FILE_REFERENCE_MISMATCH_CODE = "DRAWING_FILE_REFERENCE_MISMATCH"
 DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED_CODE = (
     "DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED"
 )
+BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED_CODE = (
+    "BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED"
+)
 DRAWING_REVISION_AUTHORITY_RULE_ID = "AUTH-DWG-001"
 DRAWING_FILE_REFERENCE_AUTHORITY_RULE_ID = "AUTH-DWG-002"
+BOM_EQUIPMENT_AUTHORITY_RULE_ID = "AUTH-BOM-002"
 
 RELATIONSHIP_CHECK_ORDER = (
     DRAWING_REGISTER_METADATA_REVISION_CHECK_ID,
@@ -57,6 +64,7 @@ RELATIONSHIP_CHECK_ORDER = (
     DRAWING_METADATA_REGISTER_AUTHORITY_CHECK_ID,
     DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
     DRAWING_REGISTER_MANIFEST_FILE_RECIPROCITY_CHECK_ID,
+    BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
 )
 
 
@@ -93,19 +101,27 @@ def run_package_relationships(
         gate_evaluation.sources
     )
     if authority_rule is None:
+        drawing_checks = tuple(
+            _skipped_check(
+                check_id=check_id,
+                blocked_by=(AUTHORITY_GATE_ID,),
+                summary=(
+                    "Skipped because the accepted AUTH-DWG-001 drawing "
+                    "revision authority rule is unavailable."
+                ),
+            )
+            for check_id in RELATIONSHIP_CHECK_ORDER[:5]
+        )
+        bom_reciprocity_check = (
+            _evaluate_bom_item_equipment_manifest_reciprocity(
+                package_id=gate_evaluation.package_id,
+                sources=gate_evaluation.sources,
+                manifest=gate_evaluation.manifest,
+            )
+        )
         return PackageRelationshipEvaluation(
             package_id=gate_evaluation.package_id,
-            checks=tuple(
-                _skipped_check(
-                    check_id=check_id,
-                    blocked_by=(AUTHORITY_GATE_ID,),
-                    summary=(
-                        "Skipped because the accepted AUTH-DWG-001 drawing "
-                        "revision authority rule is unavailable."
-                    ),
-                )
-                for check_id in RELATIONSHIP_CHECK_ORDER
-            ),
+            checks=(*drawing_checks, bom_reciprocity_check),
         )
 
     revision_check = _drawing_register_metadata_revision_check(
@@ -169,6 +185,14 @@ def run_package_relationships(
                 manifest=gate_evaluation.manifest,
             )
         )
+    bom_reciprocity_check = (
+        _evaluate_bom_item_equipment_manifest_reciprocity(
+            package_id=gate_evaluation.package_id,
+            sources=gate_evaluation.sources,
+            manifest=gate_evaluation.manifest,
+        )
+    )
+
     return PackageRelationshipEvaluation(
         package_id=gate_evaluation.package_id,
         checks=(
@@ -177,6 +201,7 @@ def run_package_relationships(
             authority_check,
             file_reference_check,
             reciprocity_check,
+            bom_reciprocity_check,
         ),
     )
 
@@ -254,6 +279,77 @@ def _drawing_file_reference_authority_rule(
         ):
             return rule
     return None
+
+
+def _bom_equipment_authority_rule(
+    sources: LoadedStructuredSources,
+) -> Mapping[str, Any] | None:
+    authority_map = sources.documents.get("authority_map")
+    if not isinstance(authority_map, Mapping):
+        return None
+    rules = authority_map.get("rules")
+    if not isinstance(rules, list):
+        return None
+    for rule in rules:
+        if not isinstance(rule, Mapping):
+            continue
+        if rule.get("rule_id") != BOM_EQUIPMENT_AUTHORITY_RULE_ID:
+            continue
+        if (
+            rule.get("field") == "bom.equipment_tag"
+            and rule.get("authoritative_source")
+            == "bom_or_equipment_list"
+            and rule.get("secondary_sources")
+            == ["datasheet_spec_metadata", "drawing_metadata"]
+            and rule.get("agreement_rule")
+            == (
+                "equipment tag relationships must resolve to one canonical "
+                "equipment scope unless duplicate policy applies"
+            )
+            and rule.get("normalization_profile")
+            == "canonical_identifier_v1"
+            and rule.get("duplicate_policy") == "equipment_tag"
+            and rule.get("required_for_release") is True
+            and rule.get("on_missing_authority")
+            == "missing_authoritative_information"
+            and rule.get("on_missing_value") == "automatic_fail"
+            and rule.get("on_conflict") == "automatic_fail"
+            and rule.get("release_hold_on_conflict") is True
+            and rule.get("review_owner") == "mechanical_engineering"
+        ):
+            return rule
+    return None
+
+
+def _evaluate_bom_item_equipment_manifest_reciprocity(
+    *,
+    package_id: str,
+    sources: LoadedStructuredSources,
+    manifest: LoadedPackageManifest | None,
+) -> RelationshipCheckResult:
+    if _bom_equipment_authority_rule(sources) is None:
+        return _skipped_check(
+            check_id=BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
+            blocked_by=(AUTHORITY_GATE_ID,),
+            summary=(
+                "Skipped because the accepted AUTH-BOM-002 equipment-tag "
+                "authority rule is unavailable."
+            ),
+        )
+    if manifest is None:
+        return _skipped_check(
+            check_id=BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
+            blocked_by=("package_gate_evaluation",),
+            summary=(
+                "Skipped because the accepted loaded package manifest is "
+                "unavailable."
+            ),
+        )
+    return _bom_item_equipment_manifest_reciprocity_check(
+        package_id=package_id,
+        sources=sources,
+        manifest=manifest,
+    )
 
 
 def _drawing_register_metadata_revision_check(
@@ -697,6 +793,100 @@ def _drawing_register_manifest_file_reciprocity_check(
     )
 
 
+def _bom_item_equipment_manifest_reciprocity_check(
+    *,
+    package_id: str,
+    sources: LoadedStructuredSources,
+    manifest: LoadedPackageManifest,
+) -> RelationshipCheckResult:
+    bom_by_item = {
+        _normalize_identifier(record.values["item_id"]): record
+        for record in sources.records_of_type("equipment_item")
+        if record.values["required_for_release"] is True
+    }
+    mappings_by_item = _required_item_equipment_mappings(manifest)
+    item_ids = sorted(bom_by_item.keys() | mappings_by_item.keys())
+
+    findings: list[RelationshipFinding] = []
+    evidence: list[EvidenceLocator] = []
+    for item_id in item_ids:
+        bom_record = bom_by_item.get(item_id)
+        mappings = mappings_by_item.get(item_id, ())
+        expected_value: Any
+        if bom_record is None:
+            expected_value = "authoritative release-required BOM item"
+        else:
+            expected_value = {
+                "item_id": item_id,
+                "equipment_tag": _normalize_identifier(
+                    bom_record.values["equipment_tag"]
+                ),
+                "required_for_release": True,
+            }
+
+        normalized_mappings = tuple(
+            _normalized_item_equipment_mapping(item) for item in mappings
+        )
+        if not normalized_mappings:
+            actual_value: Any = "missing"
+        elif len(normalized_mappings) == 1:
+            actual_value = normalized_mappings[0]
+        else:
+            actual_value = list(normalized_mappings)
+
+        item_evidence = _bom_item_equipment_reciprocity_evidence(
+            manifest=manifest,
+            item_id=item_id,
+            bom_record=bom_record,
+            mappings=mappings,
+            expected_value=expected_value,
+        )
+        evidence.extend(item_evidence)
+
+        reciprocal = (
+            bom_record is not None
+            and len(normalized_mappings) == 1
+            and normalized_mappings[0] == expected_value
+        )
+        if reciprocal:
+            continue
+
+        findings.append(
+            _bom_item_equipment_reciprocity_finding(
+                package_id=package_id,
+                item_id=item_id,
+                expected_value=expected_value,
+                actual_value=actual_value,
+                evidence=item_evidence,
+            )
+        )
+
+    if findings:
+        return RelationshipCheckResult(
+            check_id=BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
+            check_version=RELATIONSHIP_CHECK_VERSION,
+            status="failed",
+            summary=(
+                f"Checked {len(item_ids)} authoritative or declared BOM "
+                f"item(s) and found {len(findings)} non-reciprocal "
+                "item/equipment mapping(s)."
+            ),
+            findings=tuple(findings),
+            evidence=tuple(evidence),
+        )
+
+    return RelationshipCheckResult(
+        check_id=BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
+        check_version=RELATIONSHIP_CHECK_VERSION,
+        status="passed",
+        summary=(
+            f"All {len(item_ids)} release-required BOM item(s) have one "
+            "reciprocal manifest item/equipment mapping."
+        ),
+        evidence=tuple(evidence),
+    )
+
+
 def _records_by_drawing_number(
     records: tuple[StructuredSourceRecord, ...],
 ) -> dict[str, StructuredSourceRecord]:
@@ -708,7 +898,7 @@ def _records_by_drawing_number(
 
 def _normalize_identifier(value: Any) -> str:
     if not isinstance(value, str):
-        raise TypeError("P2.1 accepted drawing identifiers must be strings")
+        raise TypeError("P2.1 accepted identifiers must be strings")
     return value.strip()
 
 
@@ -887,6 +1077,36 @@ def _required_document_file_mappings(
     )
 
 
+def _required_item_equipment_mappings(
+    manifest: LoadedPackageManifest,
+) -> dict[str, tuple[tuple[int, Mapping[str, Any]], ...]]:
+    relationships = manifest.manifest.get("relationship_declarations")
+    if not isinstance(relationships, list):
+        return {}
+
+    grouped: dict[str, list[tuple[int, Mapping[str, Any]]]] = {}
+    for index, item in enumerate(relationships):
+        if (
+            not isinstance(item, Mapping)
+            or item.get("relationship_type") != "item_to_equipment"
+            or item.get("required_for_release") is not True
+            or not isinstance(item.get("source"), Mapping)
+            or item["source"].get("identifier_type") != "item_id"
+            or not isinstance(item["source"].get("identifier"), str)
+            or not isinstance(item.get("target"), Mapping)
+            or item["target"].get("identifier_type") != "equipment_tag"
+            or not isinstance(item["target"].get("identifier"), str)
+        ):
+            continue
+        item_id = _normalize_identifier(item["source"]["identifier"])
+        grouped.setdefault(item_id, []).append((index, item))
+
+    return {
+        item_id: tuple(sorted(items, key=_relationship_id))
+        for item_id, items in grouped.items()
+    }
+
+
 def _relationship_id(item: tuple[int, Mapping[str, Any]]) -> str:
     return str(item[1].get("relationship_id", ""))
 
@@ -903,6 +1123,66 @@ def _normalized_document_file_mapping(
         "file_ref_id": target.get("identifier"),
         "required_for_release": relationship.get("required_for_release"),
     }
+
+
+def _normalized_item_equipment_mapping(
+    item: tuple[int, Mapping[str, Any]],
+) -> dict[str, Any]:
+    relationship = item[1]
+    source = relationship["source"]
+    target = relationship["target"]
+    return {
+        "item_id": _normalize_identifier(source.get("identifier")),
+        "equipment_tag": _normalize_identifier(target.get("identifier")),
+        "required_for_release": relationship.get("required_for_release"),
+    }
+
+
+def _bom_item_equipment_reciprocity_evidence(
+    *,
+    manifest: LoadedPackageManifest,
+    item_id: str,
+    bom_record: StructuredSourceRecord | None,
+    mappings: tuple[tuple[int, Mapping[str, Any]], ...],
+    expected_value: Any,
+) -> tuple[EvidenceLocator, ...]:
+    locators: list[EvidenceLocator] = []
+    if bom_record is not None:
+        locators.extend(
+            (
+                bom_record.field_locator(
+                    "item_id",
+                    normalized_value=item_id,
+                ),
+                bom_record.field_locator(
+                    "equipment_tag",
+                    normalized_value=expected_value["equipment_tag"],
+                ),
+            )
+        )
+
+    if mappings:
+        locators.extend(
+            _manifest_item_locator(
+                "relationship_declarations",
+                item,
+                normalized_value=_normalized_item_equipment_mapping(item),
+            )
+            for item in mappings
+        )
+    else:
+        locators.append(
+            _manifest_collection_search_locator(
+                manifest,
+                "relationship_declarations",
+                expected_value={
+                    "relationship_type": "item_to_equipment",
+                    "item_id": item_id,
+                    "required_for_release": True,
+                },
+            )
+        )
+    return tuple(locators)
 
 
 def _drawing_manifest_reciprocity_evidence(
@@ -1284,6 +1564,58 @@ def _drawing_manifest_reciprocity_finding(
         expected_value=dict(expected_value),
         actual_value=dict(actual_value),
         review_owner="document_control",
+        evidence=evidence,
+    )
+
+
+def _bom_item_equipment_reciprocity_finding(
+    *,
+    package_id: str,
+    item_id: str,
+    expected_value: Any,
+    actual_value: Any,
+    evidence: tuple[EvidenceLocator, ...],
+) -> RelationshipFinding:
+    result_state = "automatic_fail"
+    semantic = {
+        "package_id": package_id,
+        "check_id": BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
+        "check_version": RELATIONSHIP_CHECK_VERSION,
+        "code": BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED_CODE,
+        "authority_rule_id": BOM_EQUIPMENT_AUTHORITY_RULE_ID,
+        "item_id": item_id,
+        "result_state": result_state,
+        "severity": "high",
+        "release_hold": True,
+        "expected_value": expected_value,
+        "actual_value": actual_value,
+    }
+    digest = hashlib.sha256(
+        json.dumps(
+            semantic,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+        ).encode("ascii")
+    ).hexdigest()[:16]
+    return RelationshipFinding(
+        finding_id=f"FND-{digest.upper()}",
+        check_id=BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
+        check_version=RELATIONSHIP_CHECK_VERSION,
+        package_id=package_id,
+        code=BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED_CODE,
+        result_state=result_state,
+        severity="high",
+        release_hold=True,
+        authority_rule_id=BOM_EQUIPMENT_AUTHORITY_RULE_ID,
+        message=(
+            f"BOM item {item_id} is not reciprocal with the package manifest "
+            "item-to-equipment declarations."
+        ),
+        affected_identifiers=(item_id,),
+        expected_value=expected_value,
+        actual_value=actual_value,
+        review_owner="mechanical_engineering",
         evidence=evidence,
     )
 

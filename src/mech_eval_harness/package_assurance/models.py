@@ -392,7 +392,7 @@ class RelationshipCheckResult:
 
 @dataclass(frozen=True)
 class PackageRelationshipEvaluation:
-    """P2.2 relationship results without package-state routing."""
+    """Ordered relationship results without package-state routing."""
 
     package_id: str | None
     checks: tuple[RelationshipCheckResult, ...]

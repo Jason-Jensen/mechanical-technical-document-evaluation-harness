@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 check 6 implementation
-- **Status:** The P2.3 definition is accepted and integrated through PR #41 at exact `main` commit `a855d99`; only `bom_item_equipment_manifest_reciprocity` is authorized next
-- **Implementation state:** Eight ordered gates and five ordered drawing checks feed the accepted canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. P2.3 check 6 will append one BOM item/equipment manifest reciprocity check; checks 7-11 and all six authority-gap claims remain unimplemented
+- **Active WBS:** P2.3 check 6 implementation review
+- **Status:** The P2.3 definition is accepted and integrated through PR #41; check 6 implementation `c1dcc4a` is complete on `codex/p2.3-bom-item-equipment-reciprocity` and ready for explicit review
+- **Implementation state:** Eight ordered gates and six ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Check 6 reconciles release-required BOM item/equipment mappings with manifest declarations under exact `AUTH-BOM-002`; checks 7-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -199,6 +199,25 @@ accepted drawing checks with zero findings. The new checks therefore close
 real gaps rather than duplicating current behavior. Only ignored scratch copies
 were mutated.
 
+Check 6 implementation `c1dcc4a` appends
+`bom_item_equipment_manifest_reciprocity` without changing the eight gates or
+five accepted drawing checks. It evaluates release-required BOM rows and
+required manifest declarations in stable item order, requires every
+behavior-critical field of exact `AUTH-BOM-002`, emits one high-severity
+automatic-fail release hold per affected item, and remains independent of an
+unrelated drawing-authority rule. Missing, extra, wrong, and multiple
+declarations are covered without changing accepted fixtures or schemas.
+
+Verification passes 31 relationship tests, 75 focused relationship/result/
+report/CLI tests, 278 full-suite tests with one expected Windows symlink skip,
+repository validation 5/5, Ruff, and 87.02% coverage. Inspected clean evidence
+has 8/8 gates, 6/6 checks, no findings, state `automatic_pass`, hold false, and
+exit 0. The isolated valid-but-wrong target has 8/8 gates, 5/6 checks, exactly
+one `BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED` under `AUTH-BOM-002`, state
+`automatic_fail`, hold true, and exit 1. Both runs contain exactly four outputs
+and no absolute local path. The implementation is not integrated pending
+explicit user acceptance.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -237,12 +256,11 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Implement only check 6, `bom_item_equipment_manifest_reciprocity`, under exact
-`AUTH-BOM-002` on `codex/p2.3-bom-item-equipment-reciprocity`. Prove the clean
-case and isolated wrong-but-valid manifest-target fault through the accepted
-result, report, publication, and CLI path. Do not implement checks 7-11,
-authority-gap claims, held-out semantics, protected-asset changes, or deferred
-multimodal/platform capabilities.
+Review check 6 implementation `c1dcc4a`, its tests, and the generated clean and
+wrong-target outputs under `scratch/p23-check6-review-evidence`. Do not merge
+the implementation, begin checks 7-11, alter authority-gap decisions, execute
+held-out semantics, change protected assets, or add deferred multimodal/
+platform capabilities before explicit acceptance.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
