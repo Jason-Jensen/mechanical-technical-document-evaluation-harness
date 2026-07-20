@@ -6,6 +6,8 @@ from typing import Any
 
 from mech_eval_harness.package_assurance import (
     BOM_EQUIPMENT_AUTHORITY_RULE_ID,
+    BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+    BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING_CODE,
     BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
     BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED_CODE,
     DRAWING_REVISION_AUTHORITY_RULE_ID,
@@ -18,6 +20,8 @@ from tests.package_relationship_support import (
     _evaluate_gates,
     _load_json,
     _mutate_manifest,
+    _rewrite_csv,
+    _set_metadata_equipment_tags,
     _write_json,
 )
 
@@ -122,7 +126,7 @@ def test_wrong_valid_bom_manifest_target_emits_one_frozen_hold(
     gates = _evaluate_gates(package_root)
     first = run_package_relationships(gates)
     second = run_package_relationships(gates)
-    check = first.checks[-1]
+    check = first.checks[-2]
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert all(result.status == "passed" for result in first.checks[:5])
@@ -225,7 +229,7 @@ def test_bom_reciprocity_requires_exact_accepted_authority_rule(
 
     gates = _evaluate_gates(package_root)
     evaluation = run_package_relationships(gates)
-    check = evaluation.checks[-1]
+    check = evaluation.checks[-2]
 
     assert gates.dependent_checks_allowed is True
     assert all(result.status == "passed" for result in evaluation.checks[:5])
@@ -255,7 +259,7 @@ def test_bom_reciprocity_does_not_depend_on_drawing_authority_rule(
 
     assert gates.dependent_checks_allowed is True
     assert all(result.status == "skipped" for result in evaluation.checks[:5])
-    assert evaluation.checks[-1].status == "passed"
+    assert all(result.status == "passed" for result in evaluation.checks[-2:])
 
 
 def test_multiple_bom_manifest_mappings_emit_one_stable_item_finding(
@@ -300,3 +304,158 @@ def test_multiple_bom_manifest_mappings_emit_one_stable_item_finding(
         for mapping in first.findings[0].actual_value
     ] == ["P-101A", "M-101A"]
     assert first.to_dict() == second.to_dict()
+
+
+def test_clean_bom_equipment_drawing_presence_passes_with_exact_evidence(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    gates = _evaluate_gates(package_root)
+
+    first = _check(gates, BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID)
+    second = _check(gates, BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID)
+
+    assert all(gate.status == "passed" for gate in gates.gates)
+    assert first.status == "passed"
+    assert first.findings == ()
+    assert first.blocked_by == ()
+    assert len(first.evidence) == 4
+    assert first.to_dict() == second.to_dict()
+    assert first.evidence[0].column_name == "equipment_tag"
+    assert first.evidence[0].row_key_value == "ITEM-MOTOR-001"
+    assert first.evidence[1].json_pointer == "/records"
+    assert first.evidence[1].property_name == "equipment_tags"
+    assert first.evidence[1].normalized_value == {
+        "equipment_tag": "M-101A",
+        "matching_record_ids": ["DWMETA-001"],
+        "searched_record_count": 2,
+    }
+    serialized = json.dumps(first.to_dict(), sort_keys=True)
+    assert str(package_root.resolve()) not in serialized
+
+
+def test_missing_bom_equipment_drawing_reference_emits_frozen_hold(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    _set_metadata_equipment_tags(
+        package_root,
+        {"DWMETA-001": ["P-101A"]},
+    )
+    gates = _evaluate_gates(package_root)
+
+    first = run_package_relationships(gates)
+    second = run_package_relationships(gates)
+    check = first.checks[-1]
+
+    assert all(gate.status == "passed" for gate in gates.gates)
+    assert all(result.status == "passed" for result in first.checks[:6])
+    assert check.check_id == BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID
+    assert check.status == "failed"
+    assert len(check.findings) == 1
+    assert first.to_dict() == second.to_dict()
+
+    finding = check.findings[0]
+    assert finding.code == BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING_CODE
+    assert finding.result_state == "automatic_fail"
+    assert finding.severity == "high"
+    assert finding.release_hold is True
+    assert finding.authority_rule_id == BOM_EQUIPMENT_AUTHORITY_RULE_ID
+    assert finding.review_owner == "mechanical_engineering"
+    assert finding.affected_identifiers == ("ITEM-MOTOR-001", "M-101A")
+    assert finding.expected_value == (
+        "at least one drawing_metadata equipment_tags reference"
+    )
+    assert finding.actual_value == "missing"
+    assert finding.evidence[0].column_name == "equipment_tag"
+    assert finding.evidence[1].normalized_value == {
+        "equipment_tag": "M-101A",
+        "matching_record_ids": [],
+        "searched_record_count": 2,
+    }
+
+
+def test_bom_drawing_presence_uses_exact_authority_and_stable_item_order(
+    tmp_path: Path,
+) -> None:
+    missing_package = _copy_package(tmp_path, "missing")
+    _set_metadata_equipment_tags(
+        missing_package,
+        {"DWMETA-001": [], "DWMETA-002": []},
+    )
+    first = _check(
+        _evaluate_gates(missing_package),
+        BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+    )
+    second = _check(
+        _evaluate_gates(missing_package),
+        BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+    )
+    assert [finding.affected_identifiers for finding in first.findings] == [
+        ("ITEM-MOTOR-001", "M-101A"),
+        ("ITEM-PUMP-001", "P-101A"),
+    ]
+    assert first.to_dict() == second.to_dict()
+
+    authority_package = _copy_package(tmp_path, "authority")
+    authority_path = authority_package / "authority" / "authority_map.json"
+    authority = _load_json(authority_path)
+    bom_rule = next(
+        rule
+        for rule in authority["rules"]
+        if rule["rule_id"] == BOM_EQUIPMENT_AUTHORITY_RULE_ID
+    )
+    bom_rule["secondary_sources"] = ["drawing_metadata"]
+    _write_json(authority_path, authority)
+    evaluation = run_package_relationships(_evaluate_gates(authority_package))
+    assert evaluation.checks[-2].status == "skipped"
+    assert evaluation.checks[-1].status == "skipped"
+    assert evaluation.checks[-1].blocked_by == (AUTHORITY_GATE_ID,)
+
+
+def test_bom_drawing_presence_finding_ignores_source_record_order(
+    tmp_path: Path,
+) -> None:
+    original = _copy_package(tmp_path, "original")
+    reordered = _copy_package(tmp_path, "reordered")
+    for package_root in (original, reordered):
+        _set_metadata_equipment_tags(
+            package_root,
+            {"DWMETA-001": ["P-101A"]},
+        )
+
+    metadata_path = reordered / "inputs" / "drawing_metadata.json"
+    metadata = _load_json(metadata_path)
+    metadata["records"].reverse()
+    _write_json(metadata_path, metadata)
+    _rewrite_csv(
+        reordered / "inputs" / "bom_or_equipment_list.csv",
+        lambda rows: rows.reverse(),
+    )
+
+    first = _check(
+        _evaluate_gates(original),
+        BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+    )
+    second = _check(
+        _evaluate_gates(reordered),
+        BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+    )
+
+    assert first.status == second.status == "failed"
+    assert len(first.findings) == len(second.findings) == 1
+    original_finding = first.findings[0]
+    reordered_finding = second.findings[0]
+    assert (
+        original_finding.finding_id,
+        original_finding.code,
+        original_finding.affected_identifiers,
+        original_finding.expected_value,
+        original_finding.actual_value,
+    ) == (
+        reordered_finding.finding_id,
+        reordered_finding.code,
+        reordered_finding.affected_identifiers,
+        reordered_finding.expected_value,
+        reordered_finding.actual_value,
+    )

@@ -8,8 +8,11 @@ from mech_eval_harness.package_assurance._relationship_common import (
 )
 from mech_eval_harness.package_assurance.bom_relationships import (
     BOM_EQUIPMENT_AUTHORITY_RULE_ID,
+    BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+    BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING_CODE,
     BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
     BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED_CODE,
+    _evaluate_bom_equipment_drawing_presence,
     _evaluate_bom_item_equipment_manifest_reciprocity,
 )
 from mech_eval_harness.package_assurance.drawing_relationships import (
@@ -42,6 +45,8 @@ from mech_eval_harness.package_assurance.models import (
 
 __all__ = [
     "BOM_EQUIPMENT_AUTHORITY_RULE_ID",
+    "BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID",
+    "BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING_CODE",
     "BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID",
     "BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED_CODE",
     "DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED_CODE",
@@ -69,12 +74,14 @@ RELATIONSHIP_CHECK_ORDER = (
     DRAWING_REGISTER_METADATA_FILE_REFERENCE_CHECK_ID,
     DRAWING_REGISTER_MANIFEST_FILE_RECIPROCITY_CHECK_ID,
     BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
+    BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
 )
+
 
 def run_package_relationships(
     gate_evaluation: PackageGateEvaluation,
 ) -> PackageRelationshipEvaluation:
-    """Run accepted P2.2 checks after the complete P2.1 gate boundary."""
+    """Run accepted relationship checks after the complete P2.1 gate boundary."""
 
     blocked_by = _blocking_gate_ids(gate_evaluation)
     if (
@@ -122,9 +129,17 @@ def run_package_relationships(
                 manifest=gate_evaluation.manifest,
             )
         )
+        bom_drawing_presence_check = _evaluate_bom_equipment_drawing_presence(
+            package_id=gate_evaluation.package_id,
+            sources=gate_evaluation.sources,
+        )
         return PackageRelationshipEvaluation(
             package_id=gate_evaluation.package_id,
-            checks=(*drawing_checks, bom_reciprocity_check),
+            checks=(
+                *drawing_checks,
+                bom_reciprocity_check,
+                bom_drawing_presence_check,
+            ),
         )
 
     revision_check = _drawing_register_metadata_revision_check(
@@ -195,6 +210,10 @@ def run_package_relationships(
             manifest=gate_evaluation.manifest,
         )
     )
+    bom_drawing_presence_check = _evaluate_bom_equipment_drawing_presence(
+        package_id=gate_evaluation.package_id,
+        sources=gate_evaluation.sources,
+    )
 
     return PackageRelationshipEvaluation(
         package_id=gate_evaluation.package_id,
@@ -205,6 +224,7 @@ def run_package_relationships(
             file_reference_check,
             reciprocity_check,
             bom_reciprocity_check,
+            bom_drawing_presence_check,
         ),
     )
 
