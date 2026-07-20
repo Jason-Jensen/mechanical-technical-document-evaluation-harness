@@ -8,8 +8,8 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** Review P2.3 check 6 implementation `c1dcc4a` on `codex/p2.3-bom-item-equipment-reciprocity`; do not integrate it without explicit acceptance.
-- **Implementation boundary:** Eight ordered gates and six ordered relationship checks now feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. The P3.3 workflow publishes that result and the P3.1/P3.2 views together through one hidden staging directory and final atomic rename. Check 6 is implementation-complete and under review; checks 7-11, authority-gap claims, held-out semantics, and deferred capabilities remain blocked.
+- **Current gate:** P2.3 relationship maintainability stabilization before check 7; check 6 is accepted and integrated through PR #42 at exact `main` `559bb81`.
+- **Implementation boundary:** Eight ordered gates and six ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. The P3.3 workflow publishes that result and the P3.1/P3.2 views together through one hidden staging directory and final atomic rename. The active cleanup may change internal module boundaries only; checks 7-11, authority-gap claims, held-out semantics, and deferred capabilities remain blocked.
 
 The accepted P2.3 definition identifies six checks that the accepted sources and authority rules can support now, and six planned claims that require a separate authority/source decision. This prevents single-source field validation from being presented as cross-document reconciliation.
 

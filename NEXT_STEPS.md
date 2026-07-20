@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** The relationship-expansion definition is accepted and integrated through PR #41. Check 6 implementation `c1dcc4a` is complete and ready for explicit review; six authority/source gaps and checks 7-11 remain blocked.
+- **P2.3:** The relationship-expansion definition is accepted through PR #41. Check 6 is accepted and integrated through PR #42 at exact `main` `559bb81`; six authority/source gaps and checks 7-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Review only `bom_item_equipment_manifest_reciprocity` implementation `c1dcc4a`, its focused/full verification, and the inspected clean and wrong-target audit outputs. Do not merge it, implement checks 7-11, alter an authority-gap decision, execute held-out semantics, or add deferred capabilities before explicit acceptance.
+Complete a bounded behavior-preserving maintainability stabilization of the relationship implementation and focused tests. After exact regression proof, implement only check 7, `bom_equipment_drawing_presence`, under the accepted P2.3 contract. Do not alter evaluator meaning, accepted assets, authority-gap decisions, held-out semantics, or deferred capabilities.
 
 ## Active Work Block
 
-- **WBS:** P2.3 check 6 implementation
-- **Branch:** `codex/p2.3-bom-item-equipment-reciprocity`
-- **Objective:** Review the completed deterministic BOM-item-to-equipment manifest reciprocity check without expanding scope.
-- **Definition of done:** Confirm check 6 is appended in the frozen order, requires exact `AUTH-BOM-002`, emits one stable evidence-linked finding per affected item, remains independent of unrelated authority rules, and preserves the accepted result/report/CLI behavior. Confirm 31 relationship tests, 75 focused tests, 278 full-suite passes with one expected skip, validation 5/5, Ruff, 87.02% coverage, and inspected clean/fault outputs.
+- **WBS:** P2.3 relationship maintainability stabilization
+- **Branch:** `codex/p2.3-relationship-maintainability`
+- **Objective:** Reduce review and regression risk before adding checks 7-11, without changing accepted audit behavior.
+- **Definition of done:** Split relationship implementation and focused tests into clear domain boundaries, preserve all six accepted checks and exact outputs, and pass focused/full regression, validation, Ruff, and coverage.
 
-Next action: accept, revise, or reject check 6 implementation `c1dcc4a`. Integration requires separate explicit acceptance. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: complete and integrate the no-behavior stabilization, then implement only check 7. A sanitized real-package development trial follows check 7 and requires an explicitly authorized package. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 

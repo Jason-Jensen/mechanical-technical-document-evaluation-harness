@@ -3,7 +3,7 @@
 ## Control Status
 
 - **WBS:** P2.3, BOM/equipment/datasheet/specification relationship expansion
-- **Status:** Accepted; check 6 implementation is authorized
+- **Status:** Accepted; check 6 is accepted and integrated, maintainability stabilization precedes check 7
 - **Baseline:** definition integrated through PR #41 at exact `main` `a855d99`
 - **Definition branch:** `codex/p2.3-relationship-expansion-definition`
 - **Accepted predecessor:** P3.3 through PR #40 at exact `main` commit `e4080fd`
@@ -477,6 +477,9 @@ isolated `REL-ITEM-EQ-001` target fault has 8/8 gates, 5/6 checks, one exact
 `automatic_fail`, release hold true, and exit 1. Both runs publish exactly four
 outputs without absolute local paths.
 
-Decision D-087 and evidence EV-084 present the implementation for explicit
-review. It is not integrated. Checks 7-11, six authority/source gaps, held-out
-semantics, protected-asset changes, and deferred capabilities remain blocked.
+The user accepted check 6 on 2026-07-20. PR #42 merged the exact reviewed branch
+at `main` commit `559bb81`. Decision D-087 and evidence EV-085 close the check.
+The approved next action is a bounded behavior-preserving relationship
+maintainability stabilization before check 7. Checks 7-11 remain unimplemented;
+six authority/source gaps, held-out semantics, protected-asset changes, and
+deferred capabilities remain blocked.
