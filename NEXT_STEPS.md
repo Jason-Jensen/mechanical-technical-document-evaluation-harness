@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** Checks 6 and 7 are integrated; the authorized trial charter is integrated through PR #46 at exact `main` `361cc77`; three public candidates are researched and ordered for sequential trials. Six authority/source gaps and checks 8-11 remain unimplemented.
+- **P2.3:** Checks 6 and 7 are integrated; the authorized trial charter is integrated through PR #46; the public shortlist and original sequential authorization are integrated through PR #47 at exact `main` `36b146b`. Precious Plastic stopped without a download because official access was unavailable. The co-equal NASA/JPL and OpenFlexure intakes and combined fit-gap are complete and awaiting CEO review. Six authority/source gaps and checks 8-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
-## Current Authorization
+## Current Review Gate
 
-Precious Plastic Shredder Basic 3.3 is authorized for controlled intake and a fit-and-gap assessment. Keep source files in a local Git-ignored area; preserve untouched files, hashes, and inventory; do not transform content or run the audit until the fit-and-gap assessment is reviewed. Do not begin NASA/JPL or OpenFlexure until the preceding trial is accepted.
+The NASA/JPL and OpenFlexure intakes and combined fit-gap assessment are complete and ready for CEO review. Both untouched official archives are preserved and hashed outside Git; both inventories use the same ZIP-native method. No PDF/CAD engineering content was opened. No transformation or audit run is authorized by this evidence.
 
 ## Active Work Block
 
-- **WBS:** P2.3 Precious Plastic controlled intake and fit-gap assessment
-- **Branch:** `codex/p2.3-precious-plastic-intake`
-- **Objective:** Preserve, hash, inventory, and assess the selected public package without extracting engineering content or inventing missing structure.
-- **Definition of done:** Official source, license, attribution, untouched package hash, file inventory, source-family fit, authority gaps, transformation blockers, and a proceed/revise/stop recommendation are reviewed before any conversion or audit run.
+- **WBS:** P2.3 dual public-package intake and fit-gap assessment
+- **Branch:** `codex/p2.3-dual-public-package-intake`
+- **Objective:** Obtain CEO review of both completed intakes and the recommendation to define two controlled manual mappings.
+- **Definition of done:** The CEO accepts, revises, or stops the combined fit-gap assessment and explicitly decides whether both package-specific mapping definitions may begin.
 
-Next action: integrate the accepted selection record, then perform controlled Precious Plastic intake and fit-gap assessment. NASA/JPL is trial 2 and OpenFlexure is trial 3; each remains blocked until the preceding trial is reviewed and accepted. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/dual_public_package_intake_fit_gap_2026-07-20.md`. Recommended decision: accept both intakes and authorize one controlled manual mapping-definition block for both packages, without transformation, audit execution, or evaluator changes. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
