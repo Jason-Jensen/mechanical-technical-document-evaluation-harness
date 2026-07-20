@@ -4,7 +4,7 @@
 
 - **WBS:** Cross-WBS definition for the remaining P2.2, P2.4, and P3 pilot work
 - **Status:** Accepted 2026-07-19; P2.2, P2.4, P3.1, and P3.2 are integrated;
-  P3.3 audit-package CLI is the next authorized block
+  P3.3 implementation `b5f0fcd` is ready for review
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
 - **P2.2 implementation:** accepted commit `4f06352`; integrated through PR
@@ -15,8 +15,12 @@
   evidence at exact `main` commit `8f66b12`
 - **P3.2 implementation:** accepted commit `7536bea`; integrated with review
   evidence at exact `main` commit `4b848b9`
+- **P3.3 implementation:** commit `b5f0fcd`; focused and full verification
+  passed; acceptance and integration remain required
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
-- **Protected assets changed:** None
+- **Protected assets changed:** The v0.3 package-result schema adds only the
+  exact P3.3 four-output publication variant. Frozen v0.2 schemas, fixtures,
+  goldens, held-out content, and historical evidence are unchanged.
 
 The user accepted all ten review decisions and instructed the project to begin
 the next step on 2026-07-19. Acceptance authorizes only the bounded sequence in
@@ -567,6 +571,28 @@ of the already accepted result and report views plus the bounded
 `audit-package` CLI and accepted exit behavior. Broad P2.3, semantic held-out
 execution, protected changes, and deferred capabilities remain separately
 gated.
+
+P3.3 implementation commit `b5f0fcd` starts from accepted predecessor `main`
+`441e521`. It adds one package-assurance workflow, exact package-state exits
+`0`-`5`, usage exit `64`, internal exit `70`, and a publication boundary that
+stages the canonical result and three accepted report views before one final
+directory rename. Existing runs are not overwritten. A rendering failure
+cannot appear under a complete run name and preserves a hidden failure marker
+when the output location remains usable. The v0.3 package-result schema retains
+the accepted P2.4 one-file output declaration and adds one exact four-output
+P3.3 declaration; frozen v0.2 result behavior is unchanged.
+
+Verification passes 13 new P3.3 tests, 49 focused package-result/report/CLI
+tests, 271 full-suite tests with one expected Windows symlink skip, repository
+validation 5/5, Ruff, and 86.76% coverage. The inspected clean command returns
+exit 0 with 8 passed gates, 5 passed checks, zero findings, and four outputs.
+The inspected removed-declaration fault returns exit 1 with 8 passed gates,
+4 passed and 1 failed check, exactly one
+`DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED` issue, release hold true, and the
+same four outputs. Neither run contains an absolute local evidence path or an
+approval claim. P3.3 acceptance and integration remain required; P2.3,
+semantic held-out execution, protected-content changes, and deferred
+capabilities remain blocked.
 
 ## Definition of Done
 

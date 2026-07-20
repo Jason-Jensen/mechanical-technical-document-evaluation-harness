@@ -15,22 +15,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P2.4:** Accepted and integrated through PR #39 at exact `main` commit `cd9b52e`.
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
-- **P3.3:** Authorized next only for atomic report publication and the accepted `audit-package` CLI workflow.
+- **P3.3:** Implementation `b5f0fcd` is verified and ready for explicit review; acceptance and integration remain required.
 - **P2.3 and later:** Broad relationship expansion remains blocked until the first runnable audit through P3.3 is accepted.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Implement only the bounded P3.3 report-publication and `audit-package` CLI workflow from the accepted result and report views. Do not expand P2.3, execute held-out semantics, or add deferred capabilities.
+Review only the bounded P3.3 implementation and its evidence. Do not begin P2.3 expansion, held-out semantic execution, or deferred capabilities before P3.3 acceptance and integration.
 
 ## Active Work Block
 
 - **WBS:** P3.3 audit-package CLI workflow
 - **Branch:** `codex/p3.3-audit-package-cli` after this P3.2 closeout
-- **Objective:** Provide one deterministic command that runs the accepted package audit and publishes its immutable result and accepted report views.
+- **Objective:** Review and integrate one deterministic command that runs the accepted package audit and publishes its immutable result and accepted report views.
 - **Definition of done:** `mech-eval audit-package` validates arguments, executes the accepted gates/checks/result pipeline, immutably publishes `package_result.json`, both issue registers, and the readiness summary, returns accepted package-state exits `0`-`5`, usage exit `64`, and pre-result internal exit `70`, preserves controlled failures, leaves existing v0.2 commands unchanged, and passes focused/full tests, validation, Ruff, coverage, and inspected clean/fault evidence.
 
-Next action: implement only the bounded P3.3 workflow from the accepted first-usable-audit definition. P2.3 expansion, semantic held-out execution, and deferred capabilities remain blocked.
+Next action: review implementation `b5f0fcd`, its atomic-publication and exit-boundary tests, and the inspected clean/fifth-check-fault run directories. P2.3 expansion, semantic held-out execution, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
