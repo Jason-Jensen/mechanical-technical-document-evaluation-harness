@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** Checks 6 and 7 are integrated. The dual NASA/JPL and OpenFlexure intake and fit-gap assessment was accepted and merged through PR #48 at exact `main` `99d16b6`. Two package-specific source-to-audit mappings and one shared transformation-and-assumption log contract are ready for review. Six authority/source gaps and checks 8-11 remain unimplemented.
+- **P2.3:** Checks 6 and 7 are integrated. The package mappings were accepted and merged through PR #49 at exact `main` `53e19ad`. Both public packages and populated transformation logs are now prepared in separate Git-ignored roots and independently verified without an audit run. Six authority/source gaps and checks 8-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Review Gate
 
-The bounded NASA/JPL mechanical-rover and OpenFlexure high-resolution-microscope mapping definitions are ready for CEO review. They separate publisher facts, deterministic preparation fields, missing authority, and true non-applicability under one shared log contract. Both mappings predict missing-authority holds; neither is allowed to manufacture drawing, datasheet, or document-revision authority.
+The two prepared public-package trees and populated logs are ready for CEO review. Source hashes, all copied artifacts, BOM transformations, required relationships, log coverage, empty controlled sources, and the absence of audit outputs were independently verified. Both packages still predict honest missing-authority holds.
 
 ## Active Work Block
 
-- **WBS:** P2.3 dual public-package mapping definition
-- **Branch:** `codex/p2.3-dual-public-package-mapping-definition`
-- **Objective:** Freeze one honest, reversible source-to-audit mapping for each accepted public package and one shared preparation log contract.
-- **Definition of done:** Both package configurations, authority choices, field classifications, expected holds, and the shared log are reviewed; no source is converted and no audit is run.
+- **WBS:** P2.3 dual public-package preparation review
+- **Branch:** `codex/p2.3-dual-public-package-preparation`
+- **Objective:** Review the exact prepared NASA/JPL and OpenFlexure package trees and their populated transformation logs before real audit execution.
+- **Definition of done:** Source and package hashes, structured mappings, explicit missing authority, traceability coverage, and audit absence are independently verified and presented for a controlled execution decision.
 
-Next action: review `docs/package_assurance/nasa_jpl_open_source_rover_mapping_definition_v0.3.0.md`, `docs/package_assurance/openflexure_microscope_mapping_definition_v0.3.0.md`, and `docs/package_assurance/transformation_and_assumption_log_contract_v0.3.0.md`. Recommended decision: accept both mappings and authorize controlled local working-copy preparation with populated logs, followed by another review before either audit is run. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/dual_public_package_preparation_review_2026-07-20.md`. Recommended D-098 accepts the two exact prepared trees and authorizes one controlled audit run per package, with no evaluator or package changes in the same execution block. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
