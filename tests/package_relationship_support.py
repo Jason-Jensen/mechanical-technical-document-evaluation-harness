@@ -111,6 +111,18 @@ def _set_metadata_file_references(
     _write_json(path, document)
 
 
+def _set_metadata_equipment_tags(
+    package_root: Path,
+    values_by_record_id: dict[str, list[str]],
+) -> None:
+    path = package_root / "inputs" / "drawing_metadata.json"
+    document = _load_json(path)
+    for record in document["records"]:
+        if record["record_id"] in values_by_record_id:
+            record["equipment_tags"] = values_by_record_id[record["record_id"]]
+    _write_json(path, document)
+
+
 def _set_register_file_references(
     package_root: Path,
     values_by_document_id: dict[str, str],

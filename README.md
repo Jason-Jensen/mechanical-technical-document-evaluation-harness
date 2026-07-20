@@ -8,12 +8,14 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** P2.3 relationship maintainability stabilization before check 7; check 6 is accepted and integrated through PR #42 at exact `main` `559bb81`.
-- **Implementation boundary:** Eight ordered gates and six ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. The P3.3 workflow publishes that result and the P3.1/P3.2 views together through one hidden staging directory and final atomic rename. The active cleanup may change internal module boundaries only; checks 7-11, authority-gap claims, held-out semantics, and deferred capabilities remain blocked.
+- **Current gate:** Integrate verified P2.3 check 7, then open the real-package structured-trial decision; the relationship maintainability split is integrated through PR #44 at exact `main` `56ac9d1`.
+- **Implementation boundary:** Eight ordered gates and seven ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. The P3.3 workflow publishes that result and the P3.1/P3.2 views together through one hidden staging directory and final atomic rename. Check 7 is verified; checks 8-11, authority-gap claims, held-out semantics, and deferred capabilities remain blocked.
 
 The accepted P2.3 definition identifies six checks that the accepted sources and authority rules can support now, and six planned claims that require a separate authority/source decision. This prevents single-source field validation from being presented as cross-document reconciliation.
 
 Check 6 verifies that each release-required BOM item has exactly one reciprocal manifest item-to-equipment declaration under `AUTH-BOM-002`. The clean development package passes; an isolated valid-but-wrong target produces one evidence-linked automatic-fail release hold through the result, reports, and CLI. Verification passes 31 relationship tests, 75 focused tests, and 278 full-suite tests with one expected skip.
+
+Check 7 verifies that each release-required BOM equipment tag appears in drawing metadata under exact `AUTH-BOM-002`, without claiming that the BOM `drawing_number` is authoritative. The clean package passes 7/7 checks; removing only `M-101A` from drawing metadata produces one release hold through all four outputs and exit `1`. Verification passes 35 relationship tests, 80 focused tests, and 283 full-suite tests with one expected skip.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 

@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 relationship maintainability stabilization
-- **Status:** Check 6 is accepted and integrated through PR #42 at exact `main` `559bb81`; a bounded behavior-preserving cleanup is authorized before check 7
-- **Implementation state:** Eight ordered gates and six ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Check 6 reconciles release-required BOM item/equipment mappings with manifest declarations under exact `AUTH-BOM-002`; checks 7-11 and all six authority-gap claims remain unimplemented
+- **Active WBS:** P2.3 check 7 implementation review and integration
+- **Status:** The relationship maintainability split is integrated through PR #44 at exact `main` `56ac9d1`; check 7 is verified and ready for integration under the approved executive sequence
+- **Implementation state:** Eight ordered gates and seven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Checks 6 and 7 add BOM item/equipment manifest reciprocity and BOM equipment drawing presence under exact `AUTH-BOM-002`; checks 8-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -256,13 +256,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Complete a bounded behavior-preserving relationship-module and focused-test
-cleanup before check 7. Preserve all accepted gates, checks, result/report/CLI
-semantics, schemas, fixtures, authority maps, goldens, held-out content, and
-frozen v0.2 behavior. After exact regression proof, implement only check 7.
-The sanitized real-package development trial requires an explicitly authorized
-package; held-out semantics and deferred multimodal/platform capabilities remain
-blocked.
+Integrate the verified check 7 branch after green CI. Then open the
+development-only real-package structured-trial decision and stop until the user
+identifies one public, synthetic, self-authored, or explicitly authorized
+sanitized package. Do not begin check 8, change authority-gap decisions, execute
+held-out semantics, change protected assets, or add deferred multimodal/platform
+capabilities.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

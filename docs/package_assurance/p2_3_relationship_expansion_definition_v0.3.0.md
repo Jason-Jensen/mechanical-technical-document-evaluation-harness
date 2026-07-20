@@ -3,7 +3,7 @@
 ## Control Status
 
 - **WBS:** P2.3, BOM/equipment/datasheet/specification relationship expansion
-- **Status:** Accepted; check 6 is accepted and integrated, maintainability stabilization precedes check 7
+- **Status:** Accepted; checks 6-7 implemented, check 7 ready for integration
 - **Baseline:** definition integrated through PR #41 at exact `main` `a855d99`
 - **Definition branch:** `codex/p2.3-relationship-expansion-definition`
 - **Accepted predecessor:** P3.3 through PR #40 at exact `main` commit `e4080fd`
@@ -483,3 +483,28 @@ The approved next action is a bounded behavior-preserving relationship
 maintainability stabilization before check 7. Checks 7-11 remain unimplemented;
 six authority/source gaps, held-out semantics, protected-asset changes, and
 deferred capabilities remain blocked.
+
+## Check 7 Implementation Review Record
+
+The behavior-preserving relationship split is integrated through PR #44 at
+exact `main` `56ac9d1`. Check 7 implements only
+`bom_equipment_drawing_presence` under exact `AUTH-BOM-002`. Each
+release-required BOM equipment tag must appear in at least one drawing metadata
+`equipment_tags` collection. The check does not treat the BOM `drawing_number`
+as authoritative and does not close the separate item-to-drawing authority gap.
+
+Verification passes 35 relationship tests, 80 focused relationship/result/
+report/CLI tests, 283 full-suite tests with one expected Windows symlink skip,
+repository validation 5/5, Ruff, and 87.25% coverage. The inspected clean run
+has 8/8 gates, 7/7 checks, no findings, `automatic_pass`, and exit 0. Removing
+only `M-101A` from `DWMETA-001.equipment_tags` produces 8/8 passed gates, six
+passed checks, one failed check, one exact
+`BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING` finding under `AUTH-BOM-002`,
+`automatic_fail`, release hold true, and exit 1. Both runs publish exactly four
+outputs without absolute local paths.
+
+Decision D-090 and evidence EV-087 present check 7 for integration under the
+user-approved executive sequence. After integration, the next gate is selection
+of one authorized sanitized structured package for a development-only
+real-world trial. Checks 8-11, six authority/source gaps, semantic held-out
+execution, protected-asset changes, and deferred capabilities remain blocked.

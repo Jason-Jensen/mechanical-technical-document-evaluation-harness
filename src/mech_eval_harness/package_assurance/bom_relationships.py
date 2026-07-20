@@ -31,7 +31,12 @@ BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID = (
 BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED_CODE = (
     "BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED"
 )
+BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID = "bom_equipment_drawing_presence"
+BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING_CODE = (
+    "BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING"
+)
 BOM_EQUIPMENT_AUTHORITY_RULE_ID = "AUTH-BOM-002"
+
 
 def _bom_equipment_authority_rule(
     sources: LoadedStructuredSources,
@@ -101,6 +106,26 @@ def _evaluate_bom_item_equipment_manifest_reciprocity(
         package_id=package_id,
         sources=sources,
         manifest=manifest,
+    )
+
+
+def _evaluate_bom_equipment_drawing_presence(
+    *,
+    package_id: str,
+    sources: LoadedStructuredSources,
+) -> RelationshipCheckResult:
+    if _bom_equipment_authority_rule(sources) is None:
+        return _skipped_check(
+            check_id=BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+            blocked_by=(AUTHORITY_GATE_ID,),
+            summary=(
+                "Skipped because the accepted AUTH-BOM-002 equipment-tag "
+                "authority rule is unavailable."
+            ),
+        )
+    return _bom_equipment_drawing_presence_check(
+        package_id=package_id,
+        sources=sources,
     )
 
 
@@ -198,6 +223,93 @@ def _bom_item_equipment_manifest_reciprocity_check(
     )
 
 
+def _bom_equipment_drawing_presence_check(
+    *,
+    package_id: str,
+    sources: LoadedStructuredSources,
+) -> RelationshipCheckResult:
+    bom_records = tuple(
+        sorted(
+            (
+                record
+                for record in sources.records_of_type("equipment_item")
+                if record.values["required_for_release"] is True
+            ),
+            key=lambda record: (
+                _normalize_identifier(record.values["equipment_tag"]),
+                _normalize_identifier(record.values["item_id"]),
+            ),
+        )
+    )
+    metadata_records = sources.records_of_type("drawing_metadata_record")
+
+    findings: list[RelationshipFinding] = []
+    evidence: list[EvidenceLocator] = []
+    for bom_record in bom_records:
+        item_id = _normalize_identifier(bom_record.values["item_id"])
+        equipment_tag = _normalize_identifier(
+            bom_record.values["equipment_tag"]
+        )
+        matching_record_ids = tuple(
+            sorted(
+                _normalize_identifier(record.values["record_id"])
+                for record in metadata_records
+                if equipment_tag
+                in {
+                    _normalize_identifier(tag)
+                    for tag in record.values["equipment_tags"]
+                }
+            )
+        )
+        item_evidence = (
+            bom_record.field_locator(
+                "equipment_tag",
+                normalized_value=equipment_tag,
+            ),
+            _drawing_metadata_equipment_tag_search_locator(
+                metadata_records=metadata_records,
+                equipment_tag=equipment_tag,
+                matching_record_ids=matching_record_ids,
+            ),
+        )
+        evidence.extend(item_evidence)
+        if matching_record_ids:
+            continue
+        findings.append(
+            _bom_equipment_drawing_reference_missing_finding(
+                package_id=package_id,
+                item_id=item_id,
+                equipment_tag=equipment_tag,
+                evidence=item_evidence,
+            )
+        )
+
+    if findings:
+        return RelationshipCheckResult(
+            check_id=BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+            check_version=RELATIONSHIP_CHECK_VERSION,
+            status="failed",
+            summary=(
+                f"Checked {len(bom_records)} release-required BOM equipment "
+                f"tag(s) and found {len(findings)} without drawing-metadata "
+                "representation."
+            ),
+            findings=tuple(findings),
+            evidence=tuple(evidence),
+        )
+
+    return RelationshipCheckResult(
+        check_id=BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+        check_version=RELATIONSHIP_CHECK_VERSION,
+        status="passed",
+        summary=(
+            f"All {len(bom_records)} release-required BOM equipment tag(s) "
+            "appear in drawing metadata."
+        ),
+        evidence=tuple(evidence),
+    )
+
+
 def _required_item_equipment_mappings(
     manifest: LoadedPackageManifest,
 ) -> dict[str, tuple[tuple[int, Mapping[str, Any]], ...]]:
@@ -288,6 +400,37 @@ def _bom_item_equipment_reciprocity_evidence(
     return tuple(locators)
 
 
+def _drawing_metadata_equipment_tag_search_locator(
+    *,
+    metadata_records: tuple[StructuredSourceRecord, ...],
+    equipment_tag: str,
+    matching_record_ids: tuple[str, ...],
+) -> EvidenceLocator:
+    ordered_records = sorted(
+        metadata_records,
+        key=lambda record: _normalize_identifier(record.values["record_id"]),
+    )
+    return EvidenceLocator(
+        source_type="drawing_metadata",
+        source_file="inputs/drawing_metadata.json",
+        format="json",
+        json_pointer="/records",
+        property_name="equipment_tags",
+        original_value=[
+            {
+                "record_id": record.original_values["record_id"],
+                "equipment_tags": record.original_values["equipment_tags"],
+            }
+            for record in ordered_records
+        ],
+        normalized_value={
+            "equipment_tag": equipment_tag,
+            "matching_record_ids": list(matching_record_ids),
+            "searched_record_count": len(metadata_records),
+        },
+    )
+
+
 def _bom_item_equipment_reciprocity_finding(
     *,
     package_id: str,
@@ -333,6 +476,60 @@ def _bom_item_equipment_reciprocity_finding(
             "item-to-equipment declarations."
         ),
         affected_identifiers=(item_id,),
+        expected_value=expected_value,
+        actual_value=actual_value,
+        review_owner="mechanical_engineering",
+        evidence=evidence,
+    )
+
+
+def _bom_equipment_drawing_reference_missing_finding(
+    *,
+    package_id: str,
+    item_id: str,
+    equipment_tag: str,
+    evidence: tuple[EvidenceLocator, EvidenceLocator],
+) -> RelationshipFinding:
+    result_state = "automatic_fail"
+    expected_value = "at least one drawing_metadata equipment_tags reference"
+    actual_value = "missing"
+    semantic = {
+        "package_id": package_id,
+        "check_id": BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+        "check_version": RELATIONSHIP_CHECK_VERSION,
+        "code": BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING_CODE,
+        "authority_rule_id": BOM_EQUIPMENT_AUTHORITY_RULE_ID,
+        "item_id": item_id,
+        "equipment_tag": equipment_tag,
+        "result_state": result_state,
+        "severity": "high",
+        "release_hold": True,
+        "expected_value": expected_value,
+        "actual_value": actual_value,
+    }
+    digest = hashlib.sha256(
+        json.dumps(
+            semantic,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+        ).encode("ascii")
+    ).hexdigest()[:16]
+    return RelationshipFinding(
+        finding_id=f"FND-{digest.upper()}",
+        check_id=BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+        check_version=RELATIONSHIP_CHECK_VERSION,
+        package_id=package_id,
+        code=BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING_CODE,
+        result_state=result_state,
+        severity="high",
+        release_hold=True,
+        authority_rule_id=BOM_EQUIPMENT_AUTHORITY_RULE_ID,
+        message=(
+            f"Release-required BOM equipment tag {equipment_tag} for "
+            f"{item_id} does not appear in drawing metadata."
+        ),
+        affected_identifiers=(item_id, equipment_tag),
         expected_value=expected_value,
         actual_value=actual_value,
         review_owner="mechanical_engineering",
