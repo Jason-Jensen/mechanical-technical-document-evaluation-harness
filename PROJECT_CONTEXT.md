@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-20
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-dual-public-package-mapping-definition`
+**Current branch:** `codex/p2.3-dual-public-package-preparation`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 dual public-package mapping definition
-- **Status:** The co-equal NASA/JPL and OpenFlexure intake and fit-gap assessment was accepted and merged through PR #48 at exact `main` `99d16b6`. One bounded source-to-audit mapping for each package and one shared transformation-and-assumption log contract are ready for CEO review. No source has been converted and no audit has been run
+- **Active WBS:** P2.3 dual public-package preparation review
+- **Status:** D-097 was accepted and PR #49 merged both source-to-audit mappings at exact `main` `53e19ad`. Separate Git-ignored NASA/JPL and OpenFlexure working packages and populated logs have now been prepared and independently verified. No audit has been run
 - **Implementation state:** Eight ordered gates and seven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Checks 6 and 7 add BOM item/equipment manifest reciprocity and BOM equipment drawing presence under exact `AUTH-BOM-002`; checks 8-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -215,8 +215,30 @@ has 8/8 gates, 6/6 checks, no findings, state `automatic_pass`, hold false, and
 exit 0. The isolated valid-but-wrong target has 8/8 gates, 5/6 checks, exactly
 one `BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED` under `AUTH-BOM-002`, state
 `automatic_fail`, hold true, and exit 1. Both runs contain exactly four outputs
-and no absolute local path. The implementation is not integrated pending
-explicit user acceptance.
+and no absolute local path. The user accepted check 6. PR #42 merged it, and
+PR #43 integrated its closeout at exact `main` `b36441f`.
+
+Check 7, `bom_equipment_drawing_presence`, was accepted and integrated through
+PR #45 at exact `main` `273c36a`. It verifies that every release-required BOM
+equipment scope appears in drawing metadata under exact `AUTH-BOM-002` without
+claiming that the BOM drawing number is authoritative. The clean development
+package passes 7/7 checks; the isolated missing-tag fault produces one release
+hold. Full verification remains 283 passed with one expected Windows skip.
+
+The authorized structured-package trial, public-source selection, dual intake,
+and fit-gap assessment were integrated through PRs #46-#48. D-097 accepted the
+bounded NASA/JPL and OpenFlexure mappings plus the shared transformation log,
+and PR #49 merged them at exact `main` `53e19ad`.
+
+Both approved public packages are now prepared in separate Git-ignored roots.
+Independent verification passed all pinned-source hashes, byte-preserved source
+copies, manifest boundaries, structured-source loading, all fields across 91
+BOM rows, 91 required manifest relationships, complete log coverage, explicit missing
+authority, package-tree hashes, and audit-output absence. NASA/JPL contains 58
+BOM rows and 126 copied source artifacts; OpenFlexure contains 33 BOM rows and
+51 copied artifacts. Both are expected to route to
+`missing_authoritative_information`. The tracked review is
+`docs/package_assurance/dual_public_package_preparation_review_2026-07-20.md`.
 
 ## Intended Outcome
 
@@ -256,13 +278,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the NASA/JPL and OpenFlexure mapping definitions plus the shared
-transformation-and-assumption log contract. The recommended next gate is
-controlled local working-copy preparation for both packages with populated
-logs, followed by another review before either audit runs. Do not transform
-source files before mapping acceptance, implement check 8, change authority-gap
-decisions, execute held-out semantics, change protected assets, or add deferred
-multimodal/platform capabilities.
+Review the exact prepared NASA/JPL and OpenFlexure package trees and populated
+logs through the tracked preparation review. Recommended D-098 accepts their
+fixed package hashes and authorizes one controlled audit run per package, with
+no source, mapping, evaluator, schema, authority, or expected-state changes in
+the same block. Do not implement check 8, execute held-out semantics, change
+protected assets, or add deferred multimodal/platform capabilities.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
