@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-20
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-relationship-expansion-definition`
+**Current branch:** `codex/p2.3-bom-item-equipment-reciprocity`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 relationship-expansion definition review
-- **Status:** P3.3 is accepted and integrated through PR #40 at exact `main` commit `e4080fd`; the P2.3 definition is ready for explicit review from closeout baseline `26b7aa2`
-- **Implementation state:** Eight ordered gates and five ordered drawing checks feed the accepted canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. The remaining BOM, equipment, datasheet, specification, and revision checks are not implemented and must be defined in bounded slices before code changes
+- **Active WBS:** P2.3 check 6 implementation
+- **Status:** The P2.3 definition is accepted and integrated through PR #41 at exact `main` commit `a855d99`; only `bom_item_equipment_manifest_reciprocity` is authorized next
+- **Implementation state:** Eight ordered gates and five ordered drawing checks feed the accepted canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. P2.3 check 6 will append one BOM item/equipment manifest reciprocity check; checks 7-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -188,9 +188,10 @@ equipment/datasheet agreement, equipment/datasheet manifest reciprocity, and
 specification revision history. Quantity reconciliation, part/material
 agreement, BOM item/drawing agreement, equipment/specification association,
 datasheet revision history, and controlled technical-value compliance remain
-authority/source gaps. Implementation is blocked pending definition
-acceptance. This distinction prevents a parsed single-source value from being
-misreported as a reconciled cross-document value.
+authority/source gaps. The user accepted this definition on 2026-07-20, and
+PR #41 merged it at exact `main` commit `a855d99`. This distinction prevents a
+parsed single-source value from being misreported as a reconciled
+cross-document value.
 
 Six temporary development-package definition probes confirmed the ownership
 boundary: each proposed isolated fault passed all eight P2.1 gates and all five
@@ -236,11 +237,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review `docs/package_assurance/p2_3_relationship_expansion_definition_v0.3.0.md`,
-including the six-check sequence, six authority gaps, exact test faults, and
-scope boundaries. Do not implement a P2.3 rule, execute
-held-out semantics, alter protected assets, or add deferred
-multimodal/platform capabilities before definition acceptance.
+Implement only check 6, `bom_item_equipment_manifest_reciprocity`, under exact
+`AUTH-BOM-002` on `codex/p2.3-bom-item-equipment-reciprocity`. Prove the clean
+case and isolated wrong-but-valid manifest-target fault through the accepted
+result, report, publication, and CLI path. Do not implement checks 7-11,
+authority-gap claims, held-out semantics, protected-asset changes, or deferred
+multimodal/platform capabilities.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

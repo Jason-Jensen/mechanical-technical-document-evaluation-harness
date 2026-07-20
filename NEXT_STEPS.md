@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** The relationship-expansion definition is ready for explicit review. It proposes six existing-authority checks and records six authority/source gaps; implementation remains blocked pending acceptance.
+- **P2.3:** The relationship-expansion definition is accepted and integrated through PR #41 at exact `main` commit `a855d99`. Six existing-authority checks are frozen, six authority/source gaps remain blocked, and only check 6 is authorized for implementation.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Review only `docs/package_assurance/p2_3_relationship_expansion_definition_v0.3.0.md`, its six-check sequence, six authority gaps, test faults, and scope boundaries. Do not implement a P2.3 rule, execute held-out semantics, or add deferred capabilities before definition acceptance.
+Implement only `bom_item_equipment_manifest_reciprocity` v0.3.0 under exact `AUTH-BOM-002`. Append it after the five accepted drawing checks and prove the clean development package plus the isolated wrong-but-valid manifest-target fault through relationships, canonical result, reports, and `audit-package`. Do not implement checks 7-11, any authority-gap claim, held-out semantics, or deferred capabilities.
 
 ## Active Work Block
 
-- **WBS:** P2.3 relationship-expansion definition review
-- **Branch:** `codex/p2.3-relationship-expansion-definition`
-- **Objective:** Review and freeze a small, ordered implementation sequence for BOM/equipment, datasheet/specification, and revision checks using the accepted authority map and runnable audit path.
-- **Definition of done:** The definition states each check's exact source and target, accepted authority rule, prerequisites, pass/fail/skip behavior, finding fields, result state and hold, positive and negative development tests, implementation order, exclusions, and acceptance gate. It does not change code, schemas, fixtures, goldens, or held-out content.
+- **WBS:** P2.3 check 6 implementation
+- **Branch:** `codex/p2.3-bom-item-equipment-reciprocity`
+- **Objective:** Add one deterministic BOM-item-to-equipment manifest reciprocity check without changing accepted gates, earlier checks, fixtures, schemas, authority rules, or protected assets.
+- **Definition of done:** Check 6 is appended in the frozen order, requires exact `AUTH-BOM-002`, emits the accepted stable finding and evidence for each affected item, passes positive/negative/order/repeatability/prerequisite tests, flows through result/report/CLI outputs, and passes the focused and full frozen regression suites. Generated clean and isolated-fault outputs are inspected before review.
 
-Next action: accept, revise, or reject the bounded P2.3 definition. If accepted, the first implementation slice is `bom_item_equipment_manifest_reciprocity` on `codex/p2.3-bom-item-equipment-reciprocity`. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: implement and review check 6 on `codex/p2.3-bom-item-equipment-reciprocity`. Integration requires separate explicit acceptance. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 

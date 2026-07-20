@@ -8,10 +8,10 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** Review the P2.3 relationship-expansion definition on `codex/p2.3-relationship-expansion-definition` from exact baseline `26b7aa2`.
-- **Implementation boundary:** Eight ordered gates and five ordered drawing checks feed an accepted canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. The accepted P3.3 workflow publishes that result and the P3.1/P3.2 views together through one hidden staging directory and final atomic rename. P2.3 must now define the remaining BOM, equipment, datasheet, specification, and revision relationships before implementation. Held-out semantic execution and deferred capabilities remain separately gated.
+- **Current gate:** Implement only P2.3 check 6, `bom_item_equipment_manifest_reciprocity`, on `codex/p2.3-bom-item-equipment-reciprocity` from the accepted definition baseline.
+- **Implementation boundary:** Eight ordered gates and five ordered drawing checks feed an accepted canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. The accepted P3.3 workflow publishes that result and the P3.1/P3.2 views together through one hidden staging directory and final atomic rename. The accepted P2.3 definition authorizes one new relationship check at a time; check 6 is the only current implementation slice. Held-out semantic execution and deferred capabilities remain separately gated.
 
-The proposed P2.3 definition identifies six checks that the accepted sources and authority rules can support now, and six planned claims that require a separate authority/source decision. This prevents single-source field validation from being presented as cross-document reconciliation.
+The accepted P2.3 definition identifies six checks that the accepted sources and authority rules can support now, and six planned claims that require a separate authority/source decision. This prevents single-source field validation from being presented as cross-document reconciliation.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 

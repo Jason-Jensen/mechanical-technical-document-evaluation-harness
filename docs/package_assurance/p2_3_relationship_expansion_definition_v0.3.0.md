@@ -3,12 +3,12 @@
 ## Control Status
 
 - **WBS:** P2.3, BOM/equipment/datasheet/specification relationship expansion
-- **Status:** Ready for explicit review; implementation is not authorized
-- **Baseline:** `main` at `26b7aa2`
+- **Status:** Accepted; check 6 implementation is authorized
+- **Baseline:** definition integrated through PR #41 at exact `main` `a855d99`
 - **Definition branch:** `codex/p2.3-relationship-expansion-definition`
 - **Accepted predecessor:** P3.3 through PR #40 at exact `main` commit `e4080fd`
-- **Decision:** D-085 proposed
-- **Evidence:** EV-082 ready for review
+- **Decision:** D-085 proposed; D-086 accepted
+- **Evidence:** EV-082 reviewed; EV-083 accepted
 - **Protected assets changed:** None
 - **Time tracking:** Waived; progress is gate- and evidence-based
 
@@ -431,7 +431,7 @@ This definition does not authorize:
 | 7. What evidence is mandatory? | Ordered field-level source locators plus a manifest or collection-search locator where absence or reciprocity is tested; all paths remain package-relative. |
 | 8. What happens to quantity and other single-source fields? | They remain visible authority gaps; P2.1 may validate structure, but P2.3 does not call them reconciled. |
 | 9. How is the accepted audit path affected? | Only the ordered relationship set and resulting counts/findings expand; the state router, result, reports, publication set, and exits retain accepted meaning. |
-| 10. What remains blocked? | All P2.3 code until definition acceptance, all authority-gap claims until separate acceptance, semantic held-out execution until P4, and every deferred multimodal/platform capability. |
+| 10. What remains blocked? | Checks 7-11 until their individual slices are authorized, all authority-gap claims until separate acceptance, semantic held-out execution until P4, and every deferred multimodal/platform capability. |
 
 ## Definition of Done
 
@@ -448,3 +448,12 @@ This definition block is complete when:
   five drawing checks pass before the proposed owner check;
 - the branch is committed, pushed, and opened for review; and
 - the user accepts, revises, or rejects this definition before implementation.
+
+## Acceptance Record
+
+The user accepted the complete P2.3 definition on 2026-07-20. PR #41 merged
+the exact reviewed definition at `main` commit `a855d99`. Decision D-086 and
+evidence EV-083 authorize only check 6,
+`bom_item_equipment_manifest_reciprocity`, on its dedicated branch. Checks
+7-11, all six authority/source gaps, semantic held-out execution, protected
+asset changes, and deferred capabilities remain blocked.
