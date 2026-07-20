@@ -4,7 +4,7 @@
 
 - **WBS:** Cross-WBS definition for the remaining P2.2, P2.4, and P3 pilot work
 - **Status:** Accepted 2026-07-19; P2.2, P2.4, and P3.1 are integrated; P3.2
-  release-readiness summary is the next authorized block
+  implementation `7536bea` is ready for review
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
 - **P2.2 implementation:** accepted commit `4f06352`; integrated through PR
@@ -13,6 +13,8 @@
   #39 at exact `main` commit `cd9b52e`
 - **P3.1 implementation:** accepted commit `2f93335`; integrated with review
   evidence at exact `main` commit `8f66b12`
+- **P3.2 implementation:** commit `7536bea`; focused and full verification
+  passed; acceptance and integration remain required
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
 - **Protected assets changed:** None
 
@@ -534,6 +536,26 @@ Ruff, and 86.49% coverage. P3.2 is authorized next only for the non-approving
 Markdown release-readiness view defined above. Report publishing, P3.3 CLI,
 broad P2.3, semantic held-out execution, and deferred capabilities remain
 separately gated.
+
+P3.2 implementation commit `7536bea` adds a pure in-memory Markdown view of a
+strict, schema-valid `package_result.json`. A shared report-input loader retains
+P3.1 duplicate-key, non-JSON-constant, root-object, and schema validation while
+preserving each view's explicit render error. The summary displays stored
+package/run identity, package state, release hold, observed blocking states,
+gate and relationship passed/failed/skipped counts, finding counts by state,
+known output names, the exact engineering-review limitation, and the required
+qualified-human decision. It does not derive a new readiness state, rerun
+gates, checks, authority, state routing, or holds, publish files, or add CLI
+behavior.
+
+Verification passes 10 focused readiness tests, 36 focused package-result and
+report tests, 258 full-suite tests with one expected Windows symlink skip,
+repository validation 5/5, Ruff, and 86.75% coverage. An inspected seeded
+drawing-revision conflict preserves the immutable result's 8 passed gates,
+4 passed and 1 failed relationship checks, `automatic_fail` state, release
+hold, one `automatic_fail` finding, and package-result link. The Markdown has
+no absolute machine path or release, compliance, or engineering-correctness
+approval. P3.2 acceptance and integration remain required before P3.3 begins.
 
 ## Definition of Done
 

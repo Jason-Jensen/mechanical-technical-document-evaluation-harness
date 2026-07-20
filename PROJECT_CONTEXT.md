@@ -133,6 +133,20 @@ concise, non-approving Markdown release-readiness view of the immutable result;
 report publishing, P3.3 CLI, broad P2.3, semantic held-out execution, and
 deferred capabilities remain blocked.
 
+P3.2 implementation commit `7536bea` adds one in-memory Markdown
+release-readiness renderer on `codex/p3.2-release-readiness-summary` from
+accepted predecessor `3466398`. It shares P3.1's strict JSON and schema-valid
+result loading, then reports only stored package/run identity, state, release
+hold, blocking states, gate/check status counts, finding counts by state,
+output names, the exact engineering-review limitation, and the required
+qualified-human decision. It does not rerun evaluator logic, publish reports,
+or add CLI behavior. Verification passes 36 focused package-result/report
+tests, 258 full-suite tests with one expected Windows symlink skip, repository
+validation 5/5, Ruff, and 86.75% coverage. An inspected drawing-revision fault
+summary matches the immutable result and contains no absolute machine path or
+approval claim. P3.2 acceptance and integration remain required; P3.3, broad
+P2.3, semantic held-out execution, and deferred capabilities remain blocked.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:

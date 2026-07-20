@@ -8,8 +8,8 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** P3.2 non-approving release-readiness summary after accepted P3.1 integration at exact `main` commit `8f66b12`.
-- **Implementation boundary:** Eight ordered gates and five ordered drawing checks feed an accepted canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. Accepted P3.1 renders deterministic CSV and Markdown issue views only from that strict, schema-valid result. P3.2 may add one concise Markdown readiness view without publishing files or changing evaluator meaning. CLI behavior, broad P2.3 relationships, and deferred capabilities remain separately gated.
+- **Current gate:** Review the bounded P3.2 release-readiness implementation at `7536bea`, built from accepted predecessor `main` commit `3466398`.
+- **Implementation boundary:** Eight ordered gates and five ordered drawing checks feed an accepted canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. Accepted P3.1 renders deterministic CSV and Markdown issue views only from that strict result. P3.2 now renders one concise, non-approving Markdown readiness view from the same result without publishing files or changing evaluator meaning. CLI behavior, broad P2.3 relationships, and deferred capabilities remain separately gated.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 
