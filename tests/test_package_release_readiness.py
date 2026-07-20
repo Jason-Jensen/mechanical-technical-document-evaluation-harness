@@ -99,7 +99,7 @@ def test_clean_result_reports_stored_counts_and_human_boundary(
     assert "| Release hold | <code>false</code> |" in first
     assert "| Blocking states | none observed |" in first
     assert "| Mandatory gates | 8 | 0 | 0 |" in first
-    assert "| Relationship checks | 5 | 0 | 0 |" in first
+    assert "| Relationship checks | 6 | 0 | 0 |" in first
     assert "| **Total** | **0** |" in first
     assert "[package_result.json](package_result.json)" in first
     assert "release_readiness.md" not in first
@@ -128,7 +128,7 @@ def test_relationship_failure_reports_hold_blocking_state_and_finding_count(
     assert "| Release hold | <code>true</code> |" in summary
     assert "| Blocking states | <code>automatic_fail</code> |" in summary
     assert "| Mandatory gates | 8 | 0 | 0 |" in summary
-    assert "| Relationship checks | 4 | 1 | 0 |" in summary
+    assert "| Relationship checks | 5 | 1 | 0 |" in summary
     assert "| <code>automatic_fail</code> | 1 |" in summary
     assert "| **Total** | **1** |" in summary
 
@@ -201,7 +201,7 @@ def test_summary_uses_stored_result_values_without_recomputing(tmp_path: Path) -
     assert "| Release hold | <code>true</code> |" in summary
     assert "| Blocking states | <code>engineering_review_required</code> |" in summary
     assert "| Mandatory gates | 6 | 1 | 1 |" in summary
-    assert "| Relationship checks | 4 | 1 | 0 |" in summary
+    assert "| Relationship checks | 5 | 1 | 0 |" in summary
     assert "| **Total** | **0** |" in summary
 
 
