@@ -3,8 +3,8 @@
 ## Control Status
 
 - **WBS:** Cross-WBS definition for the remaining P2.2, P2.4, and P3 pilot work
-- **Status:** Accepted 2026-07-19; P2.2, P2.4, P3.1, and P3.2 are integrated;
-  P3.3 implementation `b5f0fcd` is ready for review
+- **Status:** Accepted 2026-07-19; the full first usable audit through P3.3 is
+  accepted and integrated; P2.3 definition is authorized next
 - **Baseline:** `main` at `a18fc5f`
 - **Branch:** `codex/first-usable-audit-definition`
 - **P2.2 implementation:** accepted commit `4f06352`; integrated through PR
@@ -15,8 +15,8 @@
   evidence at exact `main` commit `8f66b12`
 - **P3.2 implementation:** accepted commit `7536bea`; integrated with review
   evidence at exact `main` commit `4b848b9`
-- **P3.3 implementation:** commit `b5f0fcd`; focused and full verification
-  passed; acceptance and integration remain required
+- **P3.3 implementation:** commit `b5f0fcd`; review evidence `411928e`;
+  integrated through PR #40 at exact `main` commit `e4080fd`
 - **Time tracking:** Waived; progress is controlled by acceptance evidence
 - **Protected assets changed:** The v0.3 package-result schema adds only the
   exact P3.3 four-output publication variant. Frozen v0.2 schemas, fixtures,
@@ -590,9 +590,18 @@ The inspected removed-declaration fault returns exit 1 with 8 passed gates,
 4 passed and 1 failed check, exactly one
 `DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED` issue, release hold true, and the
 same four outputs. Neither run contains an absolute local evidence path or an
-approval claim. P3.3 acceptance and integration remain required; P2.3,
+approval claim. This was the evidence presented for the P3.3 acceptance
+recorded below; P2.3 and later capabilities remained blocked at that review
+point.
+
+The user explicitly accepted P3.3 on 2026-07-20. PR #40 merged the reviewed
+branch at exact `main` commit `e4080fd`. Exact-main verification passes the 49
+focused package-result/report/CLI tests, 271 full-suite tests with one expected
+Windows symlink skip, repository validation 5/5, Ruff, and 86.76% coverage.
+The first usable structured audit is therefore complete. The next authorized
+block is definition-only P2.3 relationship expansion; P2.3 implementation,
 semantic held-out execution, protected-content changes, and deferred
-capabilities remain blocked.
+capabilities remain separately gated.
 
 ## Definition of Done
 

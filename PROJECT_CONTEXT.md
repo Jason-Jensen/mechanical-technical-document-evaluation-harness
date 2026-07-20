@@ -1,8 +1,8 @@
 # Project Context
 
-**Updated:** 2026-07-19
+**Updated:** 2026-07-20
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p3.3-audit-package-cli`
+**Current branch:** `codex/p3.3-audit-package-integration-closeout`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P3.3 atomic report publication and `audit-package` CLI
-- **Status:** P3.3 implementation `b5f0fcd` is verified and ready for explicit review from accepted predecessor `main` commit `441e521`
-- **Implementation state:** Eight ordered gates and five ordered drawing checks now feed the accepted canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Semantic held-out evaluation, broad P2.3 relationships, and deferred platform capabilities remain unimplemented
+- **Active WBS:** P2.3 relationship-expansion definition
+- **Status:** P3.3 is accepted and integrated through PR #40 at exact `main` commit `e4080fd`; P2.3 definition is authorized next
+- **Implementation state:** Eight ordered gates and five ordered drawing checks feed the accepted canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. The remaining BOM, equipment, datasheet, specification, and revision checks are not implemented and must be defined in bounded slices before code changes
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -170,7 +170,15 @@ clean evidence has 8 passed gates, 5 passed checks, zero findings, and exit 0.
 The inspected removed-mapping fault has 8 passed gates, 4 passed and 1 failed
 check, exactly one `DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED` issue, release
 hold true, and exit 1. Both runs contain exactly four outputs and no absolute
-local paths. P3.3 acceptance and integration remain required.
+local paths. This was the evidence presented for the acceptance recorded below.
+
+The user explicitly accepted P3.3 on 2026-07-20. PR #40 merged the reviewed
+implementation and evidence at exact `main` commit `e4080fd`. Verification on
+that exact merged tree passes 49 focused package-result/report/CLI tests, 271
+full-suite tests with one expected Windows symlink skip, repository validation
+5/5, Ruff, and 86.76% coverage. P3.3 is closed. P2.3 definition is authorized
+next; evaluator implementation and semantic held-out execution remain blocked
+until the definition is reviewed and accepted.
 
 ## Intended Outcome
 
@@ -210,11 +218,11 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review implementation `b5f0fcd`, its generated clean and fifth-check-fault
-evidence, atomic-publication behavior, exact exit routing, controlled-failure
-preservation, and existing-command compatibility. Do not begin P2.3, execute
+Define the remaining P2.3 relationship work as small ordered slices with exact
+authority dependencies, evidence requirements, state/hold routing,
+prerequisites, and negative tests. Do not implement a P2.3 rule, execute
 held-out semantics, alter protected assets, or add deferred
-multimodal/platform capabilities before P3.3 acceptance and integration.
+multimodal/platform capabilities before definition acceptance.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

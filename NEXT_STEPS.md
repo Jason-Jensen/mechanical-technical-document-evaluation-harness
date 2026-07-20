@@ -15,22 +15,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P2.4:** Accepted and integrated through PR #39 at exact `main` commit `cd9b52e`.
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
-- **P3.3:** Implementation `b5f0fcd` is verified and ready for explicit review; acceptance and integration remain required.
-- **P2.3 and later:** Broad relationship expansion remains blocked until the first runnable audit through P3.3 is accepted.
+- **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
+- **P2.3:** Definition is authorized for the remaining BOM, equipment, datasheet, specification, and revision relationship slices. Implementation remains blocked pending definition acceptance.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Review only the bounded P3.3 implementation and its evidence. Do not begin P2.3 expansion, held-out semantic execution, or deferred capabilities before P3.3 acceptance and integration.
+Define only the ordered P2.3 relationship slices, exact authority dependencies, evidence, states, holds, prerequisites, and negative tests. Do not implement a P2.3 rule, execute held-out semantics, or add deferred capabilities before definition acceptance.
 
 ## Active Work Block
 
-- **WBS:** P3.3 audit-package CLI workflow
-- **Branch:** `codex/p3.3-audit-package-cli` after this P3.2 closeout
-- **Objective:** Review and integrate one deterministic command that runs the accepted package audit and publishes its immutable result and accepted report views.
-- **Definition of done:** `mech-eval audit-package` validates arguments, executes the accepted gates/checks/result pipeline, immutably publishes `package_result.json`, both issue registers, and the readiness summary, returns accepted package-state exits `0`-`5`, usage exit `64`, and pre-result internal exit `70`, preserves controlled failures, leaves existing v0.2 commands unchanged, and passes focused/full tests, validation, Ruff, coverage, and inspected clean/fault evidence.
+- **WBS:** P2.3 relationship-expansion definition
+- **Branch:** `codex/p2.3-relationship-expansion-definition` after the P3.3 integration closeout
+- **Objective:** Freeze a small, ordered implementation sequence for BOM/equipment, datasheet/specification, and revision checks using the accepted authority map and runnable audit path.
+- **Definition of done:** The definition states each check's exact source and target, accepted authority rule, prerequisites, pass/fail/skip behavior, finding fields, result state and hold, positive and negative development tests, implementation order, exclusions, and acceptance gate. It does not change code, schemas, fixtures, goldens, or held-out content.
 
-Next action: review implementation `b5f0fcd`, its atomic-publication and exit-boundary tests, and the inspected clean/fifth-check-fault run directories. P2.3 expansion, semantic held-out execution, and deferred capabilities remain blocked.
+Next action: review and accept the bounded P2.3 relationship-expansion definition before the first implementation slice. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
