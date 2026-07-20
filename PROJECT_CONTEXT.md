@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 check 6 implementation review
-- **Status:** The P2.3 definition is accepted and integrated through PR #41; check 6 implementation `c1dcc4a` is complete on `codex/p2.3-bom-item-equipment-reciprocity` and ready for explicit review
+- **Active WBS:** P2.3 relationship maintainability stabilization
+- **Status:** Check 6 is accepted and integrated through PR #42 at exact `main` `559bb81`; a bounded behavior-preserving cleanup is authorized before check 7
 - **Implementation state:** Eight ordered gates and six ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Check 6 reconciles release-required BOM item/equipment mappings with manifest declarations under exact `AUTH-BOM-002`; checks 7-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -256,11 +256,13 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review check 6 implementation `c1dcc4a`, its tests, and the generated clean and
-wrong-target outputs under `scratch/p23-check6-review-evidence`. Do not merge
-the implementation, begin checks 7-11, alter authority-gap decisions, execute
-held-out semantics, change protected assets, or add deferred multimodal/
-platform capabilities before explicit acceptance.
+Complete a bounded behavior-preserving relationship-module and focused-test
+cleanup before check 7. Preserve all accepted gates, checks, result/report/CLI
+semantics, schemas, fixtures, authority maps, goldens, held-out content, and
+frozen v0.2 behavior. After exact regression proof, implement only check 7.
+The sanitized real-package development trial requires an explicitly authorized
+package; held-out semantics and deferred multimodal/platform capabilities remain
+blocked.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
