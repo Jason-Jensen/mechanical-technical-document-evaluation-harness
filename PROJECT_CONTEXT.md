@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 authorized structured-package trial decision
-- **Status:** Check 7 is integrated through PR #45 at exact `main` `273c36a`; the project is paused for CEO package selection and data authorization
+- **Active WBS:** P2.3 Precious Plastic controlled intake and fit-gap assessment
+- **Status:** The CEO selected Precious Plastic Shredder Basic 3.3 for trial 1 and authorized controlled intake. NASA/JPL Open Source Rover v4.0.0 and OpenFlexure Microscope v7.0.0-beta5 are approved as sequential follow-on trials only after the preceding package is reviewed and accepted
 - **Implementation state:** Eight ordered gates and seven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Checks 6 and 7 add BOM item/equipment manifest reciprocity and BOM equipment drawing presence under exact `AUTH-BOM-002`; checks 8-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -256,13 +256,14 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Wait for the CEO to identify one public, synthetic, self-authored, or explicitly
-authorized sanitized package and confirm the privacy, retention, and reviewer
-boundary in
-`docs/package_assurance/authorized_structured_package_trial_v0.3.0.md`. Do not
-begin package intake, check 8, change authority-gap decisions, execute held-out
-semantics, change protected assets, or add deferred multimodal/platform
-capabilities.
+Integrate the accepted selection record, then download Precious Plastic
+Shredder Basic 3.3 only to a local Git-ignored intake area. Verify the official
+source and license, preserve and hash the untouched package, inventory the
+files, and produce a fit-and-gap assessment before transformation or audit
+execution. Do not begin NASA/JPL or OpenFlexure until the preceding trial is
+reviewed and accepted. Do not implement check 8, change authority-gap decisions,
+execute held-out semantics, change protected assets, or add deferred
+multimodal/platform capabilities.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
