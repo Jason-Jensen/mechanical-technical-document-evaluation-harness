@@ -1,6 +1,6 @@
 # Authorized Structured-Package Trial - Decision Gate
 
-**Status:** Awaiting CEO selection from the public-package shortlist
+**Status:** Trial 1 authorized for controlled intake and fit-gap assessment
 **WBS:** P2.3 practical-use trial gate
 **Product baseline:** PR #45 integrated at exact `main` commit `273c36a`
 **Scope:** One development-only, structured mechanical package
@@ -129,6 +129,10 @@ To authorize the trial, provide:
    what must remain outside Git and outside retained evidence; and
 4. the person who can judge whether findings are useful and factually grounded.
 
+The CEO authorized Precious Plastic Shredder Basic 3.3 on 2026-07-20. The CEO
+will review product usefulness. Factual claims must remain traceable to the
+publisher's source material; this trial does not provide engineering approval.
+
 ## Public-Package Research
 
 The CEO reported that no private package is available and authorized public
@@ -137,6 +141,13 @@ package research. The reviewed shortlist is recorded in
 3.3 is recommended because its CAD, DXF, blueprint, schematic, BOM, and manual
 content most closely resembles the intended fabrication-package workflow.
 
-No candidate files have been downloaded. Selection authorizes only source
-verification, local Git-ignored intake, hashing, inventory, and a fit-and-gap
-report before transformation.
+The accepted trial order is:
+
+1. Precious Plastic Shredder Basic 3.3;
+2. NASA/JPL Open Source Rover v4.0.0; and
+3. OpenFlexure Microscope v7.0.0-beta5.
+
+Each trial has an independent review gate. A later package cannot begin until
+the preceding package's assessment is reviewed and accepted. Trial 1 selection
+authorizes only source verification, local Git-ignored intake, hashing,
+inventory, and a fit-and-gap report before transformation.

@@ -1,6 +1,6 @@
 # Public Structured-Package Trial Shortlist
 
-**Status:** Awaiting CEO selection
+**Status:** Accepted; trial 1 authorized for controlled intake and fit-gap assessment
 **Date:** 2026-07-20
 **Baseline:** PR #46 integrated at exact `main` commit `361cc77`
 **Research boundary:** Public source review only; no candidate files downloaded
@@ -9,6 +9,10 @@
 
 Select **Precious Plastic Shredder Basic 3.3** for the first practical-use
 trial.
+
+**CEO decision, 2026-07-20:** Accepted. The other two candidates are also
+approved as sequential trials. NASA/JPL is trial 2 and OpenFlexure is trial 3.
+Neither may begin until the preceding package is reviewed and accepted.
 
 It is the closest of the reviewed public options to the package this product is
 intended to audit. The official machine package is described as containing 3D
@@ -86,7 +90,7 @@ friction the trial is meant to expose.
 
 ## Entry Decision
 
-CEO approval of the recommendation authorizes only these next actions:
+CEO approval of the recommendation authorizes only these trial 1 actions:
 
 1. verify and record the official download, license, and attribution;
 2. download the package to a local, Git-ignored intake area;
