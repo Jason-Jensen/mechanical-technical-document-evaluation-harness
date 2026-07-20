@@ -457,3 +457,26 @@ evidence EV-083 authorize only check 6,
 `bom_item_equipment_manifest_reciprocity`, on its dedicated branch. Checks
 7-11, all six authority/source gaps, semantic held-out execution, protected
 asset changes, and deferred capabilities remain blocked.
+
+## Check 6 Implementation Review Record
+
+Implementation `c1dcc4a` appends
+`bom_item_equipment_manifest_reciprocity` after the five accepted drawing
+checks. It requires every behavior-critical field of exact `AUTH-BOM-002`,
+evaluates release-required BOM rows and required manifest declarations in
+stable item order, and emits one high-severity automatic-fail release hold per
+affected item. Missing, extra, wrong, and multiple declarations are covered;
+an unrelated missing drawing-authority rule does not block this check.
+
+Verification passes 31 relationship tests, 75 focused relationship/result/
+report/CLI tests, 278 full-suite tests with one expected Windows symlink skip,
+repository validation 5/5, Ruff, and 87.02% coverage. The inspected clean run
+has 8/8 gates, 6/6 checks, no findings, `automatic_pass`, and exit 0. The
+isolated `REL-ITEM-EQ-001` target fault has 8/8 gates, 5/6 checks, one exact
+`BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED` finding under `AUTH-BOM-002`,
+`automatic_fail`, release hold true, and exit 1. Both runs publish exactly four
+outputs without absolute local paths.
+
+Decision D-087 and evidence EV-084 present the implementation for explicit
+review. It is not integrated. Checks 7-11, six authority/source gaps, held-out
+semantics, protected-asset changes, and deferred capabilities remain blocked.

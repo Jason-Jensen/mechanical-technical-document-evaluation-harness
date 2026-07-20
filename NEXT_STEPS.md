@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** The relationship-expansion definition is accepted and integrated through PR #41 at exact `main` commit `a855d99`. Six existing-authority checks are frozen, six authority/source gaps remain blocked, and only check 6 is authorized for implementation.
+- **P2.3:** The relationship-expansion definition is accepted and integrated through PR #41. Check 6 implementation `c1dcc4a` is complete and ready for explicit review; six authority/source gaps and checks 7-11 remain blocked.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Authorization
 
-Implement only `bom_item_equipment_manifest_reciprocity` v0.3.0 under exact `AUTH-BOM-002`. Append it after the five accepted drawing checks and prove the clean development package plus the isolated wrong-but-valid manifest-target fault through relationships, canonical result, reports, and `audit-package`. Do not implement checks 7-11, any authority-gap claim, held-out semantics, or deferred capabilities.
+Review only `bom_item_equipment_manifest_reciprocity` implementation `c1dcc4a`, its focused/full verification, and the inspected clean and wrong-target audit outputs. Do not merge it, implement checks 7-11, alter an authority-gap decision, execute held-out semantics, or add deferred capabilities before explicit acceptance.
 
 ## Active Work Block
 
 - **WBS:** P2.3 check 6 implementation
 - **Branch:** `codex/p2.3-bom-item-equipment-reciprocity`
-- **Objective:** Add one deterministic BOM-item-to-equipment manifest reciprocity check without changing accepted gates, earlier checks, fixtures, schemas, authority rules, or protected assets.
-- **Definition of done:** Check 6 is appended in the frozen order, requires exact `AUTH-BOM-002`, emits the accepted stable finding and evidence for each affected item, passes positive/negative/order/repeatability/prerequisite tests, flows through result/report/CLI outputs, and passes the focused and full frozen regression suites. Generated clean and isolated-fault outputs are inspected before review.
+- **Objective:** Review the completed deterministic BOM-item-to-equipment manifest reciprocity check without expanding scope.
+- **Definition of done:** Confirm check 6 is appended in the frozen order, requires exact `AUTH-BOM-002`, emits one stable evidence-linked finding per affected item, remains independent of unrelated authority rules, and preserves the accepted result/report/CLI behavior. Confirm 31 relationship tests, 75 focused tests, 278 full-suite passes with one expected skip, validation 5/5, Ruff, 87.02% coverage, and inspected clean/fault outputs.
 
-Next action: implement and review check 6 on `codex/p2.3-bom-item-equipment-reciprocity`. Integration requires separate explicit acceptance. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: accept, revise, or reject check 6 implementation `c1dcc4a`. Integration requires separate explicit acceptance. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
