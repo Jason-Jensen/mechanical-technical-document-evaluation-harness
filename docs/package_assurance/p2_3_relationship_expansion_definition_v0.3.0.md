@@ -3,7 +3,7 @@
 ## Control Status
 
 - **WBS:** P2.3, BOM/equipment/datasheet/specification relationship expansion
-- **Status:** Accepted; checks 6-7 implemented, check 7 ready for integration
+- **Status:** Accepted; checks 6-7 integrated, practical-use trial gate awaiting CEO input
 - **Baseline:** definition integrated through PR #41 at exact `main` `a855d99`
 - **Definition branch:** `codex/p2.3-relationship-expansion-definition`
 - **Accepted predecessor:** P3.3 through PR #40 at exact `main` commit `e4080fd`
@@ -503,8 +503,9 @@ passed checks, one failed check, one exact
 `automatic_fail`, release hold true, and exit 1. Both runs publish exactly four
 outputs without absolute local paths.
 
-Decision D-090 and evidence EV-087 present check 7 for integration under the
-user-approved executive sequence. After integration, the next gate is selection
-of one authorized sanitized structured package for a development-only
-real-world trial. Checks 8-11, six authority/source gaps, semantic held-out
-execution, protected-asset changes, and deferred capabilities remain blocked.
+Decision D-090 is accepted. Evidence EV-087 and EV-088 record check 7 review
+and integration through PR #45 at exact `main` `273c36a`. The next gate is
+selection of one authorized sanitized structured package under
+`authorized_structured_package_trial_v0.3.0.md`. Checks 8-11, six authority/
+source gaps, semantic held-out execution, protected-asset changes, and deferred
+capabilities remain blocked.
