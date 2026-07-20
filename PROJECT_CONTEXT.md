@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-20
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-dual-public-package-preparation`
+**Current branch:** `codex/p2.3-dual-public-package-audit-execution`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 dual public-package preparation review
-- **Status:** D-097 was accepted and PR #49 merged both source-to-audit mappings at exact `main` `53e19ad`. Separate Git-ignored NASA/JPL and OpenFlexure working packages and populated logs have now been prepared and independently verified. No audit has been run
+- **Active WBS:** P2.3 public-package audit failure review
+- **Status:** D-098 was accepted and PR #50 merged the preparation review at exact `main` `7009fe2`. The unchanged NASA/JPL audit returned internal exit `70` before publishing outputs because 174 blank optional BOM references became schema-invalid affected identifiers. The OpenFlexure audit was stopped; a read-only diagnostic confirmed the same defect would produce 99 invalid findings
 - **Implementation state:** Eight ordered gates and seven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Checks 6 and 7 add BOM item/equipment manifest reciprocity and BOM equipment drawing presence under exact `AUTH-BOM-002`; checks 8-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -240,6 +240,18 @@ BOM rows and 126 copied source artifacts; OpenFlexure contains 33 BOM rows and
 `missing_authoritative_information`. The tracked review is
 `docs/package_assurance/dual_public_package_preparation_review_2026-07-20.md`.
 
+D-098 was accepted and PR #50 merged the preparation review at exact `main`
+`7009fe2`. The first controlled NASA/JPL audit reverified the accepted package
+tree, then returned internal exit `70` before atomic publication. The identifier
+gate treated each intentionally blank BOM drawing, datasheet, and specification
+reference as a malformed required identifier and copied the blank value into
+canonical `affected_identifiers`; the strict package-result schema rejected the
+malformed findings. No output was published and no package changed. The
+OpenFlexure audit was not executed; a read-only diagnostic confirmed the same
+defect would produce 99 blank-identifier findings. `IMP-017` and
+`docs/package_assurance/dual_public_package_audit_failure_review_2026-07-20.md`
+record the root cause and proposed narrow stabilization.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -278,12 +290,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the exact prepared NASA/JPL and OpenFlexure package trees and populated
-logs through the tracked preparation review. Recommended D-098 accepts their
-fixed package hashes and authorizes one controlled audit run per package, with
-no source, mapping, evaluator, schema, authority, or expected-state changes in
-the same block. Do not implement check 8, execute held-out semantics, change
-protected assets, or add deferred multimodal/platform capabilities.
+Review the failed NASA/JPL execution and cross-package root-cause evidence.
+Recommended D-099 authorizes only a narrow identifier/result-contract
+stabilization with synthetic end-to-end regression proof. Do not change or
+rerun either public package, weaken the result schema, implement check 8,
+execute held-out semantics, change protected assets, or add deferred
+multimodal/platform capabilities before that fix is reviewed and integrated.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
