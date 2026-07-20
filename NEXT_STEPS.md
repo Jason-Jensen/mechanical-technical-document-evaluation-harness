@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** Checks 6 and 7 are integrated; the authorized trial charter is integrated through PR #46; the public shortlist and original sequential authorization are integrated through PR #47 at exact `main` `36b146b`. Precious Plastic stopped without a download because official access was unavailable. The co-equal NASA/JPL and OpenFlexure intakes and combined fit-gap are complete and awaiting CEO review. Six authority/source gaps and checks 8-11 remain unimplemented.
+- **P2.3:** Checks 6 and 7 are integrated. The dual NASA/JPL and OpenFlexure intake and fit-gap assessment was accepted and merged through PR #48 at exact `main` `99d16b6`. Two package-specific source-to-audit mappings and one shared transformation-and-assumption log contract are ready for review. Six authority/source gaps and checks 8-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Review Gate
 
-The NASA/JPL and OpenFlexure intakes and combined fit-gap assessment are complete and ready for CEO review. Both untouched official archives are preserved and hashed outside Git; both inventories use the same ZIP-native method. No PDF/CAD engineering content was opened. No transformation or audit run is authorized by this evidence.
+The bounded NASA/JPL mechanical-rover and OpenFlexure high-resolution-microscope mapping definitions are ready for CEO review. They separate publisher facts, deterministic preparation fields, missing authority, and true non-applicability under one shared log contract. Both mappings predict missing-authority holds; neither is allowed to manufacture drawing, datasheet, or document-revision authority.
 
 ## Active Work Block
 
-- **WBS:** P2.3 dual public-package intake and fit-gap assessment
-- **Branch:** `codex/p2.3-dual-public-package-intake`
-- **Objective:** Obtain CEO review of both completed intakes and the recommendation to define two controlled manual mappings.
-- **Definition of done:** The CEO accepts, revises, or stops the combined fit-gap assessment and explicitly decides whether both package-specific mapping definitions may begin.
+- **WBS:** P2.3 dual public-package mapping definition
+- **Branch:** `codex/p2.3-dual-public-package-mapping-definition`
+- **Objective:** Freeze one honest, reversible source-to-audit mapping for each accepted public package and one shared preparation log contract.
+- **Definition of done:** Both package configurations, authority choices, field classifications, expected holds, and the shared log are reviewed; no source is converted and no audit is run.
 
-Next action: review `docs/package_assurance/dual_public_package_intake_fit_gap_2026-07-20.md`. Recommended decision: accept both intakes and authorize one controlled manual mapping-definition block for both packages, without transformation, audit execution, or evaluator changes. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/nasa_jpl_open_source_rover_mapping_definition_v0.3.0.md`, `docs/package_assurance/openflexure_microscope_mapping_definition_v0.3.0.md`, and `docs/package_assurance/transformation_and_assumption_log_contract_v0.3.0.md`. Recommended decision: accept both mappings and authorize controlled local working-copy preparation with populated logs, followed by another review before either audit is run. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
