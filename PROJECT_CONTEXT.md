@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-20
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p3.3-audit-package-integration-closeout`
+**Current branch:** `codex/p2.3-relationship-expansion-definition`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 relationship-expansion definition
-- **Status:** P3.3 is accepted and integrated through PR #40 at exact `main` commit `e4080fd`; P2.3 definition is authorized next
+- **Active WBS:** P2.3 relationship-expansion definition review
+- **Status:** P3.3 is accepted and integrated through PR #40 at exact `main` commit `e4080fd`; the P2.3 definition is ready for explicit review from closeout baseline `26b7aa2`
 - **Implementation state:** Eight ordered gates and five ordered drawing checks feed the accepted canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. The remaining BOM, equipment, datasheet, specification, and revision checks are not implemented and must be defined in bounded slices before code changes
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -180,6 +180,24 @@ full-suite tests with one expected Windows symlink skip, repository validation
 next; evaluator implementation and semantic held-out execution remain blocked
 until the definition is reviewed and accepted.
 
+The P2.3 definition separates six checks supported by the accepted sources and
+authority rules from six claims that are not currently supportable. The
+supported sequence covers BOM item/equipment manifest reciprocity, BOM
+equipment presence in drawing metadata, datasheet authority presence,
+equipment/datasheet agreement, equipment/datasheet manifest reciprocity, and
+specification revision history. Quantity reconciliation, part/material
+agreement, BOM item/drawing agreement, equipment/specification association,
+datasheet revision history, and controlled technical-value compliance remain
+authority/source gaps. Implementation is blocked pending definition
+acceptance. This distinction prevents a parsed single-source value from being
+misreported as a reconciled cross-document value.
+
+Six temporary development-package definition probes confirmed the ownership
+boundary: each proposed isolated fault passed all eight P2.1 gates and all five
+accepted drawing checks with zero findings. The new checks therefore close
+real gaps rather than duplicating current behavior. Only ignored scratch copies
+were mutated.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -218,9 +236,9 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Define the remaining P2.3 relationship work as small ordered slices with exact
-authority dependencies, evidence requirements, state/hold routing,
-prerequisites, and negative tests. Do not implement a P2.3 rule, execute
+Review `docs/package_assurance/p2_3_relationship_expansion_definition_v0.3.0.md`,
+including the six-check sequence, six authority gaps, exact test faults, and
+scope boundaries. Do not implement a P2.3 rule, execute
 held-out semantics, alter protected assets, or add deferred
 multimodal/platform capabilities before definition acceptance.
 
