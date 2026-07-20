@@ -1,13 +1,13 @@
 # Authorized Structured-Package Trial - Decision Gate
 
-**Status:** Trial 1 authorized for controlled intake and fit-gap assessment
+**Status:** Two co-equal public-package intakes complete; combined fit-gap ready for review
 **WBS:** P2.3 practical-use trial gate
 **Product baseline:** PR #45 integrated at exact `main` commit `273c36a`
-**Scope:** One development-only, structured mechanical package
+**Scope:** Two independent, development-only public mechanical packages
 
 ## Executive Purpose
 
-Use one realistic package to learn whether the current audit is useful in an
+Use realistic packages to learn whether the current audit is useful in an
 actual review workflow. The trial should expose preparation burden, confusing
 evidence, incorrect findings, missed conditions, and missing source authority
 before more checks are built.
@@ -15,9 +15,9 @@ before more checks are built.
 This is a product-learning exercise. It is not a benchmark, an engineering
 approval, a production-readiness claim, or proof of real-world accuracy.
 
-## Decision Required
+## Source Authorization Rule
 
-Select one of these package sources:
+For each practical-use package, select one of these source types:
 
 1. **An authorized, sanitized package from a real past project (recommended).**
    This gives the strongest practical learning.
@@ -60,7 +60,10 @@ If the starting package is not already in this structure, the first trial stage
 is a fit-and-gap assessment. Conversion is documented as a manual preparation
 step and is not presented as automated extraction.
 
-## Trial Sequence
+## Trial Protocol
+
+Each authorized package follows the same steps independently. Complete both
+intakes before comparing them or proposing transformation.
 
 1. **Authorize and inventory.** Confirm permitted use and list available source
    files without changing them.
@@ -111,7 +114,7 @@ The trial will produce:
 - an intake and authorization record;
 - a structured fit-and-gap summary;
 - a transformation and assumption log;
-- one preserved audit run when the entry gate is satisfied;
+- one preserved audit run per package when its entry gate is satisfied;
 - a reviewer disposition record;
 - an improvement-loop summary; and
 - a continue, revise, or stop recommendation.
@@ -123,31 +126,37 @@ database, RAG, agent, and frontend work remain blocked during this trial.
 
 To authorize the trial, provide:
 
-1. the selected package location or attached files;
-2. confirmation that the material may be used for this local development trial;
+1. each selected package location or attached file set;
+2. confirmation that each material set may be used for this local development trial;
 3. confirmation that sensitive material has been removed, or instructions for
    what must remain outside Git and outside retained evidence; and
 4. the person who can judge whether findings are useful and factually grounded.
 
-The CEO authorized Precious Plastic Shredder Basic 3.3 on 2026-07-20. The CEO
-will review product usefulness. Factual claims must remain traceable to the
-publisher's source material; this trial does not provide engineering approval.
+The CEO first authorized Precious Plastic Shredder Basic 3.3 on 2026-07-20.
+That intake stopped without a download because the official source requires an
+account the user cannot create or access. The project will not bypass that
+control. The CEO then authorized NASA/JPL Open Source Rover v4.0.0 and
+OpenFlexure Microscope v7.0.0-beta5 as co-equal trials. The CEO will review
+product usefulness. Factual claims must remain traceable to publisher source
+material; these trials do not provide engineering approval.
 
 ## Public-Package Research
 
 The CEO reported that no private package is available and authorized public
-package research. The reviewed shortlist is recorded in
-`public_trial_package_shortlist_2026-07-20.md`. Precious Plastic Shredder Basic
-3.3 is recommended because its CAD, DXF, blueprint, schematic, BOM, and manual
-content most closely resembles the intended fabrication-package workflow.
+package research. The reviewed shortlist and the superseding access decision
+are recorded in `public_trial_package_shortlist_2026-07-20.md`.
 
-The accepted trial order is:
+The active trials are:
 
-1. Precious Plastic Shredder Basic 3.3;
-2. NASA/JPL Open Source Rover v4.0.0; and
-3. OpenFlexure Microscope v7.0.0-beta5.
+1. NASA/JPL Open Source Rover v4.0.0; and
+2. OpenFlexure Microscope v7.0.0-beta5.
 
-Each trial has an independent review gate. A later package cannot begin until
-the preceding package's assessment is reviewed and accepted. Trial 1 selection
-authorizes only source verification, local Git-ignored intake, hashing,
-inventory, and a fit-and-gap report before transformation.
+Neither package is ranked above the other. Both use identical controls:
+official release source and license verification, separate local Git-ignored
+storage, preservation of the untouched archive, SHA-256 hashing, file-level
+inventory, source-family and authority-gap assessment, and no engineering-
+content extraction. The combined fit-gap assessment must be reviewed before
+either package is transformed or audited.
+
+The completed evidence and recommended controlled-mapping gate are recorded in
+`dual_public_package_intake_fit_gap_2026-07-20.md`.

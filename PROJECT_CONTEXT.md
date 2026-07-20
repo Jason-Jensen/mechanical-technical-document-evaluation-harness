@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-20
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-bom-item-equipment-reciprocity`
+**Current branch:** `codex/p2.3-dual-public-package-intake`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 Precious Plastic controlled intake and fit-gap assessment
-- **Status:** The CEO selected Precious Plastic Shredder Basic 3.3 for trial 1 and authorized controlled intake. NASA/JPL Open Source Rover v4.0.0 and OpenFlexure Microscope v7.0.0-beta5 are approved as sequential follow-on trials only after the preceding package is reviewed and accepted
+- **Active WBS:** P2.3 dual public-package intake and fit-gap assessment
+- **Status:** Precious Plastic stopped without a download because official access was unavailable. The co-equal NASA/JPL and OpenFlexure intakes are complete: both official archives are preserved, SHA-256 hashed, ZIP-inventoried, and assessed under one protocol. The combined fit-gap and controlled-mapping recommendation await CEO review
 - **Implementation state:** Eight ordered gates and seven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Checks 6 and 7 add BOM item/equipment manifest reciprocity and BOM equipment drawing presence under exact `AUTH-BOM-002`; checks 8-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -256,12 +256,10 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate the accepted selection record, then download Precious Plastic
-Shredder Basic 3.3 only to a local Git-ignored intake area. Verify the official
-source and license, preserve and hash the untouched package, inventory the
-files, and produce a fit-and-gap assessment before transformation or audit
-execution. Do not begin NASA/JPL or OpenFlexure until the preceding trial is
-reviewed and accepted. Do not implement check 8, change authority-gap decisions,
+Review `docs/package_assurance/dual_public_package_intake_fit_gap_2026-07-20.md`.
+The recommended next gate is one controlled manual mapping-definition block for
+both packages. Do not transform source files, create working audit packages,
+run either audit, implement check 8, change authority-gap decisions,
 execute held-out semantics, change protected assets, or add deferred
 multimodal/platform capabilities.
 
