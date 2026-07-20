@@ -37,9 +37,11 @@ from mech_eval_harness.package_assurance.relationships import (
     run_package_relationships,
 )
 from mech_eval_harness.package_assurance.result_core import (
+    AUDIT_PACKAGE_READY_STATUS,
     ENGINEERING_REVIEW_LIMITATION,
     PACKAGE_EVALUATOR_VERSION,
     PACKAGE_RESULT_FILENAME,
+    PACKAGE_RESULT_READY_STATUS,
     PACKAGE_RESULT_ROUTER_VERSION,
     PACKAGE_RESULT_SCHEMA_VERSION,
     PACKAGE_STATE_PRECEDENCE,
@@ -72,6 +74,20 @@ from mech_eval_harness.package_assurance.release_readiness import (
     ReleaseReadinessRenderError,
     render_release_readiness_summary,
 )
+from mech_eval_harness.package_assurance.publication import (
+    AUDIT_PACKAGE_OUTPUT_FILENAMES,
+    PUBLICATION_FAILURE_FILENAME,
+    PackageAuditCollisionError,
+    PackageAuditPublication,
+    PackageAuditPublicationError,
+    publish_package_audit,
+)
+from mech_eval_harness.package_assurance.audit import (
+    PACKAGE_STATE_EXIT_CODES,
+    PackageAuditOutcome,
+    execute_package_audit,
+    package_state_exit_code,
+)
 
 __all__ = [
     "LoadedPackageManifest",
@@ -99,9 +115,11 @@ __all__ = [
     "DRAWING_REVISION_MISMATCH_CODE",
     "RELATIONSHIP_CHECK_ORDER",
     "RELATIONSHIP_CHECK_VERSION",
+    "AUDIT_PACKAGE_READY_STATUS",
     "ENGINEERING_REVIEW_LIMITATION",
     "PACKAGE_EVALUATOR_VERSION",
     "PACKAGE_RESULT_FILENAME",
+    "PACKAGE_RESULT_READY_STATUS",
     "PACKAGE_RESULT_ROUTER_VERSION",
     "PACKAGE_RESULT_SCHEMA_VERSION",
     "PACKAGE_STATE_PRECEDENCE",
@@ -120,6 +138,13 @@ __all__ = [
     "IssueRegisterViews",
     "RELEASE_READINESS_MARKDOWN_FILENAME",
     "ReleaseReadinessRenderError",
+    "AUDIT_PACKAGE_OUTPUT_FILENAMES",
+    "PUBLICATION_FAILURE_FILENAME",
+    "PACKAGE_STATE_EXIT_CODES",
+    "PackageAuditCollisionError",
+    "PackageAuditOutcome",
+    "PackageAuditPublication",
+    "PackageAuditPublicationError",
     "build_package_input_fingerprint",
     "build_package_result",
     "load_package_manifest",
@@ -128,6 +153,9 @@ __all__ = [
     "run_package_relationships",
     "render_issue_register_views",
     "render_release_readiness_summary",
+    "execute_package_audit",
+    "package_state_exit_code",
+    "publish_package_audit",
     "validate_package_result_document",
     "write_package_result",
 ]

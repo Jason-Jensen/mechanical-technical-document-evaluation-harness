@@ -8,8 +8,8 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** P3.3 report publication and `audit-package` CLI after accepted P3.2 integration at exact `main` commit `4b848b9`.
-- **Implementation boundary:** Eight ordered gates and five ordered drawing checks feed an accepted canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. Accepted P3.1 and P3.2 render deterministic issue and readiness views only from that strict result. P3.3 may publish those accepted views and add one bounded end-to-end CLI command without changing evaluator meaning. Broad P2.3 relationships and deferred capabilities remain separately gated.
+- **Current gate:** Review P3.3 implementation `b5f0fcd`, which adds atomic report publication and the bounded `audit-package` command from accepted predecessor `main` commit `441e521`.
+- **Implementation boundary:** Eight ordered gates and five ordered drawing checks feed an accepted canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. P3.3 now publishes that result and the accepted P3.1/P3.2 views together through one hidden staging directory and final atomic rename. It does not change evaluator meaning. Broad P2.3 relationships, held-out semantic execution, and deferred capabilities remain separately gated.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 
@@ -180,6 +180,28 @@ mech-eval evaluate `
 
 Generated run records are evidence. They are not versioned benchmark definitions.
 
+### Audit a structured package
+
+```powershell
+mech-eval audit-package `
+    . `
+    benchmarks\package_assurance\development\pump_skid_clean_v1\package `
+    --runs-dir scratch\package-audit-runs
+```
+
+The command runs the accepted package gates, relationship checks, and result
+router. It publishes one new immutable run directory containing:
+
+- `package_result.json`;
+- `issue_register.csv`;
+- `issue_register.md`; and
+- `release_readiness.md`.
+
+The output directory must be outside the audited package. Existing run
+directories are never overwritten. A malformed manifest inside an existing
+package directory is retained as a controlled package result when the output
+location remains usable.
+
 ## Exit codes
 
 | Code | Meaning |
@@ -196,6 +218,19 @@ $LASTEXITCODE
 ```
 
 A candidate that is valid but fails engineering checks normally returns `1`. That is an evaluation result, not necessarily a software defect.
+
+The `audit-package` command uses the accepted package-state exits:
+
+| Code | Package audit meaning |
+|---:|---|
+| `0` | `automatic_pass` |
+| `1` | `automatic_fail` |
+| `2` | `engineering_review_required` |
+| `3` | `missing_authoritative_information` |
+| `4` | `extraction_or_tool_failure` |
+| `5` | `evaluator_uncertainty` |
+| `64` | Invalid command arguments or package/repository path |
+| `70` | Unexpected failure before a complete result can be published |
 
 ## Evaluation path
 

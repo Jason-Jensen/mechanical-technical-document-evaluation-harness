@@ -91,14 +91,48 @@
       ],
       "properties": {
         "status": {
-          "const": "package_result_ready"
+          "enum": [
+            "package_result_ready",
+            "audit_package_ready"
+          ]
         },
         "output_names": {
-          "const": [
-            "package_result.json"
-          ]
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/relativePath"
+          },
+          "uniqueItems": true
         }
-      }
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "status": {
+              "const": "package_result_ready"
+            },
+            "output_names": {
+              "const": [
+                "package_result.json"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "status": {
+              "const": "audit_package_ready"
+            },
+            "output_names": {
+              "const": [
+                "package_result.json",
+                "issue_register.csv",
+                "issue_register.md",
+                "release_readiness.md"
+              ]
+            }
+          }
+        }
+      ]
     },
     "engineering_review_limitation": {
       "type": "string",

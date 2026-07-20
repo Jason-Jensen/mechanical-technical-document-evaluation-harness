@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-19
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p3.2-release-readiness-integration-closeout`
+**Current branch:** `codex/p3.3-audit-package-cli`
 
 ## Executive Summary
 
@@ -31,8 +31,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P3.3 atomic report publication and `audit-package` CLI
-- **Status:** P3.2 is accepted and integrated at exact `main` commit `4b848b9`; the first-usable-audit result and report views are complete
-- **Implementation state:** Eight ordered gates and five ordered drawing checks feed the accepted canonical package result, deterministic issue-register views, and non-approving release-readiness view. P3.3 is authorized only to publish those artifacts atomically and expose the accepted pipeline through one bounded CLI command. Semantic held-out evaluation, broad P2.3 relationships, and deferred platform capabilities remain unimplemented
+- **Status:** P3.3 implementation `b5f0fcd` is verified and ready for explicit review from accepted predecessor `main` commit `441e521`
+- **Implementation state:** Eight ordered gates and five ordered drawing checks now feed the accepted canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Semantic held-out evaluation, broad P2.3 relationships, and deferred platform capabilities remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -156,6 +156,22 @@ publication of the accepted result/report artifacts and the bounded
 `audit-package` CLI with accepted exits. Broad P2.3, semantic held-out
 execution, protected changes, and deferred capabilities remain blocked.
 
+P3.3 implementation commit `b5f0fcd` adds a package-assurance workflow and
+atomic multi-file publication boundary on `codex/p3.3-audit-package-cli` from
+accepted predecessor `main` `441e521`. The command validates usage, runs the
+accepted eight gates and five checks, builds the canonical result, and
+publishes `package_result.json`, `issue_register.csv`, `issue_register.md`,
+and `release_readiness.md` together. The v0.3 package-result schema keeps the
+accepted one-file variant and adds one exact four-output variant; the frozen
+v0.2 result schema and CLI behavior are unchanged. Verification passes 49
+focused result/report/CLI tests, 271 full-suite tests with one expected Windows
+symlink skip, repository validation 5/5, Ruff, and 86.76% coverage. Inspected
+clean evidence has 8 passed gates, 5 passed checks, zero findings, and exit 0.
+The inspected removed-mapping fault has 8 passed gates, 4 passed and 1 failed
+check, exactly one `DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED` issue, release
+hold true, and exit 1. Both runs contain exactly four outputs and no absolute
+local paths. P3.3 acceptance and integration remain required.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -194,13 +210,11 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Implement only the accepted P3.3 workflow on `codex/p3.3-audit-package-cli`:
-atomic immutable publication of `package_result.json`, `issue_register.csv`,
-`issue_register.md`, and `release_readiness.md`; one `audit-package` command;
-accepted stable exit behavior; and preservation of controlled failures and
-existing v0.2 commands. Do not expand P2.3, execute held-out semantics, alter
-protected assets, or add deferred multimodal/platform capabilities in this
-block.
+Review implementation `b5f0fcd`, its generated clean and fifth-check-fault
+evidence, atomic-publication behavior, exact exit routing, controlled-failure
+preservation, and existing-command compatibility. Do not begin P2.3, execute
+held-out semantics, alter protected assets, or add deferred
+multimodal/platform capabilities before P3.3 acceptance and integration.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
