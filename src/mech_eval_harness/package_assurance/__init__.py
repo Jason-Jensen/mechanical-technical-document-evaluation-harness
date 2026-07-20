@@ -67,6 +67,11 @@ from mech_eval_harness.package_assurance.issue_register import (
     IssueRegisterViews,
     render_issue_register_views,
 )
+from mech_eval_harness.package_assurance.release_readiness import (
+    RELEASE_READINESS_MARKDOWN_FILENAME,
+    ReleaseReadinessRenderError,
+    render_release_readiness_summary,
+)
 
 __all__ = [
     "LoadedPackageManifest",
@@ -113,6 +118,8 @@ __all__ = [
     "ISSUE_REGISTER_MARKDOWN_FILENAME",
     "IssueRegisterRenderError",
     "IssueRegisterViews",
+    "RELEASE_READINESS_MARKDOWN_FILENAME",
+    "ReleaseReadinessRenderError",
     "build_package_input_fingerprint",
     "build_package_result",
     "load_package_manifest",
@@ -120,6 +127,7 @@ __all__ = [
     "run_package_gates",
     "run_package_relationships",
     "render_issue_register_views",
+    "render_release_readiness_summary",
     "validate_package_result_document",
     "write_package_result",
 ]

@@ -11,9 +11,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from mech_eval_harness.package_assurance.persistence import (
-    PackageResultSchemaValidationError,
-    validate_package_result_document,
+from mech_eval_harness.package_assurance.result_view import (
+    PackageResultViewInputError,
+    load_package_result_for_reporting,
 )
 
 
@@ -60,58 +60,14 @@ def render_issue_register_views(
 ) -> IssueRegisterViews:
     """Load one canonical result and render its CSV and Markdown issue views."""
 
-    document = _load_validated_result(result_path, schema_path)
+    try:
+        document = load_package_result_for_reporting(result_path, schema_path)
+    except PackageResultViewInputError as exc:
+        raise IssueRegisterRenderError(str(exc)) from exc
     return IssueRegisterViews(
         csv_text=_render_csv(document),
         markdown_text=_render_markdown(document),
     )
-
-
-def _load_validated_result(
-    result_path: Path,
-    schema_path: Path,
-) -> dict[str, Any]:
-    try:
-        raw = result_path.read_text(encoding="utf-8")
-    except (OSError, UnicodeError) as exc:
-        raise IssueRegisterRenderError(
-            f"Could not read package result: {result_path}"
-        ) from exc
-
-    try:
-        document = json.loads(
-            raw,
-            object_pairs_hook=_reject_duplicate_keys,
-            parse_constant=_reject_non_json_constant,
-        )
-    except (json.JSONDecodeError, ValueError) as exc:
-        raise IssueRegisterRenderError(
-            f"Package result is not strict JSON: {result_path}"
-        ) from exc
-
-    if not isinstance(document, dict):
-        raise IssueRegisterRenderError("Package result root must be a JSON object.")
-
-    try:
-        validate_package_result_document(document, schema_path)
-    except PackageResultSchemaValidationError as exc:
-        raise IssueRegisterRenderError(
-            f"Package result is not valid for issue-register rendering: {exc}"
-        ) from exc
-    return document
-
-
-def _reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
-    document: dict[str, Any] = {}
-    for key, value in pairs:
-        if key in document:
-            raise ValueError(f"Duplicate JSON object key: {key}")
-        document[key] = value
-    return document
-
-
-def _reject_non_json_constant(value: str) -> Any:
-    raise ValueError(f"Non-JSON numeric constant: {value}")
 
 
 def _render_csv(document: dict[str, Any]) -> str:
