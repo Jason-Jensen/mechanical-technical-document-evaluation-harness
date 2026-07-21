@@ -302,13 +302,16 @@ def test_missing_required_document_file_mapping_emits_one_reciprocity_hold(
     gates = _evaluate_gates(package_root)
     first = run_package_relationships(gates)
     second = run_package_relationships(gates)
-    *predecessors, check, bom_check, bom_drawing_check = first.checks
+    *predecessors, check, bom_check, bom_drawing_check, datasheet_check = (
+        first.checks
+    )
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert all(result.status == "passed" for result in predecessors)
     assert check.status == "failed"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "passed"
+    assert datasheet_check.status == "passed"
     assert len(check.findings) == 1
     finding = check.findings[0]
     assert finding.finding_id == second.checks[4].findings[0].finding_id
@@ -363,13 +366,16 @@ def test_wrong_valid_manifest_target_reports_every_failed_clause(
     _mutate_manifest(package_root, redirect_manifest)
     gates = _evaluate_gates(package_root)
     evaluation = run_package_relationships(gates)
-    *predecessors, check, bom_check, bom_drawing_check = evaluation.checks
+    *predecessors, check, bom_check, bom_drawing_check, datasheet_check = (
+        evaluation.checks
+    )
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert all(result.status == "passed" for result in predecessors)
     assert check.status == "failed"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "passed"
+    assert datasheet_check.status == "passed"
     finding = check.findings[0]
     assert finding.actual_value["failed_clauses"] == [
         "manifest_inventory_file_reference",
@@ -417,13 +423,16 @@ def test_conflicting_required_mapping_is_a_reciprocity_failure(
     _mutate_manifest(package_root, add_conflict)
     gates = _evaluate_gates(package_root)
     evaluation = run_package_relationships(gates)
-    *predecessors, check, bom_check, bom_drawing_check = evaluation.checks
+    *predecessors, check, bom_check, bom_drawing_check, datasheet_check = (
+        evaluation.checks
+    )
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert all(result.status == "passed" for result in predecessors)
     assert check.status == "failed"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "passed"
+    assert datasheet_check.status == "passed"
     finding = check.findings[0]
     assert finding.actual_value["failed_clauses"] == [
         "conflicting_required_document_to_file_mapping"
@@ -451,13 +460,16 @@ def test_shared_undeclared_drawing_reference_is_caught_by_reciprocity(
 
     gates = _evaluate_gates(package_root)
     evaluation = run_package_relationships(gates)
-    *predecessors, check, bom_check, bom_drawing_check = evaluation.checks
+    *predecessors, check, bom_check, bom_drawing_check, datasheet_check = (
+        evaluation.checks
+    )
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert all(result.status == "passed" for result in predecessors)
     assert check.status == "failed"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "passed"
+    assert datasheet_check.status == "passed"
     finding = check.findings[0]
     assert finding.affected_identifiers[-1] == undeclared
     assert finding.actual_value["failed_clauses"] == [
@@ -593,6 +605,7 @@ def test_metadata_file_reference_mismatch_emits_frozen_release_hold(
         reciprocity_check,
         bom_check,
         bom_drawing_check,
+        datasheet_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -603,6 +616,7 @@ def test_metadata_file_reference_mismatch_emits_frozen_release_hold(
     assert reciprocity_check.status == "passed"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "passed"
+    assert datasheet_check.status == "passed"
     assert len(check.findings) == 1
     assert len(check.evidence) == 7
     finding = check.findings[0]
@@ -714,6 +728,7 @@ def test_swapped_metadata_file_references_emit_sorted_findings(
         reciprocity_check,
         bom_check,
         bom_drawing_check,
+        datasheet_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -724,6 +739,7 @@ def test_swapped_metadata_file_references_emit_sorted_findings(
     assert reciprocity_check.status == "passed"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "passed"
+    assert datasheet_check.status == "passed"
     assert [
         finding.affected_identifiers[1] for finding in check.findings
     ] == ["DWG-PSK-1001", "DWG-PSK-1002"]
@@ -808,6 +824,7 @@ def test_missing_drawing_metadata_emits_frozen_release_hold(
         reciprocity_check,
         bom_check,
         bom_drawing_check,
+        datasheet_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -821,6 +838,7 @@ def test_missing_drawing_metadata_emits_frozen_release_hold(
     assert reciprocity_check.status == "passed"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "failed"
+    assert datasheet_check.status == "passed"
     assert len(bom_drawing_check.findings) == 1
     assert len(presence_check.findings) == 1
     finding = presence_check.findings[0]
@@ -892,6 +910,7 @@ def test_all_missing_metadata_findings_are_sorted_and_repeatable(
         reciprocity_check,
         bom_check,
         bom_drawing_check,
+        datasheet_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -904,6 +923,7 @@ def test_all_missing_metadata_findings_are_sorted_and_repeatable(
     assert reciprocity_check.status == "passed"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "failed"
+    assert datasheet_check.status == "passed"
     assert len(bom_drawing_check.findings) == 2
     assert [
         finding.affected_identifiers[-1]
@@ -961,6 +981,7 @@ def test_file_reference_check_requires_exact_accepted_authority_rule(
         reciprocity_check,
         bom_check,
         bom_drawing_check,
+        datasheet_check,
     ) = evaluation.checks
 
     assert gates.dependent_checks_allowed is True
@@ -971,6 +992,7 @@ def test_file_reference_check_requires_exact_accepted_authority_rule(
     assert reciprocity_check.status == "skipped"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "passed"
+    assert datasheet_check.status == "passed"
     assert reciprocity_check.blocked_by == (AUTHORITY_GATE_ID,)
     assert check.blocked_by == (AUTHORITY_GATE_ID,)
     assert check.findings == ()
@@ -995,6 +1017,7 @@ def test_missing_register_authority_emits_frozen_release_hold(
         reciprocity_check,
         bom_check,
         bom_drawing_check,
+        datasheet_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -1008,6 +1031,7 @@ def test_missing_register_authority_emits_frozen_release_hold(
     assert reciprocity_check.status == "passed"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "passed"
+    assert datasheet_check.status == "passed"
     assert len(authority_check.findings) == 1
     finding = authority_check.findings[0]
     assert finding.finding_id == second.checks[2].findings[0].finding_id
@@ -1073,6 +1097,7 @@ def test_all_missing_register_authority_findings_are_sorted_and_repeatable(
         reciprocity_check,
         bom_check,
         bom_drawing_check,
+        datasheet_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -1084,6 +1109,7 @@ def test_all_missing_register_authority_findings_are_sorted_and_repeatable(
     assert reciprocity_check.status == "passed"
     assert bom_check.status == "passed"
     assert bom_drawing_check.status == "passed"
+    assert datasheet_check.status == "passed"
     assert [
         finding.affected_identifiers[-1]
         for finding in authority_check.findings

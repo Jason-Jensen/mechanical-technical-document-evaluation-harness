@@ -251,6 +251,7 @@ def test_removed_required_mapping_cli_preserves_exact_fault(
         "failed",
         "passed",
         "passed",
+        "passed",
     ]
     assert len(rows) == 1
     assert rows[0]["code"] == "DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED"
@@ -315,6 +316,7 @@ def test_wrong_valid_bom_mapping_cli_preserves_exact_fault(
         "passed",
         "failed",
         "passed",
+        "passed",
     ]
     assert len(rows) == 1
     assert rows[0]["code"] == "BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED"
@@ -332,7 +334,7 @@ def test_wrong_valid_bom_mapping_cli_preserves_exact_fault(
     readiness = (run_directory / "release_readiness.md").read_text(
         encoding="utf-8"
     )
-    assert "| Relationship checks | 6 | 1 | 0 |" in readiness
+    assert "| Relationship checks | 7 | 1 | 0 |" in readiness
     for output_name in AUDIT_PACKAGE_OUTPUT_FILENAMES:
         output = (run_directory / output_name).read_text(encoding="utf-8")
         assert str(package_root) not in output
@@ -382,6 +384,7 @@ def test_missing_bom_equipment_drawing_reference_reaches_all_outputs(
         "passed",
         "passed",
         "failed",
+        "passed",
     ]
     assert len(rows) == 1
     assert rows[0]["code"] == "BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING"
@@ -393,7 +396,82 @@ def test_missing_bom_equipment_drawing_reference_reaches_all_outputs(
     readiness = (run_directory / "release_readiness.md").read_text(
         encoding="utf-8"
     )
-    assert "| Relationship checks | 6 | 1 | 0 |" in readiness
+    assert "| Relationship checks | 7 | 1 | 0 |" in readiness
+    for output_name in AUDIT_PACKAGE_OUTPUT_FILENAMES:
+        output = (run_directory / output_name).read_text(encoding="utf-8")
+        assert str(package_root) not in output
+
+
+def test_missing_equipment_datasheet_authority_reaches_all_outputs(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    package_root = _copy_package(tmp_path)
+    metadata_path = package_root / "inputs" / "datasheet_spec_metadata.json"
+    metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+    metadata["datasheets"] = [
+        record
+        for record in metadata["datasheets"]
+        if record["record_id"] != "DSMETA-001"
+    ]
+    metadata_path.write_text(
+        json.dumps(metadata, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    runs_dir = tmp_path / "runs"
+
+    exit_code = _run_cli(package_root, runs_dir)
+
+    captured = capsys.readouterr()
+    run_directory = _only_run_directory(runs_dir)
+    document = json.loads(
+        (run_directory / "package_result.json").read_text(encoding="utf-8")
+    )
+    rows = list(
+        csv.DictReader(
+            io.StringIO(
+                (run_directory / "issue_register.csv").read_text(
+                    encoding="utf-8"
+                )
+            )
+        )
+    )
+
+    assert exit_code == 3
+    assert "PACKAGE STATE: missing_authoritative_information" in captured.out
+    assert "RELEASE HOLD: true" in captured.out
+    assert {path.name for path in run_directory.iterdir()} == set(
+        AUDIT_PACKAGE_OUTPUT_FILENAMES
+    )
+    assert document["package_state"] == "missing_authoritative_information"
+    assert document["release_hold"] is True
+    assert [item["status"] for item in document["relationship_results"]] == [
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "failed",
+    ]
+    assert len(rows) == 1
+    assert rows[0]["code"] == "EQUIPMENT_DATASHEET_AUTHORITY_MISSING"
+    assert json.loads(rows[0]["affected_identifiers_json"]) == [
+        "ITEM-PUMP-001",
+        "P-101A",
+    ]
+    assert json.loads(rows[0]["expected_value_json"]) == (
+        "one authoritative datasheet"
+    )
+    assert json.loads(rows[0]["actual_value_json"]) == 0
+    assert json.loads(rows[0]["evidence_json"])[1]["json_pointer"] == (
+        "/datasheets"
+    )
+    readiness = (run_directory / "release_readiness.md").read_text(
+        encoding="utf-8"
+    )
+    assert "| Relationship checks | 7 | 1 | 0 |" in readiness
     for output_name in AUDIT_PACKAGE_OUTPUT_FILENAMES:
         output = (run_directory / output_name).read_text(encoding="utf-8")
         assert str(package_root) not in output
