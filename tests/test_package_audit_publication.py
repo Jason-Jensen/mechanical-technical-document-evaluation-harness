@@ -59,6 +59,14 @@ def _build_audit_result(tmp_path: Path):
     return package_root, result
 
 
+def _failed_publications(runs_dir: Path) -> list[Path]:
+    return [
+        path
+        for path in runs_dir.iterdir()
+        if path.name.startswith(f".{RUN_ID}.publication-failed-")
+    ]
+
+
 def test_complete_audit_outputs_publish_together(tmp_path: Path) -> None:
     package_root, result = _build_audit_result(tmp_path)
     runs_dir = tmp_path / "runs"
@@ -140,16 +148,164 @@ def test_partial_publication_is_preserved_as_incomplete_evidence(
         )
 
     assert not (runs_dir / RUN_ID).exists()
-    failed = [
-        path
-        for path in runs_dir.iterdir()
-        if path.name.startswith(f".{RUN_ID}.publication-failed-")
-    ]
+    failed = _failed_publications(runs_dir)
     assert len(failed) == 1
     assert (failed[0] / "package_result.json").is_file()
     assert (failed[0] / PUBLICATION_FAILURE_FILENAME).read_text(
         encoding="utf-8"
     ) == "complete=false\nphase=publication\nerror_type=RuntimeError\n"
+
+
+def test_transient_final_rename_permission_error_is_retried(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    package_root, result = _build_audit_result(tmp_path)
+    runs_dir = tmp_path / "runs"
+    actual_replace = publication_module._replace_directory
+    attempts: list[tuple[Path, Path]] = []
+    delays: list[float] = []
+
+    def fail_twice_then_replace(source: Path, target: Path) -> None:
+        attempts.append((source, target))
+        if len(attempts) <= 2:
+            raise PermissionError("synthetic transient sharing violation")
+        actual_replace(source, target)
+
+    monkeypatch.setattr(
+        publication_module,
+        "_replace_directory",
+        fail_twice_then_replace,
+    )
+    monkeypatch.setattr(publication_module.time, "sleep", delays.append)
+
+    published = publish_package_audit(
+        result=result,
+        package_root=package_root,
+        runs_dir=runs_dir,
+        schema_path=RESULT_SCHEMA,
+    )
+
+    assert published.run_directory == runs_dir / RUN_ID
+    assert len(attempts) == 3
+    assert delays == list(
+        publication_module.FINAL_RENAME_RETRY_DELAYS_SECONDS[:2]
+    )
+    assert _failed_publications(runs_dir) == []
+
+
+def test_final_rename_permission_retry_exhaustion_preserves_failure(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    package_root, result = _build_audit_result(tmp_path)
+    runs_dir = tmp_path / "runs"
+    attempts: list[tuple[Path, Path]] = []
+    delays: list[float] = []
+
+    def always_fail(source: Path, target: Path) -> None:
+        attempts.append((source, target))
+        raise PermissionError("synthetic persistent sharing violation")
+
+    monkeypatch.setattr(publication_module, "_replace_directory", always_fail)
+    monkeypatch.setattr(publication_module.time, "sleep", delays.append)
+
+    with pytest.raises(PackageAuditPublicationError, match="Could not publish"):
+        publish_package_audit(
+            result=result,
+            package_root=package_root,
+            runs_dir=runs_dir,
+            schema_path=RESULT_SCHEMA,
+        )
+
+    assert len(attempts) == (
+        len(publication_module.FINAL_RENAME_RETRY_DELAYS_SECONDS) + 1
+    )
+    assert delays == list(publication_module.FINAL_RENAME_RETRY_DELAYS_SECONDS)
+    assert not (runs_dir / RUN_ID).exists()
+    failed = _failed_publications(runs_dir)
+    assert len(failed) == 1
+    assert (failed[0] / PUBLICATION_FAILURE_FILENAME).read_text(
+        encoding="utf-8"
+    ) == "complete=false\nphase=publication\nerror_type=PermissionError\n"
+
+
+def test_final_rename_collision_is_never_retried(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    package_root, result = _build_audit_result(tmp_path)
+    runs_dir = tmp_path / "runs"
+    attempts: list[tuple[Path, Path]] = []
+    delays: list[float] = []
+
+    def create_collision(source: Path, target: Path) -> None:
+        attempts.append((source, target))
+        target.mkdir()
+        raise PermissionError("synthetic collision during rename")
+
+    monkeypatch.setattr(
+        publication_module,
+        "_replace_directory",
+        create_collision,
+    )
+    monkeypatch.setattr(publication_module.time, "sleep", delays.append)
+
+    with pytest.raises(PackageAuditCollisionError, match="not be overwritten"):
+        publish_package_audit(
+            result=result,
+            package_root=package_root,
+            runs_dir=runs_dir,
+            schema_path=RESULT_SCHEMA,
+        )
+
+    assert len(attempts) == 1
+    assert delays == []
+    assert (runs_dir / RUN_ID).is_dir()
+    assert list((runs_dir / RUN_ID).iterdir()) == []
+    failed = _failed_publications(runs_dir)
+    assert len(failed) == 1
+    assert (failed[0] / PUBLICATION_FAILURE_FILENAME).read_text(
+        encoding="utf-8"
+    ) == (
+        "complete=false\n"
+        "phase=publication\n"
+        "error_type=PackageAuditCollisionError\n"
+    )
+
+
+def test_non_permission_final_rename_error_is_never_retried(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    package_root, result = _build_audit_result(tmp_path)
+    runs_dir = tmp_path / "runs"
+    attempts: list[tuple[Path, Path]] = []
+    delays: list[float] = []
+
+    def fail_once(source: Path, target: Path) -> None:
+        attempts.append((source, target))
+        raise OSError("synthetic non-permission failure")
+
+    monkeypatch.setattr(publication_module, "_replace_directory", fail_once)
+    monkeypatch.setattr(publication_module.time, "sleep", delays.append)
+
+    with pytest.raises(PackageAuditPublicationError, match="Could not publish"):
+        publish_package_audit(
+            result=result,
+            package_root=package_root,
+            runs_dir=runs_dir,
+            schema_path=RESULT_SCHEMA,
+        )
+
+    assert len(attempts) == 1
+    assert delays == []
+    assert not (runs_dir / RUN_ID).exists()
+    failed = _failed_publications(runs_dir)
+    assert len(failed) == 1
+    assert (failed[0] / PUBLICATION_FAILURE_FILENAME).read_text(
+        encoding="utf-8"
+    ) == "complete=false\nphase=publication\nerror_type=OSError\n"
 
 
 def test_publication_rejects_incomplete_output_declaration(

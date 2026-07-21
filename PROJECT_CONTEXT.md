@@ -1,8 +1,8 @@
 # Project Context
 
-**Updated:** 2026-07-20
+**Updated:** 2026-07-21
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-equipment-datasheet-association`
+**Current branch:** `codex/p2.3-publication-resilience`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 equipment/datasheet association implementation review
-- **Status:** D-103 was accepted and PR #55 merged check 8 at exact `main` `fb0113d`. Check 9 is implemented and fully verified on the controlled development package. The clean package passes all nine checks; an isolated wrong-but-valid BOM datasheet ID produces the exact automatic-fail hold, exit `1`, finding, and four-output contract
-- **Implementation state:** Eight ordered gates and nine ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Check 9 compares eligible BOM and authoritative metadata datasheet IDs under exact `AUTH-SPEC-001`; checks 10-11 and all six authority-gap claims remain unimplemented. One transient Windows final-rename failure was preserved and is tracked as `IMP-019` for a separate stabilization decision
+- **Active WBS:** P2.3 publication-resilience stabilization review
+- **Status:** D-104 was accepted and PR #56 merged check 9 at exact `main` `7146b23`. The final publication rename now retries only transient permission failures within a fixed 0.75-second budget; collisions, other errors, and exhaustion remain fail closed
+- **Implementation state:** Eight ordered gates and nine ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Check 9 is integrated under exact `AUTH-SPEC-001`; checks 10-11 and all six authority-gap claims remain unimplemented. The bounded retry addresses `I-005`; closure and permanent retention of `IMP-019` await D-105 review
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -320,6 +320,18 @@ unchanged retry succeeded. `IMP-019` records the required stabilization. The
 tracked review is
 `docs/package_assurance/equipment_datasheet_association_implementation_review_2026-07-20.md`.
 
+D-104 was accepted and PR #56 merged check 9 at exact `main` `7146b23`.
+The publication-resilience stabilization makes at most five final-rename
+attempts with fixed waits of 50, 100, 200, and 400 milliseconds. Only
+`PermissionError` qualifies. A collision or other operating-system error does
+not retry, and exhaustion preserves the failed publication with CLI exit `70`.
+Four injected publication tests and one CLI exhaustion test prove these
+boundaries. Twenty consecutive Windows audits passed with nine relationship
+checks and four outputs each, with no hidden failed-publication directory. The
+full suite passes 304 tests with one expected Windows skip at 88.08% coverage;
+validation 5/5, Ruff, baseline 9/9, and demo 2/2 pass. The tracked review is
+`docs/package_assurance/publication_resilience_stabilization_review_2026-07-21.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -358,13 +370,13 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the D-104 check-9 implementation, successful clean/fault output
-evidence, and preserved Windows publication failure. Recommended D-104 accepts
-check 9 and authorizes one narrow publication-resilience stabilization before
-check 10. Do not rerun either public package, weaken the result schema,
-implement checks 10-11, execute held-out semantics, change protected assets,
-or add deferred multimodal/platform capabilities before their respective
-gates.
+Review the D-105 publication-resilience stabilization, injected failure proof,
+and 20-run Windows execution evidence. Recommended D-105 accepts the change,
+closes `I-005` as controlled, retains `IMP-019`, and authorizes only check 10,
+`equipment_datasheet_manifest_reciprocity`, next. Do not rerun either public
+package, weaken the result schema, implement check 11, execute held-out
+semantics, change protected assets, or add deferred multimodal/platform
+capabilities before their respective gates.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from uuid import uuid4
@@ -33,6 +34,7 @@ AUDIT_PACKAGE_OUTPUT_FILENAMES: tuple[str, ...] = (
     RELEASE_READINESS_MARKDOWN_FILENAME,
 )
 PUBLICATION_FAILURE_FILENAME = "publication_failure.txt"
+FINAL_RENAME_RETRY_DELAYS_SECONDS: tuple[float, ...] = (0.05, 0.1, 0.2, 0.4)
 
 
 class PackageAuditPublicationError(RuntimeError):
@@ -105,10 +107,7 @@ def publish_package_audit(
 
     final_directory = resolved_runs_dir / result.run_id
     if final_directory.exists():
-        raise PackageAuditCollisionError(
-            "Package audit run already exists and will not be overwritten: "
-            f"{result.run_id}"
-        )
+        raise _collision_error(result.run_id)
 
     staging_directory = resolved_runs_dir / (
         f".{result.run_id}.{uuid4().hex[:8]}.tmp"
@@ -151,15 +150,11 @@ def publish_package_audit(
                 "Staged audit output set is incomplete or unexpected."
             )
 
-        try:
-            staging_directory.replace(final_directory)
-        except OSError as exc:
-            if final_directory.exists():
-                raise PackageAuditCollisionError(
-                    "Package audit run already exists and will not be overwritten: "
-                    f"{result.run_id}"
-                ) from exc
-            raise
+        _finalize_staged_publication(
+            staging_directory=staging_directory,
+            final_directory=final_directory,
+            run_id=result.run_id,
+        )
     except PackageAuditCollisionError as exc:
         _preserve_failed_publication(staging_directory, result.run_id, exc)
         raise
@@ -183,6 +178,39 @@ def publish_package_audit(
         release_readiness_path=(
             final_directory / RELEASE_READINESS_MARKDOWN_FILENAME
         ),
+    )
+
+
+def _finalize_staged_publication(
+    *,
+    staging_directory: Path,
+    final_directory: Path,
+    run_id: str,
+) -> None:
+    for attempt in range(len(FINAL_RENAME_RETRY_DELAYS_SECONDS) + 1):
+        if final_directory.exists():
+            raise _collision_error(run_id)
+        try:
+            _replace_directory(staging_directory, final_directory)
+            return
+        except OSError as exc:
+            if final_directory.exists():
+                raise _collision_error(run_id) from exc
+            if not isinstance(exc, PermissionError):
+                raise
+            if attempt == len(FINAL_RENAME_RETRY_DELAYS_SECONDS):
+                raise
+            time.sleep(FINAL_RENAME_RETRY_DELAYS_SECONDS[attempt])
+
+
+def _replace_directory(source: Path, target: Path) -> None:
+    source.replace(target)
+
+
+def _collision_error(run_id: str) -> PackageAuditCollisionError:
+    return PackageAuditCollisionError(
+        "Package audit run already exists and will not be overwritten: "
+        f"{run_id}"
     )
 
 

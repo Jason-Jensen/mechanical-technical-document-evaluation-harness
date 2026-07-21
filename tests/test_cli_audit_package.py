@@ -9,10 +9,12 @@ from typing import Callable
 
 import pytest
 
+import mech_eval_harness.package_assurance.publication as publication_module
 from mech_eval_harness.cli import main
 from mech_eval_harness.package_assurance import (
     AUDIT_PACKAGE_OUTPUT_FILENAMES,
     PACKAGE_STATE_EXIT_CODES,
+    PUBLICATION_FAILURE_FILENAME,
     package_state_exit_code,
 )
 from mech_eval_harness.package_assurance.gates import IDENTIFIER_GATE_ID
@@ -661,6 +663,50 @@ def test_pre_result_internal_failure_returns_70_without_result(
 
     assert exit_code == 70
     assert not runs_dir.exists()
+
+
+def test_final_rename_retry_exhaustion_returns_70_and_preserves_evidence(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    package_root = _copy_package(tmp_path)
+    runs_dir = tmp_path / "runs"
+    attempts: list[tuple[Path, Path]] = []
+
+    def always_fail(source: Path, target: Path) -> None:
+        attempts.append((source, target))
+        raise PermissionError("synthetic persistent sharing violation")
+
+    monkeypatch.setattr(publication_module, "_replace_directory", always_fail)
+    monkeypatch.setattr(publication_module.time, "sleep", lambda _delay: None)
+
+    exit_code = _run_cli(package_root, runs_dir)
+
+    captured = capsys.readouterr()
+    assert exit_code == 70
+    assert "ERROR [INTERNAL]: Could not publish complete package audit" in (
+        captured.err
+    )
+    assert len(attempts) == (
+        len(publication_module.FINAL_RENAME_RETRY_DELAYS_SECONDS) + 1
+    )
+    assert [
+        path for path in runs_dir.iterdir() if not path.name.startswith(".")
+    ] == []
+    failed = [
+        path
+        for path in runs_dir.iterdir()
+        if ".publication-failed-" in path.name
+    ]
+    assert len(failed) == 1
+    assert {path.name for path in failed[0].iterdir()} == {
+        *AUDIT_PACKAGE_OUTPUT_FILENAMES,
+        PUBLICATION_FAILURE_FILENAME,
+    }
+    assert (failed[0] / PUBLICATION_FAILURE_FILENAME).read_text(
+        encoding="utf-8"
+    ) == "complete=false\nphase=publication\nerror_type=PermissionError\n"
 
 
 def test_every_package_state_has_the_accepted_stable_exit() -> None:
