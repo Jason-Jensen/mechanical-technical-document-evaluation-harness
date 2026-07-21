@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** D-104 was accepted and PR #56 merged check 9 at exact `main` `7146b23`. The bounded final-rename publication stabilization is implemented and verified. Both public observation runs remain complete and unchanged. Six authority/source gaps and checks 10-11 remain unimplemented.
+- **P2.3:** D-105 was accepted and PR #57 merged the bounded publication stabilization at exact `main` `dbcd242`. Check 10 is implemented and verified on its review branch. Both public observation runs remain complete and unchanged. Six authority/source gaps and check 11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Review Gate
 
-The D-105 publication-resilience stabilization is ready for CEO review. A transient final-rename `PermissionError` now receives a fixed, bounded retry without retrying collisions or other failures. Exhaustion still preserves failed evidence and returns exit `70`; 20/20 consecutive Windows audits published cleanly.
+The D-106 check-10 implementation is ready for CEO review. Datasheet metadata and manifest `equipment_to_datasheet` declarations are now compared in both directions under exact `AUTH-SPEC-001`. One wrong-valid manifest target produces one evidence-linked release hold through all four outputs and exit `1`.
 
 ## Active Work Block
 
-- **WBS:** P2.3 publication-resilience stabilization review
-- **Branch:** `codex/p2.3-publication-resilience`
-- **Objective:** Recover from a short-lived permission/sharing lock only during the final atomic publication rename.
-- **Definition of done:** Permission retries are fixed and bounded; collisions and other errors never retry; exhaustion preserves evidence and exit `70`; repeated Windows execution and frozen regression pass.
+- **WBS:** P2.3 equipment/datasheet manifest reciprocity review
+- **Branch:** `codex/p2.3-equipment-datasheet-manifest-reciprocity`
+- **Objective:** Require release-required authoritative equipment/datasheet mappings and manifest declarations to agree exactly in both directions.
+- **Definition of done:** Check 10 is tenth in stable order; clean, fault, authority, ownership, reordering, result, report, CLI, and publication proofs pass; protected assets remain unchanged.
 
-Next action: review `docs/package_assurance/publication_resilience_stabilization_review_2026-07-21.md`. Recommended D-105 accepts the stabilization, closes `I-005` as controlled, retains `IMP-019`, and authorizes check 10 only. Check 11, authority-gap claims, semantic held-out execution, public reruns, and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/equipment_datasheet_manifest_reciprocity_implementation_review_2026-07-21.md`. Recommended D-106 accepts check 10 and authorizes check 11 only. Authority-gap claims, semantic held-out execution, public reruns, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
