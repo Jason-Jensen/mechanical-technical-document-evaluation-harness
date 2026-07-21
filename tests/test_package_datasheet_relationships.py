@@ -6,9 +6,11 @@ from pathlib import Path
 from mech_eval_harness.package_assurance import (
     BOM_EQUIPMENT_AUTHORITY_RULE_ID,
     DRAWING_REVISION_AUTHORITY_RULE_ID,
+    EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
     EQUIPMENT_DATASHEET_AUTHORITY_MISSING_CODE,
     EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID,
     EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID,
+    EQUIPMENT_DATASHEET_MISMATCH_CODE,
     run_package_relationships,
 )
 from mech_eval_harness.package_assurance.gates import AUTHORITY_GATE_ID
@@ -47,6 +49,21 @@ def _make_competing_datasheet_mapping(package_root: Path) -> None:
     )
     record["equipment_tag"] = "P-101A"
     _write_json(path, document)
+
+
+def _set_bom_datasheet_ids(
+    package_root: Path,
+    values_by_item_id: dict[str, str],
+) -> None:
+    def update_selected(rows: list[dict[str, str]]) -> None:
+        for row in rows:
+            if row["item_id"] in values_by_item_id:
+                row["datasheet_id"] = values_by_item_id[row["item_id"]]
+
+    _rewrite_csv(
+        package_root / "inputs" / "bom_or_equipment_list.csv",
+        update_selected,
+    )
 
 
 def _check_by_id(evaluation, check_id: str):
@@ -129,6 +146,15 @@ def test_missing_equipment_datasheet_authority_emits_frozen_hold(
         "searched_record_count": 1,
     }
 
+    association = _check_by_id(
+        first,
+        EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
+    )
+    assert association.status == "passed"
+    assert association.findings == ()
+    assert len(association.evidence) == 2
+    assert "1 equipment tag(s) remained owned by check 8" in association.summary
+
 
 def test_missing_and_ambiguous_authority_are_sorted_and_order_independent(
     tmp_path: Path,
@@ -209,6 +235,12 @@ def test_datasheet_presence_requires_exact_authority_rule(tmp_path: Path) -> Non
     assert check.findings == ()
     assert check.evidence == ()
     assert EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID in check.summary
+    association = _check_by_id(
+        evaluation,
+        EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
+    )
+    assert association.status == "skipped"
+    assert association.blocked_by == (AUTHORITY_GATE_ID,)
 
 
 def test_datasheet_presence_is_independent_of_drawing_and_bom_authority(
@@ -240,3 +272,138 @@ def test_datasheet_presence_is_independent_of_drawing_and_bom_authority(
     assert statuses["bom_item_equipment_manifest_reciprocity"] == "skipped"
     assert statuses["bom_equipment_drawing_presence"] == "skipped"
     assert statuses[EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID] == "passed"
+    assert statuses[EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID] == "passed"
+
+
+def test_clean_equipment_datasheet_association_passes_with_exact_evidence(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    gates = _evaluate_gates(package_root)
+
+    first = _check(gates, EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID)
+    second = _check(gates, EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID)
+
+    assert all(gate.status == "passed" for gate in gates.gates)
+    assert first.status == "passed"
+    assert first.findings == ()
+    assert first.blocked_by == ()
+    assert len(first.evidence) == 4
+    assert first.to_dict() == second.to_dict()
+    assert first.evidence[0].source_type == "datasheet_spec_metadata"
+    assert first.evidence[0].record_id == "DSMETA-002"
+    assert first.evidence[0].property_name == "datasheet_id"
+    assert first.evidence[0].normalized_value == "DS-M-101"
+    assert first.evidence[1].source_type == "bom_or_equipment_list"
+    assert first.evidence[1].column_name == "datasheet_id"
+    assert first.evidence[1].row_key_value == "ITEM-MOTOR-001"
+    assert first.evidence[1].normalized_value == "DS-M-101"
+    serialized = json.dumps(first.to_dict(), sort_keys=True)
+    assert str(package_root.resolve()) not in serialized
+    assert "package_state" not in serialized
+
+
+def test_wrong_valid_bom_datasheet_id_emits_one_frozen_hold(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    _set_bom_datasheet_ids(
+        package_root,
+        {"ITEM-PUMP-001": "DS-M-101"},
+    )
+    gates = _evaluate_gates(package_root)
+
+    first = run_package_relationships(gates)
+    second = run_package_relationships(gates)
+    check = _check_by_id(first, EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID)
+
+    assert all(gate.status == "passed" for gate in gates.gates)
+    assert all(result.status == "passed" for result in first.checks[:8])
+    assert check.status == "failed"
+    assert len(check.findings) == 1
+    assert first.to_dict() == second.to_dict()
+
+    finding = check.findings[0]
+    assert finding.code == EQUIPMENT_DATASHEET_MISMATCH_CODE
+    assert finding.result_state == "automatic_fail"
+    assert finding.severity == "high"
+    assert finding.release_hold is True
+    assert finding.authority_rule_id == EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID
+    assert finding.review_owner == "mechanical_engineering"
+    assert finding.affected_identifiers == ("ITEM-PUMP-001", "P-101A")
+    assert finding.expected_value == "DS-P-101"
+    assert finding.actual_value == "DS-M-101"
+    assert [locator.source_type for locator in finding.evidence] == [
+        "datasheet_spec_metadata",
+        "bom_or_equipment_list",
+    ]
+    assert [
+        locator.to_dict().get("property_name")
+        or locator.to_dict().get("column_name")
+        for locator in finding.evidence
+    ] == ["datasheet_id", "datasheet_id"]
+
+
+def test_datasheet_association_findings_are_sorted_and_order_independent(
+    tmp_path: Path,
+) -> None:
+    original = _copy_package(tmp_path, "original")
+    reordered = _copy_package(tmp_path, "reordered")
+    for package_root in (original, reordered):
+        _set_bom_datasheet_ids(
+            package_root,
+            {
+                "ITEM-MOTOR-001": "DS-P-101",
+                "ITEM-PUMP-001": "DS-M-101",
+            },
+        )
+
+    metadata_path = _datasheet_metadata_path(reordered)
+    metadata = _load_json(metadata_path)
+    metadata["datasheets"].reverse()
+    _write_json(metadata_path, metadata)
+    _rewrite_csv(
+        reordered / "inputs" / "bom_or_equipment_list.csv",
+        lambda rows: rows.reverse(),
+    )
+
+    first = _check(
+        _evaluate_gates(original),
+        EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
+    )
+    second = _check(
+        _evaluate_gates(reordered),
+        EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
+    )
+
+    assert first.status == second.status == "failed"
+    assert [finding.affected_identifiers for finding in first.findings] == [
+        ("ITEM-MOTOR-001", "M-101A"),
+        ("ITEM-PUMP-001", "P-101A"),
+    ]
+    assert [
+        (finding.expected_value, finding.actual_value)
+        for finding in first.findings
+    ] == [
+        ("DS-M-101", "DS-P-101"),
+        ("DS-P-101", "DS-M-101"),
+    ]
+    assert [
+        (
+            finding.finding_id,
+            finding.code,
+            finding.affected_identifiers,
+            finding.expected_value,
+            finding.actual_value,
+        )
+        for finding in first.findings
+    ] == [
+        (
+            finding.finding_id,
+            finding.code,
+            finding.affected_identifiers,
+            finding.expected_value,
+            finding.actual_value,
+        )
+        for finding in second.findings
+    ]
