@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-20
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-identifier-result-stabilization`
+**Current branch:** `codex/p2.3-nasa-public-audit-confirmation`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 identifier/result-contract stabilization review
-- **Status:** D-099 was accepted and PR #51 merged the failure review at exact `main` `624acce`. The narrow correction is implementation-complete and synthetically proven: exact blank optional BOM references pass, malformed present values still fail, schema-valid results publish through the full CLI, and neither public package has been changed or rerun
+- **Active WBS:** P2.3 NASA/JPL public-audit confirmation review
+- **Status:** D-100 was accepted and PR #52 merged the narrow stabilization at exact `main` `0611d916`. The single authorized unchanged NASA/JPL audit matched the predeclared contract: `missing_authoritative_information`, release hold `true`, CLI exit `3`, exactly four schema-valid outputs, and one expected authority finding. Both accepted package trees and logs remain exact; OpenFlexure has not been run
 - **Implementation state:** Eight ordered gates and seven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Checks 6 and 7 add BOM item/equipment manifest reciprocity and BOM equipment drawing presence under exact `AUTH-BOM-002`; checks 8-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -263,6 +263,20 @@ Windows skip at 87.57% coverage; validation is 5/5; Ruff, baseline 9/9, and demo
 remain exact. The tracked review is
 `docs/package_assurance/identifier_result_contract_stabilization_review_2026-07-20.md`.
 
+D-100 was accepted and PR #52 merged the stabilization at exact `main`
+`0611d916`. One and only one unchanged NASA/JPL audit was then executed. Run
+`RUN-20260721T001431760486Z-4f1b9817` returned the predeclared
+`missing_authoritative_information` state, release hold `true`, CLI exit `3`,
+and exactly four outputs. The canonical result passed its strict schema; the
+CSV and Markdown issue registers and release-readiness summary reproduced
+exactly from it. Four gates passed, the authority gate failed with the one
+expected `AUTHORITY_REQUIRED_RULE_MISSING` finding, three dependent gates were
+skipped, and all seven relationship checks were skipped against that authority
+prerequisite. No malformed-identifier finding or absolute local output path was
+present. Pre- and post-run hashes confirm both accepted package trees and logs
+remain unchanged, and OpenFlexure was not executed. The tracked review is
+`docs/package_assurance/nasa_jpl_public_audit_confirmation_review_2026-07-20.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -301,11 +315,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the D-099 implementation and synthetic end-to-end proof. Recommended
-D-100 authorizes integration and exactly one unchanged NASA/JPL rerun, with a
-mandatory stop and review before OpenFlexure. Do not change either public
-package or expected state, weaken the result schema, implement check 8, execute
-held-out semantics, change protected assets, or add deferred multimodal/platform
+Review the single D-100 NASA/JPL result. Recommended D-101 accepts the expected
+observation, closes `I-004`, retains `IMP-017`, and authorizes exactly one
+unchanged OpenFlexure audit under the same predeclared state, hold, exit, output,
+schema, and hash stop conditions. Do not change either public package or
+expected state, weaken the result schema, implement check 8, execute held-out
+semantics, change protected assets, or add deferred multimodal/platform
 capabilities during that observation block.
 
 Reusable lessons, prevention actions, and proof are controlled in
