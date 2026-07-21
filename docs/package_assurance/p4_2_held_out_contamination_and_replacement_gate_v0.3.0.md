@@ -19,8 +19,9 @@ While preparing the P4.2 execution definition, the current implementation
 agent enumerated held-out path names and opened the top-level
 `freeze_record.json` and `family_review.md`. Those records disclose scenario
 conditions, expected package states, fault identifiers, and protected-asset
-references. No file under `protected/` and no scenario `expected/` file was
-opened, no held-out package was evaluated, and no evaluator behavior changed.
+references. No value from `protected/` or a scenario `expected/` file was
+surfaced to or inspected by the implementation context, no held-out package
+was evaluated, and no evaluator behavior changed.
 
 Section 15 of the accepted acceptance plan nevertheless classifies expected
 condition or answer-key exposure to a rule implementer after freeze as
@@ -44,8 +45,10 @@ labels and identifiers, package hashes, and protected-asset names and hashes.
 
 ### Not Exposed Or Changed
 
-- no `protected/*.json` content was opened;
-- no scenario `package/expected/*.json` content was opened;
+- no `protected/*.json` value was surfaced to or inspected by the
+  implementation context;
+- no scenario `package/expected/*.json` value was surfaced to or inspected by
+  the implementation context;
 - no held-out package input file was opened for diagnosis;
 - no held-out audit or comparison was run;
 - no result from this family exists;
@@ -56,6 +59,15 @@ labels and identifiers, package hashes, and protected-asset names and hashes.
 
 This is a governance contamination event, not evidence of an evaluator
 failure or a fixture defect.
+
+After this record was created, the repository's existing hosted CI ran
+`tests/test_held_out_package_fixtures.py`. Those legacy integrity tests load
+protected fixture JSON internally but do not print or otherwise expose its
+values to the implementation context, and they do not invoke the package
+evaluator. This opaque automated access does not restore or worsen the already
+conservative release classification. Future release-eligible replacement
+families must be excluded from implementation-branch CI that loads protected
+assets until their first raw semantic run is preserved.
 
 ## Required Classification
 
@@ -133,6 +145,8 @@ It must not:
 - read evaluator source or tests;
 - read development or exposed held-out expected assets;
 - run the package evaluator before freeze acceptance;
+- enter implementation-branch CI or tests that load protected replacement
+  assets before the first raw run is preserved;
 - receive prior benchmark output as guidance; or
 - change the frozen evaluator.
 

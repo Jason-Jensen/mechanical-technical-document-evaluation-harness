@@ -40,11 +40,13 @@ Treat these as read-only unless the active WBS explicitly authorizes a reviewed 
 - historical result records;
 - Gantt history and prior work-block records.
 
-Before a first held-out semantic run, evaluator implementers must not recurse,
-list, or open any held-out family directory, including top-level freeze and
-review records that may disclose expected conditions. Use a separately
-authorized isolated benchmark-custodian context for staging, hashing, and
-post-run oracle comparison.
+Before a first held-out semantic run, evaluator implementers and their CI jobs
+must not recurse, list, or open any release-eligible held-out family directory,
+including top-level freeze and review records that may disclose expected
+conditions. Use a separately authorized isolated benchmark-custodian context
+for staging, hashing, and post-run oracle comparison. Keep protected-fixture
+integrity tests out of implementation-branch CI until first-run evidence is
+preserved.
 
 When replaying the frozen v0.2.0 baseline for verification, always pass an
 explicit generated `--evidence-dir` under `runs/`. The baseline script's

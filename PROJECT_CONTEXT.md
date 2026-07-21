@@ -42,7 +42,7 @@ P1.1 is accepted and locally integrated at commit `42ad037`. It validates packag
 
 P1.2 is accepted at commit `f26ed27`. It provides `SCN-DEV-PUMP-SKID-CLEAN-001`, a clean, fully synthetic pump-skid package with all seven mandatory sources, nine controlled file references, 20 reviewed semantic relationships, exact hidden evidence locators, expected clean results, and a package-tree content hash. Its source layouts are fixture examples rather than accepted general schemas.
 
-P1.3 is accepted at commit `4b7516e`. It provides a materially distinct synthetic held-out family with exact protected findings, evidence locators, check IDs, package states, per-scenario hashes, material-distinction evidence, contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884`. Its recorded `frozen_pre_tuning` status is active. It is self-authored pre-tuning, not independently blind. During P2.1, tracked held-out path names were inadvertently enumerated and the full suite exercised opaque integrity checks; protected source and oracle content was not opened or used to tune evaluator behavior. The first semantic held-out evaluation remains gated.
+P1.3 is accepted at commit `4b7516e`. It provides a materially distinct synthetic held-out family with exact protected findings, evidence locators, check IDs, package states, per-scenario hashes, material-distinction evidence, contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884`. Its recorded `frozen_pre_tuning` status is active. It is self-authored pre-tuning, not independently blind. During P2.1, tracked held-out path names were inadvertently enumerated and the full suite exercised opaque integrity checks; protected source and oracle values were not surfaced to or inspected by the implementation agent or used to tune evaluator behavior. The first semantic held-out evaluation remains gated.
 
 P2.1 implementation is committed at `e1ada72`. It adds fail-closed structured-source adapters, deterministic evidence models, eight ordered package gates, stable findings, and explicit prerequisite skips without selecting a package-level result state. Focused verification passed 60 tests with one expected Windows symlink skip; the full suite passed 187 tests with the same skip. An approved EOL-only repair adds byte-preserving Git attributes so raw benchmark inventories remain reproducible on Windows; no fixture JSON value, oracle, expected state, or accepted hash changed.
 
@@ -395,9 +395,12 @@ PR #61 integrated P4.1 at exact `main`
 `5a4d57e534bd5e900abac3c455cd484ef083e972`. During the subsequent P4.2
 definition review, the current implementation context enumerated held-out path
 names and opened top-level freeze and family-review records before the first
-run. No protected or scenario-expected content was opened, no semantic audit
-was run, and no evaluator behavior changed. The exposed records nevertheless
-contained expected conditions and states, so Section 15 of the accepted plan
+run. No protected or scenario-expected value was surfaced to or inspected by
+the implementation context, no semantic audit was run, and no evaluator
+behavior changed. Existing hosted CI later ran opaque fixture-integrity tests
+that load protected JSON internally without printing its values. The exposed
+top-level records nevertheless contained expected conditions and states, so
+Section 15 of the accepted plan
 makes the existing family contaminated for release held-out claims. D-110
 proposes preserving it unchanged and unexecuted and requiring a materially
 distinct replacement authored in an isolated custodian context. The
