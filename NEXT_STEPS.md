@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** Checks 6 and 7 are integrated. D-100 was accepted and PR #52 merged the identifier/result-contract stabilization at exact `main` `0611d916`. The single authorized NASA/JPL audit then matched its predeclared state, hold, exit, and four-output contract. OpenFlexure remains unexecuted; six authority/source gaps and checks 8-11 remain unimplemented.
+- **P2.3:** Checks 6 and 7 are integrated. D-101 was accepted and PR #53 merged the NASA/JPL confirmation at exact `main` `65c9699b`. The single authorized OpenFlexure audit then matched the same predeclared state, hold, exit, and four-output contract. Both public observation runs are complete; six authority/source gaps and checks 8-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Review Gate
 
-The D-100 NASA/JPL confirmation is ready for CEO review. One unchanged run returned `missing_authoritative_information`, release hold `true`, exit `3`, and exactly four schema-valid, internally consistent outputs. Both accepted package trees and logs remain exact, and OpenFlexure has not been run.
+The D-101 OpenFlexure confirmation is ready for CEO review. One unchanged run returned `missing_authoritative_information`, release hold `true`, exit `3`, and exactly four schema-valid, internally consistent outputs. Both accepted package trees and logs remain exact, and each public package was audited exactly once.
 
 ## Active Work Block
 
-- **WBS:** P2.3 NASA/JPL public-audit confirmation review
-- **Branch:** `codex/p2.3-nasa-public-audit-confirmation`
-- **Objective:** Review the single D-100 observation and decide whether one controlled OpenFlexure audit may proceed.
-- **Definition of done:** The NASA/JPL execution count, state, hold, exit, four outputs, schema validity, report consistency, source integrity, and OpenFlexure stop are recorded and reviewed.
+- **WBS:** P2.3 OpenFlexure public-audit confirmation review
+- **Branch:** `codex/p2.3-openflexure-public-audit-confirmation`
+- **Objective:** Review the single D-101 observation, close the dual public-package sequence, and select the next useful structured slice.
+- **Definition of done:** The OpenFlexure execution count, state, hold, exit, four outputs, schema validity, report consistency, source integrity, cross-package learning, and next decision are recorded and reviewed.
 
-Next action: review `docs/package_assurance/nasa_jpl_public_audit_confirmation_review_2026-07-20.md`. Recommended D-101 accepts the NASA/JPL result, closes the original execution issue, and permits exactly one unchanged OpenFlexure audit before another review. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/openflexure_public_audit_confirmation_review_2026-07-20.md`. Recommended D-102 accepts the OpenFlexure result, closes the dual public-package observation sequence, adopts package-scoped finding identity for future aggregation, and authorizes check 8 only. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
