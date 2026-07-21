@@ -27,6 +27,8 @@ EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID = (
 EQUIPMENT_DATASHEET_AUTHORITY_MISSING_CODE = (
     "EQUIPMENT_DATASHEET_AUTHORITY_MISSING"
 )
+EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID = "equipment_datasheet_association"
+EQUIPMENT_DATASHEET_MISMATCH_CODE = "EQUIPMENT_DATASHEET_MISMATCH"
 EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID = "AUTH-SPEC-001"
 
 
@@ -82,6 +84,26 @@ def _evaluate_equipment_datasheet_authority_presence(
             ),
         )
     return _equipment_datasheet_authority_presence_check(
+        package_id=package_id,
+        sources=sources,
+    )
+
+
+def _evaluate_equipment_datasheet_association(
+    *,
+    package_id: str,
+    sources: LoadedStructuredSources,
+) -> RelationshipCheckResult:
+    if _equipment_datasheet_authority_rule(sources) is None:
+        return _skipped_check(
+            check_id=EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
+            blocked_by=(AUTHORITY_GATE_ID,),
+            summary=(
+                "Skipped because the accepted AUTH-SPEC-001 equipment "
+                "datasheet authority rule is unavailable."
+            ),
+        )
+    return _equipment_datasheet_association_check(
         package_id=package_id,
         sources=sources,
     )
@@ -175,6 +197,117 @@ def _equipment_datasheet_authority_presence_check(
         summary=(
             f"All {len(bom_records)} release-required BOM equipment tag(s) "
             "have exactly one authoritative datasheet record."
+        ),
+        evidence=tuple(evidence),
+    )
+
+
+def _equipment_datasheet_association_check(
+    *,
+    package_id: str,
+    sources: LoadedStructuredSources,
+) -> RelationshipCheckResult:
+    bom_records = tuple(
+        sorted(
+            (
+                record
+                for record in sources.records_of_type("equipment_item")
+                if record.values["required_for_release"] is True
+            ),
+            key=lambda record: (
+                _normalize_identifier(record.values["equipment_tag"]),
+                _normalize_identifier(record.values["item_id"]),
+            ),
+        )
+    )
+    datasheet_records = tuple(
+        sorted(
+            sources.records_of_type("datasheet_record"),
+            key=lambda record: (
+                _normalize_identifier(record.values["equipment_tag"]),
+                _normalize_identifier(record.values["datasheet_id"]),
+                _normalize_identifier(record.values["record_id"]),
+            ),
+        )
+    )
+
+    findings: list[RelationshipFinding] = []
+    evidence: list[EvidenceLocator] = []
+    comparable_count = 0
+    check_8_owned_count = 0
+    for bom_record in bom_records:
+        equipment_tag = _normalize_identifier(
+            bom_record.values["equipment_tag"]
+        )
+        matching_records = tuple(
+            record
+            for record in datasheet_records
+            if record.values["required_for_release"] is True
+            and _normalize_identifier(record.values["equipment_tag"])
+            == equipment_tag
+        )
+        if len(matching_records) != 1:
+            check_8_owned_count += 1
+            continue
+
+        comparable_count += 1
+        item_id = _normalize_identifier(bom_record.values["item_id"])
+        authoritative_record = matching_records[0]
+        expected_value = _normalize_identifier(
+            authoritative_record.values["datasheet_id"]
+        )
+        actual_value = _normalize_identifier(bom_record.values["datasheet_id"])
+        pair_evidence = (
+            authoritative_record.field_locator(
+                "datasheet_id",
+                normalized_value=expected_value,
+            ),
+            bom_record.field_locator(
+                "datasheet_id",
+                normalized_value=actual_value,
+            ),
+        )
+        evidence.extend(pair_evidence)
+        if expected_value == actual_value:
+            continue
+        findings.append(
+            _equipment_datasheet_mismatch_finding(
+                package_id=package_id,
+                item_id=item_id,
+                equipment_tag=equipment_tag,
+                expected_value=expected_value,
+                actual_value=actual_value,
+                evidence=pair_evidence,
+            )
+        )
+
+    ownership_note = (
+        f" {check_8_owned_count} equipment tag(s) remained owned by check 8 "
+        "because they did not have exactly one authoritative record."
+        if check_8_owned_count
+        else ""
+    )
+    if findings:
+        return RelationshipCheckResult(
+            check_id=EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
+            check_version=RELATIONSHIP_CHECK_VERSION,
+            status="failed",
+            summary=(
+                f"Compared {comparable_count} equipment/datasheet "
+                f"association(s) and found {len(findings)} mismatch(es)."
+                f"{ownership_note}"
+            ),
+            findings=tuple(findings),
+            evidence=tuple(evidence),
+        )
+
+    return RelationshipCheckResult(
+        check_id=EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
+        check_version=RELATIONSHIP_CHECK_VERSION,
+        status="passed",
+        summary=(
+            f"All {comparable_count} comparable equipment/datasheet "
+            f"association(s) match.{ownership_note}"
         ),
         evidence=tuple(evidence),
     )
@@ -275,6 +408,60 @@ def _equipment_datasheet_authority_missing_finding(
         affected_identifiers=(item_id, equipment_tag),
         expected_value=expected_value,
         actual_value=actual_count,
+        review_owner="mechanical_engineering",
+        evidence=evidence,
+    )
+
+
+def _equipment_datasheet_mismatch_finding(
+    *,
+    package_id: str,
+    item_id: str,
+    equipment_tag: str,
+    expected_value: str,
+    actual_value: str,
+    evidence: tuple[EvidenceLocator, EvidenceLocator],
+) -> RelationshipFinding:
+    result_state = "automatic_fail"
+    semantic = {
+        "package_id": package_id,
+        "check_id": EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
+        "check_version": RELATIONSHIP_CHECK_VERSION,
+        "code": EQUIPMENT_DATASHEET_MISMATCH_CODE,
+        "authority_rule_id": EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID,
+        "item_id": item_id,
+        "equipment_tag": equipment_tag,
+        "result_state": result_state,
+        "severity": "high",
+        "release_hold": True,
+        "expected_value": expected_value,
+        "actual_value": actual_value,
+    }
+    digest = hashlib.sha256(
+        json.dumps(
+            semantic,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+        ).encode("ascii")
+    ).hexdigest()[:16]
+    return RelationshipFinding(
+        finding_id=f"FND-{digest.upper()}",
+        check_id=EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
+        check_version=RELATIONSHIP_CHECK_VERSION,
+        package_id=package_id,
+        code=EQUIPMENT_DATASHEET_MISMATCH_CODE,
+        result_state=result_state,
+        severity="high",
+        release_hold=True,
+        authority_rule_id=EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID,
+        message=(
+            f"BOM datasheet {actual_value} conflicts with authoritative "
+            f"datasheet {expected_value} for {item_id} / {equipment_tag}."
+        ),
+        affected_identifiers=(item_id, equipment_tag),
+        expected_value=expected_value,
+        actual_value=actual_value,
         review_owner="mechanical_engineering",
         evidence=evidence,
     )

@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-20
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-equipment-datasheet-authority-presence`
+**Current branch:** `codex/p2.3-equipment-datasheet-association`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 equipment datasheet authority presence implementation review
-- **Status:** D-102 was accepted and PR #54 merged the OpenFlexure confirmation at exact `main` `b0b32bb`. Check 8 is implemented and fully verified on the controlled development package. The clean package passes all eight checks; an isolated missing datasheet produces the exact missing-authority hold, exit `3`, finding, and four-output contract
-- **Implementation state:** Eight ordered gates and eight ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Check 8 requires one authoritative datasheet record per release-required BOM equipment tag under exact `AUTH-SPEC-001`; checks 9-11 and all six authority-gap claims remain unimplemented
+- **Active WBS:** P2.3 equipment/datasheet association implementation review
+- **Status:** D-103 was accepted and PR #55 merged check 8 at exact `main` `fb0113d`. Check 9 is implemented and fully verified on the controlled development package. The clean package passes all nine checks; an isolated wrong-but-valid BOM datasheet ID produces the exact automatic-fail hold, exit `1`, finding, and four-output contract
+- **Implementation state:** Eight ordered gates and nine ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Check 9 compares eligible BOM and authoritative metadata datasheet IDs under exact `AUTH-SPEC-001`; checks 10-11 and all six authority-gap claims remain unimplemented. One transient Windows final-rename failure was preserved and is tracked as `IMP-019` for a separate stabilization decision
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -305,6 +305,21 @@ passes 295 with one expected Windows skip at 87.71% coverage; validation 5/5,
 Ruff, baseline 9/9, and demo 2/2 pass. The tracked review is
 `docs/package_assurance/equipment_datasheet_authority_presence_implementation_review_2026-07-20.md`.
 
+D-103 was accepted and PR #55 merged check 8 at exact `main` `fb0113d`.
+Check 9, `equipment_datasheet_association`, is now the ninth ordered
+relationship check. It compares each release-required BOM `datasheet_id` with
+the single authoritative metadata ID for the same normalized equipment tag.
+The clean development package passes 9/9 checks. Changing only the pump BOM
+reference to existing valid `DS-M-101` produces one
+`EQUIPMENT_DATASHEET_MISMATCH`, `automatic_fail`, release hold true, exit `1`,
+and four schema-valid outputs. Focused verification passes 88 tests; the full
+suite passes 299 with one expected Windows skip at 87.86% coverage; validation
+5/5, Ruff, baseline 9/9, and demo 2/2 pass. The first manual fault invocation
+preserved a transient Windows final-rename `PermissionError` at exit `70`; an
+unchanged retry succeeded. `IMP-019` records the required stabilization. The
+tracked review is
+`docs/package_assurance/equipment_datasheet_association_implementation_review_2026-07-20.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -343,12 +358,13 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the D-102 check-8 implementation and its clean and isolated-fault output
-evidence. Recommended D-103 accepts check 8 and authorizes only check 9,
-`equipment_datasheet_association`, next under exact `AUTH-SPEC-001`. Do not
-rerun either public package, weaken the result schema, implement checks 10-11,
-execute held-out semantics, change protected assets, or add deferred
-multimodal/platform capabilities before their respective gates.
+Review the D-104 check-9 implementation, successful clean/fault output
+evidence, and preserved Windows publication failure. Recommended D-104 accepts
+check 9 and authorizes one narrow publication-resilience stabilization before
+check 10. Do not rerun either public package, weaken the result schema,
+implement checks 10-11, execute held-out semantics, change protected assets,
+or add deferred multimodal/platform capabilities before their respective
+gates.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

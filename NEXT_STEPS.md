@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** Checks 6 and 7 are integrated. D-102 was accepted and PR #54 merged the OpenFlexure confirmation at exact `main` `b0b32bb`. Check 8 is implemented and verified on the controlled development package; both public observation runs remain complete and unchanged. Six authority/source gaps and checks 9-11 remain unimplemented.
+- **P2.3:** D-103 was accepted and PR #55 merged check 8 at exact `main` `fb0113d`. Check 9 is implemented and verified on the controlled development package. Both public observation runs remain complete and unchanged. Six authority/source gaps and checks 10-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Review Gate
 
-The D-103 check-8 implementation is ready for CEO review. The clean package passes all eight checks. Removing one authoritative datasheet record returns `missing_authoritative_information`, release hold `true`, exit `3`, one evidence-linked finding, and exactly four schema-valid, internally consistent outputs.
+The D-104 check-9 implementation is ready for CEO review. The clean package passes all nine checks. A wrong-but-valid BOM datasheet ID returns `automatic_fail`, release hold `true`, exit `1`, one evidence-linked finding, and exactly four schema-valid outputs. One earlier attempt also exposed and preserved a transient Windows final-rename failure; a narrow stabilization block is recommended before check 10.
 
 ## Active Work Block
 
-- **WBS:** P2.3 equipment datasheet authority presence implementation
-- **Branch:** `codex/p2.3-equipment-datasheet-authority-presence`
-- **Objective:** Require exactly one authoritative datasheet record for each release-required BOM equipment tag under exact `AUTH-SPEC-001`.
-- **Definition of done:** Check 8 is appended without changing checks 1-7; clean, missing, ambiguous, authority, ordering, result, report, CLI, and frozen-regression evidence pass and are reviewed.
+- **WBS:** P2.3 equipment/datasheet association implementation review
+- **Branch:** `codex/p2.3-equipment-datasheet-association`
+- **Objective:** Compare each eligible BOM datasheet ID with the single authoritative metadata ID under exact `AUTH-SPEC-001`.
+- **Definition of done:** Check 9 is appended without changing checks 1-8; clean, wrong-valid, ownership, authority, ordering, result, report, CLI, and frozen-regression evidence pass and are reviewed.
 
-Next action: review `docs/package_assurance/equipment_datasheet_authority_presence_implementation_review_2026-07-20.md`. Recommended D-103 accepts check 8 and authorizes check 9 only. Checks 10-11, authority-gap claims, semantic held-out execution, public reruns, and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/equipment_datasheet_association_implementation_review_2026-07-20.md`. Recommended D-104 accepts check 9 and authorizes a narrow Windows publication-resilience stabilization before check 10. Checks 10-11, authority-gap claims, semantic held-out execution, public reruns, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
