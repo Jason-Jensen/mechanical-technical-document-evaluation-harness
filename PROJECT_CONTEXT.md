@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-21
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-specification-revision-history`
+**Current branch:** `codex/p2.3-completion-claim-boundary`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 specification revision-history review
-- **Status:** D-106 was accepted and PR #58 merged check 10 at exact `main` `761ac76`. Check 11 is implemented and verified on its review branch
-- **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Check 11 reconciles required specification metadata with exactly one current revision-history record under exact `AUTH-SPEC-003`. All six checks supportable by accepted P2.3 authority are implemented; six authority/source gaps remain explicitly unsupported
+- **Active WBS:** P2.3 completion and v0.3.0 claim-boundary closeout
+- **Status:** D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 defers the six unsupported claims, narrows v0.3.0 to the eleven proven checks, closes P2.3, and authorizes P4.1 only
+- **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -398,13 +398,13 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the D-107 check-11 implementation, deterministic fault proof, and
-inspected four-output runs. Recommended D-107 accepts the change and authorizes
-only a P2.3 authority-gap disposition and completion-definition block. The
-recommended disposition is to defer all six unsupported claims, narrow the
-pilot release claim to the eleven proven checks, and then plan P4. Do not rerun
-either public package, execute held-out semantics, change protected assets, or
-add deferred multimodal/platform capabilities before their respective gates.
+Integrate the accepted P2.3 completion and claim boundary, then begin P4.1 on a
+separate branch. P4.1 may define and implement development benchmark regression,
+fault injection, exact oracle comparison, repeatability normalization,
+failed-run preservation, and reporting. Do not execute protected held-out
+semantics before P4.1 is frozen and P4.2 is explicitly opened. Do not rerun
+either public package, change protected assets, or add deferred multimodal or
+platform capabilities.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
