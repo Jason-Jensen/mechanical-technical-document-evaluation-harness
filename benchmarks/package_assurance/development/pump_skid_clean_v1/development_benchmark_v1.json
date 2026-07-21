@@ -130,7 +130,7 @@
         "equipment_datasheet_manifest_reciprocity",
         "specification_revision_history"
       ],
-      "expected_publication_sha256": "00c6694415c6618e5e890daee27db31e6a18bbe4c8f1db0b27fbf095c79eae0d"
+      "expected_publication_sha256": "efa889e116bc86f40c7c4147d34f53390dba4a6da52d2b3258a4f36f25100aea"
     },
     {
       "scenario_id": "SCN-DEV-PUMP-SKID-UNSUPPORTED-MANIFEST-001",

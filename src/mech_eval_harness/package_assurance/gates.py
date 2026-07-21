@@ -1971,7 +1971,7 @@ def _portable_error_message(
     for root, label in replacements:
         message = message.replace(str(root), label)
         message = message.replace(root.as_posix(), label)
-    return message
+    return message.replace("\\", "/")
 
 
 def _is_relative_to(path: Path, root: Path) -> bool:
