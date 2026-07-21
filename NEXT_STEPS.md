@@ -17,7 +17,7 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
-- **P4.1:** Implemented at `59bccca` on `codex/p4.1-development-benchmark` and ready for D-109 review. Revision `P4.1-DEV-1` passes 22/22 development scenarios twice, covers all eight gates and eleven checks, and keeps protected held-out semantics closed.
+- **P4.1:** Implemented at `4cf9fe8` on `codex/p4.1-development-benchmark` and ready for D-109 review. Revision `P4.1-DEV-1` passes 22/22 development scenarios twice on Windows and the hosted Linux CI gate, covers all eight gates and eleven checks, and keeps protected held-out semantics closed.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Gate

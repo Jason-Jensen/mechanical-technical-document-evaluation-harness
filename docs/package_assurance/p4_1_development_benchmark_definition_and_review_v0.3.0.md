@@ -8,7 +8,7 @@
 
 **Starting main:** `b4399747fa1c54e0cebbed3694eb51edfcebae88`
 
-**Benchmark implementation:** `59bccca84c28fdd1260326cacb0fdba9c67863f9`
+**Benchmark implementation:** `4cf9fe8d36c689ea46f38300b0e7b88b31d74c1e`
 
 **Decision required:** D-109
 
@@ -32,11 +32,13 @@ The first complete development benchmark is implemented and passing.
 - No held-out package content or oracle was read or executed by this runner.
 
 The generated acceptance evidence is under
-`runs/p4.1-development-acceptance-59bccca-final/`. It names exact evaluator
-commit `59bccca84c28fdd1260326cacb0fdba9c67863f9` and is intentionally ignored
+`runs/p4.1-development-acceptance-4cf9fe8-final/`. It names exact evaluator
+commit `4cf9fe8d36c689ea46f38300b0e7b88b31d74c1e` and is intentionally ignored
 runtime evidence, not a versioned benchmark definition. A prior invocation at
 `runs/p4.1-development-acceptance-59bccca/` was stopped by the command host's
-short timeout and remains preserved as non-authoritative failure evidence.
+short timeout and remains preserved as non-authoritative failure evidence. The
+completed `59bccca-final` local run was superseded after hosted CI exposed the
+cross-platform issue described below.
 
 ## What Was Added
 
@@ -113,6 +115,22 @@ Any legitimate evaluator change must first fail this benchmark and then use a
 separate reviewed oracle-change decision. A failing run is evidence; the
 golden is never loosened merely to recover a pass.
 
+## Cross-Platform Stabilization
+
+The first hosted Linux execution failed only the malformed-manifest exact
+oracle. The sanitized error path was `<package_root>\package_manifest.json` on
+Windows and `<package_root>/package_manifest.json` on Linux, which changed the
+stable finding ID and all three finding-bearing views. The evaluator outcome,
+state, hold, finding code, controls, and evidence locator were otherwise the
+same.
+
+Commit `4cf9fe8` makes the existing portable-error boundary emit POSIX path
+separators on every operating system, adds direct assertions for missing and
+malformed manifests, and updates only that scenario's publication hash. The
+complete matrix then passed under local Python 3.12 and 3.14, and both hosted
+Linux CI jobs passed. `IMP-022` retains the rule that a one-platform oracle
+pass is not sufficient evidence.
+
 ## Acceptance-Plan Variance
 
 P0.2 originally required one complete package scenario for each of the six
@@ -173,10 +191,12 @@ Completed during implementation:
 - frozen v0.2.0 baseline replay: 9/9 passed, with generated evidence kept
   under `runs/`;
 - portfolio demonstration: 2/2 passed; and
+- hosted Linux CI: both push and pull-request jobs passed after the
+  cross-platform oracle correction; and
 - original accepted package-tree hash: unchanged.
 
 The final exact-commit acceptance report records status `passed` and evaluator
-commit `59bccca84c28fdd1260326cacb0fdba9c67863f9`. Final diff review and workbook
+commit `4cf9fe8d36c689ea46f38300b0e7b88b31d74c1e`. Final diff review and workbook
 closeout were completed before the branch was published for acceptance.
 
 ## Stop Boundary

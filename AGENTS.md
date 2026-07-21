@@ -45,6 +45,10 @@ explicit generated `--evidence-dir` under `runs/`. The baseline script's
 historical default points at tracked release evidence and must not be used for
 an ordinary regression replay.
 
+Stable findings, reports, and benchmark oracles must use repository-relative
+POSIX path separators. A Windows-only exact-oracle pass is incomplete until
+the same revision passes the hosted Linux CI gate.
+
 ## Allowed Autonomous Actions
 
 Within an approved branch and scoped worktree, an agent may:

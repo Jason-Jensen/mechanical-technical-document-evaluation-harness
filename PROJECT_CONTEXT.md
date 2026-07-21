@@ -365,7 +365,7 @@ P2.3 at eight gates and eleven checks, explicitly deferred six unsupported
 cross-source claims, and integrated through PR #60 at exact `main` `b439974`.
 
 P4.1 revision `P4.1-DEV-1` is implemented on
-`codex/p4.1-development-benchmark` at implementation commit `59bccca`. It
+`codex/p4.1-development-benchmark` at implementation commit `4cf9fe8`. It
 derives 22 controlled development scenarios from the accepted pump-skid
 baseline without staging `expected/` assets. Every scenario runs the real
 evaluator and four-output publication twice. The exact-commit acceptance
@@ -373,11 +373,14 @@ execution passed 22/22 scenarios, 44/44 complete
 publications, all eight mandatory-gate failure cases, all eleven relationship
 failure cases, repeated-run equality, and exact normalized publication hashes.
 Generated evidence is preserved under
-`runs/p4.1-development-acceptance-59bccca-final/` and remains separate from
+`runs/p4.1-development-acceptance-4cf9fe8-final/` and remains separate from
 versioned benchmark definitions. No protected held-out semantics were
 executed. Focused benchmark tests pass 5; the full suite passes 319 with one
 expected Windows skip at 88.57% coverage; repository validation 5/5, Ruff,
-frozen baseline 9/9, and portfolio demo 2/2 pass.
+frozen baseline 9/9, portfolio demo 2/2, and both hosted Linux CI jobs pass.
+The first hosted run exposed one Windows/Linux separator difference in a
+portable manifest-error message. Commit `4cf9fe8` canonicalizes the path,
+updates only the affected reviewed oracle, and closes the red-to-green loop.
 
 D-109 is pending. The accepted evaluator has genuine full-package paths to
 four states; `engineering_review_required` and `evaluator_uncertainty` remain
