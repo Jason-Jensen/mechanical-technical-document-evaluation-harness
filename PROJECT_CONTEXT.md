@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-20
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-openflexure-public-audit-confirmation`
+**Current branch:** `codex/p2.3-equipment-datasheet-authority-presence`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 OpenFlexure public-audit confirmation review
-- **Status:** D-101 was accepted and PR #53 merged the NASA/JPL confirmation at exact `main` `65c9699b`. The single authorized unchanged OpenFlexure audit also matched the predeclared contract: `missing_authoritative_information`, release hold `true`, CLI exit `3`, exactly four schema-valid outputs, and one expected authority finding. Both accepted package trees and logs remain exact; each public package was audited exactly once
-- **Implementation state:** Eight ordered gates and seven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Checks 6 and 7 add BOM item/equipment manifest reciprocity and BOM equipment drawing presence under exact `AUTH-BOM-002`; checks 8-11 and all six authority-gap claims remain unimplemented
+- **Active WBS:** P2.3 equipment datasheet authority presence implementation review
+- **Status:** D-102 was accepted and PR #54 merged the OpenFlexure confirmation at exact `main` `b0b32bb`. Check 8 is implemented and fully verified on the controlled development package. The clean package passes all eight checks; an isolated missing datasheet produces the exact missing-authority hold, exit `3`, finding, and four-output contract
+- **Implementation state:** Eight ordered gates and eight ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Four outputs are staged outside the package and published together by one final directory rename; existing runs are not overwritten, controlled package failures are retained, and package-state exits remain `0`-`5`. Check 8 requires one authoritative datasheet record per release-required BOM equipment tag under exact `AUTH-SPEC-001`; checks 9-11 and all six authority-gap claims remain unimplemented
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -292,6 +292,19 @@ and `IMP-018` records the package-scoped finding-ID requirement for future
 multi-package reporting. The tracked review is
 `docs/package_assurance/openflexure_public_audit_confirmation_review_2026-07-20.md`.
 
+D-102 was accepted and PR #54 merged the OpenFlexure confirmation at exact
+`main` `b0b32bb`. Check 8, `equipment_datasheet_authority_presence`, is now the
+eighth ordered relationship check. It requires exactly one release-required
+datasheet metadata record for each release-required BOM equipment tag under the
+exact `AUTH-SPEC-001` rule. Zero or competing records produce a high-severity
+`missing_authoritative_information` hold with deterministic BOM and datasheet
+collection evidence. The clean development package passes 8/8 checks. An
+isolated removed datasheet produces one exact finding, exit `3`, and four
+schema-valid outputs. Focused verification passes 111 tests; the full suite
+passes 295 with one expected Windows skip at 87.71% coverage; validation 5/5,
+Ruff, baseline 9/9, and demo 2/2 pass. The tracked review is
+`docs/package_assurance/equipment_datasheet_authority_presence_implementation_review_2026-07-20.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -330,13 +343,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the single D-101 OpenFlexure result and the dual public-package learning.
-Recommended D-102 accepts the observation, closes the public trial sequence,
-adopts package-scoped finding identity for future aggregation, and authorizes
-only check 8, `equipment_datasheet_authority_presence`, next. Do not rerun either
-public package, weaken the result schema, implement checks 9-11, execute held-out
-semantics, change protected assets, or add deferred multimodal/platform
-capabilities before their respective gates.
+Review the D-102 check-8 implementation and its clean and isolated-fault output
+evidence. Recommended D-103 accepts check 8 and authorizes only check 9,
+`equipment_datasheet_association`, next under exact `AUTH-SPEC-001`. Do not
+rerun either public package, weaken the result schema, implement checks 10-11,
+execute held-out semantics, change protected assets, or add deferred
+multimodal/platform capabilities before their respective gates.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

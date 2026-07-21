@@ -36,6 +36,12 @@ from mech_eval_harness.package_assurance.drawing_relationships import (
     _drawing_register_metadata_revision_check,
     _drawing_revision_authority_rule,
 )
+from mech_eval_harness.package_assurance.datasheet_relationships import (
+    EQUIPMENT_DATASHEET_AUTHORITY_MISSING_CODE,
+    EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID,
+    EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID,
+    _evaluate_equipment_datasheet_authority_presence,
+)
 from mech_eval_harness.package_assurance.gates import AUTHORITY_GATE_ID
 from mech_eval_harness.package_assurance.models import (
     PackageGateEvaluation,
@@ -61,6 +67,9 @@ __all__ = [
     "DRAWING_REGISTER_METADATA_REVISION_CHECK_ID",
     "DRAWING_REVISION_AUTHORITY_RULE_ID",
     "DRAWING_REVISION_MISMATCH_CODE",
+    "EQUIPMENT_DATASHEET_AUTHORITY_MISSING_CODE",
+    "EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID",
+    "EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID",
     "RELATIONSHIP_CHECK_ORDER",
     "RELATIONSHIP_CHECK_VERSION",
     "run_package_relationships",
@@ -75,6 +84,7 @@ RELATIONSHIP_CHECK_ORDER = (
     DRAWING_REGISTER_MANIFEST_FILE_RECIPROCITY_CHECK_ID,
     BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
     BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+    EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID,
 )
 
 
@@ -133,12 +143,19 @@ def run_package_relationships(
             package_id=gate_evaluation.package_id,
             sources=gate_evaluation.sources,
         )
+        datasheet_authority_presence_check = (
+            _evaluate_equipment_datasheet_authority_presence(
+                package_id=gate_evaluation.package_id,
+                sources=gate_evaluation.sources,
+            )
+        )
         return PackageRelationshipEvaluation(
             package_id=gate_evaluation.package_id,
             checks=(
                 *drawing_checks,
                 bom_reciprocity_check,
                 bom_drawing_presence_check,
+                datasheet_authority_presence_check,
             ),
         )
 
@@ -214,6 +231,12 @@ def run_package_relationships(
         package_id=gate_evaluation.package_id,
         sources=gate_evaluation.sources,
     )
+    datasheet_authority_presence_check = (
+        _evaluate_equipment_datasheet_authority_presence(
+            package_id=gate_evaluation.package_id,
+            sources=gate_evaluation.sources,
+        )
+    )
 
     return PackageRelationshipEvaluation(
         package_id=gate_evaluation.package_id,
@@ -225,6 +248,7 @@ def run_package_relationships(
             reciprocity_check,
             bom_reciprocity_check,
             bom_drawing_presence_check,
+            datasheet_authority_presence_check,
         ),
     )
 

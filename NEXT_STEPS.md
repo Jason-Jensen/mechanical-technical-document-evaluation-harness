@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** Checks 6 and 7 are integrated. D-101 was accepted and PR #53 merged the NASA/JPL confirmation at exact `main` `65c9699b`. The single authorized OpenFlexure audit then matched the same predeclared state, hold, exit, and four-output contract. Both public observation runs are complete; six authority/source gaps and checks 8-11 remain unimplemented.
+- **P2.3:** Checks 6 and 7 are integrated. D-102 was accepted and PR #54 merged the OpenFlexure confirmation at exact `main` `b0b32bb`. Check 8 is implemented and verified on the controlled development package; both public observation runs remain complete and unchanged. Six authority/source gaps and checks 9-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Review Gate
 
-The D-101 OpenFlexure confirmation is ready for CEO review. One unchanged run returned `missing_authoritative_information`, release hold `true`, exit `3`, and exactly four schema-valid, internally consistent outputs. Both accepted package trees and logs remain exact, and each public package was audited exactly once.
+The D-103 check-8 implementation is ready for CEO review. The clean package passes all eight checks. Removing one authoritative datasheet record returns `missing_authoritative_information`, release hold `true`, exit `3`, one evidence-linked finding, and exactly four schema-valid, internally consistent outputs.
 
 ## Active Work Block
 
-- **WBS:** P2.3 OpenFlexure public-audit confirmation review
-- **Branch:** `codex/p2.3-openflexure-public-audit-confirmation`
-- **Objective:** Review the single D-101 observation, close the dual public-package sequence, and select the next useful structured slice.
-- **Definition of done:** The OpenFlexure execution count, state, hold, exit, four outputs, schema validity, report consistency, source integrity, cross-package learning, and next decision are recorded and reviewed.
+- **WBS:** P2.3 equipment datasheet authority presence implementation
+- **Branch:** `codex/p2.3-equipment-datasheet-authority-presence`
+- **Objective:** Require exactly one authoritative datasheet record for each release-required BOM equipment tag under exact `AUTH-SPEC-001`.
+- **Definition of done:** Check 8 is appended without changing checks 1-7; clean, missing, ambiguous, authority, ordering, result, report, CLI, and frozen-regression evidence pass and are reviewed.
 
-Next action: review `docs/package_assurance/openflexure_public_audit_confirmation_review_2026-07-20.md`. Recommended D-102 accepts the OpenFlexure result, closes the dual public-package observation sequence, adopts package-scoped finding identity for future aggregation, and authorizes check 8 only. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/equipment_datasheet_authority_presence_implementation_review_2026-07-20.md`. Recommended D-103 accepts check 8 and authorizes check 9 only. Checks 10-11, authority-gap claims, semantic held-out execution, public reruns, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 

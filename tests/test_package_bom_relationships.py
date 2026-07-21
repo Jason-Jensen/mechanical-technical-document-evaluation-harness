@@ -126,7 +126,11 @@ def test_wrong_valid_bom_manifest_target_emits_one_frozen_hold(
     gates = _evaluate_gates(package_root)
     first = run_package_relationships(gates)
     second = run_package_relationships(gates)
-    check = first.checks[-2]
+    check = next(
+        result
+        for result in first.checks
+        if result.check_id == BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID
+    )
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert all(result.status == "passed" for result in first.checks[:5])
@@ -229,7 +233,11 @@ def test_bom_reciprocity_requires_exact_accepted_authority_rule(
 
     gates = _evaluate_gates(package_root)
     evaluation = run_package_relationships(gates)
-    check = evaluation.checks[-2]
+    check = next(
+        result
+        for result in evaluation.checks
+        if result.check_id == BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID
+    )
 
     assert gates.dependent_checks_allowed is True
     assert all(result.status == "passed" for result in evaluation.checks[:5])
@@ -259,7 +267,18 @@ def test_bom_reciprocity_does_not_depend_on_drawing_authority_rule(
 
     assert gates.dependent_checks_allowed is True
     assert all(result.status == "skipped" for result in evaluation.checks[:5])
-    assert all(result.status == "passed" for result in evaluation.checks[-2:])
+    assert all(
+        next(
+            result
+            for result in evaluation.checks
+            if result.check_id == check_id
+        ).status
+        == "passed"
+        for check_id in (
+            BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID,
+            BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
+        )
+    )
 
 
 def test_multiple_bom_manifest_mappings_emit_one_stable_item_finding(
@@ -346,7 +365,11 @@ def test_missing_bom_equipment_drawing_reference_emits_frozen_hold(
 
     first = run_package_relationships(gates)
     second = run_package_relationships(gates)
-    check = first.checks[-1]
+    check = next(
+        result
+        for result in first.checks
+        if result.check_id == BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID
+    )
 
     assert all(gate.status == "passed" for gate in gates.gates)
     assert all(result.status == "passed" for result in first.checks[:6])
@@ -408,9 +431,19 @@ def test_bom_drawing_presence_uses_exact_authority_and_stable_item_order(
     bom_rule["secondary_sources"] = ["drawing_metadata"]
     _write_json(authority_path, authority)
     evaluation = run_package_relationships(_evaluate_gates(authority_package))
-    assert evaluation.checks[-2].status == "skipped"
-    assert evaluation.checks[-1].status == "skipped"
-    assert evaluation.checks[-1].blocked_by == (AUTHORITY_GATE_ID,)
+    reciprocity = next(
+        result
+        for result in evaluation.checks
+        if result.check_id == BOM_ITEM_EQUIPMENT_MANIFEST_RECIPROCITY_CHECK_ID
+    )
+    drawing_presence = next(
+        result
+        for result in evaluation.checks
+        if result.check_id == BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID
+    )
+    assert reciprocity.status == "skipped"
+    assert drawing_presence.status == "skipped"
+    assert drawing_presence.blocked_by == (AUTHORITY_GATE_ID,)
 
 
 def test_bom_drawing_presence_finding_ignores_source_record_order(
