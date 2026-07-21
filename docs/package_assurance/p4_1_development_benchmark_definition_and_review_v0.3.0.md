@@ -10,7 +10,7 @@
 
 **Benchmark implementation:** `4cf9fe8d36c689ea46f38300b0e7b88b31d74c1e`
 
-**Decision required:** D-109
+**Decision:** D-109 accepted by the project owner on 2026-07-21
 
 ## Executive Result
 
@@ -153,9 +153,10 @@ the eleven proven checks.
 This difference was not hidden or solved by weakening an oracle. It is the
 main P4.1 management decision.
 
-## Recommended Decision D-109
+## Accepted Decision D-109
 
-Accept the following bounded v0.3.0 benchmark interpretation:
+The project owner accepted the following bounded v0.3.0 benchmark
+interpretation on 2026-07-21:
 
 1. require full-package development scenarios for the four states the accepted
    evaluator can genuinely produce;
@@ -169,13 +170,14 @@ Accept the following bounded v0.3.0 benchmark interpretation:
 6. freeze P4.1 only after the full regression suite and this implementation
    are accepted.
 
-This is recommended over reopening P2 now. It keeps the first release honest,
+This was accepted over reopening P2 now. It keeps the first release honest,
 small, and useful while preserving the two states for future capabilities.
 It is a controlled variance from P0.2, not an assertion that the original
 six-state full-package criterion was met.
 
-If D-109 is rejected, P4.1 remains open and P0/P2 must be reopened before any
-held-out execution. The benchmark must not manufacture those states.
+The accepted claim boundary is now frozen for P4.1. Any future requirement for
+six full-package semantic paths must reopen P0/P2 through a separate decision;
+the benchmark must never manufacture those states.
 
 ## Verification
 
@@ -201,11 +203,12 @@ closeout were completed before the branch was published for acceptance.
 
 ## Stop Boundary
 
-Until D-109 and P4.1 are accepted:
+D-109 and P4.1 are accepted. Until PR #61 is integrated and P4.2 is separately
+authorized:
 
 - do not execute protected held-out semantics;
 - do not open protected held-out expected results for diagnosis;
 - do not tune evaluator behavior against held-out outcomes;
 - do not change the accepted clean fixture or its expected assets;
 - do not implement any D-108 deferred claim; and
-- do not begin P4.2 or release work.
+- do not execute P4.2 held-out semantics or begin release work.

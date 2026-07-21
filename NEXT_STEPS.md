@@ -17,21 +17,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
-- **P4.1:** Implemented at `4cf9fe8` on `codex/p4.1-development-benchmark` and ready for D-109 review. Revision `P4.1-DEV-1` passes 22/22 development scenarios twice on Windows and the hosted Linux CI gate, covers all eight gates and eleven checks, and keeps protected held-out semantics closed.
+- **P4.1:** D-109 accepted on 2026-07-21. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and the hosted Linux CI gate, covers all eight gates and eleven checks, and is ready for PR #61 integration.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Gate
 
-P4.1 implementation is ready for review. The executable matrix, exact normalized four-output oracles, two-run repeatability, failed-evidence preservation, and development-only boundary are implemented. D-109 must resolve the disclosed acceptance-plan variance: four states are reachable through genuine full-package audits, while `engineering_review_required` and `evaluator_uncertainty` have router/exit coverage only.
+P4.1 and D-109 are accepted. The executable matrix, exact normalized four-output oracles, two-run repeatability, failed-evidence preservation, development-only boundary, and bounded four-state claim are frozen pending PR #61 integration. P4.2 remains a separate protected gate.
 
 ## Active Work Block
 
-- **WBS:** P4.1 development benchmark regression and fault injection
+- **WBS:** P4.1 acceptance and integration closeout
 - **Branch:** `codex/p4.1-development-benchmark`
 - **Objective:** Prove the accepted structured evaluator against one clean package and controlled development faults without exposing or tuning against held-out semantics.
 - **Definition of done:** The clean baseline hash is verified; all eight gates and eleven checks have direct fault coverage; every scenario runs twice; exact states, exits, holds, control statuses, findings, evidence, and four-output publications match frozen oracles; generated and protected assets remain separated; regression is green; D-109 is accepted.
 
-Next action: review D-109 in `docs/package_assurance/p4_1_development_benchmark_definition_and_review_v0.3.0.md`. If accepted after green final verification, integrate P4.1 and freeze the evaluator/runner commit before separately authorizing P4.2. Held-out semantic execution, public reruns, protected-asset changes, and deferred capabilities remain blocked.
+Next action: integrate PR #61, record the exact merged `main`, and define the separate P4.2 held-out execution gate. Held-out semantic execution, public reruns, protected-asset changes, and deferred capabilities remain blocked until that gate is accepted.
 
 ## Delivery Sequence
 

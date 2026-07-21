@@ -382,12 +382,13 @@ The first hosted run exposed one Windows/Linux separator difference in a
 portable manifest-error message. Commit `4cf9fe8` canonicalizes the path,
 updates only the affected reviewed oracle, and closes the red-to-green loop.
 
-D-109 is pending. The accepted evaluator has genuine full-package paths to
-four states; `engineering_review_required` and `evaluator_uncertainty` remain
-tested at the router and exit-contract layer but have no accepted end-to-end
-semantic trigger. The recommended bounded decision is to disclose and defer
-those semantic triggers rather than manufacture evidence or reopen P2.3 in
-this release. The controlling review is
+D-109 was accepted by the project owner on 2026-07-21. The evaluator has
+accepted genuine full-package paths to four states;
+`engineering_review_required` and `evaluator_uncertainty` remain tested at the
+router and exit-contract layer but have no accepted end-to-end semantic
+trigger. The bounded release decision discloses and defers those semantic
+triggers rather than manufacturing evidence or reopening P2.3 in this release.
+P4.1 is accepted pending PR #61 integration. The controlling review is
 `docs/package_assurance/p4_1_development_benchmark_definition_and_review_v0.3.0.md`.
 
 ## Intended Outcome
@@ -428,11 +429,10 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review D-109 and the P4.1 implementation. If accepted after final verification,
-integrate the development benchmark and freeze the exact evaluator/runner
-commit before separately opening P4.2. Do not execute protected held-out
+Integrate accepted PR #61 and record its exact merged `main`, then define the
+separate P4.2 held-out execution gate. Do not execute protected held-out
 semantics, rerun either public package, change protected assets, or add deferred
-multimodal or platform capabilities before that decision.
+multimodal or platform capabilities before that gate is accepted.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
