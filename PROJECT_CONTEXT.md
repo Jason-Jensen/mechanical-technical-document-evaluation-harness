@@ -360,6 +360,37 @@ expected Windows skip at 88.48% coverage; validation 5/5, Ruff, baseline 9/9,
 and demo 2/2 pass. The tracked review is
 `docs/package_assurance/specification_revision_history_implementation_review_2026-07-21.md`.
 
+PR #59 merged accepted check 11 at exact `main` `69c0d1b`. D-108 then froze
+P2.3 at eight gates and eleven checks, explicitly deferred six unsupported
+cross-source claims, and integrated through PR #60 at exact `main` `b439974`.
+
+P4.1 revision `P4.1-DEV-1` is implemented on
+`codex/p4.1-development-benchmark` at implementation commit `4cf9fe8`. It
+derives 22 controlled development scenarios from the accepted pump-skid
+baseline without staging `expected/` assets. Every scenario runs the real
+evaluator and four-output publication twice. The exact-commit acceptance
+execution passed 22/22 scenarios, 44/44 complete
+publications, all eight mandatory-gate failure cases, all eleven relationship
+failure cases, repeated-run equality, and exact normalized publication hashes.
+Generated evidence is preserved under
+`runs/p4.1-development-acceptance-4cf9fe8-final/` and remains separate from
+versioned benchmark definitions. No protected held-out semantics were
+executed. Focused benchmark tests pass 5; the full suite passes 319 with one
+expected Windows skip at 88.57% coverage; repository validation 5/5, Ruff,
+frozen baseline 9/9, portfolio demo 2/2, and both hosted Linux CI jobs pass.
+The first hosted run exposed one Windows/Linux separator difference in a
+portable manifest-error message. Commit `4cf9fe8` canonicalizes the path,
+updates only the affected reviewed oracle, and closes the red-to-green loop.
+
+D-109 was accepted by the project owner on 2026-07-21. The evaluator has
+accepted genuine full-package paths to four states;
+`engineering_review_required` and `evaluator_uncertainty` remain tested at the
+router and exit-contract layer but have no accepted end-to-end semantic
+trigger. The bounded release decision discloses and defers those semantic
+triggers rather than manufacturing evidence or reopening P2.3 in this release.
+P4.1 is accepted pending PR #61 integration. The controlling review is
+`docs/package_assurance/p4_1_development_benchmark_definition_and_review_v0.3.0.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -398,13 +429,10 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate the accepted P2.3 completion and claim boundary, then begin P4.1 on a
-separate branch. P4.1 may define and implement development benchmark regression,
-fault injection, exact oracle comparison, repeatability normalization,
-failed-run preservation, and reporting. Do not execute protected held-out
-semantics before P4.1 is frozen and P4.2 is explicitly opened. Do not rerun
-either public package, change protected assets, or add deferred multimodal or
-platform capabilities.
+Integrate accepted PR #61 and record its exact merged `main`, then define the
+separate P4.2 held-out execution gate. Do not execute protected held-out
+semantics, rerun either public package, change protected assets, or add deferred
+multimodal or platform capabilities before that gate is accepted.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

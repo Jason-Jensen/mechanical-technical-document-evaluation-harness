@@ -115,6 +115,8 @@ def test_missing_manifest_fails_before_package_evaluation(tmp_path: Path) -> Non
     assert manifest_gate.status == "failed"
     assert manifest_gate.findings[0].code == "MANIFEST_UNREADABLE"
     assert manifest_gate.findings[0].state == "extraction_or_tool_failure"
+    assert "<package_root>/package_manifest.json" in manifest_gate.findings[0].message
+    assert "\\" not in manifest_gate.findings[0].message
     assert all(gate.status == "skipped" for gate in evaluation.gates[1:])
     assert all(gate.blocked_by == (MANIFEST_GATE_ID,) for gate in evaluation.gates[1:])
     assert evaluation.dependent_checks_allowed is False
@@ -133,6 +135,8 @@ def test_malformed_manifest_fails_as_extraction_error(tmp_path: Path) -> None:
     assert manifest_gate.status == "failed"
     assert manifest_gate.findings[0].code == "MANIFEST_UNREADABLE"
     assert manifest_gate.findings[0].state == "extraction_or_tool_failure"
+    assert "<package_root>/package_manifest.json" in manifest_gate.findings[0].message
+    assert "\\" not in manifest_gate.findings[0].message
     assert all(gate.status == "skipped" for gate in evaluation.gates[1:])
 
 
