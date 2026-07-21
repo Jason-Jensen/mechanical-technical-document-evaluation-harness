@@ -8,7 +8,7 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** P4.1 is integrated through PR #61 at exact `main` `5a4d57e`. P4.2 is blocked for D-110 review because pre-run oracle metadata exposure contaminated the existing held-out family for release claims; no held-out audit was run.
+- **Current gate:** D-110 is accepted. The exposed held-out family remains unchanged, unexecuted, and release-ineligible. P4.2 may now author and hash-freeze a materially distinct replacement in an isolated custodian workspace; semantic execution remains separately blocked.
 - **Implementation boundary:** Eight ordered gates and eleven ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. P2.3 is complete for this exact scope. Six unsupported authority/source claims are explicitly deferred and excluded from v0.3.0 release claims.
 
 The accepted P2.3 completion boundary limits v0.3.0 to the eleven proven checks and defers six claims that lack a comparison source or exact authority rule. This prevents single-source field validation from being presented as cross-document reconciliation.

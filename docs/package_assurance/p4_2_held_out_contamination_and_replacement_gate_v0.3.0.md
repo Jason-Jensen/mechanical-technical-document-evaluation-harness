@@ -8,7 +8,7 @@
 
 **Frozen evaluator main:** `5a4d57e534bd5e900abac3c455cd484ef083e972`
 
-**Decision required:** D-110
+**Decision status:** D-110 accepted by the project owner on 2026-07-21
 
 ## Executive Result
 
@@ -84,9 +84,9 @@ The existing family `FAM-HO-INSTRUMENT-AIR-001` must be treated as:
 Its files, hashes, and historical P1.3 acceptance record must not be edited to
 hide the exposure or restore a held-out label.
 
-## Recommended Decision D-110
+## Accepted Decision D-110
 
-Accept the following recovery path:
+The project owner accepted the following recovery path on 2026-07-21:
 
 1. record the existing family as contaminated for release claims without
    editing or executing it;
@@ -192,7 +192,7 @@ materially distinct replacement is required after any fix.
 
 ## Stop Boundary
 
-Until D-110 and a replacement-authoring protocol are accepted:
+Until a replacement freeze package is reviewed and separately accepted:
 
 - do not execute the exposed held-out family;
 - do not open any additional file in its `protected/` or `expected/` paths;

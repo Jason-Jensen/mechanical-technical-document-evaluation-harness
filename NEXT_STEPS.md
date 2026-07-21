@@ -18,21 +18,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
 - **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
-- **P4.2:** Definition recovery active on `codex/p4.2-held-out-benchmark-definition`. The existing held-out family was not executed, but pre-run oracle metadata exposure makes it ineligible for release held-out claims under the accepted contamination policy. D-110 and a materially distinct replacement are required.
+- **P4.2:** D-110 accepted on 2026-07-21. The exposed family remains unchanged, unexecuted, and release-ineligible. A materially distinct replacement may now be authored and hash-frozen through an isolated benchmark-custodian workspace; semantic execution remains blocked pending a separate freeze decision.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Gate
 
-P4.1 is integrated and frozen. P4.2 is blocked at D-110: preserve the exposed instrument-air family unchanged and unexecuted, classify it as contaminated for release claims, and authorize a fresh isolated custodian process for a materially distinct replacement.
+P4.1 is integrated and frozen. D-110 authorizes only isolated replacement-family authoring, structural verification, and hash freeze. The first replacement semantic run requires a separate owner decision after the freeze package is reviewed.
 
 ## Active Work Block
 
 - **WBS:** P4.2 held-out contamination and replacement definition
 - **Branch:** `codex/p4.2-held-out-benchmark-definition`
-- **Objective:** Recover the held-out control boundary without running, editing, or relabeling the exposed family.
-- **Definition of done:** Exact P4.1 integration is recorded; exposure is classified; the existing family remains unchanged and unexecuted; replacement authority, isolation, matrix, freeze, first-run, comparison, and rerun rules are explicit; D-110 is ready for owner review.
+- **Objective:** Integrate accepted D-110 and create a materially distinct replacement family through an isolated custodian boundary without semantic execution.
+- **Definition of done:** D-110 is integrated; the custodian receives only approved public contracts; the replacement satisfies the accepted minimum matrix and material-distinction rules; package and protected assets remain separated; exact hashes and access evidence are frozen; the implementation context does not inspect protected values; a separate first-run decision is ready for owner review.
 
-Next action: review D-110 in `docs/package_assurance/p4_2_held_out_contamination_and_replacement_gate_v0.3.0.md`. Held-out semantic execution, replacement authoring in this implementation context, public reruns, protected-asset changes, and deferred capabilities remain blocked.
+Next action: merge accepted PR #62, record exact `main`, then run the isolated replacement authoring and freeze block. Held-out semantic execution, replacement authoring in this implementation context, public reruns, evaluator changes, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 

@@ -31,7 +31,7 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P4.2 held-out contamination and replacement definition
-- **Status:** P4.1 and D-109 are integrated through PR #61 at exact `main` `5a4d57e`. The existing held-out family was not executed, but pre-run oracle metadata exposure makes it ineligible for release held-out claims. D-110 and a materially distinct replacement are required before P4.2 execution
+- **Status:** D-110 is accepted. The existing held-out family remains unchanged, unexecuted, and ineligible for release claims. Isolated replacement-family authoring and hash freeze are authorized; semantic execution remains separately blocked
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -400,10 +400,10 @@ the implementation context, no semantic audit was run, and no evaluator
 behavior changed. Existing hosted CI later ran opaque fixture-integrity tests
 that load protected JSON internally without printing its values. The exposed
 top-level records nevertheless contained expected conditions and states, so
-Section 15 of the accepted plan
-makes the existing family contaminated for release held-out claims. D-110
-proposes preserving it unchanged and unexecuted and requiring a materially
-distinct replacement authored in an isolated custodian context. The
+Section 15 of the accepted plan makes the existing family contaminated for
+release held-out claims. D-110 was accepted on 2026-07-21. It preserves the
+family unchanged and unexecuted and requires a materially distinct replacement
+authored in an isolated custodian context. The
 controlling record is
 `docs/package_assurance/p4_2_held_out_contamination_and_replacement_gate_v0.3.0.md`.
 
@@ -445,10 +445,11 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review D-110 and the P4.2 replacement-family control. Do not execute or inspect
-the exposed family further, author a replacement in this implementation
-context, rerun either public package, change protected assets, or add deferred
-multimodal or platform capabilities before that decision.
+Integrate D-110 through PR #62, then create and structurally verify a replacement
+family only through an isolated custodian workspace. Do not semantically execute
+the replacement, inspect its protected values from this implementation context,
+rerun either public package, change evaluator behavior, or add deferred
+multimodal or platform capabilities before the separate freeze decision.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
