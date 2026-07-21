@@ -8,10 +8,10 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** Review D-107, the check-11 specification revision-history implementation.
-- **Implementation boundary:** Eight ordered gates and eleven ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. Check 11 compares required specification metadata with current revision history under exact `AUTH-SPEC-003`. Six unsupported authority/source claims, held-out semantics, public reruns, and deferred capabilities remain blocked pending their gates.
+- **Current gate:** P4.1 development benchmark regression and fault-injection coverage.
+- **Implementation boundary:** Eight ordered gates and eleven ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. P2.3 is complete for this exact scope. Six unsupported authority/source claims are explicitly deferred and excluded from v0.3.0 release claims.
 
-The accepted P2.3 definition identifies six checks that the accepted sources and authority rules can support now, and six planned claims that require a separate authority/source decision. This prevents single-source field validation from being presented as cross-document reconciliation.
+The accepted P2.3 completion boundary limits v0.3.0 to the eleven proven checks and defers six claims that lack a comparison source or exact authority rule. This prevents single-source field validation from being presented as cross-document reconciliation.
 
 Check 6 verifies that each release-required BOM item has exactly one reciprocal manifest item-to-equipment declaration under `AUTH-BOM-002`. The clean development package passes; an isolated valid-but-wrong target produces one evidence-linked automatic-fail release hold through the result, reports, and CLI. Verification passes 31 relationship tests, 75 focused tests, and 278 full-suite tests with one expected skip.
 
@@ -31,7 +31,7 @@ The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipme
 
 Current execution status is controlled in `gantt.xlsx`. Product behavior is defined in the [workflow contract](docs/package_assurance/workflow_contract_v0.3.0.md), [acceptance plan](docs/package_assurance/acceptance_plan_v0.3.0.md), and accepted [P2.3 relationship expansion definition](docs/package_assurance/p2_3_relationship_expansion_definition_v0.3.0.md). The two public-package observations and their mapping records remain historical evidence; they are not authority for new engineering claims. Reusable lessons and permanent controls are tracked in the [improvement register](docs/quality/improvement_register.md).
 
-The current D-107 decision record is the [specification revision-history implementation review](docs/package_assurance/specification_revision_history_implementation_review_2026-07-21.md).
+The controlling P2.3 closeout is the [completion and claim boundary](docs/package_assurance/p2_3_completion_and_claim_boundary_v0.3.0.md). P4.1 may build and verify the development benchmark machinery; protected held-out semantic execution remains a separate P4.2 gate.
 
 ## Current MVP
 

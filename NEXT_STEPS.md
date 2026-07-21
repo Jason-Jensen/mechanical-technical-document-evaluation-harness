@@ -16,21 +16,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** D-106 was accepted and PR #58 merged check 10 at exact `main` `761ac76`. Check 11 is implemented and verified on its review branch. All six currently supportable P2.3 checks are now implemented; six authority/source gaps remain explicitly unsupported.
+- **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
+- **P4.1:** Authorized to add development benchmark regression and fault-injection coverage. Protected held-out semantic execution remains a separate P4.2 gate.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
-## Current Review Gate
+## Current Gate
 
-The D-107 check-11 implementation is ready for CEO review. Release-required specification metadata is now compared with exactly one current revision-history record under exact `AUTH-SPEC-003`. One wrong-valid metadata revision produces one evidence-linked release hold through all four outputs and exit `1`.
+P4.1 benchmark regression and fault-injection coverage is authorized. The first slice will freeze the executable development scenario matrix, exact oracle comparison, repeatability normalization, failed-run preservation, and benchmark reporting boundary before any protected held-out semantic execution.
 
 ## Active Work Block
 
-- **WBS:** P2.3 specification revision-history review
-- **Branch:** `codex/p2.3-specification-revision-history`
-- **Objective:** Require every release-required authoritative specification revision to agree with exactly one current revision-history record.
-- **Definition of done:** Check 11 is eleventh in stable order; clean, mismatch, missing, ambiguity, authority, reordering, result, report, CLI, and publication proofs pass; protected assets remain unchanged.
+- **WBS:** P2.3 completion and claim-boundary closeout
+- **Branch:** `codex/p2.3-completion-claim-boundary`
+- **Objective:** Close P2.3 without overstating assurance and establish the exact entry boundary for P4.1.
+- **Definition of done:** D-107 and D-108 are recorded; P2.3 is complete; all six gaps are explicitly deferred; the v0.3.0 claim is limited to eight gates and eleven checks; P4.1 is authorized while P4.2 remains protected.
 
-Next action: review `docs/package_assurance/specification_revision_history_implementation_review_2026-07-21.md`. Recommended D-107 accepts check 11 and authorizes only a P2.3 authority-gap disposition and completion-definition block. The recommended disposition is to defer the six unsupported claims, narrow the pilot release claim to the eleven proven checks, and then plan P4. Semantic held-out execution, public reruns, and deferred capabilities remain blocked.
+Next action: integrate `docs/package_assurance/p2_3_completion_and_claim_boundary_v0.3.0.md`, then create a separate P4.1 branch for development benchmark regression and fault-injection coverage. P4.2 held-out semantic execution, public reruns, protected-asset changes, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
