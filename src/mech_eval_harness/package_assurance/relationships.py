@@ -41,9 +41,12 @@ from mech_eval_harness.package_assurance.datasheet_relationships import (
     EQUIPMENT_DATASHEET_AUTHORITY_MISSING_CODE,
     EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID,
     EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID,
+    EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
     EQUIPMENT_DATASHEET_MISMATCH_CODE,
+    EQUIPMENT_DATASHEET_RECIPROCITY_FAILED_CODE,
     _evaluate_equipment_datasheet_association,
     _evaluate_equipment_datasheet_authority_presence,
+    _evaluate_equipment_datasheet_manifest_reciprocity,
 )
 from mech_eval_harness.package_assurance.gates import AUTHORITY_GATE_ID
 from mech_eval_harness.package_assurance.models import (
@@ -74,7 +77,9 @@ __all__ = [
     "EQUIPMENT_DATASHEET_AUTHORITY_MISSING_CODE",
     "EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID",
     "EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID",
+    "EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID",
     "EQUIPMENT_DATASHEET_MISMATCH_CODE",
+    "EQUIPMENT_DATASHEET_RECIPROCITY_FAILED_CODE",
     "RELATIONSHIP_CHECK_ORDER",
     "RELATIONSHIP_CHECK_VERSION",
     "run_package_relationships",
@@ -91,6 +96,7 @@ RELATIONSHIP_CHECK_ORDER = (
     BOM_EQUIPMENT_DRAWING_PRESENCE_CHECK_ID,
     EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID,
     EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
+    EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
 )
 
 
@@ -159,6 +165,13 @@ def run_package_relationships(
             package_id=gate_evaluation.package_id,
             sources=gate_evaluation.sources,
         )
+        datasheet_reciprocity_check = (
+            _evaluate_equipment_datasheet_manifest_reciprocity(
+                package_id=gate_evaluation.package_id,
+                sources=gate_evaluation.sources,
+                manifest=gate_evaluation.manifest,
+            )
+        )
         return PackageRelationshipEvaluation(
             package_id=gate_evaluation.package_id,
             checks=(
@@ -167,6 +180,7 @@ def run_package_relationships(
                 bom_drawing_presence_check,
                 datasheet_authority_presence_check,
                 datasheet_association_check,
+                datasheet_reciprocity_check,
             ),
         )
 
@@ -252,6 +266,11 @@ def run_package_relationships(
         package_id=gate_evaluation.package_id,
         sources=gate_evaluation.sources,
     )
+    datasheet_reciprocity_check = _evaluate_equipment_datasheet_manifest_reciprocity(
+        package_id=gate_evaluation.package_id,
+        sources=gate_evaluation.sources,
+        manifest=gate_evaluation.manifest,
+    )
 
     return PackageRelationshipEvaluation(
         package_id=gate_evaluation.package_id,
@@ -265,6 +284,7 @@ def run_package_relationships(
             bom_drawing_presence_check,
             datasheet_authority_presence_check,
             datasheet_association_check,
+            datasheet_reciprocity_check,
         ),
     )
 

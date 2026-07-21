@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
 from mech_eval_harness.package_assurance import (
     BOM_EQUIPMENT_AUTHORITY_RULE_ID,
@@ -10,7 +11,9 @@ from mech_eval_harness.package_assurance import (
     EQUIPMENT_DATASHEET_AUTHORITY_MISSING_CODE,
     EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID,
     EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID,
+    EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
     EQUIPMENT_DATASHEET_MISMATCH_CODE,
+    EQUIPMENT_DATASHEET_RECIPROCITY_FAILED_CODE,
     run_package_relationships,
 )
 from mech_eval_harness.package_assurance.gates import AUTHORITY_GATE_ID
@@ -19,6 +22,7 @@ from tests.package_relationship_support import (
     _copy_package,
     _evaluate_gates,
     _load_json,
+    _mutate_manifest,
     _rewrite_csv,
     _write_json,
 )
@@ -64,6 +68,21 @@ def _set_bom_datasheet_ids(
         package_root / "inputs" / "bom_or_equipment_list.csv",
         update_selected,
     )
+
+
+def _set_manifest_datasheet_targets(
+    package_root: Path,
+    values_by_relationship_id: dict[str, str],
+) -> None:
+    def update_selected(manifest: dict[str, Any]) -> None:
+        for relationship in manifest["relationship_declarations"]:
+            relationship_id = relationship["relationship_id"]
+            if relationship_id in values_by_relationship_id:
+                relationship["target"]["identifier"] = values_by_relationship_id[
+                    relationship_id
+                ]
+
+    _mutate_manifest(package_root, update_selected)
 
 
 def _check_by_id(evaluation, check_id: str):
@@ -154,6 +173,14 @@ def test_missing_equipment_datasheet_authority_emits_frozen_hold(
     assert association.findings == ()
     assert len(association.evidence) == 2
     assert "1 equipment tag(s) remained owned by check 8" in association.summary
+    reciprocity = _check_by_id(
+        first,
+        EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
+    )
+    assert reciprocity.status == "passed"
+    assert reciprocity.findings == ()
+    assert len(reciprocity.evidence) == 3
+    assert "1 equipment tag(s) remained owned by check 8" in reciprocity.summary
 
 
 def test_missing_and_ambiguous_authority_are_sorted_and_order_independent(
@@ -241,6 +268,12 @@ def test_datasheet_presence_requires_exact_authority_rule(tmp_path: Path) -> Non
     )
     assert association.status == "skipped"
     assert association.blocked_by == (AUTHORITY_GATE_ID,)
+    reciprocity = _check_by_id(
+        evaluation,
+        EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
+    )
+    assert reciprocity.status == "skipped"
+    assert reciprocity.blocked_by == (AUTHORITY_GATE_ID,)
 
 
 def test_datasheet_presence_is_independent_of_drawing_and_bom_authority(
@@ -273,6 +306,7 @@ def test_datasheet_presence_is_independent_of_drawing_and_bom_authority(
     assert statuses["bom_equipment_drawing_presence"] == "skipped"
     assert statuses[EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID] == "passed"
     assert statuses[EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID] == "passed"
+    assert statuses[EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID] == "passed"
 
 
 def test_clean_equipment_datasheet_association_passes_with_exact_evidence(
@@ -387,6 +421,179 @@ def test_datasheet_association_findings_are_sorted_and_order_independent(
     ] == [
         ("DS-M-101", "DS-P-101"),
         ("DS-P-101", "DS-M-101"),
+    ]
+    assert [
+        (
+            finding.finding_id,
+            finding.code,
+            finding.affected_identifiers,
+            finding.expected_value,
+            finding.actual_value,
+        )
+        for finding in first.findings
+    ] == [
+        (
+            finding.finding_id,
+            finding.code,
+            finding.affected_identifiers,
+            finding.expected_value,
+            finding.actual_value,
+        )
+        for finding in second.findings
+    ]
+
+
+def test_clean_equipment_datasheet_manifest_reciprocity_passes_with_exact_evidence(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    gates = _evaluate_gates(package_root)
+
+    first = _check(
+        gates,
+        EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
+    )
+    second = _check(
+        gates,
+        EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
+    )
+
+    assert all(gate.status == "passed" for gate in gates.gates)
+    assert first.status == "passed"
+    assert first.findings == ()
+    assert first.blocked_by == ()
+    assert len(first.evidence) == 6
+    assert first.to_dict() == second.to_dict()
+    assert [locator.source_type for locator in first.evidence[:3]] == [
+        "datasheet_spec_metadata",
+        "datasheet_spec_metadata",
+        "package_manifest",
+    ]
+    assert first.evidence[0].record_id == "DSMETA-002"
+    assert first.evidence[0].property_name == "equipment_tag"
+    assert first.evidence[0].normalized_value == "M-101A"
+    assert first.evidence[1].property_name == "datasheet_id"
+    assert first.evidence[1].normalized_value == "DS-M-101"
+    assert first.evidence[2].record_id == "REL-EQ-DS-002"
+    assert first.evidence[2].normalized_value == {
+        "equipment_tag": "M-101A",
+        "datasheet_id": "DS-M-101",
+        "required_for_release": True,
+    }
+    serialized = json.dumps(first.to_dict(), sort_keys=True)
+    assert str(package_root.resolve()) not in serialized
+    assert "package_state" not in serialized
+
+
+def test_wrong_valid_manifest_datasheet_target_emits_one_frozen_hold(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    _set_manifest_datasheet_targets(
+        package_root,
+        {"REL-EQ-DS-001": "DS-M-101"},
+    )
+    gates = _evaluate_gates(package_root)
+
+    first = run_package_relationships(gates)
+    second = run_package_relationships(gates)
+    check = _check_by_id(
+        first,
+        EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
+    )
+
+    assert all(gate.status == "passed" for gate in gates.gates)
+    assert all(result.status == "passed" for result in first.checks[:9])
+    assert check.status == "failed"
+    assert len(check.findings) == 1
+    assert first.to_dict() == second.to_dict()
+
+    finding = check.findings[0]
+    assert finding.code == EQUIPMENT_DATASHEET_RECIPROCITY_FAILED_CODE
+    assert finding.result_state == "automatic_fail"
+    assert finding.severity == "high"
+    assert finding.release_hold is True
+    assert finding.authority_rule_id == EQUIPMENT_DATASHEET_AUTHORITY_RULE_ID
+    assert finding.review_owner == "mechanical_engineering"
+    assert finding.affected_identifiers == ("P-101A",)
+    assert finding.expected_value == {
+        "equipment_tag": "P-101A",
+        "datasheet_id": "DS-P-101",
+        "required_for_release": True,
+    }
+    assert finding.actual_value == {
+        "equipment_tag": "P-101A",
+        "datasheet_id": "DS-M-101",
+        "required_for_release": True,
+    }
+    assert [locator.source_type for locator in finding.evidence] == [
+        "datasheet_spec_metadata",
+        "datasheet_spec_metadata",
+        "package_manifest",
+    ]
+    assert finding.evidence[-1].record_id == "REL-EQ-DS-001"
+
+
+def test_missing_and_multiple_manifest_datasheet_mappings_are_stable_when_reordered(
+    tmp_path: Path,
+) -> None:
+    original = _copy_package(tmp_path, "original")
+    reordered = _copy_package(tmp_path, "reordered")
+
+    def replace_pump_mapping_with_motor_conflict(
+        manifest: dict[str, Any],
+    ) -> None:
+        relationships = manifest["relationship_declarations"]
+        relationships[:] = [
+            item for item in relationships if item["relationship_id"] != "REL-EQ-DS-001"
+        ]
+        relationships.append(
+            {
+                "relationship_id": "REL-EQ-DS-000",
+                "relationship_type": "equipment_to_datasheet",
+                "source": {
+                    "identifier_type": "equipment_tag",
+                    "identifier": "M-101A",
+                },
+                "target": {
+                    "identifier_type": "datasheet_id",
+                    "identifier": "DS-P-101",
+                },
+                "required_for_release": True,
+            }
+        )
+
+    for package_root in (original, reordered):
+        _mutate_manifest(package_root, replace_pump_mapping_with_motor_conflict)
+
+    metadata_path = _datasheet_metadata_path(reordered)
+    metadata = _load_json(metadata_path)
+    metadata["datasheets"].reverse()
+    _write_json(metadata_path, metadata)
+
+    def reverse_declarations(manifest: dict[str, Any]) -> None:
+        manifest["relationship_declarations"].reverse()
+
+    _mutate_manifest(reordered, reverse_declarations)
+
+    first = _check(
+        _evaluate_gates(original),
+        EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
+    )
+    second = _check(
+        _evaluate_gates(reordered),
+        EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
+    )
+
+    assert first.status == second.status == "failed"
+    assert [finding.affected_identifiers for finding in first.findings] == [
+        ("M-101A",),
+        ("P-101A",),
+    ]
+    assert first.findings[1].actual_value == "missing"
+    assert [mapping["datasheet_id"] for mapping in first.findings[0].actual_value] == [
+        "DS-M-101",
+        "DS-P-101",
     ]
     assert [
         (

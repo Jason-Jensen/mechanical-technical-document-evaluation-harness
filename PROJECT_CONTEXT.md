@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-21
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-publication-resilience`
+**Current branch:** `codex/p2.3-equipment-datasheet-manifest-reciprocity`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 publication-resilience stabilization review
-- **Status:** D-104 was accepted and PR #56 merged check 9 at exact `main` `7146b23`. The final publication rename now retries only transient permission failures within a fixed 0.75-second budget; collisions, other errors, and exhaustion remain fail closed
-- **Implementation state:** Eight ordered gates and nine ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Check 9 is integrated under exact `AUTH-SPEC-001`; checks 10-11 and all six authority-gap claims remain unimplemented. The bounded retry addresses `I-005`; closure and permanent retention of `IMP-019` await D-105 review
+- **Active WBS:** P2.3 equipment/datasheet manifest reciprocity review
+- **Status:** D-105 was accepted and PR #57 merged the publication stabilization at exact `main` `dbcd242`. Check 10 is implemented and verified on its review branch
+- **Implementation state:** Eight ordered gates and ten ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Check 10 reconciles authoritative datasheet metadata with manifest declarations under exact `AUTH-SPEC-001`; check 11 and all six authority-gap claims remain unimplemented. `I-005` is controlled and closed; `IMP-019` remains the permanent regression rule
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -332,6 +332,21 @@ full suite passes 304 tests with one expected Windows skip at 88.08% coverage;
 validation 5/5, Ruff, baseline 9/9, and demo 2/2 pass. The tracked review is
 `docs/package_assurance/publication_resilience_stabilization_review_2026-07-21.md`.
 
+D-105 was accepted and PR #57 merged the publication stabilization at exact
+`main` `dbcd242`. Check 10, `equipment_datasheet_manifest_reciprocity`, is now
+the tenth ordered relationship check. It compares release-required
+authoritative datasheet metadata with release-required manifest declarations
+in both directions under exact `AUTH-SPEC-001`, while check 8 retains ownership
+of missing or ambiguous authority for required BOM equipment. The clean
+development package passes 10/10 checks. Changing only `REL-EQ-DS-001` to the
+existing wrong target `DS-M-101` produces one
+`EQUIPMENT_DATASHEET_RECIPROCITY_FAILED` finding, `automatic_fail`, release
+hold true, exit `1`, and four consistent outputs. Focused verification passes
+93 tests; the full suite passes 308 with one expected Windows skip at 88.27%
+coverage; validation 5/5, Ruff, baseline 9/9, and demo 2/2 pass. The tracked
+review is
+`docs/package_assurance/equipment_datasheet_manifest_reciprocity_implementation_review_2026-07-21.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -370,13 +385,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the D-105 publication-resilience stabilization, injected failure proof,
-and 20-run Windows execution evidence. Recommended D-105 accepts the change,
-closes `I-005` as controlled, retains `IMP-019`, and authorizes only check 10,
-`equipment_datasheet_manifest_reciprocity`, next. Do not rerun either public
-package, weaken the result schema, implement check 11, execute held-out
-semantics, change protected assets, or add deferred multimodal/platform
-capabilities before their respective gates.
+Review the D-106 check-10 implementation, deterministic fault proof, and
+inspected four-output runs. Recommended D-106 accepts the change and authorizes
+only check 11, `specification_revision_history`, next. Do not rerun either
+public package, weaken the result schema, implement check 11 before D-106,
+execute held-out semantics, change protected assets, or add deferred
+multimodal/platform capabilities before their respective gates.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

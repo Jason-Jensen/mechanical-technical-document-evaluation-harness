@@ -255,6 +255,7 @@ def test_removed_required_mapping_cli_preserves_exact_fault(
         "passed",
         "passed",
         "passed",
+        "passed",
     ]
     assert len(rows) == 1
     assert rows[0]["code"] == "DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED"
@@ -321,6 +322,7 @@ def test_wrong_valid_bom_mapping_cli_preserves_exact_fault(
         "passed",
         "passed",
         "passed",
+        "passed",
     ]
     assert len(rows) == 1
     assert rows[0]["code"] == "BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED"
@@ -338,7 +340,7 @@ def test_wrong_valid_bom_mapping_cli_preserves_exact_fault(
     readiness = (run_directory / "release_readiness.md").read_text(
         encoding="utf-8"
     )
-    assert "| Relationship checks | 8 | 1 | 0 |" in readiness
+    assert "| Relationship checks | 9 | 1 | 0 |" in readiness
     for output_name in AUDIT_PACKAGE_OUTPUT_FILENAMES:
         output = (run_directory / output_name).read_text(encoding="utf-8")
         assert str(package_root) not in output
@@ -390,6 +392,7 @@ def test_missing_bom_equipment_drawing_reference_reaches_all_outputs(
         "failed",
         "passed",
         "passed",
+        "passed",
     ]
     assert len(rows) == 1
     assert rows[0]["code"] == "BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING"
@@ -401,7 +404,7 @@ def test_missing_bom_equipment_drawing_reference_reaches_all_outputs(
     readiness = (run_directory / "release_readiness.md").read_text(
         encoding="utf-8"
     )
-    assert "| Relationship checks | 8 | 1 | 0 |" in readiness
+    assert "| Relationship checks | 9 | 1 | 0 |" in readiness
     for output_name in AUDIT_PACKAGE_OUTPUT_FILENAMES:
         output = (run_directory / output_name).read_text(encoding="utf-8")
         assert str(package_root) not in output
@@ -460,6 +463,7 @@ def test_missing_equipment_datasheet_authority_reaches_all_outputs(
         "passed",
         "failed",
         "passed",
+        "passed",
     ]
     assert len(rows) == 1
     assert rows[0]["code"] == "EQUIPMENT_DATASHEET_AUTHORITY_MISSING"
@@ -477,7 +481,7 @@ def test_missing_equipment_datasheet_authority_reaches_all_outputs(
     readiness = (run_directory / "release_readiness.md").read_text(
         encoding="utf-8"
     )
-    assert "| Relationship checks | 8 | 1 | 0 |" in readiness
+    assert "| Relationship checks | 9 | 1 | 0 |" in readiness
     for output_name in AUDIT_PACKAGE_OUTPUT_FILENAMES:
         output = (run_directory / output_name).read_text(encoding="utf-8")
         assert str(package_root) not in output
@@ -531,6 +535,7 @@ def test_wrong_valid_equipment_datasheet_association_reaches_all_outputs(
         "passed",
         "passed",
         "failed",
+        "passed",
     ]
     assert len(rows) == 1
     assert rows[0]["code"] == "EQUIPMENT_DATASHEET_MISMATCH"
@@ -548,7 +553,83 @@ def test_wrong_valid_equipment_datasheet_association_reaches_all_outputs(
     readiness = (run_directory / "release_readiness.md").read_text(
         encoding="utf-8"
     )
-    assert "| Relationship checks | 8 | 1 | 0 |" in readiness
+    assert "| Relationship checks | 9 | 1 | 0 |" in readiness
+    for output_name in AUDIT_PACKAGE_OUTPUT_FILENAMES:
+        output = (run_directory / output_name).read_text(encoding="utf-8")
+        assert str(package_root) not in output
+
+
+def test_wrong_valid_manifest_datasheet_target_reaches_all_outputs(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    package_root = _copy_package(tmp_path)
+    manifest_path = package_root / "package_manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    relationship = next(
+        item
+        for item in manifest["relationship_declarations"]
+        if item["relationship_id"] == "REL-EQ-DS-001"
+    )
+    relationship["target"]["identifier"] = "DS-M-101"
+    manifest_path.write_text(
+        json.dumps(manifest, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    runs_dir = tmp_path / "runs"
+
+    exit_code = _run_cli(package_root, runs_dir)
+
+    captured = capsys.readouterr()
+    run_directory = _only_run_directory(runs_dir)
+    document = json.loads(
+        (run_directory / "package_result.json").read_text(encoding="utf-8")
+    )
+    rows = list(
+        csv.DictReader(
+            io.StringIO(
+                (run_directory / "issue_register.csv").read_text(
+                    encoding="utf-8"
+                )
+            )
+        )
+    )
+
+    assert exit_code == 1
+    assert "PACKAGE STATE: automatic_fail" in captured.out
+    assert "RELEASE HOLD: true" in captured.out
+    assert {path.name for path in run_directory.iterdir()} == set(
+        AUDIT_PACKAGE_OUTPUT_FILENAMES
+    )
+    assert document["package_state"] == "automatic_fail"
+    assert document["release_hold"] is True
+    assert [item["status"] for item in document["relationship_results"]] == [
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "passed",
+        "failed",
+    ]
+    assert len(rows) == 1
+    assert rows[0]["code"] == "EQUIPMENT_DATASHEET_RECIPROCITY_FAILED"
+    assert json.loads(rows[0]["affected_identifiers_json"]) == ["P-101A"]
+    assert json.loads(rows[0]["expected_value_json"])["datasheet_id"] == "DS-P-101"
+    assert json.loads(rows[0]["actual_value_json"])["datasheet_id"] == "DS-M-101"
+    evidence = json.loads(rows[0]["evidence_json"])
+    assert [item["source_type"] for item in evidence] == [
+        "datasheet_spec_metadata",
+        "datasheet_spec_metadata",
+        "package_manifest",
+    ]
+    readiness = (run_directory / "release_readiness.md").read_text(
+        encoding="utf-8"
+    )
+    assert "| Relationship checks | 9 | 1 | 0 |" in readiness
     for output_name in AUDIT_PACKAGE_OUTPUT_FILENAMES:
         output = (run_directory / output_name).read_text(encoding="utf-8")
         assert str(package_root) not in output
