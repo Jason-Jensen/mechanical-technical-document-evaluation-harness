@@ -1,0 +1,747 @@
+{
+  "schema_version": "0.3.0",
+  "benchmark_id": "PACKAGE-ASSURANCE-PILOT-V0.3.0-DEVELOPMENT",
+  "benchmark_revision": "P4.1-DEV-1",
+  "split": "development",
+  "baseline": {
+    "package_root": "benchmarks/package_assurance/development/pump_skid_clean_v1/package",
+    "accepted_content_hash": "a4b278e5bd20f3b64a85d52c478747b1115e15bbaf63b19bf47f5dffddfaf31a",
+    "accepted_at_commit": "f26ed27",
+    "producer_hidden_roots": [
+      "expected"
+    ]
+  },
+  "runner_contract": {
+    "repeat_count": 2,
+    "required_output_names": [
+      "package_result.json",
+      "issue_register.csv",
+      "issue_register.md",
+      "release_readiness.md"
+    ],
+    "normalized_result_exclusions": [
+      "run_id",
+      "run_metadata"
+    ],
+    "oracle_comparison": "exact_normalized_publication_sha256"
+  },
+  "scope": {
+    "mandatory_gate_ids": [
+      "GATE-PKG-MANIFEST-001",
+      "GATE-PKG-SOURCE-INVENTORY-001",
+      "GATE-PKG-AUTHORITY-001",
+      "GATE-PKG-BOUNDARY-001",
+      "GATE-PKG-IDENTIFIER-001",
+      "GATE-PKG-DUPLICATE-001",
+      "GATE-PKG-REVISION-001",
+      "GATE-PKG-EVIDENCE-001"
+    ],
+    "relationship_check_ids": [
+      "drawing_register_metadata_revision",
+      "drawing_register_metadata_presence",
+      "drawing_metadata_register_authority",
+      "drawing_register_metadata_file_reference",
+      "drawing_register_manifest_file_reciprocity",
+      "bom_item_equipment_manifest_reciprocity",
+      "bom_equipment_drawing_presence",
+      "equipment_datasheet_authority_presence",
+      "equipment_datasheet_association",
+      "equipment_datasheet_manifest_reciprocity",
+      "specification_revision_history"
+    ],
+    "full_audit_states": [
+      "automatic_pass",
+      "automatic_fail",
+      "missing_authoritative_information",
+      "extraction_or_tool_failure"
+    ],
+    "contract_only_states": [
+      "engineering_review_required",
+      "evaluator_uncertainty"
+    ],
+    "deferred_claims": [
+      "cross-source quantity agreement",
+      "cross-source part or material identity agreement",
+      "BOM item to drawing association agreement",
+      "equipment to specification association agreement",
+      "datasheet revision history agreement",
+      "controlled technical-value compliance"
+    ],
+    "held_out_semantic_execution": "prohibited_in_p4_1"
+  },
+  "scenarios": [
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-CLEAN-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001",
+      "scenario_type": "clean",
+      "seeded_fault_id": null,
+      "mutation_id": "clean",
+      "mutation_note": "Stage the accepted clean package without producer-hidden expected assets and make no semantic mutation.",
+      "expected_package_state": "automatic_pass",
+      "expected_cli_exit_code": 0,
+      "expected_release_hold": false,
+      "expected_blocking_states": [],
+      "expected_finding_codes": [],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "6f52f5764087f541f71adea8c90d31b20404cb446c92ad749076ae3313cb2089"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-MALFORMED-MANIFEST-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F001",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-001",
+      "mutation_id": "manifest_malformed",
+      "mutation_note": "Replace the package manifest with truncated JSON after assigning the scenario identity.",
+      "expected_package_state": "extraction_or_tool_failure",
+      "expected_cli_exit_code": 4,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "extraction_or_tool_failure"
+      ],
+      "expected_finding_codes": [
+        "MANIFEST_UNREADABLE"
+      ],
+      "expected_failed_gates": [
+        "GATE-PKG-MANIFEST-001"
+      ],
+      "expected_skipped_gates": [
+        "GATE-PKG-SOURCE-INVENTORY-001",
+        "GATE-PKG-AUTHORITY-001",
+        "GATE-PKG-BOUNDARY-001",
+        "GATE-PKG-IDENTIFIER-001",
+        "GATE-PKG-DUPLICATE-001",
+        "GATE-PKG-REVISION-001",
+        "GATE-PKG-EVIDENCE-001"
+      ],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [
+        "drawing_register_metadata_revision",
+        "drawing_register_metadata_presence",
+        "drawing_metadata_register_authority",
+        "drawing_register_metadata_file_reference",
+        "drawing_register_manifest_file_reciprocity",
+        "bom_item_equipment_manifest_reciprocity",
+        "bom_equipment_drawing_presence",
+        "equipment_datasheet_authority_presence",
+        "equipment_datasheet_association",
+        "equipment_datasheet_manifest_reciprocity",
+        "specification_revision_history"
+      ],
+      "expected_publication_sha256": "00c6694415c6618e5e890daee27db31e6a18bbe4c8f1db0b27fbf095c79eae0d"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-UNSUPPORTED-MANIFEST-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F002",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-002",
+      "mutation_id": "manifest_schema_unsupported",
+      "mutation_note": "Set the package-manifest schema version to unsupported version 0.4.0.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "MANIFEST_INVALID"
+      ],
+      "expected_failed_gates": [
+        "GATE-PKG-MANIFEST-001"
+      ],
+      "expected_skipped_gates": [
+        "GATE-PKG-SOURCE-INVENTORY-001",
+        "GATE-PKG-AUTHORITY-001",
+        "GATE-PKG-BOUNDARY-001",
+        "GATE-PKG-IDENTIFIER-001",
+        "GATE-PKG-DUPLICATE-001",
+        "GATE-PKG-REVISION-001",
+        "GATE-PKG-EVIDENCE-001"
+      ],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [
+        "drawing_register_metadata_revision",
+        "drawing_register_metadata_presence",
+        "drawing_metadata_register_authority",
+        "drawing_register_metadata_file_reference",
+        "drawing_register_manifest_file_reciprocity",
+        "bom_item_equipment_manifest_reciprocity",
+        "bom_equipment_drawing_presence",
+        "equipment_datasheet_authority_presence",
+        "equipment_datasheet_association",
+        "equipment_datasheet_manifest_reciprocity",
+        "specification_revision_history"
+      ],
+      "expected_publication_sha256": "d5138b5c9e5a96681bba351ada39c70358869f6dba9356836fed4458e1351058"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-MISSING-SOURCE-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F003",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-003",
+      "mutation_id": "source_missing",
+      "mutation_note": "Remove the mandatory drawing-metadata JSON source.",
+      "expected_package_state": "extraction_or_tool_failure",
+      "expected_cli_exit_code": 4,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "extraction_or_tool_failure"
+      ],
+      "expected_finding_codes": [
+        "SOURCE_FILE_MISSING"
+      ],
+      "expected_failed_gates": [
+        "GATE-PKG-SOURCE-INVENTORY-001"
+      ],
+      "expected_skipped_gates": [
+        "GATE-PKG-IDENTIFIER-001",
+        "GATE-PKG-DUPLICATE-001",
+        "GATE-PKG-REVISION-001",
+        "GATE-PKG-EVIDENCE-001"
+      ],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [
+        "drawing_register_metadata_revision",
+        "drawing_register_metadata_presence",
+        "drawing_metadata_register_authority",
+        "drawing_register_metadata_file_reference",
+        "drawing_register_manifest_file_reciprocity",
+        "bom_item_equipment_manifest_reciprocity",
+        "bom_equipment_drawing_presence",
+        "equipment_datasheet_authority_presence",
+        "equipment_datasheet_association",
+        "equipment_datasheet_manifest_reciprocity",
+        "specification_revision_history"
+      ],
+      "expected_publication_sha256": "6accec99421ededb09c60a1088a66cd4e2b35b00c54fd8f3171c5af472604a1c"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-MISSING-AUTHORITY-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F004",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-004",
+      "mutation_id": "authority_rule_missing",
+      "mutation_note": "Remove the required drawing-current-revision authority rule.",
+      "expected_package_state": "missing_authoritative_information",
+      "expected_cli_exit_code": 3,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "missing_authoritative_information"
+      ],
+      "expected_finding_codes": [
+        "AUTHORITY_REQUIRED_RULE_MISSING"
+      ],
+      "expected_failed_gates": [
+        "GATE-PKG-AUTHORITY-001"
+      ],
+      "expected_skipped_gates": [
+        "GATE-PKG-DUPLICATE-001",
+        "GATE-PKG-REVISION-001",
+        "GATE-PKG-EVIDENCE-001"
+      ],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [
+        "drawing_register_metadata_revision",
+        "drawing_register_metadata_presence",
+        "drawing_metadata_register_authority",
+        "drawing_register_metadata_file_reference",
+        "drawing_register_manifest_file_reciprocity",
+        "bom_item_equipment_manifest_reciprocity",
+        "bom_equipment_drawing_presence",
+        "equipment_datasheet_authority_presence",
+        "equipment_datasheet_association",
+        "equipment_datasheet_manifest_reciprocity",
+        "specification_revision_history"
+      ],
+      "expected_publication_sha256": "33417d0c69c7693d88886e46e366d9ef60847c4bf3bd0014e7ef4517735f5d7f"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-AUTHORITY-CONFLICT-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F005",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-005",
+      "mutation_id": "authority_source_contradiction",
+      "mutation_note": "Declare the drawing register as both authoritative and secondary under AUTH-DWG-001.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "AUTHORITY_SOURCE_CONTRADICTION"
+      ],
+      "expected_failed_gates": [
+        "GATE-PKG-AUTHORITY-001"
+      ],
+      "expected_skipped_gates": [
+        "GATE-PKG-DUPLICATE-001",
+        "GATE-PKG-REVISION-001",
+        "GATE-PKG-EVIDENCE-001"
+      ],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [
+        "drawing_register_metadata_revision",
+        "drawing_register_metadata_presence",
+        "drawing_metadata_register_authority",
+        "drawing_register_metadata_file_reference",
+        "drawing_register_manifest_file_reciprocity",
+        "bom_item_equipment_manifest_reciprocity",
+        "bom_equipment_drawing_presence",
+        "equipment_datasheet_authority_presence",
+        "equipment_datasheet_association",
+        "equipment_datasheet_manifest_reciprocity",
+        "specification_revision_history"
+      ],
+      "expected_publication_sha256": "f60b53b1f7e72f3b42c9fd4260cfe800674444a8e2059d8d3f7eb11a8ddff003"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-MISSING-FILE-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F006",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-006",
+      "mutation_id": "controlled_file_missing",
+      "mutation_note": "Remove the first release-required controlled drawing file while retaining its declarations.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "BROKEN_FILE_REFERENCE"
+      ],
+      "expected_failed_gates": [
+        "GATE-PKG-BOUNDARY-001"
+      ],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [
+        "drawing_register_metadata_revision",
+        "drawing_register_metadata_presence",
+        "drawing_metadata_register_authority",
+        "drawing_register_metadata_file_reference",
+        "drawing_register_manifest_file_reciprocity",
+        "bom_item_equipment_manifest_reciprocity",
+        "bom_equipment_drawing_presence",
+        "equipment_datasheet_authority_presence",
+        "equipment_datasheet_association",
+        "equipment_datasheet_manifest_reciprocity",
+        "specification_revision_history"
+      ],
+      "expected_publication_sha256": "192e381b6f4c1666216aa04e770d18355e0bb25a51d53443bd0ba3e2180593f9"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-IDENTIFIER-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F007",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-007",
+      "mutation_id": "identifier_whitespace",
+      "mutation_note": "Wrap one nonblank BOM datasheet identifier in whitespace.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "CANONICAL_IDENTIFIER_INVALID"
+      ],
+      "expected_failed_gates": [
+        "GATE-PKG-IDENTIFIER-001"
+      ],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [
+        "drawing_register_metadata_revision",
+        "drawing_register_metadata_presence",
+        "drawing_metadata_register_authority",
+        "drawing_register_metadata_file_reference",
+        "drawing_register_manifest_file_reciprocity",
+        "bom_item_equipment_manifest_reciprocity",
+        "bom_equipment_drawing_presence",
+        "equipment_datasheet_authority_presence",
+        "equipment_datasheet_association",
+        "equipment_datasheet_manifest_reciprocity",
+        "specification_revision_history"
+      ],
+      "expected_publication_sha256": "78d7588cab97450c89fceaae779e89e2d8de2587fc13cbae7805cd5ca167ac9f"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-DUPLICATE-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F008",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-008",
+      "mutation_id": "duplicate_document_id",
+      "mutation_note": "Assign the first drawing document ID to both drawing-metadata records.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "DUPLICATE_CANONICAL_IDENTIFIER"
+      ],
+      "expected_failed_gates": [
+        "GATE-PKG-DUPLICATE-001"
+      ],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [
+        "drawing_register_metadata_revision",
+        "drawing_register_metadata_presence",
+        "drawing_metadata_register_authority",
+        "drawing_register_metadata_file_reference",
+        "drawing_register_manifest_file_reciprocity",
+        "bom_item_equipment_manifest_reciprocity",
+        "bom_equipment_drawing_presence",
+        "equipment_datasheet_authority_presence",
+        "equipment_datasheet_association",
+        "equipment_datasheet_manifest_reciprocity",
+        "specification_revision_history"
+      ],
+      "expected_publication_sha256": "7ca8142ca74456635ba701691bbb75f569c58173254c1bbdd510a3f3528cc457"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-REVISION-GATE-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F009",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-009",
+      "mutation_id": "revision_invalid",
+      "mutation_note": "Set one alpha-upper drawing revision to lowercase c.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "REVISION_FORMAT_INVALID"
+      ],
+      "expected_failed_gates": [
+        "GATE-PKG-REVISION-001"
+      ],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [
+        "drawing_register_metadata_revision",
+        "drawing_register_metadata_presence",
+        "drawing_metadata_register_authority",
+        "drawing_register_metadata_file_reference",
+        "drawing_register_manifest_file_reciprocity",
+        "bom_item_equipment_manifest_reciprocity",
+        "bom_equipment_drawing_presence",
+        "equipment_datasheet_authority_presence",
+        "equipment_datasheet_association",
+        "equipment_datasheet_manifest_reciprocity",
+        "specification_revision_history"
+      ],
+      "expected_publication_sha256": "37617b7f51ef074dae6fc17239d128a7b2a2774651a977085a56fbc6193d415e"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-EVIDENCE-GATE-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F010",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-010",
+      "mutation_id": "evidence_requirement_missing",
+      "mutation_note": "Remove row_key from the authority-declared CSV evidence fields.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "EVIDENCE_REQUIREMENT_INCOMPLETE"
+      ],
+      "expected_failed_gates": [
+        "GATE-PKG-EVIDENCE-001"
+      ],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [],
+      "expected_skipped_checks": [
+        "drawing_register_metadata_revision",
+        "drawing_register_metadata_presence",
+        "drawing_metadata_register_authority",
+        "drawing_register_metadata_file_reference",
+        "drawing_register_manifest_file_reciprocity",
+        "bom_item_equipment_manifest_reciprocity",
+        "bom_equipment_drawing_presence",
+        "equipment_datasheet_authority_presence",
+        "equipment_datasheet_association",
+        "equipment_datasheet_manifest_reciprocity",
+        "specification_revision_history"
+      ],
+      "expected_publication_sha256": "96d68ac92378625393f45f270726bc35b188a488337d85c235aacd302e082672"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-DRAWING-REVISION-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F011",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-011",
+      "mutation_id": "drawing_revision_mismatch",
+      "mutation_note": "Set drawing metadata to valid but non-authoritative revision A while the register remains at C.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "DRAWING_REVISION_MISMATCH"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "drawing_register_metadata_revision"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "94d212ff2472f33cada7baa1c2308aed83a79f5f15503de917a11438fd970e05"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-DRAWING-METADATA-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F012",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-012",
+      "mutation_id": "drawing_metadata_missing",
+      "mutation_note": "Remove DWMETA-001; this intentionally produces the primary missing-metadata finding and the dependent equipment-on-drawing finding.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "DRAWING_METADATA_MISSING",
+        "BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "drawing_register_metadata_presence",
+        "bom_equipment_drawing_presence"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "4c3477fcf3029e197d0443c8258d35f01d3309856e3251072fd475d814b9e3b7"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-DRAWING-AUTHORITY-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F013",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-013",
+      "mutation_id": "drawing_register_missing",
+      "mutation_note": "Remove the authoritative DOC-DWG-001 drawing-register row while retaining drawing metadata.",
+      "expected_package_state": "missing_authoritative_information",
+      "expected_cli_exit_code": 3,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "missing_authoritative_information"
+      ],
+      "expected_finding_codes": [
+        "DRAWING_REGISTER_AUTHORITY_MISSING"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "drawing_metadata_register_authority"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "8138ea1c6660def6382787f9ddcf3a3226b1dd5836232e2e7d1b1e040b31bf45"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-DRAWING-FILE-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F014",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-014",
+      "mutation_id": "drawing_file_reference_mismatch",
+      "mutation_note": "Point DWMETA-001 at the other valid drawing file reference while the register remains unchanged.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "DRAWING_FILE_REFERENCE_MISMATCH"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "drawing_register_metadata_file_reference"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "29a14eb9a539b03023025f26c6a6e49e97292aa0511206cd53dcd6007a50f1b4"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-DRAWING-RECIPROCITY-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F015",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-015",
+      "mutation_id": "drawing_manifest_mapping_missing",
+      "mutation_note": "Remove required relationship REL-DOC-FILE-001 while preserving inventory and file declarations.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "DRAWING_DOCUMENT_FILE_RECIPROCITY_FAILED"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "drawing_register_manifest_file_reciprocity"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "eb15accaeb2566db24ee489399f1031b87a6a53b156d68a0e8ff701950f394fe"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-BOM-RECIPROCITY-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F016",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-016",
+      "mutation_id": "bom_manifest_target_mismatch",
+      "mutation_note": "Redirect REL-ITEM-EQ-001 from P-101A to the existing but wrong equipment tag M-101A.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "BOM_ITEM_EQUIPMENT_RECIPROCITY_FAILED"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "bom_item_equipment_manifest_reciprocity"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "d5ba6ea1ad7dc6b0250fe8575db76fa892b73575480998cb1241006d15bb90eb"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-BOM-DRAWING-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F017",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-017",
+      "mutation_id": "bom_drawing_tag_missing",
+      "mutation_note": "Remove M-101A from all drawing-metadata equipment-tag memberships.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "BOM_EQUIPMENT_DRAWING_REFERENCE_MISSING"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "bom_equipment_drawing_presence"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "9b9c599384c6e3a5e8ae3fe02377252698f091443df10d60bf783c9334419fe5"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-DATASHEET-AUTHORITY-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F018",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-018",
+      "mutation_id": "datasheet_authority_missing",
+      "mutation_note": "Remove authoritative datasheet record DSMETA-001 for release-required equipment P-101A.",
+      "expected_package_state": "missing_authoritative_information",
+      "expected_cli_exit_code": 3,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "missing_authoritative_information"
+      ],
+      "expected_finding_codes": [
+        "EQUIPMENT_DATASHEET_AUTHORITY_MISSING"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "equipment_datasheet_authority_presence"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "ec42abbeb5dc9a0a5ac2a8d54f0cd3e117a9906cf3122e700b8bd33f27ee4beb"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-DATASHEET-ASSOCIATION-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F019",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-019",
+      "mutation_id": "datasheet_association_mismatch",
+      "mutation_note": "Point ITEM-PUMP-001 at the existing motor datasheet while authoritative metadata remains unchanged.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "EQUIPMENT_DATASHEET_MISMATCH"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "equipment_datasheet_association"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "f300d93f6c953c159b14da5367d077b758b0368297abcc29c055c5bf010a956e"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-DATASHEET-RECIPROCITY-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F020",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-020",
+      "mutation_id": "datasheet_manifest_mismatch",
+      "mutation_note": "Redirect REL-EQ-DS-001 to the existing motor datasheet while authoritative metadata remains unchanged.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "EQUIPMENT_DATASHEET_RECIPROCITY_FAILED"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "equipment_datasheet_manifest_reciprocity"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "a157ef46b3e8565f1ad40c61078a6807d0fd1c83c401660758d4fa0e05c6a913"
+    },
+    {
+      "scenario_id": "SCN-DEV-PUMP-SKID-SPECIFICATION-REVISION-001",
+      "package_id": "PKG-DEV-PUMP-SKID-001-F021",
+      "scenario_type": "single_fault",
+      "seeded_fault_id": "FAULT-DEV-021",
+      "mutation_id": "specification_revision_mismatch",
+      "mutation_note": "Set specification SPMETA-001 to valid revision B while revision history remains current at A.",
+      "expected_package_state": "automatic_fail",
+      "expected_cli_exit_code": 1,
+      "expected_release_hold": true,
+      "expected_blocking_states": [
+        "automatic_fail"
+      ],
+      "expected_finding_codes": [
+        "SPECIFICATION_REVISION_MISMATCH"
+      ],
+      "expected_failed_gates": [],
+      "expected_skipped_gates": [],
+      "expected_failed_checks": [
+        "specification_revision_history"
+      ],
+      "expected_skipped_checks": [],
+      "expected_publication_sha256": "3c2901256c30c2d4ee4fea973087a0c24343298d877a8499610e1071388e5f7c"
+    }
+  ]
+}
