@@ -40,6 +40,11 @@ Treat these as read-only unless the active WBS explicitly authorizes a reviewed 
 - historical result records;
 - Gantt history and prior work-block records.
 
+When replaying the frozen v0.2.0 baseline for verification, always pass an
+explicit generated `--evidence-dir` under `runs/`. The baseline script's
+historical default points at tracked release evidence and must not be used for
+an ordinary regression replay.
+
 ## Allowed Autonomous Actions
 
 Within an approved branch and scoped worktree, an agent may:
