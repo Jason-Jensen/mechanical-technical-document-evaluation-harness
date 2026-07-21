@@ -17,21 +17,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
-- **P4.1:** D-109 accepted on 2026-07-21. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and the hosted Linux CI gate, covers all eight gates and eleven checks, and is ready for PR #61 integration.
+- **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
+- **P4.2:** Definition recovery active on `codex/p4.2-held-out-benchmark-definition`. The existing held-out family was not executed, but pre-run oracle metadata exposure makes it ineligible for release held-out claims under the accepted contamination policy. D-110 and a materially distinct replacement are required.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Gate
 
-P4.1 and D-109 are accepted. The executable matrix, exact normalized four-output oracles, two-run repeatability, failed-evidence preservation, development-only boundary, and bounded four-state claim are frozen pending PR #61 integration. P4.2 remains a separate protected gate.
+P4.1 is integrated and frozen. P4.2 is blocked at D-110: preserve the exposed instrument-air family unchanged and unexecuted, classify it as contaminated for release claims, and authorize a fresh isolated custodian process for a materially distinct replacement.
 
 ## Active Work Block
 
-- **WBS:** P4.1 acceptance and integration closeout
-- **Branch:** `codex/p4.1-development-benchmark`
-- **Objective:** Prove the accepted structured evaluator against one clean package and controlled development faults without exposing or tuning against held-out semantics.
-- **Definition of done:** The clean baseline hash is verified; all eight gates and eleven checks have direct fault coverage; every scenario runs twice; exact states, exits, holds, control statuses, findings, evidence, and four-output publications match frozen oracles; generated and protected assets remain separated; regression is green; D-109 is accepted.
+- **WBS:** P4.2 held-out contamination and replacement definition
+- **Branch:** `codex/p4.2-held-out-benchmark-definition`
+- **Objective:** Recover the held-out control boundary without running, editing, or relabeling the exposed family.
+- **Definition of done:** Exact P4.1 integration is recorded; exposure is classified; the existing family remains unchanged and unexecuted; replacement authority, isolation, matrix, freeze, first-run, comparison, and rerun rules are explicit; D-110 is ready for owner review.
 
-Next action: integrate PR #61, record the exact merged `main`, and define the separate P4.2 held-out execution gate. Held-out semantic execution, public reruns, protected-asset changes, and deferred capabilities remain blocked until that gate is accepted.
+Next action: review D-110 in `docs/package_assurance/p4_2_held_out_contamination_and_replacement_gate_v0.3.0.md`. Held-out semantic execution, replacement authoring in this implementation context, public reruns, protected-asset changes, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 

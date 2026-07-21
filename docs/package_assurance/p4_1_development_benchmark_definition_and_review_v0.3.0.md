@@ -203,8 +203,8 @@ closeout were completed before the branch was published for acceptance.
 
 ## Stop Boundary
 
-D-109 and P4.1 are accepted. Until PR #61 is integrated and P4.2 is separately
-authorized:
+D-109 and P4.1 are accepted and PR #61 is integrated at exact `main`
+`5a4d57e`. Until P4.2 is separately authorized:
 
 - do not execute protected held-out semantics;
 - do not open protected held-out expected results for diagnosis;
