@@ -8,8 +8,8 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** Review the D-104 check-9 implementation. The clean development package passes all nine checks; a wrong-but-valid BOM datasheet ID returns `automatic_fail`, release hold `true`, exit `1`, one evidence-linked finding, and four schema-valid outputs.
-- **Implementation boundary:** Eight ordered gates and nine ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. Check 9 compares BOM and authoritative datasheet IDs under exact `AUTH-SPEC-001`. Checks 10-11, authority-gap claims, held-out semantics, public reruns, and deferred capabilities remain blocked pending their gates.
+- **Current gate:** Review D-105, the bounded Windows publication-resilience stabilization. Transient final-rename permission failures retry within 0.75 seconds; collisions, other errors, and exhausted retries remain fail closed.
+- **Implementation boundary:** Eight ordered gates and nine ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. Check 9 compares BOM and authoritative datasheet IDs under exact `AUTH-SPEC-001`. Final publication now makes at most five rename attempts only for `PermissionError`. Checks 10-11, authority-gap claims, held-out semantics, public reruns, and deferred capabilities remain blocked pending their gates.
 
 The accepted P2.3 definition identifies six checks that the accepted sources and authority rules can support now, and six planned claims that require a separate authority/source decision. This prevents single-source field validation from being presented as cross-document reconciliation.
 
@@ -19,13 +19,15 @@ Check 7 verifies that each release-required BOM equipment tag appears in drawing
 
 Check 8 requires exactly one release-required datasheet metadata record for each release-required BOM equipment tag under exact `AUTH-SPEC-001`. The clean package passes 8/8 checks; removing one record produces one missing-authority release hold through all four outputs and exit `3`, while competing records remain deterministic. Verification passes 111 focused tests and 295 full-suite tests with one expected skip at 87.71% coverage.
 
-Check 9 compares each eligible BOM `datasheet_id` with the single authoritative metadata ID. The clean package passes 9/9 checks; changing the pump to an existing but wrong datasheet produces one exact automatic-fail hold through all four outputs and exit `1`. Verification passes 88 focused tests and 299 full-suite tests with one expected skip at 87.86% coverage. A preserved transient Windows final-rename failure is tracked as `IMP-019` for stabilization before check 10.
+Check 9 compares each eligible BOM `datasheet_id` with the single authoritative metadata ID. The clean package passes 9/9 checks; changing the pump to an existing but wrong datasheet produces one exact automatic-fail hold through all four outputs and exit `1`. D-104 accepted and PR #56 integrated this check at exact `main` `7146b23`.
+
+The publication-resilience block retries only a transient final-rename `PermissionError` using four fixed waits totaling 0.75 seconds. Collision and non-permission failures never retry; exhausted retries preserve the failed publication and CLI exit `70`. Verification passes 24 focused tests and 304 full-suite tests with one expected skip at 88.08% coverage; 20/20 consecutive Windows audits published exactly four outputs with no hidden failures.
 
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 
 Current execution status is controlled in `gantt.xlsx`. Product behavior is defined in the [workflow contract](docs/package_assurance/workflow_contract_v0.3.0.md), [acceptance plan](docs/package_assurance/acceptance_plan_v0.3.0.md), and accepted [P2.3 relationship expansion definition](docs/package_assurance/p2_3_relationship_expansion_definition_v0.3.0.md). The two public-package observations and their mapping records remain historical evidence; they are not authority for new engineering claims. Reusable lessons and permanent controls are tracked in the [improvement register](docs/quality/improvement_register.md).
 
-The current D-104 decision record is the [equipment datasheet association implementation review](docs/package_assurance/equipment_datasheet_association_implementation_review_2026-07-20.md).
+The current D-105 decision record is the [publication resilience stabilization review](docs/package_assurance/publication_resilience_stabilization_review_2026-07-21.md).
 
 ## Current MVP
 
