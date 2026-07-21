@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-21
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-equipment-datasheet-manifest-reciprocity`
+**Current branch:** `codex/p2.3-specification-revision-history`
 
 ## Executive Summary
 
@@ -30,9 +30,9 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 equipment/datasheet manifest reciprocity review
-- **Status:** D-105 was accepted and PR #57 merged the publication stabilization at exact `main` `dbcd242`. Check 10 is implemented and verified on its review branch
-- **Implementation state:** Eight ordered gates and ten ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Check 10 reconciles authoritative datasheet metadata with manifest declarations under exact `AUTH-SPEC-001`; check 11 and all six authority-gap claims remain unimplemented. `I-005` is controlled and closed; `IMP-019` remains the permanent regression rule
+- **Active WBS:** P2.3 specification revision-history review
+- **Status:** D-106 was accepted and PR #58 merged check 10 at exact `main` `761ac76`. Check 11 is implemented and verified on its review branch
+- **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. Check 11 reconciles required specification metadata with exactly one current revision-history record under exact `AUTH-SPEC-003`. All six checks supportable by accepted P2.3 authority are implemented; six authority/source gaps remain explicitly unsupported
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -347,6 +347,19 @@ coverage; validation 5/5, Ruff, baseline 9/9, and demo 2/2 pass. The tracked
 review is
 `docs/package_assurance/equipment_datasheet_manifest_reciprocity_implementation_review_2026-07-21.md`.
 
+D-106 was accepted and PR #58 merged check 10 at exact `main` `761ac76`.
+Check 11, `specification_revision_history`, is now the eleventh ordered
+relationship check. It compares every release-required specification-metadata
+revision with exactly one current revision-history record joined by normalized
+`specification_id` under exact `AUTH-SPEC-003`. The clean development package
+passes 11/11 checks. Changing only `SPMETA-001.revision_id` from `A` to valid
+value `B` produces one `SPECIFICATION_REVISION_MISMATCH` finding,
+`automatic_fail`, release hold true, exit `1`, and four consistent outputs.
+Focused verification passes 99 tests; the full suite passes 314 with one
+expected Windows skip at 88.48% coverage; validation 5/5, Ruff, baseline 9/9,
+and demo 2/2 pass. The tracked review is
+`docs/package_assurance/specification_revision_history_implementation_review_2026-07-21.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -385,12 +398,13 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review the D-106 check-10 implementation, deterministic fault proof, and
-inspected four-output runs. Recommended D-106 accepts the change and authorizes
-only check 11, `specification_revision_history`, next. Do not rerun either
-public package, weaken the result schema, implement check 11 before D-106,
-execute held-out semantics, change protected assets, or add deferred
-multimodal/platform capabilities before their respective gates.
+Review the D-107 check-11 implementation, deterministic fault proof, and
+inspected four-output runs. Recommended D-107 accepts the change and authorizes
+only a P2.3 authority-gap disposition and completion-definition block. The
+recommended disposition is to defer all six unsupported claims, narrow the
+pilot release claim to the eleven proven checks, and then plan P4. Do not rerun
+either public package, execute held-out semantics, change protected assets, or
+add deferred multimodal/platform capabilities before their respective gates.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

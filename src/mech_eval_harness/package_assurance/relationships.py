@@ -53,6 +53,12 @@ from mech_eval_harness.package_assurance.models import (
     PackageGateEvaluation,
     PackageRelationshipEvaluation,
 )
+from mech_eval_harness.package_assurance.specification_relationships import (
+    SPECIFICATION_REVISION_AUTHORITY_RULE_ID,
+    SPECIFICATION_REVISION_HISTORY_CHECK_ID,
+    SPECIFICATION_REVISION_MISMATCH_CODE,
+    _evaluate_specification_revision_history,
+)
 
 
 __all__ = [
@@ -80,6 +86,9 @@ __all__ = [
     "EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID",
     "EQUIPMENT_DATASHEET_MISMATCH_CODE",
     "EQUIPMENT_DATASHEET_RECIPROCITY_FAILED_CODE",
+    "SPECIFICATION_REVISION_AUTHORITY_RULE_ID",
+    "SPECIFICATION_REVISION_HISTORY_CHECK_ID",
+    "SPECIFICATION_REVISION_MISMATCH_CODE",
     "RELATIONSHIP_CHECK_ORDER",
     "RELATIONSHIP_CHECK_VERSION",
     "run_package_relationships",
@@ -97,6 +106,7 @@ RELATIONSHIP_CHECK_ORDER = (
     EQUIPMENT_DATASHEET_AUTHORITY_PRESENCE_CHECK_ID,
     EQUIPMENT_DATASHEET_ASSOCIATION_CHECK_ID,
     EQUIPMENT_DATASHEET_MANIFEST_RECIPROCITY_CHECK_ID,
+    SPECIFICATION_REVISION_HISTORY_CHECK_ID,
 )
 
 
@@ -172,6 +182,10 @@ def run_package_relationships(
                 manifest=gate_evaluation.manifest,
             )
         )
+        specification_revision_check = _evaluate_specification_revision_history(
+            package_id=gate_evaluation.package_id,
+            sources=gate_evaluation.sources,
+        )
         return PackageRelationshipEvaluation(
             package_id=gate_evaluation.package_id,
             checks=(
@@ -181,6 +195,7 @@ def run_package_relationships(
                 datasheet_authority_presence_check,
                 datasheet_association_check,
                 datasheet_reciprocity_check,
+                specification_revision_check,
             ),
         )
 
@@ -271,6 +286,10 @@ def run_package_relationships(
         sources=gate_evaluation.sources,
         manifest=gate_evaluation.manifest,
     )
+    specification_revision_check = _evaluate_specification_revision_history(
+        package_id=gate_evaluation.package_id,
+        sources=gate_evaluation.sources,
+    )
 
     return PackageRelationshipEvaluation(
         package_id=gate_evaluation.package_id,
@@ -285,6 +304,7 @@ def run_package_relationships(
             datasheet_authority_presence_check,
             datasheet_association_check,
             datasheet_reciprocity_check,
+            specification_revision_check,
         ),
     )
 

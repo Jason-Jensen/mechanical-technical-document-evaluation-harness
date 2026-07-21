@@ -8,8 +8,8 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** Review D-106, the check-10 equipment/datasheet manifest reciprocity implementation.
-- **Implementation boundary:** Eight ordered gates and ten ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. Check 10 compares authoritative datasheet metadata with manifest declarations under exact `AUTH-SPEC-001`. Check 11, authority-gap claims, held-out semantics, public reruns, and deferred capabilities remain blocked pending their gates.
+- **Current gate:** Review D-107, the check-11 specification revision-history implementation.
+- **Implementation boundary:** Eight ordered gates and eleven ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. Check 11 compares required specification metadata with current revision history under exact `AUTH-SPEC-003`. Six unsupported authority/source claims, held-out semantics, public reruns, and deferred capabilities remain blocked pending their gates.
 
 The accepted P2.3 definition identifies six checks that the accepted sources and authority rules can support now, and six planned claims that require a separate authority/source decision. This prevents single-source field validation from being presented as cross-document reconciliation.
 
@@ -25,11 +25,13 @@ The publication-resilience block retries only a transient final-rename `Permissi
 
 Check 10 requires release-required authoritative equipment/datasheet mappings and manifest `equipment_to_datasheet` declarations to agree in both directions. The clean package passes 10/10 checks; changing only `REL-EQ-DS-001` to the existing wrong target `DS-M-101` produces one exact automatic-fail hold through all four outputs and exit `1`. Verification passes 93 focused tests and 308 full-suite tests with one expected skip at 88.27% coverage.
 
+Check 11 requires every release-required specification-metadata revision to match exactly one current revision-history record by normalized `specification_id`. The clean package passes 11/11 checks; changing only `SPMETA-001.revision_id` from `A` to valid value `B` produces one exact automatic-fail hold through all four outputs and exit `1`. Verification passes 99 focused tests and 314 full-suite tests with one expected skip at 88.48% coverage.
+
 The v0.3.0 pilot will reconcile drawing registers, drawing metadata, BOM/equipment lists, datasheet/specification metadata, revision history, and controlled file references. Its intended outputs are an immutable package result, an evidence-linked issue register, and a release-readiness summary for qualified human review.
 
 Current execution status is controlled in `gantt.xlsx`. Product behavior is defined in the [workflow contract](docs/package_assurance/workflow_contract_v0.3.0.md), [acceptance plan](docs/package_assurance/acceptance_plan_v0.3.0.md), and accepted [P2.3 relationship expansion definition](docs/package_assurance/p2_3_relationship_expansion_definition_v0.3.0.md). The two public-package observations and their mapping records remain historical evidence; they are not authority for new engineering claims. Reusable lessons and permanent controls are tracked in the [improvement register](docs/quality/improvement_register.md).
 
-The current D-106 decision record is the [equipment/datasheet manifest reciprocity implementation review](docs/package_assurance/equipment_datasheet_manifest_reciprocity_implementation_review_2026-07-21.md).
+The current D-107 decision record is the [specification revision-history implementation review](docs/package_assurance/specification_revision_history_implementation_review_2026-07-21.md).
 
 ## Current MVP
 
