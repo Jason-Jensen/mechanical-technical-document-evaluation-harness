@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** Checks 6 and 7 are integrated. D-098 was accepted and PR #50 merged the preparation review at exact `main` `7009fe2`. The first NASA/JPL audit stopped before publication with internal exit `70` because blank optional BOM references produced schema-invalid affected identifiers. OpenFlexure was not audited. Six authority/source gaps and checks 8-11 remain unimplemented.
+- **P2.3:** Checks 6 and 7 are integrated. D-099 was accepted and PR #51 merged the public-audit failure review at exact `main` `624acce`. The narrow identifier/result-contract stabilization is implemented and synthetically proven without rerunning or changing either public package. Six authority/source gaps and checks 8-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Review Gate
 
-The failed NASA/JPL execution and cross-package root-cause review are ready for CEO review. The strict result schema correctly blocked malformed evaluator findings, no outputs were published, both package trees remain unchanged, and the same defect was confirmed diagnostically before OpenFlexure execution.
+The D-099 stabilization and synthetic full-CLI proof are ready for CEO review. Exact blank optional BOM references now pass identifier syntax, malformed present identifiers still hold release, and all findings remain schema-valid. Both public packages remain unchanged and unaudited since the failed NASA/JPL attempt.
 
 ## Active Work Block
 
-- **WBS:** P2.3 public-package audit failure review
-- **Branch:** `codex/p2.3-dual-public-package-audit-execution`
-- **Objective:** Preserve and explain the first real-package execution failure, prove whether it is package-specific, and define the smallest safe stabilization before any rerun.
-- **Definition of done:** Failure evidence, cross-package diagnosis, root cause, rejected workarounds, exact stabilization acceptance criteria, and the next decision are reviewed; neither public package is changed or rerun.
+- **WBS:** P2.3 identifier/result-contract stabilization review
+- **Branch:** `codex/p2.3-identifier-result-stabilization`
+- **Objective:** Verify the narrow D-099 correction and decide whether one controlled NASA/JPL rerun may proceed.
+- **Definition of done:** Optional blanks, malformed present identifiers, schema-valid findings, full CLI publication, regression safety, and unchanged public-package evidence are reviewed; no public-package rerun occurs in this block.
 
-Next action: review `docs/package_assurance/dual_public_package_audit_failure_review_2026-07-20.md`. Recommended D-099 accepts the failure as valid learning evidence and authorizes a narrow identifier/result-contract stabilization with synthetic end-to-end regression proof. Public-package reruns, semantic held-out execution, and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/identifier_result_contract_stabilization_review_2026-07-20.md`. Recommended D-100 accepts the fix, authorizes integration, and permits exactly one unchanged NASA/JPL rerun before a separate OpenFlexure decision. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 

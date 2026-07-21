@@ -185,6 +185,13 @@ _IDENTIFIER_FIELDS = {
         "owner_identifier",
     ),
 }
+_OPTIONAL_IDENTIFIER_FIELDS = {
+    "equipment_item": (
+        "drawing_number",
+        "datasheet_id",
+        "specification_id",
+    ),
+}
 _LIST_IDENTIFIER_FIELDS = {
     "drawing_metadata_record": ("equipment_tags",),
     "specification_record": ("equipment_tags",),
@@ -1146,11 +1153,17 @@ def _identifier_gate(sources: LoadedStructuredSources) -> PackageGateResult:
     evidence: list[EvidenceLocator] = []
     checked = 0
     for record in sources.records:
+        optional_fields = _OPTIONAL_IDENTIFIER_FIELDS.get(
+            record.record_type,
+            (),
+        )
         for field_name in _IDENTIFIER_FIELDS.get(record.record_type, ()):
             value = record.original_values.get(field_name)
-            checked += 1
             locator = _record_value_locator(record, field_name, value)
             evidence.append(locator)
+            if field_name in optional_fields and value == "":
+                continue
+            checked += 1
             if not _is_canonical_identifier(value):
                 findings.append(
                     _finding(
@@ -1161,7 +1174,7 @@ def _identifier_gate(sources: LoadedStructuredSources) -> PackageGateResult:
                             f"{record.record_type}.{field_name} is not a valid "
                             "package-scoped canonical identifier."
                         ),
-                        affected_identifiers=(str(value),),
+                        affected_identifiers=_record_affected_identifiers(record),
                         evidence=(locator,),
                     )
                 )
@@ -1189,7 +1202,7 @@ def _identifier_gate(sources: LoadedStructuredSources) -> PackageGateResult:
                                 f"{record.record_type}.{field_name}[{index}] is not "
                                 "a valid package-scoped canonical identifier."
                             ),
-                            affected_identifiers=(str(value),),
+                            affected_identifiers=_record_affected_identifiers(record),
                             evidence=(locator,),
                         )
                     )
@@ -1203,7 +1216,10 @@ def _identifier_gate(sources: LoadedStructuredSources) -> PackageGateResult:
         )
     return _passed(
         IDENTIFIER_GATE_ID,
-        summary=f"All {checked} required source identifiers are structurally valid.",
+        summary=(
+            f"All {checked} present or required source identifiers are "
+            "structurally valid."
+        ),
         evidence=tuple(evidence),
     )
 
@@ -1809,6 +1825,15 @@ def _is_canonical_identifier(value: Any) -> bool:
         and value == value.strip()
         and not any(ord(character) < 32 or ord(character) == 127 for character in value)
     )
+
+
+def _record_affected_identifiers(
+    record: StructuredSourceRecord,
+) -> tuple[str, ...]:
+    for value in (record.row_key_value, record.record_id):
+        if _is_canonical_identifier(value):
+            return (value,)
+    return ()
 
 
 def _json_locator(

@@ -199,6 +199,98 @@ def test_invalid_csv_value_is_a_source_parse_failure(tmp_path: Path) -> None:
     assert finding.evidence[0].column_name == "quantity"
 
 
+def test_blank_optional_bom_identifiers_pass_identifier_gate(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    source_path = package_root / "inputs" / "bom_or_equipment_list.csv"
+
+    def blank_optional_references(rows: list[dict[str, str]]) -> None:
+        for row in rows:
+            row["drawing_number"] = ""
+            row["datasheet_id"] = ""
+            row["specification_id"] = ""
+
+    _rewrite_csv(source_path, blank_optional_references)
+
+    evaluation = _evaluate(package_root)
+
+    identifier_gate = _gate(evaluation, IDENTIFIER_GATE_ID)
+    assert identifier_gate.status == "passed"
+    blank_evidence = [
+        locator
+        for locator in identifier_gate.evidence
+        if locator.source_type == "bom_or_equipment_list"
+        and locator.column_name
+        in {"drawing_number", "datasheet_id", "specification_id"}
+        and locator.original_value == ""
+    ]
+    assert len(blank_evidence) == 6
+
+
+def test_malformed_optional_bom_identifier_uses_valid_parent_identifier(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    source_path = package_root / "inputs" / "bom_or_equipment_list.csv"
+    _rewrite_csv(
+        source_path,
+        lambda rows: rows[0].__setitem__("datasheet_id", " DS-P-101 "),
+    )
+
+    evaluation = _evaluate(package_root)
+
+    identifier_gate = _gate(evaluation, IDENTIFIER_GATE_ID)
+    assert identifier_gate.status == "failed"
+    finding = identifier_gate.findings[0]
+    assert finding.code == "CANONICAL_IDENTIFIER_INVALID"
+    assert finding.state == "automatic_fail"
+    assert finding.affected_identifiers == ("ITEM-PUMP-001",)
+    assert finding.evidence[0].original_value == " DS-P-101 "
+    assert finding.evidence[0].normalized_value == "DS-P-101"
+
+
+def test_invalid_required_identifier_does_not_enter_affected_identifiers(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    source_path = package_root / "inputs" / "bom_or_equipment_list.csv"
+    _rewrite_csv(
+        source_path,
+        lambda rows: rows[0].__setitem__("item_id", ""),
+    )
+
+    evaluation = _evaluate(package_root)
+
+    identifier_gate = _gate(evaluation, IDENTIFIER_GATE_ID)
+    assert identifier_gate.status == "failed"
+    finding = identifier_gate.findings[0]
+    assert finding.code == "CANONICAL_IDENTIFIER_INVALID"
+    assert finding.affected_identifiers == ()
+    assert finding.evidence[0].original_value == ""
+
+
+def test_invalid_list_identifier_uses_valid_record_identifier(
+    tmp_path: Path,
+) -> None:
+    package_root = _copy_package(tmp_path)
+    source_path = package_root / "inputs" / "drawing_metadata.json"
+    document = _load_json(source_path)
+    record = document["records"][0]
+    record["equipment_tags"][0] = " P-101A "
+    _write_json(source_path, document)
+
+    evaluation = _evaluate(package_root)
+
+    identifier_gate = _gate(evaluation, IDENTIFIER_GATE_ID)
+    assert identifier_gate.status == "failed"
+    finding = identifier_gate.findings[0]
+    assert finding.code == "CANONICAL_IDENTIFIER_INVALID"
+    assert finding.affected_identifiers == (record["record_id"],)
+    assert finding.evidence[0].original_value == " P-101A "
+    assert finding.evidence[0].normalized_value == "P-101A"
+
+
 def test_unsupported_json_source_version_fails_closed(tmp_path: Path) -> None:
     package_root = _copy_package(tmp_path)
     source_path = package_root / "inputs" / "drawing_metadata.json"

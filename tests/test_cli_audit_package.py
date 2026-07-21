@@ -5,6 +5,7 @@ import io
 import json
 import shutil
 from pathlib import Path
+from typing import Callable
 
 import pytest
 
@@ -14,6 +15,7 @@ from mech_eval_harness.package_assurance import (
     PACKAGE_STATE_EXIT_CODES,
     package_state_exit_code,
 )
+from mech_eval_harness.package_assurance.gates import IDENTIFIER_GATE_ID
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -53,6 +55,23 @@ def _run_cli(package_root: Path, runs_dir: Path) -> int:
             str(runs_dir),
         ]
     )
+
+
+def _rewrite_bom(
+    package_root: Path,
+    mutate: Callable[[list[dict[str, str]]], None],
+) -> None:
+    source_path = package_root / "inputs" / "bom_or_equipment_list.csv"
+    with source_path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        fieldnames = reader.fieldnames
+        rows = list(reader)
+    assert fieldnames is not None
+    mutate(rows)
+    with source_path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def test_clean_package_cli_publishes_complete_non_approving_audit(
@@ -99,6 +118,90 @@ def test_clean_package_cli_publishes_complete_non_approving_audit(
     )
     assert "qualified human must decide" in readiness
     assert "does not approve release" in readiness
+
+
+def test_blank_optional_bom_references_publish_missing_authority_result(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    package_root = _copy_package(tmp_path)
+
+    def blank_optional_references(rows: list[dict[str, str]]) -> None:
+        for row in rows:
+            row["drawing_number"] = ""
+            row["datasheet_id"] = ""
+            row["specification_id"] = ""
+
+    _rewrite_bom(package_root, blank_optional_references)
+    authority_path = package_root / "authority" / "authority_map.json"
+    authority = json.loads(authority_path.read_text(encoding="utf-8"))
+    authority["rules"] = [
+        rule
+        for rule in authority["rules"]
+        if rule["field"] != "equipment.datasheet_id"
+    ]
+    authority_path.write_text(
+        json.dumps(authority, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    runs_dir = tmp_path / "runs"
+
+    exit_code = _run_cli(package_root, runs_dir)
+
+    captured = capsys.readouterr()
+    run_directory = _only_run_directory(runs_dir)
+    assert exit_code == 3
+    assert captured.err == ""
+    assert "PACKAGE STATE: missing_authoritative_information" in captured.out
+    assert "RELEASE HOLD: true" in captured.out
+    assert {path.name for path in run_directory.iterdir()} == set(
+        AUDIT_PACKAGE_OUTPUT_FILENAMES
+    )
+    document = json.loads(
+        (run_directory / "package_result.json").read_text(encoding="utf-8")
+    )
+    assert document["package_state"] == "missing_authoritative_information"
+    assert document["release_hold"] is True
+    identifier_gate = next(
+        gate
+        for gate in document["gate_results"]
+        if gate["gate_id"] == IDENTIFIER_GATE_ID
+    )
+    assert identifier_gate["status"] == "passed"
+    assert [finding["code"] for finding in document["findings"]] == [
+        "AUTHORITY_REQUIRED_RULE_MISSING"
+    ]
+
+
+def test_malformed_optional_bom_identifier_publishes_schema_valid_failure(
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    package_root = _copy_package(tmp_path)
+    _rewrite_bom(
+        package_root,
+        lambda rows: rows[0].__setitem__("datasheet_id", " DS-P-101 "),
+    )
+    runs_dir = tmp_path / "runs"
+
+    exit_code = _run_cli(package_root, runs_dir)
+
+    captured = capsys.readouterr()
+    run_directory = _only_run_directory(runs_dir)
+    assert exit_code == 1
+    assert captured.err == ""
+    assert "PACKAGE STATE: automatic_fail" in captured.out
+    assert {path.name for path in run_directory.iterdir()} == set(
+        AUDIT_PACKAGE_OUTPUT_FILENAMES
+    )
+    document = json.loads(
+        (run_directory / "package_result.json").read_text(encoding="utf-8")
+    )
+    finding = document["findings"][0]
+    assert finding["code"] == "CANONICAL_IDENTIFIER_INVALID"
+    assert finding["affected_identifiers"] == ["ITEM-PUMP-001"]
+    assert finding["evidence"][0]["original_value"] == " DS-P-101 "
+    assert finding["evidence"][0]["normalized_value"] == "DS-P-101"
 
 
 def test_removed_required_mapping_cli_preserves_exact_fault(
