@@ -1,0 +1,6 @@
+SYNTHETIC CONTROLLED PLACEHOLDER
+Package: PKG-CVY-DRV-042-S05
+Document: DOC-DS-MTR-72
+Identity: DS-MTR-72
+File reference: FR-DS-MTR-72
+No technical content is evaluated from this placeholder.

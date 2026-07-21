@@ -2,7 +2,7 @@
 
 The detailed sequence, status, evidence, and next action are controlled in `gantt.xlsx`. This file is intentionally short so it cannot become a second schedule.
 
-## Current Gate
+## Accepted Gates
 
 - **P0.1:** Accepted. Workflow contract and authority-map boundary are frozen.
 - **P0.2:** Accepted on 2026-07-16. Benchmark and acceptance policy are frozen.
@@ -18,21 +18,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
 - **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
-- **P4.2:** D-110 accepted on 2026-07-21. The exposed family remains unchanged, unexecuted, and release-ineligible. A materially distinct replacement may now be authored and hash-frozen through an isolated benchmark-custodian workspace; semantic execution remains blocked pending a separate freeze decision.
+- **P4.2:** D-110 integrated through PR #62 at exact `main` `ea45dcf`. Replacement `FAM-HO-CONVEYOR-DRIVE-042` is isolated, hash-frozen, independently verified 14/14, and imported byte-exact at 210/210 files. Semantic execution count is zero. D-111 owner review is pending.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
-## Current Gate
+## Active Gate
 
-P4.1 is integrated and frozen. D-110 authorizes only isolated replacement-family authoring, structural verification, and hash freeze. The first replacement semantic run requires a separate owner decision after the freeze package is reviewed.
+P4.1 is integrated and frozen. D-110 recovery is complete. The replacement family reproduces complete-family hash `e619c81854d9676b5d821a752e3b00e68d0072572cef64509d5cc9132a3e6ff6`; D-111 must be accepted before one controlled first run per opaque scenario.
 
 ## Active Work Block
 
-- **WBS:** P4.2 held-out contamination and replacement definition
-- **Branch:** `codex/p4.2-held-out-benchmark-definition`
-- **Objective:** Integrate accepted D-110 and create a materially distinct replacement family through an isolated custodian boundary without semantic execution.
-- **Definition of done:** D-110 is integrated; the custodian receives only approved public contracts; the replacement satisfies the accepted minimum matrix and material-distinction rules; package and protected assets remain separated; exact hashes and access evidence are frozen; the implementation context does not inspect protected values; a separate first-run decision is ready for owner review.
+- **WBS:** P4.2 replacement freeze review
+- **Branch:** `codex/p4.2-held-out-replacement-freeze`
+- **Objective:** Publish the independently verified replacement freeze and obtain a separate owner decision before semantic execution.
+- **Definition of done:** The isolated family is frozen; independent verification and byte-exact import pass; public decision/evidence records are current; the exposed prior family is unchanged; D-111 is ready for owner review; semantic execution remains zero.
 
-Next action: merge accepted PR #62, record exact `main`, then run the isolated replacement authoring and freeze block. Held-out semantic execution, replacement authoring in this implementation context, public reruns, evaluator changes, and deferred capabilities remain blocked.
+Next action: owner accepts or rejects D-111 in `p4_2_replacement_freeze_review_v0.3.0.md`. Until acceptance, held-out semantic execution, oracle comparison, evaluator changes, P4.3 work, public reruns, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 

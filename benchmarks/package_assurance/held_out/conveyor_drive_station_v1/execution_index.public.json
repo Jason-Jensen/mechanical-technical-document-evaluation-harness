@@ -1,0 +1,27 @@
+{
+    "schema_version":  "0.3.0",
+    "family_id":  "FAM-HO-CONVEYOR-DRIVE-042",
+    "benchmark_revision":  "P4.2-RF-20260721-01",
+    "scenario_tokens":  [
+                            "S01",
+                            "S02",
+                            "S03",
+                            "S04",
+                            "S05",
+                            "S06",
+                            "S07",
+                            "S08"
+                        ],
+    "package_roots":  [
+                          "scenarios/S01/package",
+                          "scenarios/S02/package",
+                          "scenarios/S03/package",
+                          "scenarios/S04/package",
+                          "scenarios/S05/package",
+                          "scenarios/S06/package",
+                          "scenarios/S07/package",
+                          "scenarios/S08/package"
+                      ],
+    "expected_publication_count_per_scenario":  4,
+    "protected_oracle_bundle_path":  "protected/oracle_bundle.json"
+}

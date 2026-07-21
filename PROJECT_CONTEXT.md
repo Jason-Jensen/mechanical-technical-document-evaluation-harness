@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-21
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p4.2-held-out-benchmark-definition`
+**Current branch:** `codex/p4.2-held-out-replacement-freeze`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P4.2 held-out contamination and replacement definition
-- **Status:** D-110 is accepted. The existing held-out family remains unchanged, unexecuted, and ineligible for release claims. Isolated replacement-family authoring and hash freeze are authorized; semantic execution remains separately blocked
+- **Active WBS:** P4.2 replacement freeze review
+- **Status:** D-110 is integrated through PR #62 at exact `main` `ea45dcf`. Replacement `FAM-HO-CONVEYOR-DRIVE-042` is isolated, frozen, independently verified 14/14, and imported byte-exact at 210/210 files. Semantic execution count remains zero and D-111 owner review is pending. The existing held-out family remains unchanged, unexecuted, and ineligible for release claims
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -407,6 +407,16 @@ authored in an isolated custodian context. The
 controlling record is
 `docs/package_assurance/p4_2_held_out_contamination_and_replacement_gate_v0.3.0.md`.
 
+The replacement was authored from isolated public bundle
+`P4.2-CUSTODIAN-EA45DCF-V1`. Recovery custodians completed 326 structural and
+hash checks after the initial context stopped before its freeze records. A
+separate verifier passed 14/14 controls, and an isolated import check proved
+210/210 files byte-identical. The complete-family hash is
+`e619c81854d9676b5d821a752e3b00e68d0072572cef64509d5cc9132a3e6ff6`.
+No semantic run occurred and protected values were not exposed to the
+implementation context. The controlling owner package is
+`docs/package_assurance/p4_2_replacement_freeze_review_v0.3.0.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -445,11 +455,11 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate D-110 through PR #62, then create and structurally verify a replacement
-family only through an isolated custodian workspace. Do not semantically execute
-the replacement, inspect its protected values from this implementation context,
-rerun either public package, change evaluator behavior, or add deferred
-multimodal or platform capabilities before the separate freeze decision.
+Present D-111 for owner review. Do not semantically execute the replacement,
+compare against its protected oracle, inspect protected values from this
+implementation context, rerun either public package, change evaluator behavior,
+begin P4.3, or add deferred multimodal or platform capabilities before D-111 is
+accepted.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

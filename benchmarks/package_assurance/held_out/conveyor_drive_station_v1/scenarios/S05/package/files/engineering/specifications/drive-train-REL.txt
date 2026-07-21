@@ -1,0 +1,6 @@
+SYNTHETIC CONTROLLED PLACEHOLDER
+Package: PKG-CVY-DRV-042-S05
+Document: DOC-SP-DRIVE-72
+Identity: SP-DRIVE-72
+File reference: FR-SP-DRIVE-72
+No technical content is evaluated from this placeholder.

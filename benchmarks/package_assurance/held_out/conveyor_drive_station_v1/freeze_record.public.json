@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.3.0",
+  "family_id": "FAM-HO-CONVEYOR-DRIVE-042",
+  "benchmark_revision": "P4.2-RF-20260721-01",
+  "creation_date": "2026-07-21",
+  "custodian_role": "isolated P4.2 replacement benchmark finalization custodian",
+  "isolation_attestation": "multi_custodian_recovery_finalized_within_authorized_isolated_root",
+  "authorized_main_commit": "ea45dcf30fa37d06de2816b6928ca91cec53df94",
+  "frozen_evaluator_behavior_commit": "4cf9fe8",
+  "scenario_count": 8,
+  "family_file_count": 210,
+  "producer_bundle_sha256": "da154aed47e2f1b26625c40fa0987cf9f4bd872285e5fec13907d1b85f408867",
+  "protected_bundle_sha256": "2b383800ad66625117febe883282392909ec9830286adb644006fc562e282c6e",
+  "complete_family_sha256": "e619c81854d9676b5d821a752e3b00e68d0072572cef64509d5cc9132a3e6ff6",
+  "contamination_status": "frozen_isolated_pre_execution",
+  "semantic_execution_count": 0,
+  "owner_acceptance_status": "pending"
+}

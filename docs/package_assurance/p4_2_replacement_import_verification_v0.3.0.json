@@ -1,0 +1,18 @@
+{
+    "aggregate_counts":  {
+                             "source_files":  210,
+                             "destination_files":  210,
+                             "shared_relative_paths":  210,
+                             "source_only_files":  0,
+                             "destination_only_files":  0,
+                             "byte_identical_files":  210,
+                             "non_freeze_files_hashed":  208,
+                             "public_freeze_records_compared":  1
+                         },
+    "source_complete_family_hash":  "e619c81854d9676b5d821a752e3b00e68d0072572cef64509d5cc9132a3e6ff6",
+    "destination_complete_family_hash":  "e619c81854d9676b5d821a752e3b00e68d0072572cef64509d5cc9132a3e6ff6",
+    "byte_equality_status":  "byte_exact_opaque_import",
+    "mismatch_count":  0,
+    "semantic_execution_count":  0,
+    "blocker_status":  "none"
+}

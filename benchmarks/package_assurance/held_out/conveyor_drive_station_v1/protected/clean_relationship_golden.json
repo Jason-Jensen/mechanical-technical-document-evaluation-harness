@@ -1,0 +1,1071 @@
+{
+    "schema_version":  "0.3.0",
+    "family_id":  "FAM-HO-CONVEYOR-DRIVE-042",
+    "benchmark_revision":  "P4.2-RF-20260721-01",
+    "scenario_token":  "S01",
+    "package_id":  "PKG-CVY-DRV-042-S01",
+    "split":  "held_out",
+    "relationship_scope_order":  [
+                                     "drawing_register_metadata_revision",
+                                     "drawing_register_metadata_presence",
+                                     "drawing_metadata_register_authority",
+                                     "drawing_register_metadata_file_reference",
+                                     "drawing_register_manifest_file_reciprocity",
+                                     "bom_item_equipment_manifest_reciprocity",
+                                     "bom_equipment_drawing_presence",
+                                     "equipment_datasheet_authority_presence",
+                                     "equipment_datasheet_association",
+                                     "equipment_datasheet_manifest_reciprocity",
+                                     "specification_revision_history"
+                                 ],
+    "required_drawings":  [
+                              {
+                                  "document_id":  "DOC-DRV-620",
+                                  "drawing_number":  "BCD-620",
+                                  "authoritative_revision_id":  "07",
+                                  "metadata_revision_id":  "07",
+                                  "file_ref_id":  "FR-DWG-620",
+                                  "controlled_file_path":  "files/released/plotsets/CD42_620-R07.controlled.txt",
+                                  "equipment_tags":  [
+                                                         "BC-7201",
+                                                         "M-7201",
+                                                         "GB-7201"
+                                                     ],
+                                  "evidence":  {
+                                                   "register":  {
+                                                                    "source_file":  "inputs/drawing_register.csv",
+                                                                    "row_number":  2,
+                                                                    "row_key":  "DOC-DRV-620"
+                                                                },
+                                                   "metadata":  {
+                                                                    "source_file":  "inputs/drawing_metadata.json",
+                                                                    "json_pointer":  "/records/0",
+                                                                    "record_id":  "DM-DOC-DRV-620"
+                                                                },
+                                                   "manifest_document":  {
+                                                                             "source_file":  "package_manifest.json",
+                                                                             "json_pointer":  "/document_inventory/0"
+                                                                         },
+                                                   "manifest_file":  {
+                                                                         "source_file":  "package_manifest.json",
+                                                                         "json_pointer":  "/file_references/0"
+                                                                     },
+                                                   "manifest_relationship":  {
+                                                                                 "source_file":  "package_manifest.json",
+                                                                                 "json_pointer":  "/relationship_declarations/0"
+                                                                             }
+                                               }
+                              },
+                              {
+                                  "document_id":  "DOC-PUL-622",
+                                  "drawing_number":  "BCD-622",
+                                  "authoritative_revision_id":  "07",
+                                  "metadata_revision_id":  "07",
+                                  "file_ref_id":  "FR-DWG-622",
+                                  "controlled_file_path":  "files/released/plotsets/CD42_622-R07.controlled.txt",
+                                  "equipment_tags":  [
+                                                         "P-7201-H",
+                                                         "CPL-7201"
+                                                     ],
+                                  "evidence":  {
+                                                   "register":  {
+                                                                    "source_file":  "inputs/drawing_register.csv",
+                                                                    "row_number":  3,
+                                                                    "row_key":  "DOC-PUL-622"
+                                                                },
+                                                   "metadata":  {
+                                                                    "source_file":  "inputs/drawing_metadata.json",
+                                                                    "json_pointer":  "/records/1",
+                                                                    "record_id":  "DM-DOC-PUL-622"
+                                                                },
+                                                   "manifest_document":  {
+                                                                             "source_file":  "package_manifest.json",
+                                                                             "json_pointer":  "/document_inventory/1"
+                                                                         },
+                                                   "manifest_file":  {
+                                                                         "source_file":  "package_manifest.json",
+                                                                         "json_pointer":  "/file_references/1"
+                                                                     },
+                                                   "manifest_relationship":  {
+                                                                                 "source_file":  "package_manifest.json",
+                                                                                 "json_pointer":  "/relationship_declarations/1"
+                                                                             }
+                                               }
+                              },
+                              {
+                                  "document_id":  "DOC-GRD-625",
+                                  "drawing_number":  "BCD-625",
+                                  "authoritative_revision_id":  "07",
+                                  "metadata_revision_id":  "07",
+                                  "file_ref_id":  "FR-DWG-625",
+                                  "controlled_file_path":  "files/released/plotsets/CD42_625-R07.controlled.txt",
+                                  "equipment_tags":  [
+                                                         "GRD-7201",
+                                                         "M-7201",
+                                                         "GB-7201",
+                                                         "CPL-7201"
+                                                     ],
+                                  "evidence":  {
+                                                   "register":  {
+                                                                    "source_file":  "inputs/drawing_register.csv",
+                                                                    "row_number":  4,
+                                                                    "row_key":  "DOC-GRD-625"
+                                                                },
+                                                   "metadata":  {
+                                                                    "source_file":  "inputs/drawing_metadata.json",
+                                                                    "json_pointer":  "/records/2",
+                                                                    "record_id":  "DM-DOC-GRD-625"
+                                                                },
+                                                   "manifest_document":  {
+                                                                             "source_file":  "package_manifest.json",
+                                                                             "json_pointer":  "/document_inventory/2"
+                                                                         },
+                                                   "manifest_file":  {
+                                                                         "source_file":  "package_manifest.json",
+                                                                         "json_pointer":  "/file_references/2"
+                                                                     },
+                                                   "manifest_relationship":  {
+                                                                                 "source_file":  "package_manifest.json",
+                                                                                 "json_pointer":  "/relationship_declarations/2"
+                                                                             }
+                                               }
+                              },
+                              {
+                                  "document_id":  "DOC-TUP-621",
+                                  "drawing_number":  "BCD-621",
+                                  "authoritative_revision_id":  "07",
+                                  "metadata_revision_id":  "07",
+                                  "file_ref_id":  "FR-DWG-621",
+                                  "controlled_file_path":  "files/released/plotsets/CD42_621-R07.controlled.txt",
+                                  "equipment_tags":  [
+                                                         "TU-7201",
+                                                         "P-7201-T"
+                                                     ],
+                                  "evidence":  {
+                                                   "register":  {
+                                                                    "source_file":  "inputs/drawing_register.csv",
+                                                                    "row_number":  5,
+                                                                    "row_key":  "DOC-TUP-621"
+                                                                },
+                                                   "metadata":  {
+                                                                    "source_file":  "inputs/drawing_metadata.json",
+                                                                    "json_pointer":  "/records/3",
+                                                                    "record_id":  "DM-DOC-TUP-621"
+                                                                },
+                                                   "manifest_document":  {
+                                                                             "source_file":  "package_manifest.json",
+                                                                             "json_pointer":  "/document_inventory/3"
+                                                                         },
+                                                   "manifest_file":  {
+                                                                         "source_file":  "package_manifest.json",
+                                                                         "json_pointer":  "/file_references/3"
+                                                                     },
+                                                   "manifest_relationship":  {
+                                                                                 "source_file":  "package_manifest.json",
+                                                                                 "json_pointer":  "/relationship_declarations/3"
+                                                                             }
+                                               }
+                              },
+                              {
+                                  "document_id":  "DOC-CHT-624",
+                                  "drawing_number":  "BCD-624",
+                                  "authoritative_revision_id":  "07",
+                                  "metadata_revision_id":  "07",
+                                  "file_ref_id":  "FR-DWG-624",
+                                  "controlled_file_path":  "files/released/plotsets/CD42_624-R07.controlled.txt",
+                                  "equipment_tags":  [
+                                                         "CH-7201",
+                                                         "BC-7201"
+                                                     ],
+                                  "evidence":  {
+                                                   "register":  {
+                                                                    "source_file":  "inputs/drawing_register.csv",
+                                                                    "row_number":  6,
+                                                                    "row_key":  "DOC-CHT-624"
+                                                                },
+                                                   "metadata":  {
+                                                                    "source_file":  "inputs/drawing_metadata.json",
+                                                                    "json_pointer":  "/records/4",
+                                                                    "record_id":  "DM-DOC-CHT-624"
+                                                                },
+                                                   "manifest_document":  {
+                                                                             "source_file":  "package_manifest.json",
+                                                                             "json_pointer":  "/document_inventory/4"
+                                                                         },
+                                                   "manifest_file":  {
+                                                                         "source_file":  "package_manifest.json",
+                                                                         "json_pointer":  "/file_references/4"
+                                                                     },
+                                                   "manifest_relationship":  {
+                                                                                 "source_file":  "package_manifest.json",
+                                                                                 "json_pointer":  "/relationship_declarations/4"
+                                                                             }
+                                               }
+                              },
+                              {
+                                  "document_id":  "DOC-FDN-623",
+                                  "drawing_number":  "BCD-623",
+                                  "authoritative_revision_id":  "07",
+                                  "metadata_revision_id":  "07",
+                                  "file_ref_id":  "FR-DWG-623",
+                                  "controlled_file_path":  "files/released/plotsets/CD42_623-R07.controlled.txt",
+                                  "equipment_tags":  [
+                                                         "BC-7201",
+                                                         "M-7201",
+                                                         "GB-7201",
+                                                         "P-7201-H",
+                                                         "P-7201-T",
+                                                         "TU-7201",
+                                                         "GRD-7201",
+                                                         "CH-7201",
+                                                         "CPL-7201"
+                                                     ],
+                                  "evidence":  {
+                                                   "register":  {
+                                                                    "source_file":  "inputs/drawing_register.csv",
+                                                                    "row_number":  7,
+                                                                    "row_key":  "DOC-FDN-623"
+                                                                },
+                                                   "metadata":  {
+                                                                    "source_file":  "inputs/drawing_metadata.json",
+                                                                    "json_pointer":  "/records/5",
+                                                                    "record_id":  "DM-DOC-FDN-623"
+                                                                },
+                                                   "manifest_document":  {
+                                                                             "source_file":  "package_manifest.json",
+                                                                             "json_pointer":  "/document_inventory/5"
+                                                                         },
+                                                   "manifest_file":  {
+                                                                         "source_file":  "package_manifest.json",
+                                                                         "json_pointer":  "/file_references/5"
+                                                                     },
+                                                   "manifest_relationship":  {
+                                                                                 "source_file":  "package_manifest.json",
+                                                                                 "json_pointer":  "/relationship_declarations/5"
+                                                                             }
+                                               }
+                              }
+                          ],
+    "required_items_and_equipment":  [
+                                         {
+                                             "item_id":  "ITEM-727",
+                                             "equipment_tag":  "P-7201-T",
+                                             "drawing_number":  "BCD-621",
+                                             "datasheet_id":  "DS-TUP-72",
+                                             "specification_id":  "SP-BULK-72",
+                                             "evidence":  {
+                                                              "bom":  {
+                                                                          "source_file":  "inputs/bom_or_equipment_list.csv",
+                                                                          "row_number":  2,
+                                                                          "row_key":  "ITEM-727"
+                                                                      },
+                                                              "manifest_item_equipment_relationship":  {
+                                                                                                           "source_file":  "package_manifest.json",
+                                                                                                           "json_pointer":  "/relationship_declarations/6"
+                                                                                                       },
+                                                              "drawing_metadata_equipment_tag_pointers":  [
+                                                                                                              "/records/3/equipment_tags",
+                                                                                                              "/records/5/equipment_tags"
+                                                                                                          ]
+                                                          }
+                                         },
+                                         {
+                                             "item_id":  "ITEM-721",
+                                             "equipment_tag":  "M-7201",
+                                             "drawing_number":  "BCD-620",
+                                             "datasheet_id":  "DS-MTR-72",
+                                             "specification_id":  "SP-DRIVE-72",
+                                             "evidence":  {
+                                                              "bom":  {
+                                                                          "source_file":  "inputs/bom_or_equipment_list.csv",
+                                                                          "row_number":  3,
+                                                                          "row_key":  "ITEM-721"
+                                                                      },
+                                                              "manifest_item_equipment_relationship":  {
+                                                                                                           "source_file":  "package_manifest.json",
+                                                                                                           "json_pointer":  "/relationship_declarations/7"
+                                                                                                       },
+                                                              "drawing_metadata_equipment_tag_pointers":  [
+                                                                                                              "/records/0/equipment_tags",
+                                                                                                              "/records/2/equipment_tags",
+                                                                                                              "/records/5/equipment_tags"
+                                                                                                          ]
+                                                          }
+                                         },
+                                         {
+                                             "item_id":  "ITEM-723",
+                                             "equipment_tag":  "GB-7201",
+                                             "drawing_number":  "BCD-620",
+                                             "datasheet_id":  "DS-GBX-72",
+                                             "specification_id":  "SP-DRIVE-72",
+                                             "evidence":  {
+                                                              "bom":  {
+                                                                          "source_file":  "inputs/bom_or_equipment_list.csv",
+                                                                          "row_number":  4,
+                                                                          "row_key":  "ITEM-723"
+                                                                      },
+                                                              "manifest_item_equipment_relationship":  {
+                                                                                                           "source_file":  "package_manifest.json",
+                                                                                                           "json_pointer":  "/relationship_declarations/8"
+                                                                                                       },
+                                                              "drawing_metadata_equipment_tag_pointers":  [
+                                                                                                              "/records/0/equipment_tags",
+                                                                                                              "/records/2/equipment_tags",
+                                                                                                              "/records/5/equipment_tags"
+                                                                                                          ]
+                                                          }
+                                         },
+                                         {
+                                             "item_id":  "ITEM-729",
+                                             "equipment_tag":  "CH-7201",
+                                             "drawing_number":  "BCD-624",
+                                             "datasheet_id":  "DS-CHT-72",
+                                             "specification_id":  "SP-BULK-72",
+                                             "evidence":  {
+                                                              "bom":  {
+                                                                          "source_file":  "inputs/bom_or_equipment_list.csv",
+                                                                          "row_number":  5,
+                                                                          "row_key":  "ITEM-729"
+                                                                      },
+                                                              "manifest_item_equipment_relationship":  {
+                                                                                                           "source_file":  "package_manifest.json",
+                                                                                                           "json_pointer":  "/relationship_declarations/9"
+                                                                                                       },
+                                                              "drawing_metadata_equipment_tag_pointers":  [
+                                                                                                              "/records/4/equipment_tags",
+                                                                                                              "/records/5/equipment_tags"
+                                                                                                          ]
+                                                          }
+                                         },
+                                         {
+                                             "item_id":  "ITEM-724",
+                                             "equipment_tag":  "CPL-7201",
+                                             "drawing_number":  "BCD-622",
+                                             "datasheet_id":  "DS-CPL-72",
+                                             "specification_id":  "SP-DRIVE-72",
+                                             "evidence":  {
+                                                              "bom":  {
+                                                                          "source_file":  "inputs/bom_or_equipment_list.csv",
+                                                                          "row_number":  6,
+                                                                          "row_key":  "ITEM-724"
+                                                                      },
+                                                              "manifest_item_equipment_relationship":  {
+                                                                                                           "source_file":  "package_manifest.json",
+                                                                                                           "json_pointer":  "/relationship_declarations/10"
+                                                                                                       },
+                                                              "drawing_metadata_equipment_tag_pointers":  [
+                                                                                                              "/records/1/equipment_tags",
+                                                                                                              "/records/2/equipment_tags",
+                                                                                                              "/records/5/equipment_tags"
+                                                                                                          ]
+                                                          }
+                                         },
+                                         {
+                                             "item_id":  "ITEM-722",
+                                             "equipment_tag":  "BC-7201",
+                                             "drawing_number":  "BCD-620",
+                                             "datasheet_id":  "DS-CVY-72",
+                                             "specification_id":  "SP-BULK-72",
+                                             "evidence":  {
+                                                              "bom":  {
+                                                                          "source_file":  "inputs/bom_or_equipment_list.csv",
+                                                                          "row_number":  7,
+                                                                          "row_key":  "ITEM-722"
+                                                                      },
+                                                              "manifest_item_equipment_relationship":  {
+                                                                                                           "source_file":  "package_manifest.json",
+                                                                                                           "json_pointer":  "/relationship_declarations/11"
+                                                                                                       },
+                                                              "drawing_metadata_equipment_tag_pointers":  [
+                                                                                                              "/records/0/equipment_tags",
+                                                                                                              "/records/4/equipment_tags",
+                                                                                                              "/records/5/equipment_tags"
+                                                                                                          ]
+                                                          }
+                                         },
+                                         {
+                                             "item_id":  "ITEM-728",
+                                             "equipment_tag":  "GRD-7201",
+                                             "drawing_number":  "BCD-625",
+                                             "datasheet_id":  "DS-GRD-72",
+                                             "specification_id":  "SP-GUARD-72",
+                                             "evidence":  {
+                                                              "bom":  {
+                                                                          "source_file":  "inputs/bom_or_equipment_list.csv",
+                                                                          "row_number":  8,
+                                                                          "row_key":  "ITEM-728"
+                                                                      },
+                                                              "manifest_item_equipment_relationship":  {
+                                                                                                           "source_file":  "package_manifest.json",
+                                                                                                           "json_pointer":  "/relationship_declarations/12"
+                                                                                                       },
+                                                              "drawing_metadata_equipment_tag_pointers":  [
+                                                                                                              "/records/2/equipment_tags",
+                                                                                                              "/records/5/equipment_tags"
+                                                                                                          ]
+                                                          }
+                                         },
+                                         {
+                                             "item_id":  "ITEM-725",
+                                             "equipment_tag":  "P-7201-H",
+                                             "drawing_number":  "BCD-622",
+                                             "datasheet_id":  "DS-HPL-72",
+                                             "specification_id":  "SP-BULK-72",
+                                             "evidence":  {
+                                                              "bom":  {
+                                                                          "source_file":  "inputs/bom_or_equipment_list.csv",
+                                                                          "row_number":  9,
+                                                                          "row_key":  "ITEM-725"
+                                                                      },
+                                                              "manifest_item_equipment_relationship":  {
+                                                                                                           "source_file":  "package_manifest.json",
+                                                                                                           "json_pointer":  "/relationship_declarations/13"
+                                                                                                       },
+                                                              "drawing_metadata_equipment_tag_pointers":  [
+                                                                                                              "/records/1/equipment_tags",
+                                                                                                              "/records/5/equipment_tags"
+                                                                                                          ]
+                                                          }
+                                         },
+                                         {
+                                             "item_id":  "ITEM-726",
+                                             "equipment_tag":  "TU-7201",
+                                             "drawing_number":  "BCD-621",
+                                             "datasheet_id":  "DS-TUF-72",
+                                             "specification_id":  "SP-BULK-72",
+                                             "evidence":  {
+                                                              "bom":  {
+                                                                          "source_file":  "inputs/bom_or_equipment_list.csv",
+                                                                          "row_number":  10,
+                                                                          "row_key":  "ITEM-726"
+                                                                      },
+                                                              "manifest_item_equipment_relationship":  {
+                                                                                                           "source_file":  "package_manifest.json",
+                                                                                                           "json_pointer":  "/relationship_declarations/14"
+                                                                                                       },
+                                                              "drawing_metadata_equipment_tag_pointers":  [
+                                                                                                              "/records/3/equipment_tags",
+                                                                                                              "/records/5/equipment_tags"
+                                                                                                          ]
+                                                          }
+                                         }
+                                     ],
+    "required_datasheets":  [
+                                {
+                                    "equipment_tag":  "TU-7201",
+                                    "datasheet_id":  "DS-TUF-72",
+                                    "document_id":  "DOC-DS-TUF-72",
+                                    "revision_id":  "4",
+                                    "file_ref_id":  "FR-DS-TUF-72",
+                                    "controlled_file_path":  "files/vendor/submittals/takeup-frame-data-R4.txt",
+                                    "evidence":  {
+                                                     "metadata":  {
+                                                                      "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                      "json_pointer":  "/datasheets/0",
+                                                                      "record_id":  "DSM-TUF-72"
+                                                                  },
+                                                     "manifest_document":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/document_inventory/6"
+                                                                           },
+                                                     "manifest_file":  {
+                                                                           "source_file":  "package_manifest.json",
+                                                                           "json_pointer":  "/file_references/6"
+                                                                       },
+                                                     "manifest_equipment_datasheet_relationship":  {
+                                                                                                       "source_file":  "package_manifest.json",
+                                                                                                       "json_pointer":  "/relationship_declarations/15"
+                                                                                                   }
+                                                 }
+                                },
+                                {
+                                    "equipment_tag":  "M-7201",
+                                    "datasheet_id":  "DS-MTR-72",
+                                    "document_id":  "DOC-DS-MTR-72",
+                                    "revision_id":  "4",
+                                    "file_ref_id":  "FR-DS-MTR-72",
+                                    "controlled_file_path":  "files/vendor/submittals/drive-motor-data-R4.txt",
+                                    "evidence":  {
+                                                     "metadata":  {
+                                                                      "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                      "json_pointer":  "/datasheets/1",
+                                                                      "record_id":  "DSM-MTR-72"
+                                                                  },
+                                                     "manifest_document":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/document_inventory/7"
+                                                                           },
+                                                     "manifest_file":  {
+                                                                           "source_file":  "package_manifest.json",
+                                                                           "json_pointer":  "/file_references/7"
+                                                                       },
+                                                     "manifest_equipment_datasheet_relationship":  {
+                                                                                                       "source_file":  "package_manifest.json",
+                                                                                                       "json_pointer":  "/relationship_declarations/16"
+                                                                                                   }
+                                                 }
+                                },
+                                {
+                                    "equipment_tag":  "GRD-7201",
+                                    "datasheet_id":  "DS-GRD-72",
+                                    "document_id":  "DOC-DS-GRD-72",
+                                    "revision_id":  "4",
+                                    "file_ref_id":  "FR-DS-GRD-72",
+                                    "controlled_file_path":  "files/vendor/submittals/guard-set-data-R4.txt",
+                                    "evidence":  {
+                                                     "metadata":  {
+                                                                      "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                      "json_pointer":  "/datasheets/2",
+                                                                      "record_id":  "DSM-GRD-72"
+                                                                  },
+                                                     "manifest_document":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/document_inventory/8"
+                                                                           },
+                                                     "manifest_file":  {
+                                                                           "source_file":  "package_manifest.json",
+                                                                           "json_pointer":  "/file_references/8"
+                                                                       },
+                                                     "manifest_equipment_datasheet_relationship":  {
+                                                                                                       "source_file":  "package_manifest.json",
+                                                                                                       "json_pointer":  "/relationship_declarations/17"
+                                                                                                   }
+                                                 }
+                                },
+                                {
+                                    "equipment_tag":  "GB-7201",
+                                    "datasheet_id":  "DS-GBX-72",
+                                    "document_id":  "DOC-DS-GBX-72",
+                                    "revision_id":  "4",
+                                    "file_ref_id":  "FR-DS-GBX-72",
+                                    "controlled_file_path":  "files/vendor/submittals/reducer-data-R4.txt",
+                                    "evidence":  {
+                                                     "metadata":  {
+                                                                      "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                      "json_pointer":  "/datasheets/3",
+                                                                      "record_id":  "DSM-GBX-72"
+                                                                  },
+                                                     "manifest_document":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/document_inventory/9"
+                                                                           },
+                                                     "manifest_file":  {
+                                                                           "source_file":  "package_manifest.json",
+                                                                           "json_pointer":  "/file_references/9"
+                                                                       },
+                                                     "manifest_equipment_datasheet_relationship":  {
+                                                                                                       "source_file":  "package_manifest.json",
+                                                                                                       "json_pointer":  "/relationship_declarations/18"
+                                                                                                   }
+                                                 }
+                                },
+                                {
+                                    "equipment_tag":  "BC-7201",
+                                    "datasheet_id":  "DS-CVY-72",
+                                    "document_id":  "DOC-DS-CVY-72",
+                                    "revision_id":  "4",
+                                    "file_ref_id":  "FR-DS-CVY-72",
+                                    "controlled_file_path":  "files/vendor/submittals/conveyor-station-data-R4.txt",
+                                    "evidence":  {
+                                                     "metadata":  {
+                                                                      "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                      "json_pointer":  "/datasheets/4",
+                                                                      "record_id":  "DSM-CVY-72"
+                                                                  },
+                                                     "manifest_document":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/document_inventory/10"
+                                                                           },
+                                                     "manifest_file":  {
+                                                                           "source_file":  "package_manifest.json",
+                                                                           "json_pointer":  "/file_references/10"
+                                                                       },
+                                                     "manifest_equipment_datasheet_relationship":  {
+                                                                                                       "source_file":  "package_manifest.json",
+                                                                                                       "json_pointer":  "/relationship_declarations/19"
+                                                                                                   }
+                                                 }
+                                },
+                                {
+                                    "equipment_tag":  "P-7201-H",
+                                    "datasheet_id":  "DS-HPL-72",
+                                    "document_id":  "DOC-DS-HPL-72",
+                                    "revision_id":  "4",
+                                    "file_ref_id":  "FR-DS-HPL-72",
+                                    "controlled_file_path":  "files/vendor/submittals/head-pulley-data-R4.txt",
+                                    "evidence":  {
+                                                     "metadata":  {
+                                                                      "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                      "json_pointer":  "/datasheets/5",
+                                                                      "record_id":  "DSM-HPL-72"
+                                                                  },
+                                                     "manifest_document":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/document_inventory/11"
+                                                                           },
+                                                     "manifest_file":  {
+                                                                           "source_file":  "package_manifest.json",
+                                                                           "json_pointer":  "/file_references/11"
+                                                                       },
+                                                     "manifest_equipment_datasheet_relationship":  {
+                                                                                                       "source_file":  "package_manifest.json",
+                                                                                                       "json_pointer":  "/relationship_declarations/20"
+                                                                                                   }
+                                                 }
+                                },
+                                {
+                                    "equipment_tag":  "CPL-7201",
+                                    "datasheet_id":  "DS-CPL-72",
+                                    "document_id":  "DOC-DS-CPL-72",
+                                    "revision_id":  "4",
+                                    "file_ref_id":  "FR-DS-CPL-72",
+                                    "controlled_file_path":  "files/vendor/submittals/coupling-data-R4.txt",
+                                    "evidence":  {
+                                                     "metadata":  {
+                                                                      "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                      "json_pointer":  "/datasheets/6",
+                                                                      "record_id":  "DSM-CPL-72"
+                                                                  },
+                                                     "manifest_document":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/document_inventory/12"
+                                                                           },
+                                                     "manifest_file":  {
+                                                                           "source_file":  "package_manifest.json",
+                                                                           "json_pointer":  "/file_references/12"
+                                                                       },
+                                                     "manifest_equipment_datasheet_relationship":  {
+                                                                                                       "source_file":  "package_manifest.json",
+                                                                                                       "json_pointer":  "/relationship_declarations/21"
+                                                                                                   }
+                                                 }
+                                },
+                                {
+                                    "equipment_tag":  "CH-7201",
+                                    "datasheet_id":  "DS-CHT-72",
+                                    "document_id":  "DOC-DS-CHT-72",
+                                    "revision_id":  "4",
+                                    "file_ref_id":  "FR-DS-CHT-72",
+                                    "controlled_file_path":  "files/vendor/submittals/discharge-chute-data-R4.txt",
+                                    "evidence":  {
+                                                     "metadata":  {
+                                                                      "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                      "json_pointer":  "/datasheets/7",
+                                                                      "record_id":  "DSM-CHT-72"
+                                                                  },
+                                                     "manifest_document":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/document_inventory/13"
+                                                                           },
+                                                     "manifest_file":  {
+                                                                           "source_file":  "package_manifest.json",
+                                                                           "json_pointer":  "/file_references/13"
+                                                                       },
+                                                     "manifest_equipment_datasheet_relationship":  {
+                                                                                                       "source_file":  "package_manifest.json",
+                                                                                                       "json_pointer":  "/relationship_declarations/22"
+                                                                                                   }
+                                                 }
+                                },
+                                {
+                                    "equipment_tag":  "P-7201-T",
+                                    "datasheet_id":  "DS-TUP-72",
+                                    "document_id":  "DOC-DS-TUP-72",
+                                    "revision_id":  "4",
+                                    "file_ref_id":  "FR-DS-TUP-72",
+                                    "controlled_file_path":  "files/vendor/submittals/takeup-pulley-data-R4.txt",
+                                    "evidence":  {
+                                                     "metadata":  {
+                                                                      "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                      "json_pointer":  "/datasheets/8",
+                                                                      "record_id":  "DSM-TUP-72"
+                                                                  },
+                                                     "manifest_document":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/document_inventory/14"
+                                                                           },
+                                                     "manifest_file":  {
+                                                                           "source_file":  "package_manifest.json",
+                                                                           "json_pointer":  "/file_references/14"
+                                                                       },
+                                                     "manifest_equipment_datasheet_relationship":  {
+                                                                                                       "source_file":  "package_manifest.json",
+                                                                                                       "json_pointer":  "/relationship_declarations/23"
+                                                                                                   }
+                                                 }
+                                }
+                            ],
+    "required_specifications":  [
+                                    {
+                                        "specification_id":  "SP-BULK-72",
+                                        "document_id":  "DOC-SP-BULK-72",
+                                        "revision_id":  "REL",
+                                        "equipment_tags":  [
+                                                               "BC-7201",
+                                                               "P-7201-H",
+                                                               "P-7201-T",
+                                                               "TU-7201",
+                                                               "CH-7201"
+                                                           ],
+                                        "file_ref_id":  "FR-SP-BULK-72",
+                                        "controlled_file_path":  "files/engineering/specifications/bulk-conveyor-REL.txt",
+                                        "evidence":  {
+                                                         "metadata":  {
+                                                                          "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                          "json_pointer":  "/specifications/0",
+                                                                          "record_id":  "SPM-BULK-72"
+                                                                      },
+                                                         "revision_history":  {
+                                                                                  "source_file":  "inputs/revision_history.csv",
+                                                                                  "row_number":  8,
+                                                                                  "row_key":  "RH-DOC-SP-BULK-72"
+                                                                              },
+                                                         "manifest_document":  {
+                                                                                   "source_file":  "package_manifest.json",
+                                                                                   "json_pointer":  "/document_inventory/15"
+                                                                               },
+                                                         "manifest_file":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/file_references/15"
+                                                                           }
+                                                     }
+                                    },
+                                    {
+                                        "specification_id":  "SP-GUARD-72",
+                                        "document_id":  "DOC-SP-GUARD-72",
+                                        "revision_id":  "REL",
+                                        "equipment_tags":  [
+                                                               "GRD-7201"
+                                                           ],
+                                        "file_ref_id":  "FR-SP-GUARD-72",
+                                        "controlled_file_path":  "files/engineering/specifications/drive-guarding-REL.txt",
+                                        "evidence":  {
+                                                         "metadata":  {
+                                                                          "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                          "json_pointer":  "/specifications/1",
+                                                                          "record_id":  "SPM-GUARD-72"
+                                                                      },
+                                                         "revision_history":  {
+                                                                                  "source_file":  "inputs/revision_history.csv",
+                                                                                  "row_number":  9,
+                                                                                  "row_key":  "RH-DOC-SP-GUARD-72"
+                                                                              },
+                                                         "manifest_document":  {
+                                                                                   "source_file":  "package_manifest.json",
+                                                                                   "json_pointer":  "/document_inventory/16"
+                                                                               },
+                                                         "manifest_file":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/file_references/16"
+                                                                           }
+                                                     }
+                                    },
+                                    {
+                                        "specification_id":  "SP-DRIVE-72",
+                                        "document_id":  "DOC-SP-DRIVE-72",
+                                        "revision_id":  "REL",
+                                        "equipment_tags":  [
+                                                               "M-7201",
+                                                               "GB-7201",
+                                                               "CPL-7201"
+                                                           ],
+                                        "file_ref_id":  "FR-SP-DRIVE-72",
+                                        "controlled_file_path":  "files/engineering/specifications/drive-train-REL.txt",
+                                        "evidence":  {
+                                                         "metadata":  {
+                                                                          "source_file":  "inputs/datasheet_spec_metadata.json",
+                                                                          "json_pointer":  "/specifications/2",
+                                                                          "record_id":  "SPM-DRIVE-72"
+                                                                      },
+                                                         "revision_history":  {
+                                                                                  "source_file":  "inputs/revision_history.csv",
+                                                                                  "row_number":  10,
+                                                                                  "row_key":  "RH-DOC-SP-DRIVE-72"
+                                                                              },
+                                                         "manifest_document":  {
+                                                                                   "source_file":  "package_manifest.json",
+                                                                                   "json_pointer":  "/document_inventory/17"
+                                                                               },
+                                                         "manifest_file":  {
+                                                                               "source_file":  "package_manifest.json",
+                                                                               "json_pointer":  "/file_references/17"
+                                                                           }
+                                                     }
+                                    }
+                                ],
+    "controlled_files":  [
+                             {
+                                 "file_ref_id":  "FR-DWG-620",
+                                 "path":  "files/released/plotsets/CD42_620-R07.controlled.txt",
+                                 "document_id":  "DOC-DRV-620",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/0"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/released/plotsets/CD42_620-R07.controlled.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DWG-622",
+                                 "path":  "files/released/plotsets/CD42_622-R07.controlled.txt",
+                                 "document_id":  "DOC-PUL-622",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/1"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/released/plotsets/CD42_622-R07.controlled.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DWG-625",
+                                 "path":  "files/released/plotsets/CD42_625-R07.controlled.txt",
+                                 "document_id":  "DOC-GRD-625",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/2"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/released/plotsets/CD42_625-R07.controlled.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DWG-621",
+                                 "path":  "files/released/plotsets/CD42_621-R07.controlled.txt",
+                                 "document_id":  "DOC-TUP-621",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/3"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/released/plotsets/CD42_621-R07.controlled.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DWG-624",
+                                 "path":  "files/released/plotsets/CD42_624-R07.controlled.txt",
+                                 "document_id":  "DOC-CHT-624",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/4"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/released/plotsets/CD42_624-R07.controlled.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DWG-623",
+                                 "path":  "files/released/plotsets/CD42_623-R07.controlled.txt",
+                                 "document_id":  "DOC-FDN-623",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/5"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/released/plotsets/CD42_623-R07.controlled.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DS-TUF-72",
+                                 "path":  "files/vendor/submittals/takeup-frame-data-R4.txt",
+                                 "document_id":  "DOC-DS-TUF-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/6"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/vendor/submittals/takeup-frame-data-R4.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DS-MTR-72",
+                                 "path":  "files/vendor/submittals/drive-motor-data-R4.txt",
+                                 "document_id":  "DOC-DS-MTR-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/7"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/vendor/submittals/drive-motor-data-R4.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DS-GRD-72",
+                                 "path":  "files/vendor/submittals/guard-set-data-R4.txt",
+                                 "document_id":  "DOC-DS-GRD-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/8"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/vendor/submittals/guard-set-data-R4.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DS-GBX-72",
+                                 "path":  "files/vendor/submittals/reducer-data-R4.txt",
+                                 "document_id":  "DOC-DS-GBX-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/9"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/vendor/submittals/reducer-data-R4.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DS-CVY-72",
+                                 "path":  "files/vendor/submittals/conveyor-station-data-R4.txt",
+                                 "document_id":  "DOC-DS-CVY-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/10"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/vendor/submittals/conveyor-station-data-R4.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DS-HPL-72",
+                                 "path":  "files/vendor/submittals/head-pulley-data-R4.txt",
+                                 "document_id":  "DOC-DS-HPL-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/11"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/vendor/submittals/head-pulley-data-R4.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DS-CPL-72",
+                                 "path":  "files/vendor/submittals/coupling-data-R4.txt",
+                                 "document_id":  "DOC-DS-CPL-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/12"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/vendor/submittals/coupling-data-R4.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DS-CHT-72",
+                                 "path":  "files/vendor/submittals/discharge-chute-data-R4.txt",
+                                 "document_id":  "DOC-DS-CHT-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/13"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/vendor/submittals/discharge-chute-data-R4.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-DS-TUP-72",
+                                 "path":  "files/vendor/submittals/takeup-pulley-data-R4.txt",
+                                 "document_id":  "DOC-DS-TUP-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/14"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/vendor/submittals/takeup-pulley-data-R4.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-SP-BULK-72",
+                                 "path":  "files/engineering/specifications/bulk-conveyor-REL.txt",
+                                 "document_id":  "DOC-SP-BULK-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/15"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/engineering/specifications/bulk-conveyor-REL.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-SP-GUARD-72",
+                                 "path":  "files/engineering/specifications/drive-guarding-REL.txt",
+                                 "document_id":  "DOC-SP-GUARD-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/16"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/engineering/specifications/drive-guarding-REL.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             },
+                             {
+                                 "file_ref_id":  "FR-SP-DRIVE-72",
+                                 "path":  "files/engineering/specifications/drive-train-REL.txt",
+                                 "document_id":  "DOC-SP-DRIVE-72",
+                                 "required_for_release":  true,
+                                 "exists":  true,
+                                 "evidence":  {
+                                                  "manifest_file":  {
+                                                                        "source_file":  "package_manifest.json",
+                                                                        "json_pointer":  "/file_references/17"
+                                                                    },
+                                                  "resolved_package_relative_path":  "files/engineering/specifications/drive-train-REL.txt",
+                                                  "boundary_check":  "inside_files_root"
+                                              }
+                             }
+                         ],
+    "clean_non_pass_finding_allowance":  0,
+    "reviewer":  "isolated_replacement_benchmark_custodian",
+    "fixture_freeze_status":  "frozen_pre_execution"
+}

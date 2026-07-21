@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.3.0",
+  "bundle_id": "P4.2-CUSTODIAN-EA45DCF-V1",
+  "authorized_main_commit": "ea45dcf30fa37d06de2816b6928ca91cec53df94",
+  "frozen_evaluator_behavior_commit": "4cf9fe8",
+  "custodian_context": "fresh_no_conversation_history",
+  "network_authorized": false,
+  "external_path_access_authorized": false,
+  "repository_access_authorized": false,
+  "evaluator_execution_authorized": false,
+  "write_boundary": "outbound/",
+  "inventory_hash_algorithm": "sha256 of sorted UTF-8 '<file_sha256>  <relative_posix_path>\\n' lines",
+  "inventory_sha256": "0339f3288b7d656369d8cbddb9664b3d1b434d857aa1ebaec66ad70f711152de",
+  "external_manifest_bytes": 1866,
+  "external_manifest_sha256": "b78fc8afc3321938252accfdefebf8681e8cd8f62842deffd6912c8460229621",
+  "files": [
+    {
+      "path": "README_CUSTODIAN.md",
+      "bytes": 2163,
+      "sha256": "de6bfb02724af7b21cec93a97b9ebad005492e64b96e5fdbfaefb8f3a3ff37b9"
+    },
+    {
+      "path": "input/docs/acceptance_plan_v0.3.0.md",
+      "bytes": 27216,
+      "sha256": "d2250999078b61f0655b52736d038c3a5ae706d918af316109bc2737daf0fec4"
+    },
+    {
+      "path": "input/docs/authority_map_example_v0.3.0.json",
+      "bytes": 12587,
+      "sha256": "0bf6da59621b00e7a099b3664c15d9ce6a4f55dd7105015f2aa04f2b25c03261"
+    },
+    {
+      "path": "input/docs/p2_3_completion_and_claim_boundary_v0.3.0.md",
+      "bytes": 5767,
+      "sha256": "5a1e82ae803753c5d7560c287139995c83923a8d56d8b93a3415bb14ca51a58f"
+    },
+    {
+      "path": "input/docs/p4_2_held_out_contamination_and_replacement_gate_v0.3.0.md",
+      "bytes": 9061,
+      "sha256": "529eb4a0bfdbcdb44731519a37e5fd7b8c86987320e4876974bdce5a86e9ade5"
+    },
+    {
+      "path": "input/docs/p4_2_replacement_custodian_public_contract_v0.3.0.md",
+      "bytes": 12837,
+      "sha256": "197e7f8da5beb4218a1548c3e1fa43738edfc6235bf319990af0afe3dc8b86d5"
+    },
+    {
+      "path": "input/docs/workflow_contract_v0.3.0.md",
+      "bytes": 22508,
+      "sha256": "98134fba5bc75dfc1f28455bd5d531e331153c59fe84ef6dde44863193ce39e3"
+    },
+    {
+      "path": "input/schemas/package_manifest.schema.json",
+      "bytes": 9869,
+      "sha256": "1d87ce08a3308882881a63e867044773cb27829d1ad7c38a8d1e8b462ec3247d"
+    },
+    {
+      "path": "input/schemas/package_result.schema.json",
+      "bytes": 16867,
+      "sha256": "6bdb39bdc318cfd6bfe9b0eb4121d19aa42ba782eda420427aaac65e2d770698"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+"document_id","drawing_number","title","revision_id","revision_scheme","document_status","discipline","owner","required_for_release","file_ref_id"
+"DOC-DRV-620","BCD-620","Discharge Drive Station Arrangement","07","numeric_zero_padded","released","mechanical","conveying_systems","true","FR-DWG-620"
+"DOC-PUL-622","BCD-622","Head Pulley And Coupling Assembly","07","numeric_zero_padded","released","mechanical","conveying_systems","true","FR-DWG-622"
+"DOC-GRD-625","BCD-625","Drive Guarding Layout","07","numeric_zero_padded","released","mechanical","conveying_systems","true","FR-DWG-625"
+"DOC-TUP-621","BCD-621","Take-Up Frame Arrangement","07","numeric_zero_padded","released","mechanical","conveying_systems","true","FR-DWG-621"
+"DOC-CHT-624","BCD-624","Transfer Chute Interface","07","numeric_zero_padded","released","mechanical","conveying_systems","true","FR-DWG-624"
+"DOC-FDN-623","BCD-623","Drive Station Foundation Loads","07","numeric_zero_padded","released","mechanical","conveying_systems","true","FR-DWG-623"
