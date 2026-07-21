@@ -310,6 +310,7 @@ def test_missing_required_document_file_mapping_emits_one_reciprocity_hold(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -320,6 +321,7 @@ def test_missing_required_document_file_mapping_emits_one_reciprocity_hold(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     assert len(check.findings) == 1
     finding = check.findings[0]
     assert finding.finding_id == second.checks[4].findings[0].finding_id
@@ -382,6 +384,7 @@ def test_wrong_valid_manifest_target_reports_every_failed_clause(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = evaluation.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -392,6 +395,7 @@ def test_wrong_valid_manifest_target_reports_every_failed_clause(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     finding = check.findings[0]
     assert finding.actual_value["failed_clauses"] == [
         "manifest_inventory_file_reference",
@@ -447,6 +451,7 @@ def test_conflicting_required_mapping_is_a_reciprocity_failure(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = evaluation.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -457,6 +462,7 @@ def test_conflicting_required_mapping_is_a_reciprocity_failure(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     finding = check.findings[0]
     assert finding.actual_value["failed_clauses"] == [
         "conflicting_required_document_to_file_mapping"
@@ -492,6 +498,7 @@ def test_shared_undeclared_drawing_reference_is_caught_by_reciprocity(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = evaluation.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -502,6 +509,7 @@ def test_shared_undeclared_drawing_reference_is_caught_by_reciprocity(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     finding = check.findings[0]
     assert finding.affected_identifiers[-1] == undeclared
     assert finding.actual_value["failed_clauses"] == [
@@ -640,6 +648,7 @@ def test_metadata_file_reference_mismatch_emits_frozen_release_hold(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -653,6 +662,7 @@ def test_metadata_file_reference_mismatch_emits_frozen_release_hold(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     assert len(check.findings) == 1
     assert len(check.evidence) == 7
     finding = check.findings[0]
@@ -767,6 +777,7 @@ def test_swapped_metadata_file_references_emit_sorted_findings(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -780,6 +791,7 @@ def test_swapped_metadata_file_references_emit_sorted_findings(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     assert [
         finding.affected_identifiers[1] for finding in check.findings
     ] == ["DWG-PSK-1001", "DWG-PSK-1002"]
@@ -867,6 +879,7 @@ def test_missing_drawing_metadata_emits_frozen_release_hold(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -883,6 +896,7 @@ def test_missing_drawing_metadata_emits_frozen_release_hold(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     assert len(bom_drawing_check.findings) == 1
     assert len(presence_check.findings) == 1
     finding = presence_check.findings[0]
@@ -957,6 +971,7 @@ def test_all_missing_metadata_findings_are_sorted_and_repeatable(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -972,6 +987,7 @@ def test_all_missing_metadata_findings_are_sorted_and_repeatable(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     assert len(bom_drawing_check.findings) == 2
     assert [
         finding.affected_identifiers[-1]
@@ -1032,6 +1048,7 @@ def test_file_reference_check_requires_exact_accepted_authority_rule(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = evaluation.checks
 
     assert gates.dependent_checks_allowed is True
@@ -1045,6 +1062,7 @@ def test_file_reference_check_requires_exact_accepted_authority_rule(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     assert reciprocity_check.blocked_by == (AUTHORITY_GATE_ID,)
     assert check.blocked_by == (AUTHORITY_GATE_ID,)
     assert check.findings == ()
@@ -1072,6 +1090,7 @@ def test_missing_register_authority_emits_frozen_release_hold(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -1088,6 +1107,7 @@ def test_missing_register_authority_emits_frozen_release_hold(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     assert len(authority_check.findings) == 1
     finding = authority_check.findings[0]
     assert finding.finding_id == second.checks[2].findings[0].finding_id
@@ -1156,6 +1176,7 @@ def test_all_missing_register_authority_findings_are_sorted_and_repeatable(
         datasheet_check,
         datasheet_association_check,
         datasheet_reciprocity_check,
+        specification_revision_check,
     ) = first.checks
 
     assert all(gate.status == "passed" for gate in gates.gates)
@@ -1170,6 +1191,7 @@ def test_all_missing_register_authority_findings_are_sorted_and_repeatable(
     assert datasheet_check.status == "passed"
     assert datasheet_association_check.status == "passed"
     assert datasheet_reciprocity_check.status == "passed"
+    assert specification_revision_check.status == "passed"
     assert [
         finding.affected_identifiers[-1]
         for finding in authority_check.findings

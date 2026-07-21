@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** D-105 was accepted and PR #57 merged the bounded publication stabilization at exact `main` `dbcd242`. Check 10 is implemented and verified on its review branch. Both public observation runs remain complete and unchanged. Six authority/source gaps and check 11 remain unimplemented.
+- **P2.3:** D-106 was accepted and PR #58 merged check 10 at exact `main` `761ac76`. Check 11 is implemented and verified on its review branch. All six currently supportable P2.3 checks are now implemented; six authority/source gaps remain explicitly unsupported.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Review Gate
 
-The D-106 check-10 implementation is ready for CEO review. Datasheet metadata and manifest `equipment_to_datasheet` declarations are now compared in both directions under exact `AUTH-SPEC-001`. One wrong-valid manifest target produces one evidence-linked release hold through all four outputs and exit `1`.
+The D-107 check-11 implementation is ready for CEO review. Release-required specification metadata is now compared with exactly one current revision-history record under exact `AUTH-SPEC-003`. One wrong-valid metadata revision produces one evidence-linked release hold through all four outputs and exit `1`.
 
 ## Active Work Block
 
-- **WBS:** P2.3 equipment/datasheet manifest reciprocity review
-- **Branch:** `codex/p2.3-equipment-datasheet-manifest-reciprocity`
-- **Objective:** Require release-required authoritative equipment/datasheet mappings and manifest declarations to agree exactly in both directions.
-- **Definition of done:** Check 10 is tenth in stable order; clean, fault, authority, ownership, reordering, result, report, CLI, and publication proofs pass; protected assets remain unchanged.
+- **WBS:** P2.3 specification revision-history review
+- **Branch:** `codex/p2.3-specification-revision-history`
+- **Objective:** Require every release-required authoritative specification revision to agree with exactly one current revision-history record.
+- **Definition of done:** Check 11 is eleventh in stable order; clean, mismatch, missing, ambiguity, authority, reordering, result, report, CLI, and publication proofs pass; protected assets remain unchanged.
 
-Next action: review `docs/package_assurance/equipment_datasheet_manifest_reciprocity_implementation_review_2026-07-21.md`. Recommended D-106 accepts check 10 and authorizes check 11 only. Authority-gap claims, semantic held-out execution, public reruns, and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/specification_revision_history_implementation_review_2026-07-21.md`. Recommended D-107 accepts check 11 and authorizes only a P2.3 authority-gap disposition and completion-definition block. The recommended disposition is to defer the six unsupported claims, narrow the pilot release claim to the eleven proven checks, and then plan P4. Semantic held-out execution, public reruns, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
