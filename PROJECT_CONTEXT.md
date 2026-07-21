@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-21
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p2.3-completion-claim-boundary`
+**Current branch:** `codex/p4.2-held-out-benchmark-definition`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P2.3 completion and v0.3.0 claim-boundary closeout
-- **Status:** D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 defers the six unsupported claims, narrows v0.3.0 to the eleven proven checks, closes P2.3, and authorizes P4.1 only
+- **Active WBS:** P4.2 held-out contamination and replacement definition
+- **Status:** D-110 is accepted. The existing held-out family remains unchanged, unexecuted, and ineligible for release claims. Isolated replacement-family authoring and hash freeze are authorized; semantic execution remains separately blocked
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -42,7 +42,7 @@ P1.1 is accepted and locally integrated at commit `42ad037`. It validates packag
 
 P1.2 is accepted at commit `f26ed27`. It provides `SCN-DEV-PUMP-SKID-CLEAN-001`, a clean, fully synthetic pump-skid package with all seven mandatory sources, nine controlled file references, 20 reviewed semantic relationships, exact hidden evidence locators, expected clean results, and a package-tree content hash. Its source layouts are fixture examples rather than accepted general schemas.
 
-P1.3 is accepted at commit `4b7516e`. It provides a materially distinct synthetic held-out family with exact protected findings, evidence locators, check IDs, package states, per-scenario hashes, material-distinction evidence, contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884`. Its recorded `frozen_pre_tuning` status is active. It is self-authored pre-tuning, not independently blind. During P2.1, tracked held-out path names were inadvertently enumerated and the full suite exercised opaque integrity checks; protected source and oracle content was not opened or used to tune evaluator behavior. The first semantic held-out evaluation remains gated.
+P1.3 is accepted at commit `4b7516e`. It provides a materially distinct synthetic held-out family with exact protected findings, evidence locators, check IDs, package states, per-scenario hashes, material-distinction evidence, contamination controls, and freeze-set hash `428f8c31f35e5c4f20a345621b937628c686576617bb5348db60db4d90e25884`. Its recorded `frozen_pre_tuning` status is active. It is self-authored pre-tuning, not independently blind. During P2.1, tracked held-out path names were inadvertently enumerated and the full suite exercised opaque integrity checks; protected source and oracle values were not surfaced to or inspected by the implementation agent or used to tune evaluator behavior. The first semantic held-out evaluation remains gated.
 
 P2.1 implementation is committed at `e1ada72`. It adds fail-closed structured-source adapters, deterministic evidence models, eight ordered package gates, stable findings, and explicit prerequisite skips without selecting a package-level result state. Focused verification passed 60 tests with one expected Windows symlink skip; the full suite passed 187 tests with the same skip. An approved EOL-only repair adds byte-preserving Git attributes so raw benchmark inventories remain reproducible on Windows; no fixture JSON value, oracle, expected state, or accepted hash changed.
 
@@ -388,8 +388,24 @@ accepted genuine full-package paths to four states;
 router and exit-contract layer but have no accepted end-to-end semantic
 trigger. The bounded release decision discloses and defers those semantic
 triggers rather than manufacturing evidence or reopening P2.3 in this release.
-P4.1 is accepted pending PR #61 integration. The controlling review is
+P4.1 is accepted and integrated through PR #61. The controlling review is
 `docs/package_assurance/p4_1_development_benchmark_definition_and_review_v0.3.0.md`.
+
+PR #61 integrated P4.1 at exact `main`
+`5a4d57e534bd5e900abac3c455cd484ef083e972`. During the subsequent P4.2
+definition review, the current implementation context enumerated held-out path
+names and opened top-level freeze and family-review records before the first
+run. No protected or scenario-expected value was surfaced to or inspected by
+the implementation context, no semantic audit was run, and no evaluator
+behavior changed. Existing hosted CI later ran opaque fixture-integrity tests
+that load protected JSON internally without printing its values. The exposed
+top-level records nevertheless contained expected conditions and states, so
+Section 15 of the accepted plan makes the existing family contaminated for
+release held-out claims. D-110 was accepted on 2026-07-21. It preserves the
+family unchanged and unexecuted and requires a materially distinct replacement
+authored in an isolated custodian context. The
+controlling record is
+`docs/package_assurance/p4_2_held_out_contamination_and_replacement_gate_v0.3.0.md`.
 
 ## Intended Outcome
 
@@ -429,10 +445,11 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate accepted PR #61 and record its exact merged `main`, then define the
-separate P4.2 held-out execution gate. Do not execute protected held-out
-semantics, rerun either public package, change protected assets, or add deferred
-multimodal or platform capabilities before that gate is accepted.
+Integrate D-110 through PR #62, then create and structurally verify a replacement
+family only through an isolated custodian workspace. Do not semantically execute
+the replacement, inspect its protected values from this implementation context,
+rerun either public package, change evaluator behavior, or add deferred
+multimodal or platform capabilities before the separate freeze decision.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

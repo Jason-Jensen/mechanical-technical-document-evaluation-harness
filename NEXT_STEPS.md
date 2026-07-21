@@ -17,21 +17,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
-- **P4.1:** D-109 accepted on 2026-07-21. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and the hosted Linux CI gate, covers all eight gates and eleven checks, and is ready for PR #61 integration.
+- **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
+- **P4.2:** D-110 accepted on 2026-07-21. The exposed family remains unchanged, unexecuted, and release-ineligible. A materially distinct replacement may now be authored and hash-frozen through an isolated benchmark-custodian workspace; semantic execution remains blocked pending a separate freeze decision.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Gate
 
-P4.1 and D-109 are accepted. The executable matrix, exact normalized four-output oracles, two-run repeatability, failed-evidence preservation, development-only boundary, and bounded four-state claim are frozen pending PR #61 integration. P4.2 remains a separate protected gate.
+P4.1 is integrated and frozen. D-110 authorizes only isolated replacement-family authoring, structural verification, and hash freeze. The first replacement semantic run requires a separate owner decision after the freeze package is reviewed.
 
 ## Active Work Block
 
-- **WBS:** P4.1 acceptance and integration closeout
-- **Branch:** `codex/p4.1-development-benchmark`
-- **Objective:** Prove the accepted structured evaluator against one clean package and controlled development faults without exposing or tuning against held-out semantics.
-- **Definition of done:** The clean baseline hash is verified; all eight gates and eleven checks have direct fault coverage; every scenario runs twice; exact states, exits, holds, control statuses, findings, evidence, and four-output publications match frozen oracles; generated and protected assets remain separated; regression is green; D-109 is accepted.
+- **WBS:** P4.2 held-out contamination and replacement definition
+- **Branch:** `codex/p4.2-held-out-benchmark-definition`
+- **Objective:** Integrate accepted D-110 and create a materially distinct replacement family through an isolated custodian boundary without semantic execution.
+- **Definition of done:** D-110 is integrated; the custodian receives only approved public contracts; the replacement satisfies the accepted minimum matrix and material-distinction rules; package and protected assets remain separated; exact hashes and access evidence are frozen; the implementation context does not inspect protected values; a separate first-run decision is ready for owner review.
 
-Next action: integrate PR #61, record the exact merged `main`, and define the separate P4.2 held-out execution gate. Held-out semantic execution, public reruns, protected-asset changes, and deferred capabilities remain blocked until that gate is accepted.
+Next action: merge accepted PR #62, record exact `main`, then run the isolated replacement authoring and freeze block. Held-out semantic execution, replacement authoring in this implementation context, public reruns, evaluator changes, and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
