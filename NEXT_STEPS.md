@@ -16,21 +16,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.1:** Accepted and integrated at exact `main` commit `8f66b12`; exact-main verification is green.
 - **P3.2:** Accepted and integrated at exact `main` commit `4b848b9`; exact-main verification is green.
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
-- **P2.3:** Checks 6 and 7 are integrated. D-099 was accepted and PR #51 merged the public-audit failure review at exact `main` `624acce`. The narrow identifier/result-contract stabilization is implemented and synthetically proven without rerunning or changing either public package. Six authority/source gaps and checks 8-11 remain unimplemented.
+- **P2.3:** Checks 6 and 7 are integrated. D-100 was accepted and PR #52 merged the identifier/result-contract stabilization at exact `main` `0611d916`. The single authorized NASA/JPL audit then matched its predeclared state, hold, exit, and four-output contract. OpenFlexure remains unexecuted; six authority/source gaps and checks 8-11 remain unimplemented.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Current Review Gate
 
-The D-099 stabilization and synthetic full-CLI proof are ready for CEO review. Exact blank optional BOM references now pass identifier syntax, malformed present identifiers still hold release, and all findings remain schema-valid. Both public packages remain unchanged and unaudited since the failed NASA/JPL attempt.
+The D-100 NASA/JPL confirmation is ready for CEO review. One unchanged run returned `missing_authoritative_information`, release hold `true`, exit `3`, and exactly four schema-valid, internally consistent outputs. Both accepted package trees and logs remain exact, and OpenFlexure has not been run.
 
 ## Active Work Block
 
-- **WBS:** P2.3 identifier/result-contract stabilization review
-- **Branch:** `codex/p2.3-identifier-result-stabilization`
-- **Objective:** Verify the narrow D-099 correction and decide whether one controlled NASA/JPL rerun may proceed.
-- **Definition of done:** Optional blanks, malformed present identifiers, schema-valid findings, full CLI publication, regression safety, and unchanged public-package evidence are reviewed; no public-package rerun occurs in this block.
+- **WBS:** P2.3 NASA/JPL public-audit confirmation review
+- **Branch:** `codex/p2.3-nasa-public-audit-confirmation`
+- **Objective:** Review the single D-100 observation and decide whether one controlled OpenFlexure audit may proceed.
+- **Definition of done:** The NASA/JPL execution count, state, hold, exit, four outputs, schema validity, report consistency, source integrity, and OpenFlexure stop are recorded and reviewed.
 
-Next action: review `docs/package_assurance/identifier_result_contract_stabilization_review_2026-07-20.md`. Recommended D-100 accepts the fix, authorizes integration, and permits exactly one unchanged NASA/JPL rerun before a separate OpenFlexure decision. Semantic held-out execution and deferred capabilities remain blocked.
+Next action: review `docs/package_assurance/nasa_jpl_public_audit_confirmation_review_2026-07-20.md`. Recommended D-101 accepts the NASA/JPL result, closes the original execution issue, and permits exactly one unchanged OpenFlexure audit before another review. Semantic held-out execution and deferred capabilities remain blocked.
 
 ## Delivery Sequence
 
