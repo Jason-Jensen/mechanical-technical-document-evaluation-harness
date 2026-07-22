@@ -1,0 +1,224 @@
+{
+    "schema_version":  "0.3.0-fixture-example",
+    "source_type":  "datasheet_spec_metadata",
+    "datasheets":  [
+                       {
+                           "record_id":  "DSM-TUF-72",
+                           "document_id":  "DOC-DS-TUF-72",
+                           "datasheet_id":  "DS-TUF-72",
+                           "equipment_tag":  "TU-7201",
+                           "title":  "Gravity Take-Up Frame Data",
+                           "revision_id":  "4",
+                           "revision_scheme":  "numeric_integer",
+                           "revision_sequence":  [
+                                                     "2",
+                                                     "3",
+                                                     "4"
+                                                 ],
+                           "document_status":  "released",
+                           "required_for_release":  true,
+                           "file_ref_id":  "FR-DS-TUF-72"
+                       },
+                       {
+                           "record_id":  "DSM-MTR-72",
+                           "document_id":  "DOC-DS-MTR-72",
+                           "datasheet_id":  "DS-MTR-72",
+                           "equipment_tag":  "M-7201",
+                           "title":  "Conveyor Drive Motor Data",
+                           "revision_id":  "4",
+                           "revision_scheme":  "numeric_integer",
+                           "revision_sequence":  [
+                                                     "2",
+                                                     "3",
+                                                     "4"
+                                                 ],
+                           "document_status":  "released",
+                           "required_for_release":  true,
+                           "file_ref_id":  "FR-DS-MTR-72"
+                       },
+                       {
+                           "record_id":  "DSM-GRD-72",
+                           "document_id":  "DOC-DS-GRD-72",
+                           "datasheet_id":  "DS-GRD-72",
+                           "equipment_tag":  "GRD-7201",
+                           "title":  "Drive Guard Fabrication Data",
+                           "revision_id":  "4",
+                           "revision_scheme":  "numeric_integer",
+                           "revision_sequence":  [
+                                                     "2",
+                                                     "3",
+                                                     "4"
+                                                 ],
+                           "document_status":  "released",
+                           "required_for_release":  true,
+                           "file_ref_id":  "FR-DS-GRD-72"
+                       },
+                       {
+                           "record_id":  "DSM-GBX-72",
+                           "document_id":  "DOC-DS-GBX-72",
+                           "datasheet_id":  "DS-GBX-72",
+                           "equipment_tag":  "GB-7201",
+                           "title":  "Helical Bevel Reducer Data",
+                           "revision_id":  "4",
+                           "revision_scheme":  "numeric_integer",
+                           "revision_sequence":  [
+                                                     "2",
+                                                     "3",
+                                                     "4"
+                                                 ],
+                           "document_status":  "released",
+                           "required_for_release":  true,
+                           "file_ref_id":  "FR-DS-GBX-72"
+                       },
+                       {
+                           "record_id":  "DSM-CVY-72",
+                           "document_id":  "DOC-DS-CVY-72",
+                           "datasheet_id":  "DS-CVY-72",
+                           "equipment_tag":  "BC-7201",
+                           "title":  "Belt Conveyor Drive Station Data",
+                           "revision_id":  "4",
+                           "revision_scheme":  "numeric_integer",
+                           "revision_sequence":  [
+                                                     "2",
+                                                     "3",
+                                                     "4"
+                                                 ],
+                           "document_status":  "released",
+                           "required_for_release":  true,
+                           "file_ref_id":  "FR-DS-CVY-72"
+                       },
+                       {
+                           "record_id":  "DSM-HPL-72",
+                           "document_id":  "DOC-DS-HPL-72",
+                           "datasheet_id":  "DS-HPL-72",
+                           "equipment_tag":  "P-7201-H",
+                           "title":  "Head Pulley Data",
+                           "revision_id":  "4",
+                           "revision_scheme":  "numeric_integer",
+                           "revision_sequence":  [
+                                                     "2",
+                                                     "3",
+                                                     "4"
+                                                 ],
+                           "document_status":  "released",
+                           "required_for_release":  true,
+                           "file_ref_id":  "FR-DS-HPL-72"
+                       },
+                       {
+                           "record_id":  "DSM-CPL-72",
+                           "document_id":  "DOC-DS-CPL-72",
+                           "datasheet_id":  "DS-CPL-72",
+                           "equipment_tag":  "CPL-7201",
+                           "title":  "Low-Speed Coupling Data",
+                           "revision_id":  "4",
+                           "revision_scheme":  "numeric_integer",
+                           "revision_sequence":  [
+                                                     "2",
+                                                     "3",
+                                                     "4"
+                                                 ],
+                           "document_status":  "released",
+                           "required_for_release":  true,
+                           "file_ref_id":  "FR-DS-CPL-72"
+                       },
+                       {
+                           "record_id":  "DSM-CHT-72",
+                           "document_id":  "DOC-DS-CHT-72",
+                           "datasheet_id":  "DS-CHT-72",
+                           "equipment_tag":  "CH-7201",
+                           "title":  "Transfer Chute Data",
+                           "revision_id":  "4",
+                           "revision_scheme":  "numeric_integer",
+                           "revision_sequence":  [
+                                                     "2",
+                                                     "3",
+                                                     "4"
+                                                 ],
+                           "document_status":  "released",
+                           "required_for_release":  true,
+                           "file_ref_id":  "FR-DS-CHT-72"
+                       },
+                       {
+                           "record_id":  "DSM-TUP-72",
+                           "document_id":  "DOC-DS-TUP-72",
+                           "datasheet_id":  "DS-TUP-72",
+                           "equipment_tag":  "P-7201-T",
+                           "title":  "Take-Up Pulley Data",
+                           "revision_id":  "4",
+                           "revision_scheme":  "numeric_integer",
+                           "revision_sequence":  [
+                                                     "2",
+                                                     "3",
+                                                     "4"
+                                                 ],
+                           "document_status":  "released",
+                           "required_for_release":  true,
+                           "file_ref_id":  "FR-DS-TUP-72"
+                       }
+                   ],
+    "specifications":  [
+                           {
+                               "record_id":  "SPM-BULK-72",
+                               "document_id":  "DOC-SP-BULK-72",
+                               "specification_id":  "SP-BULK-72",
+                               "equipment_tags":  [
+                                                      "BC-7201",
+                                                      "P-7201-H",
+                                                      "P-7201-T",
+                                                      "TU-7201",
+                                                      "CH-7201"
+                                                  ],
+                               "title":  "Bulk Conveyor Mechanical Requirements",
+                               "revision_id":  "REL",
+                               "revision_scheme":  "explicit_sequence",
+                               "revision_sequence":  [
+                                                         "PRE",
+                                                         "CHK",
+                                                         "REL"
+                                                     ],
+                               "document_status":  "released",
+                               "required_for_release":  true,
+                               "file_ref_id":  "FR-SP-BULK-72"
+                           },
+                           {
+                               "record_id":  "SPM-GUARD-72",
+                               "document_id":  "DOC-SP-GUARD-72",
+                               "specification_id":  "SP-GUARD-72",
+                               "equipment_tags":  [
+                                                      "GRD-7201"
+                                                  ],
+                               "title":  "Rotating Equipment Guard Requirements",
+                               "revision_id":  "REL",
+                               "revision_scheme":  "explicit_sequence",
+                               "revision_sequence":  [
+                                                         "PRE",
+                                                         "CHK",
+                                                         "REL"
+                                                     ],
+                               "document_status":  "released",
+                               "required_for_release":  true,
+                               "file_ref_id":  "FR-SP-GUARD-72"
+                           },
+                           {
+                               "record_id":  "SPM-DRIVE-72",
+                               "document_id":  "DOC-SP-DRIVE-72",
+                               "specification_id":  "SP-DRIVE-72",
+                               "equipment_tags":  [
+                                                      "M-7201",
+                                                      "GB-7201",
+                                                      "CPL-7201"
+                                                  ],
+                               "title":  "Conveyor Drive Train Requirements",
+                               "revision_id":  "REL",
+                               "revision_scheme":  "explicit_sequence",
+                               "revision_sequence":  [
+                                                         "PRE",
+                                                         "CHK",
+                                                         "REL"
+                                                     ],
+                               "document_status":  "released",
+                               "required_for_release":  true,
+                               "file_ref_id":  "FR-SP-DRIVE-72"
+                           }
+                       ]
+}

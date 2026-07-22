@@ -1,0 +1,6 @@
+SYNTHETIC CONTROLLED PLACEHOLDER
+Package: PKG-CVY-DRV-042-S03
+Document: DOC-GRD-625
+Identity: BCD-625
+File reference: FR-DWG-625
+No technical content is evaluated from this placeholder.

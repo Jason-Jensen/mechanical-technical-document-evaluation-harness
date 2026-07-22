@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.3.0",
+  "report_type": "independent_replacement_freeze_verification_public",
+  "verification_date": "2026-07-21",
+  "verifier_role": "independent P4.2 replacement-freeze verifier",
+  "verification_status": "pass",
+  "access_boundary_status": "pass",
+  "freeze_integrity_status": "pass",
+  "contamination_status": "frozen_isolated_pre_execution",
+  "owner_acceptance_status": "pending",
+  "semantic_execution_count": 0,
+  "replacement_family_modified_by_verifier": false,
+  "aggregate_check_count": 14,
+  "aggregate_checks_passed": 14,
+  "aggregate_checks_failed": 0,
+  "aggregate_checks": [
+    {
+      "check_id": "IV-001",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-002",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-003",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-004",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-005",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-006",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-007",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-008",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-009",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-010",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-011",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-012",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-013",
+      "status": "pass"
+    },
+    {
+      "check_id": "IV-014",
+      "status": "pass"
+    }
+  ],
+  "counts": {
+    "authorized_input_manifest_file_count": 9,
+    "authorized_input_access_file_count": 10,
+    "scenario_count": 8,
+    "family_file_count": 210,
+    "non_freeze_inventory_file_count": 208,
+    "scenario_package_file_count": 200,
+    "file_count_per_scenario_package": 25,
+    "producer_bundle_file_count": 205,
+    "protected_bundle_file_count": 3,
+    "manifest_schema_valid_count": 8,
+    "accepted_relationship_contract_count": 11,
+    "controlled_fault_scenario_count": 7,
+    "release_blocking_fault_count": 7,
+    "compound_scenario_count": 1,
+    "required_state_category_count": 4,
+    "exact_finding_record_count": 8,
+    "wildcard_count": 0,
+    "public_leakage_count": 0,
+    "hash_mismatch_count": 0,
+    "freeze_order_violation_count": 0,
+    "blocker_count": 0,
+    "report_file_count": 2
+  },
+  "hashes": {
+    "producer_bundle_sha256": "da154aed47e2f1b26625c40fa0987cf9f4bd872285e5fec13907d1b85f408867",
+    "protected_bundle_sha256": "2b383800ad66625117febe883282392909ec9830286adb644006fc562e282c6e",
+    "complete_family_sha256": "e619c81854d9676b5d821a752e3b00e68d0072572cef64509d5cc9132a3e6ff6"
+  },
+  "commands": [
+    {
+      "command_id": "IV-CMD-READ-PARSE",
+      "status": "completed"
+    },
+    {
+      "command_id": "IV-CMD-STATIC-VALIDATE",
+      "status": "completed"
+    },
+    {
+      "command_id": "IV-CMD-SHA256",
+      "status": "completed"
+    },
+    {
+      "command_id": "IV-CMD-REPORT-WRITE",
+      "status": "completed"
+    },
+    {
+      "command_id": "IV-CMD-SEMANTIC",
+      "status": "not_run"
+    }
+  ],
+  "blocker_status": "none",
+  "blockers": []
+}

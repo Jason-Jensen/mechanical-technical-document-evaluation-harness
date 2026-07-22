@@ -1,0 +1,6 @@
+SYNTHETIC CONTROLLED PLACEHOLDER
+Package: PKG-CVY-DRV-042-S02
+Document: DOC-DS-TUP-72
+Identity: DS-TUP-72
+File reference: FR-DS-TUP-72
+No technical content is evaluated from this placeholder.

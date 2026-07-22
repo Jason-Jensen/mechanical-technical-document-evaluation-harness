@@ -1,0 +1,6 @@
+SYNTHETIC CONTROLLED PLACEHOLDER
+Package: PKG-CVY-DRV-042-S06
+Document: DOC-DS-HPL-72
+Identity: DS-HPL-72
+File reference: FR-DS-HPL-72
+No technical content is evaluated from this placeholder.

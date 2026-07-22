@@ -10,6 +10,9 @@
 
 **Decision status:** D-110 accepted by the project owner on 2026-07-21
 
+**Integration:** PR #62 at exact `main`
+`ea45dcf30fa37d06de2816b6928ca91cec53df94`
+
 ## Executive Result
 
 P4.1 and D-109 are accepted and integrated through PR #61 at exact `main`
@@ -187,15 +190,20 @@ materially distinct replacement is required after any fix.
 - Replacement authority, isolation, minimum matrix, freeze, run count,
   comparison, failure, and rerun rules are explicit.
 - D-109's four-state semantic boundary remains unchanged.
-- P4.2 semantic execution remains blocked pending D-110 and a separately
-  accepted replacement freeze.
+- D-110 is accepted and integrated; P4.2 semantic execution remains blocked
+  pending separately accepted replacement freeze decision D-111.
 
 ## Stop Boundary
 
-Until a replacement freeze package is reviewed and separately accepted:
+The replacement freeze package is reviewed in
+`p4_2_replacement_freeze_review_v0.3.0.md`. D-111 was accepted by the project
+owner on 2026-07-21. Its one-way first-run authority becomes executable only
+after PR #63 integration and exact-main verification. Until then:
 
 - do not execute the exposed held-out family;
 - do not open any additional file in its `protected/` or `expected/` paths;
+- keep `tests/test_held_out_package_fixtures.py` excluded from implementation-branch
+  CI until the replacement first-run evidence is frozen;
 - do not edit, relabel, delete, or move the exposed family;
 - do not implement or tune evaluator behavior;
 - do not author a replacement in this implementation context; and

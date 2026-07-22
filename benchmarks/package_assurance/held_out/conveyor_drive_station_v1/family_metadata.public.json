@@ -1,0 +1,29 @@
+{
+    "schema_version":  "0.3.0",
+    "family_id":  "FAM-HO-CONVEYOR-DRIVE-042",
+    "benchmark_id":  "BENCH-MECH-PKG-V030",
+    "benchmark_revision":  "P4.2-RF-20260721-01",
+    "split":  "held_out",
+    "domain":  "synthetic industrial belt-conveyor drive station release package",
+    "created_date":  "2026-07-21",
+    "scenario_count":  8,
+    "opaque_scenario_token_format":  "SNN",
+    "package_profile":  {
+                            "mandatory_structured_sources_per_scenario":  7,
+                            "controlled_file_placeholders_per_scenario":  18,
+                            "relationship_types":  [
+                                                       "document_to_file",
+                                                       "item_to_equipment",
+                                                       "equipment_to_datasheet"
+                                                   ],
+                            "controlled_file_root":  "files"
+                        },
+    "authorized_main_commit":  "ea45dcf30fa37d06de2816b6928ca91cec53df94",
+    "frozen_evaluator_behavior_commit":  "4cf9fe8",
+    "lifecycle_status":  "frozen_pre_execution",
+    "custody_finalization":  {
+                                "model":  "multi_custodian_isolated_recovery",
+                                "semantic_execution_count":  0,
+                                "owner_acceptance_status":  "pending"
+                            }
+}

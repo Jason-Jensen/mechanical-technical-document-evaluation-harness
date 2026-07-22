@@ -1,0 +1,1142 @@
+{
+  "schema_version": "0.3.0",
+  "family_id": "FAM-HO-CONVEYOR-DRIVE-042",
+  "benchmark_revision": "P4.2-RF-20260721-01",
+  "input_hashes": [
+    {
+      "path": "README_CUSTODIAN.md",
+      "bytes": 2163,
+      "sha256": "de6bfb02724af7b21cec93a97b9ebad005492e64b96e5fdbfaefb8f3a3ff37b9"
+    },
+    {
+      "path": "input/docs/acceptance_plan_v0.3.0.md",
+      "bytes": 27216,
+      "sha256": "d2250999078b61f0655b52736d038c3a5ae706d918af316109bc2737daf0fec4"
+    },
+    {
+      "path": "input/docs/authority_map_example_v0.3.0.json",
+      "bytes": 12587,
+      "sha256": "0bf6da59621b00e7a099b3664c15d9ce6a4f55dd7105015f2aa04f2b25c03261"
+    },
+    {
+      "path": "input/docs/p2_3_completion_and_claim_boundary_v0.3.0.md",
+      "bytes": 5767,
+      "sha256": "5a1e82ae803753c5d7560c287139995c83923a8d56d8b93a3415bb14ca51a58f"
+    },
+    {
+      "path": "input/docs/p4_2_held_out_contamination_and_replacement_gate_v0.3.0.md",
+      "bytes": 9061,
+      "sha256": "529eb4a0bfdbcdb44731519a37e5fd7b8c86987320e4876974bdce5a86e9ade5"
+    },
+    {
+      "path": "input/docs/p4_2_replacement_custodian_public_contract_v0.3.0.md",
+      "bytes": 12837,
+      "sha256": "197e7f8da5beb4218a1548c3e1fa43738edfc6235bf319990af0afe3dc8b86d5"
+    },
+    {
+      "path": "input/docs/workflow_contract_v0.3.0.md",
+      "bytes": 22508,
+      "sha256": "98134fba5bc75dfc1f28455bd5d531e331153c59fe84ef6dde44863193ce39e3"
+    },
+    {
+      "path": "input/schemas/package_manifest.schema.json",
+      "bytes": 9869,
+      "sha256": "1d87ce08a3308882881a63e867044773cb27829d1ad7c38a8d1e8b462ec3247d"
+    },
+    {
+      "path": "input/schemas/package_result.schema.json",
+      "bytes": 16867,
+      "sha256": "6bdb39bdc318cfd6bfe9b0eb4121d19aa42ba782eda420427aaac65e2d770698"
+    }
+  ],
+  "validation": {
+    "script": "outbound/custodian_finalize.js",
+    "mode": "write-inventory",
+    "structural_check_count": 325,
+    "structural_check_passed": true,
+    "semantic_execution_count": 0,
+    "network_access": "none",
+    "external_path_access": "none"
+  },
+  "files": [
+    {
+      "path": "ACCESS_BOUNDARY.md",
+      "bytes": 852,
+      "sha256": "e431ca9396e2cc44934738be37445a917545b1eeb455ab3d2a10fb5513cde99f"
+    },
+    {
+      "path": "custodian_attestation.public.md",
+      "bytes": 754,
+      "sha256": "9d130cc2abca18a4f0df0e74af59e1a33c6784fa873e31f72f96d6d7c09aeda7"
+    },
+    {
+      "path": "execution_index.public.json",
+      "bytes": 1040,
+      "sha256": "d751f5c330b2092cb4150c0d7206c98e30269170b6c970280633a9a116c17c53"
+    },
+    {
+      "path": "family_metadata.public.json",
+      "bytes": 1448,
+      "sha256": "8fe0393b105f444e433325d12c1e57b0f11709eee322de47eb2086166ef1f649"
+    },
+    {
+      "path": "material_distinction.public.md",
+      "bytes": 728,
+      "sha256": "90ca876e6ef4fe45310a281cc2d0e24003fb3d2947cfbda6d33312a2faadd9f6"
+    },
+    {
+      "path": "protected/authoring_record.json",
+      "bytes": 36050,
+      "sha256": "cac9163050b7fc60f2367de6c2fe6189978465a39eadcdf14cdd71932330d8a9"
+    },
+    {
+      "path": "protected/clean_relationship_golden.json",
+      "bytes": 87567,
+      "sha256": "ba63526d9f196c9b5de64267ec06a29698721e2dbffa792c09bce586c823ff53"
+    },
+    {
+      "path": "protected/oracle_bundle.json",
+      "bytes": 231003,
+      "sha256": "8ab6a6737b8e922328f4ec98bd6c957151cccd010d860116720939d60205a94b"
+    },
+    {
+      "path": "scenarios/S01/package/authority_map.json",
+      "bytes": 22696,
+      "sha256": "0ef277236d2bda6129d89b359b303bf9898d4793047e8414a590bc55adaf9c7b"
+    },
+    {
+      "path": "scenarios/S01/package/files/engineering/specifications/bulk-conveyor-REL.txt",
+      "bytes": 195,
+      "sha256": "65b3c5a5b07f51785a70f80e8cd4a09e7da8cdfe283bae95fe79c59dcd21e4f1"
+    },
+    {
+      "path": "scenarios/S01/package/files/engineering/specifications/drive-guarding-REL.txt",
+      "bytes": 198,
+      "sha256": "1ad6f4b4639d8a27a9c18d5b3c8f9ea41bd587ccef143897e56393fcb5674bb4"
+    },
+    {
+      "path": "scenarios/S01/package/files/engineering/specifications/drive-train-REL.txt",
+      "bytes": 198,
+      "sha256": "6e47700898d8d34cab11c1931f496dd2fadd629df6d58f54629fb45cdb70128d"
+    },
+    {
+      "path": "scenarios/S01/package/files/released/plotsets/CD42_620-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "9409295facd0ecaa7e61159b2659758c047fc71664eb186567fccf69bee7d7a9"
+    },
+    {
+      "path": "scenarios/S01/package/files/released/plotsets/CD42_621-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "ee3d9426916e8eed957a8f0207985a635ff6446c276197d49872be3d7634d7b2"
+    },
+    {
+      "path": "scenarios/S01/package/files/released/plotsets/CD42_622-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "a7c17a5c562992ed6d91c2e899e91ec531ce33e861027e1a17c9603c0b3bd53c"
+    },
+    {
+      "path": "scenarios/S01/package/files/released/plotsets/CD42_623-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "1e4c04a5ebdbba009d03c7dbe0918a647205e7368d9b157e397937c472f0c973"
+    },
+    {
+      "path": "scenarios/S01/package/files/released/plotsets/CD42_624-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "34111ee2217dc952934f21f8b6da0ba5789796f050e735481baeb8981f8641ab"
+    },
+    {
+      "path": "scenarios/S01/package/files/released/plotsets/CD42_625-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "9d576d1615f19925e969d780c38f788a0788a13541133d5930c57f57aa54eb1e"
+    },
+    {
+      "path": "scenarios/S01/package/files/vendor/submittals/conveyor-station-data-R4.txt",
+      "bytes": 192,
+      "sha256": "e64f78062ccd85f046ba171e21f2a0cbe8f4a784ddbcc6edb67f06ae24e451c6"
+    },
+    {
+      "path": "scenarios/S01/package/files/vendor/submittals/coupling-data-R4.txt",
+      "bytes": 192,
+      "sha256": "eab705d69c5a7bef9ce5d7a17b9557dedac519a365403c3cade00c10155b2db4"
+    },
+    {
+      "path": "scenarios/S01/package/files/vendor/submittals/discharge-chute-data-R4.txt",
+      "bytes": 192,
+      "sha256": "0b99d859d0bdbd9d3bd930fe9e5f3288133c0ff730e11ef572d96396bc175a19"
+    },
+    {
+      "path": "scenarios/S01/package/files/vendor/submittals/drive-motor-data-R4.txt",
+      "bytes": 192,
+      "sha256": "d6c5e8c7a225711dbccc9c930e1644118a634d68350894a0e0b86b285d1607a7"
+    },
+    {
+      "path": "scenarios/S01/package/files/vendor/submittals/guard-set-data-R4.txt",
+      "bytes": 192,
+      "sha256": "a03c6c92c705651837b38db6ac7152b58b07583bf5997ab91b5c9e0377395be2"
+    },
+    {
+      "path": "scenarios/S01/package/files/vendor/submittals/head-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "26d9be092fdba1eaeed154d31d0e1a85edea1af76a1395b5ded12a025e0e2d68"
+    },
+    {
+      "path": "scenarios/S01/package/files/vendor/submittals/reducer-data-R4.txt",
+      "bytes": 192,
+      "sha256": "d8b887df054ba3ec2c99bf1e15b1770dd06718a22a0cbbe6a10bbbe9d9f17642"
+    },
+    {
+      "path": "scenarios/S01/package/files/vendor/submittals/takeup-frame-data-R4.txt",
+      "bytes": 192,
+      "sha256": "a4d0f252b9fae1fe68bc1f6d9bb9872c6c92991395a53ef44e6d08ed6e19dafa"
+    },
+    {
+      "path": "scenarios/S01/package/files/vendor/submittals/takeup-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "b4f9178d5c6ed50d0a50bc698df8911fa00471a6aeb582f44c387e62534b767d"
+    },
+    {
+      "path": "scenarios/S01/package/inputs/bom_or_equipment_list.csv",
+      "bytes": 1321,
+      "sha256": "bf99392d9646ffa0dc470000f6ba485271bfd13523f9f5fc51660d7c7207e439"
+    },
+    {
+      "path": "scenarios/S01/package/inputs/datasheet_spec_metadata.json",
+      "bytes": 12120,
+      "sha256": "37aaf014d5e80514a50b516437edfe8f95758332d04e6ed94ea971a0d29f3bb4"
+    },
+    {
+      "path": "scenarios/S01/package/inputs/drawing_metadata.json",
+      "bytes": 5915,
+      "sha256": "6a29abf281852d5304002d74a544f2c3f16f9091352e66af7f2cc1393901ca69"
+    },
+    {
+      "path": "scenarios/S01/package/inputs/drawing_register.csv",
+      "bytes": 1023,
+      "sha256": "04753a46a45548a1cb8a53d01a8e668841a2d1a8176870d9fe8727cada095e0c"
+    },
+    {
+      "path": "scenarios/S01/package/inputs/revision_history.csv",
+      "bytes": 1322,
+      "sha256": "63187fa604d6b181d52657e79e792d321911dfe3981cecdf418813111c7a7906"
+    },
+    {
+      "path": "scenarios/S01/package/package_manifest.json",
+      "bytes": 46347,
+      "sha256": "14450429f61668dac1953cc2572d7372a306227fc5faa8b2b03e52f95a5ce237"
+    },
+    {
+      "path": "scenarios/S02/package/authority_map.json",
+      "bytes": 22696,
+      "sha256": "b7d758b4259d2b3b2b849b5aa5b386ad058304caec9a66608170f26aff6503e8"
+    },
+    {
+      "path": "scenarios/S02/package/files/engineering/specifications/bulk-conveyor-REL.txt",
+      "bytes": 195,
+      "sha256": "7678623e39583caaa29b86fdfd89897ceae38e9763e021868394681cb67b19e3"
+    },
+    {
+      "path": "scenarios/S02/package/files/engineering/specifications/drive-guarding-REL.txt",
+      "bytes": 198,
+      "sha256": "2539ee9e0eb47f1ab2f6f5429c17b389c8c5bb943f5751756c88c24dc162ee5d"
+    },
+    {
+      "path": "scenarios/S02/package/files/engineering/specifications/drive-train-REL.txt",
+      "bytes": 198,
+      "sha256": "404f3b85fb49e2a577f8abb0a630eb296032cd82f92dbd21a5a453efcfc066d3"
+    },
+    {
+      "path": "scenarios/S02/package/files/released/plotsets/CD42_620-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "37f6efae6cac0d8c0860cb2cd7b2ff94c460e44dc04ff34e917e2582a444bff3"
+    },
+    {
+      "path": "scenarios/S02/package/files/released/plotsets/CD42_621-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "e848027beefd5ccc58e1103930be282b8bbc71e534339e147a1224cdf86081b5"
+    },
+    {
+      "path": "scenarios/S02/package/files/released/plotsets/CD42_622-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "b965a0cb246918d8378e03b5f3f2e9ed0fba8aaac2494d9dbdd4aae8906965e2"
+    },
+    {
+      "path": "scenarios/S02/package/files/released/plotsets/CD42_623-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "b494d897838fe75567ae03bf0f481805ea97638a0f701543dbb03d03922e5815"
+    },
+    {
+      "path": "scenarios/S02/package/files/released/plotsets/CD42_624-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "96f96c7e770b6e259e68850ab493ea3c13213aba9f42f62a62eac44b4f3430af"
+    },
+    {
+      "path": "scenarios/S02/package/files/released/plotsets/CD42_625-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "3ecb89f635669386b171626dc909b6c736cf3dcbb9ec56bcebd2b282568e37fb"
+    },
+    {
+      "path": "scenarios/S02/package/files/vendor/submittals/conveyor-station-data-R4.txt",
+      "bytes": 192,
+      "sha256": "4ed37ec405d5422f078880d2ab976f7982da100b21113caa6c0cbe9efc47da11"
+    },
+    {
+      "path": "scenarios/S02/package/files/vendor/submittals/coupling-data-R4.txt",
+      "bytes": 192,
+      "sha256": "798b740e446407aff5513332bd12c1f7df669335f5deba9380eb85939234138f"
+    },
+    {
+      "path": "scenarios/S02/package/files/vendor/submittals/discharge-chute-data-R4.txt",
+      "bytes": 192,
+      "sha256": "7edf26b1cfab041f08442ec5fbc5d907123345347a3add1dc136d505ecd0d19c"
+    },
+    {
+      "path": "scenarios/S02/package/files/vendor/submittals/drive-motor-data-R4.txt",
+      "bytes": 192,
+      "sha256": "a7de3ed99c26f9f62906f0eecde05c972dfb3da73c8816f4b845d3f466566bce"
+    },
+    {
+      "path": "scenarios/S02/package/files/vendor/submittals/guard-set-data-R4.txt",
+      "bytes": 192,
+      "sha256": "15bf771f27bc253cd23f98c6f4b50684afb43628eebd9e5fa99d6b6308a75237"
+    },
+    {
+      "path": "scenarios/S02/package/files/vendor/submittals/head-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "3a1441bd58828ece4f79fa712e5738b17268e1b0705d776b535913bd9a9c98ce"
+    },
+    {
+      "path": "scenarios/S02/package/files/vendor/submittals/reducer-data-R4.txt",
+      "bytes": 192,
+      "sha256": "55b51ee869db36196e9adc37fd3b3858982c494bfc17ca9a1072075a9d5d047c"
+    },
+    {
+      "path": "scenarios/S02/package/files/vendor/submittals/takeup-frame-data-R4.txt",
+      "bytes": 192,
+      "sha256": "224eae0d3dd3f3e0f0269dee3eac5760e744fe3178af030eec4cacf169c4f57c"
+    },
+    {
+      "path": "scenarios/S02/package/files/vendor/submittals/takeup-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "68b33a31a713352d861761c2c2e0d2b8d90c74a1de3e8fdaddd426e0ea3fe066"
+    },
+    {
+      "path": "scenarios/S02/package/inputs/bom_or_equipment_list.csv",
+      "bytes": 1321,
+      "sha256": "bf99392d9646ffa0dc470000f6ba485271bfd13523f9f5fc51660d7c7207e439"
+    },
+    {
+      "path": "scenarios/S02/package/inputs/datasheet_spec_metadata.json",
+      "bytes": 12120,
+      "sha256": "37aaf014d5e80514a50b516437edfe8f95758332d04e6ed94ea971a0d29f3bb4"
+    },
+    {
+      "path": "scenarios/S02/package/inputs/drawing_metadata.json",
+      "bytes": 5915,
+      "sha256": "7ed4ea980a8f0219f8bcce59d18eb36898ba0f07e9a6b8a471bf476c2de9bbf8"
+    },
+    {
+      "path": "scenarios/S02/package/inputs/drawing_register.csv",
+      "bytes": 1023,
+      "sha256": "04753a46a45548a1cb8a53d01a8e668841a2d1a8176870d9fe8727cada095e0c"
+    },
+    {
+      "path": "scenarios/S02/package/inputs/revision_history.csv",
+      "bytes": 1322,
+      "sha256": "63187fa604d6b181d52657e79e792d321911dfe3981cecdf418813111c7a7906"
+    },
+    {
+      "path": "scenarios/S02/package/package_manifest.json",
+      "bytes": 46347,
+      "sha256": "61a00c88fb9caa568fb383c8b2f6f1390e3a7efcfb25190ff3ac0d2093953737"
+    },
+    {
+      "path": "scenarios/S03/package/authority_map.json",
+      "bytes": 22696,
+      "sha256": "d369af28af95c173d7b867452800209547fd93326a6788f292405ad4446fd482"
+    },
+    {
+      "path": "scenarios/S03/package/files/engineering/specifications/bulk-conveyor-REL.txt",
+      "bytes": 195,
+      "sha256": "d3fd94cb7ea5382d79e1f4196ee842341e27201d24c6e6d86790df431bbde0fc"
+    },
+    {
+      "path": "scenarios/S03/package/files/engineering/specifications/drive-guarding-REL.txt",
+      "bytes": 198,
+      "sha256": "bec259cd9e1b4b1371bf7a5bf8aa8714cf8d8c346cd0efe7f3e9dff01890ad6f"
+    },
+    {
+      "path": "scenarios/S03/package/files/engineering/specifications/drive-train-REL.txt",
+      "bytes": 198,
+      "sha256": "0d44b385b40f461c92d57bf7f5ea916cd9944ec90f736bdd89adf7199977fa2c"
+    },
+    {
+      "path": "scenarios/S03/package/files/released/plotsets/CD42_620-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "61f36df02caf928c61744bda705f69f33d31e86c3eb11763fa8f783202eefb03"
+    },
+    {
+      "path": "scenarios/S03/package/files/released/plotsets/CD42_621-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "35058dc83b7ce5ffeccc43c642d460bcad54d28852a70f087f046b5c0dfdc50a"
+    },
+    {
+      "path": "scenarios/S03/package/files/released/plotsets/CD42_622-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "f3e3e331b7572e2b4145aedaabe0d46c2fd8f7390794f802e246b75cf21731e9"
+    },
+    {
+      "path": "scenarios/S03/package/files/released/plotsets/CD42_623-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "122c91867643f80bb8808e77e02005525a5fbe701be1b81b5ffd554c5fa4b32b"
+    },
+    {
+      "path": "scenarios/S03/package/files/released/plotsets/CD42_624-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "77fd705e1f16af45c555d8eefb2ce00443a5bb701f4ab15c2c81896d5f4e114c"
+    },
+    {
+      "path": "scenarios/S03/package/files/released/plotsets/CD42_625-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "db0c34c6fe4e2399b6bd9d7c0f148fc2e7af1dc38129d5f5c55fb3273c2e4093"
+    },
+    {
+      "path": "scenarios/S03/package/files/vendor/submittals/conveyor-station-data-R4.txt",
+      "bytes": 192,
+      "sha256": "56fd9421bd51311d64b42a130811b8281b099d190c8e653ee6fb72c7661d082b"
+    },
+    {
+      "path": "scenarios/S03/package/files/vendor/submittals/coupling-data-R4.txt",
+      "bytes": 192,
+      "sha256": "2c8f62bdb936295d688aa660b801d971f2d74c42751fb8a38a5b4b6d5140b8b1"
+    },
+    {
+      "path": "scenarios/S03/package/files/vendor/submittals/discharge-chute-data-R4.txt",
+      "bytes": 192,
+      "sha256": "e167ac284d850b49a183182e09dcd1ad7750dcb6b770d4fb2ffa932faebcc15a"
+    },
+    {
+      "path": "scenarios/S03/package/files/vendor/submittals/drive-motor-data-R4.txt",
+      "bytes": 192,
+      "sha256": "c5c295c4b596a2a9fc8b82d712c033868547bd9c720d802f9be3ac1a7e96243b"
+    },
+    {
+      "path": "scenarios/S03/package/files/vendor/submittals/guard-set-data-R4.txt",
+      "bytes": 192,
+      "sha256": "79adcb07b82f44272a26711bb3bb50e2cec0d741e969d6dc00a524f62c3fc640"
+    },
+    {
+      "path": "scenarios/S03/package/files/vendor/submittals/head-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "39a74b32ee7a0c61a06fccefc4cbaf2b54bab8ab0646622a84cede3fbf659b4a"
+    },
+    {
+      "path": "scenarios/S03/package/files/vendor/submittals/reducer-data-R4.txt",
+      "bytes": 192,
+      "sha256": "fca585a7472d8f0c674ee6695ff4b6ca55c6c2a579c72000bc8fc1a43dc3ad8c"
+    },
+    {
+      "path": "scenarios/S03/package/files/vendor/submittals/takeup-frame-data-R4.txt",
+      "bytes": 192,
+      "sha256": "a36fd4fc5148369199d4ac67dbe121b483b14bcf264860a94668868cca052589"
+    },
+    {
+      "path": "scenarios/S03/package/files/vendor/submittals/takeup-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "b1509915179675572355d0b797f6609ce4c235c12cec5de882c9993ebac229a9"
+    },
+    {
+      "path": "scenarios/S03/package/inputs/bom_or_equipment_list.csv",
+      "bytes": 1321,
+      "sha256": "bf99392d9646ffa0dc470000f6ba485271bfd13523f9f5fc51660d7c7207e439"
+    },
+    {
+      "path": "scenarios/S03/package/inputs/datasheet_spec_metadata.json",
+      "bytes": 12120,
+      "sha256": "37aaf014d5e80514a50b516437edfe8f95758332d04e6ed94ea971a0d29f3bb4"
+    },
+    {
+      "path": "scenarios/S03/package/inputs/drawing_metadata.json",
+      "bytes": 5915,
+      "sha256": "aa977753962a03447d26e5f845ff5aeef542a1724a94fae5f1eb2e3b164f7ea5"
+    },
+    {
+      "path": "scenarios/S03/package/inputs/drawing_register.csv",
+      "bytes": 1023,
+      "sha256": "04753a46a45548a1cb8a53d01a8e668841a2d1a8176870d9fe8727cada095e0c"
+    },
+    {
+      "path": "scenarios/S03/package/inputs/revision_history.csv",
+      "bytes": 1322,
+      "sha256": "63187fa604d6b181d52657e79e792d321911dfe3981cecdf418813111c7a7906"
+    },
+    {
+      "path": "scenarios/S03/package/package_manifest.json",
+      "bytes": 46347,
+      "sha256": "0d0ca06df72260a1a612df5e2f04f7d8f724b6f1857c46a7b62267a821d5a06d"
+    },
+    {
+      "path": "scenarios/S04/package/authority_map.json",
+      "bytes": 22696,
+      "sha256": "e5e3c84376703a64d78e2c3e173ae2e1d50dba44eec9c1ec315087868c4d3882"
+    },
+    {
+      "path": "scenarios/S04/package/files/engineering/specifications/bulk-conveyor-REL.txt",
+      "bytes": 195,
+      "sha256": "e7387d5b1d5d56e951c91ae5084d1b62683f408152043869920a94e45d75cb19"
+    },
+    {
+      "path": "scenarios/S04/package/files/engineering/specifications/drive-guarding-REL.txt",
+      "bytes": 198,
+      "sha256": "488fd23810df4557411edf77ff5de64d28244ad81c5e0138ba69de59df1dcb35"
+    },
+    {
+      "path": "scenarios/S04/package/files/engineering/specifications/drive-train-REL.txt",
+      "bytes": 198,
+      "sha256": "4a9f9cd1151513ca4c1a41bcff3cefa17fc3eb394ad606c71f60d6ab7976185f"
+    },
+    {
+      "path": "scenarios/S04/package/files/released/plotsets/CD42_620-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "8d11e763114ac5240c274fe22298395dbd6af70589c1bf42c2944b49842c9d9b"
+    },
+    {
+      "path": "scenarios/S04/package/files/released/plotsets/CD42_621-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "b07f8d7a6c251da89fc1b90496190ac5c87b00a44a82cbb9c2b37f63aced77b4"
+    },
+    {
+      "path": "scenarios/S04/package/files/released/plotsets/CD42_622-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "66ec280265518e41f7085135e773a92caebf10c9ba5a6c713b196503715cd842"
+    },
+    {
+      "path": "scenarios/S04/package/files/released/plotsets/CD42_623-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "984db78323670a81264e3bf78a4babf401c50673e5b1f5bf735eba82390aacd9"
+    },
+    {
+      "path": "scenarios/S04/package/files/released/plotsets/CD42_624-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "368b83bd6df0cd2f18b68435f3395746ae21b93ea17906a4a90c6381559c8313"
+    },
+    {
+      "path": "scenarios/S04/package/files/released/plotsets/CD42_625-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "45abf6a59fa94956b43a7494a0d18c4af74df3a617741fa656f4cb3d35e40a21"
+    },
+    {
+      "path": "scenarios/S04/package/files/vendor/submittals/conveyor-station-data-R4.txt",
+      "bytes": 192,
+      "sha256": "5fabf0fe72dc33ed1131c86bb6e56e8ea9783c6c4f534865698a4b9d5b29fb6b"
+    },
+    {
+      "path": "scenarios/S04/package/files/vendor/submittals/coupling-data-R4.txt",
+      "bytes": 192,
+      "sha256": "7dffff99d399e5866c2ed5eb76cead3f26a900603bad13c2f20b010c3cbe9204"
+    },
+    {
+      "path": "scenarios/S04/package/files/vendor/submittals/discharge-chute-data-R4.txt",
+      "bytes": 192,
+      "sha256": "5b16068537fc15538de121749f702c6aa6ff8a026a5eb82f562919cad571de9c"
+    },
+    {
+      "path": "scenarios/S04/package/files/vendor/submittals/drive-motor-data-R4.txt",
+      "bytes": 192,
+      "sha256": "79057723a4e6ee01f4fb0466908e35b3e464964e6ce61859235b633b3e7c2f9f"
+    },
+    {
+      "path": "scenarios/S04/package/files/vendor/submittals/guard-set-data-R4.txt",
+      "bytes": 192,
+      "sha256": "5eb39860ad2b95dc2e5463e4fe0a0ec25c1b5e74642f2db960d02663e40d3ffb"
+    },
+    {
+      "path": "scenarios/S04/package/files/vendor/submittals/head-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "920fae84a07ff5ed9f613a00b9960fa04b9520a9a6e0a38ac1df7b5fc428a669"
+    },
+    {
+      "path": "scenarios/S04/package/files/vendor/submittals/reducer-data-R4.txt",
+      "bytes": 192,
+      "sha256": "c4acbd60bd1a4248e0bd7d0c096f631865a80a379f55d6e77bafa811077935af"
+    },
+    {
+      "path": "scenarios/S04/package/files/vendor/submittals/takeup-frame-data-R4.txt",
+      "bytes": 192,
+      "sha256": "d3aa2038f259945141fb5459e7d07e56a60b61465e61ab8a98181967b513a378"
+    },
+    {
+      "path": "scenarios/S04/package/files/vendor/submittals/takeup-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "dcea8bdae961d5e7b1d20fbf659bd9209f4a984e6bb35069d4db448ade6c8c51"
+    },
+    {
+      "path": "scenarios/S04/package/inputs/bom_or_equipment_list.csv",
+      "bytes": 1321,
+      "sha256": "982c8bf803d3dceb34b26c577190340528c99cdc57a8faa695af888d5a77a687"
+    },
+    {
+      "path": "scenarios/S04/package/inputs/datasheet_spec_metadata.json",
+      "bytes": 12120,
+      "sha256": "37aaf014d5e80514a50b516437edfe8f95758332d04e6ed94ea971a0d29f3bb4"
+    },
+    {
+      "path": "scenarios/S04/package/inputs/drawing_metadata.json",
+      "bytes": 5915,
+      "sha256": "6a29abf281852d5304002d74a544f2c3f16f9091352e66af7f2cc1393901ca69"
+    },
+    {
+      "path": "scenarios/S04/package/inputs/drawing_register.csv",
+      "bytes": 1023,
+      "sha256": "04753a46a45548a1cb8a53d01a8e668841a2d1a8176870d9fe8727cada095e0c"
+    },
+    {
+      "path": "scenarios/S04/package/inputs/revision_history.csv",
+      "bytes": 1322,
+      "sha256": "63187fa604d6b181d52657e79e792d321911dfe3981cecdf418813111c7a7906"
+    },
+    {
+      "path": "scenarios/S04/package/package_manifest.json",
+      "bytes": 46347,
+      "sha256": "b96e4191c610d03c1f68b959c3542abdeb26fadf7cb4cb9c807c83f1b371dc7f"
+    },
+    {
+      "path": "scenarios/S05/package/authority_map.json",
+      "bytes": 22696,
+      "sha256": "d76c4d84d12e3a8f3a852fdd860df7653cd8f1b82898e3dd13a37a00c72b2bbe"
+    },
+    {
+      "path": "scenarios/S05/package/files/engineering/specifications/bulk-conveyor-REL.txt",
+      "bytes": 195,
+      "sha256": "795deb9441ef58680e88f59f2bf0bbb19dfec23f2851edb97c63c639cb2bdd2c"
+    },
+    {
+      "path": "scenarios/S05/package/files/engineering/specifications/drive-guarding-REL.txt",
+      "bytes": 198,
+      "sha256": "a85683b480fdc53d5f49ec87d74e04698910794797affb6532dc76ed0c520121"
+    },
+    {
+      "path": "scenarios/S05/package/files/engineering/specifications/drive-train-REL.txt",
+      "bytes": 198,
+      "sha256": "ee277b70c46db8c84ad92d536a010bd808aa0c2108b842e210d62f3cf2ca1992"
+    },
+    {
+      "path": "scenarios/S05/package/files/released/plotsets/CD42_620-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "99cd21024e07c59a98da2bea964ce42a274d40995eeefe946741f604a75e526e"
+    },
+    {
+      "path": "scenarios/S05/package/files/released/plotsets/CD42_621-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "98f875a7f82c193c9d47ef94a48fc7ef67d02de6f490690b8aa804933f7b6e5c"
+    },
+    {
+      "path": "scenarios/S05/package/files/released/plotsets/CD42_622-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "21725cb4b382cb8bfc4ace0abc28547df80b0903fd4259ad502ae8b397156349"
+    },
+    {
+      "path": "scenarios/S05/package/files/released/plotsets/CD42_623-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "1db8be62023230f6db0e1c3264e47d0c74ba4a9412e51ec5423c2d7c43438a24"
+    },
+    {
+      "path": "scenarios/S05/package/files/released/plotsets/CD42_624-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "5021337f2b6d1dfe1e45a38e25f1387ec622b387329cbd058e13ff9cad9e0db3"
+    },
+    {
+      "path": "scenarios/S05/package/files/released/plotsets/CD42_625-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "6bad834753efc3a69dc873d76001553123028819abfb6c482889e3e531e05d91"
+    },
+    {
+      "path": "scenarios/S05/package/files/vendor/submittals/conveyor-station-data-R4.txt",
+      "bytes": 192,
+      "sha256": "184b003bf5733c79ea877369a32c89c9cba83cefdb36667aa0ca31d5149e5ade"
+    },
+    {
+      "path": "scenarios/S05/package/files/vendor/submittals/coupling-data-R4.txt",
+      "bytes": 192,
+      "sha256": "bf8ab1849b15c75f49541150a1184673e7431c31e8a15ccb0bb37b7ce9d625c1"
+    },
+    {
+      "path": "scenarios/S05/package/files/vendor/submittals/discharge-chute-data-R4.txt",
+      "bytes": 192,
+      "sha256": "d46b0e1e110cadd5f96c7739c6b6f47a29327fb0f1a8d518dfaa3f52329ce8e2"
+    },
+    {
+      "path": "scenarios/S05/package/files/vendor/submittals/drive-motor-data-R4.txt",
+      "bytes": 192,
+      "sha256": "dda5b63f4f8530338d5096da55f221fdce1556a511a0b13990aafd2f88873d2f"
+    },
+    {
+      "path": "scenarios/S05/package/files/vendor/submittals/guard-set-data-R4.txt",
+      "bytes": 192,
+      "sha256": "0af0ff3b0271b3a46b97749e8f83717c8f7c1f3f49cb050a22844f7114af26e2"
+    },
+    {
+      "path": "scenarios/S05/package/files/vendor/submittals/head-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "d16cc198c18fbca040eaa3695a1ee54ff3025b79d49d3108706e1a5ef38a2379"
+    },
+    {
+      "path": "scenarios/S05/package/files/vendor/submittals/reducer-data-R4.txt",
+      "bytes": 192,
+      "sha256": "f4253f07a76bf48150a1f392a919a54a1f317f7a0f256aa6916ab9f9bc3aabf7"
+    },
+    {
+      "path": "scenarios/S05/package/files/vendor/submittals/takeup-frame-data-R4.txt",
+      "bytes": 192,
+      "sha256": "8c8423d089a5417785ab01bd7a7d2a597a9b2e3da8c6737f47599aca8ffda4fd"
+    },
+    {
+      "path": "scenarios/S05/package/files/vendor/submittals/takeup-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "6edbfd7bf2566f19116a5f648dabc3e109c346407e9874e84a8e3b73f499e1a3"
+    },
+    {
+      "path": "scenarios/S05/package/inputs/bom_or_equipment_list.csv",
+      "bytes": 1321,
+      "sha256": "bf99392d9646ffa0dc470000f6ba485271bfd13523f9f5fc51660d7c7207e439"
+    },
+    {
+      "path": "scenarios/S05/package/inputs/datasheet_spec_metadata.json",
+      "bytes": 12120,
+      "sha256": "37aaf014d5e80514a50b516437edfe8f95758332d04e6ed94ea971a0d29f3bb4"
+    },
+    {
+      "path": "scenarios/S05/package/inputs/drawing_metadata.json",
+      "bytes": 5915,
+      "sha256": "6a29abf281852d5304002d74a544f2c3f16f9091352e66af7f2cc1393901ca69"
+    },
+    {
+      "path": "scenarios/S05/package/inputs/drawing_register.csv",
+      "bytes": 1023,
+      "sha256": "04753a46a45548a1cb8a53d01a8e668841a2d1a8176870d9fe8727cada095e0c"
+    },
+    {
+      "path": "scenarios/S05/package/inputs/revision_history.csv",
+      "bytes": 1322,
+      "sha256": "b877c6d2ed2e3147523c95f9fad6116c9d5913ceb1fd5ef0c035a3bacb06ed3a"
+    },
+    {
+      "path": "scenarios/S05/package/package_manifest.json",
+      "bytes": 46347,
+      "sha256": "1ec1d83cb18bb183170cd7ee0bf20a070bc89295134e5f0da42da53fc178c6d9"
+    },
+    {
+      "path": "scenarios/S06/package/authority_map.json",
+      "bytes": 21729,
+      "sha256": "7ce33bcff7d744196d33cfbea767f08f78da816ff38bf9eb62b9fdcf92efd616"
+    },
+    {
+      "path": "scenarios/S06/package/files/engineering/specifications/bulk-conveyor-REL.txt",
+      "bytes": 195,
+      "sha256": "0823c0560ba727328c242b57e556501a800edcf3c745c2ef5a214d807f70a6bb"
+    },
+    {
+      "path": "scenarios/S06/package/files/engineering/specifications/drive-guarding-REL.txt",
+      "bytes": 198,
+      "sha256": "7d81d18296db254770bdc40b739d6cbc8ba963aa57f19ab27827dbab077572b2"
+    },
+    {
+      "path": "scenarios/S06/package/files/engineering/specifications/drive-train-REL.txt",
+      "bytes": 198,
+      "sha256": "9159a12a7389916139cd657ec1ddf8d01c07f623f5e21125a4fb40799a09164f"
+    },
+    {
+      "path": "scenarios/S06/package/files/released/plotsets/CD42_620-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "d21cba0d526eceef9435f1421ca540a0f3e1f1706987e8e48df2f89a43706f7e"
+    },
+    {
+      "path": "scenarios/S06/package/files/released/plotsets/CD42_621-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "396b7cece1c44f133438916e7ef85a5280bc2dc4e150bd0fab36be8a0dd7f5b2"
+    },
+    {
+      "path": "scenarios/S06/package/files/released/plotsets/CD42_622-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "64c90d3bb137b8530432b90bc10339e9ea7711a919cc9433f1ca6e465531b16d"
+    },
+    {
+      "path": "scenarios/S06/package/files/released/plotsets/CD42_623-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "ee8b0efe02285bc34a5e514fde10ffc8676a6c3d296896d8702d5e805eae120e"
+    },
+    {
+      "path": "scenarios/S06/package/files/released/plotsets/CD42_624-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "876774917ab6cff89f263c1cb1ea37f9fe98d043f3bdc55d905c333eb31f1817"
+    },
+    {
+      "path": "scenarios/S06/package/files/released/plotsets/CD42_625-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "7ed8d124ada41a4bebc4acb274e16b949a122152393d4815ee87c693fb60e2ee"
+    },
+    {
+      "path": "scenarios/S06/package/files/vendor/submittals/conveyor-station-data-R4.txt",
+      "bytes": 192,
+      "sha256": "ecdfa990f19f213adce39cae7ba0589031c6e57b78e7e358182a40ee58c22208"
+    },
+    {
+      "path": "scenarios/S06/package/files/vendor/submittals/coupling-data-R4.txt",
+      "bytes": 192,
+      "sha256": "376530539596f7128a0d459f674c5c84379bc66f15ad05a02d716b54432a9eba"
+    },
+    {
+      "path": "scenarios/S06/package/files/vendor/submittals/discharge-chute-data-R4.txt",
+      "bytes": 192,
+      "sha256": "934a82eb6613baf779d7afa21045743b0b65436061bab0a289a3b16fab52dd67"
+    },
+    {
+      "path": "scenarios/S06/package/files/vendor/submittals/drive-motor-data-R4.txt",
+      "bytes": 192,
+      "sha256": "a1dbfe27f900b431585d7cee35ae36a8e3cd41c7c340cba5897b7280ab38300d"
+    },
+    {
+      "path": "scenarios/S06/package/files/vendor/submittals/guard-set-data-R4.txt",
+      "bytes": 192,
+      "sha256": "99fcc7097df0bd2fa3bba93cbedb8db4c5565b4f04041791f9084a840b93f7f6"
+    },
+    {
+      "path": "scenarios/S06/package/files/vendor/submittals/head-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "e7d7060b416482a6363cba5e1d17fa5c60e7599673723f2d65c5f2dcd9701c0f"
+    },
+    {
+      "path": "scenarios/S06/package/files/vendor/submittals/reducer-data-R4.txt",
+      "bytes": 192,
+      "sha256": "39342b64274ea8cd84d995efaa8d7342942bdc4874af6eb60ccff16cf9c0d17f"
+    },
+    {
+      "path": "scenarios/S06/package/files/vendor/submittals/takeup-frame-data-R4.txt",
+      "bytes": 192,
+      "sha256": "75725e1242d470e6eec29b04c8ad085bd6efa523b7248a6770a69c9649bd26a5"
+    },
+    {
+      "path": "scenarios/S06/package/files/vendor/submittals/takeup-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "ed79881af3fc35affd0a709173c8b08b44fa77f90a33c08d36d47bf37441f4b9"
+    },
+    {
+      "path": "scenarios/S06/package/inputs/bom_or_equipment_list.csv",
+      "bytes": 1321,
+      "sha256": "bf99392d9646ffa0dc470000f6ba485271bfd13523f9f5fc51660d7c7207e439"
+    },
+    {
+      "path": "scenarios/S06/package/inputs/datasheet_spec_metadata.json",
+      "bytes": 12120,
+      "sha256": "37aaf014d5e80514a50b516437edfe8f95758332d04e6ed94ea971a0d29f3bb4"
+    },
+    {
+      "path": "scenarios/S06/package/inputs/drawing_metadata.json",
+      "bytes": 5915,
+      "sha256": "6a29abf281852d5304002d74a544f2c3f16f9091352e66af7f2cc1393901ca69"
+    },
+    {
+      "path": "scenarios/S06/package/inputs/drawing_register.csv",
+      "bytes": 1023,
+      "sha256": "04753a46a45548a1cb8a53d01a8e668841a2d1a8176870d9fe8727cada095e0c"
+    },
+    {
+      "path": "scenarios/S06/package/inputs/revision_history.csv",
+      "bytes": 1322,
+      "sha256": "63187fa604d6b181d52657e79e792d321911dfe3981cecdf418813111c7a7906"
+    },
+    {
+      "path": "scenarios/S06/package/package_manifest.json",
+      "bytes": 46347,
+      "sha256": "c0e1b60e39d76dbd98393d240410df735c6e4f2b6f50b98511761f1219aa43d0"
+    },
+    {
+      "path": "scenarios/S07/package/authority_map.json",
+      "bytes": 22696,
+      "sha256": "b2a8485f6b57655cc976c388066c25800f28460b772b49a6eca4d6b08c0ba56d"
+    },
+    {
+      "path": "scenarios/S07/package/files/engineering/specifications/bulk-conveyor-REL.txt",
+      "bytes": 195,
+      "sha256": "57201ffa5bdb1146b70a7d854b37dcaeedcea635f39c4846dbed7b210c89799b"
+    },
+    {
+      "path": "scenarios/S07/package/files/engineering/specifications/drive-guarding-REL.txt",
+      "bytes": 198,
+      "sha256": "4b20c4960fccb56e1064f2d200dee5030b024d8fabf82f11a80f5397f4af65bf"
+    },
+    {
+      "path": "scenarios/S07/package/files/engineering/specifications/drive-train-REL.txt",
+      "bytes": 198,
+      "sha256": "d1530d4faafd3deed3261cf0ead35bb3b0d875039acb540fba91e068078c0c50"
+    },
+    {
+      "path": "scenarios/S07/package/files/released/plotsets/CD42_620-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "bb7ba66fed5285255646fa0242a1d8cde0be1fcfdb02ec90c6be1df982a9126e"
+    },
+    {
+      "path": "scenarios/S07/package/files/released/plotsets/CD42_621-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "f5437b42b219fc435272119461ae1eef2d19e2ed142edf6845265f0dacc5a4ff"
+    },
+    {
+      "path": "scenarios/S07/package/files/released/plotsets/CD42_622-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "13e9c5e994ca6bcae45ca3f68f01653ec3f41429fdd9e7448bbb20e531f1a2a5"
+    },
+    {
+      "path": "scenarios/S07/package/files/released/plotsets/CD42_623-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "f6499abf0c3d24a9325953b7920a44241e37d01f972dfd927f37ef78eb597722"
+    },
+    {
+      "path": "scenarios/S07/package/files/released/plotsets/CD42_624-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "a53b37ac76803d07fc3d341223979ff167d7ad66446dca9ff20740712cd80717"
+    },
+    {
+      "path": "scenarios/S07/package/files/released/plotsets/CD42_625-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "7d191bc8dbeba3562f5d72022fa687036cd61c1421a1581dde7b0651f0e8cea8"
+    },
+    {
+      "path": "scenarios/S07/package/files/vendor/submittals/conveyor-station-data-R4.txt",
+      "bytes": 192,
+      "sha256": "b6d4c2133e9c0fe6e4d955ffeadfe4c0ad1aaa19e86747a24d108d78cb686bc7"
+    },
+    {
+      "path": "scenarios/S07/package/files/vendor/submittals/coupling-data-R4.txt",
+      "bytes": 192,
+      "sha256": "5aa96743ffe642f1e8ebb3822866ebf60b55e1805e82e710c9f77decc25a4185"
+    },
+    {
+      "path": "scenarios/S07/package/files/vendor/submittals/discharge-chute-data-R4.txt",
+      "bytes": 192,
+      "sha256": "c0aa01fa40b5fba457dac63a120129177db3741f815a2625547d4cbd7fd8ff24"
+    },
+    {
+      "path": "scenarios/S07/package/files/vendor/submittals/drive-motor-data-R4.txt",
+      "bytes": 192,
+      "sha256": "4ca4e578adc7d29129130db95cdf24b42e28279e1d3cdbc24a21d8844c1c4bff"
+    },
+    {
+      "path": "scenarios/S07/package/files/vendor/submittals/guard-set-data-R4.txt",
+      "bytes": 192,
+      "sha256": "75f0d58cf3ece89afe6bac0e1c601703b38407a2e4d09a21ef209756d83a2933"
+    },
+    {
+      "path": "scenarios/S07/package/files/vendor/submittals/head-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "d5f9c906b0cdafd77ae09b14dd6f35b7f361b6aaaff808fe826404df86b7e48a"
+    },
+    {
+      "path": "scenarios/S07/package/files/vendor/submittals/reducer-data-R4.txt",
+      "bytes": 192,
+      "sha256": "bf685d534a24fa47247b63625727d70e591db3cd1d70c4c962ea000c24cf92dd"
+    },
+    {
+      "path": "scenarios/S07/package/files/vendor/submittals/takeup-frame-data-R4.txt",
+      "bytes": 192,
+      "sha256": "aaaa1de4b76ed9fdee94626f5e2900159c6f71ff08629c2ca19cc15295bab169"
+    },
+    {
+      "path": "scenarios/S07/package/files/vendor/submittals/takeup-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "4efc018194eda4b4fee5c516959e3624ddf919fb624753ddea509a0c9825ac7f"
+    },
+    {
+      "path": "scenarios/S07/package/inputs/bom_or_equipment_list.csv",
+      "bytes": 1321,
+      "sha256": "bf99392d9646ffa0dc470000f6ba485271bfd13523f9f5fc51660d7c7207e439"
+    },
+    {
+      "path": "scenarios/S07/package/inputs/datasheet_spec_metadata.json",
+      "bytes": 12120,
+      "sha256": "37aaf014d5e80514a50b516437edfe8f95758332d04e6ed94ea971a0d29f3bb4"
+    },
+    {
+      "path": "scenarios/S07/package/inputs/drawing_metadata.json",
+      "bytes": 87,
+      "sha256": "76ec8193fab939674b5faf188b51250db4a1ee60ab82065f694c07b98bcba476"
+    },
+    {
+      "path": "scenarios/S07/package/inputs/drawing_register.csv",
+      "bytes": 1023,
+      "sha256": "04753a46a45548a1cb8a53d01a8e668841a2d1a8176870d9fe8727cada095e0c"
+    },
+    {
+      "path": "scenarios/S07/package/inputs/revision_history.csv",
+      "bytes": 1322,
+      "sha256": "63187fa604d6b181d52657e79e792d321911dfe3981cecdf418813111c7a7906"
+    },
+    {
+      "path": "scenarios/S07/package/package_manifest.json",
+      "bytes": 46347,
+      "sha256": "2382a049cf06750cf5df96ba20a3ea750006e0fdd23937a00336a87a06179ab3"
+    },
+    {
+      "path": "scenarios/S08/package/authority_map.json",
+      "bytes": 23782,
+      "sha256": "84a9d27efbd358a75f18e1492ccd28d93d370d1285c17e27f52ddf919751966b"
+    },
+    {
+      "path": "scenarios/S08/package/files/engineering/specifications/bulk-conveyor-REL.txt",
+      "bytes": 195,
+      "sha256": "d495e3c5799b6bf12dcac19ef3006536c2ea84ec362b202accd15396ce74d8a0"
+    },
+    {
+      "path": "scenarios/S08/package/files/engineering/specifications/drive-guarding-REL.txt",
+      "bytes": 198,
+      "sha256": "2860bb09329e093b17785a587bd08acc522343b3e57579df3a09b43362383538"
+    },
+    {
+      "path": "scenarios/S08/package/files/engineering/specifications/drive-train-REL.txt",
+      "bytes": 198,
+      "sha256": "248af628270e494f3fc287b5f59c71a00c73ddcd6f55d9f5a109757fe975383c"
+    },
+    {
+      "path": "scenarios/S08/package/files/released/plotsets/CD42_620-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "e0c41a11ab459b1a3e6bb1decb25ff6a8ff716ccc1a08428dde61804ef3a807a"
+    },
+    {
+      "path": "scenarios/S08/package/files/released/plotsets/CD42_621-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "8b60aa87a2162b6ffa5bafbb9e299600aab292ad89102550ed41a1dba7cdf709"
+    },
+    {
+      "path": "scenarios/S08/package/files/released/plotsets/CD42_622-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "4ce368b843effed0e555ad80720c07b4a9c776961dc8cc2a9264c3cb4f5cd770"
+    },
+    {
+      "path": "scenarios/S08/package/files/released/plotsets/CD42_623-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "f4574066021e27c835379a78b5439945e2cd4255ecaa5a2156a5867e20693fda"
+    },
+    {
+      "path": "scenarios/S08/package/files/released/plotsets/CD42_624-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "d4ba525cb44a0997b46116fac5e61f0a7d99c1a3301b8faa098f22e8c35422d7"
+    },
+    {
+      "path": "scenarios/S08/package/files/released/plotsets/CD42_625-R07.controlled.txt",
+      "bytes": 186,
+      "sha256": "3629509925b2527eda48a8e916730d35620061e9b4740b932e089b3531961e21"
+    },
+    {
+      "path": "scenarios/S08/package/files/vendor/submittals/conveyor-station-data-R4.txt",
+      "bytes": 192,
+      "sha256": "3e6dc5821c41d3481b212e78d3b249e751f50bec61b83bc8f72c1aed1d55fcab"
+    },
+    {
+      "path": "scenarios/S08/package/files/vendor/submittals/coupling-data-R4.txt",
+      "bytes": 192,
+      "sha256": "24285ea808347624fe2ec5dd70517f14f5b9e028f0ce22bc39ab26adbd4e97af"
+    },
+    {
+      "path": "scenarios/S08/package/files/vendor/submittals/discharge-chute-data-R4.txt",
+      "bytes": 192,
+      "sha256": "420886df7aaec937fda5497ebbdc8ae658526cceb9b96d173ae937bdd2c5435d"
+    },
+    {
+      "path": "scenarios/S08/package/files/vendor/submittals/drive-motor-data-R4.txt",
+      "bytes": 192,
+      "sha256": "4f86744ac67ff725ec2a488798de60d6b5716a2a89eabd38be8aaa73ab2ce441"
+    },
+    {
+      "path": "scenarios/S08/package/files/vendor/submittals/guard-set-data-R4.txt",
+      "bytes": 192,
+      "sha256": "3cfe4280090f189cfe187b923eec83856706f1721eab802bf979b7d594c93e79"
+    },
+    {
+      "path": "scenarios/S08/package/files/vendor/submittals/head-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "25dcf866229a05d367d285f7bbe2ed26c9567c1f32c8ef8966ecd9bedf38294d"
+    },
+    {
+      "path": "scenarios/S08/package/files/vendor/submittals/reducer-data-R4.txt",
+      "bytes": 192,
+      "sha256": "c804a2cf413f6699513f341f141ff291db98af3438e92f2818de18c9f229f86b"
+    },
+    {
+      "path": "scenarios/S08/package/files/vendor/submittals/takeup-frame-data-R4.txt",
+      "bytes": 192,
+      "sha256": "751ae9254987289ad9525779ab01e5022de8e5bd5e3c772de1f6459a8d8e537e"
+    },
+    {
+      "path": "scenarios/S08/package/files/vendor/submittals/takeup-pulley-data-R4.txt",
+      "bytes": 192,
+      "sha256": "1a1a3f0321bbd0d87b7213801a4bdc2d517a22481e576ccb741c0f3ca4daf560"
+    },
+    {
+      "path": "scenarios/S08/package/inputs/bom_or_equipment_list.csv",
+      "bytes": 1321,
+      "sha256": "bf99392d9646ffa0dc470000f6ba485271bfd13523f9f5fc51660d7c7207e439"
+    },
+    {
+      "path": "scenarios/S08/package/inputs/datasheet_spec_metadata.json",
+      "bytes": 97,
+      "sha256": "d1a9433e31b9ba63d318c575d47d9be000759abb7524a5c68180362a294ec173"
+    },
+    {
+      "path": "scenarios/S08/package/inputs/drawing_metadata.json",
+      "bytes": 5915,
+      "sha256": "6a29abf281852d5304002d74a544f2c3f16f9091352e66af7f2cc1393901ca69"
+    },
+    {
+      "path": "scenarios/S08/package/inputs/drawing_register.csv",
+      "bytes": 1023,
+      "sha256": "04753a46a45548a1cb8a53d01a8e668841a2d1a8176870d9fe8727cada095e0c"
+    },
+    {
+      "path": "scenarios/S08/package/inputs/revision_history.csv",
+      "bytes": 1322,
+      "sha256": "63187fa604d6b181d52657e79e792d321911dfe3981cecdf418813111c7a7906"
+    },
+    {
+      "path": "scenarios/S08/package/package_manifest.json",
+      "bytes": 46347,
+      "sha256": "dc5d4cb2a7826eac8f75c5ef1fa314c4110db34bdc3c7012c130d7e736613122"
+    }
+  ],
+  "scenario_package_hashes": {
+    "S01": {
+      "file_count": 25,
+      "sha256": "05452f04de4903c0c26aa2800fc4808e800b02adc5e1371cde41a40d7ff6b7a7"
+    },
+    "S02": {
+      "file_count": 25,
+      "sha256": "d9975e76b111a5bf22b06b05db5dce398872608839e21b36dd9b1bee113814ae"
+    },
+    "S03": {
+      "file_count": 25,
+      "sha256": "d30c6ec3e167ebd1fa564d1c63894d5c1a4c41a04a266ea55832237049b63c7f"
+    },
+    "S04": {
+      "file_count": 25,
+      "sha256": "947773cee8330ae3a42e7f4812b745f514d466416ee7e91919ca4142ce292d9a"
+    },
+    "S05": {
+      "file_count": 25,
+      "sha256": "742cb1c0982596121f9ba8d15167fc7ffe816a6397cb53b9614245c843a09759"
+    },
+    "S06": {
+      "file_count": 25,
+      "sha256": "821f7720c7adb9eb6d5ba7663ed57dac13bb60aa17cddd229456740d1fe392a6"
+    },
+    "S07": {
+      "file_count": 25,
+      "sha256": "d251d3a242aa2adaddf45eeecefd83a363bdadc7258a830b1259f63f425411f7"
+    },
+    "S08": {
+      "file_count": 25,
+      "sha256": "445258ba1ca6173bceac19d4a8344312b40d18aa616507735ae3434c24a9bc25"
+    }
+  },
+  "bundle_hashes": {
+    "producer_bundle_sha256": "da154aed47e2f1b26625c40fa0987cf9f4bd872285e5fec13907d1b85f408867",
+    "protected_bundle_sha256": "2b383800ad66625117febe883282392909ec9830286adb644006fc562e282c6e",
+    "complete_family_sha256": "e619c81854d9676b5d821a752e3b00e68d0072572cef64509d5cc9132a3e6ff6"
+  }
+}

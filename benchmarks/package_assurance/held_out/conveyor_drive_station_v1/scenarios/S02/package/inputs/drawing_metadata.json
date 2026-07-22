@@ -1,0 +1,118 @@
+{
+    "schema_version":  "0.3.0-fixture-example",
+    "source_type":  "drawing_metadata",
+    "records":  [
+                    {
+                        "record_id":  "DM-DOC-DRV-620",
+                        "document_id":  "DOC-DRV-620",
+                        "drawing_number":  "BCD-620",
+                        "title":  "Discharge Drive Station Arrangement",
+                        "revision_id":  "07",
+                        "revision_scheme":  "numeric_zero_padded",
+                        "document_status":  "released",
+                        "discipline":  "mechanical",
+                        "owner":  "conveying_systems",
+                        "equipment_tags":  [
+                                               "BC-7201",
+                                               "M-7201",
+                                               "GB-7201"
+                                           ],
+                        "required_for_release":  true,
+                        "file_ref_id":  "FR-DWG-620"
+                    },
+                    {
+                        "record_id":  "DM-DOC-PUL-622",
+                        "document_id":  "DOC-PUL-622",
+                        "drawing_number":  "BCD-622",
+                        "title":  "Head Pulley And Coupling Assembly",
+                        "revision_id":  "07",
+                        "revision_scheme":  "numeric_zero_padded",
+                        "document_status":  "released",
+                        "discipline":  "mechanical",
+                        "owner":  "conveying_systems",
+                        "equipment_tags":  [
+                                               "P-7201-H",
+                                               "CPL-7201"
+                                           ],
+                        "required_for_release":  true,
+                        "file_ref_id":  "FR-DWG-622"
+                    },
+                    {
+                        "record_id":  "DM-DOC-GRD-625",
+                        "document_id":  "DOC-GRD-625",
+                        "drawing_number":  "BCD-625",
+                        "title":  "Drive Guarding Layout",
+                        "revision_id":  "08",
+                        "revision_scheme":  "numeric_zero_padded",
+                        "document_status":  "released",
+                        "discipline":  "mechanical",
+                        "owner":  "conveying_systems",
+                        "equipment_tags":  [
+                                               "GRD-7201",
+                                               "M-7201",
+                                               "GB-7201",
+                                               "CPL-7201"
+                                           ],
+                        "required_for_release":  true,
+                        "file_ref_id":  "FR-DWG-625"
+                    },
+                    {
+                        "record_id":  "DM-DOC-TUP-621",
+                        "document_id":  "DOC-TUP-621",
+                        "drawing_number":  "BCD-621",
+                        "title":  "Take-Up Frame Arrangement",
+                        "revision_id":  "07",
+                        "revision_scheme":  "numeric_zero_padded",
+                        "document_status":  "released",
+                        "discipline":  "mechanical",
+                        "owner":  "conveying_systems",
+                        "equipment_tags":  [
+                                               "TU-7201",
+                                               "P-7201-T"
+                                           ],
+                        "required_for_release":  true,
+                        "file_ref_id":  "FR-DWG-621"
+                    },
+                    {
+                        "record_id":  "DM-DOC-CHT-624",
+                        "document_id":  "DOC-CHT-624",
+                        "drawing_number":  "BCD-624",
+                        "title":  "Transfer Chute Interface",
+                        "revision_id":  "07",
+                        "revision_scheme":  "numeric_zero_padded",
+                        "document_status":  "released",
+                        "discipline":  "mechanical",
+                        "owner":  "conveying_systems",
+                        "equipment_tags":  [
+                                               "CH-7201",
+                                               "BC-7201"
+                                           ],
+                        "required_for_release":  true,
+                        "file_ref_id":  "FR-DWG-624"
+                    },
+                    {
+                        "record_id":  "DM-DOC-FDN-623",
+                        "document_id":  "DOC-FDN-623",
+                        "drawing_number":  "BCD-623",
+                        "title":  "Drive Station Foundation Loads",
+                        "revision_id":  "07",
+                        "revision_scheme":  "numeric_zero_padded",
+                        "document_status":  "released",
+                        "discipline":  "mechanical",
+                        "owner":  "conveying_systems",
+                        "equipment_tags":  [
+                                               "BC-7201",
+                                               "M-7201",
+                                               "GB-7201",
+                                               "P-7201-H",
+                                               "P-7201-T",
+                                               "TU-7201",
+                                               "GRD-7201",
+                                               "CH-7201",
+                                               "CPL-7201"
+                                           ],
+                        "required_for_release":  true,
+                        "file_ref_id":  "FR-DWG-623"
+                    }
+                ]
+}

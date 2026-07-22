@@ -1,0 +1,718 @@
+{
+    "schema_version":  "0.3.0",
+    "package_id":  "PKG-CVY-DRV-042-S06",
+    "package_title":  "Synthetic Belt Conveyor Drive Station Release Package S06",
+    "created_date":  "2026-07-21",
+    "synthetic":  true,
+    "source_inventory":  [
+                             {
+                                 "source_type":  "package_manifest",
+                                 "path":  "package_manifest.json",
+                                 "format":  "json",
+                                 "required_for_release":  true
+                             },
+                             {
+                                 "source_type":  "drawing_register",
+                                 "path":  "inputs/drawing_register.csv",
+                                 "format":  "csv",
+                                 "required_for_release":  true
+                             },
+                             {
+                                 "source_type":  "drawing_metadata",
+                                 "path":  "inputs/drawing_metadata.json",
+                                 "format":  "json",
+                                 "required_for_release":  true
+                             },
+                             {
+                                 "source_type":  "bom_or_equipment_list",
+                                 "path":  "inputs/bom_or_equipment_list.csv",
+                                 "format":  "csv",
+                                 "required_for_release":  true
+                             },
+                             {
+                                 "source_type":  "datasheet_spec_metadata",
+                                 "path":  "inputs/datasheet_spec_metadata.json",
+                                 "format":  "json",
+                                 "required_for_release":  true
+                             },
+                             {
+                                 "source_type":  "revision_history",
+                                 "path":  "inputs/revision_history.csv",
+                                 "format":  "csv",
+                                 "required_for_release":  true
+                             },
+                             {
+                                 "source_type":  "authority_map",
+                                 "path":  "authority_map.json",
+                                 "format":  "json",
+                                 "required_for_release":  true
+                             }
+                         ],
+    "authority_map_ref":  "authority_map.json",
+    "allowed_file_reference_roots":  [
+                                         "files"
+                                     ],
+    "document_inventory":  [
+                               {
+                                   "document_id":  "DOC-DRV-620",
+                                   "document_type":  "drawing",
+                                   "title":  "Discharge Drive Station Arrangement",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "07",
+                                                            "scheme":  "numeric_zero_padded",
+                                                            "width":  2
+                                                        },
+                                   "drawing_number":  "BCD-620",
+                                   "file_ref_id":  "FR-DWG-620"
+                               },
+                               {
+                                   "document_id":  "DOC-PUL-622",
+                                   "document_type":  "drawing",
+                                   "title":  "Head Pulley And Coupling Assembly",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "07",
+                                                            "scheme":  "numeric_zero_padded",
+                                                            "width":  2
+                                                        },
+                                   "drawing_number":  "BCD-622",
+                                   "file_ref_id":  "FR-DWG-622"
+                               },
+                               {
+                                   "document_id":  "DOC-GRD-625",
+                                   "document_type":  "drawing",
+                                   "title":  "Drive Guarding Layout",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "07",
+                                                            "scheme":  "numeric_zero_padded",
+                                                            "width":  2
+                                                        },
+                                   "drawing_number":  "BCD-625",
+                                   "file_ref_id":  "FR-DWG-625"
+                               },
+                               {
+                                   "document_id":  "DOC-TUP-621",
+                                   "document_type":  "drawing",
+                                   "title":  "Take-Up Frame Arrangement",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "07",
+                                                            "scheme":  "numeric_zero_padded",
+                                                            "width":  2
+                                                        },
+                                   "drawing_number":  "BCD-621",
+                                   "file_ref_id":  "FR-DWG-621"
+                               },
+                               {
+                                   "document_id":  "DOC-CHT-624",
+                                   "document_type":  "drawing",
+                                   "title":  "Transfer Chute Interface",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "07",
+                                                            "scheme":  "numeric_zero_padded",
+                                                            "width":  2
+                                                        },
+                                   "drawing_number":  "BCD-624",
+                                   "file_ref_id":  "FR-DWG-624"
+                               },
+                               {
+                                   "document_id":  "DOC-FDN-623",
+                                   "document_type":  "drawing",
+                                   "title":  "Drive Station Foundation Loads",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "07",
+                                                            "scheme":  "numeric_zero_padded",
+                                                            "width":  2
+                                                        },
+                                   "drawing_number":  "BCD-623",
+                                   "file_ref_id":  "FR-DWG-623"
+                               },
+                               {
+                                   "document_id":  "DOC-DS-TUF-72",
+                                   "document_type":  "datasheet",
+                                   "title":  "Gravity Take-Up Frame Data",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "4",
+                                                            "scheme":  "numeric_integer"
+                                                        },
+                                   "datasheet_id":  "DS-TUF-72",
+                                   "file_ref_id":  "FR-DS-TUF-72"
+                               },
+                               {
+                                   "document_id":  "DOC-DS-MTR-72",
+                                   "document_type":  "datasheet",
+                                   "title":  "Conveyor Drive Motor Data",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "4",
+                                                            "scheme":  "numeric_integer"
+                                                        },
+                                   "datasheet_id":  "DS-MTR-72",
+                                   "file_ref_id":  "FR-DS-MTR-72"
+                               },
+                               {
+                                   "document_id":  "DOC-DS-GRD-72",
+                                   "document_type":  "datasheet",
+                                   "title":  "Drive Guard Fabrication Data",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "4",
+                                                            "scheme":  "numeric_integer"
+                                                        },
+                                   "datasheet_id":  "DS-GRD-72",
+                                   "file_ref_id":  "FR-DS-GRD-72"
+                               },
+                               {
+                                   "document_id":  "DOC-DS-GBX-72",
+                                   "document_type":  "datasheet",
+                                   "title":  "Helical Bevel Reducer Data",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "4",
+                                                            "scheme":  "numeric_integer"
+                                                        },
+                                   "datasheet_id":  "DS-GBX-72",
+                                   "file_ref_id":  "FR-DS-GBX-72"
+                               },
+                               {
+                                   "document_id":  "DOC-DS-CVY-72",
+                                   "document_type":  "datasheet",
+                                   "title":  "Belt Conveyor Drive Station Data",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "4",
+                                                            "scheme":  "numeric_integer"
+                                                        },
+                                   "datasheet_id":  "DS-CVY-72",
+                                   "file_ref_id":  "FR-DS-CVY-72"
+                               },
+                               {
+                                   "document_id":  "DOC-DS-HPL-72",
+                                   "document_type":  "datasheet",
+                                   "title":  "Head Pulley Data",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "4",
+                                                            "scheme":  "numeric_integer"
+                                                        },
+                                   "datasheet_id":  "DS-HPL-72",
+                                   "file_ref_id":  "FR-DS-HPL-72"
+                               },
+                               {
+                                   "document_id":  "DOC-DS-CPL-72",
+                                   "document_type":  "datasheet",
+                                   "title":  "Low-Speed Coupling Data",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "4",
+                                                            "scheme":  "numeric_integer"
+                                                        },
+                                   "datasheet_id":  "DS-CPL-72",
+                                   "file_ref_id":  "FR-DS-CPL-72"
+                               },
+                               {
+                                   "document_id":  "DOC-DS-CHT-72",
+                                   "document_type":  "datasheet",
+                                   "title":  "Transfer Chute Data",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "4",
+                                                            "scheme":  "numeric_integer"
+                                                        },
+                                   "datasheet_id":  "DS-CHT-72",
+                                   "file_ref_id":  "FR-DS-CHT-72"
+                               },
+                               {
+                                   "document_id":  "DOC-DS-TUP-72",
+                                   "document_type":  "datasheet",
+                                   "title":  "Take-Up Pulley Data",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "4",
+                                                            "scheme":  "numeric_integer"
+                                                        },
+                                   "datasheet_id":  "DS-TUP-72",
+                                   "file_ref_id":  "FR-DS-TUP-72"
+                               },
+                               {
+                                   "document_id":  "DOC-SP-BULK-72",
+                                   "document_type":  "specification",
+                                   "title":  "Bulk Conveyor Mechanical Requirements",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "REL",
+                                                            "scheme":  "explicit_sequence",
+                                                            "allowed_values":  [
+                                                                                   "PRE",
+                                                                                   "CHK",
+                                                                                   "REL"
+                                                                               ]
+                                                        },
+                                   "specification_id":  "SP-BULK-72",
+                                   "file_ref_id":  "FR-SP-BULK-72"
+                               },
+                               {
+                                   "document_id":  "DOC-SP-GUARD-72",
+                                   "document_type":  "specification",
+                                   "title":  "Rotating Equipment Guard Requirements",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "REL",
+                                                            "scheme":  "explicit_sequence",
+                                                            "allowed_values":  [
+                                                                                   "PRE",
+                                                                                   "CHK",
+                                                                                   "REL"
+                                                                               ]
+                                                        },
+                                   "specification_id":  "SP-GUARD-72",
+                                   "file_ref_id":  "FR-SP-GUARD-72"
+                               },
+                               {
+                                   "document_id":  "DOC-SP-DRIVE-72",
+                                   "document_type":  "specification",
+                                   "title":  "Conveyor Drive Train Requirements",
+                                   "required_for_release":  true,
+                                   "current_revision":  {
+                                                            "revision_id":  "REL",
+                                                            "scheme":  "explicit_sequence",
+                                                            "allowed_values":  [
+                                                                                   "PRE",
+                                                                                   "CHK",
+                                                                                   "REL"
+                                                                               ]
+                                                        },
+                                   "specification_id":  "SP-DRIVE-72",
+                                   "file_ref_id":  "FR-SP-DRIVE-72"
+                               }
+                           ],
+    "file_references":  [
+                            {
+                                "file_ref_id":  "FR-DWG-620",
+                                "path":  "files/released/plotsets/CD42_620-R07.controlled.txt",
+                                "artifact_type":  "drawing_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DWG-622",
+                                "path":  "files/released/plotsets/CD42_622-R07.controlled.txt",
+                                "artifact_type":  "drawing_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DWG-625",
+                                "path":  "files/released/plotsets/CD42_625-R07.controlled.txt",
+                                "artifact_type":  "drawing_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DWG-621",
+                                "path":  "files/released/plotsets/CD42_621-R07.controlled.txt",
+                                "artifact_type":  "drawing_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DWG-624",
+                                "path":  "files/released/plotsets/CD42_624-R07.controlled.txt",
+                                "artifact_type":  "drawing_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DWG-623",
+                                "path":  "files/released/plotsets/CD42_623-R07.controlled.txt",
+                                "artifact_type":  "drawing_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DS-TUF-72",
+                                "path":  "files/vendor/submittals/takeup-frame-data-R4.txt",
+                                "artifact_type":  "datasheet_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DS-MTR-72",
+                                "path":  "files/vendor/submittals/drive-motor-data-R4.txt",
+                                "artifact_type":  "datasheet_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DS-GRD-72",
+                                "path":  "files/vendor/submittals/guard-set-data-R4.txt",
+                                "artifact_type":  "datasheet_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DS-GBX-72",
+                                "path":  "files/vendor/submittals/reducer-data-R4.txt",
+                                "artifact_type":  "datasheet_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DS-CVY-72",
+                                "path":  "files/vendor/submittals/conveyor-station-data-R4.txt",
+                                "artifact_type":  "datasheet_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DS-HPL-72",
+                                "path":  "files/vendor/submittals/head-pulley-data-R4.txt",
+                                "artifact_type":  "datasheet_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DS-CPL-72",
+                                "path":  "files/vendor/submittals/coupling-data-R4.txt",
+                                "artifact_type":  "datasheet_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DS-CHT-72",
+                                "path":  "files/vendor/submittals/discharge-chute-data-R4.txt",
+                                "artifact_type":  "datasheet_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-DS-TUP-72",
+                                "path":  "files/vendor/submittals/takeup-pulley-data-R4.txt",
+                                "artifact_type":  "datasheet_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-SP-BULK-72",
+                                "path":  "files/engineering/specifications/bulk-conveyor-REL.txt",
+                                "artifact_type":  "specification_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-SP-GUARD-72",
+                                "path":  "files/engineering/specifications/drive-guarding-REL.txt",
+                                "artifact_type":  "specification_placeholder",
+                                "required_for_release":  true
+                            },
+                            {
+                                "file_ref_id":  "FR-SP-DRIVE-72",
+                                "path":  "files/engineering/specifications/drive-train-REL.txt",
+                                "artifact_type":  "specification_placeholder",
+                                "required_for_release":  true
+                            }
+                        ],
+    "relationship_declarations":  [
+                                      {
+                                          "relationship_id":  "REL-DOC-FILE-DOC-DRV-620",
+                                          "relationship_type":  "document_to_file",
+                                          "source":  {
+                                                         "identifier_type":  "document_id",
+                                                         "identifier":  "DOC-DRV-620"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "file_ref_id",
+                                                         "identifier":  "FR-DWG-620"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-DOC-FILE-DOC-PUL-622",
+                                          "relationship_type":  "document_to_file",
+                                          "source":  {
+                                                         "identifier_type":  "document_id",
+                                                         "identifier":  "DOC-PUL-622"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "file_ref_id",
+                                                         "identifier":  "FR-DWG-622"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-DOC-FILE-DOC-GRD-625",
+                                          "relationship_type":  "document_to_file",
+                                          "source":  {
+                                                         "identifier_type":  "document_id",
+                                                         "identifier":  "DOC-GRD-625"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "file_ref_id",
+                                                         "identifier":  "FR-DWG-625"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-DOC-FILE-DOC-TUP-621",
+                                          "relationship_type":  "document_to_file",
+                                          "source":  {
+                                                         "identifier_type":  "document_id",
+                                                         "identifier":  "DOC-TUP-621"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "file_ref_id",
+                                                         "identifier":  "FR-DWG-621"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-DOC-FILE-DOC-CHT-624",
+                                          "relationship_type":  "document_to_file",
+                                          "source":  {
+                                                         "identifier_type":  "document_id",
+                                                         "identifier":  "DOC-CHT-624"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "file_ref_id",
+                                                         "identifier":  "FR-DWG-624"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-DOC-FILE-DOC-FDN-623",
+                                          "relationship_type":  "document_to_file",
+                                          "source":  {
+                                                         "identifier_type":  "document_id",
+                                                         "identifier":  "DOC-FDN-623"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "file_ref_id",
+                                                         "identifier":  "FR-DWG-623"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-ITEM-EQ-ITEM-727",
+                                          "relationship_type":  "item_to_equipment",
+                                          "source":  {
+                                                         "identifier_type":  "item_id",
+                                                         "identifier":  "ITEM-727"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "P-7201-T"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-ITEM-EQ-ITEM-721",
+                                          "relationship_type":  "item_to_equipment",
+                                          "source":  {
+                                                         "identifier_type":  "item_id",
+                                                         "identifier":  "ITEM-721"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "M-7201"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-ITEM-EQ-ITEM-723",
+                                          "relationship_type":  "item_to_equipment",
+                                          "source":  {
+                                                         "identifier_type":  "item_id",
+                                                         "identifier":  "ITEM-723"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "GB-7201"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-ITEM-EQ-ITEM-729",
+                                          "relationship_type":  "item_to_equipment",
+                                          "source":  {
+                                                         "identifier_type":  "item_id",
+                                                         "identifier":  "ITEM-729"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "CH-7201"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-ITEM-EQ-ITEM-724",
+                                          "relationship_type":  "item_to_equipment",
+                                          "source":  {
+                                                         "identifier_type":  "item_id",
+                                                         "identifier":  "ITEM-724"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "CPL-7201"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-ITEM-EQ-ITEM-722",
+                                          "relationship_type":  "item_to_equipment",
+                                          "source":  {
+                                                         "identifier_type":  "item_id",
+                                                         "identifier":  "ITEM-722"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "BC-7201"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-ITEM-EQ-ITEM-728",
+                                          "relationship_type":  "item_to_equipment",
+                                          "source":  {
+                                                         "identifier_type":  "item_id",
+                                                         "identifier":  "ITEM-728"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "GRD-7201"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-ITEM-EQ-ITEM-725",
+                                          "relationship_type":  "item_to_equipment",
+                                          "source":  {
+                                                         "identifier_type":  "item_id",
+                                                         "identifier":  "ITEM-725"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "P-7201-H"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-ITEM-EQ-ITEM-726",
+                                          "relationship_type":  "item_to_equipment",
+                                          "source":  {
+                                                         "identifier_type":  "item_id",
+                                                         "identifier":  "ITEM-726"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "TU-7201"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-EQ-DS-TU-7201",
+                                          "relationship_type":  "equipment_to_datasheet",
+                                          "source":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "TU-7201"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "datasheet_id",
+                                                         "identifier":  "DS-TUF-72"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-EQ-DS-M-7201",
+                                          "relationship_type":  "equipment_to_datasheet",
+                                          "source":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "M-7201"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "datasheet_id",
+                                                         "identifier":  "DS-MTR-72"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-EQ-DS-GRD-7201",
+                                          "relationship_type":  "equipment_to_datasheet",
+                                          "source":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "GRD-7201"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "datasheet_id",
+                                                         "identifier":  "DS-GRD-72"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-EQ-DS-GB-7201",
+                                          "relationship_type":  "equipment_to_datasheet",
+                                          "source":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "GB-7201"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "datasheet_id",
+                                                         "identifier":  "DS-GBX-72"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-EQ-DS-BC-7201",
+                                          "relationship_type":  "equipment_to_datasheet",
+                                          "source":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "BC-7201"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "datasheet_id",
+                                                         "identifier":  "DS-CVY-72"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-EQ-DS-P-7201-H",
+                                          "relationship_type":  "equipment_to_datasheet",
+                                          "source":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "P-7201-H"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "datasheet_id",
+                                                         "identifier":  "DS-HPL-72"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-EQ-DS-CPL-7201",
+                                          "relationship_type":  "equipment_to_datasheet",
+                                          "source":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "CPL-7201"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "datasheet_id",
+                                                         "identifier":  "DS-CPL-72"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-EQ-DS-CH-7201",
+                                          "relationship_type":  "equipment_to_datasheet",
+                                          "source":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "CH-7201"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "datasheet_id",
+                                                         "identifier":  "DS-CHT-72"
+                                                     },
+                                          "required_for_release":  true
+                                      },
+                                      {
+                                          "relationship_id":  "REL-EQ-DS-P-7201-T",
+                                          "relationship_type":  "equipment_to_datasheet",
+                                          "source":  {
+                                                         "identifier_type":  "equipment_tag",
+                                                         "identifier":  "P-7201-T"
+                                                     },
+                                          "target":  {
+                                                         "identifier_type":  "datasheet_id",
+                                                         "identifier":  "DS-TUP-72"
+                                                     },
+                                          "required_for_release":  true
+                                      }
+                                  ]
+}
