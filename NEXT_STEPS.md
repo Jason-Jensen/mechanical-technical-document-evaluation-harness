@@ -18,21 +18,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
 - **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
-- **P4.2:** D-112 is integrated through PR #64 at exact `main` `0264db7`. External family revision `FR-D112-HOIST-002` passed 68/68 independent controls. Oracle-blind runner revision 6 passed 53/53 independent static controls. D-113 is accepted; PR #65 integration and exact-main verification are pending. Semantic execution count remains zero.
+- **P4.2:** D-113 is integrated through PR #65 at exact `main` `6a74c74` and consumed. Preflight passed 27/27, then one runner invocation consumed all eight scenarios with exit `70` and zero complete output sets. Independent raw verification passed with zero mismatches. The protected comparison found 0 comparable and 8 not-evaluable scenarios. D-114 is proposed; release is held and rerun is prohibited.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Active Gate
 
-P4.1 is integrated and frozen. D-112's external-custody preparation is complete. The accepted candidate family and runner remain outside Git, independently verified, and unexecuted. D-113 is accepted but does not activate until PR #65 is integrated and every frozen identity is reverified.
+P4.1 is integrated and frozen. The D-113 one-shot sequence is complete and immutable. Its operational evidence is valid, but its semantic benchmark result is not evaluable because atomic publication failed before any complete output set existed. The consumed family and raw evidence remain outside Git and may not be rerun.
 
 ## Active Work Block
 
-- **WBS:** P4.2 accepted first-run authority integration
-- **Branch:** `codex/p4.2-external-held-out-freeze`
-- **Objective:** Integrate accepted D-113, record exact `main`, and activate the one-shot sequence without weakening the zero-run freeze.
-- **Definition of done:** D-113 acceptance is recorded; PR #65 is merged; exact `main` is recorded; all frozen identities are reverified before execution; semantic run count remains zero through activation.
+- **WBS:** P4.2 external first-run result review
+- **Branch:** `codex/p4.2-external-held-out-first-run`
+- **Objective:** Preserve the consumed failed run, publish aggregate evidence, and obtain a bounded stabilization decision without claiming semantic performance.
+- **Definition of done:** One-shot and comparison evidence are independently verified; all custody assets remain unchanged; no rerun occurs; the release hold and undefined metrics are explicit; D-114 is ready for owner review.
 
-Next action: merge PR #65 after green checks, record exact `main`, and reverify every frozen identity. Then invoke each opaque package exactly once, freeze raw evidence, and use a separate comparison custodian. Retry, import, tuning, evaluator changes, P4.3 work, public reruns, and release claims remain blocked.
+Next action: accept or revise D-114. The recommended authorization is a development-only reproduction and minimal atomic-publication stabilization block with a non-held-out end-to-end publication sentinel and better failure diagnostics. Held-out reruns, a new held-out family, semantic changes, P4.3 work, public reruns, imports, and release claims remain blocked.
 
 ## Delivery Sequence
 
