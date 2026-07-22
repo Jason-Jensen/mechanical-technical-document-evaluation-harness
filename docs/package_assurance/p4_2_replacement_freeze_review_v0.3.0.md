@@ -160,10 +160,14 @@ or hash mismatch stops P4.2 and requires a separate decision.
 
 ## Execution Gate
 
-D-111 acceptance does not bypass integration. PR #63 must merge, exact `main`
-must be recorded, and the isolated runner boundary must be independently
-verified before any scenario invocation. Protected comparison, retries,
-evaluator changes, P4.3 work, public reruns, and release claims remain blocked
-until raw first-run evidence is frozen. Implementation-branch CI temporarily
-excludes `tests/test_held_out_package_fixtures.py`; the remaining regression and
-coverage floor stay mandatory.
+D-111 was integrated through PR #63 at exact `main` `4d2c0f5`. During that
+integration, Git printed release-family paths and comparative per-file
+statistics before the first run. No semantic execution occurred, but an
+independent fresh governance review classified the metadata side channel as
+contamination under D-110 and IMP-023. D-111 execution authority therefore
+stopped unused.
+
+The replacement remains unchanged and unexecuted but is ineligible for release
+held-out claims. Proposed D-112 and the external-custody recovery design are
+controlled in
+`p4_2_second_contamination_and_external_custody_gate_v0.3.0.md`.
