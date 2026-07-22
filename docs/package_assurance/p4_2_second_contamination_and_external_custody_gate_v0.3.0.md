@@ -1,12 +1,12 @@
 # P4.2 Second Contamination and External-Custody Gate
 
-**Status:** Accepted; PR #64 integration pending
+**Status:** Accepted and integrated; D-113 owner review pending
 
-**Date:** 2026-07-21
+**Date:** 2026-07-22
 
 **Decision:** D-112 accepted by the project owner on 2026-07-22
 
-**Exact integrated main:** `4d2c0f5f09950929ef057ef4f0efa3d75efdf0ed`
+**Exact integrated main:** `0264db7d0c904452ffdec83c51f74103185a8e8d`
 
 **Frozen evaluator behavior:** `4cf9fe8`
 
@@ -99,3 +99,11 @@ Acceptance authorizes the external-custody replacement sequence only after PR
 The project owner accepted D-112 on 2026-07-22. A separate owner decision is
 still mandatory after the new external freeze and oracle-blind staging are
 independently verified and before any semantic invocation.
+
+## Integration and Handoff
+
+PR #64 integrated D-112 at exact `main` `0264db7`. External family revision 2
+and oracle-blind runner revision 6 subsequently passed independent freeze
+verification without repository import or semantic execution. The aggregate
+review and proposed D-113 one-shot execution decision are controlled in
+`p4_2_external_custody_freeze_review_v0.3.0.md`.

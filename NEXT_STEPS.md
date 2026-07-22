@@ -18,21 +18,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
 - **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
-- **P4.2:** D-111 integrated through PR #63 at exact `main` `4d2c0f5`. Its Git change summary exposed scenario-level path and file-statistics metadata before first execution. Semantic execution count remains zero. The replacement is preserved unchanged and release-ineligible. D-112 external-custody recovery is accepted; PR #64 integration is pending.
+- **P4.2:** D-112 is integrated through PR #64 at exact `main` `0264db7`. External family revision `FR-D112-HOIST-002` passed 68/68 independent controls. Oracle-blind runner revision 6 passed 53/53 independent static controls. D-113 is accepted; PR #65 integration and exact-main verification are pending. Semantic execution count remains zero.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Active Gate
 
-P4.1 is integrated and frozen. D-111 remains historically accepted, but its execution authority stopped unused when PR #63 integration exposed pre-run family metadata. Accepted D-112 preserves the second release-ineligible family and moves any new replacement to external custody through the raw first-run freeze.
+P4.1 is integrated and frozen. D-112's external-custody preparation is complete. The accepted candidate family and runner remain outside Git, independently verified, and unexecuted. D-113 is accepted but does not activate until PR #65 is integrated and every frozen identity is reverified.
 
 ## Active Work Block
 
-- **WBS:** P4.2 accepted external-custody recovery integration
-- **Branch:** `codex/p4.2-held-out-second-recovery`
-- **Objective:** Integrate D-112, then author, verify, and oracle-blind-stage one materially distinct replacement entirely outside the ordinary repository.
-- **Definition of done:** PR #64 and exact `main` are recorded; fresh isolated custodians freeze and independently verify the external family; an oracle-blind runner bundle is independently verified without executing it; only aggregate public evidence enters the repository; semantic run count remains zero; a separate owner freeze decision is ready.
+- **WBS:** P4.2 accepted first-run authority integration
+- **Branch:** `codex/p4.2-external-held-out-freeze`
+- **Objective:** Integrate accepted D-113, record exact `main`, and activate the one-shot sequence without weakening the zero-run freeze.
+- **Definition of done:** D-113 acceptance is recorded; PR #65 is merged; exact `main` is recorded; all frozen identities are reverified before execution; semantic run count remains zero through activation.
 
-Next action: integrate PR #64, record exact `main`, then launch the isolated external authoring, verification, and oracle-blind staging sequence. Semantic execution, oracle comparison, evaluator changes, P4.3 work, public reruns, and release claims remain blocked pending a new owner freeze decision.
+Next action: merge PR #65 after green checks, record exact `main`, and reverify every frozen identity. Then invoke each opaque package exactly once, freeze raw evidence, and use a separate comparison custodian. Retry, import, tuning, evaluator changes, P4.3 work, public reruns, and release claims remain blocked.
 
 ## Delivery Sequence
 
