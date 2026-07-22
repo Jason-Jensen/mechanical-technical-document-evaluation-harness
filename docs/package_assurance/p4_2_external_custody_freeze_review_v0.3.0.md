@@ -8,7 +8,7 @@
 
 **Authority:** D-112
 
-**Decision:** D-113 proposed for owner review
+**Decision:** D-113 accepted by the project owner on 2026-07-22
 
 **Branch:** `codex/p4.2-external-held-out-freeze`
 
@@ -20,8 +20,9 @@
 
 ## Executive Result
 
-The external held-out family and its oracle-blind one-shot runner are ready for
-an owner freeze decision. The family remains outside Git. No scenario has been
+The external held-out family and its oracle-blind one-shot runner are accepted
+for one controlled first run after this decision is integrated and all frozen
+identities are reverified. The family remains outside Git. No scenario has been
 executed, no protected comparison has occurred, and the semantic execution
 count is zero.
 
@@ -134,14 +135,14 @@ The protected held-out fixture test module remained excluded. Baseline and demo
 replay evidence was written under generated `runs/` paths rather than tracked
 historical evidence.
 
-## Proposed Decision D-113
+## Accepted Decision D-113
 
 **Accept external family revision `FR-D112-HOIST-002` and runner revision
 `D-112-runner-revision-6`; authorize exactly one semantic invocation for each
 of the eight opaque packages against frozen evaluator behavior `4cf9fe8`; then
 freeze all raw evidence and perform one separate protected comparison.**
 
-Acceptance would authorize only this one-way sequence:
+Acceptance authorizes only this one-way sequence:
 
 1. integrate this aggregate review and record exact `main`;
 2. verify the external family, producer, runner, evaluator, and schema hashes;
@@ -152,14 +153,17 @@ Acceptance would authorize only this one-way sequence:
 6. publish only aggregate comparison evidence; and
 7. stop for owner review before import, tuning, rerun, or release claims.
 
-D-113 would not authorize retries, evaluator or fixture changes, repository
+D-113 does not authorize retries, evaluator or fixture changes, repository
 family import, protected-fixture CI restoration, P4.3 work, public-package
 reruns, or deferred product capabilities.
 
-## Owner Review Point
+## Acceptance and Integration Point
 
-The owner should accept or revise D-113. Until acceptance is recorded, the
-runner remains inert and semantic execution remains prohibited.
+The project owner accepted D-113 on 2026-07-22. The runner remains inert until
+PR #65 integrates this decision, exact `main` is recorded, and the family,
+producer, runner, evaluator, and schema hashes are reverified. After those
+conditions pass, the one-shot execution sequence is authorized without a
+second pre-run decision.
 
 The machine-readable aggregate evidence is
 `p4_2_external_custody_freeze_evidence_v0.3.0.json`.

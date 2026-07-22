@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P4.2 external held-out freeze review
-- **Status:** D-112 is integrated through PR #64 at exact `main` `0264db7`. External family revision 2 passed 68/68 independent controls and oracle-blind runner revision 6 passed 53/53 independent static controls. Both remain outside Git and unexecuted. D-113 is proposed for owner review; semantic execution count is zero
+- **Active WBS:** P4.2 accepted first-run authority integration
+- **Status:** D-112 is integrated through PR #64 at exact `main` `0264db7`. External family revision 2 passed 68/68 independent controls and oracle-blind runner revision 6 passed 53/53 independent static controls. Both remain outside Git and unexecuted. D-113 was accepted on 2026-07-22; PR #65 integration and exact-main verification are pending; semantic execution count is zero
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -478,11 +478,13 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Review and accept or revise D-113. Until it is accepted and integrated, do not
-invoke the external runner, compare protected evidence, import any family or
-runner asset, restore protected-fixture CI, change evaluator behavior or
-benchmark inputs, rerun either public package, begin P4.3, or add deferred
-capabilities. The semantic execution count remains zero.
+Integrate accepted D-113 through PR #65 and record exact `main`. Then reverify
+the family, producer, runner, evaluator, and schema identities before invoking
+each opaque package exactly once. Freeze raw evidence before a separate
+protected comparison. Do not retry, import any family or runner asset, restore
+protected-fixture CI, change evaluator behavior or benchmark inputs, rerun
+either public package, begin P4.3, or add deferred capabilities. The semantic
+execution count remains zero until the post-integration one-shot run.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

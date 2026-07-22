@@ -1,10 +1,16 @@
 {
   "schema_version": "0.3.0",
   "evidence_id": "P4.2-EXTERNAL-CUSTODY-FREEZE-D113",
-  "status": "ready_for_owner_review",
+  "status": "owner_accepted_integration_pending",
   "recorded_date": "2026-07-22",
   "authority": "D-112",
-  "proposed_decision": "D-113",
+  "accepted_decision": "D-113",
+  "owner_acceptance": {
+    "accepted": true,
+    "date": "2026-07-22",
+    "integration_pr": 65,
+    "activation_condition": "PR #65 integrated, exact main recorded, and all frozen family, producer, runner, evaluator, and schema identities reverified"
+  },
   "authorized_main_commit": "0264db7d0c904452ffdec83c51f74103185a8e8d",
   "frozen_evaluator_behavior_commit": "4cf9fe8",
   "frozen_evaluator_source_tree": "d0c3f128ee13898cdcd6fc12c6d6ad5877649551",
@@ -122,7 +128,8 @@
     "frozen_v0_2_baseline": "9/9 passed",
     "portfolio_demo": "2/2 passed"
   },
-  "execution_authorized": false,
+  "execution_authorized": true,
+  "execution_started": false,
   "repository_import_authorized": false,
   "protected_comparison_completed": false,
   "release_performance_claim_authorized": false
