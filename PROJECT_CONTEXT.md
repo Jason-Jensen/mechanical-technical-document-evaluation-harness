@@ -31,7 +31,7 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 
 - **Release:** v0.3.0 Package Assurance Pilot
 - **Active WBS:** P4.2 replacement freeze review
-- **Status:** D-110 is integrated through PR #62 at exact `main` `ea45dcf`. Replacement `FAM-HO-CONVEYOR-DRIVE-042` is isolated, frozen, independently verified 14/14, and imported byte-exact at 210/210 files. Semantic execution count remains zero and D-111 owner review is pending. The existing held-out family remains unchanged, unexecuted, and ineligible for release claims
+- **Status:** D-110 is integrated through PR #62 at exact `main` `ea45dcf`. Replacement `FAM-HO-CONVEYOR-DRIVE-042` is isolated, frozen, independently verified 14/14, and imported byte-exact at 210/210 files. D-111 is accepted; semantic execution count remains zero while PR #63 integration and exact-main freeze are pending. The existing held-out family remains unchanged, unexecuted, and ineligible for release claims
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -455,11 +455,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Present D-111 for owner review. Do not semantically execute the replacement,
-compare against its protected oracle, inspect protected values from this
-implementation context, rerun either public package, change evaluator behavior,
-begin P4.3, or add deferred multimodal or platform capabilities before D-111 is
-accepted.
+Integrate accepted D-111 through PR #63 and record exact `main`. Then create an
+independently verified oracle-blind runner bundle and execute each opaque
+replacement scenario exactly once. Preserve raw evidence before a separate
+protected comparison. Do not inspect protected values from this implementation
+context, retry a scenario, change evaluator behavior or benchmark inputs, rerun
+either public package, begin P4.3, or add deferred capabilities.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

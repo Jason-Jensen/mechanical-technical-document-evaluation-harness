@@ -196,10 +196,14 @@ materially distinct replacement is required after any fix.
 ## Stop Boundary
 
 The replacement freeze package is reviewed in
-`p4_2_replacement_freeze_review_v0.3.0.md`. Until D-111 is separately accepted:
+`p4_2_replacement_freeze_review_v0.3.0.md`. D-111 was accepted by the project
+owner on 2026-07-21. Its one-way first-run authority becomes executable only
+after PR #63 integration and exact-main verification. Until then:
 
 - do not execute the exposed held-out family;
 - do not open any additional file in its `protected/` or `expected/` paths;
+- keep `tests/test_held_out_package_fixtures.py` excluded from implementation-branch
+  CI until the replacement first-run evidence is frozen;
 - do not edit, relabel, delete, or move the exposed family;
 - do not implement or tune evaluator behavior;
 - do not author a replacement in this implementation context; and

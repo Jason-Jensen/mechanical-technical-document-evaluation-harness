@@ -18,21 +18,21 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
 - **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
-- **P4.2:** D-110 integrated through PR #62 at exact `main` `ea45dcf`. Replacement `FAM-HO-CONVEYOR-DRIVE-042` is isolated, hash-frozen, independently verified 14/14, and imported byte-exact at 210/210 files. Semantic execution count is zero. D-111 owner review is pending.
+- **P4.2:** D-110 integrated through PR #62 at exact `main` `ea45dcf`. Replacement `FAM-HO-CONVEYOR-DRIVE-042` is isolated, hash-frozen, independently verified 14/14, and imported byte-exact at 210/210 files. D-111 is accepted; semantic execution count remains zero while PR #63 integration and exact-main freeze are pending.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Active Gate
 
-P4.1 is integrated and frozen. D-110 recovery is complete. The replacement family reproduces complete-family hash `e619c81854d9676b5d821a752e3b00e68d0072572cef64509d5cc9132a3e6ff6`; D-111 must be accepted before one controlled first run per opaque scenario.
+P4.1 is integrated and frozen. D-110 recovery is complete. The replacement family reproduces complete-family hash `e619c81854d9676b5d821a752e3b00e68d0072572cef64509d5cc9132a3e6ff6`; D-111 authorizes one controlled first run per opaque scenario only after PR #63 is integrated and exact `main` is recorded.
 
 ## Active Work Block
 
 - **WBS:** P4.2 replacement freeze review
 - **Branch:** `codex/p4.2-held-out-replacement-freeze`
-- **Objective:** Publish the independently verified replacement freeze and obtain a separate owner decision before semantic execution.
-- **Definition of done:** The isolated family is frozen; independent verification and byte-exact import pass; public decision/evidence records are current; the exposed prior family is unchanged; D-111 is ready for owner review; semantic execution remains zero.
+- **Objective:** Integrate the accepted replacement freeze, execute each opaque scenario once in an oracle-blind environment, preserve raw evidence, and obtain an independent protected comparison.
+- **Definition of done:** PR #63 and exact `main` are recorded; evaluator and family hashes match; eight single invocations preserve all four outputs before comparison; the runner has no oracle access; a separate custodian publishes aggregate exact-comparison evidence; no rerun or tuning occurs; the owner result review is ready.
 
-Next action: owner accepts or rejects D-111 in `p4_2_replacement_freeze_review_v0.3.0.md`. Until acceptance, held-out semantic execution, oracle comparison, evaluator changes, P4.3 work, public reruns, and deferred capabilities remain blocked.
+Next action: integrate PR #63, record exact `main`, create an independently verified oracle-blind runner bundle, then invoke each opaque scenario exactly once. Oracle comparison, evaluator changes, P4.3 work, public reruns, and release claims remain blocked until raw first-run evidence is frozen.
 
 ## Delivery Sequence
 

@@ -34,5 +34,5 @@ jobs:
       - name: Check Python source
         run: python -m ruff check .
 
-      - name: Run test suite with coverage floor
-        run: python -m pytest --cov=mech_eval_harness --cov-report=term-missing --cov-fail-under=80
+      - name: Run pre-first-run regression with coverage floor
+        run: python -m pytest --ignore=tests/test_held_out_package_fixtures.py --cov=mech_eval_harness --cov-report=term-missing --cov-fail-under=80

@@ -8,7 +8,7 @@
 
 **Authority:** D-110
 
-**Proposed decision:** D-111
+**Decision:** D-111 accepted by the project owner on 2026-07-21
 
 **Branch:** `codex/p4.2-held-out-replacement-freeze`
 
@@ -45,7 +45,7 @@ for execution until the project owner accepts D-111.
 - **Complete-family SHA-256:**
   `e619c81854d9676b5d821a752e3b00e68d0072572cef64509d5cc9132a3e6ff6`
 - **Contamination status:** `frozen_isolated_pre_execution`
-- **Owner acceptance:** pending
+- **Owner acceptance:** accepted under D-111
 - **Semantic execution count:** 0
 
 ## Custody Evidence
@@ -133,9 +133,9 @@ module path. The accepted `python -m pytest` invocation passed without a code
 or fixture change. No replacement scenario or protected oracle was loaded by
 these checks.
 
-## Proposed Decision D-111
+## Accepted Decision D-111
 
-**Accept the replacement freeze and authorize one controlled first semantic
+**The project owner accepts the replacement freeze and authorizes one controlled first semantic
 run of each opaque scenario against the frozen evaluator behavior.**
 
 Acceptance authorizes only this one-way protocol:
@@ -158,8 +158,12 @@ be preserved. No rerun is authorized by D-111. Any substantive mismatch,
 protected-value exposure, input change, evaluator change, missing raw output,
 or hash mismatch stops P4.2 and requires a separate decision.
 
-## Owner Review
+## Execution Gate
 
-The requested owner action is to accept or reject D-111. Until acceptance,
-held-out semantic execution, oracle comparison, evaluator changes, P4.3 work,
-public reruns, and release claims remain blocked.
+D-111 acceptance does not bypass integration. PR #63 must merge, exact `main`
+must be recorded, and the isolated runner boundary must be independently
+verified before any scenario invocation. Protected comparison, retries,
+evaluator changes, P4.3 work, public reruns, and release claims remain blocked
+until raw first-run evidence is frozen. Implementation-branch CI temporarily
+excludes `tests/test_held_out_package_fixtures.py`; the remaining regression and
+coverage floor stay mandatory.
