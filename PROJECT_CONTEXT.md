@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P4.2 replacement freeze review
-- **Status:** D-110 is integrated through PR #62 at exact `main` `ea45dcf`. Replacement `FAM-HO-CONVEYOR-DRIVE-042` is isolated, frozen, independently verified 14/14, and imported byte-exact at 210/210 files. D-111 is accepted; semantic execution count remains zero while PR #63 integration and exact-main freeze are pending. The existing held-out family remains unchanged, unexecuted, and ineligible for release claims
+- **Active WBS:** P4.2 accepted external-custody recovery integration
+- **Status:** D-111 integrated through PR #63 at exact `main` `4d2c0f5`, but Git's integration summary exposed scenario-level path and comparative file-statistics metadata before first execution. Semantic execution count remains zero. Both exposed families are preserved unchanged and release-ineligible. D-112 is accepted; PR #64 integration must complete before a materially distinct replacement is authored outside the ordinary repository
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -455,12 +455,13 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate accepted D-111 through PR #63 and record exact `main`. Then create an
-independently verified oracle-blind runner bundle and execute each opaque
-replacement scenario exactly once. Preserve raw evidence before a separate
-protected comparison. Do not inspect protected values from this implementation
-context, retry a scenario, change evaluator behavior or benchmark inputs, rerun
-either public package, begin P4.3, or add deferred capabilities.
+Integrate accepted D-112 through PR #64 and record exact `main`. Then use fresh
+isolated custodians to author, structurally verify, hash-freeze, and
+oracle-blind-stage a materially distinct replacement outside the repository.
+Do not import the family, execute a scenario, compare an oracle, restore
+protected-fixture CI, change evaluator behavior or benchmark inputs, rerun
+either public package, begin P4.3, or add deferred capabilities. A separate
+owner freeze decision is required before semantic execution.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
