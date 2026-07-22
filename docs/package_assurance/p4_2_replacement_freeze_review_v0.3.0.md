@@ -168,6 +168,6 @@ contamination under D-110 and IMP-023. D-111 execution authority therefore
 stopped unused.
 
 The replacement remains unchanged and unexecuted but is ineligible for release
-held-out claims. Proposed D-112 and the external-custody recovery design are
-controlled in
+held-out claims. D-112 accepted the external-custody recovery design on
+2026-07-22. Its integration and the next replacement freeze are controlled in
 `p4_2_second_contamination_and_external_custody_gate_v0.3.0.md`.

@@ -8,7 +8,7 @@ The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a sc
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** PR #63 integrated D-111 at exact `main` `4d2c0f5`, but its Git change summary exposed pre-run family paths and comparative file statistics. No semantic run occurred. The replacement is now preserved unchanged and release-ineligible pending proposed D-112, which moves the next materially distinct replacement entirely outside the ordinary repository until raw first-run evidence is frozen.
+- **Current gate:** D-112 is accepted. PR #63 integrated D-111 at exact `main` `4d2c0f5`, but its Git change summary exposed pre-run family paths and comparative file statistics. No semantic run occurred. PR #64 must integrate the external-custody recovery before a materially distinct replacement is authored outside the ordinary repository; semantic execution remains separately gated.
 - **Implementation boundary:** Eight ordered gates and eleven ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. P2.3 is complete for this exact scope. Six unsupported authority/source claims are explicitly deferred and excluded from v0.3.0 release claims.
 
 The accepted P2.3 completion boundary limits v0.3.0 to the eleven proven checks and defers six claims that lack a comparison source or exact authority rule. This prevents single-source field validation from being presented as cross-document reconciliation.

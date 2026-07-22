@@ -192,8 +192,8 @@ materially distinct replacement is required after any fix.
 - D-109's four-state semantic boundary remains unchanged.
 - D-110 is accepted and integrated. D-111 was accepted but its execution
   authority stopped unused after the replacement's repository integration
-  exposed pre-run metadata. P4.2 semantic execution remains blocked pending
-  proposed recovery decision D-112.
+  exposed pre-run metadata. D-112 is accepted; P4.2 semantic execution remains
+  blocked pending a separately accepted external replacement freeze decision.
 
 ## Stop Boundary
 
@@ -202,8 +202,8 @@ The replacement freeze package is reviewed in
 `main` `4d2c0f5`, but Git's change summary exposed scenario-level structural
 metadata before execution. The independent governance disposition and proposed
 external-custody recovery are controlled in
-`p4_2_second_contamination_and_external_custody_gate_v0.3.0.md`. Until D-112 is
-accepted:
+`p4_2_second_contamination_and_external_custody_gate_v0.3.0.md`. D-112 was
+accepted on 2026-07-22. Until PR #64 integration and exact-main verification:
 
 - do not execute the exposed held-out family;
 - do not open any additional file in its `protected/` or `expected/` paths;
@@ -213,3 +213,7 @@ accepted:
 - do not implement or tune evaluator behavior;
 - do not author or import another replacement; and
 - do not begin P4.2 semantic execution, P4.3 release work, or held-out claims.
+
+After integration, only external authoring, independent structural/hash
+verification, and oracle-blind staging are authorized. Semantic execution and
+repository import remain separately gated.

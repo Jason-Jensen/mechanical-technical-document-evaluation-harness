@@ -1,10 +1,10 @@
 # P4.2 Second Contamination and External-Custody Gate
 
-**Status:** Proposed for owner review
+**Status:** Accepted; PR #64 integration pending
 
 **Date:** 2026-07-21
 
-**Proposed decision:** D-112
+**Decision:** D-112 accepted by the project owner on 2026-07-22
 
 **Exact integrated main:** `4d2c0f5f09950929ef057ef4f0efa3d75efdf0ed`
 
@@ -66,7 +66,7 @@ The ordinary implementation checkout, its CI, and this agent context must not
 receive a pristine family directory, path inventory, archive listing, diff
 summary, or per-file statistics before the first run.
 
-## Proposed Decision D-112
+## Accepted Decision D-112
 
 **Classify `FAM-HO-CONVEYOR-DRIVE-042` as contaminated for release held-out
 claims after pre-run Git metadata exposure; preserve it unchanged and
@@ -78,19 +78,24 @@ oracle-blind staging, and preparation of a new freeze review. It does not
 authorize semantic execution. A separate owner decision remains mandatory
 after the new external freeze is independently verified.
 
-## Stop Boundary
+## Execution Boundary
 
-Until D-112 is accepted:
+Acceptance authorizes the external-custody replacement sequence only after PR
+#64 integration and exact-main verification:
 
 - do not execute or further inspect either release-ineligible family;
-- do not author or import another replacement;
+- author the materially distinct replacement only in fresh isolated external
+  custody;
+- independently verify and hash-freeze it without repository import;
+- prepare and independently verify an oracle-blind runner bundle without
+  executing it;
 - do not compare any protected oracle;
 - do not retry, tune, or change evaluator behavior;
 - do not restore protected-fixture tests to implementation CI; and
 - do not begin P4.3 or make held-out release claims.
 
-## Owner Review
+## Owner Acceptance
 
-The requested owner action is to accept or reject D-112. The recommended
-choice is acceptance because external custody removes the repository itself as
-a pre-run metadata channel and preserves a credible unseen benchmark claim.
+The project owner accepted D-112 on 2026-07-22. A separate owner decision is
+still mandatory after the new external freeze and oracle-blind staging are
+independently verified and before any semantic invocation.
