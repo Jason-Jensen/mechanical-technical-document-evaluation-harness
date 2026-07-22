@@ -1,8 +1,8 @@
 # Project Context
 
-**Updated:** 2026-07-21
+**Updated:** 2026-07-22
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p4.2-held-out-replacement-freeze`
+**Current branch:** `codex/p4.2-external-held-out-freeze`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P4.2 accepted external-custody recovery integration
-- **Status:** D-111 integrated through PR #63 at exact `main` `4d2c0f5`, but Git's integration summary exposed scenario-level path and comparative file-statistics metadata before first execution. Semantic execution count remains zero. Both exposed families are preserved unchanged and release-ineligible. D-112 is accepted; PR #64 integration must complete before a materially distinct replacement is authored outside the ordinary repository
+- **Active WBS:** P4.2 external held-out freeze review
+- **Status:** D-112 is integrated through PR #64 at exact `main` `0264db7`. External family revision 2 passed 68/68 independent controls and oracle-blind runner revision 6 passed 53/53 independent static controls. Both remain outside Git and unexecuted. D-113 is proposed for owner review; semantic execution count is zero
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -417,6 +417,29 @@ No semantic run occurred and protected values were not exposed to the
 implementation context. The controlling owner package is
 `docs/package_assurance/p4_2_replacement_freeze_review_v0.3.0.md`.
 
+PR #64 integrated D-112 at exact `main`
+`0264db7d0c904452ffdec83c51f74103185a8e8d`. A materially distinct synthetic
+overhead-crane hoist family was then authored entirely outside Git. Its first
+freeze failed three independent oracle-contract categories and remains
+preserved unchanged and unexecuted. Revision `FR-D112-HOIST-002` corrected only
+those protected contract records while preserving producer bytes. It passed
+68/68 independent controls with complete-family hash
+`141f3d1b84691d9d87852e46754d139e5bd5d77b487b1b75c49964e969089190`.
+
+Instruction-only staging boundaries proved insufficient, so an external
+producer-only capsule physically separated the eight opaque packages from the
+protected family. Independent static reviews then rejected runner controls for
+inventory ordering, external path text, missing read-only attributes, and full
+environment forwarding. Every failed runner remained unexecuted. Final runner
+revision 6 preserves the accepted evaluator and producer bytes, contains 186
+read-only static files, has zero execution artifacts, and passed 53/53 fresh
+independent static controls. Its complete pre/post hash is
+`54d01f7b9ef98893e9d1b05565829a7ac3d07eb58c8caf274465d944059598fb`.
+
+No semantic run or protected comparison has occurred. The controlling owner
+package is
+`docs/package_assurance/p4_2_external_custody_freeze_review_v0.3.0.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -455,13 +478,11 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate accepted D-112 through PR #64 and record exact `main`. Then use fresh
-isolated custodians to author, structurally verify, hash-freeze, and
-oracle-blind-stage a materially distinct replacement outside the repository.
-Do not import the family, execute a scenario, compare an oracle, restore
-protected-fixture CI, change evaluator behavior or benchmark inputs, rerun
-either public package, begin P4.3, or add deferred capabilities. A separate
-owner freeze decision is required before semantic execution.
+Review and accept or revise D-113. Until it is accepted and integrated, do not
+invoke the external runner, compare protected evidence, import any family or
+runner asset, restore protected-fixture CI, change evaluator behavior or
+benchmark inputs, rerun either public package, begin P4.3, or add deferred
+capabilities. The semantic execution count remains zero.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

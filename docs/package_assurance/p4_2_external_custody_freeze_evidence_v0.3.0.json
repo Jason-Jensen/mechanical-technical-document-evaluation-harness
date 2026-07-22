@@ -1,0 +1,129 @@
+{
+  "schema_version": "0.3.0",
+  "evidence_id": "P4.2-EXTERNAL-CUSTODY-FREEZE-D113",
+  "status": "ready_for_owner_review",
+  "recorded_date": "2026-07-22",
+  "authority": "D-112",
+  "proposed_decision": "D-113",
+  "authorized_main_commit": "0264db7d0c904452ffdec83c51f74103185a8e8d",
+  "frozen_evaluator_behavior_commit": "4cf9fe8",
+  "frozen_evaluator_source_tree": "d0c3f128ee13898cdcd6fc12c6d6ad5877649551",
+  "semantic_execution_count": 0,
+  "external_family": {
+    "family_id": "FAM-HO-CRANE-HOIST-901",
+    "benchmark_revision": "BR-D112-HOIST-001",
+    "family_revision": "FR-D112-HOIST-002",
+    "freeze_revision": 2,
+    "status": "independently_verified_pre_execution",
+    "scenario_count": 8,
+    "file_counts": {
+      "complete_family": 163,
+      "scenario_package_files": 152,
+      "producer_non_freeze": 157,
+      "protected_non_freeze": 4,
+      "freeze_records": 2
+    },
+    "independent_verification": {
+      "passed": 68,
+      "failed": 0,
+      "total": 68
+    },
+    "matrix_aggregate_counts": {
+      "automatic_pass": 1,
+      "automatic_fail": 5,
+      "missing_authoritative_information": 1,
+      "extraction_or_tool_failure": 1,
+      "held_findings": 8
+    },
+    "hashes": {
+      "producer_sha256": "b77f35e06e0400211264768a40a1b7bf7c9fe4fb842a691baf4566fcf48e10ab",
+      "protected_sha256": "1876455a0abb18a6a2ad10f9f57667a54a520201b209e16f8d9cc624654c280d",
+      "complete_family_pre_sha256": "141f3d1b84691d9d87852e46754d139e5bd5d77b487b1b75c49964e969089190",
+      "complete_family_post_sha256": "141f3d1b84691d9d87852e46754d139e5bd5d77b487b1b75c49964e969089190"
+    },
+    "revision_1_disposition": {
+      "status": "failed_preserved_unexecuted",
+      "complete_family_sha256": "04d13a3f0c35b962f4aa72b35e2ef927ad930e38b89cc74491ae3c057ae5c7be",
+      "failed_control_categories": 3
+    }
+  },
+  "producer_capsule": {
+    "capsule_id": "PC-D112-HOIST-002",
+    "status": "passed_frozen",
+    "package_root_count": 8,
+    "package_file_count": 152,
+    "checks": {
+      "passed": 16,
+      "failed": 0,
+      "total": 16
+    },
+    "producer_sha256": "b77f35e06e0400211264768a40a1b7bf7c9fe4fb842a691baf4566fcf48e10ab",
+    "capsule_content_sha256": "92c4c20ac00889b25f2a7f1894fa5316f682f2ac372ccc3b3ab29733569215b6",
+    "restricted_material_result": "passed_absent"
+  },
+  "runner_bundle": {
+    "revision_id": "D-112-runner-revision-6",
+    "status": "independently_verified_pre_execution",
+    "independent_verification": {
+      "categories": 7,
+      "passed": 53,
+      "failed": 0,
+      "total": 53
+    },
+    "counts": {
+      "complete_bundle_files": 186,
+      "readonly_files": 186,
+      "staged_inputs": 181,
+      "evaluator_sources": 27,
+      "schemas": 2,
+      "package_roots": 8,
+      "package_files": 152,
+      "controls": 5,
+      "runtime_artifacts": 0
+    },
+    "hashes": {
+      "complete_bundle_pre_sha256": "54d01f7b9ef98893e9d1b05565829a7ac3d07eb58c8caf274465d944059598fb",
+      "complete_bundle_post_sha256": "54d01f7b9ef98893e9d1b05565829a7ac3d07eb58c8caf274465d944059598fb",
+      "runner_sha256": "c2ab9b56e7fe81e9dda489fde83fbc3bf00e25a433e45a9cbdfdc75ffcc0beae",
+      "input_inventory_sha256": "0b7b37b6f048d295b76bfd90877b52c00eef9ec617750bcc76585325b51c1f8f"
+    },
+    "controls": {
+      "one_shot_runner": "passed",
+      "bounded_environment": "passed",
+      "restricted_path_absence": "passed",
+      "posix_ordinal_byte_inventories": "passed",
+      "readonly_coverage": "186/186",
+      "zero_artifacts": "passed",
+      "freeze_order_and_post_freeze_immutability": "passed"
+    },
+    "failed_predecessor_classes": [
+      "custody_boundary_interaction",
+      "path_ordered_inventory_violation",
+      "restricted_or_external_control_text",
+      "control_filesystem_readonly",
+      "copy_operation_unavailable",
+      "unbounded_inherited_environment"
+    ]
+  },
+  "repository_verification": {
+    "focused_tests": {
+      "passed": 40,
+      "failed": 0
+    },
+    "protected_safe_regression": {
+      "passed": 313,
+      "skipped": 1,
+      "failed": 0,
+      "coverage_percent": 88.57,
+      "protected_fixture_module_excluded": true
+    },
+    "repository_validation": "5/5 passed",
+    "ruff": "passed",
+    "frozen_v0_2_baseline": "9/9 passed",
+    "portfolio_demo": "2/2 passed"
+  },
+  "execution_authorized": false,
+  "repository_import_authorized": false,
+  "protected_comparison_completed": false,
+  "release_performance_claim_authorized": false
+}
