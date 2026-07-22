@@ -1,0 +1,932 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/schemas/ai_management_system.schema.json",
+  "title": "Mechanical Engineering Workflow Assurance AI Management System",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "management_system_id",
+    "title",
+    "status",
+    "effective_date",
+    "next_review_date",
+    "certification_status",
+    "policy_ref",
+    "manual_ref",
+    "impact_assessment_ref",
+    "alignment_assessment_ref",
+    "sources",
+    "scope",
+    "roles",
+    "systems",
+    "risk_method",
+    "risks",
+    "minimum_control_ids",
+    "controls",
+    "mandatory_gates",
+    "quality_objectives",
+    "nonconformities",
+    "audits",
+    "management_reviews",
+    "documented_information",
+    "release_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.3.0"
+    },
+    "management_system_id": {
+      "$ref": "#/$defs/id"
+    },
+    "title": {
+      "$ref": "#/$defs/text"
+    },
+    "status": {
+      "enum": [
+        "operational_release_held",
+        "operational_release_ready"
+      ]
+    },
+    "effective_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "next_review_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "certification_status": {
+      "const": "not_claimed"
+    },
+    "policy_ref": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "manual_ref": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "impact_assessment_ref": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "alignment_assessment_ref": {
+      "$ref": "#/$defs/relativePath"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "$ref": "#/$defs/role"
+      }
+    },
+    "systems": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "$ref": "#/$defs/system"
+      }
+    },
+    "risk_method": {
+      "$ref": "#/$defs/riskMethod"
+    },
+    "risks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/risk"
+      }
+    },
+    "minimum_control_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/id"
+      }
+    },
+    "controls": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/control"
+      }
+    },
+    "mandatory_gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/gate"
+      }
+    },
+    "quality_objectives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/objective"
+      }
+    },
+    "nonconformities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonconformity"
+      }
+    },
+    "audits": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/audit"
+      }
+    },
+    "management_reviews": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/managementReview"
+      }
+    },
+    "documented_information": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/relativePath"
+      }
+    },
+    "release_status": {
+      "$ref": "#/$defs/releaseStatus"
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9.-]{2,63}$"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\).+$"
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/text"
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "title",
+        "url",
+        "role",
+        "repository_copy_allowed",
+        "licensed_copy_required_for_formal_conformity",
+        "notes"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "role": {
+          "enum": [
+            "governance_reference",
+            "risk_reference",
+            "operational_reference"
+          ]
+        },
+        "repository_copy_allowed": {
+          "const": false
+        },
+        "licensed_copy_required_for_formal_conformity": {
+          "type": "boolean"
+        },
+        "notes": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "included",
+        "excluded",
+        "interested_parties"
+      ],
+      "properties": {
+        "included": {
+          "$ref": "#/$defs/stringList"
+        },
+        "excluded": {
+          "$ref": "#/$defs/stringList"
+        },
+        "interested_parties": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "party",
+              "needs"
+            ],
+            "properties": {
+              "party": {
+                "$ref": "#/$defs/text"
+              },
+              "needs": {
+                "$ref": "#/$defs/stringList"
+              }
+            }
+          }
+        }
+      }
+    },
+    "role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_id",
+        "name",
+        "accountabilities",
+        "may_accept_high_risk",
+        "may_authorize_release",
+        "independence_rule"
+      ],
+      "properties": {
+        "role_id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/text"
+        },
+        "accountabilities": {
+          "$ref": "#/$defs/stringList"
+        },
+        "may_accept_high_risk": {
+          "type": "boolean"
+        },
+        "may_authorize_release": {
+          "type": "boolean"
+        },
+        "independence_rule": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "system": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system_id",
+        "name",
+        "classification",
+        "lifecycle_status",
+        "owner_role_id",
+        "purpose",
+        "intended_users",
+        "inputs",
+        "outputs",
+        "data_classes",
+        "prohibited_uses",
+        "human_oversight_required",
+        "impact_assessment_ref",
+        "risk_ids"
+      ],
+      "properties": {
+        "system_id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/text"
+        },
+        "classification": {
+          "enum": [
+            "generative_ai_assistant",
+            "deterministic_non_ai_control",
+            "future_ai_capability"
+          ]
+        },
+        "lifecycle_status": {
+          "enum": [
+            "active",
+            "blocked_not_authorized",
+            "retired"
+          ]
+        },
+        "owner_role_id": {
+          "$ref": "#/$defs/id"
+        },
+        "purpose": {
+          "$ref": "#/$defs/text"
+        },
+        "intended_users": {
+          "$ref": "#/$defs/stringList"
+        },
+        "inputs": {
+          "$ref": "#/$defs/stringList"
+        },
+        "outputs": {
+          "$ref": "#/$defs/stringList"
+        },
+        "data_classes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "public",
+              "synthetic",
+              "repository_internal",
+              "authorized_confidential",
+              "restricted_not_authorized"
+            ]
+          }
+        },
+        "prohibited_uses": {
+          "$ref": "#/$defs/stringList"
+        },
+        "human_oversight_required": {
+          "const": true
+        },
+        "impact_assessment_ref": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "risk_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    },
+    "riskMethod": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "likelihood_scale",
+        "impact_scale",
+        "low_max",
+        "medium_max",
+        "high_max",
+        "critical_max",
+        "high_residual_rule",
+        "critical_rule"
+      ],
+      "properties": {
+        "likelihood_scale": {
+          "const": "1_to_5"
+        },
+        "impact_scale": {
+          "const": "1_to_5"
+        },
+        "low_max": {
+          "const": 4
+        },
+        "medium_max": {
+          "const": 9
+        },
+        "high_max": {
+          "const": 16
+        },
+        "critical_max": {
+          "const": 25
+        },
+        "high_residual_rule": {
+          "$ref": "#/$defs/text"
+        },
+        "critical_rule": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "risk_id",
+        "system_ids",
+        "category",
+        "risk_statement",
+        "affected_parties",
+        "owner_role_id",
+        "inherent_likelihood",
+        "inherent_impact",
+        "inherent_score",
+        "treatment",
+        "control_ids",
+        "residual_likelihood",
+        "residual_impact",
+        "residual_score",
+        "status",
+        "release_hold",
+        "review_trigger",
+        "evidence_refs"
+      ],
+      "properties": {
+        "risk_id": {
+          "$ref": "#/$defs/id"
+        },
+        "system_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "category": {
+          "enum": [
+            "safety",
+            "quality",
+            "reliability",
+            "transparency",
+            "human_oversight",
+            "data_rights",
+            "security",
+            "supplier",
+            "benchmark_integrity",
+            "stakeholder_impact",
+            "governance"
+          ]
+        },
+        "risk_statement": {
+          "$ref": "#/$defs/text"
+        },
+        "affected_parties": {
+          "$ref": "#/$defs/stringList"
+        },
+        "owner_role_id": {
+          "$ref": "#/$defs/id"
+        },
+        "inherent_likelihood": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "inherent_impact": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "inherent_score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 25
+        },
+        "treatment": {
+          "enum": [
+            "mitigate",
+            "avoid",
+            "transfer",
+            "accept",
+            "monitor"
+          ]
+        },
+        "control_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "residual_likelihood": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "residual_impact": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "residual_score": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 25
+        },
+        "status": {
+          "enum": [
+            "controlled",
+            "open_treatment",
+            "accepted",
+            "avoided"
+          ]
+        },
+        "release_hold": {
+          "type": "boolean"
+        },
+        "review_trigger": {
+          "$ref": "#/$defs/text"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/relativePath"
+          }
+        }
+      }
+    },
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "control_id",
+        "domain",
+        "title",
+        "objective",
+        "requirements",
+        "owner_role_id",
+        "risk_ids",
+        "implementation_status",
+        "verification",
+        "failure_action",
+        "evidence_refs"
+      ],
+      "properties": {
+        "control_id": {
+          "$ref": "#/$defs/id"
+        },
+        "domain": {
+          "enum": [
+            "governance",
+            "impact_and_risk",
+            "data_and_rights",
+            "security",
+            "lifecycle",
+            "verification",
+            "human_oversight",
+            "supplier",
+            "transparency",
+            "monitoring_and_improvement"
+          ]
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "objective": {
+          "$ref": "#/$defs/text"
+        },
+        "requirements": {
+          "$ref": "#/$defs/stringList"
+        },
+        "owner_role_id": {
+          "$ref": "#/$defs/id"
+        },
+        "risk_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "implementation_status": {
+          "enum": [
+            "implemented",
+            "partially_implemented",
+            "deferred_not_triggered"
+          ]
+        },
+        "verification": {
+          "enum": [
+            "automated",
+            "manual",
+            "automated_and_manual"
+          ]
+        },
+        "failure_action": {
+          "enum": [
+            "stop_work",
+            "hold_integration",
+            "hold_release",
+            "qualified_review"
+          ]
+        },
+        "gap": {
+          "$ref": "#/$defs/text"
+        },
+        "action_ref": {
+          "$ref": "#/$defs/text"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/relativePath"
+          }
+        }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_id",
+        "name",
+        "required_control_ids",
+        "required_evidence",
+        "failure_action"
+      ],
+      "properties": {
+        "gate_id": {
+          "$ref": "#/$defs/id"
+        },
+        "name": {
+          "$ref": "#/$defs/text"
+        },
+        "required_control_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "required_evidence": {
+          "$ref": "#/$defs/stringList"
+        },
+        "failure_action": {
+          "enum": [
+            "stop_work",
+            "stop_access_and_use",
+            "hold_implementation",
+            "reject_change",
+            "hold_integration",
+            "hold_decision_or_release",
+            "hold_deployment_or_benchmark",
+            "hold_release"
+          ]
+        }
+      }
+    },
+    "objective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objective_id",
+        "objective",
+        "measure",
+        "target",
+        "current_result",
+        "status",
+        "owner_role_id",
+        "evidence_refs"
+      ],
+      "properties": {
+        "objective_id": {
+          "$ref": "#/$defs/id"
+        },
+        "objective": {
+          "$ref": "#/$defs/text"
+        },
+        "measure": {
+          "$ref": "#/$defs/text"
+        },
+        "target": {
+          "$ref": "#/$defs/text"
+        },
+        "current_result": {
+          "$ref": "#/$defs/text"
+        },
+        "status": {
+          "enum": [
+            "met",
+            "not_met_release_hold",
+            "monitoring"
+          ]
+        },
+        "owner_role_id": {
+          "$ref": "#/$defs/id"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/relativePath"
+          }
+        }
+      }
+    },
+    "nonconformity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nonconformity_id",
+        "title",
+        "severity",
+        "status",
+        "owner_role_id",
+        "risk_ids",
+        "release_hold",
+        "containment",
+        "corrective_action_decision",
+        "evidence_refs"
+      ],
+      "properties": {
+        "nonconformity_id": {
+          "$ref": "#/$defs/id"
+        },
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "status": {
+          "enum": [
+            "open",
+            "contained",
+            "closed"
+          ]
+        },
+        "owner_role_id": {
+          "$ref": "#/$defs/id"
+        },
+        "risk_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "release_hold": {
+          "type": "boolean"
+        },
+        "containment": {
+          "$ref": "#/$defs/text"
+        },
+        "corrective_action_decision": {
+          "$ref": "#/$defs/text"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/relativePath"
+          }
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "audit_id",
+        "date",
+        "status",
+        "report_ref",
+        "independent",
+        "finding_ids"
+      ],
+      "properties": {
+        "audit_id": {
+          "$ref": "#/$defs/id"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "enum": [
+            "completed",
+            "completed_with_findings"
+          ]
+        },
+        "report_ref": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "independent": {
+          "type": "boolean"
+        },
+        "finding_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    },
+    "managementReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_id",
+        "date",
+        "status",
+        "report_ref",
+        "decision_ids"
+      ],
+      "properties": {
+        "review_id": {
+          "$ref": "#/$defs/id"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "enum": [
+            "accepted",
+            "accepted_with_holds"
+          ]
+        },
+        "report_ref": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "decision_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    },
+    "releaseStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "release_authorized",
+        "release_state",
+        "hold_risk_ids",
+        "hold_nonconformity_ids",
+        "pending_decision_ids",
+        "human_decision_required"
+      ],
+      "properties": {
+        "release_authorized": {
+          "type": "boolean"
+        },
+        "release_state": {
+          "enum": [
+            "held",
+            "ready_for_owner_decision",
+            "authorized"
+          ]
+        },
+        "hold_risk_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "hold_nonconformity_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "pending_decision_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "human_decision_required": {
+          "const": true
+        }
+      }
+    }
+  }
+}

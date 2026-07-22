@@ -4,11 +4,19 @@ This repository combines a frozen evaluation kernel with an active, structured p
 
 The released **Mechanical Technical Document Evaluation Harness v0.2.0** is a schema-first Python CLI that converts engineering review requirements into reproducible gates, deterministic checks, weighted scores, failure evidence, and immutable result records.
 
+The project's highest-level internal quality controls are the
+[AI Management System Policy](docs/governance/ai_management_system_policy_v0.3.0.md)
+and its machine-validated
+[AI management-system record](governance/ai_management_system.json). They make
+human accountability, authorized data, evidence, risk treatment, explicit
+holds, and continual improvement mandatory above feature work and schedule.
+
 ## Project status
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
 - **Current gate:** D-113 is consumed. PR #65 integrated it at exact `main` `6a74c74`; preflight passed, but all eight one-shot attempts returned exit `70` in the atomic publication layer and produced no complete output set. Independent verification passed and the protected comparison classified the benchmark as not evaluable. D-114 stabilization authority is proposed for owner review; release remains held.
+- **AI governance:** D-115 adopts an internal ISO/IEC 42001-aligned and NIST-informed AI management system. It inventories three systems, thirteen risks, twenty controls, eight lifecycle gates, six objectives, one open nonconformity, and an explicit held release state. This is not an ISO conformity or certification claim.
 - **Implementation boundary:** Eight ordered gates and eleven ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. P2.3 is complete for this exact scope. Six unsupported authority/source claims are explicitly deferred and excluded from v0.3.0 release claims.
 
 The accepted P2.3 completion boundary limits v0.3.0 to the eleven proven checks and defers six claims that lack a comparison source or exact authority rule. This prevents single-source field validation from being presented as cross-document reconciliation.
@@ -47,6 +55,7 @@ The repository currently provides:
 - immutable JSON result persistence;
 - a development and held-out benchmark split;
 - a reproducible harness-verification baseline;
+- a machine-validated AI management, risk, control, audit, and release-hold system;
 - a command-line interface;
 - 121 automated tests;
 - GitHub Actions CI on pushes and pull requests.
@@ -67,6 +76,8 @@ It does not provide:
 - unreviewed operational control.
 
 All engineering outputs require review by an appropriately qualified person.
+The AI management system reduces and exposes risk; it does not guarantee AI
+safety, legal compliance, or engineering correctness.
 
 ## Requirements
 
