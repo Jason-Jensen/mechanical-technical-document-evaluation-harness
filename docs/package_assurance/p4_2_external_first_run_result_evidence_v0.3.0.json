@@ -1,0 +1,106 @@
+{
+  "schema_version": "0.3.0",
+  "evidence_id": "P4.2-D113-FIRST-RUN-RESULT",
+  "status": "complete_not_evaluable_owner_review_required",
+  "recorded_date": "2026-07-22",
+  "authority": "D-113",
+  "proposed_decision": "D-114",
+  "integrated_main_commit": "6a74c74a8331f92342008bff8dd376124148eb36",
+  "frozen_evaluator_behavior_commit": "4cf9fe8",
+  "frozen_evaluator_source_tree": "d0c3f128ee13898cdcd6fc12c6d6ad5877649551",
+  "identities": {
+    "family_revision": "FR-D112-HOIST-002",
+    "benchmark_revision": "BR-D112-HOIST-001",
+    "family_id": "FAM-HO-CRANE-HOIST-901",
+    "static_runner_bundle_sha256": "54d01f7b9ef98893e9d1b05565829a7ac3d07eb58c8caf274465d944059598fb",
+    "runner_script_sha256": "c2ab9b56e7fe81e9dda489fde83fbc3bf00e25a433e45a9cbdfdc75ffcc0beae",
+    "input_inventory_sha256": "0b7b37b6f048d295b76bfd90877b52c00eef9ec617750bcc76585325b51c1f8f",
+    "protected_sha256": "1876455a0abb18a6a2ad10f9f57667a54a520201b209e16f8d9cc624654c280d",
+    "complete_family_sha256": "141f3d1b84691d9d87852e46754d139e5bd5d77b487b1b75c49964e969089190"
+  },
+  "preflight": {
+    "passed": 27,
+    "failed": 0,
+    "static_files": 186,
+    "readonly_static_files": 186,
+    "input_identities_matched": 181,
+    "input_identities_expected": 181,
+    "zero_preexisting_runtime_artifacts": true
+  },
+  "execution": {
+    "runner_invocation_count": 1,
+    "runner_exit_code": 1,
+    "scenarios_expected": 8,
+    "scenarios_attempted": 8,
+    "scenarios_completed": 8,
+    "scenarios_consumed": 8,
+    "semantic_execution_count": 8,
+    "invocation_exit_code_counts": {
+      "70": 8
+    },
+    "complete_four_output_sets": 0,
+    "result_state_available_count": 0,
+    "result_state_unavailable_count": 8,
+    "infrastructure_or_tool_failure_count": 8,
+    "retry_count": 0,
+    "rerun_authorized": false
+  },
+  "failure_classification": {
+    "shared_error_class": "ERROR [INTERNAL]",
+    "failing_component": "evaluator package-audit atomic publication layer",
+    "causal_category": "internal output-publication tooling failure before complete atomic publication",
+    "affected_attempt_count": 8,
+    "lower_level_root_cause_available": false
+  },
+  "raw_evidence": {
+    "file_count": 40,
+    "aggregate_sha256": "5d45bfa31299aeae5fa9bf7ea3084f8f86835713d709d08d0f91a98bb18d3b21",
+    "frozen_at_utc": "2026-07-22T19:41:02.9651574Z",
+    "independent_verification_status": "passed",
+    "aggregate_fact_mismatch_count": 0,
+    "post_freeze_mutation_detected": false
+  },
+  "protected_comparison": {
+    "status": "complete",
+    "protected_access_started_at_utc": "2026-07-22T20:06:34.0381290Z",
+    "comparison_completed_at_utc": "2026-07-22T20:08:47.8323650Z",
+    "freeze_preceded_protected_access": true,
+    "expectation_to_attempt_mapping_count": 8,
+    "mapping_missing_count": 0,
+    "mapping_extra_count": 0,
+    "comparable_scenario_count": 0,
+    "not_evaluable_count": 8,
+    "not_evaluable_reason": "publication_failed_before_any_complete_semantic_output_set_existed",
+    "expected_result_state_distribution": {
+      "automatic_pass": 1,
+      "automatic_fail": 5,
+      "engineering_review_required": 0,
+      "missing_authoritative_information": 1,
+      "extraction_or_tool_failure": 1,
+      "evaluator_uncertainty": 0
+    },
+    "expected_high_severity_finding_count": 8,
+    "expected_release_hold_scenario_count": 7,
+    "exact_state_comparison_status": "undefined_no_semantic_outputs",
+    "exact_finding_comparison_status": "undefined_no_semantic_outputs",
+    "false_positive_status": "undefined_no_semantic_outputs",
+    "false_negative_status": "undefined_no_semantic_outputs",
+    "accuracy_status": "undefined_no_semantic_outputs",
+    "raw_protected_and_family_pre_post_integrity": "passed_unchanged"
+  },
+  "public_source_hashes": {
+    "execution_summary_json_sha256": "502de2d8375be960fbd2f34ec6b8b6b227f1a5b4f6bb80af797db25d259b9574",
+    "execution_summary_markdown_sha256": "d67716a39066a15a196a56a056be5851730f9de4c80c895ddc7eceaf6eaac5f5",
+    "independent_verification_json_sha256": "ec2005f8d301b020472263bd90262db10873117e09b24845972c6fab31a50f0f",
+    "independent_verification_markdown_sha256": "ab4f22822f6fbed93eeb523b3ad428f66250b21e4d1a5769aa7d28f5d28a7053",
+    "protected_comparison_json_sha256": "20bdbf9d1ec7c3a4ca4dd149567d9d9351d7bdf2c9d56dce12b2fa7650ab70b7",
+    "protected_comparison_markdown_sha256": "a6962ed31a1dd50c902ff9d645c7e8b9eaf336a47bf99a63d04e47d6aa55f6d1"
+  },
+  "aggregate_benchmark_verdict": "not_evaluable_due_to_output_publication_failure",
+  "release_hold_required": true,
+  "held_out_rerun_authorized": false,
+  "new_held_out_family_authorized": false,
+  "stabilization_authorized": false,
+  "release_claim_authorized": false,
+  "semantic_performance_claim_authorized": false
+}

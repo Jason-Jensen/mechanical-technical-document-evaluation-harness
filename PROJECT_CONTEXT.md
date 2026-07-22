@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P4.2 accepted first-run authority integration
-- **Status:** D-112 is integrated through PR #64 at exact `main` `0264db7`. External family revision 2 passed 68/68 independent controls and oracle-blind runner revision 6 passed 53/53 independent static controls. Both remain outside Git and unexecuted. D-113 was accepted on 2026-07-22; PR #65 integration and exact-main verification are pending; semantic execution count is zero
+- **Active WBS:** P4.2 external first-run result review
+- **Status:** D-113 is integrated through PR #65 at exact `main` `6a74c74` and consumed. Preflight passed 27/27, but all eight one-shot attempts returned exit `70` in the atomic publication layer and produced no complete output set. Independent raw verification passed; the separate protected comparison classified all eight scenarios as not evaluable. D-114 is proposed and the release hold remains active
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
@@ -436,9 +436,30 @@ read-only static files, has zero execution artifacts, and passed 53/53 fresh
 independent static controls. Its complete pre/post hash is
 `54d01f7b9ef98893e9d1b05565829a7ac3d07eb58c8caf274465d944059598fb`.
 
-No semantic run or protected comparison has occurred. The controlling owner
-package is
-`docs/package_assurance/p4_2_external_custody_freeze_review_v0.3.0.md`.
+PR #65 integrated accepted D-113 at exact `main`
+`6a74c74a8331f92342008bff8dd376124148eb36`. The oracle-blind preflight then
+passed 27/27 controls with 186/186 static files read-only and 181/181 input
+identities exact. One runner invocation attempted and consumed all eight opaque
+packages. Every evaluator process returned exit `70` before any complete
+four-output publication; no result state was available.
+
+The runner froze 40 raw-evidence files at aggregate hash
+`5d45bfa31299aeae5fa9bf7ea3084f8f86835713d709d08d0f91a98bb18d3b21`.
+A fresh oracle-blind verifier reproduced every static identity, marker order,
+failure record, output absence, and raw hash with zero public-summary
+mismatches. It classified the shared failure as an internal atomic-publication
+tooling failure and found no lower-level root cause in the captured evidence.
+
+A separate custodian accessed the protected oracle only after the raw freeze
+and independent verification. All eight protected expectations mapped to a
+consumed attempt, but zero outputs were comparable. Accuracy, exact-state and
+finding performance, false positives, and false negatives are undefined. Raw,
+protected, and complete-family pre/post hashes remained identical. The
+benchmark verdict is `not_evaluable_due_to_output_publication_failure`; release
+is held, all eight scenarios are consumed, and rerun is prohibited.
+
+The controlling owner package is
+`docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md`.
 
 ## Intended Outcome
 
@@ -478,13 +499,12 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Integrate accepted D-113 through PR #65 and record exact `main`. Then reverify
-the family, producer, runner, evaluator, and schema identities before invoking
-each opaque package exactly once. Freeze raw evidence before a separate
-protected comparison. Do not retry, import any family or runner asset, restore
-protected-fixture CI, change evaluator behavior or benchmark inputs, rerun
-either public package, begin P4.3, or add deferred capabilities. The semantic
-execution count remains zero until the post-integration one-shot run.
+Review and accept or revise D-114. Until that decision is accepted, do not
+modify the publication layer, execute a development reproduction, create or
+run another held-out family, retry the consumed family, import custody assets,
+restore protected-fixture CI, change semantic evaluator behavior or benchmark
+inputs, rerun either public package, begin P4.3, or add deferred capabilities.
+The release hold remains active and no held-out performance claim is allowed.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
