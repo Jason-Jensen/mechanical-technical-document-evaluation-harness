@@ -1,0 +1,1543 @@
+{
+  "schema_version": "0.3.0",
+  "management_system_id": "AIMS-MEWA-001",
+  "title": "Mechanical Engineering Workflow Assurance AI Management System",
+  "status": "operational_release_held",
+  "effective_date": "2026-07-22",
+  "next_review_date": "2027-07-22",
+  "certification_status": "not_claimed",
+  "policy_ref": "docs/governance/ai_management_system_policy_v0.3.0.md",
+  "manual_ref": "docs/governance/ai_quality_control_manual_v0.3.0.md",
+  "impact_assessment_ref": "docs/governance/ai_impact_assessment_v0.3.0.md",
+  "alignment_assessment_ref": "docs/governance/iso_iec_42001_alignment_and_gap_assessment_v0.3.0.md",
+  "sources": [
+    {
+      "source_id": "SRC-ISO-42001",
+      "title": "ISO/IEC 42001:2023 official public record",
+      "url": "https://www.iso.org/standard/42001",
+      "role": "governance_reference",
+      "repository_copy_allowed": false,
+      "licensed_copy_required_for_formal_conformity": true,
+      "notes": "Public description used for high-level alignment only; no conformity or certification claim."
+    },
+    {
+      "source_id": "SRC-ISO-23894",
+      "title": "ISO/IEC 23894:2023 official public record",
+      "url": "https://www.iso.org/standard/77304.html",
+      "role": "risk_reference",
+      "repository_copy_allowed": false,
+      "licensed_copy_required_for_formal_conformity": true,
+      "notes": "Public abstract used to confirm the AI-specific risk-management purpose."
+    },
+    {
+      "source_id": "SRC-NIST-AIRMF",
+      "title": "NIST AI Risk Management Framework 1.0",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "role": "operational_reference",
+      "repository_copy_allowed": false,
+      "licensed_copy_required_for_formal_conformity": false,
+      "notes": "Voluntary public framework used for Govern, Map, Measure, and Manage practices. NIST states that version 1.0 is being updated; publication of a revision triggers governance review."
+    },
+    {
+      "source_id": "SRC-NIST-GAI",
+      "title": "NIST AI RMF Generative AI Profile",
+      "url": "https://doi.org/10.6028/NIST.AI.600-1",
+      "role": "operational_reference",
+      "repository_copy_allowed": false,
+      "licensed_copy_required_for_formal_conformity": false,
+      "notes": "Public generative-AI risk guidance used for project-assistant controls."
+    }
+  ],
+  "scope": {
+    "included": [
+      "Generative-AI assistance used for project planning, research, coding, testing, documentation, and repository operations.",
+      "The deterministic package-assurance evaluator as an AI-adjacent control component.",
+      "Future model-based capabilities while they are proposed, assessed, or blocked.",
+      "People, data, software, suppliers, evidence, and decisions involved in those lifecycles."
+    ],
+    "excluded": [
+      "Autonomous engineering sign-off or safety-critical final decisions.",
+      "Production hosting, API, database, RAG, generic agent, PDF/CAD extraction, and model-training capabilities not approved for v0.3.0.",
+      "ISO/IEC 42001 certification or legal-compliance assurance."
+    ],
+    "interested_parties": [
+      {
+        "party": "Project owner",
+        "needs": [
+          "Accurate status, bounded claims, explicit risk, and final release authority."
+        ]
+      },
+      {
+        "party": "Qualified engineering reviewers",
+        "needs": [
+          "Traceable evidence, uncertainty, limitations, and no substitution for engineering judgment."
+        ]
+      },
+      {
+        "party": "Future clients and document-control personnel",
+        "needs": [
+          "Reliable findings, protected information, contestability, and understandable release holds."
+        ]
+      },
+      {
+        "party": "People affected by engineering package decisions",
+        "needs": [
+          "No autonomous unsafe decision, preserved accountability, and qualified review."
+        ]
+      },
+      {
+        "party": "Data and intellectual-property owners",
+        "needs": [
+          "Authorized use, privacy, confidentiality, attribution, and license compliance."
+        ]
+      }
+    ]
+  },
+  "roles": [
+    {
+      "role_id": "ROLE-OWNER",
+      "name": "Project owner",
+      "accountabilities": [
+        "Approve policy, material scope, high-risk acceptance, and release.",
+        "Resolve non-waivable holds through recorded decisions."
+      ],
+      "may_accept_high_risk": true,
+      "may_authorize_release": true,
+      "independence_rule": "Cannot describe self-review as independent assurance."
+    },
+    {
+      "role_id": "ROLE-MGMT",
+      "name": "AI management representative and project manager",
+      "accountabilities": [
+        "Maintain inventory, risks, controls, objectives, audits, and management reviews.",
+        "Escalate unresolved risk and verify corrective-action evidence."
+      ],
+      "may_accept_high_risk": false,
+      "may_authorize_release": false,
+      "independence_rule": "Must obtain owner approval for high-risk acceptance and release."
+    },
+    {
+      "role_id": "ROLE-IMPLEMENTER",
+      "name": "Implementer or producing agent",
+      "accountabilities": [
+        "Implement only authorized work and preserve inputs, outputs, traces, and failures.",
+        "Run focused and regression checks and disclose limitations."
+      ],
+      "may_accept_high_risk": false,
+      "may_authorize_release": false,
+      "independence_rule": "Cannot independently accept its own high-risk implementation or benchmark."
+    },
+    {
+      "role_id": "ROLE-REVIEWER",
+      "name": "Independent reviewer",
+      "accountabilities": [
+        "Challenge scope, risk, evidence, behavior, and claims.",
+        "Report conflicts, gaps, and nonconformities without tuning the subject under review."
+      ],
+      "may_accept_high_risk": false,
+      "may_authorize_release": false,
+      "independence_rule": "Must not be the sole producer of the evidence being accepted as independent."
+    },
+    {
+      "role_id": "ROLE-CUSTODIAN",
+      "name": "Benchmark custodian",
+      "accountabilities": [
+        "Protect held-out authority, freeze order, custody, and oracle separation.",
+        "Prevent leakage, retry, mutation, and unapproved comparison."
+      ],
+      "may_accept_high_risk": false,
+      "may_authorize_release": false,
+      "independence_rule": "Custody and comparison duties remain separated from evaluator implementation."
+    },
+    {
+      "role_id": "ROLE-ENGINEER",
+      "name": "Qualified engineering reviewer",
+      "accountabilities": [
+        "Make final engineering judgments and sign-off within professional competence.",
+        "Review evidence, assumptions, uncertainty, and unresolved conditions."
+      ],
+      "may_accept_high_risk": false,
+      "may_authorize_release": false,
+      "independence_rule": "Engineering authority cannot be delegated to AI or inferred from software output."
+    }
+  ],
+  "systems": [
+    {
+      "system_id": "AIS-001",
+      "name": "Generative-AI assisted project work",
+      "classification": "generative_ai_assistant",
+      "lifecycle_status": "active",
+      "owner_role_id": "ROLE-OWNER",
+      "purpose": "Assist planning, research, implementation, testing, documentation, and controlled repository operations.",
+      "intended_users": [
+        "Project owner",
+        "Project manager",
+        "Implementers and reviewers"
+      ],
+      "inputs": [
+        "Authorized repository content",
+        "Public or authorized reference material",
+        "Explicit owner instructions"
+      ],
+      "outputs": [
+        "Draft analyses and recommendations",
+        "Code and tests",
+        "Controlled documentation and project records"
+      ],
+      "data_classes": [
+        "public",
+        "synthetic",
+        "repository_internal"
+      ],
+      "prohibited_uses": [
+        "Engineering sign-off or autonomous release",
+        "Inventing missing source authority",
+        "Using restricted or unauthorized material",
+        "Concealing uncertainty, failures, or human authorship boundaries"
+      ],
+      "human_oversight_required": true,
+      "impact_assessment_ref": "docs/governance/ai_impact_assessment_v0.3.0.md",
+      "risk_ids": [
+        "AIR-001",
+        "AIR-002",
+        "AIR-005",
+        "AIR-006",
+        "AIR-007",
+        "AIR-009",
+        "AIR-011",
+        "AIR-012",
+        "AIR-013"
+      ]
+    },
+    {
+      "system_id": "AIS-002",
+      "name": "Deterministic package-assurance evaluator",
+      "classification": "deterministic_non_ai_control",
+      "lifecycle_status": "active",
+      "owner_role_id": "ROLE-OWNER",
+      "purpose": "Independently evaluate structured package artifacts, preserve evidence, and constrain unsupported AI or human claims.",
+      "intended_users": [
+        "Project maintainers",
+        "Qualified engineering reviewers",
+        "Future bounded audit-service users"
+      ],
+      "inputs": [
+        "Versioned structured package artifacts",
+        "Accepted authority maps and schemas"
+      ],
+      "outputs": [
+        "Immutable package result",
+        "Evidence-linked issue register",
+        "Release-readiness summary"
+      ],
+      "data_classes": [
+        "public",
+        "synthetic",
+        "repository_internal"
+      ],
+      "prohibited_uses": [
+        "Representation as an AI model",
+        "Engineering sign-off or code-compliance opinion",
+        "Release when mandatory authority or evidence is missing",
+        "Semantic claims from extraction or publication failure"
+      ],
+      "human_oversight_required": true,
+      "impact_assessment_ref": "docs/governance/ai_impact_assessment_v0.3.0.md",
+      "risk_ids": [
+        "AIR-001",
+        "AIR-003",
+        "AIR-004",
+        "AIR-008",
+        "AIR-009",
+        "AIR-010",
+        "AIR-011"
+      ]
+    },
+    {
+      "system_id": "AIS-003",
+      "name": "Future model-based extraction and agent capabilities",
+      "classification": "future_ai_capability",
+      "lifecycle_status": "blocked_not_authorized",
+      "owner_role_id": "ROLE-OWNER",
+      "purpose": "Reserve a governed record for future multimodal extraction, recommendation, or agent use without authorizing implementation.",
+      "intended_users": [
+        "Not authorized"
+      ],
+      "inputs": [
+        "Potential future engineering documents and controlled data"
+      ],
+      "outputs": [
+        "Potential future extracted or proposed structured artifacts"
+      ],
+      "data_classes": [
+        "restricted_not_authorized"
+      ],
+      "prohibited_uses": [
+        "Any implementation or execution before a new owner gate",
+        "Autonomous engineering decisions",
+        "Production or confidential-data use without security, privacy, supplier, and impact review"
+      ],
+      "human_oversight_required": true,
+      "impact_assessment_ref": "docs/governance/ai_impact_assessment_v0.3.0.md",
+      "risk_ids": [
+        "AIR-001",
+        "AIR-002",
+        "AIR-005",
+        "AIR-006",
+        "AIR-007",
+        "AIR-009",
+        "AIR-011",
+        "AIR-012",
+        "AIR-013"
+      ]
+    }
+  ],
+  "risk_method": {
+    "likelihood_scale": "1_to_5",
+    "impact_scale": "1_to_5",
+    "low_max": 4,
+    "medium_max": 9,
+    "high_max": 16,
+    "critical_max": 25,
+    "high_residual_rule": "Hold release unless the owner records exceptional acceptance with evidence, scope, expiry, and monitoring.",
+    "critical_rule": "Avoid the activity until treatment reduces residual risk below critical."
+  },
+  "risks": [
+    {
+      "risk_id": "AIR-001",
+      "system_ids": [
+        "AIS-001",
+        "AIS-002",
+        "AIS-003"
+      ],
+      "category": "safety",
+      "risk_statement": "An incorrect or incomplete output could be relied upon as an engineering or release decision and contribute to physical, financial, or operational harm.",
+      "affected_parties": [
+        "Engineering reviewers",
+        "Future clients",
+        "People affected by engineering decisions"
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "inherent_likelihood": 5,
+      "inherent_impact": 5,
+      "inherent_score": 25,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-002",
+        "AIC-004",
+        "AIC-005",
+        "AIC-006",
+        "AIC-010",
+        "AIC-012",
+        "AIC-015"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 4,
+      "residual_score": 8,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "Any change to intended use, human authority, release behavior, or affected parties.",
+      "evidence_refs": [
+        "docs/governance/ai_management_system_policy_v0.3.0.md",
+        "docs/governance/ai_impact_assessment_v0.3.0.md",
+        "docs/package_assurance/workflow_contract_v0.3.0.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-002",
+      "system_ids": [
+        "AIS-001",
+        "AIS-003"
+      ],
+      "category": "transparency",
+      "risk_statement": "Generated content could hallucinate facts, authority, citations, or certainty and be mistaken for controlled engineering information.",
+      "affected_parties": [
+        "Project owner",
+        "Engineering reviewers",
+        "Future clients"
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "inherent_likelihood": 4,
+      "inherent_impact": 5,
+      "inherent_score": 20,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-006",
+        "AIC-007",
+        "AIC-010",
+        "AIC-012"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 4,
+      "residual_score": 8,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "Any unsupported claim, incorrect citation, invented authority, or user correction.",
+      "evidence_refs": [
+        "docs/governance/ai_management_system_policy_v0.3.0.md",
+        "docs/package_assurance/workflow_contract_v0.3.0.md",
+        "docs/quality/improvement_register.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-003",
+      "system_ids": [
+        "AIS-002"
+      ],
+      "category": "quality",
+      "risk_statement": "The evaluator could miss a release-relevant inconsistency or lack evidence that its accepted checks generalize to external packages.",
+      "affected_parties": [
+        "Engineering reviewers",
+        "Future clients",
+        "People affected by engineering decisions"
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "inherent_likelihood": 4,
+      "inherent_impact": 5,
+      "inherent_score": 20,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-005",
+        "AIC-006",
+        "AIC-007",
+        "AIC-010",
+        "AIC-016",
+        "AIC-018"
+      ],
+      "residual_likelihood": 3,
+      "residual_impact": 4,
+      "residual_score": 12,
+      "status": "open_treatment",
+      "release_hold": true,
+      "review_trigger": "A comparable independent benchmark and qualified human false-negative review become available.",
+      "evidence_refs": [
+        "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/governance/internal_audit_2026-07-22.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-004",
+      "system_ids": [
+        "AIS-002"
+      ],
+      "category": "quality",
+      "risk_statement": "False or low-value findings could waste reviewer effort, delay work, or reduce trust in the assurance package.",
+      "affected_parties": [
+        "Engineering reviewers",
+        "Future clients"
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "inherent_likelihood": 4,
+      "inherent_impact": 3,
+      "inherent_score": 12,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-010",
+        "AIC-012",
+        "AIC-016",
+        "AIC-020"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 3,
+      "residual_score": 6,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "Reviewer-overturned finding, clean-package hold, or material complaint.",
+      "evidence_refs": [
+        "docs/quality/improvement_register.md",
+        "docs/package_assurance/acceptance_plan_v0.3.0.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-005",
+      "system_ids": [
+        "AIS-001",
+        "AIS-003"
+      ],
+      "category": "data_rights",
+      "risk_statement": "Confidential, personal, proprietary, export-controlled, or copyright-restricted material could be accessed, uploaded, retained, or redistributed without authority.",
+      "affected_parties": [
+        "Data and intellectual-property owners",
+        "Project owner",
+        "Future clients"
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "inherent_likelihood": 4,
+      "inherent_impact": 5,
+      "inherent_score": 20,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-007",
+        "AIC-008",
+        "AIC-013",
+        "AIC-015",
+        "AIC-019"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 4,
+      "residual_score": 8,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "New data class, client material, personal data, restricted source, or external service.",
+      "evidence_refs": [
+        "docs/governance/ai_management_system_policy_v0.3.0.md",
+        "docs/governance/iso_iec_42001_alignment_and_gap_assessment_v0.3.0.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-006",
+      "system_ids": [
+        "AIS-001",
+        "AIS-003"
+      ],
+      "category": "security",
+      "risk_statement": "Untrusted content, prompt injection, credentials, tools, or external actions could manipulate the workflow or compromise systems and data.",
+      "affected_parties": [
+        "Project owner",
+        "Repository collaborators",
+        "Future clients"
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "inherent_likelihood": 4,
+      "inherent_impact": 4,
+      "inherent_score": 16,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-008",
+        "AIC-009",
+        "AIC-014",
+        "AIC-015"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 4,
+      "residual_score": 8,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "Credential use, external action, new tool permission, hosted execution, or security event.",
+      "evidence_refs": [
+        "AGENTS.md",
+        "docs/governance/ai_management_system_policy_v0.3.0.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-007",
+      "system_ids": [
+        "AIS-001",
+        "AIS-003"
+      ],
+      "category": "supplier",
+      "risk_statement": "A model, provider, dependency, prompt, or environment change could silently alter behavior, retention, availability, or reproducibility.",
+      "affected_parties": [
+        "Project owner",
+        "Engineering reviewers",
+        "Future clients"
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "inherent_likelihood": 4,
+      "inherent_impact": 4,
+      "inherent_score": 16,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-003",
+        "AIC-011",
+        "AIC-013",
+        "AIC-014",
+        "AIC-016"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 4,
+      "residual_score": 8,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "Material provider, model, dependency, prompt, or environment change.",
+      "evidence_refs": [
+        "AGENTS.md",
+        "docs/governance/ai_quality_control_manual_v0.3.0.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-008",
+      "system_ids": [
+        "AIS-002"
+      ],
+      "category": "benchmark_integrity",
+      "risk_statement": "Held-out expectations or metadata could leak to implementers, causing tuning, false confidence, or invalid performance claims.",
+      "affected_parties": [
+        "Project owner",
+        "Engineering reviewers",
+        "Future clients"
+      ],
+      "owner_role_id": "ROLE-CUSTODIAN",
+      "inherent_likelihood": 4,
+      "inherent_impact": 4,
+      "inherent_score": 16,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-007",
+        "AIC-010",
+        "AIC-014",
+        "AIC-017"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 3,
+      "residual_score": 6,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "Any protected path, expected condition, benchmark statistic, or custody asset is exposed before authorization.",
+      "evidence_refs": [
+        "AGENTS.md",
+        "docs/quality/improvement_register.md",
+        "docs/package_assurance/p4_2_external_custody_freeze_review_v0.3.0.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-009",
+      "system_ids": [
+        "AIS-001",
+        "AIS-002",
+        "AIS-003"
+      ],
+      "category": "human_oversight",
+      "risk_statement": "Automation bias or unclear authority could cause people to accept an AI or evaluator output without qualified review.",
+      "affected_parties": [
+        "Engineering reviewers",
+        "Future clients",
+        "People affected by engineering decisions"
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "inherent_likelihood": 4,
+      "inherent_impact": 5,
+      "inherent_score": 20,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-002",
+        "AIC-004",
+        "AIC-006",
+        "AIC-012",
+        "AIC-020"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 4,
+      "residual_score": 8,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "Any output, interface, report, or claim that obscures the human approval boundary.",
+      "evidence_refs": [
+        "docs/governance/ai_management_system_policy_v0.3.0.md",
+        "README.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-010",
+      "system_ids": [
+        "AIS-002"
+      ],
+      "category": "reliability",
+      "risk_statement": "Extraction, execution, or output-publication failure could destroy evidence or be mistaken for semantic evaluator performance.",
+      "affected_parties": [
+        "Project owner",
+        "Engineering reviewers",
+        "Future clients"
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "inherent_likelihood": 4,
+      "inherent_impact": 4,
+      "inherent_score": 16,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-010",
+        "AIC-011",
+        "AIC-015",
+        "AIC-018"
+      ],
+      "residual_likelihood": 3,
+      "residual_impact": 4,
+      "residual_score": 12,
+      "status": "open_treatment",
+      "release_hold": true,
+      "review_trigger": "D-114 corrective action is accepted and proven with a non-held-out production-equivalent sentinel.",
+      "evidence_refs": [
+        "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/quality/improvement_register.md",
+        "docs/governance/internal_audit_2026-07-22.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-011",
+      "system_ids": [
+        "AIS-001",
+        "AIS-002",
+        "AIS-003"
+      ],
+      "category": "governance",
+      "risk_statement": "Scope, gate, or release controls could be bypassed or documentation could overstate what the system proves.",
+      "affected_parties": [
+        "Project owner",
+        "Engineering reviewers",
+        "Future clients"
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "inherent_likelihood": 4,
+      "inherent_impact": 5,
+      "inherent_score": 20,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-001",
+        "AIC-002",
+        "AIC-003",
+        "AIC-006",
+        "AIC-014",
+        "AIC-017",
+        "AIC-018",
+        "AIC-019"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 4,
+      "residual_score": 8,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "Unauthorized work, misleading claim, missing decision record, or attempted hold bypass.",
+      "evidence_refs": [
+        "AGENTS.md",
+        "gantt.xlsx",
+        "PROJECT_CONTEXT.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-012",
+      "system_ids": [
+        "AIS-001",
+        "AIS-003"
+      ],
+      "category": "security",
+      "risk_statement": "Software, dependency, provider, or infrastructure compromise could change behavior, expose data, or corrupt evidence.",
+      "affected_parties": [
+        "Project owner",
+        "Repository collaborators",
+        "Future clients"
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "inherent_likelihood": 4,
+      "inherent_impact": 5,
+      "inherent_score": 20,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-009",
+        "AIC-013",
+        "AIC-014",
+        "AIC-015",
+        "AIC-019"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 4,
+      "residual_score": 8,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "Dependency alert, provider incident, credential exposure, infrastructure change, or evidence-integrity anomaly.",
+      "evidence_refs": [
+        ".github/workflows/ci.yml",
+        "AGENTS.md",
+        "docs/governance/ai_quality_control_manual_v0.3.0.md"
+      ]
+    },
+    {
+      "risk_id": "AIR-013",
+      "system_ids": [
+        "AIS-001",
+        "AIS-003"
+      ],
+      "category": "stakeholder_impact",
+      "risk_statement": "Future AI behavior or review prioritization could create unfair, inaccessible, or poorly understood impacts for workers, clients, or other affected people.",
+      "affected_parties": [
+        "Engineering reviewers",
+        "Workers and operators",
+        "Future clients",
+        "Other affected people"
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "inherent_likelihood": 3,
+      "inherent_impact": 4,
+      "inherent_score": 12,
+      "treatment": "mitigate",
+      "control_ids": [
+        "AIC-004",
+        "AIC-006",
+        "AIC-016",
+        "AIC-018",
+        "AIC-020"
+      ],
+      "residual_likelihood": 2,
+      "residual_impact": 3,
+      "residual_score": 6,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "External pilot, new affected group, prioritization model, user-interface change, or stakeholder complaint.",
+      "evidence_refs": [
+        "docs/governance/ai_impact_assessment_v0.3.0.md",
+        "docs/governance/iso_iec_42001_alignment_and_gap_assessment_v0.3.0.md"
+      ]
+    }
+  ],
+  "minimum_control_ids": [
+    "AIC-001",
+    "AIC-002",
+    "AIC-003",
+    "AIC-004",
+    "AIC-005",
+    "AIC-006",
+    "AIC-007",
+    "AIC-008",
+    "AIC-009",
+    "AIC-010",
+    "AIC-011",
+    "AIC-012",
+    "AIC-013",
+    "AIC-014",
+    "AIC-015",
+    "AIC-016",
+    "AIC-017",
+    "AIC-018",
+    "AIC-019",
+    "AIC-020"
+  ],
+  "controls": [
+    {
+      "control_id": "AIC-001",
+      "domain": "governance",
+      "title": "Policy, scope, and precedence",
+      "objective": "Make safety, rights, evidence, and human authority binding above schedule and implementation convenience.",
+      "requirements": [
+        "Maintain an owner-approved policy and explicit scope.",
+        "Do not allow lower-level instructions to waive mandatory holds."
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "risk_ids": [
+        "AIR-011"
+      ],
+      "implementation_status": "implemented",
+      "verification": "automated_and_manual",
+      "failure_action": "stop_work",
+      "evidence_refs": [
+        "docs/governance/ai_management_system_policy_v0.3.0.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "control_id": "AIC-002",
+      "domain": "governance",
+      "title": "Accountability and role separation",
+      "objective": "Keep named humans accountable and distinguish production, independent review, custody, engineering judgment, and release.",
+      "requirements": [
+        "Assign an owner to every system, risk, control, and decision.",
+        "Do not present self-review as independent assurance."
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "risk_ids": [
+        "AIR-001",
+        "AIR-009",
+        "AIR-011"
+      ],
+      "implementation_status": "implemented",
+      "verification": "automated_and_manual",
+      "failure_action": "stop_work",
+      "evidence_refs": [
+        "docs/governance/ai_management_system_policy_v0.3.0.md",
+        "governance/ai_management_system.json"
+      ]
+    },
+    {
+      "control_id": "AIC-003",
+      "domain": "governance",
+      "title": "AI system inventory and classification",
+      "objective": "Prevent unowned, misclassified, or shadow AI use.",
+      "requirements": [
+        "Record purpose, owner, lifecycle, inputs, outputs, data classes, prohibited uses, and risks.",
+        "Classify the deterministic evaluator as non-AI and future AI as blocked."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-007",
+        "AIR-011"
+      ],
+      "implementation_status": "implemented",
+      "verification": "automated",
+      "failure_action": "stop_work",
+      "evidence_refs": [
+        "governance/ai_management_system.json",
+        "docs/governance/ai_impact_assessment_v0.3.0.md"
+      ]
+    },
+    {
+      "control_id": "AIC-004",
+      "domain": "impact_and_risk",
+      "title": "Affected-party impact assessment",
+      "objective": "Identify intended benefits, reasonably foreseeable harms, affected parties, and control decisions before use changes.",
+      "requirements": [
+        "Assess safety, quality, rights, security, human, and stakeholder impacts.",
+        "Repeat after material system, data, deployment, or affected-party change."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-001",
+        "AIR-009",
+        "AIR-013"
+      ],
+      "implementation_status": "implemented",
+      "verification": "manual",
+      "failure_action": "stop_work",
+      "evidence_refs": [
+        "docs/governance/ai_impact_assessment_v0.3.0.md"
+      ]
+    },
+    {
+      "control_id": "AIC-005",
+      "domain": "impact_and_risk",
+      "title": "AI risk assessment and treatment",
+      "objective": "Score, treat, evidence, and review AI risks consistently without allowing metrics to override holds.",
+      "requirements": [
+        "Record inherent and residual likelihood and impact.",
+        "Bind each risk to controls, evidence, owner, treatment, and review trigger."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-001",
+        "AIR-003",
+        "AIR-011"
+      ],
+      "implementation_status": "implemented",
+      "verification": "automated_and_manual",
+      "failure_action": "hold_release",
+      "evidence_refs": [
+        "governance/ai_management_system.json",
+        "docs/governance/ai_quality_control_manual_v0.3.0.md"
+      ]
+    },
+    {
+      "control_id": "AIC-006",
+      "domain": "human_oversight",
+      "title": "Qualified human authority",
+      "objective": "Prevent AI or software from becoming engineering sign-off, high-risk acceptance, or autonomous release authority.",
+      "requirements": [
+        "Require qualified engineering review for engineering decisions.",
+        "Reserve high-risk acceptance and release for the project owner."
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "risk_ids": [
+        "AIR-001",
+        "AIR-002",
+        "AIR-003",
+        "AIR-009",
+        "AIR-011",
+        "AIR-013"
+      ],
+      "implementation_status": "implemented",
+      "verification": "manual",
+      "failure_action": "hold_release",
+      "evidence_refs": [
+        "docs/governance/ai_management_system_policy_v0.3.0.md",
+        "README.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "control_id": "AIC-007",
+      "domain": "data_and_rights",
+      "title": "Source authority, provenance, and transformation",
+      "objective": "Keep authoritative facts, supporting sources, assumptions, and generated content distinguishable and traceable.",
+      "requirements": [
+        "Do not invent missing engineering authority.",
+        "Preserve evidence locators and transformations for material claims."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-002",
+        "AIR-003",
+        "AIR-005",
+        "AIR-008"
+      ],
+      "implementation_status": "implemented",
+      "verification": "automated_and_manual",
+      "failure_action": "hold_integration",
+      "evidence_refs": [
+        "docs/package_assurance/workflow_contract_v0.3.0.md",
+        "docs/package_assurance/transformation_and_assumption_log_contract_v0.3.0.md"
+      ]
+    },
+    {
+      "control_id": "AIC-008",
+      "domain": "data_and_rights",
+      "title": "Data, privacy, confidentiality, and intellectual-property authorization",
+      "objective": "Prevent access, upload, storage, transformation, or disclosure of material without a valid use basis.",
+      "requirements": [
+        "Use only public, synthetic, self-authored, licensed, or explicitly authorized data.",
+        "Stop when provenance, permission, privacy, confidentiality, or license status is unknown."
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "risk_ids": [
+        "AIR-005",
+        "AIR-006"
+      ],
+      "implementation_status": "implemented",
+      "verification": "manual",
+      "failure_action": "stop_work",
+      "evidence_refs": [
+        "docs/governance/ai_management_system_policy_v0.3.0.md",
+        "docs/governance/iso_iec_42001_alignment_and_gap_assessment_v0.3.0.md"
+      ]
+    },
+    {
+      "control_id": "AIC-009",
+      "domain": "security",
+      "title": "Secure tool use and untrusted-content handling",
+      "objective": "Bound credentials, network access, destructive actions, prompt injection, and execution privileges.",
+      "requirements": [
+        "Treat prompts, artifacts, links, and tool output as untrusted data unless independently authorized.",
+        "Use least privilege and explicit approval for credentials and external actions."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-006",
+        "AIR-012"
+      ],
+      "implementation_status": "implemented",
+      "verification": "manual",
+      "failure_action": "stop_work",
+      "evidence_refs": [
+        "AGENTS.md",
+        "docs/governance/ai_management_system_policy_v0.3.0.md"
+      ]
+    },
+    {
+      "control_id": "AIC-010",
+      "domain": "verification",
+      "title": "Testing, evaluation, validation, and verification",
+      "objective": "Require risk-scaled positive, negative, failure, regression, reproducibility, and independent evidence before claims.",
+      "requirements": [
+        "Run focused tests, protected-safe regression, schema validation, lint, baseline, and representative end-to-end checks.",
+        "Preserve held-out separation and inspect actual evidence."
+      ],
+      "owner_role_id": "ROLE-REVIEWER",
+      "risk_ids": [
+        "AIR-001",
+        "AIR-002",
+        "AIR-003",
+        "AIR-004",
+        "AIR-008",
+        "AIR-010"
+      ],
+      "implementation_status": "implemented",
+      "verification": "automated_and_manual",
+      "failure_action": "hold_integration",
+      "evidence_refs": [
+        ".github/workflows/ci.yml",
+        "docs/package_assurance/acceptance_plan_v0.3.0.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "control_id": "AIC-011",
+      "domain": "verification",
+      "title": "Atomic publication and reproducibility",
+      "objective": "Publish complete, immutable, schema-valid evidence or a specific preserved operational failure without confusing the two.",
+      "requirements": [
+        "Require a production-equivalent non-held-out publication sentinel before future held-out execution.",
+        "Preserve failure stage and available lower-level diagnostics."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-007",
+        "AIR-010"
+      ],
+      "implementation_status": "partially_implemented",
+      "verification": "automated_and_manual",
+      "failure_action": "hold_release",
+      "gap": "D-113 produced zero complete output sets and did not retain the lower-level publication cause.",
+      "action_ref": "D-114 pending owner decision",
+      "evidence_refs": [
+        "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/quality/improvement_register.md"
+      ]
+    },
+    {
+      "control_id": "AIC-012",
+      "domain": "transparency",
+      "title": "Limitations, uncertainty, and contestability",
+      "objective": "Ensure users can understand intended use, evidence, uncertainty, holds, limitations, and how to challenge a result.",
+      "requirements": [
+        "Disclose claim boundaries and human-review requirements.",
+        "Keep operational failures separate from semantic results."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-001",
+        "AIR-002",
+        "AIR-004",
+        "AIR-009"
+      ],
+      "implementation_status": "implemented",
+      "verification": "manual",
+      "failure_action": "qualified_review",
+      "evidence_refs": [
+        "README.md",
+        "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/governance/ai_management_system_policy_v0.3.0.md"
+      ]
+    },
+    {
+      "control_id": "AIC-013",
+      "domain": "supplier",
+      "title": "Provider, supplier, and dependency assurance",
+      "objective": "Assess material external dependencies and isolate provider-specific assumptions from core controls.",
+      "requirements": [
+        "Record material provider, model, dependency, retention, and availability changes.",
+        "Complete contractual privacy and supplier review before confidential or production use."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-005",
+        "AIR-007",
+        "AIR-012"
+      ],
+      "implementation_status": "partially_implemented",
+      "verification": "manual",
+      "failure_action": "hold_release",
+      "gap": "No production supplier assurance package or confidential-data processing assessment exists because those uses are not authorized.",
+      "action_ref": "Required before external production or confidential-data gate",
+      "evidence_refs": [
+        "AGENTS.md",
+        "docs/governance/iso_iec_42001_alignment_and_gap_assessment_v0.3.0.md"
+      ]
+    },
+    {
+      "control_id": "AIC-014",
+      "domain": "lifecycle",
+      "title": "Configuration and change control",
+      "objective": "Ensure material model, provider, prompt, tool, environment, schema, data, and policy changes are reviewed before use.",
+      "requirements": [
+        "Use one capability branch, reviewed diffs, immutable history, and explicit decisions.",
+        "Repeat impact and risk review after material change."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-006",
+        "AIR-007",
+        "AIR-008",
+        "AIR-011",
+        "AIR-012"
+      ],
+      "implementation_status": "implemented",
+      "verification": "automated_and_manual",
+      "failure_action": "hold_integration",
+      "evidence_refs": [
+        "AGENTS.md",
+        "gantt.xlsx",
+        ".github/workflows/ci.yml"
+      ]
+    },
+    {
+      "control_id": "AIC-015",
+      "domain": "monitoring_and_improvement",
+      "title": "Incident and nonconformity response",
+      "objective": "Contain harm, preserve evidence, identify root cause, prove correction, and prevent recurrence.",
+      "requirements": [
+        "Stop unsafe use and preserve failed runs.",
+        "Close corrective action only after preventive control and repeatable proof exist."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-001",
+        "AIR-005",
+        "AIR-006",
+        "AIR-010",
+        "AIR-012"
+      ],
+      "implementation_status": "implemented",
+      "verification": "automated_and_manual",
+      "failure_action": "hold_release",
+      "evidence_refs": [
+        "docs/quality/improvement_register.md",
+        "docs/governance/ai_quality_control_manual_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md"
+      ]
+    },
+    {
+      "control_id": "AIC-016",
+      "domain": "monitoring_and_improvement",
+      "title": "Objectives and monitoring",
+      "objective": "Measure quality, evidence, human oversight, failures, and review value without weakening holds.",
+      "requirements": [
+        "Maintain measurable objectives and current results.",
+        "Use review and incident evidence to update risks and controls."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-003",
+        "AIR-004",
+        "AIR-007",
+        "AIR-013"
+      ],
+      "implementation_status": "implemented",
+      "verification": "automated_and_manual",
+      "failure_action": "qualified_review",
+      "evidence_refs": [
+        "governance/ai_management_system.json",
+        "docs/quality/improvement_register.md"
+      ]
+    },
+    {
+      "control_id": "AIC-017",
+      "domain": "monitoring_and_improvement",
+      "title": "Internal audit",
+      "objective": "Test documented controls against sampled operating evidence and disclose independence limits.",
+      "requirements": [
+        "Audit before release, after material incident or scope change, and at least annually.",
+        "Record findings, nonconformities, and opportunities for improvement."
+      ],
+      "owner_role_id": "ROLE-REVIEWER",
+      "risk_ids": [
+        "AIR-008",
+        "AIR-011"
+      ],
+      "implementation_status": "implemented",
+      "verification": "manual",
+      "failure_action": "hold_release",
+      "evidence_refs": [
+        "docs/governance/internal_audit_2026-07-22.md"
+      ]
+    },
+    {
+      "control_id": "AIC-018",
+      "domain": "monitoring_and_improvement",
+      "title": "Management review and continual improvement",
+      "objective": "Give the owner current evidence and ensure lessons become durable controls and tests.",
+      "requirements": [
+        "Review audits, objectives, incidents, context, suppliers, resources, and stakeholder feedback.",
+        "Record decisions, owners, and next actions in the governing records."
+      ],
+      "owner_role_id": "ROLE-OWNER",
+      "risk_ids": [
+        "AIR-003",
+        "AIR-010",
+        "AIR-011",
+        "AIR-013"
+      ],
+      "implementation_status": "implemented",
+      "verification": "manual",
+      "failure_action": "hold_release",
+      "evidence_refs": [
+        "docs/governance/management_review_2026-07-22.md",
+        "docs/quality/improvement_register.md",
+        "gantt.xlsx"
+      ]
+    },
+    {
+      "control_id": "AIC-019",
+      "domain": "lifecycle",
+      "title": "Retention, retirement, and decommissioning",
+      "objective": "Preserve required evidence and prevent retired or unauthorized systems and data from remaining active.",
+      "requirements": [
+        "Retain protected history, accepted decisions, and failed-run evidence according to project controls.",
+        "Record retirement, access removal, disposition, and residual obligations before decommissioning."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-005",
+        "AIR-011",
+        "AIR-012"
+      ],
+      "implementation_status": "implemented",
+      "verification": "manual",
+      "failure_action": "hold_release",
+      "evidence_refs": [
+        "AGENTS.md",
+        "docs/governance/ai_quality_control_manual_v0.3.0.md"
+      ]
+    },
+    {
+      "control_id": "AIC-020",
+      "domain": "transparency",
+      "title": "Stakeholder communication, feedback, and challenge",
+      "objective": "Provide understandable limitations and a route for corrections, complaints, and contested results.",
+      "requirements": [
+        "Record and disposition material corrections and contested findings.",
+        "Expand stakeholder, accessibility, and fairness evidence before external use."
+      ],
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-004",
+        "AIR-009",
+        "AIR-013"
+      ],
+      "implementation_status": "implemented",
+      "verification": "manual",
+      "failure_action": "qualified_review",
+      "evidence_refs": [
+        "docs/quality/improvement_register.md",
+        "docs/governance/ai_impact_assessment_v0.3.0.md"
+      ]
+    }
+  ],
+  "mandatory_gates": [
+    {
+      "gate_id": "AIG-01",
+      "name": "Intended use and ownership",
+      "required_control_ids": [
+        "AIC-001",
+        "AIC-002",
+        "AIC-003"
+      ],
+      "required_evidence": [
+        "System inventory, purpose, owner, users, prohibited uses, and lifecycle state."
+      ],
+      "failure_action": "stop_work"
+    },
+    {
+      "gate_id": "AIG-02",
+      "name": "Data and rights",
+      "required_control_ids": [
+        "AIC-007",
+        "AIC-008",
+        "AIC-009",
+        "AIC-013"
+      ],
+      "required_evidence": [
+        "Data classes, provenance, authorization, and privacy, security, and intellectual-property handling."
+      ],
+      "failure_action": "stop_access_and_use"
+    },
+    {
+      "gate_id": "AIG-03",
+      "name": "Impact and risk",
+      "required_control_ids": [
+        "AIC-004",
+        "AIC-005"
+      ],
+      "required_evidence": [
+        "Affected-party impact assessment, inherent risk, treatment, residual risk, and owner."
+      ],
+      "failure_action": "hold_implementation"
+    },
+    {
+      "gate_id": "AIG-04",
+      "name": "Design and change control",
+      "required_control_ids": [
+        "AIC-014",
+        "AIC-019"
+      ],
+      "required_evidence": [
+        "Accepted requirements, architecture boundary, versioned change, containment, and retirement obligations."
+      ],
+      "failure_action": "reject_change"
+    },
+    {
+      "gate_id": "AIG-05",
+      "name": "Verification and evidence",
+      "required_control_ids": [
+        "AIC-010",
+        "AIC-011"
+      ],
+      "required_evidence": [
+        "Representative positive, negative, failure, reproducibility, publication, and independent-review evidence."
+      ],
+      "failure_action": "hold_integration"
+    },
+    {
+      "gate_id": "AIG-06",
+      "name": "Human review and transparency",
+      "required_control_ids": [
+        "AIC-006",
+        "AIC-012",
+        "AIC-020"
+      ],
+      "required_evidence": [
+        "Qualified reviewer, limitations, uncertainty, evidence, hold state, and challenge route."
+      ],
+      "failure_action": "hold_decision_or_release"
+    },
+    {
+      "gate_id": "AIG-07",
+      "name": "Operational readiness",
+      "required_control_ids": [
+        "AIC-009",
+        "AIC-011",
+        "AIC-013",
+        "AIC-015",
+        "AIC-016"
+      ],
+      "required_evidence": [
+        "Monitoring, incident response, supplier review, complete publication, and retention controls."
+      ],
+      "failure_action": "hold_deployment_or_benchmark"
+    },
+    {
+      "gate_id": "AIG-08",
+      "name": "Release and improvement",
+      "required_control_ids": [
+        "AIC-005",
+        "AIC-006",
+        "AIC-015",
+        "AIC-017",
+        "AIC-018"
+      ],
+      "required_evidence": [
+        "No unresolved mandatory holds, completed audit, management decision, and verified corrective actions."
+      ],
+      "failure_action": "hold_release"
+    }
+  ],
+  "quality_objectives": [
+    {
+      "objective_id": "AIO-001",
+      "objective": "Preserve qualified human authority for every engineering-relevant output.",
+      "measure": "Engineering-relevant workflows explicitly requiring human review.",
+      "target": "100 percent",
+      "current_result": "All current task and package boundaries require qualified human review.",
+      "status": "met",
+      "owner_role_id": "ROLE-OWNER",
+      "evidence_refs": [
+        "README.md",
+        "AGENTS.md",
+        "docs/package_assurance/workflow_contract_v0.3.0.md"
+      ]
+    },
+    {
+      "objective_id": "AIO-002",
+      "objective": "Prevent autonomous engineering release.",
+      "measure": "Authorized autonomous engineering releases.",
+      "target": "0",
+      "current_result": "0",
+      "status": "met",
+      "owner_role_id": "ROLE-OWNER",
+      "evidence_refs": [
+        "docs/governance/ai_management_system_policy_v0.3.0.md",
+        "README.md"
+      ]
+    },
+    {
+      "objective_id": "AIO-003",
+      "objective": "Keep governance records complete, cross-referenced, and machine valid.",
+      "measure": "Governance validator and focused test result.",
+      "target": "All checks pass in local and hosted CI.",
+      "current_result": "Governance validation and 22 focused control tests pass locally with 84% validator coverage; protected-safe full regression passes 335 with one expected Windows skip at 88.33% coverage; repository validation 5/5 and Ruff pass; hosted CI remains pending.",
+      "status": "monitoring",
+      "owner_role_id": "ROLE-MGMT",
+      "evidence_refs": [
+        "src/mech_eval_harness/ai_governance.py",
+        "tests/test_ai_governance.py",
+        ".github/workflows/ci.yml"
+      ]
+    },
+    {
+      "objective_id": "AIO-004",
+      "objective": "Maintain reproducible evidence for every accepted material claim.",
+      "measure": "Accepted claims with traceable and reproducible evidence.",
+      "target": "100 percent",
+      "current_result": "Current accepted implementation claims retain evidence; D-113 is correctly classified as operational evidence only.",
+      "status": "met",
+      "owner_role_id": "ROLE-MGMT",
+      "evidence_refs": [
+        "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/quality/improvement_register.md"
+      ]
+    },
+    {
+      "objective_id": "AIO-005",
+      "objective": "Obtain a comparable external semantic benchmark before release claims.",
+      "measure": "Comparable external scenarios with exact state and finding evaluation.",
+      "target": "All authorized external scenarios comparable with accepted metrics.",
+      "current_result": "0 comparable and 8 not evaluable after D-113 publication failure.",
+      "status": "not_met_release_hold",
+      "owner_role_id": "ROLE-OWNER",
+      "evidence_refs": [
+        "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md"
+      ]
+    },
+    {
+      "objective_id": "AIO-006",
+      "objective": "Convert material failures and corrections into preventive controls and proof.",
+      "measure": "Open improvement items with prevention and repeatable proof.",
+      "target": "Every material issue recorded; closure only after proof.",
+      "current_result": "IMP-028 and NC-001 remain open with explicit containment and pending corrective-action authority.",
+      "status": "monitoring",
+      "owner_role_id": "ROLE-MGMT",
+      "evidence_refs": [
+        "docs/quality/improvement_register.md",
+        "docs/governance/internal_audit_2026-07-22.md"
+      ]
+    }
+  ],
+  "nonconformities": [
+    {
+      "nonconformity_id": "NC-001",
+      "title": "External benchmark atomic output-publication failure",
+      "severity": "high",
+      "status": "contained",
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-003",
+        "AIR-010"
+      ],
+      "release_hold": true,
+      "containment": "Preserve all consumed attempts and evidence unchanged, prohibit rerun or reuse, classify performance as not evaluable, and maintain the release hold.",
+      "corrective_action_decision": "D-114 pending owner acceptance or revision.",
+      "evidence_refs": [
+        "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_first_run_result_evidence_v0.3.0.json",
+        "docs/quality/improvement_register.md"
+      ]
+    }
+  ],
+  "audits": [
+    {
+      "audit_id": "AIMS-AUD-001",
+      "date": "2026-07-22",
+      "status": "completed_with_findings",
+      "report_ref": "docs/governance/internal_audit_2026-07-22.md",
+      "independent": false,
+      "finding_ids": [
+        "NC-001"
+      ]
+    }
+  ],
+  "management_reviews": [
+    {
+      "review_id": "AIMS-MR-001",
+      "date": "2026-07-22",
+      "status": "accepted_with_holds",
+      "report_ref": "docs/governance/management_review_2026-07-22.md",
+      "decision_ids": [
+        "D-115"
+      ]
+    }
+  ],
+  "documented_information": [
+    "AGENTS.md",
+    "gantt.xlsx",
+    "PROJECT_CONTEXT.md",
+    "NEXT_STEPS.md",
+    "docs/governance/README.md",
+    "docs/governance/ai_management_system_policy_v0.3.0.md",
+    "docs/governance/ai_quality_control_manual_v0.3.0.md",
+    "docs/governance/ai_impact_assessment_v0.3.0.md",
+    "docs/governance/iso_iec_42001_alignment_and_gap_assessment_v0.3.0.md",
+    "docs/governance/internal_audit_2026-07-22.md",
+    "docs/governance/management_review_2026-07-22.md",
+    "docs/quality/improvement_register.md",
+    "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md"
+  ],
+  "release_status": {
+    "release_authorized": false,
+    "release_state": "held",
+    "hold_risk_ids": [
+      "AIR-003",
+      "AIR-010"
+    ],
+    "hold_nonconformity_ids": [
+      "NC-001"
+    ],
+    "pending_decision_ids": [
+      "D-114"
+    ],
+    "human_decision_required": true
+  }
+}

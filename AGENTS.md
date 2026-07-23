@@ -6,15 +6,42 @@ This repository contains the frozen **Mechanical Technical Document Evaluation H
 
 The v0.2.0 release is an evaluation kernel. Preserve accepted commit `45336a2`, the annotated `v0.2.0` tag, historical benchmark evidence, golden references, and release documentation.
 
+## AI Management and Safety Governance
+
+The binding internal AI management policy is
+`docs/governance/ai_management_system_policy_v0.3.0.md`. Its safety, legal,
+privacy, security, intellectual-property, evidence, and human-authority rules
+take precedence over schedule, implementation convenience, and lower-level
+project instructions.
+
+The machine-readable control plane is
+`governance/ai_management_system.json`. Before substantial work and before any
+completion or release claim, run:
+
+`python -m mech_eval_harness.ai_governance .`
+
+Use `--require-release-ready` only at a release gate. A normal validation pass
+can correctly coexist with an explicit release hold. Never weaken or bypass a
+hold to make that command pass.
+
+Stop when intended use, ownership, source rights, impact, risk, evidence, human
+review, or change authority is missing. Do not ingest, copy, quote, or commit a
+restricted standard or third-party document unless the project has documented
+authorization. Do not claim ISO/IEC 42001 conformity, certification, legal
+compliance, guaranteed AI safety, or independent assurance without the required
+licensed source and competent external process.
+
 ## Controlling Work
 
 Read, in order:
 
-1. `gantt.xlsx` — `Start Here`
-2. `gantt.xlsx` — `AI Context`
-3. `gantt.xlsx` — active and next rows in `Pilot Gantt`
-4. `PROJECT_CONTEXT.md`
-5. relevant architecture and workflow documents
+1. `docs/governance/ai_management_system_policy_v0.3.0.md`
+2. `governance/ai_management_system.json`
+3. `gantt.xlsx` — `Start Here`
+4. `gantt.xlsx` — `AI Context`
+5. `gantt.xlsx` — active and next rows in `Pilot Gantt`
+6. `PROJECT_CONTEXT.md`
+7. relevant architecture and workflow documents
 
 The workbook, not this file, defines the active WBS. Do not implement package loaders, schemas, fixtures, or rules unless `gantt.xlsx` records P0.2 acceptance and authorizes P1.
 

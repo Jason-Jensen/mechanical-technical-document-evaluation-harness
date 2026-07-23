@@ -2,7 +2,7 @@
 
 **Updated:** 2026-07-22
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p4.2-external-held-out-freeze`
+**Current branch:** `codex/iso-42001-ai-quality-system`
 
 ## Executive Summary
 
@@ -30,9 +30,19 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P4.2 external first-run result review
-- **Status:** D-113 is integrated through PR #65 at exact `main` `6a74c74` and consumed. Preflight passed 27/27, but all eight one-shot attempts returned exit `70` in the atomic publication layer and produced no complete output set. Independent raw verification passed; the separate protected comparison classified all eight scenarios as not evaluable. D-114 is proposed and the release hold remains active
+- **Active WBS:** G0.1 AI management and quality-control system
+- **Status:** PR #66 integrated the immutable D-113 result at exact `main` `f49c864`. D-115 now adopts a binding internal AI management system with machine-validated inventory, risks, controls, lifecycle gates, objectives, audit, management review, and exact release-hold alignment. D-114 remains pending and release remains held
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
+
+The highest-level internal project controls are
+`docs/governance/ai_management_system_policy_v0.3.0.md` and
+`governance/ai_management_system.json`. The system covers current generative-AI
+project assistance, the deterministic evaluator as an AI-adjacent control, and
+blocked future model capabilities. It defines thirteen risks, twenty controls,
+eight gates, six objectives, one open nonconformity, and qualified-human release
+authority. CI validates its schema, relationships, evidence, risk arithmetic,
+minimum controls, and exact release state. It does not establish ISO/IEC 42001
+conformity, certification, legal compliance, or guaranteed AI safety.
 
 P0.1 is accepted. Its reviewed workflow contract and authority-map example freeze the package boundary, identifiers, authority rules, result states, evidence contract, human-review boundary, and exclusions.
 
@@ -484,27 +494,31 @@ Primary deliverables:
 - Preserve failed runs and keep package definitions, expected assets, candidate artifacts, traces, and results separate.
 - Use only public, synthetic, self-authored, or explicitly authorized data.
 - Treat the first commercial offer as a bounded audit service, not software access.
+- Apply the AI management policy above schedule and implementation convenience; use the Gantt to control active work inside that governance boundary.
 
 ## Document Authority
 
 Read current project information in this order:
 
-1. `gantt.xlsx` for active status, gates, decisions, risks, evidence, and next action;
-2. accepted workflow and acceptance contracts for product behavior;
-3. `AGENTS.md` for durable repository controls;
-4. this file for the compact current handoff;
-5. architecture, strategy, commercial, and release documents for supporting context.
+1. `docs/governance/ai_management_system_policy_v0.3.0.md` for binding AI quality, safety, rights, and human-authority rules;
+2. `governance/ai_management_system.json` for current systems, risks, controls, objectives, nonconformities, and release state;
+3. `gantt.xlsx` for active status, gates, decisions, risks, evidence, and next action;
+4. accepted workflow and acceptance contracts for product behavior;
+5. `AGENTS.md` for durable repository execution controls;
+6. this file for the compact current handoff;
+7. architecture, strategy, commercial, and release documents for supporting context.
 
 Files under `docs/archive/` and dated modernization records are historical provenance, not current control.
 
 ## Current Authorized Action
 
-Review and accept or revise D-114. Until that decision is accepted, do not
-modify the publication layer, execute a development reproduction, create or
-run another held-out family, retry the consumed family, import custody assets,
-restore protected-fixture CI, change semantic evaluator behavior or benchmark
-inputs, rerun either public package, begin P4.3, or add deferred capabilities.
-The release hold remains active and no held-out performance claim is allowed.
+Complete and review G0.1 under D-115. This governance block does not accept
+D-114. Until D-114 is separately accepted, do not modify the publication
+layer, execute a development reproduction, create or run another held-out
+family, retry the consumed family, import custody assets, restore
+protected-fixture CI, change semantic evaluator behavior or benchmark inputs,
+rerun either public package, begin P4.3, or add deferred capabilities. The
+release hold remains active and no held-out performance claim is allowed.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
