@@ -73,6 +73,28 @@
     "output_count": 4,
     "status": "passed"
   },
+  "hosted_ci": {
+    "pull_request": 68,
+    "implementation_commit": "1c5216e4681514c5ac8a38f1f267bcb6e704ee73",
+    "push_workflow_run": 29980958009,
+    "pull_request_workflow_run": 29980959507,
+    "checks_passed": 2,
+    "checks_failed": 0,
+    "platform": "linux",
+    "python_version": "3.12.13",
+    "publication_sentinel": {
+      "status": "passed",
+      "runs_directory_path_length": 223,
+      "output_count": 4,
+      "package_state": "automatic_pass"
+    },
+    "protected_safe_full_regression": {
+      "passed": 341,
+      "failed": 0,
+      "coverage_percent": 88.50,
+      "protected_fixture_module_excluded": true
+    }
+  },
   "verification": {
     "focused_tests": {
       "passed": 53,

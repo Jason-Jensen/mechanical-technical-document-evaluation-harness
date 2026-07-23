@@ -98,6 +98,10 @@ CI runs this sentinel before the protected-safe regression suite.
 - governance module coverage: 84%;
 - protected-safe full regression: 340 passed, 1 expected skip, 88.48%
   coverage;
+- PR #68 hosted Linux verification at implementation `1c5216e`: both push
+  and pull-request workflows passed; the sentinel published four
+  `automatic_pass` outputs at an adapted 223-character runs root; and the full
+  suite passed 341 tests at 88.50% coverage;
 - repository validation: 5/5;
 - Ruff: passed;
 - P4.1-DEV-1 development benchmark: 22/22;
