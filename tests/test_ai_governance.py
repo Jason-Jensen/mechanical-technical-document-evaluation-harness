@@ -75,9 +75,9 @@ def test_repository_ai_management_system_is_valid_and_release_held() -> None:
     assert summary.gate_count == 8
     assert summary.release_authorized is False
     assert summary.release_state == "held"
-    assert summary.hold_risk_ids == ("AIR-003", "AIR-010")
-    assert summary.hold_nonconformity_ids == ("NC-001",)
-    assert summary.pending_decision_ids == ("D-114",)
+    assert summary.hold_risk_ids == ("AIR-003",)
+    assert summary.hold_nonconformity_ids == ()
+    assert summary.pending_decision_ids == ("D-116",)
     assert summary.release_ready is False
 
 
@@ -98,8 +98,9 @@ def test_governance_cli_reports_valid_held_state() -> None:
     assert result.returncode == 0
     assert "PASS AIMS-MEWA-001" in result.stdout
     assert "RELEASE: HELD" in result.stdout
-    assert "AIR-003,AIR-010" in result.stdout
-    assert "NC-001" in result.stdout
+    assert "risks=AIR-003" in result.stdout
+    assert "nonconformities=none" in result.stdout
+    assert "pending=D-116" in result.stdout
 
 
 def test_release_ready_mode_fails_while_mandatory_holds_remain() -> None:
@@ -206,7 +207,7 @@ def test_pending_decision_alone_keeps_release_held(tmp_path: Path) -> None:
 
     assert summary.hold_risk_ids == ()
     assert summary.hold_nonconformity_ids == ()
-    assert summary.pending_decision_ids == ("D-114",)
+    assert summary.pending_decision_ids == ("D-116",)
     assert summary.release_ready is False
 
 
@@ -343,15 +344,15 @@ def test_high_residual_risk_requires_hold_or_authorized_acceptance(
     tmp_path: Path,
 ) -> None:
     def mutate(system: dict[str, Any]) -> None:
-        risk = next(item for item in system["risks"] if item["risk_id"] == "AIR-010")
+        risk = next(item for item in system["risks"] if item["risk_id"] == "AIR-003")
         risk["release_hold"] = False
-        system["release_status"]["hold_risk_ids"] = ["AIR-003"]
+        system["release_status"]["hold_risk_ids"] = []
 
     root = _copy_system(tmp_path, mutate)
 
     with pytest.raises(
         AIManagementSystemValidationError,
-        match="AIR-010 has high residual risk without a release hold",
+        match="AIR-003 has high residual risk without a release hold",
     ):
         validate_ai_management_system(root)
 
@@ -359,7 +360,7 @@ def test_high_residual_risk_requires_hold_or_authorized_acceptance(
 def test_partial_control_requires_gap_and_action(tmp_path: Path) -> None:
     def mutate(system: dict[str, Any]) -> None:
         control = next(
-            item for item in system["controls"] if item["control_id"] == "AIC-011"
+            item for item in system["controls"] if item["control_id"] == "AIC-013"
         )
         del control["gap"]
 
@@ -367,7 +368,7 @@ def test_partial_control_requires_gap_and_action(tmp_path: Path) -> None:
 
     with pytest.raises(
         AIManagementSystemValidationError,
-        match="Partial control AIC-011 requires a gap and action_ref",
+        match="Partial control AIC-013 requires a gap and action_ref",
     ):
         validate_ai_management_system(root)
 

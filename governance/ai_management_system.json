@@ -650,14 +650,17 @@
         "AIC-015",
         "AIC-018"
       ],
-      "residual_likelihood": 3,
+      "residual_likelihood": 2,
       "residual_impact": 4,
-      "residual_score": 12,
-      "status": "open_treatment",
-      "release_hold": true,
-      "review_trigger": "D-114 corrective action is accepted and proven with a non-held-out production-equivalent sentinel.",
+      "residual_score": 8,
+      "status": "controlled",
+      "release_hold": false,
+      "review_trigger": "Any publication-sentinel failure, missing stage diagnostic, or external-runner publication mismatch.",
       "evidence_refs": [
         "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_publication_stabilization_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_publication_stabilization_evidence_v0.3.0.json",
+        "scripts/run_package_assurance_publication_sentinel.py",
         "docs/quality/improvement_register.md",
         "docs/governance/internal_audit_2026-07-22.md"
       ]
@@ -1048,13 +1051,15 @@
         "AIR-007",
         "AIR-010"
       ],
-      "implementation_status": "partially_implemented",
+      "implementation_status": "implemented",
       "verification": "automated_and_manual",
       "failure_action": "hold_release",
-      "gap": "D-113 produced zero complete output sets and did not retain the lower-level publication cause.",
-      "action_ref": "D-114 pending owner decision",
       "evidence_refs": [
         "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_publication_stabilization_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_publication_stabilization_evidence_v0.3.0.json",
+        "scripts/run_package_assurance_publication_sentinel.py",
+        ".github/workflows/ci.yml",
         "docs/quality/improvement_register.md"
       ]
     },
@@ -1457,7 +1462,7 @@
       "objective": "Convert material failures and corrections into preventive controls and proof.",
       "measure": "Open improvement items with prevention and repeatable proof.",
       "target": "Every material issue recorded; closure only after proof.",
-      "current_result": "IMP-028 and NC-001 remain open with explicit containment and pending corrective-action authority.",
+      "current_result": "D-114 closed NC-001 after exact root-cause reproduction, a bounded correction, stage diagnostics, and a repeatable non-held-out four-output sentinel. AIR-003 and D-116 remain open.",
       "status": "monitoring",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [
@@ -1471,18 +1476,21 @@
       "nonconformity_id": "NC-001",
       "title": "External benchmark atomic output-publication failure",
       "severity": "high",
-      "status": "contained",
+      "status": "closed",
       "owner_role_id": "ROLE-MGMT",
       "risk_ids": [
         "AIR-003",
         "AIR-010"
       ],
-      "release_hold": true,
-      "containment": "Preserve all consumed attempts and evidence unchanged, prohibit rerun or reuse, classify performance as not evaluable, and maintain the release hold.",
-      "corrective_action_decision": "D-114 pending owner acceptance or revision.",
+      "release_hold": false,
+      "containment": "Preserve all consumed attempts and evidence unchanged, prohibit rerun or reuse, classify performance as not evaluable, and maintain the independent-benchmark release hold.",
+      "corrective_action_decision": "D-114 accepted; the path-length root cause is corrected and verified by the bounded non-held-out publication sentinel. Independent benchmark evidence remains required under a separate decision.",
       "evidence_refs": [
         "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
         "docs/package_assurance/p4_2_external_first_run_result_evidence_v0.3.0.json",
+        "docs/package_assurance/p4_2_publication_stabilization_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_publication_stabilization_evidence_v0.3.0.json",
+        "scripts/run_package_assurance_publication_sentinel.py",
         "docs/quality/improvement_register.md"
       ]
     }
@@ -1523,20 +1531,21 @@
     "docs/governance/internal_audit_2026-07-22.md",
     "docs/governance/management_review_2026-07-22.md",
     "docs/quality/improvement_register.md",
-    "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md"
+    "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+    "docs/package_assurance/p4_2_publication_stabilization_review_v0.3.0.md",
+    "docs/package_assurance/p4_2_publication_stabilization_evidence_v0.3.0.json",
+    "docs/package_assurance/p4_2_external_benchmark_recovery_definition_v0.3.0.md",
+    "scripts/run_package_assurance_publication_sentinel.py"
   ],
   "release_status": {
     "release_authorized": false,
     "release_state": "held",
     "hold_risk_ids": [
-      "AIR-003",
-      "AIR-010"
+      "AIR-003"
     ],
-    "hold_nonconformity_ids": [
-      "NC-001"
-    ],
+    "hold_nonconformity_ids": [],
     "pending_decision_ids": [
-      "D-114"
+      "D-116"
     ],
     "human_decision_required": true
   }

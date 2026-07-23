@@ -12,6 +12,7 @@ import mech_eval_harness.package_assurance.publication as publication_module
 from mech_eval_harness.package_assurance import (
     AUDIT_PACKAGE_OUTPUT_FILENAMES,
     AUDIT_PACKAGE_READY_STATUS,
+    PACKAGE_RESULT_FILENAME,
     PUBLICATION_FAILURE_FILENAME,
     PackageAuditCollisionError,
     PackageAuditPublicationError,
@@ -63,8 +64,26 @@ def _failed_publications(runs_dir: Path) -> list[Path]:
     return [
         path
         for path in runs_dir.iterdir()
-        if path.name.startswith(f".{RUN_ID}.publication-failed-")
+        if path.name.startswith(publication_module.FAILED_DIRECTORY_PREFIX)
     ]
+
+
+def _failure_marker(
+    *,
+    stage: str,
+    error_type: str,
+    errno: int | None = None,
+    winerror: int | None = None,
+) -> str:
+    return (
+        "complete=false\n"
+        "phase=publication\n"
+        f"stage={stage}\n"
+        f"run_id={RUN_ID}\n"
+        f"error_type={error_type}\n"
+        f"errno={errno if errno is not None else 'not_available'}\n"
+        f"winerror={winerror if winerror is not None else 'not_available'}\n"
+    )
 
 
 def test_complete_audit_outputs_publish_together(tmp_path: Path) -> None:
@@ -153,7 +172,62 @@ def test_partial_publication_is_preserved_as_incomplete_evidence(
     assert (failed[0] / "package_result.json").is_file()
     assert (failed[0] / PUBLICATION_FAILURE_FILENAME).read_text(
         encoding="utf-8"
-    ) == "complete=false\nphase=publication\nerror_type=RuntimeError\n"
+    ) == _failure_marker(
+        stage=publication_module.STAGE_RENDER_RELEASE_READINESS,
+        error_type="RuntimeError",
+    )
+
+
+def test_failure_marker_uses_short_parent_fallback_when_nested_paths_fail(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    package_root, result = _build_audit_result(tmp_path)
+    runs_dir = tmp_path / "runs"
+    actual_write_marker = publication_module._write_failure_marker
+    marker_attempts: list[Path] = []
+
+    def fail_nested_markers(path: Path, marker_text: str) -> bool:
+        marker_attempts.append(path)
+        if len(marker_attempts) <= 2:
+            return False
+        return actual_write_marker(path, marker_text)
+
+    def fail_readiness(**_kwargs) -> str:
+        raise RuntimeError("synthetic readiness failure")
+
+    monkeypatch.setattr(
+        publication_module,
+        "_write_failure_marker",
+        fail_nested_markers,
+    )
+    monkeypatch.setattr(
+        publication_module,
+        "render_release_readiness_summary",
+        fail_readiness,
+    )
+
+    with pytest.raises(PackageAuditPublicationError, match="Could not publish"):
+        publish_package_audit(
+            result=result,
+            package_root=package_root,
+            runs_dir=runs_dir,
+            schema_path=RESULT_SCHEMA,
+        )
+
+    fallback_markers = [
+        path
+        for path in runs_dir.iterdir()
+        if path.name.startswith(
+            publication_module.FALLBACK_FAILURE_MARKER_PREFIX
+        )
+    ]
+    assert len(marker_attempts) == 3
+    assert len(fallback_markers) == 1
+    assert fallback_markers[0].read_text(encoding="utf-8") == _failure_marker(
+        stage=publication_module.STAGE_RENDER_RELEASE_READINESS,
+        error_type="RuntimeError",
+    )
 
 
 def test_transient_final_rename_permission_error_is_retried(
@@ -227,7 +301,10 @@ def test_final_rename_permission_retry_exhaustion_preserves_failure(
     assert len(failed) == 1
     assert (failed[0] / PUBLICATION_FAILURE_FILENAME).read_text(
         encoding="utf-8"
-    ) == "complete=false\nphase=publication\nerror_type=PermissionError\n"
+    ) == _failure_marker(
+        stage=publication_module.STAGE_FINALIZE_RUN_DIRECTORY,
+        error_type="PermissionError",
+    )
 
 
 def test_final_rename_collision_is_never_retried(
@@ -268,9 +345,10 @@ def test_final_rename_collision_is_never_retried(
     assert (failed[0] / PUBLICATION_FAILURE_FILENAME).read_text(
         encoding="utf-8"
     ) == (
-        "complete=false\n"
-        "phase=publication\n"
-        "error_type=PackageAuditCollisionError\n"
+        _failure_marker(
+            stage=publication_module.STAGE_FINALIZE_RUN_DIRECTORY,
+            error_type="PackageAuditCollisionError",
+        )
     )
 
 
@@ -285,7 +363,9 @@ def test_non_permission_final_rename_error_is_never_retried(
 
     def fail_once(source: Path, target: Path) -> None:
         attempts.append((source, target))
-        raise OSError("synthetic non-permission failure")
+        error = OSError(5, "synthetic non-permission failure")
+        error.winerror = 206
+        raise error
 
     monkeypatch.setattr(publication_module, "_replace_directory", fail_once)
     monkeypatch.setattr(publication_module.time, "sleep", delays.append)
@@ -305,7 +385,39 @@ def test_non_permission_final_rename_error_is_never_retried(
     assert len(failed) == 1
     assert (failed[0] / PUBLICATION_FAILURE_FILENAME).read_text(
         encoding="utf-8"
-    ) == "complete=false\nphase=publication\nerror_type=OSError\n"
+    ) == _failure_marker(
+        stage=publication_module.STAGE_FINALIZE_RUN_DIRECTORY,
+        error_type="OSError",
+        errno=5,
+        winerror=206,
+    )
+
+
+def test_bounded_staging_name_publishes_near_legacy_windows_path_limit(
+    tmp_path: Path,
+) -> None:
+    package_root, result = _build_audit_result(tmp_path)
+    target_runs_path_length = 193
+    padding_length = target_runs_path_length - len(str(tmp_path)) - 1
+    if padding_length < 8:
+        pytest.skip("Temporary test root is too long for the bounded-path probe.")
+    runs_dir = tmp_path / ("r" * padding_length)
+
+    legacy_staging_directory = runs_dir / f".{RUN_ID}.12345678.tmp"
+    assert len(str(legacy_staging_directory / PACKAGE_RESULT_FILENAME)) >= 260
+
+    published = publish_package_audit(
+        result=result,
+        package_root=package_root,
+        runs_dir=runs_dir,
+        schema_path=RESULT_SCHEMA,
+    )
+
+    assert published.run_directory.is_dir()
+    assert {
+        path.name for path in published.run_directory.iterdir()
+    } == set(AUDIT_PACKAGE_OUTPUT_FILENAMES)
+    assert _failed_publications(runs_dir) == []
 
 
 def test_publication_rejects_incomplete_output_declaration(

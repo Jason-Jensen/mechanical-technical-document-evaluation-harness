@@ -137,8 +137,11 @@ When an incident or nonconformity occurs:
 7. verify corrective and preventive action; and
 8. reassess risk and obtain authorization before resuming.
 
-The D-113 output-publication failure is `NC-001`. It remains open and release
-holding until a separately accepted corrective-action decision is completed.
+The D-113 output-publication failure is `NC-001`. D-114 corrected and verified
+its publication-layer root cause with development-only evidence, exact failure
+diagnostics, and a bounded four-output sentinel. `NC-001` is closed, but the
+independent benchmark and product release remain held under `AIR-003` and the
+separate D-116 recovery gate.
 
 ## 8. Monitoring and Objectives
 

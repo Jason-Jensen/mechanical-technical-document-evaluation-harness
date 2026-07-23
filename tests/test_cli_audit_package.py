@@ -13,6 +13,7 @@ import mech_eval_harness.package_assurance.publication as publication_module
 from mech_eval_harness.cli import main
 from mech_eval_harness.package_assurance import (
     AUDIT_PACKAGE_OUTPUT_FILENAMES,
+    PACKAGE_RESULT_FILENAME,
     PACKAGE_STATE_EXIT_CODES,
     PUBLICATION_FAILURE_FILENAME,
     package_state_exit_code,
@@ -856,6 +857,8 @@ def test_final_rename_retry_exhaustion_returns_70_and_preserves_evidence(
     assert "ERROR [INTERNAL]: Could not publish complete package audit" in (
         captured.err
     )
+    assert "stage=finalize_run_directory" in captured.err
+    assert "error_type=PermissionError" in captured.err
     assert len(attempts) == (
         len(publication_module.FINAL_RENAME_RETRY_DELAYS_SECONDS) + 1
     )
@@ -865,16 +868,27 @@ def test_final_rename_retry_exhaustion_returns_70_and_preserves_evidence(
     failed = [
         path
         for path in runs_dir.iterdir()
-        if ".publication-failed-" in path.name
+        if path.name.startswith(publication_module.FAILED_DIRECTORY_PREFIX)
     ]
     assert len(failed) == 1
     assert {path.name for path in failed[0].iterdir()} == {
         *AUDIT_PACKAGE_OUTPUT_FILENAMES,
         PUBLICATION_FAILURE_FILENAME,
     }
+    failed_result = json.loads(
+        (failed[0] / PACKAGE_RESULT_FILENAME).read_text(encoding="utf-8")
+    )
     assert (failed[0] / PUBLICATION_FAILURE_FILENAME).read_text(
         encoding="utf-8"
-    ) == "complete=false\nphase=publication\nerror_type=PermissionError\n"
+    ) == (
+        "complete=false\n"
+        "phase=publication\n"
+        "stage=finalize_run_directory\n"
+        f"run_id={failed_result['run_id']}\n"
+        "error_type=PermissionError\n"
+        "errno=not_available\n"
+        "winerror=not_available\n"
+    )
 
 
 def test_every_package_state_has_the_accepted_stable_exit() -> None:
