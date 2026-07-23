@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** G0.1 AI management and quality-control system
-- **Status:** PR #66 integrated the immutable D-113 result at exact `main` `f49c864`. D-115 now adopts a binding internal AI management system with machine-validated inventory, risks, controls, lifecycle gates, objectives, audit, management review, and exact release-hold alignment. D-114 remains pending and release remains held
+- **Active WBS:** P4.2 D-114 publication stabilization
+- **Status:** PR #67 integrated D-115 governance at exact `main` `540a1f6`. D-114 is accepted and implemented on `codex/p4.2-publication-stabilization`: development-only evidence isolated the staging-path defect, and a bounded four-output sentinel guards the correction. The D-113 benchmark remains not evaluable; the consumed family cannot be rerun or reused, proposed D-116 awaits owner review, and release remains held
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 The highest-level internal project controls are
@@ -39,7 +39,7 @@ The highest-level internal project controls are
 `governance/ai_management_system.json`. The system covers current generative-AI
 project assistance, the deterministic evaluator as an AI-adjacent control, and
 blocked future model capabilities. It defines thirteen risks, twenty controls,
-eight gates, six objectives, one open nonconformity, and qualified-human release
+eight gates, six objectives, one corrective-action record, and qualified-human release
 authority. CI validates its schema, relationships, evidence, risk arithmetic,
 minimum controls, and exact release state. It does not establish ISO/IEC 42001
 conformity, certification, legal compliance, or guaranteed AI safety.
@@ -512,13 +512,17 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-Complete and review G0.1 under D-115. This governance block does not accept
-D-114. Until D-114 is separately accepted, do not modify the publication
-layer, execute a development reproduction, create or run another held-out
-family, retry the consumed family, import custody assets, restore
+D-115 is integrated through PR #67 at exact `main` `540a1f6`. D-114 is
+accepted and implemented on `codex/p4.2-publication-stabilization`. Complete
+its review and integration, then accept or revise proposed D-116 before any
+external benchmark recovery preparation.
+
+Do not retry or reuse the consumed family, inspect or change protected inputs,
+create or run another held-out family, import custody assets, restore
 protected-fixture CI, change semantic evaluator behavior or benchmark inputs,
-rerun either public package, begin P4.3, or add deferred capabilities. The
-release hold remains active and no held-out performance claim is allowed.
+rerun either public package, begin P4.3, or make a release claim. D-116 would
+authorize preparation and independent zero-run freeze only; a separate D-117
+decision would still be required before semantic execution.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

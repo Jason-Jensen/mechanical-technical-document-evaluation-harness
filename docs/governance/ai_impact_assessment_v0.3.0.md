@@ -64,8 +64,9 @@ verified through tests, evidence inspection, and human review.
 
 The package evaluator is not represented as AI. Its deterministic behavior,
 explicit result states, immutable outputs, and independent execution reduce
-AI-producer risk. The open D-113 publication failure means benchmark and release
-claims remain held.
+AI-producer risk. D-114 corrected the D-113 publication-layer defect with
+development-only proof, but benchmark and release claims remain held until a
+new independent external benchmark is separately authorized and completed.
 
 ### AIS-003: prohibited pending a new gate
 
@@ -77,8 +78,8 @@ review, benchmark, monitoring plan, and owner decision.
 ## 6. Residual Impact Decision
 
 Current internal development use is acceptable only with the recorded controls
-and human authority. External release is not acceptable while `NC-001` and its
-associated high residual publication risk remain open.
+and human authority. External release is not acceptable while `AIR-003` and the
+pending D-116 independent-benchmark recovery decision remain open.
 
 The assessment is reviewed after any material system, provider, data,
 deployment, affected-party, incident, or regulatory change and before every

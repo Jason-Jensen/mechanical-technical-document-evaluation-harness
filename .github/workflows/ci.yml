@@ -37,5 +37,8 @@ jobs:
       - name: Validate AI management system
         run: python -m mech_eval_harness.ai_governance .
 
+      - name: Run bounded package publication sentinel
+        run: python scripts/run_package_assurance_publication_sentinel.py
+
       - name: Run pre-first-run regression with coverage floor
         run: python -m pytest --ignore=tests/test_held_out_package_fixtures.py --cov=mech_eval_harness --cov-report=term-missing --cov-fail-under=80

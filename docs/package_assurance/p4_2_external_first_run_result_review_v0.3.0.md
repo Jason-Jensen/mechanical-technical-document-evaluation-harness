@@ -8,7 +8,7 @@
 
 **Authority:** D-113 accepted by the project owner on 2026-07-22
 
-**Decision:** D-114 proposed for owner review
+**Decision:** D-114 accepted by the project owner on 2026-07-22
 
 **Branch:** `codex/p4.2-external-held-out-first-run`
 
@@ -142,14 +142,14 @@ The family, runner, raw evidence, and comparison records remain outside Git and
 must be preserved unchanged. The consumed family may not be rerun or reused as
 fresh held-out evidence.
 
-## Proposed Decision D-114
+## Accepted Decision D-114
 
 **Accept the D-113 evidence as a valid, immutable failed-run record; classify
 the benchmark as not evaluable and release-held; prohibit any rerun or reuse of
 the consumed family; and authorize a bounded development-only stabilization
 block for the atomic publication failure.**
 
-Acceptance would authorize only:
+Acceptance authorizes only:
 
 1. reproduce the publication failure using non-held-out development or public
    synthetic packages under the same bounded child environment;
@@ -164,15 +164,19 @@ Acceptance would authorize only:
 6. return with regression evidence and a separate external-benchmark recovery
    definition.
 
-D-114 would not authorize a held-out rerun, a new held-out family, protected
+D-114 does not authorize a held-out rerun, a new held-out family, protected
 asset changes, semantic evaluator changes, P4.3 work, public-package reruns,
 repository import of custody assets, or any release claim.
 
-## Owner Review Point
+## Owner Acceptance
 
-The owner should accept or revise D-114. Until then, P4.2 remains stopped at a
-release hold and no stabilization implementation or new benchmark work is
-authorized.
+The project owner accepted D-114 on 2026-07-22 with the instruction to merge
+PR #67, accept D-114, and continue working. This acceptance authorizes the
+bounded development-only stabilization above. It does not alter or retry the
+consumed D-113 evidence.
+
+The resulting implementation and separate recovery definition are reviewed in
+`p4_2_publication_stabilization_review_v0.3.0.md`.
 
 The machine-readable aggregate evidence is
 `p4_2_external_first_run_result_evidence_v0.3.0.json`.

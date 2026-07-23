@@ -1,0 +1,127 @@
+{
+  "schema_version": "0.3.0",
+  "evidence_id": "P4.2-D114-PUBLICATION-STABILIZATION",
+  "status": "complete_owner_review_required",
+  "recorded_date": "2026-07-22",
+  "authority": "D-114",
+  "authority_status": "accepted",
+  "branch": "codex/p4.2-publication-stabilization",
+  "starting_main_commit": "540a1f6",
+  "protected_or_held_out_access": {
+    "family_opened_or_listed": false,
+    "semantic_runs": 0,
+    "reruns": 0,
+    "assets_changed": false,
+    "protected_fixture_test_executed": false
+  },
+  "development_reproduction": {
+    "input": "accepted development pump-skid producer-visible package",
+    "bounded_child_environment": true,
+    "read_only_static_inputs": true,
+    "runs_directory_path_length": 193,
+    "pre_correction_cli_exit": 70,
+    "complete_output_sets": 0,
+    "direct_legacy_stage_probe": {
+      "stage": "write_package_result",
+      "path_length": 263,
+      "error_type": "FileNotFoundError",
+      "errno": 2,
+      "winerror": null
+    },
+    "root_cause": "The temporary publication sibling repeated the full run ID and added a UUID, pushing the first staged output beyond the usable Windows legacy path boundary even though the immutable final output path fit."
+  },
+  "correction": {
+    "scope": "atomic publication mechanics only",
+    "staging_directory_pattern": ".tmp-<8 hex>",
+    "failed_directory_pattern": ".failed-<8 hex>",
+    "fallback_marker_pattern": ".failure-<8 hex>.txt",
+    "diagnostic_fields": [
+      "stage",
+      "run_id",
+      "error_type",
+      "errno",
+      "winerror"
+    ],
+    "final_run_id_changed": false,
+    "output_contract_changed": false,
+    "semantic_evaluator_changed": false,
+    "retry_or_overwrite_policy_changed": false
+  },
+  "publication_sentinel": {
+    "sentinel_id": "SENTINEL-20260723T043500Z-4af53646",
+    "summary_path": "runs/p4.2-d114-final-20260722/publication-sentinel/SENTINEL-20260723T043500Z-4af53646/sentinel_summary.json",
+    "summary_sha256": "0c8f9511295914b59a1bddf595f8532c1030b9842a35b2ddb82ffe1968cb37cf",
+    "static_file_count": 46,
+    "read_only_static_file_count": 46,
+    "static_pre_post_sha256": "5f5d50083cac8171a46a9b539f8b20a626d6ca1af01ad231aeb180c3ba24363c",
+    "producer_hidden_expected_assets_absent": true,
+    "inherited_path_forwarded": false,
+    "credential_or_proxy_keys_forwarded": false,
+    "runs_directory_path_length": 193,
+    "legacy_staging_output_path_length": 264,
+    "child_exit": 0,
+    "package_state": "automatic_pass",
+    "release_hold": false,
+    "schema_valid": true,
+    "output_count": 4,
+    "status": "passed"
+  },
+  "verification": {
+    "focused_tests": {
+      "passed": 50,
+      "failed": 0,
+      "publication_module_coverage_percent": 91,
+      "governance_module_coverage_percent": 84
+    },
+    "protected_safe_full_regression": {
+      "passed": 337,
+      "skipped": 1,
+      "failed": 0,
+      "coverage_percent": 88.48,
+      "protected_fixture_module_excluded": true
+    },
+    "repository_validation": "5/5 passed",
+    "ruff": "passed",
+    "development_benchmark": {
+      "revision": "P4.1-DEV-1",
+      "passed": 22,
+      "total": 22,
+      "report_path": "runs/p4.2-d114-final-20260722/development-benchmark/benchmark_report.json",
+      "report_sha256": "093ed6a84d0ea0f0c3e858fc5c3aee460ac025e17020dc1f7ab8b5f50f1c9654"
+    },
+    "frozen_v0_2_baseline": {
+      "passed": 9,
+      "total": 9,
+      "summary_path": "runs/p4.2-d114-final-20260722/v0.2-baseline-evidence/summary.json",
+      "summary_sha256": "eef4e94360c16908c3864b3908e8202ad4d138b0c297fc4c0eeca53b4701440a"
+    },
+    "portfolio_demo": {
+      "passed": 2,
+      "total": 2,
+      "report_path": "runs/p4.2-d114-final-20260722/portfolio-demo-report.md",
+      "report_sha256": "49ff6b7e942f9af1f29b6a23661141132ea69676f268198f03cfe630741789cc"
+    },
+    "ai_governance": {
+      "normal_validation": "passed",
+      "strict_release_ready_exit": 2,
+      "release_hold_risks": [
+        "AIR-003"
+      ],
+      "pending_decisions": [
+        "D-116"
+      ]
+    }
+  },
+  "nonconformity": {
+    "nonconformity_id": "NC-001",
+    "corrective_action_status": "closed",
+    "independent_benchmark_release_hold_removed": false
+  },
+  "next_gate": {
+    "decision_id": "D-116",
+    "status": "proposed_owner_review",
+    "definition": "docs/package_assurance/p4_2_external_benchmark_recovery_definition_v0.3.0.md"
+  },
+  "held_out_performance_claim_authorized": false,
+  "release_claim_authorized": false
+}

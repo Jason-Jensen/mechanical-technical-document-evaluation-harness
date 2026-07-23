@@ -57,7 +57,7 @@ the two as complementary references, not interchangeable certifications.
 | Support | Document control, competence roles, communication rules, evidence retention, CI tooling, and provider-independent controls | Implemented internally; formal competence records need expansion before external operation |
 | Operation | Eight lifecycle gates, data/rights checks, source authority, verification, human review, incident response, and change control | Implemented for current repository workflow |
 | Performance evaluation | Automated governance validation, tests, objectives, internal audit, management review, and improvement register | Implemented |
-| Improvement | Nonconformity process, root-cause requirement, corrective-action proof, and reusable improvement register | Implemented; `NC-001` remains open |
+| Improvement | Nonconformity process, root-cause requirement, corrective-action proof, and reusable improvement register | Implemented; `NC-001` corrective action verified and closed under D-114 |
 
 ## 4. Project Control Domains
 
@@ -87,11 +87,12 @@ creates sufficient value.
 ### Gap 2: The external benchmark is not evaluable
 
 The D-113 run preserved valid operational evidence but produced no semantic
-outputs because atomic publication failed. This is an open high-severity
-nonconformity and release hold.
+outputs because atomic publication failed. D-114 corrected and verified the
+publication-layer defect, but the original benchmark remains not evaluable and
+the independent-performance release hold remains open.
 
-**Action:** D-114 remains a separate owner decision. No rerun or new held-out
-family is authorized by this governance block.
+**Action:** Review proposed D-116 separately. D-114 authorizes no rerun or new
+held-out family.
 
 ### Gap 3: Supplier and model-provider assurance is lightweight
 

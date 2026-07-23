@@ -27,7 +27,7 @@ system
    nonconformities, audits, and release state in CI.
 4. Preserve qualified human engineering judgment and project-owner release
    authority.
-5. Keep D-114 pending as a separate corrective-action decision; this review
+5. At this review, keep D-114 pending as a separate corrective-action decision; this review
    does not authorize a held-out rerun, new family, publication fix, or P4.3.
 6. Reject certification, conformity, legal-compliance, or guaranteed-safety
    claims without licensed standards and competent independent assessment.
@@ -48,6 +48,13 @@ system
 
 ## Outcome
 
-The AI management system is approved for internal operation. The current
-product remains release-held. The next owner decision remains D-114 unless the
-owner deliberately changes project priority again.
+The AI management system is approved for internal operation. At this review,
+the current product remained release-held and the next owner decision was
+D-114.
+
+## Follow-Up
+
+The owner subsequently accepted D-114. The publication-layer corrective action
+is verified and `NC-001` is closed. The product remains release-held by
+`AIR-003`; proposed D-116 is the next owner decision and does not authorize a
+semantic run by itself.

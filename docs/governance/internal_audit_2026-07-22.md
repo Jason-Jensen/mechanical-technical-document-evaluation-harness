@@ -40,7 +40,7 @@ assurance.
 
 ### Nonconformity
 
-`NC-001` remains open: D-113 consumed the external benchmark family after all
+At the time of this audit, `NC-001` remained open: D-113 consumed the external benchmark family after all
 eight evaluator invocations failed in atomic output publication. No semantic
 benchmark result exists. The release hold and no-rerun boundary are correct.
 
@@ -61,3 +61,13 @@ current repository workflow. It is not release-ready and does not establish
 ISO/IEC 42001 conformity. The normal governance validator should pass; its
 release-ready mode should fail until `NC-001` and every mandatory hold are
 closed through accepted evidence.
+
+## Corrective-Action Follow-Up
+
+After this audit, the owner accepted D-114. Development-only reproduction
+identified the internal staging path length as the root cause. The corrected
+publication layer, exact diagnostics, fallback marker, and bounded four-output
+sentinel verify corrective and preventive action, so `NC-001` is closed.
+
+Release-ready mode must still fail on `AIR-003` and pending D-116 because no
+comparable independent semantic benchmark result exists.
