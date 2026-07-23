@@ -18,22 +18,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
 - **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
-- **P4.2:** D-113 is integrated through PR #65 at exact `main` `6a74c74` and consumed. Preflight passed 27/27, then one runner invocation consumed all eight scenarios with exit `70` and zero complete output sets. Independent raw verification passed with zero mismatches. D-114 is accepted and implemented on `codex/p4.2-publication-stabilization`; the exact staging-path defect is corrected and guarded by a bounded four-output sentinel. The original benchmark remains not evaluable, and the consumed family remains prohibited from rerun or reuse.
+- **P4.2:** D-113 remains consumed and not evaluable. D-114 is integrated through PR #68 at exact `main` `3a6766f`. D-116 then prepared a materially distinct eight-scenario synthetic family and oracle-blind runner outside Git. Runner revision 4 passed 8/8 mandatory and 51/51 detailed freeze controls, including one four-output development sentinel; opaque semantic executions remain zero. D-117 is pending.
 - **G0.1:** D-115 is integrated through PR #67 at exact `main` `540a1f6`. It adopts an internal AI management and quality-control system as the highest-level repository governance. The system is ISO/IEC 42001-aligned at a public-guidance level, NIST-informed, machine validated, and explicitly not a conformity or certification claim.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Active Gate
 
-D-115 is the active governance overlay. The D-113 one-shot sequence remains complete and immutable; its operational evidence is valid but its semantic benchmark result is not evaluable. D-114 is accepted and implemented pending integration review. Proposed D-116 is the next owner decision. The consumed family and raw evidence remain outside Git and may not be rerun.
+D-115 is the active governance overlay. D-113 remains complete, immutable, and not evaluable. D-114 is integrated. D-116 is complete with a verified zero-run freeze. Proposed D-117 is the next owner decision. Neither the consumed D-113 family nor the new D-116 opaque family may be executed without its exact gate authority.
 
 ## Active Work Block
 
-- **WBS:** P4.2 D-114 publication stabilization
-- **Branch:** `codex/p4.2-publication-stabilization`
-- **Objective:** Reproduce the atomic publication failure using development-only evidence, identify its exact cause, make the smallest publication-layer correction, preserve sanitized diagnostics, and install a production-equivalent four-output sentinel.
-- **Definition of done:** The pre-fix failure is reproduced without protected access; exact stage and lower-level cause are recorded; the bounded sentinel publishes four schema-valid outputs with unchanged read-only inputs; semantic behavior and protected evidence remain unchanged; regression passes; and a separate external-benchmark recovery definition returns for owner review.
+- **WBS:** P4.2 D-116 external benchmark recovery freeze
+- **Branch:** `codex/p4.2-external-benchmark-recovery-preparation`
+- **Objective:** Prepare one materially distinct external family and one oracle-blind runner under separated custody, prove publication in the final physical pattern, and preserve zero opaque executions.
+- **Definition of done:** The family, runner, hashes, rights, authority/oracle contract, leakage controls, read-only state, one-shot behavior, and development sentinel are independently verified; failed revisions are preserved; D-117 returns with an exact command; and no opaque scenario is executed.
 
-Next action after D-114 closeout: review the publication correction and the proposed D-116 external-benchmark recovery gate. Held-out reruns, a new held-out family, semantic changes, P4.3 work, public reruns, imports, and release claims remain blocked until separately authorized.
+Next action: review this branch and proposed D-117. Do not create the authorization file or run the exact command until D-117 is explicitly accepted. P4.3, public reruns, semantic changes, imports, and release claims remain blocked.
 
 ## Delivery Sequence
 

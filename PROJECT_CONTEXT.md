@@ -1,8 +1,8 @@
 # Project Context
 
-**Updated:** 2026-07-22
+**Updated:** 2026-07-23
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/iso-42001-ai-quality-system`
+**Current branch:** `codex/p4.2-external-benchmark-recovery-preparation`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P4.2 D-114 publication stabilization
-- **Status:** PR #67 integrated D-115 governance at exact `main` `540a1f6`. D-114 is accepted and implemented on `codex/p4.2-publication-stabilization`: development-only evidence isolated the staging-path defect, and a bounded four-output sentinel guards the correction. The D-113 benchmark remains not evaluable; the consumed family cannot be rerun or reused, proposed D-116 awaits owner review, and release remains held
+- **Active WBS:** P4.2 D-116 external benchmark recovery freeze
+- **Status:** PR #68 integrated D-114 at exact `main` `3a6766f`. D-116 is complete: a materially distinct eight-scenario synthetic family and oracle-blind runner remain outside Git, and revision 4 passed 8/8 mandatory plus 51/51 detailed controls with one four-output development sentinel. Opaque executions remain zero, D-117 is pending, and release remains held
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 The highest-level internal project controls are
@@ -471,6 +471,27 @@ is held, all eight scenarios are consumed, and rerun is prohibited.
 The controlling owner package is
 `docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md`.
 
+PR #68 integrated D-114 at exact `main`
+`3a6766f6f1cc563b27c24fa07a9a4a2a7d1206f6`. The short internal publication
+names, exact stage diagnostics, fallback marker, and bounded four-output
+sentinel close NC-001 without changing evaluator semantics. AIR-003 remains
+the independent-benchmark release hold.
+
+D-116 then created `FAM-D116-CIM-20260723-01`, a materially distinct synthetic
+carton-indexing conveyor family with eight opaque scenarios under external
+producer/protected separation. The implementation context read only public
+handoffs. Runner revisions 1 through 3 were rejected and preserved for nested
+dependency closure, import-time bytecode mutation, and whole-tree Windows path
+budgeting. Final `RUNNER-D116-CIM-20260723-04` passed 8/8 mandatory and 51/51
+detailed controls. Its single development sentinel published four schema-valid
+automatic-pass outputs at the exact 193-character runs path while preserving
+340/340 read-only static files. Opaque semantic executions, held-out
+publications, and protected comparisons remain zero. The controlling records
+are
+`docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md`
+and
+`docs/package_assurance/p4_2_external_benchmark_execution_gate_v0.3.0.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -512,17 +533,18 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-D-115 is integrated through PR #67 at exact `main` `540a1f6`. D-114 is
-accepted and implemented on `codex/p4.2-publication-stabilization`. Complete
-its review and integration, then accept or revise proposed D-116 before any
-external benchmark recovery preparation.
+D-114 is integrated through PR #68 at exact `main` `3a6766f`. D-116 is
+accepted and complete on
+`codex/p4.2-external-benchmark-recovery-preparation`. Review and integrate its
+public freeze records, then accept or revise proposed D-117 separately.
 
-Do not retry or reuse the consumed family, inspect or change protected inputs,
-create or run another held-out family, import custody assets, restore
-protected-fixture CI, change semantic evaluator behavior or benchmark inputs,
-rerun either public package, begin P4.3, or make a release claim. D-116 would
-authorize preparation and independent zero-run freeze only; a separate D-117
-decision would still be required before semantic execution.
+Do not create the D-117 authorization file or invoke the prepared semantic
+runner. Do not retry or reuse any consumed runner or family, inspect protected
+inputs from the implementation context, import custody assets, restore
+protected-fixture CI, change evaluator semantics or benchmark inputs, rerun
+either public package, begin P4.3, or make a release claim. D-117 would
+authorize one runner invocation only; raw verification and protected
+comparison remain separated after execution.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

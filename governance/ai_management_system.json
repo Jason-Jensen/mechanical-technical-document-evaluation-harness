@@ -412,6 +412,9 @@
       "review_trigger": "A comparable independent benchmark and qualified human false-negative review become available.",
       "evidence_refs": [
         "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_evidence_v0.3.0.json",
+        "docs/package_assurance/p4_2_external_benchmark_execution_gate_v0.3.0.md",
         "docs/governance/internal_audit_2026-07-22.md"
       ]
     },
@@ -1034,6 +1037,8 @@
       "evidence_refs": [
         ".github/workflows/ci.yml",
         "docs/package_assurance/acceptance_plan_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_evidence_v0.3.0.json",
         "AGENTS.md"
       ]
     },
@@ -1058,6 +1063,8 @@
         "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
         "docs/package_assurance/p4_2_publication_stabilization_review_v0.3.0.md",
         "docs/package_assurance/p4_2_publication_stabilization_evidence_v0.3.0.json",
+        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_evidence_v0.3.0.json",
         "scripts/run_package_assurance_publication_sentinel.py",
         ".github/workflows/ci.yml",
         "docs/quality/improvement_register.md"
@@ -1423,7 +1430,7 @@
       "objective": "Keep governance records complete, cross-referenced, and machine valid.",
       "measure": "Governance validator and focused test result.",
       "target": "All checks pass in local and hosted CI.",
-      "current_result": "Governance validation and 22 focused control tests pass locally with 84% validator coverage; protected-safe full regression passes 335 with one expected Windows skip at 88.33% coverage; repository validation 5/5 and Ruff pass; hosted CI remains pending.",
+      "current_result": "Governance validation and 22 focused control tests pass locally; protected-safe full regression passes 340 with one expected Windows skip at 88.33% coverage; repository validation 5/5, Ruff, the four-output sentinel, development benchmark 22/22, frozen baseline 9/9, and demo 2/2 pass. Hosted CI for the D-116 branch remains pending.",
       "status": "monitoring",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [
@@ -1437,11 +1444,13 @@
       "objective": "Maintain reproducible evidence for every accepted material claim.",
       "measure": "Accepted claims with traceable and reproducible evidence.",
       "target": "100 percent",
-      "current_result": "Current accepted implementation claims retain evidence; D-113 is correctly classified as operational evidence only.",
+      "current_result": "Current accepted implementation claims retain evidence; D-113 remains operational evidence only, and D-116 is correctly limited to a verified zero-run freeze rather than benchmark performance.",
       "status": "met",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [
         "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_evidence_v0.3.0.json",
         "docs/quality/improvement_register.md"
       ]
     },
@@ -1450,11 +1459,12 @@
       "objective": "Obtain a comparable external semantic benchmark before release claims.",
       "measure": "Comparable external scenarios with exact state and finding evaluation.",
       "target": "All authorized external scenarios comparable with accepted metrics.",
-      "current_result": "0 comparable and 8 not evaluable after D-113 publication failure.",
+      "current_result": "0 comparable; 8 D-113 scenarios remain not evaluable, and 8 D-116 opaque scenarios are independently frozen but unexecuted pending D-117.",
       "status": "not_met_release_hold",
       "owner_role_id": "ROLE-OWNER",
       "evidence_refs": [
-        "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md"
+        "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md"
       ]
     },
     {
@@ -1462,7 +1472,7 @@
       "objective": "Convert material failures and corrections into preventive controls and proof.",
       "measure": "Open improvement items with prevention and repeatable proof.",
       "target": "Every material issue recorded; closure only after proof.",
-      "current_result": "D-114 closed NC-001 after exact root-cause reproduction, a bounded correction, stage diagnostics, and a repeatable non-held-out four-output sentinel. AIR-003 and D-116 remain open.",
+      "current_result": "D-116 preserved three failed runner revisions and converted dependency closure, bytecode mutation, and whole-tree path budgeting into verified controls. Revision 4 passed 8/8 mandatory and 51/51 detailed controls with one four-output development sentinel. AIR-003 and D-117 remain open.",
       "status": "monitoring",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [
@@ -1535,6 +1545,9 @@
     "docs/package_assurance/p4_2_publication_stabilization_review_v0.3.0.md",
     "docs/package_assurance/p4_2_publication_stabilization_evidence_v0.3.0.json",
     "docs/package_assurance/p4_2_external_benchmark_recovery_definition_v0.3.0.md",
+    "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
+    "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_evidence_v0.3.0.json",
+    "docs/package_assurance/p4_2_external_benchmark_execution_gate_v0.3.0.md",
     "scripts/run_package_assurance_publication_sentinel.py"
   ],
   "release_status": {
@@ -1545,7 +1558,7 @@
     ],
     "hold_nonconformity_ids": [],
     "pending_decision_ids": [
-      "D-116"
+      "D-117"
     ],
     "human_decision_required": true
   }
