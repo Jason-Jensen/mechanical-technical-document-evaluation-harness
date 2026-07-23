@@ -121,6 +121,9 @@ def run_publication_sentinel(
         "paths": {
             "runs_dir_length": len(str(runs_dir)),
             "target_runs_path_length": target_runs_path_length,
+            "host_root_adapted": (
+                len(str(runs_dir)) > target_runs_path_length
+            ),
         },
     }
     summary_path = evidence_root / "sentinel_summary.json"
@@ -308,16 +311,20 @@ def _bundle_root_for_target(
     *,
     target_runs_path_length: int,
 ) -> Path:
+    if target_runs_path_length < TARGET_RUNS_PATH_LENGTH:
+        raise PublicationSentinelError(
+            "Requested runs path is below the minimum publication stress length."
+        )
     fixed_bundle_name = "bundle-"
     fixed_runs_dir = evidence_root / fixed_bundle_name / "runtime" / "runs"
-    padding_length = target_runs_path_length - len(str(fixed_runs_dir))
-    if padding_length < 8:
-        raise PublicationSentinelError(
-            "Output root is too long for the requested path-length sentinel."
-        )
+    effective_runs_path_length = max(
+        target_runs_path_length,
+        len(str(fixed_runs_dir)) + 8,
+    )
+    padding_length = effective_runs_path_length - len(str(fixed_runs_dir))
     bundle_root = evidence_root / (fixed_bundle_name + ("x" * padding_length))
     runs_dir = bundle_root / "runtime" / "runs"
-    if len(str(runs_dir)) != target_runs_path_length:
+    if len(str(runs_dir)) != effective_runs_path_length:
         raise PublicationSentinelError(
             "Could not construct the requested publication path length."
         )

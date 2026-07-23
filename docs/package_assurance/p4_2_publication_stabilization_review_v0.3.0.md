@@ -16,7 +16,7 @@
 
 D-114 is implemented within its development-only boundary. The exact failure
 class was reproduced without opening, listing, importing, changing, or
-rerunning any protected held-out family.
+rerunning any held-out family.
 
 The root cause was a Windows path-length defect in the internal staging name,
 not a semantic evaluator result. The immutable final run path fit, but the
@@ -41,7 +41,8 @@ The reproduction used only the accepted development pump-skid package.
 - Before correction, the full child audit returned exit `70` with no output.
 - A direct probe of the first legacy staged output path at 263 characters
   returned `FileNotFoundError` with errno `2`.
-- No protected fixture test or held-out family path was accessed.
+- During reproduction, no protected fixture test or held-out family path was
+  accessed.
 
 This matches the D-113 operational failure class without making a new semantic
 benchmark observation.
@@ -73,8 +74,10 @@ The correction affects publication mechanics only.
 - all static inputs as read-only files;
 - a child environment limited to optional operating-system bootstrap values
   and five fixed Python values; and
-- a 193-character runs-directory path that makes the former staged output path
-  at least 260 characters.
+- a runs-directory path of at least 193 characters that makes the former
+  staged output path at least 260 characters. The accepted local evidence uses
+  exactly 193 characters; longer hosted checkout roots adapt upward without
+  weakening the stress condition.
 
 The sentinel requires:
 
@@ -90,10 +93,10 @@ CI runs this sentinel before the protected-safe regression suite.
 
 ## Verification
 
-- focused publication, CLI, and governance tests: 50 passed;
+- focused publication, CLI, governance, and sentinel-helper tests: 53 passed;
 - publication module coverage: 91%;
 - governance module coverage: 84%;
-- protected-safe full regression: 337 passed, 1 expected skip, 88.48%
+- protected-safe full regression: 340 passed, 1 expected skip, 88.48%
   coverage;
 - repository validation: 5/5;
 - Ruff: passed;
@@ -106,6 +109,18 @@ CI runs this sentinel before the protected-safe regression suite.
 
 Machine-readable details and generated evidence hashes are in
 `p4_2_publication_stabilization_evidence_v0.3.0.json`.
+
+## Final Scope-Audit Finding
+
+During final status cleanup, one repository-wide `rg` command omitted the
+required held-out exclusion. It traversed tracked historical held-out folders
+and surfaced path names and matching hash lines from families already
+contaminated and ineligible for a release benchmark.
+
+No external D-113 custody evidence or future D-116 family was accessed, no
+protected fixture test ran, and no semantic execution occurred. This does not
+restore or weaken any benchmark claim. `IMP-032` now requires implementer-side
+searches to exclude `benchmarks/package_assurance/held_out/**` explicitly.
 
 ## Claim Boundary
 

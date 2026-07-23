@@ -8,7 +8,14 @@
   "branch": "codex/p4.2-publication-stabilization",
   "starting_main_commit": "540a1f6",
   "protected_or_held_out_access": {
-    "family_opened_or_listed": false,
+    "family_opened_or_listed": true,
+    "release_eligible_or_external_family_opened_or_listed": false,
+    "tracked_release_ineligible_search_scope_incident": {
+      "occurred": true,
+      "activity": "A final repository-wide status search traversed tracked historical held-out folders and surfaced matching path and hash lines.",
+      "semantic_or_oracle_use": false,
+      "corrective_action": "IMP-032 requires explicit held-out glob exclusions for implementer-side repository searches."
+    },
     "semantic_runs": 0,
     "reruns": 0,
     "assets_changed": false,
@@ -68,13 +75,13 @@
   },
   "verification": {
     "focused_tests": {
-      "passed": 50,
+      "passed": 53,
       "failed": 0,
       "publication_module_coverage_percent": 91,
       "governance_module_coverage_percent": 84
     },
     "protected_safe_full_regression": {
-      "passed": 337,
+      "passed": 340,
       "skipped": 1,
       "failed": 0,
       "coverage_percent": 88.48,
