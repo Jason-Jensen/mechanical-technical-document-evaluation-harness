@@ -603,8 +603,9 @@ Files under `docs/archive/` and dated modernization records are historical prove
 ## Current Authorized Action
 
 PR #71 is integrated at exact `main` `17830bd`. D-119 is accepted and complete
-on `codex/p4.2-new-external-family-preparation`. Review the public D-119
-evidence and accept or revise proposed D-120 separately.
+on `codex/p4.2-new-external-family-preparation`; integration PR #72 passes both
+hosted validation jobs. Review and merge PR #72, then accept or revise proposed
+D-120 separately.
 
 Do not access or import the isolated family, repair or reuse a consumed family,
 edit protected expectations or raw evidence, tune evaluator behavior, restore

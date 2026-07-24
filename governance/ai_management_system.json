@@ -1452,7 +1452,7 @@
       "objective": "Keep governance records complete, cross-referenced, and machine valid.",
       "measure": "Governance validator and focused test result.",
       "target": "All checks pass in local and hosted CI.",
-      "current_result": "D-119 independently reproduces 8/8 public-contract validations, 7/7 protected target reachability, a 322-file read-only freeze, exact pre/post identity, redaction, and zero official invocations. Authoring-control and governance tests pass 36/36 locally; protected-safe full regression passes 354 with one expected Windows skip at 88.02% coverage. Repository validation 5/5, Ruff, the four-output sentinel, development benchmark 22/22, frozen baseline 9/9, and demo 2/2 pass. Hosted Linux verification for D-119 remains pending.",
+      "current_result": "D-119 independently reproduces 8/8 public-contract validations, 7/7 protected target reachability, a 322-file read-only freeze, exact pre/post identity, redaction, and zero official invocations. Authoring-control and governance tests pass 36/36 locally; protected-safe full regression passes 354 with one expected Windows skip at 88.02% coverage. Repository validation 5/5, Ruff, the four-output sentinel, development benchmark 22/22, frozen baseline 9/9, and demo 2/2 pass. Both hosted Linux validation jobs pass on PR #72.",
       "status": "monitoring",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [

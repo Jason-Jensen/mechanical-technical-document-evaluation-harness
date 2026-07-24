@@ -33,7 +33,7 @@ D-115 is the active governance overlay. D-113 and D-117 are consumed evidence. D
 - **Objective:** Prove the D-118 authoring controls on one genuinely new family while keeping all packages, targets, results, and authoring records outside Git and implementer access.
 - **Definition of done:** Rights and custody pass; 8/8 public validations and all protected targets pass; rejected revisions are preserved; a fresh reviewer reproduces the read-only freeze and redaction; official invocations remain zero; and D-120 returns for owner review.
 
-Next action: review the completed D-119 evidence and proposed D-120. No official benchmark execution, evaluator tuning, P4.3, release, or performance claim is authorized before D-120 acceptance.
+Next action: review and merge PR #72, whose two hosted validation jobs pass, then accept or revise proposed D-120. No official benchmark execution, evaluator tuning, P4.3, release, or performance claim is authorized before D-120 acceptance.
 
 ## Delivery Sequence
 
