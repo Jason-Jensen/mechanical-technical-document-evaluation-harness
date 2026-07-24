@@ -1,0 +1,207 @@
+{
+  "schema_version": "0.3.0",
+  "evidence_id": "P4.2-D116-EXTERNAL-RECOVERY-FREEZE",
+  "status": "complete_owner_review_required",
+  "recorded_date": "2026-07-23",
+  "authority": "D-116",
+  "authority_status": "accepted",
+  "branch": "codex/p4.2-external-benchmark-recovery-preparation",
+  "starting_main_commit": "3a6766f6f1cc563b27c24fa07a9a4a2a7d1206f6",
+  "predecessor": {
+    "pull_request": 68,
+    "merge_commit": "3a6766f6f1cc563b27c24fa07a9a4a2a7d1206f6",
+    "hosted_checks_passed": 2
+  },
+  "custody": {
+    "family_id": "FAM-D116-CIM-20260723-01",
+    "family_title": "Synthetic Carton Indexing Conveyor Family",
+    "synthetic_and_self_authored": true,
+    "opaque_scenario_count": 8,
+    "producer_file_count": 129,
+    "producer_aggregate_sha256": "ccaf7ed4a06e75549246f7443cc2e6fd16644f99be23297dc5a792b8158d2173",
+    "protected_file_count": 3,
+    "protected_aggregate_sha256": "27911e904e37aaf4fda68f08162380bc67619305742dbbb94ade3845eb007002",
+    "author_inventory_entries": 140,
+    "author_inventory_sha256": "6b2af81deeb298cac366fc215bbaf53244046b70fac50078d52cb42cd776e529",
+    "repository_imported": false,
+    "implementation_context_access": "public-safe handoffs only",
+    "internal_independence_limitation": "Separate AI-assisted contexts under the same project owner; not external independent assurance."
+  },
+  "runner": {
+    "capsule_id": "RUNNER-D116-CIM-20260723-04",
+    "evaluator_commit": "3a6766f6f1cc563b27c24fa07a9a4a2a7d1206f6",
+    "exact_evaluator_git_blobs": 48,
+    "static_file_count": 340,
+    "read_only_static_file_count": 340,
+    "inventory_entry_count": 339,
+    "inventory_aggregate_sha256": "9d7ce69ed630654eaf1a81b19f16cb02b3bbf7f179a174b78380cff17703c1eb",
+    "inventory_file_sha256": "d0aba02653bfb5ef551e7d803fbcf76f3d0ac5c2468805ef558d3674e1a7e741",
+    "runner_manifest_sha256": "a0949d94b48a5935912fcafd549dcce138ce2a592627fbdf0ebe4b3faba00590",
+    "capsule_interpreter_sha256": "e725f520cfbb2e4844fe0a9fc8949236f20b0d67e470d1232618b99504a0691a",
+    "python_environment_file_count": 148,
+    "python_environment_aggregate_sha256": "6e5fc980a0c6f1ee14841fffed216b85707fea54ec2490f2cf4f6971d4ca5aea",
+    "dependency_distribution_count": 5,
+    "dependency_file_count": 139,
+    "dependency_aggregate_sha256": "facf817258c2ee4359ee102ce0d7eced0f3cfbfe137fade9a3d88933d95116c8",
+    "pycache_directory_count": 0,
+    "pyc_file_count": 0,
+    "retry_resume_overwrite_or_tuning_path": false,
+    "protected_comparison_path": false,
+    "authorization_present": false
+  },
+  "path_boundary": {
+    "physical_root_length": 90,
+    "target_runs_path_length": 193,
+    "actual_runs_path_length": 193,
+    "calculated_longest_staged_path_length": 256,
+    "actual_longest_staged_path_length": 256,
+    "tested_usable_boundary_max_path_length": 259,
+    "remaining_margin_characters": 3,
+    "legacy_staging_output_path_length": 264
+  },
+  "independent_verification": {
+    "verification_id": "VER-D116-R4-20260723-01",
+    "mandatory_controls_passed": 8,
+    "mandatory_controls_total": 8,
+    "detailed_controls_passed": 51,
+    "detailed_controls_total": 51,
+    "pre_sentinel_controls_passed": 34,
+    "post_sentinel_controls_passed": 17,
+    "package_manifests_schema_valid": 8,
+    "leakage_files_scanned": 258,
+    "protected_value_leaks": 0,
+    "material_distinction": "passed",
+    "authority_and_oracle_contract": "passed"
+  },
+  "publication_sentinel": {
+    "designated_invocation_count": 1,
+    "retry_count": 0,
+    "outer_exit_code": 0,
+    "child_exit_code": 0,
+    "status": "passed",
+    "protected_or_held_out_inputs_used": false,
+    "development_package_state": "automatic_pass",
+    "release_hold": false,
+    "finding_count": 0,
+    "output_count": 4,
+    "schema_valid": true,
+    "static_pre_post_identical": true,
+    "bounded_environment": true,
+    "summary_sha256": "ec23d7e6a3210745bcb953b39ebb4b16b98188a31814e13cf35411b7e3d26393"
+  },
+  "preserved_failed_runner_revisions": [
+    {
+      "capsule_id": "RUNNER-D116-CIM-20260723-01",
+      "failure_class": "nested_child_dependency_path_hidden",
+      "post_failure_aggregate_sha256": "b8b25c10da8d376fc47f7c231f9a7168cb6563d62509f89f41335a3c66c5cdc5",
+      "opaque_executions": 0
+    },
+    {
+      "capsule_id": "RUNNER-D116-CIM-20260723-02",
+      "failure_class": "uninventoried_control_bytecode_created_before_preflight",
+      "post_failure_aggregate_sha256": "ff343d9bbc9e99bc46ac1b59374ae88a9a99f4cea1d39ed405709d5a0f165411",
+      "opaque_executions": 0
+    },
+    {
+      "capsule_id": "RUNNER-D116-CIM-20260723-03",
+      "failure_class": "windows_error_206_during_evaluator_staging",
+      "post_failure_aggregate_sha256": "6d39750a948e17500d8400782817d156d284fe1a5b2a11bb3eebe5bd975e0703",
+      "opaque_executions": 0
+    }
+  ],
+  "zero_run_proof": {
+    "opaque_semantic_executions": 0,
+    "opaque_publication_executions": 0,
+    "protected_comparisons": 0,
+    "semantic_runtime_empty": true,
+    "authorization_runtime_empty": true,
+    "d117_authorization_present": false
+  },
+  "repository_verification": {
+    "focused_governance_tests": {
+      "passed": 22,
+      "failed": 0
+    },
+    "protected_safe_full_regression": {
+      "passed": 340,
+      "skipped": 1,
+      "failed": 0,
+      "coverage_percent": 88.33,
+      "protected_fixture_module_excluded": true
+    },
+    "long_test_root_control": {
+      "initial_status": "failed_due_to_generated_path_length",
+      "semantic_regression_detected": false,
+      "short_root_rerun_status": "passed",
+      "improvement_ref": "IMP-035"
+    },
+    "repository_validation": "5/5 passed",
+    "ruff": "passed",
+    "development_benchmark": {
+      "revision": "P4.1-DEV-1",
+      "passed": 22,
+      "total": 22,
+      "report_path": "runs/d116-closeout-development-benchmark/benchmark_report.json",
+      "report_sha256": "4c41cfeb83d1aac93e8c1d015e4d142eaceb7c8cfb9de1ae7a0617ca6de24f11"
+    },
+    "repository_publication_sentinel": {
+      "status": "passed",
+      "output_count": 4,
+      "package_state": "automatic_pass",
+      "summary_path": "runs/d116-closeout-sentinel/SENTINEL-20260723T192649Z-7a441e6a/sentinel_summary.json",
+      "summary_sha256": "55ba2a4bc4c90efbb5ca9c855f36334c475cf80086ba695e915f5ff38708e5fb"
+    },
+    "frozen_v0_2_baseline": {
+      "passed": 9,
+      "total": 9,
+      "evidence_path": "runs/d116-closeout-baseline-evidence/summary.json",
+      "summary_sha256": "beb50828a5d6f43e61fa0aab66b95ed911f354e01d0c730ca65f7adcabeec344"
+    },
+    "portfolio_demo": {
+      "passed": 2,
+      "total": 2,
+      "report_path": "runs/d116-closeout-portfolio-demo-report.md",
+      "report_sha256": "652c8b3b865f0925d17cc0f12a0ee1b86df7084d601b1cbfc6986ffab3d95bc4"
+    },
+    "ai_governance": {
+      "normal_validation": "passed",
+      "strict_release_ready_exit": 2,
+      "release_hold_risks": [
+        "AIR-003"
+      ],
+      "pending_decisions": [
+        "D-117"
+      ]
+    },
+    "hosted_ci": {
+      "pull_request": 69,
+      "commit": "87cf1ad30608cfe7a3efd88360de1fbe968c080c",
+      "push_workflow_run": 30041470927,
+      "pull_request_workflow_run": 30041835325,
+      "checks_passed": 2,
+      "repository_validation": "5/5 passed",
+      "ruff": "passed",
+      "ai_governance": "passed with AIR-003 and D-117 release hold",
+      "publication_sentinel": {
+        "status": "passed",
+        "output_count": 4,
+        "package_state": "automatic_pass",
+        "runs_path_length": 223
+      },
+      "protected_safe_full_regression": {
+        "passed": 341,
+        "skipped": 0,
+        "failed": 0,
+        "coverage_percent": 88.5,
+        "protected_fixture_module_excluded": true
+      }
+    }
+  },
+  "next_gate": {
+    "decision_id": "D-117",
+    "status": "proposed_owner_review",
+    "definition": "docs/package_assurance/p4_2_external_benchmark_execution_gate_v0.3.0.md"
+  },
+  "held_out_performance_claim_authorized": false,
+  "release_claim_authorized": false
+}
