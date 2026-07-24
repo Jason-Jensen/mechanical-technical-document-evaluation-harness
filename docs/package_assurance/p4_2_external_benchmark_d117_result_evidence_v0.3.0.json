@@ -1,0 +1,163 @@
+{
+  "schema_version": "0.3.0",
+  "evidence_id": "P4.2-D117-EXTERNAL-BENCHMARK-RESULT",
+  "recorded_date": "2026-07-23",
+  "status": "complete_owner_review_required",
+  "authority": {
+    "decision_id": "D-117",
+    "status": "accepted_and_consumed",
+    "owner_instruction": "Ok, keep working. Do whatever you need to do.",
+    "owner_instruction_date": "2026-07-23"
+  },
+  "repository": {
+    "predecessor_pull_request": 69,
+    "integrated_main_commit": "04d919f98f412fd0951cc804ce1a95f2ce078920",
+    "branch": "codex/p4.2-external-benchmark-first-run"
+  },
+  "bindings": {
+    "execution_id": "EXEC-D117-R4-20260724-01",
+    "family_id": "FAM-D116-CIM-20260723-01",
+    "runner_capsule_id": "RUNNER-D116-CIM-20260723-04",
+    "evaluator_commit": "3a6766f6f1cc563b27c24fa07a9a4a2a7d1206f6",
+    "authorization_sha256": "f7547399932cb819d2e99a970261203c28807452f7f5444a4dbf038191ead2e7"
+  },
+  "one_shot_execution": {
+    "runner_invocations": 1,
+    "authorized_attempts": 8,
+    "completed_attempts": 8,
+    "runner_exit_code": 0,
+    "child_exit_codes": {
+      "1": 8
+    },
+    "complete_four_output_publications": 8,
+    "retry_resume_repair_overwrite_tuning_or_second_invocation": false,
+    "oracle_access_inside_runner": false,
+    "protected_comparison_inside_runner": false,
+    "static_inputs_unchanged": true
+  },
+  "raw_evidence": {
+    "file_count": 73,
+    "aggregate_sha256": "f9bc8135c1ee0d6a5d472eff7d438972811f31477f38de3678f8d8074790cb5c",
+    "all_read_only": true,
+    "reparse_or_symlink_count": 0,
+    "public_handoff_json_sha256": "8d9049b08152fb8bc3d6918213ba991bb0424bb11997a7cb3a6340cff2a6dc07",
+    "public_handoff_markdown_sha256": "a292f14c4ff7e5cfc8eea59b8c1bf944849a0da2624ccd1245dfd54a126c0a7c"
+  },
+  "oracle_blind_verification": {
+    "accepted_verification_id": "VER-D117-RAW-20260724-03",
+    "status": "passed",
+    "controls_passed": 14,
+    "controls_total": 14,
+    "attempts_verified": 8,
+    "complete_publication_sets": 8,
+    "schema_valid_package_results": 8,
+    "raw_aggregate_reproduced": true,
+    "static_pre_post_identical": true,
+    "protected_paths_accessed": 0,
+    "oracle_values_loaded": 0,
+    "verifier_script_sha256": "6af3d70ce90aae358f4e4e01b0d6eaaeb3b41ff26a7ab67603c2ed82c5bb2c73",
+    "verification_json_sha256": "def6db6aac3f5c259e7b86d5a8d1780734b9c9e05882845f552925495bb9b250",
+    "verification_markdown_sha256": "1addcd8d6f680ce4a91cbc69251031df412b2436abe6d6ebe1990b6598882c79",
+    "preserved_failed_verifier_revisions": [
+      {
+        "revision": 1,
+        "failure": "wrong pre-static file-count field name",
+        "raw_mutation": false,
+        "semantic_invocation": false
+      },
+      {
+        "revision": 2,
+        "failure": "raw-scope, scenario-order encoding, and Markdown Boolean assumptions",
+        "raw_mutation": false,
+        "semantic_invocation": false
+      }
+    ]
+  },
+  "oracle_blind_actuals": {
+    "state_counts": {
+      "automatic_fail": 8
+    },
+    "finding_count": 8,
+    "finding_code_counts": {
+      "AUTHORITY_SCOPE_CONFLICT": 8
+    },
+    "relationship_checks_executed": 0
+  },
+  "protected_comparison": {
+    "comparison_id": "CMP-D117-R4-20260724-01",
+    "comparable_scenarios": 8,
+    "not_evaluable_scenarios": 0,
+    "exact_state_matches": 7,
+    "exact_finding_matches": 0,
+    "exact_combined_matches": 0,
+    "expected_finding_true_positives": 0,
+    "expected_finding_total": 7,
+    "false_negatives": 7,
+    "unexpected_false_positives": 8,
+    "actual_finding_total": 8,
+    "clean_package_false_positives": 1,
+    "clean_package_count": 1,
+    "downstream_target_checks_executed": 0,
+    "downstream_target_checks_expected": 7,
+    "public_handoff_json_sha256": "742132ce03b6375fb8a6d0bfa11165cc59b1c36c70ae2ca5e2b6d55231387c19",
+    "public_handoff_markdown_sha256": "d36c8e0487beb983aee076e25a3e4938de261cfef6100472f387d4d109c80af9",
+    "protected_details_committed": false,
+    "pre_post_hashes_identical": true
+  },
+  "root_cause": {
+    "classification": "benchmark_family_authority_scope_defect",
+    "public_contract_requirement": "Each authority map applies_to must equal its scenario package_id.",
+    "actual_condition": "All eight authority maps used the family_id.",
+    "failed_gate": "GATE-PKG-AUTHORITY-001",
+    "affected_scenarios": 8,
+    "downstream_relationship_checks_skipped_per_scenario": 11,
+    "evaluator_behavior": "correct_fail_closed",
+    "benchmark_valid_for_intended_downstream_performance": false
+  },
+  "governance": {
+    "nonconformity_id": "NC-002",
+    "release_hold_risk_ids": [
+      "AIR-003",
+      "AIR-011"
+    ],
+    "release_hold_nonconformity_ids": [
+      "NC-002"
+    ],
+    "pending_decision_ids": [
+      "D-118"
+    ]
+  },
+  "next_gate": {
+    "decision_id": "D-118",
+    "status": "proposed_owner_review",
+    "definition": "docs/package_assurance/p4_2_benchmark_authoring_corrective_action_gate_v0.3.0.md"
+  },
+  "repository_verification": {
+    "ai_governance_tests": "22/22 passed",
+    "protected_safe_full_regression": "340 passed, 1 expected Windows skip",
+    "coverage_percent": 88.33,
+    "repository_validation": "5/5 passed",
+    "ruff": "passed",
+    "development_benchmark": "22/22 passed",
+    "publication_sentinel": "4/4 schema-valid outputs",
+    "frozen_v0_2_baseline": "9/9 passed with generated evidence under runs/",
+    "portfolio_demo": "2/2 passed",
+    "controlling_gantt": {
+      "path": "gantt.xlsx",
+      "sha256": "3f310747cb21826223c87c0d0288b550fa5c8b4a7aca791949306d46711c4b83",
+      "formula_errors": 0,
+      "rendered_sheet_views": 28
+    },
+    "preserved_verification_failure": {
+      "path": "runs/d117-closeout-full-20260723",
+      "result": "339 passed, 1 failed, 1 skipped",
+      "cause": "Windows nested-publication path budget exceeded by long basetemp",
+      "semantic_change_before_passing_replay": false
+    },
+    "accepted_full_suite_basetemp": "runs/t117f"
+  },
+  "family_rerun_or_reuse_authorized": false,
+  "evaluator_tuning_authorized": false,
+  "downstream_performance_claim_authorized": false,
+  "release_claim_authorized": false
+}

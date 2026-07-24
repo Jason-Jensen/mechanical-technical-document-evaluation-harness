@@ -75,9 +75,9 @@ def test_repository_ai_management_system_is_valid_and_release_held() -> None:
     assert summary.gate_count == 8
     assert summary.release_authorized is False
     assert summary.release_state == "held"
-    assert summary.hold_risk_ids == ("AIR-003",)
-    assert summary.hold_nonconformity_ids == ()
-    assert summary.pending_decision_ids == ("D-117",)
+    assert summary.hold_risk_ids == ("AIR-003", "AIR-011")
+    assert summary.hold_nonconformity_ids == ("NC-002",)
+    assert summary.pending_decision_ids == ("D-118",)
     assert summary.release_ready is False
 
 
@@ -98,9 +98,9 @@ def test_governance_cli_reports_valid_held_state() -> None:
     assert result.returncode == 0
     assert "PASS AIMS-MEWA-001" in result.stdout
     assert "RELEASE: HELD" in result.stdout
-    assert "risks=AIR-003" in result.stdout
-    assert "nonconformities=none" in result.stdout
-    assert "pending=D-117" in result.stdout
+    assert "risks=AIR-003,AIR-011" in result.stdout
+    assert "nonconformities=NC-002" in result.stdout
+    assert "pending=D-118" in result.stdout
 
 
 def test_release_ready_mode_fails_while_mandatory_holds_remain() -> None:
@@ -207,7 +207,7 @@ def test_pending_decision_alone_keeps_release_held(tmp_path: Path) -> None:
 
     assert summary.hold_risk_ids == ()
     assert summary.hold_nonconformity_ids == ()
-    assert summary.pending_decision_ids == ("D-117",)
+    assert summary.pending_decision_ids == ("D-118",)
     assert summary.release_ready is False
 
 
@@ -346,7 +346,7 @@ def test_high_residual_risk_requires_hold_or_authorized_acceptance(
     def mutate(system: dict[str, Any]) -> None:
         risk = next(item for item in system["risks"] if item["risk_id"] == "AIR-003")
         risk["release_hold"] = False
-        system["release_status"]["hold_risk_ids"] = []
+        system["release_status"]["hold_risk_ids"] = ["AIR-011"]
 
     root = _copy_system(tmp_path, mutate)
 
