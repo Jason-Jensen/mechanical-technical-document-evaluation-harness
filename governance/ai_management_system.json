@@ -419,6 +419,9 @@
         "docs/package_assurance/p4_2_external_benchmark_d117_result_evidence_v0.3.0.json",
         "docs/package_assurance/p4_2_benchmark_authoring_corrective_action_review_v0.3.0.md",
         "docs/package_assurance/p4_2_new_external_family_preparation_gate_v0.3.0.md",
+        "docs/package_assurance/p4_2_new_external_family_preparation_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_new_external_family_preparation_evidence_v0.3.0.json",
+        "docs/package_assurance/p4_2_new_external_family_execution_gate_v0.3.0.md",
         "docs/governance/internal_audit_2026-07-22.md"
       ]
     },
@@ -596,7 +599,9 @@
         "docs/quality/improvement_register.md",
         "docs/package_assurance/p4_2_external_custody_freeze_review_v0.3.0.md",
         "docs/package_assurance/p4_2_benchmark_authoring_corrective_action_review_v0.3.0.md",
-        "docs/package_assurance/p4_2_benchmark_authoring_control_procedure_v0.3.0.md"
+        "docs/package_assurance/p4_2_benchmark_authoring_control_procedure_v0.3.0.md",
+        "docs/package_assurance/p4_2_new_external_family_preparation_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_new_external_family_preparation_evidence_v0.3.0.json"
       ]
     },
     {
@@ -716,6 +721,8 @@
         "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md",
         "docs/package_assurance/p4_2_benchmark_authoring_corrective_action_review_v0.3.0.md",
         "docs/package_assurance/p4_2_benchmark_authoring_control_procedure_v0.3.0.md",
+        "docs/package_assurance/p4_2_new_external_family_preparation_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_new_external_family_execution_gate_v0.3.0.md",
         "docs/governance/internal_audit_d117_benchmark_authoring_2026-07-23.md"
       ]
     },
@@ -1445,7 +1452,7 @@
       "objective": "Keep governance records complete, cross-referenced, and machine valid.",
       "measure": "Governance validator and focused test result.",
       "target": "All checks pass in local and hosted CI.",
-      "current_result": "D-118 authoring-control and governance tests pass 36/36 locally; protected-safe full regression passes 354 with one expected Windows skip at 88.02% coverage. Repository validation 5/5, Ruff, the four-output sentinel, development benchmark 22/22, frozen baseline 9/9, and demo 2/2 pass. Hosted Linux verification for D-118 remains pending.",
+      "current_result": "D-119 independently reproduces 8/8 public-contract validations, 7/7 protected target reachability, a 322-file read-only freeze, exact pre/post identity, redaction, and zero official invocations. Authoring-control and governance tests pass 36/36 locally; protected-safe full regression passes 354 with one expected Windows skip at 88.02% coverage. Repository validation 5/5, Ruff, the four-output sentinel, development benchmark 22/22, frozen baseline 9/9, and demo 2/2 pass. Both hosted Linux validation jobs pass on PR #72.",
       "status": "monitoring",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [
@@ -1459,7 +1466,7 @@
       "objective": "Maintain reproducible evidence for every accepted material claim.",
       "measure": "Accepted claims with traceable and reproducible evidence.",
       "target": "100 percent",
-      "current_result": "Current accepted claims retain evidence. D-113 remains operational failure evidence. D-117 proves complete one-shot publication and fail-closed authority checking, but its family is invalid for intended downstream performance claims. D-118 proves only development-level authoring controls; external effectiveness remains unproven.",
+      "current_result": "Current accepted claims retain evidence. D-113 remains operational failure evidence. D-117 proves complete one-shot publication and fail-closed authority checking, but its family is invalid for intended downstream performance claims. D-119 independently proves the D-118 authoring controls on one new isolated synthetic family, but official benchmark performance remains untested.",
       "status": "met",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [
@@ -1477,7 +1484,7 @@
       "objective": "Obtain a comparable external semantic benchmark before release claims.",
       "measure": "Comparable external scenarios with exact state and finding evaluation.",
       "target": "All authorized external scenarios comparable with accepted metrics.",
-      "current_result": "D-117 produced 8 file-comparable results, but a shared benchmark-authoring authority defect blocked all intended downstream targets. D-118 corrects and proves the authoring controls only with development data. No unconfounded external relationship-performance benchmark is available; the release objective remains not met.",
+      "current_result": "D-117 produced 8 file-comparable results, but a shared benchmark-authoring authority defect blocked all intended downstream targets. D-119 independently verifies the corrected controls on a new isolated family with zero official invocations. No unconfounded official external relationship-performance result is available; the release objective remains not met.",
       "status": "not_met_release_hold",
       "owner_role_id": "ROLE-OWNER",
       "evidence_refs": [
@@ -1492,7 +1499,7 @@
       "objective": "Convert material failures and corrections into preventive controls and proof.",
       "measure": "Open improvement items with prevention and repeatable proof.",
       "target": "Every material issue recorded; closure only after proof.",
-      "current_result": "D-118 implements the public-contract validator and protected target-reachability verifier, proves six development controls, preserves NC-002 containment, and records the repeated search-boundary incident as IMP-040. AIR-003, reopened AIR-008, AIR-011, NC-002, and D-119 remain open.",
+      "current_result": "D-119 proves the D-118 public-contract and target-reachability controls on a new isolated family, preserves three rejected revisions, and independently reproduces freeze and redaction evidence. AIR-003, AIR-008, AIR-011, NC-002, and pending D-120 remain open.",
       "status": "monitoring",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [
@@ -1537,7 +1544,7 @@
       ],
       "release_hold": true,
       "containment": "Preserve all D-116 and D-117 evidence unchanged; prohibit repair, rerun, reuse, tuning, new external-family execution, P4.3, and release claims; classify the consumed family as invalid for intended downstream performance.",
-      "corrective_action_decision": "D-118 was accepted and implemented. The public-contract validator rejects the exact scope defect and the separated reachability verifier has development-only operating proof. NC-002 remains contained until D-119 and a later official run demonstrate effectiveness on a genuinely new isolated family.",
+      "corrective_action_decision": "D-118 was accepted and implemented. D-119 independently proves the public-contract and separated target-reachability controls on a genuinely new isolated family. NC-002 remains contained until D-120 official execution, protected comparison, and owner closure review demonstrate downstream effectiveness.",
       "evidence_refs": [
         "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md",
         "docs/package_assurance/p4_2_external_benchmark_d117_result_evidence_v0.3.0.json",
@@ -1545,6 +1552,9 @@
         "docs/package_assurance/p4_2_benchmark_authoring_control_procedure_v0.3.0.md",
         "docs/package_assurance/p4_2_benchmark_authoring_corrective_action_review_v0.3.0.md",
         "docs/package_assurance/p4_2_new_external_family_preparation_gate_v0.3.0.md",
+        "docs/package_assurance/p4_2_new_external_family_preparation_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_new_external_family_preparation_evidence_v0.3.0.json",
+        "docs/package_assurance/p4_2_new_external_family_execution_gate_v0.3.0.md",
         "docs/governance/internal_audit_d117_benchmark_authoring_2026-07-23.md",
         "docs/quality/improvement_register.md"
       ]
@@ -1610,6 +1620,9 @@
     "docs/package_assurance/p4_2_benchmark_authoring_control_procedure_v0.3.0.md",
     "docs/package_assurance/p4_2_benchmark_authoring_corrective_action_review_v0.3.0.md",
     "docs/package_assurance/p4_2_new_external_family_preparation_gate_v0.3.0.md",
+    "docs/package_assurance/p4_2_new_external_family_preparation_review_v0.3.0.md",
+    "docs/package_assurance/p4_2_new_external_family_preparation_evidence_v0.3.0.json",
+    "docs/package_assurance/p4_2_new_external_family_execution_gate_v0.3.0.md",
     "scripts/run_benchmark_authoring_control_proof.py",
     "scripts/run_package_assurance_publication_sentinel.py"
   ],
@@ -1625,7 +1638,7 @@
       "NC-002"
     ],
     "pending_decision_ids": [
-      "D-119"
+      "D-120"
     ],
     "human_decision_required": true
   }

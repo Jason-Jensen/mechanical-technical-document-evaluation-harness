@@ -77,7 +77,7 @@ def test_repository_ai_management_system_is_valid_and_release_held() -> None:
     assert summary.release_state == "held"
     assert summary.hold_risk_ids == ("AIR-003", "AIR-008", "AIR-011")
     assert summary.hold_nonconformity_ids == ("NC-002",)
-    assert summary.pending_decision_ids == ("D-119",)
+    assert summary.pending_decision_ids == ("D-120",)
     assert summary.release_ready is False
 
 
@@ -100,7 +100,7 @@ def test_governance_cli_reports_valid_held_state() -> None:
     assert "RELEASE: HELD" in result.stdout
     assert "risks=AIR-003,AIR-008,AIR-011" in result.stdout
     assert "nonconformities=NC-002" in result.stdout
-    assert "pending=D-119" in result.stdout
+    assert "pending=D-120" in result.stdout
 
 
 def test_release_ready_mode_fails_while_mandatory_holds_remain() -> None:
@@ -207,7 +207,7 @@ def test_pending_decision_alone_keeps_release_held(tmp_path: Path) -> None:
 
     assert summary.hold_risk_ids == ()
     assert summary.hold_nonconformity_ids == ()
-    assert summary.pending_decision_ids == ("D-119",)
+    assert summary.pending_decision_ids == ("D-120",)
     assert summary.release_ready is False
 
 
