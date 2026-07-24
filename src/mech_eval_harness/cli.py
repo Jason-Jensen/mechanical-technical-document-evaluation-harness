@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from datetime import datetime, timezone
 from importlib.metadata import PackageNotFoundError, version
@@ -37,6 +38,14 @@ from mech_eval_harness.validator import (
 from mech_eval_harness.package_assurance.audit import (
     execute_package_audit,
     package_state_exit_code,
+)
+from mech_eval_harness.package_assurance.public_contract import (
+    validate_package_contract,
+)
+from mech_eval_harness.package_assurance.target_reachability import (
+    TargetReachabilityError,
+    verify_custodian_target_reachability,
+    write_custodian_reachability_reports,
 )
 
 
@@ -105,6 +114,23 @@ def build_parser() -> argparse.ArgumentParser:
         help="Run the accepted structured package audit.",
     )
     _configure_audit_package_parser(audit_parser)
+
+    contract_parser = subparsers.add_parser(
+        "validate-package-contract",
+        help="Validate producer-visible package authoring invariants.",
+    )
+    contract_parser.add_argument("repository_root", type=Path)
+    contract_parser.add_argument("package_directory", type=Path)
+
+    reachability_parser = subparsers.add_parser(
+        "verify-target-reachability",
+        help="Custodian-only verification of protected target reachability.",
+    )
+    reachability_parser.add_argument("repository_root", type=Path)
+    reachability_parser.add_argument("custody_root", type=Path)
+    reachability_parser.add_argument("public_index", type=Path)
+    reachability_parser.add_argument("protected_plan", type=Path)
+    reachability_parser.add_argument("output_directory", type=Path)
 
     return parser
 
@@ -184,6 +210,84 @@ def _audit_package_main(argv: list[str]) -> int:
     print(f"ISSUE COUNT: {len(result.findings)}")
     print(f"RESULT PATH: {outcome.publication.result_path}")
     return package_state_exit_code(result.package_state)
+
+
+def _validate_package_contract(
+    repository_root: Path,
+    package_root: Path,
+) -> int:
+    repository_root = repository_root.resolve()
+    package_root = package_root.resolve()
+    if not repository_root.is_dir():
+        print(
+            f"ERROR [USAGE]: Repository root is not a directory: {repository_root}",
+            file=sys.stderr,
+        )
+        return EXIT_AUDIT_USAGE_ERROR
+    if not package_root.is_dir():
+        print(
+            f"ERROR [USAGE]: Package path is not a directory: {package_root}",
+            file=sys.stderr,
+        )
+        return EXIT_AUDIT_USAGE_ERROR
+
+    validation = validate_package_contract(
+        repository_root=repository_root,
+        package_root=package_root,
+    )
+    print(
+        json.dumps(
+            validation.to_dict(),
+            indent=2,
+            ensure_ascii=True,
+            allow_nan=False,
+            sort_keys=True,
+        )
+    )
+    return EXIT_PASS if validation.public_contract_complete else EXIT_EVALUATION_FAILED
+
+
+def _verify_target_reachability(
+    repository_root: Path,
+    custody_root: Path,
+    public_index_path: Path,
+    protected_plan_path: Path,
+    output_directory: Path,
+) -> int:
+    custody_root = custody_root.resolve()
+    output_directory = output_directory.resolve()
+    if not _path_is_within(output_directory, custody_root):
+        print(
+            "ERROR [USAGE]: Reachability outputs must stay inside the custody root.",
+            file=sys.stderr,
+        )
+        return EXIT_AUDIT_USAGE_ERROR
+
+    try:
+        outcome = verify_custodian_target_reachability(
+            repository_root=repository_root,
+            custody_root=custody_root,
+            public_index_path=public_index_path,
+            protected_plan_path=protected_plan_path,
+        )
+        public_path, protected_path = write_custodian_reachability_reports(
+            outcome=outcome,
+            output_directory=output_directory,
+        )
+    except TargetReachabilityError as exc:
+        print(f"ERROR [CUSTODY INPUT]: {exc}", file=sys.stderr)
+        return EXIT_AUDIT_USAGE_ERROR
+
+    attestation = outcome.public_attestation
+    print(f"TARGET REACHABILITY: {str(attestation['status']).upper()}")
+    print(f"SCENARIOS: {attestation['scenario_count']}")
+    print(
+        "REACHABLE TARGETS: "
+        f"{attestation['reachable_target_count']}/{attestation['target_count']}"
+    )
+    print(f"PUBLIC ATTESTATION: {public_path}")
+    print(f"PROTECTED DETAIL: {protected_path}")
+    return EXIT_PASS if outcome.passed else EXIT_EVALUATION_FAILED
 
 
 def _audit_path_usage_error(
@@ -566,6 +670,21 @@ def main(argv: list[str] | None = None) -> int:
                 args.case_id,
                 args.candidate_path,
                 args.runs_dir,
+            )
+
+        if args.command == "validate-package-contract":
+            return _validate_package_contract(
+                args.repository_root,
+                args.package_directory,
+            )
+
+        if args.command == "verify-target-reachability":
+            return _verify_target_reachability(
+                args.repository_root,
+                args.custody_root,
+                args.public_index,
+                args.protected_plan,
+                args.output_directory,
             )
 
         parser.error(f"Unknown command: {args.command}")

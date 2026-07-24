@@ -15,7 +15,7 @@ holds, and continual improvement mandatory above feature work and schedule.
 
 - **Released and frozen:** v0.2.0 at accepted commit `45336a2`, with 121 tests, baseline 9/9, demo 2/2, and an annotated release tag.
 - **Active release:** v0.3.0 Package Assurance Pilot, a structured Mechanical Package Consistency Audit.
-- **Current gate:** D-117 completed one controlled invocation of the D-116 family: 8/8 attempts produced complete audit packages, raw verification passed 14/14, and separated protected comparison completed. The evaluator correctly caught a shared authority-scope defect in all eight packages, but that authoring defect blocked every intended downstream check. The family is consumed and invalid for downstream performance claims. D-118 is the next owner decision; `AIR-003`, `AIR-011`, and `NC-002` hold release.
+- **Current gate:** D-118 is accepted and its corrective controls are implemented. The public validator rejects the exact D-117 package/authority scope defect, while the separated custodian verifier proves clean-gate and protected target reachability without publishing scenario mappings. Development-only proof passes, but `NC-002` remains contained until the controls are effective on a genuinely new isolated family. D-119 is the next owner decision; `AIR-003`, `AIR-008`, `AIR-011`, and `NC-002` hold release.
 - **AI governance:** D-115 adopts an internal ISO/IEC 42001-aligned and NIST-informed AI management system. It inventories three systems, thirteen risks, twenty controls, eight lifecycle gates, six objectives, one closed and one contained nonconformity, and an explicit held release state. This is not an ISO conformity or certification claim.
 - **Implementation boundary:** Eight ordered gates and eleven ordered relationship checks feed the canonical package result with fail-closed completeness, exact state precedence, declared-input fingerprints, schema validation, and immutable persistence. P2.3 is complete for this exact scope. Six unsupported authority/source claims are explicitly deferred and excluded from v0.3.0 release claims.
 
@@ -41,7 +41,7 @@ Current execution status is controlled in `gantt.xlsx`. Product behavior is defi
 
 The controlling P2.3 closeout is the [completion and claim boundary](docs/package_assurance/p2_3_completion_and_claim_boundary_v0.3.0.md). P4.1 may build and verify the development benchmark machinery; protected held-out semantic execution remains a separate P4.2 gate.
 
-P4.1 revision `P4.1-DEV-1` generates 22 development scenarios from the accepted clean pump-skid baseline and runs each twice through the real four-output audit. The exact-commit acceptance run at implementation `4cf9fe8` passed 22/22 scenarios and covered all eight gate failures and all eleven relationship-check failures with exact normalized output hashes. Full regression passes 319 tests with one expected Windows skip at 88.57% coverage; validation 5/5, Ruff, frozen baseline 9/9, demo 2/2, and both hosted Linux CI jobs also pass. D-109 accepts the bounded claim that four states have genuine full-package scenarios while two states have router/exit coverage only. The [D-117 result review](docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md) and [proposed D-118 corrective-action gate](docs/package_assurance/p4_2_benchmark_authoring_corrective_action_gate_v0.3.0.md) control the next decision.
+P4.1 revision `P4.1-DEV-1` generates 22 development scenarios from the accepted clean pump-skid baseline and runs each twice through the real four-output audit. The exact-commit acceptance run at implementation `4cf9fe8` passed 22/22 scenarios and covered all eight gate failures and all eleven relationship-check failures with exact normalized output hashes. Full regression passes 319 tests with one expected Windows skip at 88.57% coverage; validation 5/5, Ruff, frozen baseline 9/9, demo 2/2, and both hosted Linux CI jobs also pass. D-109 accepts the bounded claim that four states have genuine full-package scenarios while two states have router/exit coverage only. The [D-117 result review](docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md), accepted [D-118 corrective-action review](docs/package_assurance/p4_2_benchmark_authoring_corrective_action_review_v0.3.0.md), and [proposed D-119 new-family gate](docs/package_assurance/p4_2_new_external_family_preparation_gate_v0.3.0.md) control the next decision.
 
 ## Current MVP
 
@@ -232,6 +232,24 @@ The output directory must be outside the audited package. Existing run
 directories are never overwritten. A malformed manifest inside an existing
 package directory is retained as a controlled package result when the output
 location remains usable.
+
+### Validate a package before benchmark freeze
+
+```powershell
+mech-eval validate-package-contract `
+    . `
+    path\to\package
+```
+
+The command runs the eight public mandatory gates without executing
+relationship checks. It prints deterministic JSON, rejects the exact D-117
+package/authority scope defect, and returns `0` only when all public authoring
+invariants pass.
+
+Protected benchmark scenarios require the separate custodian procedure in
+[the D-118 authoring-control document](docs/package_assurance/p4_2_benchmark_authoring_control_procedure_v0.3.0.md).
+Scenario-level target plans and reports stay outside Git; only the redacted
+aggregate attestation may enter a public handoff.
 
 ### Run the development package benchmark
 

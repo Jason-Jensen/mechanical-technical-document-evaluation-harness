@@ -103,6 +103,23 @@ from mech_eval_harness.package_assurance.audit import (
     execute_package_audit,
     package_state_exit_code,
 )
+from mech_eval_harness.package_assurance.public_contract import (
+    PUBLIC_CONTRACT_VALIDATOR_ID,
+    PUBLIC_CONTRACT_VALIDATOR_VERSION,
+    PackageContractValidation,
+    PublicContractGateResult,
+    validate_package_contract,
+)
+from mech_eval_harness.package_assurance.target_reachability import (
+    PROTECTED_REACHABILITY_FILENAME,
+    PUBLIC_REACHABILITY_FILENAME,
+    TARGET_REACHABILITY_VERIFIER_ID,
+    TARGET_REACHABILITY_VERIFIER_VERSION,
+    CustodianReachabilityOutcome,
+    TargetReachabilityError,
+    verify_custodian_target_reachability,
+    write_custodian_reachability_reports,
+)
 
 __all__ = [
     "LoadedPackageManifest",
@@ -171,10 +188,20 @@ __all__ = [
     "AUDIT_PACKAGE_OUTPUT_FILENAMES",
     "PUBLICATION_FAILURE_FILENAME",
     "PACKAGE_STATE_EXIT_CODES",
+    "PUBLIC_CONTRACT_VALIDATOR_ID",
+    "PUBLIC_CONTRACT_VALIDATOR_VERSION",
+    "PUBLIC_REACHABILITY_FILENAME",
+    "PROTECTED_REACHABILITY_FILENAME",
+    "TARGET_REACHABILITY_VERIFIER_ID",
+    "TARGET_REACHABILITY_VERIFIER_VERSION",
     "PackageAuditCollisionError",
     "PackageAuditOutcome",
     "PackageAuditPublication",
     "PackageAuditPublicationError",
+    "PackageContractValidation",
+    "PublicContractGateResult",
+    "CustodianReachabilityOutcome",
+    "TargetReachabilityError",
     "build_package_input_fingerprint",
     "build_package_result",
     "load_package_manifest",
@@ -186,6 +213,9 @@ __all__ = [
     "execute_package_audit",
     "package_state_exit_code",
     "publish_package_audit",
+    "validate_package_contract",
+    "verify_custodian_target_reachability",
+    "write_custodian_reachability_reports",
     "validate_package_result_document",
     "write_package_result",
 ]

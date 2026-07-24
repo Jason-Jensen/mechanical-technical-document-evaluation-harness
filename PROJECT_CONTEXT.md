@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P4.2 D-117 external benchmark first run and comparison
-- **Status:** PR #69 integrated D-116 at exact `main` `04d919f`. D-117 completed one runner invocation, eight attempts, 8/8 complete publications, 14/14 oracle-blind raw controls, and separate protected comparison. The evaluator correctly failed a shared authority-scope conflict, but that authoring defect blocked every intended downstream check. The family is consumed and invalid for downstream performance claims; D-118, AIR-003, AIR-011, and NC-002 hold release
+- **Active WBS:** P4.2 D-118 benchmark-authoring corrective action
+- **Status:** PR #70 integrated D-117 at exact `main` `2246d1a`. D-118 is accepted and implemented. The evaluator correctly failed a shared authority-scope conflict, but that authoring defect blocked every intended downstream check. The family is consumed and invalid for downstream performance claims; D-119, AIR-003, AIR-008, AIR-011, and NC-002 hold release
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 The highest-level internal project controls are
@@ -513,6 +513,37 @@ The controlling records are
 and
 `docs/package_assurance/p4_2_benchmark_authoring_corrective_action_gate_v0.3.0.md`.
 
+PR #70 integrated D-117 at exact `main`
+`2246d1ae1651b48d2dae2b2278e5120be168b9a1`. The owner then accepted D-118.
+The corrective block adds producer-visible validator
+`VAL-PKG-AUTHORING-001` and custodian-only verifier
+`VER-PKG-TARGET-REACHABILITY-001` without changing the eight gates, eleven
+relationship checks, result router, or consumed evidence.
+
+The public validator runs no relationship checks and rejects the exact D-117
+package/authority mismatch. The custodian verifier confines schema-valid
+results, requires the clean scenario to pass every gate, checks each protected
+target for earlier blockers, writes protected detail first, and writes a
+redacted public attestation last. Development-only proof
+`PROOF-D118-AUTHORING-CONTROLS-001` passes all six controls with zero held-out
+semantic executions.
+
+During discovery, one intended exact-file search unexpectedly returned
+repository-wide matches and surfaced protected text from a tracked,
+already-consumed historical family. No protected file changed, no protected
+test ran, no external D-117 custody asset was accessed, and no disclosed value
+informed implementation. IMP-040 strengthens the literal-path and approved-
+root search boundary. Any future release-eligible family must remain
+physically outside Git and implementer access.
+
+`NC-002` remains contained rather than closed until D-118 effectiveness is
+proved on a genuinely new isolated family and reviewed after a separately
+authorized official run. The controlling records are
+`docs/package_assurance/p4_2_benchmark_authoring_control_procedure_v0.3.0.md`,
+`docs/package_assurance/p4_2_benchmark_authoring_corrective_action_review_v0.3.0.md`,
+and proposed
+`docs/package_assurance/p4_2_new_external_family_preparation_gate_v0.3.0.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -554,16 +585,17 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-PR #69 is integrated at exact `main` `04d919f`. D-117 is complete on
-`codex/p4.2-external-benchmark-first-run`. Review its result and accept or
-revise proposed D-118 separately.
+PR #70 is integrated at exact `main` `2246d1a`. D-118 is accepted and its
+bounded corrective action is complete on
+`codex/p4.2-benchmark-authoring-corrective-action`. Review the implementation
+and accept or revise proposed D-119 separately.
 
 Do not repair, rerun, reset, or reuse either consumed external family. Do not
 edit protected expectations or raw evidence, tune evaluator behavior from the
 comparison, create another external family, restore protected-fixture CI,
-begin P4.3, or make a release claim. D-118 would authorize only a bounded
-benchmark-authoring quality correction and would still require a separate
-later gate before another family or execution.
+begin P4.3, or make a release claim. D-119 would authorize only isolated
+preparation and corrective-control verification for one genuinely new family;
+official execution would still require D-120.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.
