@@ -75,6 +75,14 @@ for staging, hashing, and post-run oracle comparison. Keep protected-fixture
 integrity tests out of implementation-branch CI until first-run evidence is
 preserved.
 
+Do not rely on an intended command argument to protect a custody boundary.
+For exact-file inspection, use a literal-path reader. For recursive searches,
+name only approved source, test, schema, script, governance, and documentation
+roots and exclude `benchmarks/package_assurance/held_out/**` and `runs/**`.
+Never run a repository-root recursive search from an evaluator-implementation
+context. Treat any accidental protected match as an incident, stop the search,
+disclose it, and do not use the returned content.
+
 When replaying the frozen v0.2.0 baseline for verification, always pass an
 explicit generated `--evidence-dir` under `runs/`. The baseline script's
 historical default points at tracked release evidence and must not be used for

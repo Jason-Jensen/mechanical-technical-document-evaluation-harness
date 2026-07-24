@@ -4,11 +4,11 @@
 
 **Date:** 2026-07-23
 
-**Status:** Proposed D-118 owner review
+**Status:** D-118 accepted; corrective action implemented
 
 **Predecessor:** D-117 one-shot execution and comparison complete
 
-## Proposed Decision D-118
+## Decision D-118
 
 Accept the D-117 execution, raw verification, and protected comparison as
 valid consumed operating evidence. Classify
@@ -22,7 +22,7 @@ corrective-action block.
 
 ## Authorized Corrective Action
 
-D-118 would authorize only:
+D-118 authorizes only:
 
 1. add a public-contract validator for producer-visible package facts that
    cannot reveal protected expectations;
@@ -79,9 +79,20 @@ D-118 would not authorize:
 - release, accuracy, generalization, conformity, certification, or engineering
   correctness claims.
 
-## Owner Review Question
+## Owner Acceptance
+
+The project owner accepted D-118 on 2026-07-23. The implementation is reviewed
+in
+`p4_2_benchmark_authoring_corrective_action_review_v0.3.0.md`.
+
+The public validator, separated custodian procedure, development-only proof,
+containment record, and proposed D-119 gate do not authorize a new external
+family or semantic benchmark execution.
+
+## Superseded Owner Review Question
 
 Does the project owner accept D-118 exactly as bounded above?
 
-Until accepted, `NC-002`, `AIR-003`, `AIR-011`, and the release hold remain
-open. No new family preparation or semantic execution is authorized.
+Accepted. `NC-002`, `AIR-003`, `AIR-008`, and `AIR-011` remain open, and D-119 is the next
+owner gate. No new family preparation or external semantic execution is
+authorized.

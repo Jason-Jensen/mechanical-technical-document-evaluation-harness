@@ -18,22 +18,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
 - **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
-- **P4.2:** D-117 is complete. One runner invocation produced 8/8 complete audit packages; oracle-blind raw verification passed 14/14 and protected comparison completed. All eight packages shared an unintended authority-scope defect, so every downstream target was blocked. The evaluator correctly failed closed, but the consumed family is invalid for intended downstream performance claims. Proposed D-118 controls the authoring correction.
+- **P4.2:** D-117 is complete and PR #70 merged at exact `main` `2246d1a`. D-118 is accepted and implemented on `codex/p4.2-benchmark-authoring-corrective-action`: the public validator rejects the exact authority-scope defect, the custodian verifier preserves protected target separation, and development-only operating proof passes. `NC-002` remains contained pending effectiveness evidence. Proposed D-119 controls preparation of one genuinely new external family.
 - **G0.1:** D-115 is integrated through PR #67 at exact `main` `540a1f6`. It adopts an internal AI management and quality-control system as the highest-level repository governance. The system is ISO/IEC 42001-aligned at a public-guidance level, NIST-informed, machine validated, and explicitly not a conformity or certification claim.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Active Gate
 
-D-115 is the active governance overlay. D-113 and D-117 are consumed evidence. D-117 proved complete one-shot publication and fail-closed authority checking, but exposed NC-002 in the family freeze. `AIR-003`, reopened `AIR-011`, `NC-002`, and proposed D-118 hold release.
+D-115 is the active governance overlay. D-113 and D-117 are consumed evidence. D-118 corrects the benchmark-authoring controls without changing evaluator semantics. `AIR-003`, `AIR-008`, `AIR-011`, `NC-002`, and proposed D-119 hold release.
 
 ## Active Work Block
 
-- **WBS:** P4.2 D-117 external benchmark first run and comparison
-- **Branch:** `codex/p4.2-external-benchmark-first-run`
-- **Objective:** Execute the frozen runner once, freeze raw evidence, verify it without the oracle, compare separately, and classify the result without rerun or tuning.
-- **Definition of done:** One invocation and eight attempts are immutable; 8/8 publications and raw identities are verified; protected comparison is separated; the common authority-scope defect and claims boundary are recorded; NC-002 is opened; and D-118 returns for owner review.
+- **WBS:** P4.2 D-118 benchmark-authoring corrective action
+- **Branch:** `codex/p4.2-benchmark-authoring-corrective-action`
+- **Objective:** Prevent public package-authoring defects before freeze and prove clean-gate and protected target reachability without exposing oracle values.
+- **Definition of done:** The exact D-117 defect is rejected; public invariant tests and the accepted development package pass; protected/public reachability outputs are separated and immutable; `NC-002` containment and closure path are explicit; all protected-safe verification passes; and D-119 returns before a new family is authored.
 
-Next action: review the D-117 result and proposed D-118. No repair, rerun, reuse, new external family, evaluator tuning, P4.3, or release claim is authorized.
+Next action: review the D-118 implementation and proposed D-119. No repair, rerun, reuse, new external family, official benchmark execution, evaluator tuning, P4.3, or release claim is authorized.
 
 ## Delivery Sequence
 
