@@ -18,22 +18,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
 - **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
-- **P4.2:** D-113 remains consumed and not evaluable. D-114 is integrated through PR #68 at exact `main` `3a6766f`. D-116 then prepared a materially distinct eight-scenario synthetic family and oracle-blind runner outside Git. Runner revision 4 passed 8/8 mandatory and 51/51 detailed freeze controls, including one four-output development sentinel; opaque semantic executions remain zero. D-117 is pending.
+- **P4.2:** D-117 is complete. One runner invocation produced 8/8 complete audit packages; oracle-blind raw verification passed 14/14 and protected comparison completed. All eight packages shared an unintended authority-scope defect, so every downstream target was blocked. The evaluator correctly failed closed, but the consumed family is invalid for intended downstream performance claims. Proposed D-118 controls the authoring correction.
 - **G0.1:** D-115 is integrated through PR #67 at exact `main` `540a1f6`. It adopts an internal AI management and quality-control system as the highest-level repository governance. The system is ISO/IEC 42001-aligned at a public-guidance level, NIST-informed, machine validated, and explicitly not a conformity or certification claim.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Active Gate
 
-D-115 is the active governance overlay. D-113 remains complete, immutable, and not evaluable. D-114 is integrated. D-116 is complete with a verified zero-run freeze. Proposed D-117 is the next owner decision. Neither the consumed D-113 family nor the new D-116 opaque family may be executed without its exact gate authority.
+D-115 is the active governance overlay. D-113 and D-117 are consumed evidence. D-117 proved complete one-shot publication and fail-closed authority checking, but exposed NC-002 in the family freeze. `AIR-003`, reopened `AIR-011`, `NC-002`, and proposed D-118 hold release.
 
 ## Active Work Block
 
-- **WBS:** P4.2 D-116 external benchmark recovery freeze
-- **Branch:** `codex/p4.2-external-benchmark-recovery-preparation`
-- **Objective:** Prepare one materially distinct external family and one oracle-blind runner under separated custody, prove publication in the final physical pattern, and preserve zero opaque executions.
-- **Definition of done:** The family, runner, hashes, rights, authority/oracle contract, leakage controls, read-only state, one-shot behavior, and development sentinel are independently verified; failed revisions are preserved; D-117 returns with an exact command; and no opaque scenario is executed.
+- **WBS:** P4.2 D-117 external benchmark first run and comparison
+- **Branch:** `codex/p4.2-external-benchmark-first-run`
+- **Objective:** Execute the frozen runner once, freeze raw evidence, verify it without the oracle, compare separately, and classify the result without rerun or tuning.
+- **Definition of done:** One invocation and eight attempts are immutable; 8/8 publications and raw identities are verified; protected comparison is separated; the common authority-scope defect and claims boundary are recorded; NC-002 is opened; and D-118 returns for owner review.
 
-Next action: review this branch and proposed D-117. Do not create the authorization file or run the exact command until D-117 is explicitly accepted. P4.3, public reruns, semantic changes, imports, and release claims remain blocked.
+Next action: review the D-117 result and proposed D-118. No repair, rerun, reuse, new external family, evaluator tuning, P4.3, or release claim is authorized.
 
 ## Delivery Sequence
 

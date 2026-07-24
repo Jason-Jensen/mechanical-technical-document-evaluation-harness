@@ -4,11 +4,11 @@
 
 **Date:** 2026-07-23
 
-**Status:** Proposed D-117 owner review
+**Status:** D-117 accepted and complete; D-118 owner review required
 
 **Predecessor:** D-116 recovery freeze passed
 
-## Proposed Decision D-117
+## Decision D-117
 
 Authorize exactly one invocation of
 `RUNNER-D116-CIM-20260723-04` against frozen family
@@ -39,14 +39,15 @@ Any D-117 authorization must bind exactly to:
 
 ## Exact Command
 
-This command is prepared but not authorized:
+This command was authorized and executed exactly once:
 
 ```text
 C:\Users\User\.codex\visualizations\2026\07\16\019f694e-e2b3-7863-8d6d-5f7c9300d695\d116r4\python_env\Scripts\python.exe -B C:\Users\User\.codex\visualizations\2026\07\16\019f694e-e2b3-7863-8d6d-5f7c9300d695\d116r4\controls\run_semantic_once.py --authorization C:\Users\User\.codex\visualizations\2026\07\16\019f694e-e2b3-7863-8d6d-5f7c9300d695\d116r4\runtime\authorization\d117_authorization.json
 ```
 
-The authorization file is intentionally absent. It may be created only after
-explicit owner acceptance of D-117.
+The project owner accepted D-117 on 2026-07-23 with the instruction, "Ok, keep
+working. Do whatever you need to do." The one-use authorization was then
+created, consumed, and frozen. The runner cannot be invoked again.
 
 ## Required Sequence
 
@@ -64,7 +65,7 @@ explicit owner acceptance of D-117.
 
 ## Explicit Prohibitions
 
-D-117 would not authorize:
+D-117 did not authorize:
 
 - retry, resume, overwrite, repair, or a second runner invocation;
 - reuse of the authorization for another family, runner, or evaluator;
@@ -76,9 +77,20 @@ D-117 would not authorize:
 - release, accuracy, false-positive, false-negative, certification,
   conformity, or engineering-correctness claims before comparison and review.
 
-## Owner Review Question
+## Closeout
 
-Does the project owner accept D-117 exactly as bounded above?
+D-117 completed with one runner invocation, eight attempts, eight complete
+publications, exact raw freeze, oracle-blind verification, and separate
+protected comparison. No retry, tuning, repair, or second invocation occurred.
 
-Until the answer is explicit, semantic execution remains prohibited and
-release remains held by `AIR-003`.
+The comparison found a shared benchmark-authoring authority-scope defect that
+blocked every intended downstream relationship check. The consumed family is
+invalid for downstream performance claims and may not be repaired or rerun as
+fresh held-out evidence.
+
+The controlling result is
+`p4_2_external_benchmark_d117_result_review_v0.3.0.md`. Proposed D-118 is
+defined in
+`p4_2_benchmark_authoring_corrective_action_gate_v0.3.0.md`.
+
+Release remains held by `AIR-003`, `AIR-011`, `NC-002`, and pending D-118.

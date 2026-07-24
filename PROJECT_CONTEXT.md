@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P4.2 D-116 external benchmark recovery freeze
-- **Status:** PR #68 integrated D-114 at exact `main` `3a6766f`. D-116 is complete: a materially distinct eight-scenario synthetic family and oracle-blind runner remain outside Git, and revision 4 passed 8/8 mandatory plus 51/51 detailed controls with one four-output development sentinel. Opaque executions remain zero, D-117 is pending, and release remains held
+- **Active WBS:** P4.2 D-117 external benchmark first run and comparison
+- **Status:** PR #69 integrated D-116 at exact `main` `04d919f`. D-117 completed one runner invocation, eight attempts, 8/8 complete publications, 14/14 oracle-blind raw controls, and separate protected comparison. The evaluator correctly failed a shared authority-scope conflict, but that authoring defect blocked every intended downstream check. The family is consumed and invalid for downstream performance claims; D-118, AIR-003, AIR-011, and NC-002 hold release
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 The highest-level internal project controls are
@@ -492,6 +492,27 @@ are
 and
 `docs/package_assurance/p4_2_external_benchmark_execution_gate_v0.3.0.md`.
 
+PR #69 integrated the freeze at exact `main`
+`04d919f98f412fd0951cc804ce1a95f2ce078920`. D-117 then consumed one
+authorization and invoked runner R4 exactly once. All eight attempts published
+complete, schema-valid audit packages. Raw evidence contains 73 read-only files
+at aggregate `f9bc8135...790cb5c`; oracle-blind verifier revision 3 passed
+14/14 and separate protected comparison completed without mutation.
+
+Every actual package returned `automatic_fail` with
+`AUTHORITY_SCOPE_CONFLICT`. The public authoring contract requires each
+authority map to apply to its package ID, but all eight maps used the family
+ID. The evaluator correctly failed closed and skipped all downstream checks.
+Protected comparison therefore found 7/8 state matches but 0/8 exact finding
+matches and 0/7 intended target checks executed. The state agreement is
+non-diagnostic. The family is consumed and invalid for downstream performance
+claims.
+
+The controlling records are
+`docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md`
+and
+`docs/package_assurance/p4_2_benchmark_authoring_corrective_action_gate_v0.3.0.md`.
+
 ## Intended Outcome
 
 The pilot audits structured relationships among:
@@ -533,18 +554,16 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-D-114 is integrated through PR #68 at exact `main` `3a6766f`. D-116 is
-accepted and complete on
-`codex/p4.2-external-benchmark-recovery-preparation`. Review and integrate its
-public freeze records, then accept or revise proposed D-117 separately.
+PR #69 is integrated at exact `main` `04d919f`. D-117 is complete on
+`codex/p4.2-external-benchmark-first-run`. Review its result and accept or
+revise proposed D-118 separately.
 
-Do not create the D-117 authorization file or invoke the prepared semantic
-runner. Do not retry or reuse any consumed runner or family, inspect protected
-inputs from the implementation context, import custody assets, restore
-protected-fixture CI, change evaluator semantics or benchmark inputs, rerun
-either public package, begin P4.3, or make a release claim. D-117 would
-authorize one runner invocation only; raw verification and protected
-comparison remain separated after execution.
+Do not repair, rerun, reset, or reuse either consumed external family. Do not
+edit protected expectations or raw evidence, tune evaluator behavior from the
+comparison, create another external family, restore protected-fixture CI,
+begin P4.3, or make a release claim. D-118 would authorize only a bounded
+benchmark-authoring quality correction and would still require a separate
+later gate before another family or execution.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

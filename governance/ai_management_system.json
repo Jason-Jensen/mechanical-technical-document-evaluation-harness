@@ -409,12 +409,14 @@
       "residual_score": 12,
       "status": "open_treatment",
       "release_hold": true,
-      "review_trigger": "A comparable independent benchmark and qualified human false-negative review become available.",
+      "review_trigger": "An unconfounded comparable independent benchmark and qualified human false-negative review become available.",
       "evidence_refs": [
         "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
         "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
         "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_evidence_v0.3.0.json",
         "docs/package_assurance/p4_2_external_benchmark_execution_gate_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_evidence_v0.3.0.json",
         "docs/governance/internal_audit_2026-07-22.md"
       ]
     },
@@ -697,16 +699,18 @@
         "AIC-018",
         "AIC-019"
       ],
-      "residual_likelihood": 2,
+      "residual_likelihood": 3,
       "residual_impact": 4,
-      "residual_score": 8,
-      "status": "controlled",
-      "release_hold": false,
+      "residual_score": 12,
+      "status": "open_treatment",
+      "release_hold": true,
       "review_trigger": "Unauthorized work, misleading claim, missing decision record, or attempted hold bypass.",
       "evidence_refs": [
         "AGENTS.md",
         "gantt.xlsx",
-        "PROJECT_CONTEXT.md"
+        "PROJECT_CONTEXT.md",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md",
+        "docs/governance/internal_audit_d117_benchmark_authoring_2026-07-23.md"
       ]
     },
     {
@@ -1039,6 +1043,8 @@
         "docs/package_assurance/acceptance_plan_v0.3.0.md",
         "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
         "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_evidence_v0.3.0.json",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_evidence_v0.3.0.json",
         "AGENTS.md"
       ]
     },
@@ -1065,6 +1071,7 @@
         "docs/package_assurance/p4_2_publication_stabilization_evidence_v0.3.0.json",
         "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
         "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_evidence_v0.3.0.json",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md",
         "scripts/run_package_assurance_publication_sentinel.py",
         ".github/workflows/ci.yml",
         "docs/quality/improvement_register.md"
@@ -1193,7 +1200,8 @@
       "failure_action": "qualified_review",
       "evidence_refs": [
         "governance/ai_management_system.json",
-        "docs/quality/improvement_register.md"
+        "docs/quality/improvement_register.md",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md"
       ]
     },
     {
@@ -1214,7 +1222,8 @@
       "verification": "manual",
       "failure_action": "hold_release",
       "evidence_refs": [
-        "docs/governance/internal_audit_2026-07-22.md"
+        "docs/governance/internal_audit_2026-07-22.md",
+        "docs/governance/internal_audit_d117_benchmark_authoring_2026-07-23.md"
       ]
     },
     {
@@ -1444,13 +1453,15 @@
       "objective": "Maintain reproducible evidence for every accepted material claim.",
       "measure": "Accepted claims with traceable and reproducible evidence.",
       "target": "100 percent",
-      "current_result": "Current accepted implementation claims retain evidence; D-113 remains operational evidence only, and D-116 is correctly limited to a verified zero-run freeze rather than benchmark performance.",
+      "current_result": "Current accepted claims retain evidence. D-113 remains operational failure evidence. D-117 proves complete one-shot publication and fail-closed authority checking, but its family is invalid for intended downstream performance claims because a shared authoring defect blocked every target check.",
       "status": "met",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [
         "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
         "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
         "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_evidence_v0.3.0.json",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_evidence_v0.3.0.json",
         "docs/quality/improvement_register.md"
       ]
     },
@@ -1459,12 +1470,13 @@
       "objective": "Obtain a comparable external semantic benchmark before release claims.",
       "measure": "Comparable external scenarios with exact state and finding evaluation.",
       "target": "All authorized external scenarios comparable with accepted metrics.",
-      "current_result": "0 comparable; 8 D-113 scenarios remain not evaluable, and 8 D-116 opaque scenarios are independently frozen but unexecuted pending D-117.",
+      "current_result": "D-117 produced 8 file-comparable results, but a shared benchmark-authoring authority defect blocked all intended downstream targets. No unconfounded external relationship-performance benchmark is available; the release objective remains not met.",
       "status": "not_met_release_hold",
       "owner_role_id": "ROLE-OWNER",
       "evidence_refs": [
         "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
-        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md"
+        "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md"
       ]
     },
     {
@@ -1472,12 +1484,13 @@
       "objective": "Convert material failures and corrections into preventive controls and proof.",
       "measure": "Open improvement items with prevention and repeatable proof.",
       "target": "Every material issue recorded; closure only after proof.",
-      "current_result": "D-116 preserved three failed runner revisions and converted dependency closure, bytecode mutation, and whole-tree path budgeting into verified controls. Revision 4 passed 8/8 mandatory and 51/51 detailed controls with one four-output development sentinel. AIR-003 and D-117 remain open.",
+      "current_result": "D-117 preserved two failed raw-verifier revisions, exposed an ineffective family-contract freeze, and converted raw-scope ambiguity, public-contract validation, protected target reachability, anti-misleading metrics, and Windows verification-root budgeting into IMP-036 through IMP-039. AIR-003, AIR-011, NC-002, and D-118 remain open.",
       "status": "monitoring",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [
         "docs/quality/improvement_register.md",
-        "docs/governance/internal_audit_2026-07-22.md"
+        "docs/governance/internal_audit_2026-07-22.md",
+        "docs/governance/internal_audit_d117_benchmark_authoring_2026-07-23.md"
       ]
     }
   ],
@@ -1503,6 +1516,27 @@
         "scripts/run_package_assurance_publication_sentinel.py",
         "docs/quality/improvement_register.md"
       ]
+    },
+    {
+      "nonconformity_id": "NC-002",
+      "title": "External benchmark family contract freeze accepted a shared authority-scope defect",
+      "severity": "high",
+      "status": "contained",
+      "owner_role_id": "ROLE-MGMT",
+      "risk_ids": [
+        "AIR-003",
+        "AIR-011"
+      ],
+      "release_hold": true,
+      "containment": "Preserve all D-116 and D-117 evidence unchanged; prohibit repair, rerun, reuse, tuning, new external-family execution, P4.3, and release claims; classify the consumed family as invalid for intended downstream performance.",
+      "corrective_action_decision": "D-118 is proposed for owner review. It would authorize a bounded public-contract validator and separated custodian target-reachability control before any later new-family gate.",
+      "evidence_refs": [
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md",
+        "docs/package_assurance/p4_2_external_benchmark_d117_result_evidence_v0.3.0.json",
+        "docs/package_assurance/p4_2_benchmark_authoring_corrective_action_gate_v0.3.0.md",
+        "docs/governance/internal_audit_d117_benchmark_authoring_2026-07-23.md",
+        "docs/quality/improvement_register.md"
+      ]
     }
   ],
   "audits": [
@@ -1514,6 +1548,16 @@
       "independent": false,
       "finding_ids": [
         "NC-001"
+      ]
+    },
+    {
+      "audit_id": "AIMS-AUD-002",
+      "date": "2026-07-23",
+      "status": "completed_with_findings",
+      "report_ref": "docs/governance/internal_audit_d117_benchmark_authoring_2026-07-23.md",
+      "independent": false,
+      "finding_ids": [
+        "NC-002"
       ]
     }
   ],
@@ -1539,6 +1583,7 @@
     "docs/governance/ai_impact_assessment_v0.3.0.md",
     "docs/governance/iso_iec_42001_alignment_and_gap_assessment_v0.3.0.md",
     "docs/governance/internal_audit_2026-07-22.md",
+    "docs/governance/internal_audit_d117_benchmark_authoring_2026-07-23.md",
     "docs/governance/management_review_2026-07-22.md",
     "docs/quality/improvement_register.md",
     "docs/package_assurance/p4_2_external_first_run_result_review_v0.3.0.md",
@@ -1548,17 +1593,23 @@
     "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_review_v0.3.0.md",
     "docs/package_assurance/p4_2_external_benchmark_recovery_freeze_evidence_v0.3.0.json",
     "docs/package_assurance/p4_2_external_benchmark_execution_gate_v0.3.0.md",
+    "docs/package_assurance/p4_2_external_benchmark_d117_result_review_v0.3.0.md",
+    "docs/package_assurance/p4_2_external_benchmark_d117_result_evidence_v0.3.0.json",
+    "docs/package_assurance/p4_2_benchmark_authoring_corrective_action_gate_v0.3.0.md",
     "scripts/run_package_assurance_publication_sentinel.py"
   ],
   "release_status": {
     "release_authorized": false,
     "release_state": "held",
     "hold_risk_ids": [
-      "AIR-003"
+      "AIR-003",
+      "AIR-011"
     ],
-    "hold_nonconformity_ids": [],
+    "hold_nonconformity_ids": [
+      "NC-002"
+    ],
     "pending_decision_ids": [
-      "D-117"
+      "D-118"
     ],
     "human_decision_required": true
   }
