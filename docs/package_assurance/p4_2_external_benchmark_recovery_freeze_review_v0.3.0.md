@@ -136,6 +136,13 @@ The public closeout records and governance transition passed:
 - AI governance: normal mode passed; strict release-ready mode returned `2`
   for `AIR-003` and pending D-117.
 
+PR #69 also passed both hosted Linux workflows at commit
+`87cf1ad30608cfe7a3efd88360de1fbe968c080c`. GitHub Actions runs
+`30041470927` and `30041835325` validated all five cases, Ruff, the AI
+management system with the intended release hold, a four-output
+`automatic_pass` sentinel at a 223-character runs path, and 341 protected-safe
+tests at 88.50% coverage.
+
 The first full-suite invocation used an unnecessarily long sandbox test root
 and failed only when the development benchmark could not read its deeply nested
 generated result path. The unchanged suite passed from the short generated root

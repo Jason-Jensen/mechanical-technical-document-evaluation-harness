@@ -173,7 +173,29 @@
         "D-117"
       ]
     },
-    "hosted_ci": "pending"
+    "hosted_ci": {
+      "pull_request": 69,
+      "commit": "87cf1ad30608cfe7a3efd88360de1fbe968c080c",
+      "push_workflow_run": 30041470927,
+      "pull_request_workflow_run": 30041835325,
+      "checks_passed": 2,
+      "repository_validation": "5/5 passed",
+      "ruff": "passed",
+      "ai_governance": "passed with AIR-003 and D-117 release hold",
+      "publication_sentinel": {
+        "status": "passed",
+        "output_count": 4,
+        "package_state": "automatic_pass",
+        "runs_path_length": 223
+      },
+      "protected_safe_full_regression": {
+        "passed": 341,
+        "skipped": 0,
+        "failed": 0,
+        "coverage_percent": 88.5,
+        "protected_fixture_module_excluded": true
+      }
+    }
   },
   "next_gate": {
     "decision_id": "D-117",

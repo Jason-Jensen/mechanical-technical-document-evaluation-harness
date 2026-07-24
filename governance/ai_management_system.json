@@ -1430,7 +1430,7 @@
       "objective": "Keep governance records complete, cross-referenced, and machine valid.",
       "measure": "Governance validator and focused test result.",
       "target": "All checks pass in local and hosted CI.",
-      "current_result": "Governance validation and 22 focused control tests pass locally; protected-safe full regression passes 340 with one expected Windows skip at 88.33% coverage; repository validation 5/5, Ruff, the four-output sentinel, development benchmark 22/22, frozen baseline 9/9, and demo 2/2 pass. Hosted CI for the D-116 branch remains pending.",
+      "current_result": "Governance validation and 22 focused control tests pass locally; protected-safe full regression passes 340 with one expected Windows skip at 88.33% coverage; repository validation 5/5, Ruff, the four-output sentinel, development benchmark 22/22, frozen baseline 9/9, and demo 2/2 pass. PR #69 push and pull-request workflows pass on hosted Linux; the sentinel publishes four outputs at a 223-character runs path and 341 protected-safe tests pass at 88.50% coverage.",
       "status": "monitoring",
       "owner_role_id": "ROLE-MGMT",
       "evidence_refs": [
