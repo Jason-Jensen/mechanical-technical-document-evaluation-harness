@@ -1,8 +1,8 @@
 # Project Context
 
-**Updated:** 2026-07-23
+**Updated:** 2026-07-24
 **Repository:** `C:\Projects\mechanical-technical-document-evaluation-harness`
-**Current branch:** `codex/p4.2-external-benchmark-recovery-preparation`
+**Current branch:** `codex/p4.2-new-external-family-preparation`
 
 ## Executive Summary
 
@@ -30,8 +30,8 @@ Do not rewrite this kernel or alter its protected evidence without an approved i
 ## Active Work
 
 - **Release:** v0.3.0 Package Assurance Pilot
-- **Active WBS:** P4.2 D-118 benchmark-authoring corrective action
-- **Status:** PR #70 integrated D-117 at exact `main` `2246d1a`. D-118 is accepted and implemented. The evaluator correctly failed a shared authority-scope conflict, but that authoring defect blocked every intended downstream check. The family is consumed and invalid for downstream performance claims; D-119, AIR-003, AIR-008, AIR-011, and NC-002 hold release
+- **Active WBS:** P4.2 D-119 isolated new-family preparation
+- **Status:** PR #71 integrated D-118 at exact `main` `17830bd`. D-119 is accepted and complete. One new isolated synthetic family passed 8/8 public-contract validations and 7/7 protected target checks; a fresh reviewer reproduced the 322-file freeze, redaction, and exact pre/post identity. Official invocations remain zero; proposed D-120, AIR-003, AIR-008, AIR-011, and NC-002 hold release
 - **Implementation state:** Eight ordered gates and eleven ordered relationship checks feed the canonical result and report views through one bounded `audit-package` command. P2.3 is complete for that exact scope; quantity, part/material, BOM-item/drawing, equipment/specification, datasheet-revision, and controlled technical-value reconciliation are excluded from v0.3.0 claims
 
 The highest-level internal project controls are
@@ -536,13 +536,30 @@ informed implementation. IMP-040 strengthens the literal-path and approved-
 root search boundary. Any future release-eligible family must remain
 physically outside Git and implementer access.
 
-`NC-002` remains contained rather than closed until D-118 effectiveness is
-proved on a genuinely new isolated family and reviewed after a separately
-authorized official run. The controlling records are
+PR #71 integrated D-118 at exact `main`
+`17830bd3aecfe6b51f6f8d983a67129757208b1c`. The owner then accepted D-119.
+One new synthetic family was authored and frozen outside Git under isolated
+producer and reviewer custody. The public repository received only opaque
+identity, aggregate counts, hashes, commitments, and redacted attestations.
+
+The producer ran eight authoring preflights and reported 8/8 public-contract
+passes, one clean scenario clearing every mandatory gate, and 7/7 protected
+targets reachable with zero unintended earlier blockers. Three rejected
+revisions remain preserved. A fresh reviewer independently replayed all eight
+public validations and reproduced the 322-file read-only freeze, class and
+inventory hashes, redaction, and exact pre/post identity. Official benchmark
+invocations remain zero.
+
+`NC-002` remains contained rather than closed. D-119 proves the authoring
+controls on a genuinely new isolated family, but downstream effectiveness
+still requires a separately authorized official run, raw freeze, protected
+comparison, and owner closure review. The controlling records are
 `docs/package_assurance/p4_2_benchmark_authoring_control_procedure_v0.3.0.md`,
 `docs/package_assurance/p4_2_benchmark_authoring_corrective_action_review_v0.3.0.md`,
+`docs/package_assurance/p4_2_new_external_family_preparation_review_v0.3.0.md`,
+`docs/package_assurance/p4_2_new_external_family_preparation_evidence_v0.3.0.json`,
 and proposed
-`docs/package_assurance/p4_2_new_external_family_preparation_gate_v0.3.0.md`.
+`docs/package_assurance/p4_2_new_external_family_execution_gate_v0.3.0.md`.
 
 ## Intended Outcome
 
@@ -585,17 +602,14 @@ Files under `docs/archive/` and dated modernization records are historical prove
 
 ## Current Authorized Action
 
-PR #70 is integrated at exact `main` `2246d1a`. D-118 is accepted and its
-bounded corrective action is complete on
-`codex/p4.2-benchmark-authoring-corrective-action`. Review the implementation
-and accept or revise proposed D-119 separately.
+PR #71 is integrated at exact `main` `17830bd`. D-119 is accepted and complete
+on `codex/p4.2-new-external-family-preparation`. Review the public D-119
+evidence and accept or revise proposed D-120 separately.
 
-Do not repair, rerun, reset, or reuse either consumed external family. Do not
-edit protected expectations or raw evidence, tune evaluator behavior from the
-comparison, create another external family, restore protected-fixture CI,
-begin P4.3, or make a release claim. D-119 would authorize only isolated
-preparation and corrective-control verification for one genuinely new family;
-official execution would still require D-120.
+Do not access or import the isolated family, repair or reuse a consumed family,
+edit protected expectations or raw evidence, tune evaluator behavior, restore
+protected-fixture CI, begin P4.3, or make a release or performance claim.
+Official execution remains prohibited until D-120 is accepted.
 
 Reusable lessons, prevention actions, and proof are controlled in
 `docs/quality/improvement_register.md`.

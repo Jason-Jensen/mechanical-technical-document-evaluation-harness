@@ -1,0 +1,105 @@
+{
+  "schema_version": "0.3.0",
+  "evidence_id": "D119-FREEZE-PUBLIC-001",
+  "decision_id": "D-119",
+  "status": "complete_d120_owner_review",
+  "repository_commit": "17830bd3aecfe6b51f6f8d983a67129757208b1c",
+  "family": {
+    "opaque_token": "FAM-3178CBE96B77B3E6A998154C",
+    "scenario_count": 8,
+    "clean_count": 1,
+    "fault_count": 7,
+    "family_content_aggregate_sha256": "69228bf06f9f1fd3035473082572e1e14b94ee3662bbcc136473f9cc19bbf69f"
+  },
+  "invocations": {
+    "authoring_preflight_count": 8,
+    "independent_public_contract_replay_count": 8,
+    "official_benchmark_invocation_count": 0
+  },
+  "controls": {
+    "public_validator": {
+      "control_id": "VAL-PKG-AUTHORING-001",
+      "version": "0.3.0",
+      "passed_count": 8,
+      "failed_count": 0
+    },
+    "target_reachability": {
+      "control_id": "VER-PKG-TARGET-REACHABILITY-001",
+      "version": "0.3.0",
+      "status": "passed",
+      "scenario_count": 8,
+      "clean_scenario_count": 1,
+      "fault_scenario_count": 7,
+      "target_count": 7,
+      "reachable_target_count": 7,
+      "unplanned_blocker_count": 0,
+      "clean_all_mandatory_gates_passed": true,
+      "public_index_sha256": "705a2eb3180b772e15e7212ac44dd09f94b967983fcc193e551501318de617ea",
+      "protected_plan_commitment_sha256": "ecfed1e55269067e18e3f19e86f390b7be60000e625d9032e6f3324665d9eaba",
+      "result_set_aggregate_sha256": "0b0e2f44a293b2a349375c60cc04fa2ca1b02a62c97a891c08793c7cfdd75bb3",
+      "protected_detail_commitment_sha256": "a7785055c64465b73508f7e2d79b2d9c592b64b6786dc1ae4312dc379ee5b00a",
+      "public_attestation_sha256": "cd4f044dc90539d48eb37991f63b36a5a08c66f1b959515137a30f282373d742",
+      "protected_values_published": false
+    }
+  },
+  "freeze": {
+    "rejected_revision_count": 3,
+    "frozen_file_counts": {
+      "public": 2,
+      "producer": 247,
+      "protected": 9,
+      "verification": 59
+    },
+    "frozen_class_content_sha256": {
+      "public": "2f573260e50ec427098f3484dffe813fdee15402c1c3e830a2aabf9f6cebd5fc",
+      "producer": "66faf023d59ff6fe50a1d568bf1f319b8bc6ed11fde0147c0f29fd571dfa863e",
+      "protected": "93d3c239ab925d9c07e801e9526db3a6bfd52f85c6d6dbed039eea6d91e9d838",
+      "verification": "16b0e74dfb04cda5763f7b36d38581fa5435ff4510168fc6def32a14993bffb0"
+    },
+    "class_inventory_sha256": {
+      "public": "833803f5c2e33e3d4fb07821c7bebb9a1a346e7fa5759cb41655739f6b65a0c1",
+      "producer": "68d2c50241687739c2c30695e0383f3843776732e4e3b3c0b09a7f30c1d91224",
+      "protected": "8d84f8529b8c9c77bff5150f15bfe6632195a3c129bce6b20e756450788d0e95",
+      "verification": "a2fb6bffc4eb7f40a0ac9c0d6e3afdebacd3fb0e16064652b4e68ed56f2ec20d"
+    },
+    "inventory_file_count": 5,
+    "inventory_set_manifest_sha256": "e2e5c39023b6f4f9769544df0ebc396d6ff1797a5f31df1ccdea3325e78725a5",
+    "inventory_set_aggregate_sha256": "39aa558fe14310b0f2a8be0968f097c03fc8ab28b3c00d51d016096e12f6afaf",
+    "read_only": true
+  },
+  "assertions": {
+    "entirely_synthetic_and_self_authored": true,
+    "authorized_public_contracts_only": true,
+    "materially_distinct": true,
+    "outside_git_and_implementer_access": true,
+    "no_network_access": true,
+    "no_prior_family_or_protected_value_reuse": true,
+    "no_evaluator_change_or_tuning": true,
+    "no_protected_values_published": true
+  },
+  "public_handoffs": {
+    "producer_sha256": "6a89ba93934e42573a984573144d1f5dfde0efde89a99da01942663ecfc623e2",
+    "independent_reviewer_sha256": "37f2e735a53c2da71830cdccdf7738b98c6a1513908b5922d3272c88e3bf916c"
+  },
+  "independent_review": {
+    "status": "passed",
+    "reviewer_independent_of_authoring_and_evaluator_implementation": true,
+    "public_contract_replay_passed_count": 8,
+    "public_contract_replay_failed_count": 0,
+    "root_file_count": 322,
+    "pre_post_tree_sha256": "9a986402e1a162829c1d43ab27e0be241b24647f2bacdc9c87cc3c5e534862f8",
+    "pre_post_freeze_identity_equal": true,
+    "read_only_and_no_mutation_passed": true,
+    "public_handoff_redaction_passed": true,
+    "official_benchmark_invocation_count": 0
+  },
+  "claim_boundary": {
+    "corrective_control_effectiveness": "D-118 controls independently reproduced on one new isolated synthetic family; official semantic performance remains untested.",
+    "benchmark_performance_evidence": false,
+    "release_authorized": false,
+    "engineering_correctness_claim": false,
+    "independent_external_assurance_claim": false,
+    "iso_iec_42001_conformity_claim": false,
+    "next_decision_required": "D-120"
+  }
+}

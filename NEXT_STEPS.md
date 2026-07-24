@@ -18,22 +18,22 @@ The detailed sequence, status, evidence, and next action are controlled in `gant
 - **P3.3:** Accepted and integrated through PR #40 at exact `main` commit `e4080fd`; exact-main verification is green.
 - **P2.3:** Complete. D-107 accepted check 11 and PR #59 merged it at exact `main` `69c0d1b`. D-108 explicitly defers the six unsupported authority/source claims and limits v0.3.0 to the eleven proven relationship checks.
 - **P4.1:** Accepted and integrated through PR #61 at exact `main` `5a4d57e`. Revision `P4.1-DEV-1` at implementation `4cf9fe8` passes 22/22 development scenarios twice on Windows and hosted Linux CI and freezes the D-109 claim boundary.
-- **P4.2:** D-117 is complete and PR #70 merged at exact `main` `2246d1a`. D-118 is accepted and implemented on `codex/p4.2-benchmark-authoring-corrective-action`: the public validator rejects the exact authority-scope defect, the custodian verifier preserves protected target separation, and development-only operating proof passes. `NC-002` remains contained pending effectiveness evidence. Proposed D-119 controls preparation of one genuinely new external family.
+- **P4.2:** PR #71 merged D-118 at exact `main` `17830bd`. D-119 is accepted and complete on `codex/p4.2-new-external-family-preparation`: one new isolated synthetic family passed 8/8 public validations and 7/7 protected targets, and a fresh reviewer reproduced the 322-file freeze and redaction. Official invocations remain zero. Proposed D-120 controls the one-shot official batch.
 - **G0.1:** D-115 is integrated through PR #67 at exact `main` `540a1f6`. It adopts an internal AI management and quality-control system as the highest-level repository governance. The system is ISO/IEC 42001-aligned at a public-guidance level, NIST-informed, machine validated, and explicitly not a conformity or certification claim.
 - **Time tracking:** Waived prospectively; progress is gate- and evidence-based.
 
 ## Active Gate
 
-D-115 is the active governance overlay. D-113 and D-117 are consumed evidence. D-118 corrects the benchmark-authoring controls without changing evaluator semantics. `AIR-003`, `AIR-008`, `AIR-011`, `NC-002`, and proposed D-119 hold release.
+D-115 is the active governance overlay. D-113 and D-117 are consumed evidence. D-119 proves the D-118 authoring controls on one new isolated family without changing evaluator semantics. `AIR-003`, `AIR-008`, `AIR-011`, `NC-002`, and proposed D-120 hold release.
 
 ## Active Work Block
 
-- **WBS:** P4.2 D-118 benchmark-authoring corrective action
-- **Branch:** `codex/p4.2-benchmark-authoring-corrective-action`
-- **Objective:** Prevent public package-authoring defects before freeze and prove clean-gate and protected target reachability without exposing oracle values.
-- **Definition of done:** The exact D-117 defect is rejected; public invariant tests and the accepted development package pass; protected/public reachability outputs are separated and immutable; `NC-002` containment and closure path are explicit; all protected-safe verification passes; and D-119 returns before a new family is authored.
+- **WBS:** P4.2 D-119 isolated new-family preparation
+- **Branch:** `codex/p4.2-new-external-family-preparation`
+- **Objective:** Prove the D-118 authoring controls on one genuinely new family while keeping all packages, targets, results, and authoring records outside Git and implementer access.
+- **Definition of done:** Rights and custody pass; 8/8 public validations and all protected targets pass; rejected revisions are preserved; a fresh reviewer reproduces the read-only freeze and redaction; official invocations remain zero; and D-120 returns for owner review.
 
-Next action: review the D-118 implementation and proposed D-119. No repair, rerun, reuse, new external family, official benchmark execution, evaluator tuning, P4.3, or release claim is authorized.
+Next action: review the completed D-119 evidence and proposed D-120. No official benchmark execution, evaluator tuning, P4.3, release, or performance claim is authorized before D-120 acceptance.
 
 ## Delivery Sequence
 

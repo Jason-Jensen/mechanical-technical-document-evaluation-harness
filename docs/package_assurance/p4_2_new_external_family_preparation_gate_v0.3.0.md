@@ -2,24 +2,24 @@
 
 **Version:** 0.3.0
 
-**Date:** 2026-07-23
+**Date:** 2026-07-24
 
-**Status:** Proposed D-119 owner review
+**Status:** D-119 accepted and complete; D-120 owner review required
 
 **Predecessor:** D-118 benchmark-authoring corrective action complete
 
-## Proposed Decision D-119
+## Accepted Decision D-119
 
 Authorize one genuinely new, materially distinct, entirely synthetic external
 benchmark family to be authored and quality-controlled outside Git by isolated
 custodian roles.
 
-D-119 would test the effectiveness of the D-118 correction. It would not
+D-119 tests the effectiveness of the D-118 correction. It does not
 authorize the official benchmark execution used for performance claims.
 
 ## Authorized Scope
 
-D-119 would authorize only:
+D-119 authorizes only:
 
 1. create one new family from accepted public contracts without reading or
    copying any prior family, protected asset, or expected value;
@@ -50,7 +50,7 @@ its scenario-level outputs may not be used to tune evaluator behavior.
 
 ## Definition of Done
 
-D-119 would be complete only when:
+D-119 is complete only when:
 
 - rights, provenance, material distinction, and custody separation are
   documented;
@@ -67,7 +67,7 @@ D-119 would be complete only when:
 
 ## Explicit Exclusions
 
-D-119 would not authorize:
+D-119 does not authorize:
 
 - repair, rerun, reset, reuse, or reinterpretation of any consumed family;
 - access to historical protected values by an author or implementer;
@@ -79,9 +79,10 @@ D-119 would not authorize:
 - release, accuracy, generalization, conformity, certification, or engineering
   correctness claims.
 
-## Owner Review Question
+## Owner Decision Record
 
-Does the project owner accept D-119 exactly as bounded above?
+The project owner accepted D-119 exactly as bounded above on 2026-07-24.
+Acceptance authorizes the isolated preparation and quality-control work only.
 
-Until accepted, no new external family may be created. `AIR-003`, `AIR-008`,
-`AIR-011`, `NC-002`, and the release hold remain open.
+Official execution still requires D-120. `AIR-003`, `AIR-008`, `AIR-011`,
+`NC-002`, and the release hold remain open.
